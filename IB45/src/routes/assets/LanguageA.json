@@ -1,0 +1,91 @@
+{
+  "SL Language A: Literature": {
+    "assessments": [
+      {
+        "name": "Paper 1: Guided Textual Analysis",
+        "maxMarks": 20,
+        "weight": 0.35
+      },
+      {
+        "name": "Paper 2: Comparative Essay",
+        "maxMarks": 30,
+        "weight": 0.35
+      },
+      {
+        "name": "Individual Oral",
+        "maxMarks": 40,
+        "weight": 0.30
+      }
+    ]
+  }, 
+
+  "HL Language A: Literature": {
+    "assessments": [
+      {
+        "name": "Paper 1: Guided Textual Analysis",
+        "maxMarks": 40,
+        "weight": 0.35
+      },
+      {
+        "name": "Paper 2: Comparative Essay",
+        "maxMarks": 30,
+        "weight": 0.25
+      },
+      {
+        "name": "HL Essay",
+        "maxMarks": 20,
+        "weight": 0.20
+      },
+      {
+        "name": "Individual Oral",
+        "maxMarks": 40,
+        "weight": 0.20
+      }
+    ]
+  }, 
+
+  "SL Language A: Language And Literature": {
+    "assessments": [
+      {
+        "name": "Paper 1: Guided Textual Analysis",
+        "maxMarks": 20,
+        "weight": 0.35
+      },
+      {
+        "name": "Paper 2: Comparative Essay",
+        "maxMarks": 30,
+        "weight": 0.35
+      },
+      {
+        "name": "Individual Oral",
+        "maxMarks": 40,
+        "weight": 0.30
+      }
+    ]
+  },
+
+  "HL Language A: Language And Literature": {
+    "assessments": [
+      {
+        "name": "Paper 1: Guided Textual Analysis",
+        "maxMarks": 40,
+        "weight": 0.35
+      },
+      {
+        "name": "Paper 2: Comparative Essay",
+        "maxMarks": 30,
+        "weight": 0.25
+      },
+      {
+        "name": "HL Essay",
+        "maxMarks": 20,
+        "weight": 0.20
+      },
+      {
+        "name": "Individual Oral",
+        "maxMarks": 40,
+        "weight": 0.20
+      }
+    ]
+  }
+}

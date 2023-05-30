@@ -1,8 +1,9 @@
 <script>
-	export let value = 20;
 	let min = 0;
 	export let max;
 	export let name;
+	export let weight;
+	export let value = max / 2;
 
 	function handleChange(event) {
 		value = event.target.value;
@@ -10,7 +11,8 @@
 </script>
 
 <div class="slider">
-	<h5>{name}</h5>
+	<p>{name}</p>
+	<p>Weight: {weight * 100}%</p>
 
 	<div class="c">
 		<input type="range" bind:value {min} {max} />
@@ -19,7 +21,11 @@
 </div>
 
 <style>
+	p {
+		margin: 0px;
+	}
 	.slider {
+		margin: 30px 0;
 		padding-right: 100px;
 	}
 	.c {

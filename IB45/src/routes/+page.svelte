@@ -1,27 +1,30 @@
 <script>
-	import Group from './group.svelte';
+	import Group1 from './group1.svelte';
 
 	let groupScores = Array(6).fill(0);
 	let totalScore = 0;
 	let hasEarnedDiploma = false;
+
+	let group1Grade;
 </script>
 
 <nav>
-	<h1>IB45 Score Calculator</h1>
+	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
 </nav>
 
 <div class="intro">
 	<p>Welcome to IB45 Score Calculator,</p>
 	<p>This calculator uses May 2022 grade boundaries</p>
+	{group1Grade}
 </div>
 <div class="layout">
 	<div class="left-column">
-		<Group groupNumber={1} />
-		<Group groupNumber={2} />
+		<Group1 bind:grade={group1Grade} />
+		<!-- <Group groupNumber={2} />
 		<Group groupNumber={3} />
 		<Group groupNumber={4} />
 		<Group groupNumber={5} />
-		<Group groupNumber={6} />
+		<Group groupNumber={6} /> -->
 	</div>
 	<div class="right-column">
 		<div class="diploma">
@@ -45,6 +48,7 @@
 	}
 
 	:global(nav) {
+		/*position: fixed; */
 		background-color: rgb(20, 181, 235);
 		padding: 10px;
 		text-align: center;
@@ -65,7 +69,7 @@
 
 	.diploma {
 		display: inline-block;
-		border: 2px solid white;
+		border: 2px solid black;
 		border-radius: 10px;
 		padding: 10px;
 		background-color: rgb(32, 169, 41);
