@@ -1,8 +1,16 @@
 <script>
 	import Group1 from './group1.svelte';
 
-	let groupScores = Array(6).fill(0);
-	let totalScore = 0;
+	let names = [];
+	let scores = Array(6).fill(0);
+	let totalScore;
+	
+	$: {
+		totalScore = 0;
+		for(t in scores) {
+			totalScore += t;
+		}
+	}
 	let hasEarnedDiploma = false;
 
 	let group1Grade;
@@ -14,12 +22,12 @@
 
 <div class="intro">
 	<p>Welcome to IB45 Score Calculator,</p>
-	<p>This calculator uses May 2022 grade boundaries</p>
-	{group1Grade}
+	<p>This calculator uses May 2022 grade boundaries. NOTE: For a given subject, if there is more than one timezone, the higher of the two will be used. </p>
+
 </div>
 <div class="layout">
 	<div class="left-column">
-		<Group1 bind:grade={group1Grade} />
+		<Group1 bind:fullName={names[0]} bind:awardedMark={scores[0]} />
 		<!-- <Group groupNumber={2} />
 		<Group groupNumber={3} />
 		<Group groupNumber={4} />

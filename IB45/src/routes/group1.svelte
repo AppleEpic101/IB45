@@ -1,6 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/LanguageA.json';
+	import gradeBoundary from "./assets/LanguageAGradeBoundaries-M22";
 
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
 
@@ -15,33 +16,30 @@
 		courses.push(course);
 	});
 
-	$: {
-		console.log('courses: ');
-		console.log(courses);
-	}
+	let boundaries = [];
+	Object.keys(gradeBoundary).forEach((courseName) => {
+		const L = {
+			name: courseName,
+			TZ: gradeBoundary[courseName].TZ
+		}
+		boundaries.push(L);
+	})
+
+	let assessmentValues = [];
+	let boundary = [];
+
 	let name;
 	let level;
 	let language;
 
-	let assessmentValues = [];
-	// $: console.log(matchedCourse.assessments);
-
-	// $: {
-	// 	if (matchedCourse !== undefined)
-	// 		assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
-	// }
-	let paper1Value;
-	let paper2Value;
-	let hlEssayValue;
-	let individualOralValue;
-
 	let shortName;
+	let grade;
 	export let fullName;
-	export let grade;
+	export let awardedMark;
 
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;
-	$: fullName = level + ' ' + language + ' ' + name; // display
+	$: fullName = level + ' ' + language + ' ' + name; 
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -52,17 +50,31 @@
 
 		grade = Math.trunc(grade);
 	}
-	// $: grade = Math.trunc(
-	// 	(paper1Value / 40) * 35 +
-	// 		(paper2Value / 30) * 25 +
-	// 		(hlEssayValue / 20) * 20 +
-	// 		(individualOralValue / 40) * 20
-	// );
-	$: matchedCourse = courses.find((course) => course.name === shortName);
 
-	$: console.log(matchedCourse);
-	$: console.log(shortName);
-	$: console.log(assessmentValues);
+	$: matchedCourse = courses.find((course) => course.name === shortName);
+	$: matchedLang = boundaries.find((course) => course.name === fullName);
+
+	$: {
+		if(matchedLang !== undefined) {
+			matchedLang.TZ.forEach((arr, i) => {
+				if(grade >= arr[6]) boundary[i] = 7;
+				else if(grade >= arr[5]) boundary[i] = 6;
+				else if(grade >= arr[4]) boundary[i] = 5;
+				else if(grade >= arr[3]) boundary[i] = 4;
+				else if(grade >= arr[2]) boundary[i] = 3;
+				else if(grade >= arr[1]) boundary[i] = 2;
+				else boundary[i] = 1;
+			});
+		}
+	}
+	
+	$: awardedMark = Math.min(...boundary);
+
+	function reset() {
+		if (matchedCourse !== undefined)
+			assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
+
+	}
 </script>
 
 <div class="group">
@@ -75,10 +87,7 @@
 	</h2>
 	<select
 		bind:value={name}
-		on:change={() => {
-			if (matchedCourse !== undefined)
-				assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
-		}}
+		on:change={reset}
 	>
 		<option value="">Enter subject</option>
 		{#each subjects as subject}
@@ -88,10 +97,7 @@
 
 	<select
 		bind:value={level}
-		on:change={() => {
-			if (matchedCourse !== undefined)
-				assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
-		}}
+		on:change={reset}
 	>
 		<option value="">Enter level</option>
 		<option value="HL">HL</option>
@@ -100,10 +106,7 @@
 
 	<select
 		bind:value={language}
-		on:change={() => {
-			if (matchedCourse !== undefined)
-				assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
-		}}
+		on:change={reset}
 	>
 		<option value="">Enter language</option>
 		{#each LitLanguages as language}
@@ -124,10 +127,20 @@
 				/>
 			{/each}
 		{/if}
+
 	</div>
 	<div>
 		{#if sufficientInformation}
-			Grade: {grade}
+			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
+			{#if boundary.length == 1}
+					Timezone 0:&nbsp{boundary[0]}
+			{:else}
+				{#each boundary as b, i}
+					Timezone {i + 1}:&nbsp{b} &nbsp&nbsp&nbsp&nbsp
+				{/each}
+			{/if}
+			<br/>
+			Awarded Mark: {awardedMark}
 		{/if}
 	</div>
 </div>
