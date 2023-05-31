@@ -6,6 +6,7 @@
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
 
 	let subjects = ['Language AB Initio', 'Language B'];
+	let SLOnly = ['Language AB Initio'];
 
 	let courses = [];
 	Object.keys(data).forEach((courseName) => {
@@ -69,7 +70,7 @@
 	}
 
 	$: {
-		if (name === 'Language AB Initio' && level == 'HL') level = 'SL';
+		if (SLOnly.includes(name) && level == 'HL') level = 'SL';
 	}
 
 	$: awardedMark = Math.min(...boundary);
@@ -85,7 +86,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 2
+			Group 2: Language Acquisition
 		{:else}
 			{fullName}
 		{/if}
@@ -99,7 +100,7 @@
 
 	<select bind:value={level} on:change={reset}>
 		<option value="">Enter level</option>
-		{#if name !== 'Language AB Initio'}
+		{#if !SLOnly.includes(name)}
 			<option value="HL">HL</option>
 		{/if}
 		<option value="SL">SL</option>

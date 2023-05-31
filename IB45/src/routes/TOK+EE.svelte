@@ -1,20 +1,6 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group1/LanguageA.json';
-	import gradeBoundary from './assets/Group1/LanguageAGradeBoundaries-M22.json';
-
-	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
-
-	let subjects = ['Language A: Literature', 'Language A: Language And Literature'];
-
-	let courses = [];
-	Object.keys(data).forEach((courseName) => {
-		const course = {
-			name: courseName,
-			assessments: data[courseName].assessments
-		};
-		courses.push(course);
-	});
+	// import gradeBoundary from
 
 	let boundaries = [];
 	Object.keys(gradeBoundary).forEach((courseName) => {
@@ -28,18 +14,9 @@
 	let assessmentValues = [];
 	let boundary = [];
 
-	let name;
-	let level;
-	let language;
-
-	let shortName;
-	let grade;
-	export let fullName;
+	export let fullName = 'TOK';
 	export let awardedMark;
 
-	$: sufficientInformation = name != '' && level != '' && language != '';
-	$: shortName = level + ' ' + name;
-	$: fullName = level + ' ' + language + ' ' + name;
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -79,7 +56,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 1: Language and Literature
+			Group 1
 		{:else}
 			{fullName}
 		{/if}

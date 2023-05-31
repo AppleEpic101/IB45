@@ -1,11 +1,25 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group1/LanguageA.json';
-	import gradeBoundary from './assets/Group1/LanguageAGradeBoundaries-M22.json';
+	import data from './assets/Group3/group3.json';
+	import gradeBoundary from './assets/Group3/Group3GradeBoundaries-M22.json';
 
-	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
+	let subjects = [
+		'Business Management',
+		'Digital Society',
+		'Economics',
+		'Geography',
+		'Global Politics',
+		'History',
+		'Information Technology In A Global Society',
+		'Language And Culture',
+		'Philosophy',
+		'Psychology',
+		'Social And Cultural Anthropology',
+		'World Religions'
+	];
+	let SLOnly = ['Language And Culture', 'World Religions'];
 
-	let subjects = ['Language A: Literature', 'Language A: Language And Literature'];
+	let regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
 	let courses = [];
 	Object.keys(data).forEach((courseName) => {
@@ -30,16 +44,20 @@
 
 	let name;
 	let level;
-	let language;
+	let region = '';
 
 	let shortName;
 	let grade;
 	export let fullName;
 	export let awardedMark;
 
-	$: sufficientInformation = name != '' && level != '' && language != '';
+	$: sufficientInformation = !(
+		(shortName == 'HL History' && region == '') ||
+		name == '' ||
+		level == ''
+	);
 	$: shortName = level + ' ' + name;
-	$: fullName = level + ' ' + language + ' ' + name;
+	$: fullName = level + ' ' + name + ' ' + region;
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -52,11 +70,11 @@
 	}
 
 	$: matchedCourse = courses.find((course) => course.name === shortName);
-	$: matchedLang = boundaries.find((course) => course.name === fullName);
+	$: match = boundaries.find((course) => course.name === fullName);
 
 	$: {
-		if (matchedLang !== undefined) {
-			matchedLang.TZ.forEach((arr, i) => {
+		if (match !== undefined) {
+			match.TZ.forEach((arr, i) => {
 				if (grade >= arr[6]) boundary[i] = 7;
 				else if (grade >= arr[5]) boundary[i] = 6;
 				else if (grade >= arr[4]) boundary[i] = 5;
@@ -68,18 +86,28 @@
 		}
 	}
 
+	$: {
+		if (name === 'History' && level === 'SL') region = '';
+	}
+
+	$: {
+		if (SLOnly.includes(name) && level == 'HL') level = 'SL';
+	}
+
 	$: awardedMark = Math.min(...boundary);
 
 	function reset() {
 		if (matchedCourse !== undefined)
-			assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
+			assessmentValues = matchedCourse.assessments.map((assessment) =>
+				Math.trunc(assessment.maxMarks / 2)
+			);
 	}
 </script>
 
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 1: Language and Literature
+			Group 3: Individuals and Societies
 		{:else}
 			{fullName}
 		{/if}
@@ -93,16 +121,20 @@
 
 	<select bind:value={level} on:change={reset}>
 		<option value="">Enter level</option>
-		<option value="HL">HL</option>
+		{#if !SLOnly.includes(name)}
+			<option value="HL">HL</option>
+		{/if}
 		<option value="SL">SL</option>
 	</select>
 
-	<select bind:value={language} on:change={reset}>
-		<option value="">Enter language</option>
-		{#each LitLanguages as language}
-			<option value={language}>{language}</option>
-		{/each}
-	</select>
+	{#if name === 'History' && level === 'HL'}
+		<select bind:value={region} on:change={reset}>
+			<option value="">Enter HL History region</option>
+			{#each regions as r}
+				<option value={r}>{r}</option>
+			{/each}
+		</select>
+	{/if}
 
 	<div class="content">
 		{#if !sufficientInformation}
