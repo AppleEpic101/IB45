@@ -1,0 +1,45 @@
+{
+    "SL Mathematics: Analysis And Approaches": {
+        "assessments": [
+            {
+                "name": "Paper 1: No Technology",
+                "maxMarks": 80, 
+                "weight": 0.40
+            }, 
+            {
+                "name": "Paper 2: Technology Required",
+                "maxMarks": 80, 
+                "weight": 0.40
+            }, 
+            {
+                "name": "Mathematical Exploration",
+                "maxMarks": 20,
+                "weight": 0.20
+            }
+        ]
+    }, 
+    "HL Mathematics: Analysis And Approaches": {
+        "assessments": [
+            {
+                "name": "Paper 1: No Technology",
+                "maxMarks": 110, 
+                "weight": 0.30
+            }, 
+            {
+                "name": "Paper 2: Technology Required",
+                "maxMarks": 110, 
+                "weight": 0.30
+            }, 
+            {
+                "name": "Paper 3: Technology Required",
+                "maxMarks": 55,
+                "weight": 0.20
+            },
+            {
+                "name": "Internal Assessment",
+                "maxMarks": 20,
+                "weight": 0.20
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "SL Music": {
+        "assessments": [
+            {
+                "name": "Exploring Music In Context",
+                "maxMarks": 24, 
+                "weight": 0.30
+            }, 
+            {
+                "name": "Experimenting With Music",
+                "maxMarks": 28, 
+                "weight": 0.30
+            }, 
+            {
+                "name": "Presenting Music",
+                "maxMarks": 38,
+                "weight": 0.40
+            }
+        ]
+    }, 
+    "HL Music": {
+        "assessments": [
+            {
+                "name": "Exploring Music In Context",
+                "maxMarks": 24, 
+                "weight": 0.20
+            }, 
+            {
+                "name": "Experimenting With Music",
+                "maxMarks": 28, 
+                "weight": 0.20
+            }, 
+            {
+                "name": "The Contemporary Music-Maker",
+                "maxMarks": 32,
+                "weight": 0.30
+            },
+            {
+                "name": "Presenting Music",
+                "maxMarks": 38,
+                "weight": 0.30
+            }
+        ]
+    }
+}

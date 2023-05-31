@@ -1,0 +1,50 @@
+{
+    "SL Biology": {
+        "assessments": [
+            {
+                "name": "Paper 1: Multiple Choice",
+                "maxMarks": 30, 
+                "weight": 0.20
+            }, 
+            {
+                "name": "Paper 2: Data-Based",
+                "maxMarks": 50, 
+                "weight": 0.40
+            }, 
+            {
+                "name": "Paper 3",
+                "maxMarks": 35,
+                "weight": 0.20
+            },
+            {
+                "name": "Internal Assessment",
+                "maxMarks": 24,
+                "weight": 0.20
+            }
+        ]
+    }, 
+    "HL Biology": {
+        "assessments": [
+            {
+                "name": "Paper 1: Multiple Choice",
+                "maxMarks": 40, 
+                "weight": 0.20
+            }, 
+            {
+                "name": "Paper 2: Data-Based",
+                "maxMarks": 72, 
+                "weight": 0.36
+            }, 
+            {
+                "name": "Paper 3",
+                "maxMarks": 45,
+                "weight": 0.24
+            },
+            {
+                "name": "Internal Assessment",
+                "maxMarks": 24,
+                "weight": 0.20
+            }
+        ]
+    }
+}

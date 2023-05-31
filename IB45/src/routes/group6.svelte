@@ -1,19 +1,13 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group4/group4.json';
-	import gradeBoundary from './assets/Group4/Group4GradeBoundaries-M22.json';
+	import data from './assets/Group6/group6.json';
+	import gradeBoundary from './assets/Group6/Group6GradeBoundaries-M22.json';
 
-	let subjects = [
-		'Biology',
-		'Chemistry',
-		'Computer Science',
-		'Design Technology',
-		'Environmental Systems And Societies',
-		'Physics',
-		'Sports, Excercise, And Health Science'
-	];
+	import Group2 from './group2.svelte';
+	import Group3 from './group3.svelte';
+	import Group4 from './group4.svelte';
 
-	let SLOnly = ['Sports, Excercise, And Health Science'];
+	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts'];
 
 	let courses = [];
 	Object.keys(data).forEach((courseName) => {
@@ -73,10 +67,6 @@
 		}
 	}
 
-	$: {
-		if (SLOnly.includes(name) && level == 'HL') level = 'SL';
-	}
-
 	$: awardedMark = Math.min(...boundary);
 
 	function reset() {
@@ -90,7 +80,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 4: Sciences
+			Group 6: The Arts
 		{:else}
 			{fullName}
 		{/if}
@@ -104,9 +94,7 @@
 
 	<select bind:value={level} on:change={reset}>
 		<option value="">Enter level</option>
-		{#if !SLOnly.includes(name)}
-			<option value="HL">HL</option>
-		{/if}
+		<option value="HL">HL</option>
 		<option value="SL">SL</option>
 	</select>
 

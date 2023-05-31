@@ -3,6 +3,8 @@
 	import Group2 from './group2.svelte';
 	import Group3 from './group3.svelte';
 	import Group4 from './group4.svelte';
+	import Group5 from './group5.svelte';
+	import Group6 from './group6.svelte';
 
 	let names = [];
 	let scores = Array(6).fill(0);
@@ -36,9 +38,11 @@
 <div class="layout">
 	<div class="left-column">
 		<Group1 bind:fullName={names[0]} bind:awardedMark={scores[0]} />
-		<Group2 />
-		<Group3 />
-		<Group4 />
+		<Group2 bind:fullName={names[1]} />
+		<Group3 bind:fullName={names[2]} />
+		<Group4 bind:fullName={names[3]} />
+		<Group5 bind:fullName={names[4]} />
+		<Group6 bind:fullName={names[5]} />
 		<!-- <Group groupNumber={2} />
 		<Group groupNumber={3} />
 		<Group groupNumber={4} />
