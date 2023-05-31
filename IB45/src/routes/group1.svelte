@@ -25,7 +25,7 @@
 		boundaries.push(L);
 	});
 
-	let assessmentValues = [];
+	export let assessmentValues = [];
 	let boundary = [];
 
 	let name;

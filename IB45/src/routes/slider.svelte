@@ -7,6 +7,12 @@
 
 	function handleChange(event) {
 		value = event.target.value;
+	} 
+	
+	$: if(value > max) {
+		value = max
+	} else if(value < min) {
+		value = 0;
 	}
 </script>
 
@@ -27,6 +33,7 @@
 	.slider {
 		margin: 30px 0;
 		padding-right: 100px;
+		border: 2px solid black;
 	}
 	.c {
 		display: flex;

@@ -70,7 +70,7 @@
 	}
 
 	$: matchedCourse = courses.find((course) => course.name === shortName);
-	$: match = boundaries.find((course) => course.name === fullName);
+	$: match = boundaries.find((course) => course.name === fullName.trim());
 
 	$: {
 		if (match !== undefined) {
