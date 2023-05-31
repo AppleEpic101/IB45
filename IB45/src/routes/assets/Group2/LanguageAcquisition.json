@@ -1,0 +1,62 @@
+{
+    "SL Language AB Initio": {
+      "assessments": [
+        {
+          "name": "Paper 1: Writing",
+          "maxMarks": 30,
+          "weight": 0.25
+        },
+        {
+          "name": "Paper 2: Listening & Reading Comprehension",
+          "maxMarks": 65,
+          "weight": 0.50
+        },
+        {
+          "name": "Individual Oral Assessment",
+          "maxMarks": 30,
+          "weight": 0.25
+        }
+      ]
+    }, 
+  
+    "SL Language B": {
+      "assessments": [
+        {
+          "name": "Paper 1: Writing",
+          "maxMarks": 30,
+          "weight": 0.25
+        },
+        {
+          "name": "Paper 2: Listening & Reading Comprehension",
+          "maxMarks": 65,
+          "weight": 0.50
+        },
+        {
+          "name": "Individual Oral Assessment",
+          "maxMarks": 30,
+          "weight": 0.25
+        }
+      ]
+    },
+  
+    "HL Language B": {
+      "assessments": [
+        {
+          "name": "Paper 1: Writing",
+          "maxMarks": 30,
+          "weight": 0.25
+        },
+        {
+          "name": "Paper 2: Listening & Reading Comprehension",
+          "maxMarks": 65,
+          "weight": 0.50
+        },
+        {
+          "name": "Individual Oral Assessment",
+          "maxMarks": 30,
+          "weight": 0.25
+        }
+      ]
+    }
+  }
+  

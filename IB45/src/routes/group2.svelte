@@ -1,11 +1,11 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group1/LanguageA.json';
-	import gradeBoundary from './assets/Group1/LanguageAGradeBoundaries-M22.json';
+	import data from './assets/Group2/LanguageAcquisition.json';
+	import gradeBoundary from './assets/Group2/LanguageAcquisitionGradeBoundaries-M22.json';
 
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
 
-	let subjects = ['Language A: Literature', 'Language A: Language And Literature'];
+	let subjects = ['Language AB Initio', 'Language B'];
 
 	let courses = [];
 	Object.keys(data).forEach((courseName) => {
@@ -68,18 +68,24 @@
 		}
 	}
 
+	$: {
+		if (name === 'Language AB Initio' && level == 'HL') level = 'SL';
+	}
+
 	$: awardedMark = Math.min(...boundary);
 
 	function reset() {
 		if (matchedCourse !== undefined)
-			assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
+			assessmentValues = matchedCourse.assessments.map((assessment) =>
+				Math.trunc(assessment.maxMarks / 2)
+			);
 	}
 </script>
 
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 1
+			Group 2
 		{:else}
 			{fullName}
 		{/if}
@@ -93,7 +99,9 @@
 
 	<select bind:value={level} on:change={reset}>
 		<option value="">Enter level</option>
-		<option value="HL">HL</option>
+		{#if name !== 'Language AB Initio'}
+			<option value="HL">HL</option>
+		{/if}
 		<option value="SL">SL</option>
 	</select>
 

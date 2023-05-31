@@ -1,19 +1,18 @@
 <script>
 	import Group1 from './group1.svelte';
+	import Group2 from './group2.svelte';
 
 	let names = [];
 	let scores = Array(6).fill(0);
 	let totalScore;
-	
+
 	$: {
 		totalScore = 0;
-		for(t in scores) {
-			totalScore += t;
+		for (let i = 0; i < scores.length; i++) {
+			totalScore += scores[i];
 		}
 	}
 	let hasEarnedDiploma = false;
-
-	let group1Grade;
 </script>
 
 <nav>
@@ -21,13 +20,21 @@
 </nav>
 
 <div class="intro">
-	<p>Welcome to IB45 Score Calculator,</p>
-	<p>This calculator uses May 2022 grade boundaries. NOTE: For a given subject, if there is more than one timezone, the higher of the two will be used. </p>
-
+	<p>
+		Welcome to IB45 Score Calculator! The purpose of this website is to help IB Diploma Programme
+		students predict their IB scores. Score predictions are crucial towards university applications
+		and must not deviate too greatly from the actual scores. This calculator will help do just that.
+	</p>
+	<p>
+		This calculator uses May 2022 grade boundaries. <br /><br />
+		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading system
+		(more challenging mark band) will be applied.
+	</p>
 </div>
 <div class="layout">
 	<div class="left-column">
 		<Group1 bind:fullName={names[0]} bind:awardedMark={scores[0]} />
+		<Group2 />
 		<!-- <Group groupNumber={2} />
 		<Group groupNumber={3} />
 		<Group groupNumber={4} />
