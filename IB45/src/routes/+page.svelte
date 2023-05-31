@@ -66,7 +66,7 @@
 	}
 
 	:global(html) {
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: 'Helvetica Neue', Arial, sans-serif;
 		background-color: white;
 		color: black;
 	}
