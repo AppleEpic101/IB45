@@ -20,6 +20,7 @@
 </script>
 
 <nav>
+	<img src="flc_design20230531154582.png" alt="Logo" />
 	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
 </nav>
 
@@ -72,6 +73,8 @@
 
 	:global(nav) {
 		/*position: fixed; */
+		display: flex;
+		gap: 20%;
 		background-color: rgb(20, 181, 235);
 		padding: 10px;
 		text-align: center;
@@ -79,6 +82,13 @@
 
 	:global(a) {
 		color: lightblue;
+	}
+
+	img {
+		width: 200px;
+		height: 100px;
+		cursor: pointer;
+		/* align-self: flex-start; */
 	}
 
 	.intro {
