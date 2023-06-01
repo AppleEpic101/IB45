@@ -26,7 +26,7 @@
 		boundaries.push(L);
 	});
 
-	let assessmentValues = [];
+	export let sliderPosition = [];
 	let boundary = [];
 
 	let name;
@@ -42,7 +42,7 @@
 		grade = 0;
 		if (matchedCourse !== undefined) {
 			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (assessmentValues[i] / assessment.maxMarks) * assessment.weight * 100;
+				grade += (sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
 			});
 		}
 
@@ -70,7 +70,7 @@
 
 	function reset() {
 		if (matchedCourse !== undefined)
-			assessmentValues = matchedCourse.assessments.map((assessment) =>
+			sliderPosition = matchedCourse.assessments.map((assessment) =>
 				Math.trunc(assessment.maxMarks / 2)
 			);
 	}
@@ -106,7 +106,7 @@
 					max={assessment.maxMarks}
 					name={assessment.name}
 					weight={assessment.weight}
-					bind:value={assessmentValues[i]}
+					bind:value={sliderPosition[i]}
 				/>
 			{/each}
 		{/if}

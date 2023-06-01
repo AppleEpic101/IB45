@@ -6,14 +6,26 @@
 	import Group5 from './group5.svelte';
 	import Group6 from './group6.svelte';
 	import DetailedTable from './detailedTable.svelte';
-	import { onMount } from 'svelte';
-	import { onDestroy } from 'svelte';
-	import Cookies from "js-cookie";
+
+	//let storage = [];
 
 	let names = [];
 	let scores = Array(6).fill(0);
 	let sliderPositions = [];
 	let totalScore;
+
+	// const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	// if (isLocalStorageAvailable) {
+	// 	console.log(storage);
+	// 	storage = localStorage.getItem('storage') ?? [];
+	// }
+
+	// $: {
+	// 	if (isLocalStorageAvailable) {
+	// 		localStorage.setItem('storage', storage);
+	// 	}
+	// }
 
 	$: {
 		totalScore = 0;
@@ -23,46 +35,6 @@
 	}
 
 	let hasEarnedDiploma = false;
-
-	function setCookie(name, value, days) {
-   		const expires = new Date();
-   		expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-   		document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
- 	}
-
-	function getCookie(name) {
-		const cookies = document.cookie.split(';');
-		for (let i = 0; i < cookies.length; i++) {
-			const cookie = cookies[i].trim();
-			if (cookie.startsWith(name + '=')) {
-			const value = decodeURIComponent(cookie.substring(name.length + 1));
-			return value;
-			}
-		}
-		return null;
-	}
-
-	// onDestroy(() => {
-	// 	setCookie('names', JSON.stringify(names), 365);
-	// 	setCookie('scores', JSON.stringify(scores), 365);
-	// 	setCookie('sliderPositions', JSON.stringify(sliderPositions), 365);
-	// });
-
-	// const namesCookie = getCookie('names');
-	// const scoresCookie = getCookie('scores');
-	// const sliderPositionsCookie = getCookie('sliderPositions');
-
-	// if (namesCookie) {
-	// 	names = JSON.parse(namesCookie);
-	// }
-
-	// if (scoresCookie) {
-	// 	scores = JSON.parse(scoresCookie);
-	// }
-
-	// if (sliderPositionsCookie) {
-	// 	sliderPositions = JSON.parse(sliderPositionsCookie);
-	// }
 </script>
 
 <nav>
@@ -82,14 +54,42 @@
 		(more challenging mark band) will be applied.
 	</p>
 </div>
+<button
+	on:click={() => {
+		localStorage.clear();
+		location.reload();
+	}}
+>
+	Reset Selections
+</button>
 <div class="layout">
 	<div class="left-column">
-		<Group1 bind:fullName={names[0]} bind:awardedMark={scores[0]} bind:assessmentValues={sliderPositions[0]} />
-		<Group2 bind:fullName={names[1]} bind:awardedMark={scores[1]} bind:assessmentValues={sliderPositions[0]}/>
-		<Group3 bind:fullName={names[2]} bind:awardedMark={scores[2]} bind:assessmentValues={sliderPositions[0]}/>
-		<Group4 bind:fullName={names[3]} bind:awardedMark={scores[3]} bind:assessmentValues={sliderPositions[0]}/>
-		<Group5 bind:fullName={names[4]} bind:awardedMark={scores[4]} bind:assessmentValues={sliderPositions[0]}/>
-		<Group6 bind:fullName={names[5]} bind:awardedMark={scores[5]} bind:assessmentValues={sliderPositions[0]}/>
+		<Group1 bind:awardedMark={scores[0]} />
+		<Group2
+			bind:fullName={names[1]}
+			bind:awardedMark={scores[1]}
+			bind:sliderPosition={sliderPositions[1]}
+		/>
+		<Group3
+			bind:fullName={names[2]}
+			bind:awardedMark={scores[2]}
+			bind:sliderPosition={sliderPositions[2]}
+		/>
+		<Group4
+			bind:fullName={names[3]}
+			bind:awardedMark={scores[3]}
+			bind:sliderPosition={sliderPositions[3]}
+		/>
+		<Group5
+			bind:fullName={names[4]}
+			bind:awardedMark={scores[4]}
+			bind:sliderPosition={sliderPositions[4]}
+		/>
+		<Group6
+			bind:fullName={names[5]}
+			bind:awardedMark={scores[5]}
+			bind:sliderPosition={sliderPositions[5]}
+		/>
 	</div>
 	<div class="right-column">
 		<div class="diploma">
@@ -110,7 +110,7 @@
 	:global(html) {
 		font-family: 'Helvetica Neue', Arial, sans-serif;
 		background-color: white;
-		color: black; 
+		color: black;
 	}
 
 	:global(nav) {
@@ -134,7 +134,7 @@
 	}
 
 	.intro {
-		margin-left: 10%;
+		margin: 0 5%;
 	}
 	.layout {
 		display: grid;

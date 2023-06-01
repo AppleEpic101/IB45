@@ -2,12 +2,13 @@
 	import Slider from './slider.svelte';
 	import data from './assets/Group1/LanguageA.json';
 	import gradeBoundary from './assets/Group1/LanguageAGradeBoundaries-M22.json';
+	import { onMount } from 'svelte';
 
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
-
 	let subjects = ['Language A: Literature', 'Language A: Language And Literature'];
 
 	let courses = [];
+	let boundaries = [];
 	Object.keys(data).forEach((courseName) => {
 		const course = {
 			name: courseName,
@@ -15,8 +16,6 @@
 		};
 		courses.push(course);
 	});
-
-	let boundaries = [];
 	Object.keys(gradeBoundary).forEach((courseName) => {
 		const L = {
 			name: courseName,
@@ -25,7 +24,7 @@
 		boundaries.push(L);
 	});
 
-	export let assessmentValues = [];
+	export let sliderPosition = [];
 	let boundary = [];
 
 	let name;
@@ -37,43 +36,79 @@
 	export let fullName;
 	export let awardedMark;
 
+	// // test
+	// export let storage;
+	// $: storage = {
+	// 	name: name,
+	// 	level: level,
+	// 	language: language,
+	// 	sliderValues: sliderPosition
+	// };
+
+	// name = storage.name ?? '';
+	// level = storage.level ?? '';
+	// language = storage.language ?? '';
+	// sliderPosition = storage.sliderValues ?? [];
+
+	// // test end
+
+	// LOCAL STORAGE
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	if (isLocalStorageAvailable) {
+		name = localStorage.getItem('name1') ?? '';
+		level = localStorage.getItem('level1') ?? '';
+		language = localStorage.getItem('language1') ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition1');
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('name1', name);
+			localStorage.setItem('level1', level);
+			localStorage.setItem('language1', language);
+			localStorage.setItem('sliderPosition1', JSON.stringify(sliderPosition));
+		}
+	}
+
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;
-	$: fullName = level + ' ' + language + ' ' + name;
+
+	$: if (sufficientInformation) fullName = level + ' ' + language + ' ' + name;
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
 			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (assessmentValues[i] / assessment.maxMarks) * assessment.weight * 100;
+				grade += (sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
 			});
 		}
 
 		grade = Math.trunc(grade);
 	}
 
-	$: matchedCourse = courses.find((course) => course.name === shortName);
-	$: matchedLang = boundaries.find((course) => course.name === fullName);
-
+	$: matchedCourse = courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
+	$: matchedLang = boundaries.find((course) => course.name === fullName); // HL English Language A: Language And Literature
 	$: {
+		// calculate grade boundary
 		if (matchedLang !== undefined) {
 			matchedLang.TZ.forEach((arr, i) => {
-				if (grade >= arr[6]) boundary[i] = 7;
-				else if (grade >= arr[5]) boundary[i] = 6;
-				else if (grade >= arr[4]) boundary[i] = 5;
-				else if (grade >= arr[3]) boundary[i] = 4;
-				else if (grade >= arr[2]) boundary[i] = 3;
-				else if (grade >= arr[1]) boundary[i] = 2;
-				else boundary[i] = 1;
+				for (let j = 0; j < 7; j++) {
+					if (grade >= arr[j]) {
+						boundary[i] = j + 1;
+					}
+				}
 			});
 		}
 	}
 
-	$: awardedMark = Math.min(...boundary);
-
 	function reset() {
+		// default slider values
 		if (matchedCourse !== undefined)
-			assessmentValues = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
+			sliderPosition = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
 	}
+
+	$: awardedMark = Math.min(...boundary);
 </script>
 
 <div class="group">
@@ -113,7 +148,7 @@
 					max={assessment.maxMarks}
 					name={assessment.name}
 					weight={assessment.weight}
-					bind:value={assessmentValues[i]}
+					bind:value={sliderPosition[i]}
 				/>
 			{/each}
 		{/if}
