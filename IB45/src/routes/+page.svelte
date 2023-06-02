@@ -14,19 +14,6 @@
 	let sliderPositions = [];
 	let totalScore;
 
-	// const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
-
-	// if (isLocalStorageAvailable) {
-	// 	console.log(storage);
-	// 	storage = localStorage.getItem('storage') ?? [];
-	// }
-
-	// $: {
-	// 	if (isLocalStorageAvailable) {
-	// 		localStorage.setItem('storage', storage);
-	// 	}
-	// }
-
 	$: {
 		totalScore = 0;
 		for (let i = 0; i < scores.length; i++) {
@@ -44,9 +31,10 @@
 
 <div class="intro">
 	<p>
-		Welcome to IB45 Score Calculator! The purpose of this website is to help IB Diploma Programme
-		students predict their IB scores. Score predictions are crucial towards university applications
-		and must not deviate too greatly from the actual scores. This calculator will help do just that.
+		Welcome to IB Predict! <br />
+		The purpose of this website is to help IB Diploma Programme students predict their IB scores. Score
+		predictions are crucial towards university applications and must not deviate too greatly from the
+		actual scores. This calculator will help you do just that.
 	</p>
 	<p>
 		This calculator uses May 2022 grade boundaries. <br /><br />

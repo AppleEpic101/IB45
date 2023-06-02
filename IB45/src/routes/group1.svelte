@@ -2,27 +2,18 @@
 	import Slider from './slider.svelte';
 	import data from './assets/Group1/LanguageA.json';
 	import gradeBoundary from './assets/Group1/LanguageAGradeBoundaries-M22.json';
-	import { onMount } from 'svelte';
 
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
 	let subjects = ['Language A: Literature', 'Language A: Language And Literature'];
 
-	let courses = [];
-	let boundaries = [];
-	Object.keys(data).forEach((courseName) => {
-		const course = {
-			name: courseName,
-			assessments: data[courseName].assessments
-		};
-		courses.push(course);
-	});
-	Object.keys(gradeBoundary).forEach((courseName) => {
-		const L = {
-			name: courseName,
-			TZ: gradeBoundary[courseName].TZ
-		};
-		boundaries.push(L);
-	});
+	let courses = Object.keys(data).map((courseName) => ({
+		name: courseName,
+		assessments: data[courseName].assessments
+	}));
+	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
+		name: courseName,
+		TZ: gradeBoundary[courseName].TZ
+	}));
 
 	export let sliderPosition = [];
 	let boundary = [];
@@ -37,39 +28,22 @@
 	export let fullName;
 	export let awardedMark;
 
-	// // test
-	// export let storage;
-	// $: storage = {
-	// 	name: name,
-	// 	level: level,
-	// 	language: language,
-	// 	sliderValues: sliderPosition
-	// };
-
-	// name = storage.name ?? '';
-	// level = storage.level ?? '';
-	// language = storage.language ?? '';
-	// sliderPosition = storage.sliderValues ?? [];
-
-	// // test end
-
-	// LOCAL STORAGE
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
 	if (isLocalStorageAvailable) {
-		name = localStorage.getItem('name' + {groupNumber}) ?? '';
-		level = localStorage.getItem('level' + {groupNumber}) ?? '';
-		language = localStorage.getItem('language' + {groupNumber}) ?? '';
-		let storedSliderPosition = localStorage.getItem('sliderPosition' + + {groupNumber});
+		name = localStorage.getItem('name' + { groupNumber }) ?? '';
+		level = localStorage.getItem('level' + { groupNumber }) ?? '';
+		language = localStorage.getItem('language' + { groupNumber }) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + +{ groupNumber });
 		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
 	}
 
 	$: {
 		if (isLocalStorageAvailable) {
-			localStorage.setItem('name' + {groupNumber}, name);
-			localStorage.setItem('level' + {groupNumber}, level);
-			localStorage.setItem('language' + {groupNumber}, language);
-			localStorage.setItem('sliderPosition' + + {groupNumber}, JSON.stringify(sliderPosition));
+			localStorage.setItem('name' + { groupNumber }, name);
+			localStorage.setItem('level' + { groupNumber }, level);
+			localStorage.setItem('language' + { groupNumber }, language);
+			localStorage.setItem('sliderPosition' + { groupNumber }, JSON.stringify(sliderPosition));
 		}
 	}
 
@@ -95,11 +69,11 @@
 		if (matchedLang !== undefined) {
 			matchedLang.TZ.forEach((arr, i) => {
 				boundary[i] = 0;
-				arr.forEach(element => {
+				arr.forEach((element) => {
 					if (grade >= element) {
 						boundary[i]++;
 					}
-				})
+				});
 			});
 		}
 	}

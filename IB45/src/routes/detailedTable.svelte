@@ -35,6 +35,14 @@
 			<td>Group 6</td>
 			<td>{awardedMarks[5]}</td>
 		</tr>
+		<tr>
+			<td>TOK</td>
+			<td />
+		</tr>
+		<tr>
+			<td>EE</td>
+			<td />
+		</tr>
 	{/if}
 </table>
 
