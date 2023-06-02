@@ -21,7 +21,8 @@
 	let boundary = [];
 
 	export let groupNumber = 2;
-	let name, level, language;
+	let name, language;
+	export let level;
 
 	let shortName;
 	let grade;

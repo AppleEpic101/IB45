@@ -16,6 +16,18 @@
 	let totalScore;
 	let tokGrade;
 
+	let HLCount = 0, SLCount = 0;
+	let levels = [];
+
+	$: levels.forEach((item) => {
+		if(item == "HL") {
+			HLCount++;
+		} else if(item == "SL") {
+			SLCount++;
+		}
+		// (item == "HL") ? HLCount++ : (item == "SL") ? SLCount++;
+	});
+
 	let selectedGroup6 = '6';
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
@@ -41,6 +53,7 @@
 </script>
 
 <nav>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<img
 		src="flc_design20230531154582.png"
 		alt="Logo"
@@ -124,44 +137,35 @@
 
 <div class="layout">
 	<div class="left-column">
-		<Group1 bind:awardedMark={scores[0]} />
+		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]}/>
 		<Group2
-			bind:fullName={names[1]}
 			bind:awardedMark={scores[1]}
-			bind:sliderPosition={sliderPositions[1]}
+			bind:level={levels[1]}
 		/>
 		<Group3
-			bind:fullName={names[2]}
 			bind:awardedMark={scores[2]}
-			bind:sliderPosition={sliderPositions[2]}
+			bind:level={levels[2]}
 		/>
 		<Group4
-			bind:fullName={names[3]}
 			bind:awardedMark={scores[3]}
-			bind:sliderPosition={sliderPositions[3]}
+			bind:level={levels[3]}
 		/>
 		<Group5
-			bind:fullName={names[4]}
 			bind:awardedMark={scores[4]}
-			bind:sliderPosition={sliderPositions[4]}
+			bind:level={levels[4]}
 		/>
 		<Group6
 			bind:fullName={names[5]}
 			bind:awardedMark={scores[5]}
-			bind:sliderPosition={sliderPositions[5]}
+			bind:level={levels[5]}
 			bind:groupSelection={selectedGroup6}
 		/>
 		<TOK bind:awardedMark={tokGrade} />
 	</div>
 	<div class="right-column">
 		<div class="data">
-			<div class="diploma">
-				<h3>Total</h3>
-				<div>Points: {totalScore} / 45</div>
-				<div>Diploma Awarded: {hasEarnedDiploma}</div>
-			</div>
 			<div class="table">
-				<DetailedTable courses={names} awardedMarks={scores} tok={tokGrade} />
+				<DetailedTable points={totalScore} courses={names} awardedMarks={scores} tok={tokGrade} {HLCount} {SLCount} />
 			</div>
 		</div>
 	</div>

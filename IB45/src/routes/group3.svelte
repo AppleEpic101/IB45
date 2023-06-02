@@ -34,8 +34,8 @@
 	let boundary = [];
 
 	let name;
-	let level;
 	let region = '';
+	export let level;
 
 	export let groupNumber = 3;
 	let shortName;

@@ -25,7 +25,7 @@
 
 	const groupNumber = 6;
 	let name;
-	let level;
+	export let level;
 
 	let grade;
 	let fullName;
