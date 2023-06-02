@@ -18,10 +18,8 @@
 	export let sliderPosition = [];
 	let boundary = [];
 
-	const groupNumber = 1;
-	let name;
-	let level;
-	let language;
+	export let groupNumber = 1;
+	let name, level, language;
 
 	let shortName;
 	let grade;
@@ -31,19 +29,19 @@
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
 	if (isLocalStorageAvailable) {
-		name = localStorage.getItem('name' + { groupNumber }) ?? '';
-		level = localStorage.getItem('level' + { groupNumber }) ?? '';
-		language = localStorage.getItem('language' + { groupNumber }) ?? '';
-		let storedSliderPosition = localStorage.getItem('sliderPosition' + +{ groupNumber });
+		name = localStorage.getItem('name' + groupNumber) ?? '';
+		level = localStorage.getItem('level' + groupNumber) ?? '';
+		language = localStorage.getItem('language' + groupNumber) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
 		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
 	}
 
 	$: {
 		if (isLocalStorageAvailable) {
-			localStorage.setItem('name' + { groupNumber }, name);
-			localStorage.setItem('level' + { groupNumber }, level);
-			localStorage.setItem('language' + { groupNumber }, language);
-			localStorage.setItem('sliderPosition' + { groupNumber }, JSON.stringify(sliderPosition));
+			localStorage.setItem('name' + groupNumber, name);
+			localStorage.setItem('level' + groupNumber, level);
+			localStorage.setItem('language' + groupNumber, language);
+			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
 		}
 	}
 
@@ -90,7 +88,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 1: Language and Literature
+			Group {groupNumber}: Language and Literature
 		{:else}
 			{fullName}
 		{/if}

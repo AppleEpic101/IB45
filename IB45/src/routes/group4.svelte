@@ -39,6 +39,7 @@
 	let name;
 	let level;
 
+	export let groupNumber = 4;
 	let grade;
 	export let fullName;
 	export let awardedMark;
@@ -90,7 +91,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 4: Sciences
+			Group {groupNumber}: Sciences
 		{:else}
 			{fullName}
 		{/if}

@@ -8,34 +8,44 @@
 	let subjects = ['Language AB Initio', 'Language B'];
 	let SLOnly = ['Language AB Initio'];
 
-	let courses = [];
-	Object.keys(data).forEach((courseName) => {
-		const course = {
-			name: courseName,
-			assessments: data[courseName].assessments
-		};
-		courses.push(course);
-	});
-	let boundaries = [];
-	Object.keys(gradeBoundary).forEach((courseName) => {
-		const L = {
-			name: courseName,
-			TZ: gradeBoundary[courseName].TZ
-		};
-		boundaries.push(L);
-	});
+	let courses = Object.keys(data).map((courseName) => ({
+		name: courseName,
+		assessments: data[courseName].assessments
+	}));
+	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
+		name: courseName,
+		TZ: gradeBoundary[courseName].TZ
+	}));
 
 	export let sliderPosition = [];
 	let boundary = [];
 
-	let name;
-	let level;
-	let language;
+	export let groupNumber = 2;
+	let name, level, language;
 
 	let shortName;
 	let grade;
 	export let fullName;
 	export let awardedMark;
+
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	if (isLocalStorageAvailable) {
+		name = localStorage.getItem('name' + groupNumber) ?? '';
+		level = localStorage.getItem('level' + groupNumber) ?? '';
+		language = localStorage.getItem('language' + groupNumber) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('name' + groupNumber, name);
+			localStorage.setItem('level' + groupNumber, level);
+			localStorage.setItem('language' + groupNumber, language);
+			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
+		}
+	}
 
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;
@@ -55,15 +65,15 @@
 	$: matchedLang = boundaries.find((course) => course.name === fullName);
 
 	$: {
+		// calculate grade boundary
 		if (matchedLang !== undefined) {
 			matchedLang.TZ.forEach((arr, i) => {
-				if (grade >= arr[6]) boundary[i] = 7;
-				else if (grade >= arr[5]) boundary[i] = 6;
-				else if (grade >= arr[4]) boundary[i] = 5;
-				else if (grade >= arr[3]) boundary[i] = 4;
-				else if (grade >= arr[2]) boundary[i] = 3;
-				else if (grade >= arr[1]) boundary[i] = 2;
-				else boundary[i] = 1;
+				boundary[i] = 0;
+				arr.forEach((element) => {
+					if (grade >= element) {
+						boundary[i]++;
+					}
+				});
 			});
 		}
 	}
@@ -85,7 +95,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 2: Language Acquisition
+			Group {groupNumber}: Language Acquisition
 		{:else}
 			{fullName}
 		{/if}

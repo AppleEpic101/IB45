@@ -46,6 +46,7 @@
 	let level;
 	let region = '';
 
+	export let groupNumber = 3;
 	let shortName;
 	let grade;
 	export let fullName;
@@ -107,7 +108,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group 3: Individuals and Societies
+			Group {groupNumber}: Individuals and Societies
 		{:else}
 			{fullName}
 		{/if}

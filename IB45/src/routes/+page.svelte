@@ -14,6 +14,20 @@
 	let sliderPositions = [];
 	let totalScore;
 
+	let selectedGroup6 = '6';
+
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	if (isLocalStorageAvailable) {
+		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('selectedGroup6', selectedGroup6);
+		}
+	}
+
 	$: {
 		totalScore = 0;
 		for (let i = 0; i < scores.length; i++) {
@@ -27,6 +41,7 @@
 <nav>
 	<img src="flc_design20230531154582.png" alt="Logo" />
 	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
+	<div />
 </nav>
 
 <div class="intro">
@@ -41,6 +56,33 @@
 		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading system
 		(more challenging mark band) will be applied.
 	</p>
+	<p>
+		If you are replacing your Group 6 selection with a subject from Groups 1-4, please mark the
+		appropriate group.
+	</p>
+
+	<form>
+		<div class="option">
+			<input type="radio" bind:group={selectedGroup6} value="6" />
+			<label for="group6">Group 6</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={selectedGroup6} value="1" />
+			<label for="group1">Group 1</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={selectedGroup6} value="2" />
+			<label for="group2">Group 2</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={selectedGroup6} value="3" />
+			<label for="group3">Group 3</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={selectedGroup6} value="4" />
+			<label for="group4">Group 4</label>
+		</div>
+	</form>
 </div>
 <button
 	on:click={() => {
@@ -50,6 +92,12 @@
 >
 	Reset Selections
 </button>
+
+<label>
+	<input type="checkbox" />
+	<span class="slider round">Detailed Mode</span>
+</label>
+
 <div class="layout">
 	<div class="left-column">
 		<Group1 bind:awardedMark={scores[0]} />
@@ -77,6 +125,7 @@
 			bind:fullName={names[5]}
 			bind:awardedMark={scores[5]}
 			bind:sliderPosition={sliderPositions[5]}
+			bind:groupSelection={selectedGroup6}
 		/>
 	</div>
 	<div class="right-column">
@@ -104,7 +153,7 @@
 	:global(nav) {
 		/*position: fixed; */
 		display: flex;
-		gap: 20%;
+		justify-content: space-between;
 		background-color: rgb(20, 181, 235);
 		padding: 10px;
 		text-align: center;
@@ -137,5 +186,9 @@
 		padding: 10px;
 		background-color: rgb(32, 169, 41);
 		text-align: center;
+	}
+
+	.option {
+		margin-bottom: 10px;
 	}
 </style>
