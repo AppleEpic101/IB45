@@ -1,6 +1,7 @@
 <script>
 	export let courses;
 	export let awardedMarks;
+	export let tok;
 
 	$: console.log(awardedMarks);
 
@@ -39,7 +40,7 @@
 		</tr>
 		<tr>
 			<td>TOK</td>
-			<td />
+			<td>{tok}</td>
 		</tr>
 		<tr>
 			<td>EE</td>
@@ -55,5 +56,13 @@
 	td {
 		border: 2px solid black;
 		text-align: center;
+		width: 100%;
+	}
+	table {
+		margin-top: 10px;
+	}
+
+	td {
+		background-color: yellow;
 	}
 </style>

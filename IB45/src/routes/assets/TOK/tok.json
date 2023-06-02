@@ -1,0 +1,15 @@
+{
+    "Theory Of Knowledge": {
+        "assessments": [{
+            "name": "Theory Of Knowledge Essay",
+            "maxMarks": 20, 
+            "weight": 0.67
+        }, 
+        {
+            "name":"Theory Of Knowledge Exhibition",
+            "maxMarks": 10,
+            "weight": 0.33
+        }
+    ]
+    }
+}

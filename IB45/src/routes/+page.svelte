@@ -5,7 +5,9 @@
 	import Group4 from './group4.svelte';
 	import Group5 from './group5.svelte';
 	import Group6 from './group6.svelte';
+	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
+	import Tok from './TOK.svelte';
 
 	//let storage = [];
 
@@ -13,6 +15,7 @@
 	let scores = [];
 	let sliderPositions = [];
 	let totalScore;
+	let tokGrade;
 
 	let selectedGroup6 = '6';
 
@@ -42,19 +45,24 @@
 	<img src="flc_design20230531154582.png" alt="Logo" />
 	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
 	<div />
+	<div />
 </nav>
 
 <div class="intro">
+	<p>Welcome to IB Predict!</p>
 	<p>
-		Welcome to IB Predict! <br />
-		The purpose of this website is to help IB Diploma Programme students predict their IB scores. Score
-		predictions are crucial towards university applications and must not deviate too greatly from the
-		actual scores. This calculator will help you do just that.
+		The purpose of this website is to help IB Diploma Programme students predict their IB scores.
+		Score predictions are crucial towards university applications and must not deviate too greatly
+		from the actual scores. This calculator will help you do just that.
 	</p>
 	<p>
-		This calculator uses May 2022 grade boundaries. <br /><br />
-		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading system
-		(more challenging mark band) will be applied.
+		This calculator uses <a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022</a> grade boundaries.
+	</p>
+
+	<img src="logo-dp-en.png" alt="" />
+	<p>
+		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading
+		system (more challenging mark band) will be applied.
 	</p>
 	<p>
 		If you are replacing your Group 6 selection with a subject from Groups 1-4, please mark the
@@ -83,20 +91,21 @@
 			<label for="group4">Group 4</label>
 		</div>
 	</form>
-</div>
-<button
-	on:click={() => {
-		localStorage.clear();
-		location.reload();
-	}}
->
-	Reset Selections
-</button>
 
-<label>
-	<input type="checkbox" />
-	<span class="slider round">Detailed Mode</span>
-</label>
+	<button
+		on:click={() => {
+			localStorage.clear();
+			location.reload();
+		}}
+	>
+		Reset Storage
+	</button>
+
+	<label>
+		<input type="checkbox" />
+		<span class="slider round">Detailed Mode</span>
+	</label>
+</div>
 
 <div class="layout">
 	<div class="left-column">
@@ -127,14 +136,19 @@
 			bind:sliderPosition={sliderPositions[5]}
 			bind:groupSelection={selectedGroup6}
 		/>
+		<TOK bind:awardedMark={tokGrade} />
 	</div>
 	<div class="right-column">
-		<div class="diploma">
-			<h3>Total</h3>
-			<div>Points: {totalScore} / 45</div>
-			<div>Diploma Awarded: {hasEarnedDiploma}</div>
+		<div class="data">
+			<div class="diploma">
+				<h3>Total</h3>
+				<div>Points: {totalScore} / 45</div>
+				<div>Diploma Awarded: {hasEarnedDiploma}</div>
+			</div>
+			<div class="table">
+				<DetailedTable courses={names} awardedMarks={scores} tok={tokGrade} />
+			</div>
 		</div>
-		<DetailedTable courses={names} awardedMarks={scores} />
 	</div>
 </div>
 
@@ -151,19 +165,19 @@
 	}
 
 	:global(nav) {
-		/*position: fixed; */
+		position: fixed;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		background-color: rgb(20, 181, 235);
-		padding: 10px;
 		text-align: center;
+		top: 0px;
 	}
 
 	:global(a) {
-		color: lightblue;
 	}
 
-	img {
+	nav img {
 		width: 200px;
 		height: 100px;
 		cursor: pointer;
@@ -172,15 +186,16 @@
 
 	.intro {
 		margin: 0 5%;
+		margin-top: 140px;
 	}
+
 	.layout {
 		display: grid;
 		grid-template-columns: 4fr 1fr;
-		margin: 20px 10%;
+		margin: 20px 5%;
 	}
 
 	.diploma {
-		display: inline-block;
 		border: 2px solid black;
 		border-radius: 10px;
 		padding: 10px;
@@ -190,5 +205,10 @@
 
 	.option {
 		margin-bottom: 10px;
+	}
+
+	.data {
+		position: sticky;
+		top: 140px;
 	}
 </style>
