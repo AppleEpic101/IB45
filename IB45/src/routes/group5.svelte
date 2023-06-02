@@ -8,25 +8,16 @@
 		'Mathematics: Applications And Interpretation'
 	];
 
-	let courses = [];
-	Object.keys(data).forEach((courseName) => {
-		const course = {
-			name: courseName,
-			assessments: data[courseName].assessments
-		};
-		courses.push(course);
-	});
+	let courses = Object.keys(data).map((courseName) => ({
+		name: courseName,
+		assessments: data[courseName].assessments
+	}));
+	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
+		name: courseName,
+		TZ: gradeBoundary[courseName].TZ
+	}));
 
-	let boundaries = [];
-	Object.keys(gradeBoundary).forEach((courseName) => {
-		const L = {
-			name: courseName,
-			TZ: gradeBoundary[courseName].TZ
-		};
-		boundaries.push(L);
-	});
-
-	export let sliderPosition = [];
+	let sliderPosition = [];
 	let boundary = [];
 
 	let name;
@@ -34,8 +25,25 @@
 
 	export let groupNumber = 5;
 	let grade;
-	export let fullName;
+	let fullName;
 	export let awardedMark;
+
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	if (isLocalStorageAvailable) {
+		name = localStorage.getItem('name' + groupNumber) ?? '';
+		level = localStorage.getItem('level' + groupNumber) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('name' + groupNumber, name);
+			localStorage.setItem('level' + groupNumber, level);
+			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
+		}
+	}
 
 	$: sufficientInformation = name != '' && level != '';
 	$: fullName = level + ' ' + name;
@@ -54,15 +62,15 @@
 	$: match = boundaries.find((course) => course.name === fullName);
 
 	$: {
+		// calculate grade boundary
 		if (match !== undefined) {
 			match.TZ.forEach((arr, i) => {
-				if (grade >= arr[6]) boundary[i] = 7;
-				else if (grade >= arr[5]) boundary[i] = 6;
-				else if (grade >= arr[4]) boundary[i] = 5;
-				else if (grade >= arr[3]) boundary[i] = 4;
-				else if (grade >= arr[2]) boundary[i] = 3;
-				else if (grade >= arr[1]) boundary[i] = 2;
-				else boundary[i] = 1;
+				boundary[i] = 0;
+				arr.forEach((element) => {
+					if (grade >= element) {
+						boundary[i]++;
+					}
+				});
 			});
 		}
 	}

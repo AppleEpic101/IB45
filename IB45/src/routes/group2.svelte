@@ -17,7 +17,7 @@
 		TZ: gradeBoundary[courseName].TZ
 	}));
 
-	export let sliderPosition = [];
+	let sliderPosition = [];
 	let boundary = [];
 
 	export let groupNumber = 2;
@@ -25,7 +25,7 @@
 
 	let shortName;
 	let grade;
-	export let fullName;
+	let fullName;
 	export let awardedMark;
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;

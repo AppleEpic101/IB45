@@ -20,7 +20,7 @@
 	}));
 
 	export let groupSelection = '6';
-	export let sliderPosition = [];
+	let sliderPosition = [];
 	let boundary = [];
 
 	const groupNumber = 6;
@@ -28,8 +28,25 @@
 	let level;
 
 	let grade;
-	export let fullName;
+	let fullName;
 	export let awardedMark;
+
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
+	if (isLocalStorageAvailable) {
+		name = localStorage.getItem('name' + groupNumber) ?? '';
+		level = localStorage.getItem('level' + groupNumber) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('name' + groupNumber, name);
+			localStorage.setItem('level' + groupNumber, level);
+			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
+		}
+	}
 
 	$: sufficientInformation = name != '' && level != '';
 	$: fullName = level + ' ' + name;

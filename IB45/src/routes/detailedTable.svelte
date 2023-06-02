@@ -2,6 +2,8 @@
 	export let courses;
 	export let awardedMarks;
 
+	$: console.log(awardedMarks);
+
 	let defined = courses !== undefined && awardedMarks !== undefined;
 </script>
 
