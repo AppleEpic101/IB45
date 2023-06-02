@@ -16,7 +16,6 @@
 		};
 		courses.push(course);
 	});
-
 	let boundaries = [];
 	Object.keys(gradeBoundary).forEach((courseName) => {
 		const L = {

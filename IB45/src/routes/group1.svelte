@@ -27,6 +27,7 @@
 	export let sliderPosition = [];
 	let boundary = [];
 
+	const groupNumber = 1;
 	let name;
 	let level;
 	let language;
@@ -56,19 +57,19 @@
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
 	if (isLocalStorageAvailable) {
-		name = localStorage.getItem('name1') ?? '';
-		level = localStorage.getItem('level1') ?? '';
-		language = localStorage.getItem('language1') ?? '';
-		let storedSliderPosition = localStorage.getItem('sliderPosition1');
+		name = localStorage.getItem('name' + {groupNumber}) ?? '';
+		level = localStorage.getItem('level' + {groupNumber}) ?? '';
+		language = localStorage.getItem('language' + {groupNumber}) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + + {groupNumber});
 		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
 	}
 
 	$: {
 		if (isLocalStorageAvailable) {
-			localStorage.setItem('name1', name);
-			localStorage.setItem('level1', level);
-			localStorage.setItem('language1', language);
-			localStorage.setItem('sliderPosition1', JSON.stringify(sliderPosition));
+			localStorage.setItem('name' + {groupNumber}, name);
+			localStorage.setItem('level' + {groupNumber}, level);
+			localStorage.setItem('language' + {groupNumber}, language);
+			localStorage.setItem('sliderPosition' + + {groupNumber}, JSON.stringify(sliderPosition));
 		}
 	}
 
@@ -93,11 +94,12 @@
 		// calculate grade boundary
 		if (matchedLang !== undefined) {
 			matchedLang.TZ.forEach((arr, i) => {
-				for (let j = 0; j < 7; j++) {
-					if (grade >= arr[j]) {
-						boundary[i] = j + 1;
+				boundary[i] = 0;
+				arr.forEach(element => {
+					if (grade >= element) {
+						boundary[i]++;
 					}
-				}
+				})
 			});
 		}
 	}
