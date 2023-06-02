@@ -7,7 +7,6 @@
 	import Group6 from './group6.svelte';
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
-	import Tok from './TOK.svelte';
 
 	//let storage = [];
 
@@ -42,24 +41,40 @@
 </script>
 
 <nav>
-	<img src="flc_design20230531154582.png" alt="Logo" />
+	<img
+		src="flc_design20230531154582.png"
+		alt="Logo"
+		on:click={() => {
+			location.reload();
+		}}
+	/>
 	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
 	<div />
 	<div />
 </nav>
 
 <div class="intro">
-	<p>Welcome to IB Predict!</p>
+	<h2>Welcome to IB Predict!</h2>
+
+	<img src="logo-dp-en.png" alt="" />
 	<p>
-		The purpose of this website is to help IB Diploma Programme students predict their IB scores.
-		Score predictions are crucial towards university applications and must not deviate too greatly
-		from the actual scores. This calculator will help you do just that.
+		Our primary aim is to assist IB Diploma Programme students in estimating their final IB scores
+		accurately. We understand the significance of score predictions when it comes to university
+		applications.Our score prediction calculator has been meticulously designed to minimize
+		deviations from the actual IB scores. By taking into account various factors such as your
+		performance in internal assessments, coursework, mock exams, and historical data from previous
+		IB students, our algorithm strives to generate reliable predictions.
 	</p>
 	<p>
 		This calculator uses <a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022</a> grade boundaries.
 	</p>
 
-	<img src="logo-dp-en.png" alt="" />
+	<p>
+		Please note that while our score predictions are based on historical trends, they should be
+		regarded as estimates rather than definitive outcomes. The IB scoring system is complex, and
+		individual performance can vary. Factors such as external exam conditions, personal
+		circumstances, and other variables can influence actual scores.
+	</p>
 	<p>
 		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading
 		system (more challenging mark band) will be applied.
