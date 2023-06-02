@@ -75,7 +75,7 @@
 		}
 	}
 
-	$: awardedMark = Math.min(...boundary);
+	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 
 	function reset() {
 		if (matchedCourse !== undefined)

@@ -10,7 +10,7 @@
 	//let storage = [];
 
 	let names = [];
-	let scores = Array(6).fill(0);
+	let scores = [];
 	let sliderPositions = [];
 	let totalScore;
 

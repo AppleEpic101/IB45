@@ -82,7 +82,7 @@
 			sliderPosition = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
 	}
 
-	$: awardedMark = Math.min(...boundary);
+	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 </script>
 
 <div class="group">
