@@ -39,8 +39,8 @@
 
 	if (isLocalStorageAvailable) {
 		let storedSliderPosition = localStorage.getItem('sliderPositionTOK');
-		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
-		eeRaw = localStorage.getItem('sliderPositionEE');
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [0, 0];
+		eeRaw = localStorage.getItem('sliderPositionEE') ?? 0;
 	}
 
 	$: {

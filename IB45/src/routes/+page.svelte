@@ -144,7 +144,6 @@
 		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
 		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} />
 		<Group6
-			bind:fullName={names[5]}
 			bind:awardedMark={scores[5]}
 			bind:level={levels[5]}
 			bind:groupSelection={selectedGroup6}
