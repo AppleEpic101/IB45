@@ -17,6 +17,8 @@
 	let boundary = [];
 
 	let grade;
+	let eeRaw;
+	export let ee;
 	let fullName = 'Theory Of Knowledge';
 	export let awardedMark;
 
@@ -25,11 +27,13 @@
 	if (isLocalStorageAvailable) {
 		let storedSliderPosition = localStorage.getItem('sliderPositionTOK');
 		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+		eeRaw = localStorage.getItem('sliderPositionEE');
 	}
 
 	$: {
 		if (isLocalStorageAvailable) {
 			localStorage.setItem('sliderPositionTOK', JSON.stringify(sliderPosition));
+			localStorage.setItem('sliderPositionEE', eeRaw);
 		}
 	}
 
@@ -41,7 +45,7 @@
 	$: match = boundaries.find((course) => course.name === fullName);
 
 	$: {
-		// calculate grade boundary
+		// tok
 		if (match !== undefined) {
 			match.TZ.forEach((arr, i) => {
 				boundary[i] = 0;
@@ -55,6 +59,19 @@
 		}
 	}
 
+	$: {
+		const b = boundaries.find((course) => course.name == 'Extended Essay').TZ;
+		let x = 0;
+		b.forEach((arr, i) => {
+			arr.forEach((element) => {
+				if (eeRaw >= element) {
+					x++;
+				}
+			});
+		});
+		ee = letterGrades[x - 1];
+		console.log(b);
+	}
 	$: awardedMark = boundary[0];
 </script>
 
@@ -72,6 +89,10 @@
 	</div>
 	<div>
 		Grade: {grade} / 30 <br />Awarded Mark: {awardedMark}
+	</div>
+	<h2>Extended Essay</h2>
+	<div class="content">
+		<Slider max="34" name="Extended Essay" weight="1" bind:value={eeRaw} />
 	</div>
 </div>
 

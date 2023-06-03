@@ -7,25 +7,25 @@
 	import Group6 from './group6.svelte';
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
+	import { onMount } from 'svelte';
 
 	//let storage = [];
+
+	onMount(async () => {});
 
 	let names = [];
 	let scores = [];
 	let sliderPositions = [];
 	let totalScore;
 	let tokGrade;
+	let eeGrade;
 
-	let HLCount = 0, SLCount = 0;
+	let HLCount = 0,
+		SLCount = 0;
 	let levels = [];
 
 	$: levels.forEach((item) => {
-		if(item == "HL") {
-			HLCount++;
-		} else if(item == "SL") {
-			SLCount++;
-		}
-		// (item == "HL") ? HLCount++ : (item == "SL") ? SLCount++;
+		item == 'HL' ? HLCount++ : item == 'SL' && SLCount++;
 	});
 
 	let selectedGroup6 = '6';
@@ -67,9 +67,8 @@
 </nav>
 
 <div class="intro">
+	<img src="dp-programme-logo-en.png" alt="" style="max-width:40%;" />
 	<h2>Welcome to IB Predict!</h2>
-
-	<img src="logo-dp-en.png" alt="" />
 	<p>
 		Our primary aim is to assist IB Diploma Programme students in estimating their final IB scores
 		accurately. We understand the significance of score predictions when it comes to university
@@ -137,39 +136,39 @@
 
 <div class="layout">
 	<div class="left-column">
-		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]}/>
-		<Group2
-			bind:awardedMark={scores[1]}
-			bind:level={levels[1]}
-		/>
-		<Group3
-			bind:awardedMark={scores[2]}
-			bind:level={levels[2]}
-		/>
-		<Group4
-			bind:awardedMark={scores[3]}
-			bind:level={levels[3]}
-		/>
-		<Group5
-			bind:awardedMark={scores[4]}
-			bind:level={levels[4]}
-		/>
+		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]} />
+		<Group2 bind:awardedMark={scores[1]} bind:level={levels[1]} />
+		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
+		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
+		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} />
 		<Group6
 			bind:fullName={names[5]}
 			bind:awardedMark={scores[5]}
 			bind:level={levels[5]}
 			bind:groupSelection={selectedGroup6}
 		/>
-		<TOK bind:awardedMark={tokGrade} />
+		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} />
 	</div>
 	<div class="right-column">
 		<div class="data">
 			<div class="table">
-				<DetailedTable points={totalScore} courses={names} awardedMarks={scores} tok={tokGrade} {HLCount} {SLCount} />
+				<DetailedTable
+					points={totalScore}
+					courses={names}
+					awardedMarks={scores}
+					tok={tokGrade}
+					ee={eeGrade}
+					{HLCount}
+					{SLCount}
+				/>
 			</div>
 		</div>
 	</div>
 </div>
+
+<footer>Alexander Du</footer>
+
+<link rel="stylesheet" href="light.css" />
 
 <style>
 	:global(body) {
@@ -179,7 +178,7 @@
 
 	:global(html) {
 		font-family: 'Helvetica Neue', Arial, sans-serif;
-		background-color: white;
+		background-color: var(--background);
 		color: black;
 	}
 
@@ -188,12 +187,14 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		background-color: rgb(20, 181, 235);
+		background-color: var(--primary);
 		text-align: center;
 		top: 0px;
 	}
 
-	:global(a) {
+	footer {
+		background-color: var(--primary);
+		height: 100px;
 	}
 
 	nav img {
@@ -214,13 +215,13 @@
 		margin: 20px 5%;
 	}
 
-	.diploma {
+	/* .diploma {
 		border: 2px solid black;
 		border-radius: 10px;
 		padding: 10px;
 		background-color: rgb(32, 169, 41);
 		text-align: center;
-	}
+	} */
 
 	.option {
 		margin-bottom: 10px;
