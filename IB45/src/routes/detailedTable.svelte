@@ -30,7 +30,8 @@
 	</tr>
 	<tr>
 		<th style="background-color: var(--primary)">Points</th>
-		<th style="background-color: {points ? getRowColor(parseInt(points) / 5) : 0}">{points} / 45</th
+		<th style="background-color: {points ? getRowColor(parseInt(points) / 6.42) : 0}"
+			>{points} / 45</th
 		>
 	</tr>
 	{#each awardedMarks as mark, i}

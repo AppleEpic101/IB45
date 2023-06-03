@@ -21,6 +21,19 @@
 	export let ee;
 	let fullName = 'Theory Of Knowledge';
 	export let awardedMark;
+	export let corePoints;
+
+	const a = ['AA', 'AB', 'BA'];
+	const b = ['AC', 'AD', 'BB', 'CA', 'DA'];
+	const c = ['AE', 'BC', 'BD', 'CB', 'CC', 'DB', 'EA'];
+
+	$: {
+		let combine = awardedMark + ee;
+		if (a.includes(combine)) corePoints = 3;
+		else if (b.includes(combine)) corePoints = 2;
+		else if (c.includes(combine)) corePoints = 1;
+		else corePoints = 0;
+	}
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
@@ -93,6 +106,12 @@
 	<h2>Extended Essay</h2>
 	<div class="content">
 		<Slider max="34" name="Extended Essay" weight="1" bind:value={eeRaw} />
+	</div>
+	<div>
+		Grade: {eeRaw} / 34 <br /> Awarded Mark: {ee}
+	</div>
+	<div>
+		Core Points: {corePoints}
 	</div>
 </div>
 

@@ -19,6 +19,7 @@
 	let totalScore;
 	let tokGrade;
 	let eeGrade;
+	let corePoints;
 
 	let HLCount = 0,
 		SLCount = 0;
@@ -47,6 +48,7 @@
 		for (let i = 0; i < scores.length; i++) {
 			totalScore += scores[i];
 		}
+		totalScore += corePoints;
 	}
 
 	let hasEarnedDiploma = false;
@@ -147,7 +149,7 @@
 			bind:level={levels[5]}
 			bind:groupSelection={selectedGroup6}
 		/>
-		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} />
+		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 	</div>
 	<div class="right-column">
 		<div class="data">
