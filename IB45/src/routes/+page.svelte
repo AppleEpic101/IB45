@@ -7,9 +7,7 @@
 	import Group6 from './group6.svelte';
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
-	import { onMount, onDestroy } from 'svelte';
 
-	let names = [];
 	let scores = [];
 	let totalScore;
 	let tokGrade;
@@ -20,10 +18,12 @@
 		SLCount = 0;
 	let levels = [];
 
-	$: levels.forEach((item) => {
+	$: {
 		(HLCount = 0), (SLCount = 0);
-		item == 'HL' ? HLCount++ : item == 'SL' && SLCount++;
-	});
+		levels.forEach((item) => {
+			item == 'HL' ? HLCount++ : item == 'SL' && SLCount++;
+		});
+	}
 
 	let selectedGroup6 = '6';
 
@@ -47,7 +47,12 @@
 		totalScore += corePoints;
 	}
 
-	let hasEarnedDiploma = false;
+	function resetStorage() {
+		localStorage.removeItem('name6');
+		localStorage.removeItem('level6');
+		localStorage.removeItem('language6');
+		localStorage.removeItem('sliderPosition6');
+	}
 </script>
 
 <nav>
@@ -96,23 +101,23 @@
 
 	<form>
 		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="6" />
+			<input type="radio" bind:group={selectedGroup6} value="6" on:click={resetStorage} />
 			<label for="group6">Group 6</label>
 		</div>
 		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="1" />
+			<input type="radio" bind:group={selectedGroup6} value="1" on:click={resetStorage} />
 			<label for="group1">Group 1</label>
 		</div>
 		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="2" />
+			<input type="radio" bind:group={selectedGroup6} value="2" on:click={resetStorage} />
 			<label for="group2">Group 2</label>
 		</div>
 		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="3" />
+			<input type="radio" bind:group={selectedGroup6} value="3" on:click={resetStorage} />
 			<label for="group3">Group 3</label>
 		</div>
 		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="4" />
+			<input type="radio" bind:group={selectedGroup6} value="4" on:click={resetStorage} />
 			<label for="group4">Group 4</label>
 		</div>
 	</form>
@@ -162,6 +167,7 @@
 					ee={eeGrade}
 					{HLCount}
 					{SLCount}
+					{corePoints}
 				/>
 			</div>
 		</div>

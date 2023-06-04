@@ -3,17 +3,19 @@
 	export let awardedMarks;
 	export let tok;
 	export let ee;
+	export let corePoints;
 	export let HLCount;
 	export let SLCount;
 	let messages = [];
 	let message = '';
 
-	$: messages[0] = HLCount + SLCount != 6 ? 'Not enough subject choices. ' : '';
-	$: messages[1] = HLCount != 3 || HLCount != 4 ? 'You must have 3-4 HL subjects. ' : '';
+	let diplomaAwarded = false;
 
-	$: message = messages.join('');
+	$: messages[0] = HLCount != 3 || HLCount != 4 ? 'You must have 3-4 HL subjects. ' : '';
+	$: messages[1] = points < 24 ? 'You must have at least 24 points. ' : ' ';
 
-	$: console.log(messages);
+	$: message = messages.join('\n');
+
 	const p = ['E', 'D', 'C', 'B', 'A'];
 	const q = [0, 1, 3, 5, 7];
 
@@ -32,6 +34,10 @@
 		<th style="background-color: var(--primary)">Points</th>
 		<th style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</th>
 	</tr>
+	<tr>
+		<th style="background-color: var(--primary)">Diploma Awarded?</th>
+		<th />
+	</tr>
 	{#each awardedMarks as mark, i}
 		<tr>
 			<td style="background-color: var(--primary)">Group {i + 1}</td>
@@ -44,7 +50,11 @@
 	</tr>
 	<tr>
 		<td style="background-color: var(--primary)">EE</td>
-		<td style="background-color: {ee ? getRowColor(q[p.indexOf(ee)]) : 0}">{ee}</td>
+		<td style="background-color: {ee ? getRowColor(q[p.indexOf(tok)]) : 0}">{ee}</td>
+	</tr>
+	<tr>
+		<td style="background-color: var(--primary)">Core Points</td>
+		<td style="background-color: {getRowColor((parseInt(corePoints) * 7) / 3)}">{corePoints}</td>
 	</tr>
 </table>
 HL: {HLCount}

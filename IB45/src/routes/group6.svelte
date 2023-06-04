@@ -27,6 +27,7 @@
 	export let awardedMark;
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
+
 	if (isLocalStorageAvailable) {
 		name = localStorage.getItem('name' + groupNumber) ?? '';
 		level = localStorage.getItem('level' + groupNumber) ?? '';

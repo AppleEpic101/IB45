@@ -20,13 +20,16 @@
 	let boundary = [];
 
 	export let groupNumber = 1;
-	let name, language;
-	export let level;
+	let name = '',
+		language = '';
+	export let level = '';
 
 	let shortName;
 	let grade;
 	let fullName;
 	export let awardedMark;
+
+	console.log(name, language, level);
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 	if (isLocalStorageAvailable) {
