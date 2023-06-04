@@ -29,24 +29,24 @@
 	let fullName;
 	export let awardedMark;
 
-	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
-
-	if (isLocalStorageAvailable) {
-		name = localStorage.getItem('name' + groupNumber) ?? '';
-		level = localStorage.getItem('level' + groupNumber) ?? '';
-		language = localStorage.getItem('language' + groupNumber) ?? '';
-		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
-		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
-	}
-
-	$: {
-		if (isLocalStorageAvailable) {
+	function saveToLocalStorage() {
+		if (window.localStorage) {
 			localStorage.setItem('name' + groupNumber, name);
 			localStorage.setItem('level' + groupNumber, level);
 			localStorage.setItem('language' + groupNumber, language);
 			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
 		}
 	}
+
+	onMount(() => {
+		name = localStorage.getItem('name' + groupNumber) ?? '';
+		level = localStorage.getItem('level' + groupNumber) ?? '';
+		language = localStorage.getItem('language' + groupNumber) ?? '';
+		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
+		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
+	});
+
+	onDestroy(saveToLocalStorage);
 
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;

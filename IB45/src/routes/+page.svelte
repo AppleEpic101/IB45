@@ -7,7 +7,7 @@
 	import Group6 from './group6.svelte';
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	//let storage = [];
 
@@ -33,15 +33,11 @@
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
-	if (isLocalStorageAvailable) {
+	onMount(() => {
 		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
-	}
+	});
 
-	$: {
-		if (isLocalStorageAvailable) {
-			localStorage.setItem('selectedGroup6', selectedGroup6);
-		}
-	}
+	onDestroy(saveToLocalStorage);
 
 	$: {
 		totalScore = 0;
@@ -52,6 +48,10 @@
 	}
 
 	let hasEarnedDiploma = false;
+
+	function saveToLocalStorage() {
+		if (window.localStorage) localStorage.setItem('selectedGroup6', selectedGroup6);
+	}
 </script>
 
 <nav>
@@ -143,7 +143,17 @@
 		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
 		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
 		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} />
-		<Group6 bind:awardedMark={scores[5]} bind:level={levels[5]} groupSelection={selectedGroup6} />
+		{#if selectedGroup6 == '6'}
+			<Group6 bind:awardedMark={scores[5]} bind:level={levels[5]} />
+		{:else if selectedGroup6 == '1'}
+			<Group1 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+		{:else if selectedGroup6 == '2'}
+			<Group2 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+		{:else if selectedGroup6 == '3'}
+			<Group3 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+		{:else if selectedGroup6 == '4'}
+			<Group4 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+		{/if}
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 	</div>
 	<div class="right-column">
