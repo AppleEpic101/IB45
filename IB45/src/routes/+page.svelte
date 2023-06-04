@@ -9,10 +9,6 @@
 	import DetailedTable from './detailedTable.svelte';
 	import { onMount, onDestroy } from 'svelte';
 
-	//let storage = [];
-
-	onMount(async () => {});
-
 	let names = [];
 	let scores = [];
 	let totalScore;
@@ -31,11 +27,17 @@
 
 	let selectedGroup6 = '6';
 
-	onMount(() => {
-		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
-	});
+	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
-	onDestroy(saveToLocalStorage);
+	if (isLocalStorageAvailable) {
+		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
+	}
+
+	$: {
+		if (isLocalStorageAvailable) {
+			localStorage.setItem('selectedGroup6', selectedGroup6);
+		}
+	}
 
 	$: {
 		totalScore = 0;
@@ -46,11 +48,6 @@
 	}
 
 	let hasEarnedDiploma = false;
-
-	function saveToLocalStorage() {
-		if (typeof window !== 'undefined' && window.localStorage)
-			localStorage.setItem('selectedGroup6', selectedGroup6);
-	}
 </script>
 
 <nav>
