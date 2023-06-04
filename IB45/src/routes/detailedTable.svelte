@@ -50,7 +50,7 @@
 	</tr>
 	<tr>
 		<td style="background-color: var(--primary)">EE</td>
-		<td style="background-color: {ee ? getRowColor(q[p.indexOf(tok)]) : 0}">{ee}</td>
+		<td style="background-color: {ee ? getRowColor(q[p.indexOf(ee)]) : 0}">{ee}</td>
 	</tr>
 	<tr>
 		<td style="background-color: var(--primary)">Core Points</td>
