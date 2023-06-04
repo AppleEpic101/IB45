@@ -1,7 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/Group4/group4.json';
-	import gradeBoundary from './assets/Group4/Group4GradeBoundaries-M22.json';
+	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [
@@ -11,10 +11,10 @@
 		'Design Technology',
 		'Environmental Systems And Societies',
 		'Physics',
-		'Sports, Excercise, And Health Science'
+		'Sports, Excercise And Health Science'
 	];
 
-	let SLOnly = ['Sports, Excercise, And Health Science'];
+	let SLOnly = ['Environmental Systems And Societies'];
 
 	let courses = Object.keys(data).map((courseName) => ({
 		name: courseName,

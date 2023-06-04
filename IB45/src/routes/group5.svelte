@@ -1,7 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/Group5/group5.json';
-	import gradeBoundary from './assets/Group5/Group5GradeBoundaries-M22.json';
+	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [

@@ -1,10 +1,36 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/Group2/LanguageAcquisition.json';
-	import gradeBoundary from './assets/Group2/LanguageAcquisitionGradeBoundaries-M22.json';
+	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
-	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
+	const LitLanguages = [
+		'English',
+		'French',
+		'Spanish',
+		'Chinese',
+		'Dutch',
+		'Hindi',
+		'Arabic',
+		'Danish',
+		'German',
+		'Italian',
+		'Russian',
+		'Swedish',
+		'Japanese',
+		'Thai',
+		'Malay',
+		'Indonesian',
+		'Norwegian',
+		'Korean',
+		'Polish',
+		'Portuguese',
+		'Catalan',
+		'Finnish',
+		'Lithuanian',
+		'Turkish',
+		'Vietnamese'
+	];
 
 	let subjects = ['Language AB Initio', 'Language B'];
 	let SLOnly = ['Language AB Initio'];
