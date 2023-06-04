@@ -2,6 +2,7 @@
 	import Slider from './slider.svelte';
 	import data from './assets/Group2/LanguageAcquisition.json';
 	import gradeBoundary from './assets/Group2/LanguageAcquisitionGradeBoundaries-M22.json';
+	import { onMount, onDestroy } from 'svelte';
 
 	const LitLanguages = ['English', 'Spanish', 'French', 'German'];
 
@@ -30,7 +31,7 @@
 	export let awardedMark;
 
 	function saveToLocalStorage() {
-		if (window.localStorage) {
+		if (typeof window !== 'undefined' && window.localStorage) {
 			localStorage.setItem('name' + groupNumber, name);
 			localStorage.setItem('level' + groupNumber, level);
 			localStorage.setItem('language' + groupNumber, language);

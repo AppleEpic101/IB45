@@ -2,6 +2,7 @@
 	import Slider from './slider.svelte';
 	import data from './assets/Group5/group5.json';
 	import gradeBoundary from './assets/Group5/Group5GradeBoundaries-M22.json';
+	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [
 		'Mathematics: Analysis And Approaches',
@@ -29,7 +30,7 @@
 	export let awardedMark;
 
 	function saveToLocalStorage() {
-		if (window.localStorage) {
+		if (typeof window !== 'undefined' && window.localStorage) {
 			localStorage.setItem('name' + groupNumber, name);
 			localStorage.setItem('level' + groupNumber, level);
 			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));

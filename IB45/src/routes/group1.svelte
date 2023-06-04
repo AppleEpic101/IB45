@@ -29,7 +29,7 @@
 	export let awardedMark;
 
 	function saveToLocalStorage() {
-		if (window.localStorage) {
+		if (typeof window !== 'undefined' && window.localStorage) {
 			localStorage.setItem('name' + groupNumber, name);
 			localStorage.setItem('level' + groupNumber, level);
 			localStorage.setItem('language' + groupNumber, language);

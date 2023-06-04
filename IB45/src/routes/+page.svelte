@@ -31,8 +31,6 @@
 
 	let selectedGroup6 = '6';
 
-	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
-
 	onMount(() => {
 		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
 	});
@@ -50,7 +48,8 @@
 	let hasEarnedDiploma = false;
 
 	function saveToLocalStorage() {
-		if (window.localStorage) localStorage.setItem('selectedGroup6', selectedGroup6);
+		if (typeof window !== 'undefined' && window.localStorage)
+			localStorage.setItem('selectedGroup6', selectedGroup6);
 	}
 </script>
 
