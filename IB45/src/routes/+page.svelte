@@ -64,7 +64,7 @@
 			location.reload();
 		}}
 	/>
-	<h1>International Baccalaureate Diploma Programme <br /> <br />Predicted Score Calculator</h1>
+	<h1>Predicted Score Calculator</h1>
 	<div />
 	<div />
 </nav>
@@ -93,6 +93,10 @@
 	<p>
 		NOTE: For a given subject, if there is more than one timezone, the one with a stricter grading
 		system (more challenging mark band) will be applied.
+	</p>
+	<p>
+		NOTE: Subjects with fewer than 100 candidates do not have published boundaries. Therefore, you
+		will have to rely on mocks and teacher predictions for guidance.
 	</p>
 	<p>
 		If you are replacing your Group 6 selection with a subject from Groups 1-4, please mark the
@@ -174,7 +178,11 @@
 	</div>
 </div>
 
-<footer>Alexander Du</footer>
+<footer>
+	<div class="create">
+		Created by Alexander Du<br />Winston Thov
+	</div>
+</footer>
 
 <link rel="stylesheet" href="light.css" />
 
@@ -191,30 +199,47 @@
 	}
 
 	:global(nav) {
-		position: fixed;
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
 		background-color: var(--primary);
-		text-align: center;
-		top: 0px;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid black;
+	}
+
+	p {
+		line-height: 2;
 	}
 
 	footer {
 		background-color: var(--primary);
-		height: 100px;
+		height: 200px;
+	}
+
+	.create {
+		margin: 20px;
+	}
+
+	nav h1 {
+		margin-left: 7%;
 	}
 
 	nav img {
 		width: 200px;
 		height: 100px;
 		cursor: pointer;
-		/* align-self: flex-start; */
+		align-self: flex-start !important;
+		margin-left: 5px;
+		transition: 0.3s ease-in-out;
+	}
+
+	nav img:hover {
+		transform: scale(1.05);
+		-webkit-transform: scale(1.05);
 	}
 
 	.intro {
 		margin: 0 5%;
-		margin-top: 140px;
 	}
 
 	.layout {
@@ -223,20 +248,12 @@
 		margin: 20px 5%;
 	}
 
-	/* .diploma {
-		border: 2px solid black;
-		border-radius: 10px;
-		padding: 10px;
-		background-color: rgb(32, 169, 41);
-		text-align: center;
-	} */
-
 	.option {
 		margin-bottom: 10px;
 	}
 
 	.data {
 		position: sticky;
-		top: 140px;
+		top: 10px;
 	}
 </style>

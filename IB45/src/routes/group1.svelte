@@ -105,6 +105,12 @@
 		}
 	}
 
+	$: {
+		if (!matchedLang) {
+			awardedMark = 0;
+		}
+	}
+
 	function reset() {
 		// default slider values
 		if (matchedCourse !== undefined)
@@ -159,15 +165,19 @@
 	<div>
 		{#if sufficientInformation}
 			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
-			{#if boundary.length == 1}
-				Timezone 0:&nbsp{boundary[0]}
+			{#if matchedLang}
+				{#if boundary.length == 1}
+					Timezone 0: {boundary[0]}
+				{:else}
+					{#each boundary as b, i}
+						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
+					{/each}
+				{/if}
+				<br />
+				Awarded Mark: {awardedMark}
 			{:else}
-				{#each boundary as b, i}
-					Timezone {i + 1}:&nbsp{b} &nbsp&nbsp&nbsp&nbsp
-				{/each}
+				<h2>Boundary Not Found.</h2>
 			{/if}
-			<br />
-			Awarded Mark: {awardedMark}
 		{/if}
 	</div>
 </div>
