@@ -15,7 +15,6 @@
 
 	let names = [];
 	let scores = [];
-	let sliderPositions = [];
 	let totalScore;
 	let tokGrade;
 	let eeGrade;
@@ -26,6 +25,7 @@
 	let levels = [];
 
 	$: levels.forEach((item) => {
+		(HLCount = 0), (SLCount = 0);
 		item == 'HL' ? HLCount++ : item == 'SL' && SLCount++;
 	});
 
@@ -143,11 +143,7 @@
 		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
 		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
 		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} />
-		<Group6
-			bind:awardedMark={scores[5]}
-			bind:level={levels[5]}
-			bind:groupSelection={selectedGroup6}
-		/>
+		<Group6 bind:awardedMark={scores[5]} bind:level={levels[5]} groupSelection={selectedGroup6} />
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 	</div>
 	<div class="right-column">
@@ -155,7 +151,6 @@
 			<div class="table">
 				<DetailedTable
 					points={totalScore}
-					courses={names}
 					awardedMarks={scores}
 					tok={tokGrade}
 					ee={eeGrade}

@@ -30,9 +30,7 @@
 	</tr>
 	<tr>
 		<th style="background-color: var(--primary)">Points</th>
-		<th style="background-color: {points ? getRowColor(parseInt(points) / 6.42) : 0}"
-			>{points} / 45</th
-		>
+		<th style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</th>
 	</tr>
 	{#each awardedMarks as mark, i}
 		<tr>
@@ -49,6 +47,8 @@
 		<td style="background-color: {ee ? getRowColor(q[p.indexOf(ee)]) : 0}">{ee}</td>
 	</tr>
 </table>
+HL: {HLCount}
+SL: {SLCount}
 
 <div class="notice">
 	{message}

@@ -111,6 +111,7 @@
 		Grade: {eeRaw} / 34 <br /> Awarded Mark: {ee}
 	</div>
 	<div>
+		<br />
 		Core Points: {corePoints}
 	</div>
 </div>

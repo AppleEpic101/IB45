@@ -140,13 +140,13 @@
 		</div>
 	</div>
 {:else if groupSelection == '1'}
-	<Group1 {groupNumber} />
+	<Group1 {groupNumber} bind:awardedMark bind:level />
 {:else if groupSelection == '2'}
-	<Group2 {groupNumber} />
+	<Group2 {groupNumber} bind:awardedMark bind:level />
 {:else if groupSelection == '3'}
-	<Group3 {groupNumber} />
+	<Group3 {groupNumber} bind:awardedMark bind:level />
 {:else if groupSelection == '4'}
-	<Group4 {groupNumber} />
+	<Group4 {groupNumber} bind:awardedMark bind:level />
 {/if}
 
 <style>
