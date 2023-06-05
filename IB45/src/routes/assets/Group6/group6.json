@@ -41,5 +41,43 @@
                 "weight": 0.30
             }
         ]
+    },
+    "SL Visual Arts": {
+        "assessments": [
+            {
+                "name": "Part 1: Comparative Study",
+                "maxMarks": 30,
+                "weight": 0.20
+            },
+            {
+                "name": "Part 2: Process Portfolio",
+                "maxMarks": 34,
+                "weight": 0.40
+            },
+            {
+                "name": "Exhibition",
+                "maxMarks": 30,
+                "weight": 0.40
+            }
+        ]
+    },
+    "HL Visual Arts": {
+        "assessments": [
+            {
+                "name": "Part 1: Comparative Study",
+                "maxMarks": 42,
+                "weight": 0.20
+            },
+            {
+                "name": "Part 2: Process Portfolio",
+                "maxMarks": 34,
+                "weight": 0.40
+            },
+            {
+                "name": "Exhibition",
+                "maxMarks": 30,
+                "weight": 0.40
+            }
+        ]
     }
 }
