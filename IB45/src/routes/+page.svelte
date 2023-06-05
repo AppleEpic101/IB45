@@ -187,15 +187,17 @@
 <link rel="stylesheet" href="light.css" />
 
 <style>
-	:global(body) {
-		margin: 0;
-		padding: 0;
-	}
-
 	:global(html) {
 		font-family: 'Helvetica Neue', Arial, sans-serif;
-		background-color: var(--background);
+		background-color: var(--primary);
 		color: black;
+	}
+
+	:global(body) {
+		background-color: var(--background);
+		margin: 0;
+		padding: 0;
+		overscroll-behavior-x: none;
 	}
 
 	:global(nav) {
@@ -236,6 +238,10 @@
 	nav img:hover {
 		transform: scale(1.05);
 		-webkit-transform: scale(1.05);
+	}
+
+	img {
+		pointer-events: none;
 	}
 
 	.intro {

@@ -110,10 +110,10 @@
     "SL Chemistry": {
         "TZ": [[0, 11, 23, 36, 48, 61, 73], [0, 10, 22, 33, 46, 56, 69]]
     },
-    "HL Chinese Language B - Mandarin": {
+    "HL Chinese Language B": {
         "TZ": [[0, 9, 19, 36, 49, 65, 78]]
     },
-    "SL Chinese Language B - Mandarin": {
+    "SL Chinese Language B": {
         "TZ": [[0, 9, 20, 33, 47, 61, 76]]
     },
     "HL Economics": {
@@ -167,13 +167,13 @@
     "SL Swedish Language B": {
         "TZ": [[0, 13, 28, 41, 54, 68, 81]]
     },
-    "SL Arabic AB Initio": {
+    "SL Arabic Language AB Initio": {
         "TZ": [[0, 9, 21, 34, 51, 68, 85]]
     },
-    "SL French AB Initio": {
+    "SL French Language AB Initio": {
         "TZ": [[0, 13, 25, 38, 53, 66, 81]]
     },
-    "SL German AB Initio": {
+    "SL German Language AB Initio": {
         "TZ": [[0, 9, 21, 33, 49, 64, 80]]
     },
     "HL Japanese Language B": {
@@ -203,10 +203,10 @@
     "SL Dutch Language A: Language And Literature": {
         "TZ": [[0, 13, 25, 40, 54, 65, 79]]
     },
-    "SL English AB Initio": {
+    "SL English Language AB Initio": {
         "TZ": [[0, 14, 28, 41, 56, 70, 86]]
     },
-    "SL Italian AB Initio": {
+    "SL Italian Language AB Initio": {
         "TZ": [[0, 8, 18, 35, 50, 64, 79]]
     },
     "SL Malay Language A: Literature": {
@@ -221,10 +221,10 @@
     "*HL Ref Project": {
         "TZ": [[0, 11, 17, 23, 27]]
     },
-    "SL Spanish AB Initio": {
+    "SL Spanish Language AB Initio": {
         "TZ": [[0, 13, 25, 39, 53, 68, 82]]
     },
-    "SL Swedish AB Initio": {
+    "SL Swedish Language AB Initio": {
         "TZ": [[0, 10, 22, 36, 48, 62, 76]]
     },
     "HL Visual Arts": {
@@ -242,10 +242,10 @@
     "SL Arabic Language A: Literature": {
         "TZ": [[0, 13, 25, 38, 49, 60, 71]]
     },
-    "HL Computer Sc": {
+    "HL Computer Science": {
         "TZ": [[0, 11, 21, 32, 44, 57, 69]]
     },
-    "SL Computer Sc": {
+    "SL Computer Science": {
         "TZ": [[0, 9, 20 , 34, 45, 56, 67]]
     },
     "HL Danish Language A: Literature": {
@@ -290,7 +290,7 @@
     "SL Indonesian Language B": {
         "TZ": [[0, 8, 26, 39, 55, 73, 83]]
     },
-    "SL Japanese AB Initio": {
+    "SL Japanese Language AB Initio": {
         "TZ": [[0, 9, 20, 32, 46, 61, 75]]
     },
     "HL Korean Language A: Language And Literature": {
@@ -308,7 +308,7 @@
     "SL Literature And Performance": {
         "TZ": [[0, 12, 28, 46, 58, 72, 84]]
     },
-    "SL Mandarin AB Initio": {
+    "SL Chinese Language AB Initio": {
         "TZ": [[0, 7, 16, 30, 45, 59, 74]]
     },
     "HL Polish Language A: Literature": {
@@ -320,7 +320,7 @@
     "SL Portuguese Language B": {
         "TZ": [[0, 11, 22, 37, 49, 63, 76]]
     },
-    "SL World Relig": {
+    "SL World Religions": {
         "TZ": [[0, 14, 27, 42, 54, 67, 79]]
     },
     "SL Braz.Soc.Stud": {
@@ -476,13 +476,13 @@
     "SL Turkey In The 20th Century": {
         "TZ": [[0, 12, 27, 39, 52, 64, 78]]
     },
-    "HL Turkish Language Language A: Literature": {
+    "HL Turkish Language A: Literature": {
         "TZ": [[0, 13, 26, 37, 50, 62, 75]]
     },
-    "SL Turkish Language Language A: Literature": {
+    "SL Turkish Language A: Literature": {
         "TZ": [[0, 13, 25, 38, 49, 60, 71]]
     },
-    "SL Vietnamese Language Language A: Literature": {
+    "SL Vietnamese Language A: Literature": {
         "TZ": [[0, 16, 31, 46, 57, 71, 82]]
     }
 }

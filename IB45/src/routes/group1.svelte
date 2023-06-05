@@ -8,26 +8,26 @@
 		'English',
 		'French',
 		'Spanish',
-		'Chinese',
-		'Dutch',
-		'Hindi',
 		'Arabic',
+		'Chinese',
+		'Catalan',
 		'Danish',
+		'Dutch',
+		'Finnish',
 		'German',
-		'Italian',
-		'Russian',
-		'Swedish',
-		'Japanese',
-		'Thai',
-		'Malay',
+		'Hindi',
 		'Indonesian',
-		'Norwegian',
+		'Italian',
+		'Japanese',
 		'Korean',
+		'Lithuanian',
+		'Malay',
+		'Norwegian',
 		'Polish',
 		'Portuguese',
-		'Catalan',
-		'Finnish',
-		'Lithuanian',
+		'Russian',
+		'Swedish',
+		'Thai',
 		'Turkish',
 		'Vietnamese'
 	];
@@ -149,9 +149,7 @@
 	</select>
 
 	<div class="content">
-		{#if !sufficientInformation}
-			<h2>Please provide more details.</h2>
-		{:else if matchedCourse}
+		{#if matchedCourse}
 			{#each matchedCourse.assessments as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
@@ -162,7 +160,7 @@
 			{/each}
 		{/if}
 	</div>
-	<div>
+	<div class="stats">
 		{#if sufficientInformation}
 			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
 			{#if matchedLang}
@@ -178,21 +176,10 @@
 			{:else}
 				<h2>Boundary Not Found.</h2>
 			{/if}
+		{:else}
+			<h2>Please provide more details</h2>
 		{/if}
 	</div>
 </div>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: left;
-	}
-
-	.group {
-		border: 2px solid black;
-		margin: 0 20px 20px 0;
-		padding: 0 0 20px 20px;
-	}
-</style>
+<link rel="stylesheet" href="group.css" />

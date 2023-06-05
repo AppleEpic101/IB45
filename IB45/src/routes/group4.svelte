@@ -119,9 +119,7 @@
 	</select>
 
 	<div class="content">
-		{#if !sufficientInformation}
-			<h2>Please provide more details.</h2>
-		{:else if matchedCourse}
+		{#if matchedCourse}
 			{#each matchedCourse.assessments as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
@@ -132,18 +130,24 @@
 			{/each}
 		{/if}
 	</div>
-	<div>
+	<div class="stats">
 		{#if sufficientInformation}
 			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
-			{#if boundary.length == 1}
-				Timezone 0:&nbsp{boundary[0]}
+			{#if match}
+				{#if boundary.length == 1}
+					Timezone 0: {boundary[0]}
+				{:else}
+					{#each boundary as b, i}
+						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
+					{/each}
+				{/if}
+				<br />
+				Awarded Mark: {awardedMark}
 			{:else}
-				{#each boundary as b, i}
-					Timezone {i + 1}:&nbsp{b} &nbsp&nbsp&nbsp&nbsp
-				{/each}
+				<h2>Boundary Not Found.</h2>
 			{/if}
-			<br />
-			Awarded Mark: {awardedMark}
+		{:else}
+			<h2>Please provide more details</h2>
 		{/if}
 	</div>
 </div>

@@ -8,26 +8,26 @@
 		'English',
 		'French',
 		'Spanish',
-		'Chinese',
-		'Dutch',
-		'Hindi',
 		'Arabic',
+		'Chinese',
+		'Catalan',
 		'Danish',
+		'Dutch',
+		'Finnish',
 		'German',
-		'Italian',
-		'Russian',
-		'Swedish',
-		'Japanese',
-		'Thai',
-		'Malay',
+		'Hindi',
 		'Indonesian',
-		'Norwegian',
+		'Italian',
+		'Japanese',
 		'Korean',
+		'Lithuanian',
+		'Malay',
+		'Norwegian',
 		'Polish',
 		'Portuguese',
-		'Catalan',
-		'Finnish',
-		'Lithuanian',
+		'Russian',
+		'Swedish',
+		'Thai',
 		'Turkish',
 		'Vietnamese'
 	];
@@ -108,6 +108,12 @@
 		if (SLOnly.includes(name) && level == 'HL') level = 'SL';
 	}
 
+	$: {
+		if (!matchedLang) {
+			awardedMark = 0;
+		}
+	}
+
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 
 	function reset() {
@@ -149,9 +155,7 @@
 	</select>
 
 	<div class="content">
-		{#if !sufficientInformation}
-			<h2>Please provide more details.</h2>
-		{:else if matchedCourse}
+		{#if matchedCourse}
 			{#each matchedCourse.assessments as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
@@ -162,33 +166,24 @@
 			{/each}
 		{/if}
 	</div>
-	<div>
+	<div class="stats">
 		{#if sufficientInformation}
 			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
-			{#if boundary.length == 1}
-				Timezone 0:&nbsp{boundary[0]}
+			{#if matchedLang}
+				{#if boundary.length == 1}
+					Timezone 0: {boundary[0]}
+				{:else}
+					{#each boundary as b, i}
+						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
+					{/each}
+				{/if}
+				<br />
+				Awarded Mark: {awardedMark}
 			{:else}
-				{#each boundary as b, i}
-					Timezone {i + 1}:&nbsp{b} &nbsp&nbsp&nbsp&nbsp
-				{/each}
+				<h2>Boundary Not Found.</h2>
 			{/if}
-			<br />
-			Awarded Mark: {awardedMark}
+		{:else}
+			<h2>Please provide more details</h2>
 		{/if}
 	</div>
 </div>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: left;
-	}
-
-	.group {
-		border: 2px solid black;
-		margin: 0 20px 20px 0;
-		padding: 0 0 20px 20px;
-	}
-</style>

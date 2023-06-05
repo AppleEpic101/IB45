@@ -7,11 +7,11 @@
 
 	function handleChange(event) {
 		value = event.target.value;
-	} 
-	
-	$: if(value > max) {
-		value = max
-	} else if(value < min) {
+	}
+
+	$: if (value > max) {
+		value = max;
+	} else if (value < min) {
 		value = 0;
 	}
 </script>
@@ -31,9 +31,12 @@
 		margin: 0px;
 	}
 	.slider {
-		margin: 30px 0;
-		padding-right: 100px;
+		padding: 10px;
+		margin-right: 5px;
+		margin-bottom: 5px;
 		border: 2px solid black;
+		background-color: var(--lightprimary);
+		border-radius: 5px;
 	}
 	.c {
 		display: flex;
