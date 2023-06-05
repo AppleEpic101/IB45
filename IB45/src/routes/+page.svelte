@@ -181,8 +181,14 @@
 </div>
 
 <footer>
-	<div class="create">
-		Created by Alexander Du<br />Winston Thov<br />Richard Yang
+	<div>
+		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang 
+	</div>
+	<div class="title">
+		<br /><strong>RESOURCES</strong><br /><a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a> 
+	</div>
+	<div>
+		<br /><strong>CONTACT</strong><br />email here 
 	</div>
 </footer>
 
@@ -216,12 +222,16 @@
 	}
 
 	footer {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: flex-start;
 		background-color: var(--primary);
-		height: 200px;
+		height: 150px;
 	}
 
-	.create {
-		margin: 20px;
+	footer div {
+		text-align: center;
+		line-height: 2;
 	}
 
 	nav img {
@@ -280,4 +290,14 @@
 		position: sticky;
 		top: 10px;
 	}
+
+	@media screen and (max-width: 400px) {
+		.layout {
+			display: block;
+		}
+		footer {
+			display: block;
+		}
+	}
+
 </style>
