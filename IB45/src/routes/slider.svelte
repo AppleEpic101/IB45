@@ -65,7 +65,7 @@
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background-color: greenyellow;
+		background-color: var(--primary);
 		border: 5px solid var(--banner);
 		margin-top: -5px;
 	}
