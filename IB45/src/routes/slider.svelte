@@ -42,4 +42,31 @@
 		display: flex;
 		flex-direction: row;
 	}
+
+	input[type='range'] {
+		-webkit-appearance: none;
+		appearance: none;
+		cursor: pointer;
+		background-color: var(--lightprimary);
+	}
+
+	input[type='range']::-webkit-slider-runnable-track {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 100%;
+		height: 10px;
+		background-color: var(--banner);
+		border-radius: 5px;
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: greenyellow;
+		border: 5px solid var(--banner);
+		margin-top: -5px;
+	}
 </style>
