@@ -32,6 +32,7 @@ select {
     border: 2px solid black;
     border-radius: 5px;
     transition: 0.3s ease;
+    cursor: pointer;
 }
 
 select:hover {

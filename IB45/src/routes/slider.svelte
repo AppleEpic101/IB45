@@ -38,6 +38,7 @@
 		background-color: var(--lightprimary);
 		border-radius: 5px;
 	}
+	
 	.c {
 		display: flex;
 		flex-direction: row;
@@ -68,5 +69,11 @@
 		background-color: var(--primary);
 		border: 5px solid var(--banner);
 		margin-top: -5px;
+	}
+
+	input[type="number"] {
+		width: 3em;
+		border: 2px solid black;
+		background-color: white;
 	}
 </style>

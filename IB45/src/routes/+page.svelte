@@ -170,6 +170,7 @@
 					awardedMarks={scores}
 					tok={tokGrade}
 					ee={eeGrade}
+					{levels}
 					{HLCount}
 					{SLCount}
 					{corePoints}
@@ -207,7 +208,7 @@
 		background-color: var(--primary);
 		justify-content: space-between;
 		align-items: center;
-		border-bottom: 1px solid black;
+		border-bottom: 2px solid black;
 	}
 
 	p {
@@ -235,6 +236,19 @@
 	nav img:hover {
 		transform: scale(1.05);
 		-webkit-transform: scale(1.05);
+	}
+
+	button {
+		background-color: var(--lightprimary);
+		padding: 20px;
+		cursor: pointer;
+		border: 2px solid black;
+		border-radius: 5px;
+	}
+
+	button:hover {
+		background-color: var(--primary);
+		transition: 0.3s ease-in-out;
 	}
 
 	.banner {
