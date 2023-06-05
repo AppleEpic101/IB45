@@ -64,13 +64,14 @@
 			location.reload();
 		}}
 	/>
-	<h1>Predicted Score Calculator</h1>
 	<div />
 	<div />
 </nav>
 
+<div class="banner">
+	<h1>International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator</h1>
+</div>
 <div class="intro">
-	<img src="dp-programme-logo-en.png" alt="" style="max-width:40%;" />
 	<h2>Welcome to IB Predict!</h2>
 	<p>
 		Our primary aim is to assist IB Diploma Programme students in estimating their final IB scores
@@ -222,10 +223,6 @@
 		margin: 20px;
 	}
 
-	nav h1 {
-		margin-left: 7%;
-	}
-
 	nav img {
 		width: 200px;
 		height: 100px;
@@ -240,12 +237,19 @@
 		-webkit-transform: scale(1.05);
 	}
 
-	img {
-		pointer-events: none;
+	.banner {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		background-color: var(--banner);
+		color: white;
+		padding: 0;
+		height: 300px;
 	}
 
 	.intro {
-		margin: 0 5%;
+		margin: 0 10%;
 	}
 
 	.layout {
