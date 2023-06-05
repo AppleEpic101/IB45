@@ -180,7 +180,7 @@
 
 <footer>
 	<div class="create">
-		Created by Alexander Du<br />Winston Thov
+		Created by Alexander Du<br />Winston Thov<br />Richard Yang
 	</div>
 </footer>
 
