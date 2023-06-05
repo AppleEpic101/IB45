@@ -90,9 +90,9 @@
 	<tr>
 		<th style="background-color: var(--primary)">Diploma Awarded?</th>
 		{#if diplomaAwarded}
-			<th style="background-color: {getRowColor(7)}">{diplomaAwarded}</th>
+			<th style="background-color: {getRowColor(7)}">YES</th>
 		{:else}
-			<th style="background-color: {getRowColor(0)}">{diplomaAwarded}</th>
+			<th style="background-color: {getRowColor(0)}">NO</th>
 		{/if}
 	</tr>
 	{#each awardedMarks as mark, i}

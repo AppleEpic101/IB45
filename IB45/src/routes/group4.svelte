@@ -61,7 +61,7 @@
 			});
 		}
 
-		grade = Math.trunc(grade);
+		grade = Math.round(grade);
 	}
 
 	$: matchedCourse = courses.find((course) => course.name === fullName);
@@ -86,6 +86,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
+	$: if(!matchedCourse || !match) awardedMark = 0;
 
 	function reset() {
 		if (matchedCourse !== undefined)

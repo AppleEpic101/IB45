@@ -77,7 +77,7 @@
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;
 
-	$: if (sufficientInformation) fullName = level + ' ' + language + ' ' + name;
+	$: if (sufficientInformation) fullName = level + ' ' + language + ' ' + name; 
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -86,7 +86,7 @@
 			});
 		}
 
-		grade = Math.trunc(grade);
+		grade = Math.round(grade);
 	}
 
 	$: matchedCourse = courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
@@ -102,13 +102,7 @@
 					}
 				});
 			});
-		}
-	}
-
-	$: {
-		if (!matchedLang) {
-			awardedMark = 0;
-		}
+		} 
 	}
 
 	function reset() {
@@ -118,6 +112,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
+	$: if(!matchedCourse || !matchedLang) awardedMark = 0;
 </script>
 
 <div class="group">
