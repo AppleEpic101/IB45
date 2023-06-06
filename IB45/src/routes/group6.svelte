@@ -1,6 +1,6 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group6/group6.json';
+	import data from './assets/courses.json';
 	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
@@ -73,7 +73,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if(!matchedCourse || !match) awardedMark = 0;
+	$: if (!matchedCourse || !match) awardedMark = 0;
 
 	function reset() {
 		if (matchedCourse !== undefined)
@@ -137,18 +137,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: left;
-	}
-
-	.group {
-		border: 2px solid black;
-		margin: 0 20px 20px 0;
-		padding: 0 0 20px 20px;
-	}
-</style>

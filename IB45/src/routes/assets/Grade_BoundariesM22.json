@@ -356,10 +356,10 @@
     "SL English Language A: Literature": {
         "TZ": [[0, 10, 23, 35, 49, 65, 79], [0, 10, 23, 35, 46, 57, 68]]
     },
-    "SL Environmental Systems And Society": {
+    "SL Environmental Systems And Societies": {
         "TZ": [[0, 10, 18, 30, 40, 52, 62]]
     },
-    "HL Environmental Systems And Society": {
+    "HL Environmental Systems And Societies": {
         "TZ": [[0, 15, 28, 43, 57, 68, 82]]
     },
     "SL French Language A: Literature": {
@@ -470,8 +470,11 @@
     "HL Theatre (Pilot)": {
         "TZ": [[0, 5, 10, 25, 48, 65, 81]]
     },
-    "TK Theory Of Knowledge": {
+    "Theory Of Knowledge": {
         "TZ": [[0, 4, 10, 16, 22]]
+    },
+    "Extended Essay": {
+        "TZ": [[0, 6, 13, 20, 26]]
     },
     "SL Turkey In The 20th Century": {
         "TZ": [[0, 12, 27, 39, 52, 64, 78]]

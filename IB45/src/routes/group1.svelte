@@ -1,6 +1,6 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group1/LanguageA.json';
+	import data from './assets/courses.json';
 	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
@@ -77,7 +77,7 @@
 	$: sufficientInformation = name != '' && level != '' && language != '';
 	$: shortName = level + ' ' + name;
 
-	$: if (sufficientInformation) fullName = level + ' ' + language + ' ' + name; 
+	$: if (sufficientInformation) fullName = level + ' ' + language + ' ' + name;
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -102,7 +102,7 @@
 					}
 				});
 			});
-		} 
+		}
 	}
 
 	function reset() {
@@ -112,7 +112,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if(!matchedCourse || !matchedLang) awardedMark = 0;
+	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 </script>
 
 <div class="group">

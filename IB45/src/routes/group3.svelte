@@ -1,24 +1,22 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group3/group3.json';
+	import data from './assets/courses.json';
 	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [
 		'Business Management',
-		'Digital Society',
 		'Economics',
 		'Geography',
 		'Global Politics',
 		'History',
 		'Information Technology In A Global Society',
-		'Language And Culture',
 		'Philosophy',
 		'Psychology',
 		'Social And Cultural Anthropology',
 		'World Religions'
 	];
-	let SLOnly = ['Language And Culture', 'World Religions'];
+	let SLOnly = ['World Religions'];
 
 	let regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
@@ -102,7 +100,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if(!matchedCourse || !match) awardedMark = 0;
+	$: if (!matchedCourse || !match) awardedMark = 0;
 
 	function reset() {
 		if (matchedCourse !== undefined)
@@ -177,18 +175,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: left;
-	}
-
-	.group {
-		border: 2px solid black;
-		margin: 0 20px 20px 0;
-		padding: 0 0 20px 20px;
-	}
-</style>

@@ -1,7 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/TOK/tok.json';
-	import gradeBoundary from './assets/TOK/tokGradeBoundaries.json';
+	import data from './assets/courses.json';
+	import gradeBoundary from './assets/Grade_BoundariesM22.json';
 
 	let courses = Object.keys(data).map((courseName) => ({
 		name: courseName,
@@ -100,33 +100,18 @@
 			/>
 		{/each}
 	</div>
-	<div>
+	<div class="stats">
 		Grade: {grade} / 30 <br />Awarded Mark: {awardedMark}
 	</div>
 	<h2>Extended Essay</h2>
 	<div class="content">
 		<Slider max="34" name="Extended Essay" weight="1" bind:value={eeRaw} />
 	</div>
-	<div>
+	<div class="stats">
 		Grade: {eeRaw} / 34 <br /> Awarded Mark: {ee}
 	</div>
-	<div>
-		<br />
+	<br />
+	<div class="stats">
 		Core Points: {corePoints}
 	</div>
 </div>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: left;
-	}
-
-	.group {
-		border: 2px solid black;
-		margin: 0 20px 20px 0;
-		padding: 0 0 20px 20px;
-	}
-</style>

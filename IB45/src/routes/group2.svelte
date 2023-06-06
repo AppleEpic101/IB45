@@ -1,6 +1,6 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/Group2/LanguageAcquisition.json';
+	import data from './assets/courses.json';
 	import gradeBoundary from './assets/Grade_BoundariesM22';
 	import { onMount, onDestroy } from 'svelte';
 
@@ -115,7 +115,7 @@
 	}
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if(!matchedCourse || !matchedLang) awardedMark = 0;
+	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 
 	function reset() {
 		if (matchedCourse !== undefined)

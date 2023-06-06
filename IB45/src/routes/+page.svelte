@@ -7,6 +7,7 @@
 	import Group6 from './group6.svelte';
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
+	import SelectedGroup6 from './selectedGroup6.svelte';
 
 	let scores = [];
 	let totalScore;
@@ -45,13 +46,6 @@
 			totalScore += scores[i];
 		}
 		totalScore += corePoints;
-	}
-
-	function resetStorage() {
-		localStorage.removeItem('name6');
-		localStorage.removeItem('level6');
-		localStorage.removeItem('language6');
-		localStorage.removeItem('sliderPosition6');
 	}
 </script>
 
@@ -104,46 +98,24 @@
 		appropriate group.
 	</p>
 
-	<form>
-		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="6" on:click={resetStorage} />
-			<label for="group6">Group 6</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="1" on:click={resetStorage} />
-			<label for="group1">Group 1</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="2" on:click={resetStorage} />
-			<label for="group2">Group 2</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="3" on:click={resetStorage} />
-			<label for="group3">Group 3</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={selectedGroup6} value="4" on:click={resetStorage} />
-			<label for="group4">Group 4</label>
-		</div>
-	</form>
+	<SelectedGroup6 bind:selectedGroup6 />
 
-	<button
-		on:click={() => {
-			localStorage.clear();
-			location.reload();
-		}}
-	>
-		Reset Storage
-	</button>
-
-	<label>
+	<!-- <label>
 		<input type="checkbox" />
 		<span class="slider round">Detailed Mode</span>
-	</label>
+	</label> -->
 </div>
 
 <div class="layout">
 	<div class="left-column">
+		<button
+			on:click={() => {
+				localStorage.clear();
+				location.reload();
+			}}
+		>
+			Reset Selections
+		</button>
 		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]} />
 		<Group2 bind:awardedMark={scores[1]} bind:level={levels[1]} />
 		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
@@ -182,13 +154,15 @@
 
 <footer>
 	<div>
-		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang 
+		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang
 	</div>
 	<div class="title">
-		<br /><strong>RESOURCES</strong><br /><a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a> 
+		<strong>RESOURCES</strong><br /><a href="May 2022 Grade Boundaries.pdf" target="_blank"
+			>May 2022 Grade Boundary</a
+		>
 	</div>
 	<div>
-		<br /><strong>CONTACT</strong><br />email here 
+		<strong>CONTACT</strong><br />email here
 	</div>
 </footer>
 
@@ -226,12 +200,18 @@
 		justify-content: space-evenly;
 		align-items: flex-start;
 		background-color: var(--primary);
-		height: 150px;
+		height: 250px;
+		border-top: 2px solid black;
 	}
 
 	footer div {
 		text-align: center;
 		line-height: 2;
+	}
+
+	footer div::before {
+		content: '\A';
+		white-space: pre;
 	}
 
 	nav img {
@@ -250,7 +230,8 @@
 
 	button {
 		background-color: var(--lightprimary);
-		padding: 20px;
+		padding: 15px;
+		margin: 10px 0;
 		cursor: pointer;
 		border: 2px solid black;
 		border-radius: 5px;
@@ -291,13 +272,13 @@
 		top: 10px;
 	}
 
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 560px) {
 		.layout {
 			display: block;
 		}
 		footer {
 			display: block;
+			height: 150px;
 		}
 	}
-
 </style>

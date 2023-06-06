@@ -249,5 +249,53 @@
                 "weight": 0.20
             }
         ]
+    },
+    "SL Sports, Excercise And Health Science": {
+        "assessments": [
+            {
+                "name": "Paper 1",
+                "maxMarks": 30,
+                "weight": 0.20 
+            },
+            {
+                "name": "Paper 2",
+                "maxMarks": 50,
+                "weight": 0.35
+            },
+            {
+                "name": "Paper 3",
+                "maxMarks": 40,
+                "weight": 0.25
+            },
+            {
+                "name": "Individual Investigation",
+                "maxMarks": 24,
+                "weight": 0.20
+            }
+        ]
+    },
+    "HL Sports, Excercise And Health Science": {
+        "assessments": [
+            {
+                "name": "Paper 1",
+                "maxMarks": 40,
+                "weight": 0.20 
+            },
+            {
+                "name": "Paper 2",
+                "maxMarks": 90,
+                "weight": 0.35
+            },
+            {
+                "name": "Paper 3",
+                "maxMarks": 50,
+                "weight": 0.25
+            },
+            {
+                "name": "Individual Investigation",
+                "maxMarks": 24,
+                "weight": 0.20
+            }
+        ]
     }
 }
