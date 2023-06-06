@@ -1,4 +1,87 @@
 {
+    "SL Dance": {
+        "assessments": [
+            {
+                "name": "Composition And Analysis",
+                "maxMarks": 20,
+                "weight": 0.40
+            },
+            {
+                "name": "Dance Investigation",
+                "maxMarks": 20,
+                "weight": 0.20
+            },
+            {
+                "name": "Performance",
+                "maxMarks": 22,
+                "weight": 0.40
+            }
+        ]
+    },
+    "HL Dance": {
+        "assessments": [
+            {
+                "name": "Composition And Analysis",
+                "maxMarks": 30,
+                "weight": 0.35
+            },
+            {
+                "name": "Dance Investigation",
+                "maxMarks": 25,
+                "weight": 0.25
+            },
+            {
+                "name": "Performance",
+                "maxMarks": 22,
+                "weight": 0.40
+            }
+        ]
+    },
+    "SL Film": {
+        "assessments": [
+            {
+                "name": "Textual Analysis",
+                "maxMarks": 24,
+                "weight": 0.30
+            },
+            {
+                "name": "Comparative Study",
+                "maxMarks": 32,
+                "weight": 0.30
+            },
+            {
+                "name": "Film Portfolio",
+                "maxMarks": 30,
+                "weight": 0.40
+            }
+        ]
+
+    },
+    "HL Film": {
+        "assessments": [
+            {
+                "name": "Textual Analysis",
+                "maxMarks": 24,
+                "weight": 0.20
+            },
+            {
+                "name": "Comparative Study",
+                "maxMarks": 32,
+                "weight": 0.20
+            },
+            {
+                "name": "Film Portfolio",
+                "maxMarks": 30,
+                "weight": 0.25
+            },
+            {
+                "name": "Collaborative Film Project",
+                "maxMarks": 24,
+                "weight": 0.35
+            }
+        ]
+
+    },
     "SL Music": {
         "assessments": [
             {
@@ -39,6 +122,49 @@
                 "name": "Presenting Music",
                 "maxMarks": 38,
                 "weight": 0.30
+            }
+        ]
+    },
+    "SL Theatre": {
+        "assessments": [
+            {
+                "name": "Task 2: Director's Notebook",
+                "maxMarks": 32,
+                "weight": 0.35
+            },
+            {
+                "name": "Task 3: Research Presentation",
+                "maxMarks": 32,
+                "weight": 0.30
+            },
+            {
+                "name": "Task 4: Collaborative Project",
+                "maxMarks": 32,
+                "weight": 0.35
+            }
+        ]
+    },
+    "HL Theatre": {
+        "assessments": [
+            {
+                "name": "Task 1: Solo Theatre Piece",
+                "maxMarks": 32,
+                "weight": 0.35
+            },
+            {
+                "name": "Task 2: Director's Notebook",
+                "maxMarks": 32,
+                "weight": 0.20
+            },
+            {
+                "name": "Task 3: Research Presentation",
+                "maxMarks": 32,
+                "weight": 0.20
+            },
+            {
+                "name": "Task 4: Collaborative Project",
+                "maxMarks": 32,
+                "weight": 0.25
             }
         ]
     },
