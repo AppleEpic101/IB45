@@ -31,7 +31,7 @@ select {
     color:black;
     border: 2px solid black;
     border-radius: 5px;
-    transition: 0.3s ease;
+    transition: 0.3s ease-in-out;
     cursor: pointer;
     margin-bottom: 5px;
 }
@@ -45,6 +45,6 @@ select option {
     transition: background-color 0.3s ease;
 }
 
-select option:hover {
-    background-color: var(--primary);
+select option::after {
+    background-color: black;
 }

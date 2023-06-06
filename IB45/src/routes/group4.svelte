@@ -1,7 +1,8 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/courses.json';
-	import gradeBoundary from './assets/Grade_BoundariesM22';
+	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
+	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
 	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [
@@ -16,17 +17,30 @@
 
 	let SLOnly = ['Environmental Systems And Societies'];
 
+	let sliderPosition = [];
+	export let gradeBoundary;
+	let boundary = [];
+	let boundaries;
+
 	let courses = Object.keys(data).map((courseName) => ({
 		name: courseName,
 		assessments: data[courseName].assessments
 	}));
-	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
-		name: courseName,
-		TZ: gradeBoundary[courseName].TZ
-	}));
 
-	let sliderPosition = [];
-	let boundary = [];
+	$: {
+		if(gradeBoundary == "M22") {
+			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
+				name: courseName,
+				TZ: gradeBoundaryM22[courseName].TZ
+			}));
+		} else {
+			boundaries = Object.keys(gradeBoundaryN22).map((courseName) => ({
+				name: courseName,
+				TZ: gradeBoundaryN22[courseName].TZ
+			}));
+		}
+		boundary = [];
+	}
 
 	let name;
 	export let level;
@@ -133,8 +147,10 @@
 	</div>
 	<div class="stats">
 		{#if sufficientInformation}
-			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
+			Grade: {grade} / 100 
 			{#if match}
+				<div>
+				{gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
 				{#if boundary.length == 1}
 					Timezone 0: {boundary[0]}
 				{:else}
@@ -142,7 +158,7 @@
 						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
 					{/each}
 				{/if}
-				<br />
+				</div>
 				Awarded Mark: {awardedMark}
 			{:else}
 				<h2>Boundary Not Found.</h2>

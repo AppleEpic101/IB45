@@ -41,6 +41,8 @@
 	}));
 	let boundaries;
 	export let gradeBoundary;
+	let sliderPosition = [];
+	let boundary = [];
 
 	$: {
 		if(gradeBoundary == "M22") {
@@ -56,9 +58,6 @@
 		}
 		boundary = [];
 	}
-
-	let sliderPosition = [];
-	let boundary = [];
 
 	export let groupNumber = 1;
 	let name = '',
@@ -171,8 +170,10 @@
 	</div>
 	<div class="stats">
 		{#if sufficientInformation}
-			Grade: {grade} / 100 &nbsp&nbsp&nbsp&nbsp
+			Grade: {grade} / 100 
 			{#if matchedLang}
+				<div>
+				{gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
 				{#if boundary.length == 1}
 					Timezone 0: {boundary[0]}
 				{:else}
@@ -180,7 +181,7 @@
 						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
 					{/each}
 				{/if}
-				<br />
+				</div>
 				Awarded Mark: {awardedMark}
 			{:else}
 				<h2>Boundary Not Found.</h2>

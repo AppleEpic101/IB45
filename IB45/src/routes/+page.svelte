@@ -34,7 +34,7 @@
 
 	if (isLocalStorageAvailable) {
 		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
-		gradeBoundary = localStorage.getItem('gradeBoundary');
+		gradeBoundary = localStorage.getItem('gradeBoundary') ?? "M22";
 	}
 
 	$: {
@@ -121,20 +121,20 @@
 			Reset Selections
 		</button>
 		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]} {gradeBoundary} />
-		<Group2 bind:awardedMark={scores[1]} bind:level={levels[1]} />
-		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
-		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
-		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} />
+		<Group2 bind:awardedMark={scores[1]} bind:level={levels[1]} {gradeBoundary} />
+		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} {gradeBoundary} />
+		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} {gradeBoundary} />
+		<Group5 bind:awardedMark={scores[4]} bind:level={levels[4]} {gradeBoundary} />
 		{#if selectedGroup6 == '6'}
-			<Group6 bind:awardedMark={scores[5]} bind:level={levels[5]} />
+			<Group6 bind:awardedMark={scores[5]} bind:level={levels[5]} {gradeBoundary} />
 		{:else if selectedGroup6 == '1'}
-			<Group1 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+			<Group1 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" {gradeBoundary} />
 		{:else if selectedGroup6 == '2'}
-			<Group2 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+			<Group2 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" {gradeBoundary} />
 		{:else if selectedGroup6 == '3'}
-			<Group3 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+			<Group3 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" {gradeBoundary} />
 		{:else if selectedGroup6 == '4'}
-			<Group4 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" />
+			<Group4 bind:awardedMark={scores[5]} bind:level={levels[5]} groupNumber="6" {gradeBoundary} />
 		{/if}
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 	</div>
@@ -265,10 +265,6 @@
 		display: grid;
 		grid-template-columns: 4fr 1fr;
 		margin: 20px 5%;
-	}
-
-	.option {
-		margin-bottom: 10px;
 	}
 
 	.data {
