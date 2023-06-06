@@ -1,7 +1,8 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/courses.json';
-	import gradeBoundary from './assets/Grade_BoundariesM22';
+	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
+	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
 	import { onMount, onDestroy } from 'svelte';
 
 	const LitLanguages = [
@@ -27,6 +28,7 @@
 		'Portuguese',
 		'Russian',
 		'Swedish',
+		'Tamil',
 		'Thai',
 		'Turkish',
 		'Vietnamese'
@@ -37,10 +39,23 @@
 		name: courseName,
 		assessments: data[courseName].assessments
 	}));
-	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
-		name: courseName,
-		TZ: gradeBoundary[courseName].TZ
-	}));
+	let boundaries;
+	export let gradeBoundary;
+
+	$: {
+		if(gradeBoundary == "M22") {
+			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
+				name: courseName,
+				TZ: gradeBoundaryM22[courseName].TZ
+			}));
+		} else {
+			boundaries = Object.keys(gradeBoundaryN22).map((courseName) => ({
+				name: courseName,
+				TZ: gradeBoundaryN22[courseName].TZ
+			}));
+		}
+		boundary = [];
+	}
 
 	let sliderPosition = [];
 	let boundary = [];
@@ -55,8 +70,6 @@
 	let fullName;
 	export let awardedMark;
 
-	console.log(name, language, level);
-
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 	if (isLocalStorageAvailable) {
 		name = localStorage.getItem('name' + groupNumber) ?? '';
@@ -65,6 +78,7 @@
 		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
 		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
 	}
+	
 	$: {
 		if (isLocalStorageAvailable) {
 			localStorage.setItem('name' + groupNumber, name);

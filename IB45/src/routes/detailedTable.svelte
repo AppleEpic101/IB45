@@ -7,8 +7,6 @@
 	export let corePoints;
 	export let HLCount;
 	export let SLCount;
-	let messages = [];
-	let message = '';
 
 	let diplomaAwarded = true;
 
@@ -74,15 +72,15 @@
 		<th>Awarded Mark</th>
 	</tr>
 	<tr>
-		<th style="background-color: var(--primary)">Points</th>
-		<th style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</th>
+		<td style="background-color: var(--primary)">Points</td>
+		<td style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</td>
 	</tr>
 	<tr>
-		<th style="background-color: var(--primary)">Diploma Awarded?</th>
+		<td style="background-color: var(--primary)">Diploma Awarded?</td>
 		{#if diplomaAwarded}
-			<th style="background-color: {getRowColor(7)}">YES</th>
+			<td style="background-color: {getRowColor(7)}">YES</td>
 		{:else}
-			<th style="background-color: {getRowColor(0)}">NO</th>
+			<td style="background-color: {getRowColor(0)}">NO</td>
 		{/if}
 	</tr>
 	{#each awardedMarks as mark, i}
@@ -106,7 +104,7 @@
 </table>
 
 <div class="notice">
-	{message}
+	
 </div>
 
 <link rel="stylesheet" href="light.css" />
@@ -123,5 +121,8 @@
 	}
 	table {
 		margin-top: 10px;
+	} 
+	th{
+		height: 50px;
 	}
 </style>

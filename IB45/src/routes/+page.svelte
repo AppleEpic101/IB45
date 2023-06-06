@@ -8,6 +8,7 @@
 	import TOK from './TOK.svelte';
 	import DetailedTable from './detailedTable.svelte';
 	import SelectedGroup6 from './selectedGroup6.svelte';
+	import GradeBoundary from "./gradeboundary.svelte";
 
 	let scores = [];
 	let totalScore;
@@ -27,16 +28,19 @@
 	}
 
 	let selectedGroup6 = '6';
+	let gradeBoundary = "M22";
 
 	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
 
 	if (isLocalStorageAvailable) {
 		selectedGroup6 = localStorage.getItem('selectedGroup6') ?? '6';
+		gradeBoundary = localStorage.getItem('gradeBoundary');
 	}
 
 	$: {
 		if (isLocalStorageAvailable) {
 			localStorage.setItem('selectedGroup6', selectedGroup6);
+			localStorage.setItem('gradeBoundary', gradeBoundary);
 		}
 	}
 
@@ -73,15 +77,14 @@
 		applications.Our score prediction calculator has been meticulously designed to minimize
 		deviations from the actual IB scores. By taking into account various factors such as your
 		performance in internal assessments, coursework, mock exams, and historical data from previous
-		IB students, our algorithm strives to generate reliable predictions.
+		IB students, our calculator strives to generate reliable predictions.
 	</p>
 	<p>
 		This calculator uses <a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022</a> grade boundaries.
 	</p>
 
 	<p>
-		Please note that while our score predictions are based on historical trends, they should be
-		regarded as estimates rather than definitive outcomes. The IB scoring system is complex, and
+		The IB scoring system is complex, and
 		individual performance can vary. Factors such as external exam conditions, personal
 		circumstances, and other variables can influence actual scores.
 	</p>
@@ -99,7 +102,8 @@
 	</p>
 
 	<SelectedGroup6 bind:selectedGroup6 />
-
+	<p>Select the grade boundary.</p>
+	<GradeBoundary bind:gradeBoundary />
 	<!-- <label>
 		<input type="checkbox" />
 		<span class="slider round">Detailed Mode</span>
@@ -116,7 +120,7 @@
 		>
 			Reset Selections
 		</button>
-		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]} />
+		<Group1 bind:awardedMark={scores[0]} bind:level={levels[0]} {gradeBoundary} />
 		<Group2 bind:awardedMark={scores[1]} bind:level={levels[1]} />
 		<Group3 bind:awardedMark={scores[2]} bind:level={levels[2]} />
 		<Group4 bind:awardedMark={scores[3]} bind:level={levels[3]} />
