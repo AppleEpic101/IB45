@@ -232,6 +232,7 @@
 		cursor: pointer;
 		border: 2px solid black;
 		border-radius: 5px;
+		color: black;
 	}
 
 	button:hover {
