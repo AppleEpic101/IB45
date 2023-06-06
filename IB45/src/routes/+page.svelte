@@ -80,10 +80,6 @@
 		IB students, our calculator strives to generate reliable predictions.
 	</p>
 	<p>
-		This calculator uses <a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022</a> grade boundaries.
-	</p>
-
-	<p>
 		The IB scoring system is complex, and
 		individual performance can vary. Factors such as external exam conditions, personal
 		circumstances, and other variables can influence actual scores.
@@ -96,14 +92,11 @@
 		NOTE: Subjects with fewer than 100 candidates do not have published boundaries. Therefore, you
 		will have to rely on mocks and teacher predictions for guidance.
 	</p>
-	<p>
-		If you are replacing your Group 6 selection with a subject from Groups 1-4, please mark the
-		appropriate group.
-	</p>
 
-	<SelectedGroup6 bind:selectedGroup6 />
-	<p>Select the grade boundary.</p>
-	<GradeBoundary bind:gradeBoundary />
+	<div class="multipleChoice">
+		<SelectedGroup6 bind:selectedGroup6 />
+		<GradeBoundary bind:gradeBoundary />
+	</div>
 	<!-- <label>
 		<input type="checkbox" />
 		<span class="slider round">Detailed Mode</span>
@@ -162,11 +155,11 @@
 	</div>
 	<div class="title">
 		<strong>RESOURCES</strong><br /><a href="May 2022 Grade Boundaries.pdf" target="_blank"
-			>May 2022 Grade Boundary</a
-		>
+			>May 2022 Grade Boundary</a><br /> <a href="November 2022 Grade Boundaries.pdf" target="_blank"
+			>November 2022 Grade Boundary</a>
 	</div>
 	<div>
-		<strong>CONTACT</strong><br />email here
+		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com
 	</div>
 </footer>
 
@@ -278,7 +271,7 @@
 		}
 		footer {
 			display: block;
-			height: 150px;
+			height: 450px;
 		}
 	}
 </style>

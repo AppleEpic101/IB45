@@ -8,6 +8,7 @@
 	let subjects = [
 		'Business Management',
 		'Economics',
+		'Environmental Systems And Societies',
 		'Geography',
 		'Global Politics',
 		'History',
@@ -17,7 +18,7 @@
 		'Social And Cultural Anthropology',
 		'World Religions'
 	];
-	let SLOnly = ['World Religions'];
+	let SLOnly = ['Environmental Systems And Societies', 'World Religions'];
 
 	let regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
