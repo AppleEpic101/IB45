@@ -48,7 +48,7 @@
 			diplomaAwarded = false;
 		}
 
-		if (HLCount == 3 && HLSum < 12) {
+		if (HLSum < 12) {
 			diplomaAwarded = false;
 		}
 
@@ -107,12 +107,10 @@
 <div class="box">
 	HLCount: {HLCount} <br />
 	SLCount: {SLCount} <br />
-	Boundary: {gradeBoundary} 
+	Boundary: {gradeBoundary}
 </div>
 
-<div class="notice">
-	
-</div>
+<div class="notice" />
 
 <link rel="stylesheet" href="light.css" />
 
@@ -128,8 +126,8 @@
 	}
 	table {
 		margin-top: 10px;
-	} 
-	th{
+	}
+	th {
 		height: 50px;
 	}
 	.box {

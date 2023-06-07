@@ -47,7 +47,7 @@
 	}));
 
 	$: {
-		if(gradeBoundary == "M22") {
+		if (gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ
@@ -132,10 +132,12 @@
 	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 
 	function reset() {
-		if (matchedCourse !== undefined)
+		if (matchedCourse !== undefined) {
 			sliderPosition = matchedCourse.assessments.map((assessment) =>
 				Math.trunc(assessment.maxMarks / 2)
 			);
+		}
+		boundary = [];
 	}
 </script>
 
@@ -170,7 +172,7 @@
 	</select>
 
 	<div class="content">
-		{#if matchedCourse}
+		{#if sufficientInformation && matchedCourse}
 			{#each matchedCourse.assessments as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
@@ -183,17 +185,17 @@
 	</div>
 	<div class="stats">
 		{#if sufficientInformation}
-			Grade: {grade} / 100 
+			Grade: {grade} / 100
 			{#if matchedLang}
 				<div>
-				{gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
-				{#if boundary.length == 1}
-					Timezone 0: {boundary[0]}
-				{:else}
-					{#each boundary as b, i}
-						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
-					{/each}
-				{/if}
+					{gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
+					{#if boundary.length == 1}
+						Timezone 0: {boundary[0]}
+					{:else}
+						{#each boundary as b, i}
+							Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
+						{/each}
+					{/if}
 				</div>
 				Awarded Mark: {awardedMark}
 			{:else}
