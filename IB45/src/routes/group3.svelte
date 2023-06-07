@@ -128,7 +128,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group {groupNumber}: Individuals and Societies
+			Group {groupNumber}: Individuals And Societies
 		{:else}
 			{fullName}
 		{/if}
@@ -185,10 +185,10 @@
 				</div>
 				Awarded Mark: {awardedMark}
 			{:else}
-				<h2>Boundary Not Found.</h2>
+				<h4>Boundary Not Found.</h4>
 			{/if}
 		{:else}
-			<h2>Please provide more details</h2>
+			<h4>Please provide more details</h4>
 		{/if}
 	</div>
 </div>

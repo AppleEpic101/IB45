@@ -67,16 +67,16 @@
 </script>
 
 <table>
-	<tr style="background-color: var(--primary)">
+	<tr style="background-color: var(--lightprimary)">
 		<th>Subject</th>
 		<th>Awarded Mark</th>
 	</tr>
 	<tr>
-		<td style="background-color: var(--primary)">Points</td>
+		<td style="background-color: var(--lightprimary)">Points</td>
 		<td style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--primary)">Diploma Awarded?</td>
+		<td style="background-color: var(--lightprimary)">Diploma Awarded?</td>
 		{#if diplomaAwarded}
 			<td style="background-color: {getRowColor(7)}">YES</td>
 		{:else}
@@ -85,20 +85,20 @@
 	</tr>
 	{#each awardedMarks as mark, i}
 		<tr>
-			<td style="background-color: var(--primary)">Group {i + 1}</td>
+			<td style="background-color: var(--lightprimary)">Group {i + 1}</td>
 			<td style="background-color: {getRowColor(mark)}">{mark}</td>
 		</tr>
 	{/each}
 	<tr>
-		<td style="background-color: var(--primary)">TOK</td>
+		<td style="background-color: var(--lightprimary)">TOK</td>
 		<td style="background-color: {tok ? getRowColor(q[p.indexOf(tok)]) : 0}">{tok}</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--primary)">EE</td>
+		<td style="background-color: var(--lightprimary)">EE</td>
 		<td style="background-color: {ee ? getRowColor(q[p.indexOf(ee)]) : 0}">{ee}</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--primary)">Core Points</td>
+		<td style="background-color: var(--lightprimary)">Core Points</td>
 		<td style="background-color: {getRowColor((parseInt(corePoints) * 7) / 3)}">{corePoints}</td>
 	</tr>
 </table>

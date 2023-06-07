@@ -154,9 +154,9 @@
 		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang
 	</div>
 	<div class="title">
-		<strong>RESOURCES</strong><br /><a href="May 2022 Grade Boundaries.pdf" target="_blank"
-			>May 2022 Grade Boundary</a><br /> <a href="November 2022 Grade Boundaries.pdf" target="_blank"
-			>November 2022 Grade Boundary</a>
+		<strong>RESOURCES</strong><br />
+		<a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a><br />
+		<a href="November 2022 Grade Boundaries.pdf" target="_blank">November 2022 Grade Boundary</a>
 	</div>
 	<div>
 		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com
@@ -197,7 +197,7 @@
 		justify-content: space-evenly;
 		align-items: flex-start;
 		background-color: var(--primary);
-		height: 250px;
+		height: 200px;
 		border-top: 2px solid black;
 	}
 
@@ -212,10 +212,10 @@
 	}
 
 	nav img {
-		width: 200px;
-		height: 100px;
+		width: 150px;
+		height: 75px;
 		cursor: pointer;
-		align-self: flex-start !important;
+		align-self: flex-start;
 		margin-left: 5px;
 		transition: 0.3s ease-in-out;
 	}
@@ -246,9 +246,11 @@
 		align-items: center;
 		text-align: center;
 		background-color: var(--banner);
-		color: white;
+		color: black;
+		text-shadow: 1px 1px 1px var(--lightprimary);
 		padding: 0;
-		height: 300px;
+		height: 400px;
+		border-bottom: 2px solid black;
 	}
 
 	.intro {
