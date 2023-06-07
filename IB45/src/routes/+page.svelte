@@ -185,7 +185,7 @@
 		background-color: var(--primary);
 		justify-content: space-between;
 		align-items: center;
-		border-bottom: 2px solid black;
+		border-bottom: 1px solid black;
 	}
 
 	p {
@@ -198,7 +198,7 @@
 		align-items: flex-start;
 		background-color: var(--primary);
 		height: 200px;
-		border-top: 2px solid black;
+		border-top: 1px solid black;
 	}
 
 	footer div {
@@ -246,11 +246,12 @@
 		align-items: center;
 		text-align: center;
 		background-color: var(--banner);
-		color: black;
-		text-shadow: 1px 1px 1px var(--lightprimary);
+		color: white;
+		text-shadow: 1px 1px 1px navyblue;
 		padding: 0;
 		height: 400px;
 		border-bottom: 2px solid black;
+		font-family: cursive;
 	}
 
 	.intro {
@@ -264,6 +265,7 @@
 	}
 
 	.data {
+		position: -webkit-sticky; 
 		position: sticky;
 		top: 10px;
 	}
