@@ -5,3 +5,17 @@
     --darkwhite: rgb(241, 241, 241);
     --banner: #053f54;
 }
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #14b5cd;
+    border-radius: 0px;
+    border: 0px none #ffffff;
+}

@@ -7,6 +7,7 @@
 	export let corePoints;
 	export let HLCount;
 	export let SLCount;
+	export let gradeBoundary;
 
 	let diplomaAwarded = true;
 
@@ -103,6 +104,12 @@
 	</tr>
 </table>
 
+<div class="box">
+	HLCount: {HLCount} <br />
+	SLCount: {SLCount} <br />
+	Boundary: {gradeBoundary} 
+</div>
+
 <div class="notice">
 	
 </div>
@@ -124,5 +131,10 @@
 	} 
 	th{
 		height: 50px;
+	}
+	.box {
+		margin-top: 10px;
+		padding: 5px;
+		border: 5px solid black;
 	}
 </style>

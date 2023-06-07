@@ -143,6 +143,7 @@
 					{HLCount}
 					{SLCount}
 					{corePoints}
+					{gradeBoundary}
 				/>
 			</div>
 		</div>
@@ -167,7 +168,7 @@
 
 <style>
 	:global(html) {
-		font-family: 'Helvetica Neue', Arial, sans-serif;
+		font-family:Verdana, Geneva, Tahoma, sans-serif;
 		background-color: var(--primary);
 		color: black;
 	}
@@ -277,6 +278,9 @@
 		footer {
 			display: block;
 			height: 450px;
+		}
+		.banner {
+			height: 300px;
 		}
 	}
 </style>
