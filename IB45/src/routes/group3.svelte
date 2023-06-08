@@ -51,6 +51,7 @@
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
 		}
+		boundary = [];
 	}
 
 	let name;

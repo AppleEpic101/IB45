@@ -36,6 +36,7 @@
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
 		}
+		boundary = [];
 	}
 
 	const groupNumber = 6;

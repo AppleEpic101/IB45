@@ -65,6 +65,7 @@
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
 		}
+		boundary = [];
 	}
 	export let groupNumber = 2;
 	let name, language;

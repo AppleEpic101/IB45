@@ -63,6 +63,7 @@
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
 		}
+		boundary = [];
 	}
 
 	export let groupNumber = 1;
