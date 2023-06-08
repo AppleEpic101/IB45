@@ -1,6 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
 	import data from './assets/courses.json';
+	import gradeBoundaryM19 from './assets/Grade_BoundariesM19';
 	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
 	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
 	import { onMount, onDestroy } from 'svelte';
@@ -18,7 +19,13 @@
 	}));
 
 	$: {
-		if (gradeBoundary == 'M22') {
+		if(gradeBoundary == 'M19') {
+			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
+				name: courseName,
+				TZ: gradeBoundaryM19[courseName].TZ
+			}));
+		}
+		else if (gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ
@@ -29,7 +36,6 @@
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
 		}
-		boundary = [];
 	}
 
 	const groupNumber = 6;
