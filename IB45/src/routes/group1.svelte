@@ -24,6 +24,7 @@
 		'Korean',
 		'Lithuanian',
 		'Malay',
+		'Modern Greek',
 		'Norwegian',
 		'Polish',
 		'Portuguese',
@@ -46,13 +47,12 @@
 	let boundary = [];
 
 	$: {
-		if(gradeBoundary == 'M19') {
+		if (gradeBoundary == 'M19') {
 			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM19[courseName].TZ
 			}));
-		}
-		else if (gradeBoundary == 'M22') {
+		} else if (gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ

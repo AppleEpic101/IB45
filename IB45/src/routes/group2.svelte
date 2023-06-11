@@ -24,6 +24,7 @@
 		'Korean',
 		'Lithuanian',
 		'Malay',
+		'Modern Greek',
 		'Norwegian',
 		'Polish',
 		'Portuguese',
@@ -34,7 +35,12 @@
 		'Vietnamese'
 	];
 
-	let subjects = ['Language A: Literature', 'Language A: Language And Literature', 'Language AB Initio', 'Language B'];
+	let subjects = [
+		'Language A: Literature',
+		'Language A: Language And Literature',
+		'Language AB Initio',
+		'Language B'
+	];
 	let SLOnly = ['Language AB Initio'];
 
 	let sliderPosition = [];
@@ -48,13 +54,12 @@
 	}));
 
 	$: {
-		if(gradeBoundary == 'M19') {
+		if (gradeBoundary == 'M19') {
 			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM19[courseName].TZ
 			}));
-		}
-		else if (gradeBoundary == 'M22') {
+		} else if (gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ

@@ -6,7 +6,7 @@
 	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
 	import { onMount, onDestroy } from 'svelte';
 
-	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts'];
+	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts', 'Literature And Performance'];
 
 	let sliderPosition = [];
 	export let gradeBoundary;
@@ -19,13 +19,12 @@
 	}));
 
 	$: {
-		if(gradeBoundary == 'M19') {
+		if (gradeBoundary == 'M19') {
 			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM19[courseName].TZ
 			}));
-		}
-		else if (gradeBoundary == 'M22') {
+		} else if (gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ

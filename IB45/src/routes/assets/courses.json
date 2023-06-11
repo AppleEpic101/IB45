@@ -1138,6 +1138,30 @@
             }
         ]
     },
+    "SL Literature And Performance": {
+        "assessments": [
+            {
+                "name": "Part 1: Prose And Performance",
+                "maxMarks": 20,
+                "weight": 0.20
+            },
+            {
+                "name": "Part 2: Process Portfolio",
+                "maxMarks": 25,
+                "weight": 0.20
+            },
+            {
+                "name": "Written Coursework: Major Playwrights In Performance",
+                "maxMarks": 20,
+                "weight": 0.20
+            },
+            {
+                "name": "Performance And Individual Oral Presentation",
+                "maxMarks": 40,
+                "weight": 0.40
+            }
+        ]
+    },
     "Theory Of Knowledge": {
         "assessments": [
             {
