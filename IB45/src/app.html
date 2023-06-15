@@ -8,15 +8,18 @@
         %sveltekit.head%
     </head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VLT5BV3DD"></script>
+    <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-1VLT5BV3DD"
+    ></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
-        	dataLayer.push(arguments);
+            dataLayer.push(arguments);
         }
-        gtag('js', new Date());
-        
-        gtag('config', 'G-1VLT5BV3DD');
+        gtag("js", new Date());
+
+        gtag("config", "G-1VLT5BV3DD");
     </script>
     <body data-sveltekit-preload-data="hover">
         <div id="loader" class="middle">
@@ -30,65 +33,65 @@
             <div class="bar bar8"></div>
             <script>
                 window.addEventListener("load", (event) => {
-                	document.getElementById("loader").style.display = "none";
-                	document.getElementById("mainBody").style.display = "";
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("mainBody").style.display = "";
                 });
             </script>
             <style>
                 .middle {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
                 }
                 .bar {
-                width: 10px;
-                height: 70px;
-                background: #fff;
-                display: inline-block;
-                transform-origin: bottom center;
-                border-top-right-radius: 20px;
-                border-top-left-radius: 20px;
-                /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
-                animation: loader 1.2s linear infinite;
+                    width: 10px;
+                    height: 70px;
+                    background: #fff;
+                    display: inline-block;
+                    transform-origin: bottom center;
+                    border-top-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                    /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
+                    animation: loader 1.2s linear infinite;
                 }
                 .bar1 {
-                animation-delay: 0.1s;
+                    animation-delay: 0.1s;
                 }
                 .bar2 {
-                animation-delay: 0.2s;
+                    animation-delay: 0.2s;
                 }
                 .bar3 {
-                animation-delay: 0.3s;
+                    animation-delay: 0.3s;
                 }
                 .bar4 {
-                animation-delay: 0.4s;
+                    animation-delay: 0.4s;
                 }
                 .bar5 {
-                animation-delay: 0.5s;
+                    animation-delay: 0.5s;
                 }
                 .bar6 {
-                animation-delay: 0.6s;
+                    animation-delay: 0.6s;
                 }
                 .bar7 {
-                animation-delay: 0.7s;
+                    animation-delay: 0.7s;
                 }
                 .bar8 {
-                animation-delay: 0.8s;
+                    animation-delay: 0.8s;
                 }
                 @keyframes loader {
-                0% {
-                transform: scaleY(0.1);
-                background: transparent;
-                }
-                50% {
-                transform: scaleY(1);
-                background: blue;
-                }
-                100% {
-                transform: scaleY(0.1);
-                background: transparent;
-                }
+                    0% {
+                        transform: scaleY(0.1);
+                        background: transparent;
+                    }
+                    50% {
+                        transform: scaleY(1);
+                        background: blue;
+                    }
+                    100% {
+                        transform: scaleY(0.1);
+                        background: transparent;
+                    }
                 }
             </style>
         </div>
