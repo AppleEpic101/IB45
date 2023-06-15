@@ -29,7 +29,8 @@
 			diplomaAwarded = false;
 		}
 
-		let oneCount = 0,
+		let zeroCount = 0,
+			oneCount = 0,
 			twoCount = 0,
 			threeCount = 0;
 		let HLSum = 0,
@@ -40,11 +41,12 @@
 		});
 		awardedMarks.forEach((arr) => {
 			if (arr == 1) oneCount++;
+			else if (arr == 0) zeroCount++;
 			else if (arr == 2) twoCount++;
 			else if (arr == 3) threeCount++;
 		});
 
-		if (oneCount >= 1 || twoCount > 2 || threeCount > 3) {
+		if (zeroCount >= 1 || oneCount >= 1 || twoCount > 2 || threeCount > 3) {
 			diplomaAwarded = false;
 		}
 
