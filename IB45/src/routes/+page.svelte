@@ -9,6 +9,7 @@
     import DetailedTable from "./detailedTable.svelte";
     import SelectedGroup6 from "./selectedGroup6.svelte";
     import GradeBoundary from "./gradeboundary.svelte";
+    import { getStorage, setStorage } from "./global.js";
 
     let scores = [];
     let totalScore;
@@ -20,6 +21,7 @@
         SLCount = 0;
     let levels = [];
 
+    // Count HL and SL subjects
     $: {
         (HLCount = 0), (SLCount = 0);
         levels.forEach((item) => {
@@ -46,6 +48,13 @@
     }
 
     $: {
+        if (isLocalStorageAvailable) {
+            localStorage.setItem("selectedGroup6", selectedGroup6);
+            localStorage.setItem("gradeBoundary", gradeBoundary);
+        }
+    }
+
+    $: {
         totalScore = 0;
         for (let i = 0; i < scores.length; i++) {
             totalScore += scores[i];
@@ -53,19 +62,6 @@
         totalScore += corePoints;
     }
 </script>
-
-<nav>
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <img
-        src="flc_design20230531154582.png"
-        alt="Logo"
-        on:click={() => {
-            location.reload();
-        }}
-    />
-    <div />
-    <div />
-</nav>
 
 <div class="banner">
     <h1>
@@ -76,13 +72,11 @@
 <div class="intro">
     <h2>Welcome to IB Predict!</h2>
     <p>
-        Our primary aim is to assist IB Diploma Programme students in estimating
+        Our primary aim is to assist IB Diploma Programme students in calculating
         their final IB scores accurately. We understand the significance of
-        score predictions when it comes to university applications.Our score
-        prediction calculator has been meticulously designed to minimize
-        deviations from the actual IB scores. By taking into account various
-        factors such as your performance in internal assessments, coursework,
-        mock exams, and historical data from previous IB students, our
+        score predictions when it comes to university applications. Our score
+        prediction calculator has been designed to take into account various
+        factors such as your performance in internal assessments and historical data from previous IB students, our
         calculator strives to generate reliable predictions.
     </p>
     <p>
@@ -202,29 +196,6 @@
     </div>
 </div>
 
-<footer>
-    <div>
-        <strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br
-        />Richard Yang
-    </div>
-    <div class="title">
-        <strong>RESOURCES</strong><br />
-        <a href="May 2019 Grade Boundaries.pdf" target="_blank"
-            >May 2019 Grade Boundary</a
-        ><br />
-        <a href="May 2022 Grade Boundaries.pdf" target="_blank"
-            >May 2022 Grade Boundary</a
-        ><br />
-        <a href="November 2022 Grade Boundaries.pdf" target="_blank"
-            >November 2022 Grade Boundary</a
-        >
-    </div>
-    <div>
-        <strong>CONTACT</strong><br />Report errors, ask questions, etc.<br
-        />admin@ibpredict.com
-    </div>
-</footer>
-
 <link rel="stylesheet" href="light.css" />
 
 <style>
@@ -250,41 +221,23 @@
         border-bottom: 1px solid black;
     }
 
+    :global(.top-links) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 5px;
+        
+        width: 100%;
+    }
+
+    :global(.top-links a) {
+        margin-right: 10px;
+        color: black;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
     p {
         line-height: 2;
-    }
-
-    footer {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        background-color: var(--primary);
-        height: 200px;
-        border-top: 1px solid black;
-    }
-
-    footer div {
-        text-align: center;
-        line-height: 2;
-    }
-
-    footer div::before {
-        content: "\A";
-        white-space: pre;
-    }
-
-    nav img {
-        width: 150px;
-        height: 75px;
-        cursor: pointer;
-        align-self: flex-start;
-        margin-left: 5px;
-        transition: 0.3s ease-in-out;
-    }
-
-    nav img:hover {
-        transform: scale(1.05);
-        -webkit-transform: scale(1.05);
     }
 
     button {

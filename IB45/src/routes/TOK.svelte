@@ -24,8 +24,8 @@
 	export let corePoints;
 
 	const a = ['AA', 'AB', 'BA'];
-	const b = ['AC', 'AD', 'BB', 'CA', 'DA'];
-	const c = ['AE', 'BC', 'BD', 'CB', 'CC', 'DB', 'EA'];
+	const b = ['AC', 'AD', 'BB', 'CA', 'DA', 'BC', 'CB'];
+	const c = ['BD', 'CC', 'DB'];
 
 	$: {
 		let combine = awardedMark + ee;
