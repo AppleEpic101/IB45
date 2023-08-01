@@ -1,4 +1,5 @@
 <script>
+    import { gradeBoundary } from "./store.js";
     export let points;
     export let awardedMarks;
     export let tok;
@@ -7,7 +8,6 @@
     export let corePoints;
     export let HLCount;
     export let SLCount;
-    export let gradeBoundary;
 
     let diplomaAwarded = true;
 
@@ -119,7 +119,7 @@
 <div class="box">
     HLCount: {HLCount} <br />
     SLCount: {SLCount} <br />
-    Boundary: {gradeBoundary}
+    Boundary: {$gradeBoundary}
 </div>
 
 <div class="notice" />

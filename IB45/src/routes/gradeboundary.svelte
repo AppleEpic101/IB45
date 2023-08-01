@@ -1,5 +1,5 @@
 <script>
-	export let gradeBoundary;
+	import { gradeBoundary } from "./store.js";
 	
 </script>
 
@@ -8,15 +8,15 @@
 
 	<form>
 		<div class="option">
-			<input type="radio" bind:group={gradeBoundary} value="M19" />
+			<input type="radio" bind:group={$gradeBoundary} value="M19" />
 			<label for="May 2019">May 2019</label>
 		</div> 
 		<div class="option">
-			<input type="radio" bind:group={gradeBoundary} value="M22" />
+			<input type="radio" bind:group={$gradeBoundary} value="M22" />
 			<label for="May 2022">May 2022</label>
 		</div>
 		<div class="option">
-			<input type="radio" bind:group={gradeBoundary} value="N22" />
+			<input type="radio" bind:group={$gradeBoundary} value="N22" />
 			<label for="November 2022">November 2022</label>
 		</div>
 	</form>

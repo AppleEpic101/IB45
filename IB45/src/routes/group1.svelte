@@ -1,4 +1,5 @@
 <script>
+    import { gradeBoundary } from "./store.js";
     import Slider from "./slider.svelte";
     import data from "./assets/courses.json";
     import gradeBoundaryM19 from "./assets/Grade_BoundariesM19";
@@ -45,17 +46,16 @@
         assessments: data[courseName].assessments
     }));
     let boundaries;
-    export let gradeBoundary;
     let sliderPosition = [];
     let boundary = [];
 
     $: {
-        if (gradeBoundary == "M19") {
+        if ($gradeBoundary == "M19") {
             boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
                 name: courseName,
                 TZ: gradeBoundaryM19[courseName].TZ
             }));
-        } else if (gradeBoundary == "M22") {
+        } else if ($gradeBoundary == "M22") {
             boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
                 name: courseName,
                 TZ: gradeBoundaryM22[courseName].TZ
@@ -199,7 +199,7 @@
             Grade: {grade} / 100
             {#if matchedLang}
                 <div>
-                    {gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
+                    {$gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
                     {#if boundary.length == 1}
                         Timezone 0: {boundary[0]}
                     {:else}

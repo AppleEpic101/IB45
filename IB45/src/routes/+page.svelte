@@ -1,4 +1,5 @@
 <script>
+    import { selectedGroup6, gradeBoundary } from "./store.js";
     import Group1 from "./group1.svelte";
     import Group2 from "./group2.svelte";
     import Group3 from "./group3.svelte";
@@ -9,7 +10,6 @@
     import DetailedTable from "./detailedTable.svelte";
     import SelectedGroup6 from "./selectedGroup6.svelte";
     import GradeBoundary from "./gradeboundary.svelte";
-    import { getStorage, setStorage } from "./global.js";
 
     let scores = [];
     let totalScore;
@@ -27,31 +27,6 @@
         levels.forEach((item) => {
             item == "HL" ? HLCount++ : item == "SL" && SLCount++;
         });
-    }
-
-    let selectedGroup6 = "6";
-    let gradeBoundary = "M22";
-
-    const isLocalStorageAvailable =
-        typeof window !== "undefined" && window.localStorage;
-
-    if (isLocalStorageAvailable) {
-        selectedGroup6 = localStorage.getItem("selectedGroup6") ?? "6";
-        gradeBoundary = localStorage.getItem("gradeBoundary") ?? "M22";
-    }
-
-    $: {
-        if (isLocalStorageAvailable) {
-            localStorage.setItem("selectedGroup6", selectedGroup6);
-            localStorage.setItem("gradeBoundary", gradeBoundary);
-        }
-    }
-
-    $: {
-        if (isLocalStorageAvailable) {
-            localStorage.setItem("selectedGroup6", selectedGroup6);
-            localStorage.setItem("gradeBoundary", gradeBoundary);
-        }
     }
 
     $: {
@@ -96,8 +71,8 @@
     </p>
 
     <div class="multipleChoice">
-        <SelectedGroup6 bind:selectedGroup6 />
-        <GradeBoundary bind:gradeBoundary />
+        <SelectedGroup6 />
+        <GradeBoundary />
     </div>
     <!-- <label>
 		<input type="checkbox" />
@@ -140,34 +115,34 @@
             bind:level={levels[4]}
             {gradeBoundary}
         />
-        {#if selectedGroup6 == "6"}
+        {#if $selectedGroup6 == "6"}
             <Group6
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 {gradeBoundary}
             />
-        {:else if selectedGroup6 == "1"}
+        {:else if $selectedGroup6 == "1"}
             <Group1
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
                 {gradeBoundary}
             />
-        {:else if selectedGroup6 == "2"}
+        {:else if $selectedGroup6 == "2"}
             <Group2
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
                 {gradeBoundary}
             />
-        {:else if selectedGroup6 == "3"}
+        {:else if $selectedGroup6 == "3"}
             <Group3
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
                 {gradeBoundary}
             />
-        {:else if selectedGroup6 == "4"}
+        {:else if $selectedGroup6 == "4"}
             <Group4
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
