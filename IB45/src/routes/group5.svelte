@@ -1,18 +1,16 @@
 <script>
+	import { gradeBoundary, group5 } from "./store.js";
 	import Slider from './slider.svelte';
 	import data from './assets/courses.json';
 	import gradeBoundaryM19 from './assets/Grade_BoundariesM19';
 	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
 	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
-	import { onMount, onDestroy } from 'svelte';
 
 	let subjects = [
 		'Mathematics: Analysis And Approaches',
 		'Mathematics: Applications And Interpretation'
 	];
 
-	let sliderPosition = [];
-	export let gradeBoundary;
 	let boundary = [];
 	let boundaries;
 
@@ -22,13 +20,13 @@
 	}));
 
 	$: {
-		if(gradeBoundary == 'M19') {
+		if($gradeBoundary == 'M19') {
 			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM19[courseName].TZ
 			}));
 		}
-		else if (gradeBoundary == 'M22') {
+		else if ($gradeBoundary == 'M22') {
 			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
 				name: courseName,
 				TZ: gradeBoundaryM22[courseName].TZ
@@ -42,36 +40,23 @@
 		boundary = [];
 	}
 
-	let name;
-	export let level;
-
 	export let groupNumber = 5;
 	let grade;
 	let fullName;
 	export let awardedMark;
 
-	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
-	if (isLocalStorageAvailable) {
-		name = localStorage.getItem('name' + groupNumber) ?? '';
-		level = localStorage.getItem('level' + groupNumber) ?? '';
-		let storedSliderPosition = localStorage.getItem('sliderPosition' + groupNumber);
-		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [];
-	}
-	$: {
-		if (isLocalStorageAvailable) {
-			localStorage.setItem('name' + groupNumber, name);
-			localStorage.setItem('level' + groupNumber, level);
-			localStorage.setItem('sliderPosition' + groupNumber, JSON.stringify(sliderPosition));
-		}
-	}
+	let store = JSON.parse($group5)
+    $: {
+        $group5 = JSON.stringify(store);
+    }
 
-	$: sufficientInformation = name != '' && level != '';
-	$: fullName = level + ' ' + name;
+	$: sufficientInformation = store.name != '' && store.level != '';
+	$: fullName = store.level + ' ' + store.name;
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
 			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
+				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
 			});
 		}
 
@@ -100,7 +85,7 @@
 
 	function reset() {
 		if (matchedCourse !== undefined)
-			sliderPosition = matchedCourse.assessments.map((assessment) =>
+			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
 				Math.trunc(assessment.maxMarks / 2)
 			);
 	}
@@ -114,14 +99,14 @@
 			{fullName}
 		{/if}
 	</h2>
-	<select bind:value={name} on:change={reset}>
+	<select bind:value={store.name} on:change={reset}>
 		<option value="">Enter subject</option>
 		{#each subjects as subject}
 			<option value={subject}>{subject}</option>
 		{/each}
 	</select>
 
-	<select bind:value={level} on:change={reset}>
+	<select bind:value={store.level} on:change={reset}>
 		<option value="">Enter level</option>
 		<option value="HL">HL</option>
 		<option value="SL">SL</option>
@@ -134,7 +119,7 @@
 					max={assessment.maxMarks}
 					name={assessment.name}
 					weight={assessment.weight}
-					bind:value={sliderPosition[i]}
+					bind:value={store.sliderPosition[i]}
 				/>
 			{/each}
 		{/if}
@@ -144,7 +129,7 @@
 			Grade: {grade} / 100
 			{#if match}
 				<div>
-					{gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
+					{$gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
 					{#if boundary.length == 1}
 						Timezone 0: {boundary[0]}
 					{:else}

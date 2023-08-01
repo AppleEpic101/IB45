@@ -18,7 +18,7 @@
 	<form>
 		<div class="option">
 			<input type="radio" bind:group={$selectedGroup6} value="6" on:click={resetStorage} />
-			<label for="group6">Group 6</label>
+			<label for="group6">Group 6 (Default)</label>
 		</div>
 		<div class="option">
 			<input type="radio" bind:group={$selectedGroup6} value="1" on:click={resetStorage} />

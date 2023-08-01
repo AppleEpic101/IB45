@@ -1,19 +1,33 @@
 <script>
-    import { gradeBoundary } from "./store.js";
+    import { gradeBoundary, group1, group2, group3, group4, group5, group6 } from "./store.js";
     export let points;
     export let awardedMarks;
     export let tok;
     export let ee;
-    export let levels;
     export let corePoints;
-    export let HLCount;
-    export let SLCount;
 
-    let diplomaAwarded = true;
+    let data = [];
+    const levels = [];
+    $: {
+        data = [$group1, $group2, $group3, $group4, $group5, $group6];
+        data.forEach((item, i) => {
+            if(JSON.parse(item)) levels[i] = JSON.parse(item).level;
+            
+        }); 
+    }   
+
+    let HLCount, SLCount;
+    $: {
+        HLCount = SLCount = 0;
+        levels.forEach((item) => {
+            item == "HL" ? HLCount++ : item == "SL" && SLCount++;
+        });
+    }
 
     const p = ["E", "D", "C", "B", "A"];
     const q = [0, 1, 3, 5, 7];
 
+    let diplomaAwarded;
     $: {
         diplomaAwarded = true;
         if (HLCount + SLCount != 6) {
@@ -29,12 +43,9 @@
             diplomaAwarded = false;
         }
 
-        let zeroCount = 0,
-            oneCount = 0,
-            twoCount = 0,
-            threeCount = 0;
-        let HLSum = 0,
-            SLSum = 0;
+        let zeroCount, oneCount, twoCount, threeCount, HLSum, SLSum;
+        zeroCount = oneCount = twoCount = threeCount = HLSum = SLSum = 0;
+        HLSum = SLSum = 0;
         levels.forEach((arr, i) => {
             if (arr == "HL") HLSum += awardedMarks[i];
             else if (arr == "SL") SLSum += awardedMarks[i];

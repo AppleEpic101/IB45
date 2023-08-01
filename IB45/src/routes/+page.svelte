@@ -48,9 +48,8 @@
     <h2>Welcome to IB Predict!</h2>
     <p>
         Our primary aim is to assist IB Diploma Programme students in calculating
-        their final IB scores accurately. We understand the significance of
-        score predictions when it comes to university applications. Our score
-        prediction calculator has been designed to take into account various
+        their final IB grade accurately. We understand the significance of
+        score predictions when it comes to university applications. Our IB predicted grade calculator has been designed to take into account various
         factors such as your performance in internal assessments and historical data from previous IB students, our
         calculator strives to generate reliable predictions.
     </p>
@@ -93,61 +92,51 @@
         <Group1
             bind:awardedMark={scores[0]}
             bind:level={levels[0]}
-            {gradeBoundary}
         />
         <Group2
             bind:awardedMark={scores[1]}
             bind:level={levels[1]}
-            {gradeBoundary}
         />
         <Group3
             bind:awardedMark={scores[2]}
             bind:level={levels[2]}
-            {gradeBoundary}
         />
         <Group4
             bind:awardedMark={scores[3]}
             bind:level={levels[3]}
-            {gradeBoundary}
         />
         <Group5
             bind:awardedMark={scores[4]}
             bind:level={levels[4]}
-            {gradeBoundary}
         />
         {#if $selectedGroup6 == "6"}
             <Group6
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
-                {gradeBoundary}
             />
         {:else if $selectedGroup6 == "1"}
             <Group1
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
-                {gradeBoundary}
             />
         {:else if $selectedGroup6 == "2"}
             <Group2
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
-                {gradeBoundary}
             />
         {:else if $selectedGroup6 == "3"}
             <Group3
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
-                {gradeBoundary}
             />
         {:else if $selectedGroup6 == "4"}
             <Group4
                 bind:awardedMark={scores[5]}
                 bind:level={levels[5]}
                 groupNumber="6"
-                {gradeBoundary}
             />
         {/if}
         <TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
