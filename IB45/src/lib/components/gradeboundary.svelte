@@ -1,5 +1,5 @@
 <script>
-	import { gradeBoundary } from "./store.js";
+	import { gradeBoundary } from "$lib/stores/store.js";
 	
 </script>
 

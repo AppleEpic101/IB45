@@ -1,22 +1,15 @@
 <script>
-	import { gradeBoundary, group4, group6 } from "./store.js";
+	import { gradeBoundary, group5 } from "$lib/stores/store.js";
 	import Slider from './slider.svelte';
-	import data from './assets/courses.json';
-	import gradeBoundaryM19 from './assets/Grade_BoundariesM19';
-	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
-	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
+	import data from '$lib/assets/courses.json';
+	import gradeBoundaryM19 from '$lib/assets/Grade_BoundariesM19';
+	import gradeBoundaryM22 from '$lib/assets/Grade_BoundariesM22';
+	import gradeBoundaryN22 from '$lib/assets/Grade_BoundariesN22';
 
-	const subjects = [
-		'Biology',
-		'Chemistry',
-		'Computer Science',
-		'Design Technology',
-		'Environmental Systems And Societies',
-		'Physics',
-		'Sports, Excercise And Health Science'
+	let subjects = [
+		'Mathematics: Analysis And Approaches',
+		'Mathematics: Applications And Interpretation'
 	];
-
-	const SLOnly = ['Environmental Systems And Societies'];
 
 	let boundary = [];
 	let boundaries;
@@ -43,21 +36,18 @@
 				name: courseName,
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
-		}
+		} 
 		boundary = [];
 	}
 
-	let name;
-
-	export let groupNumber = 4;
+	export let groupNumber = 5;
 	let grade;
 	let fullName;
 	export let awardedMark;
 
-	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group4);
+	let store = JSON.parse($group5)
     $: {
-        if (groupNumber == 6) $group6 = JSON.stringify(store);
-        else $group4 = JSON.stringify(store);
+        $group5 = JSON.stringify(store);
     }
 
 	$: sufficientInformation = store.name != '' && store.level != '';
@@ -90,10 +80,6 @@
 		}
 	}
 
-	$: {
-		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
-	}
-
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
 
@@ -108,7 +94,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group {groupNumber}: Sciences
+			Group {groupNumber}: Mathematics
 		{:else}
 			{fullName}
 		{/if}
@@ -122,9 +108,7 @@
 
 	<select bind:value={store.level} on:change={reset}>
 		<option value="">Enter level</option>
-		{#if !SLOnly.includes(store.name)}
-			<option value="HL">HL</option>
-		{/if}
+		<option value="HL">HL</option>
 		<option value="SL">SL</option>
 	</select>
 

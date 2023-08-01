@@ -1,15 +1,22 @@
 <script>
-	import { gradeBoundary, group5 } from "./store.js";
+	import { gradeBoundary, group4, group6 } from "$lib/stores/store.js";
 	import Slider from './slider.svelte';
-	import data from './assets/courses.json';
-	import gradeBoundaryM19 from './assets/Grade_BoundariesM19';
-	import gradeBoundaryM22 from './assets/Grade_BoundariesM22';
-	import gradeBoundaryN22 from './assets/Grade_BoundariesN22';
+	import data from '$lib/assets/courses.json';
+	import gradeBoundaryM19 from '$lib/assets/Grade_BoundariesM19';
+	import gradeBoundaryM22 from '$lib/assets/Grade_BoundariesM22';
+	import gradeBoundaryN22 from '$lib/assets/Grade_BoundariesN22';
 
-	let subjects = [
-		'Mathematics: Analysis And Approaches',
-		'Mathematics: Applications And Interpretation'
+	const subjects = [
+		'Biology',
+		'Chemistry',
+		'Computer Science',
+		'Design Technology',
+		'Environmental Systems And Societies',
+		'Physics',
+		'Sports, Excercise And Health Science'
 	];
+
+	const SLOnly = ['Environmental Systems And Societies'];
 
 	let boundary = [];
 	let boundaries;
@@ -36,18 +43,21 @@
 				name: courseName,
 				TZ: gradeBoundaryN22[courseName].TZ
 			}));
-		} 
+		}
 		boundary = [];
 	}
 
-	export let groupNumber = 5;
+	let name;
+
+	export let groupNumber = 4;
 	let grade;
 	let fullName;
 	export let awardedMark;
 
-	let store = JSON.parse($group5)
+	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group4);
     $: {
-        $group5 = JSON.stringify(store);
+        if (groupNumber == 6) $group6 = JSON.stringify(store);
+        else $group4 = JSON.stringify(store);
     }
 
 	$: sufficientInformation = store.name != '' && store.level != '';
@@ -80,6 +90,10 @@
 		}
 	}
 
+	$: {
+		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
+	}
+
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
 
@@ -94,7 +108,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group {groupNumber}: Mathematics
+			Group {groupNumber}: Sciences
 		{:else}
 			{fullName}
 		{/if}
@@ -108,7 +122,9 @@
 
 	<select bind:value={store.level} on:change={reset}>
 		<option value="">Enter level</option>
-		<option value="HL">HL</option>
+		{#if !SLOnly.includes(store.name)}
+			<option value="HL">HL</option>
+		{/if}
 		<option value="SL">SL</option>
 	</select>
 

@@ -1,10 +1,10 @@
 <script>
-    import { gradeBoundary, group2, group6 } from "./store.js";
+    import { gradeBoundary, group2, group6 } from "$lib/stores/store.js";
     import Slider from "./slider.svelte";
-    import data from "./assets/courses.json";
-    import gradeBoundaryM19 from "./assets/Grade_BoundariesM19";
-    import gradeBoundaryM22 from "./assets/Grade_BoundariesM22";
-    import gradeBoundaryN22 from "./assets/Grade_BoundariesN22";
+    import data from "$lib/assets/courses.json";
+    import gradeBoundaryM19 from "$lib/assets/Grade_BoundariesM19";
+    import gradeBoundaryM22 from "$lib/assets/Grade_BoundariesM22";
+    import gradeBoundaryN22 from "$lib/assets/Grade_BoundariesN22";
 
     const LitLanguages = [
         "English",

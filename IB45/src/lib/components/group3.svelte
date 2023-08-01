@@ -1,53 +1,40 @@
 <script>
-    import { gradeBoundary, group1, group6 } from "./store.js";
+    import { gradeBoundary, group3, group6 } from "$lib/stores/store.js";
     import Slider from "./slider.svelte";
-    import data from "./assets/courses.json";
-    import gradeBoundaryM19 from "./assets/Grade_BoundariesM19";
-    import gradeBoundaryM22 from "./assets/Grade_BoundariesM22";
-    import gradeBoundaryN22 from "./assets/Grade_BoundariesN22";
+    import data from "$lib/assets/courses.json";
+    import gradeBoundaryM19 from "$lib/assets/Grade_BoundariesM19";
+    import gradeBoundaryM22 from "$lib/assets/Grade_BoundariesM22";
+    import gradeBoundaryN22 from "$lib/assets/Grade_BoundariesN22";
 
-    const LitLanguages = [
-        "English",
-        "French",
-        "Spanish",
-        "Arabic",
-        "Chinese",
-        "Catalan",
-        "Danish",
-        "Dutch",
-        "Finnish",
-        "German",
-        "Hindi",
-        "Indonesian",
-        "Italian",
-        "Japanese",
-        "Korean",
-        "Lithuanian",
-        "Malay",
-        "Modern Greek",
-        "Norwegian",
-        "Polish",
-        "Portuguese",
-        "Russian",
-        "Swedish",
-        "Tamil",
-        "Thai",
-        "Turkish",
-        "Vietnamese"
+    let subjects = [
+        "Business Management",
+        "Economics",
+        "Environmental Systems And Societies",
+        "Geography",
+        "Global Politics",
+        "History",
+        "Information Technology In A Global Society",
+        "Philosophy",
+        "Psychology",
+        "Social And Cultural Anthropology",
+        "World Religions"
+    ];
+    let SLOnly = ["Environmental Systems And Societies", "World Religions"];
+
+    let regions = [
+        "Africa And Middle East",
+        "Americas",
+        "Asia And Oceania",
+        "Europe"
     ];
 
-    const subjects = [
-        "Language A: Literature",
-        "Language A: Language And Literature"
-    ];
+    let boundary = [];
+    let boundaries;
 
     let courses = Object.keys(data).map((courseName) => ({
         name: courseName,
         assessments: data[courseName].assessments
     }));
-
-    let boundaries;
-    let boundary = [];
 
     $: {
         if ($gradeBoundary == "M19") {
@@ -69,25 +56,25 @@
         boundary = [];
     }
 
-    export let groupNumber = 1;
-
+    export let groupNumber = 3;
     let shortName;
     let grade;
     let fullName;
     export let awardedMark;
 
-    let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group1);
+    let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group3);
     $: {
         if (groupNumber == 6) $group6 = JSON.stringify(store);
-        else $group1 = JSON.stringify(store);
+        else $group3 = JSON.stringify(store);
     }
 
-
-    $: sufficientInformation = store.name != "" && store.level != "" && store.language != "";
+    $: sufficientInformation = !(
+        (shortName == "HL History" && store.region == "") ||
+        store.name == "" ||
+        store.level == ""
+    );
     $: shortName = store.level + " " + store.name;
-
-    $: if (sufficientInformation)
-        fullName = store.level + " " + store.language + " " + store.name;
+    $: fullName = store.level + " " + store.name + " " + store.region;
     $: {
         grade = 0;
         if (matchedCourse !== undefined) {
@@ -102,12 +89,13 @@
         grade = Math.round(grade);
     }
 
-    $: matchedCourse = courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
-    $: matchedLang = boundaries.find((course) => course.name === fullName); // HL English Language A: Language And Literature
+    $: matchedCourse = courses.find((course) => course.name === shortName);
+    $: match = boundaries.find((course) => course.name === fullName.trim());
+
     $: {
         // calculate grade boundary
-        if (matchedLang !== undefined) {
-            matchedLang.TZ.forEach((arr, i) => {
+        if (match !== undefined) {
+            match.TZ.forEach((arr, i) => {
                 boundary[i] = 0;
                 arr.forEach((element) => {
                     if (grade >= element) {
@@ -117,25 +105,29 @@
             });
         }
     }
+    $: {
+        if (store.name === "History" && store.level === "SL" || store.name !== "History") store.region = "";
+    }
 
-    function reset() {
-        // default slider values
-        if (matchedCourse !== undefined) {
-            store.sliderPosition = matchedCourse.assessments.map(
-                (assessment) => assessment.maxMarks / 2
-            );
-        }
-        boundary = [];
+    $: {
+        if (SLOnly.includes(store.name) && store.level == "HL") store.level = "SL";
     }
 
     $: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-    $: if (!matchedCourse || !matchedLang) awardedMark = 0;
+    $: if (!matchedCourse || !match) awardedMark = 0;
+
+    function reset() {
+        if (matchedCourse !== undefined)
+            store.sliderPosition = matchedCourse.assessments.map((assessment) =>
+                Math.trunc(assessment.maxMarks / 2)
+            );
+    }
 </script>
 
 <div class="group">
     <h2>
         {#if !sufficientInformation}
-            Group {groupNumber}: Studies In Language And Literature
+            Group {groupNumber}: Individuals And Societies
         {:else}
             {fullName}
         {/if}
@@ -149,16 +141,20 @@
 
     <select bind:value={store.level} on:change={reset}>
         <option value="">Enter level</option>
-        <option value="HL">HL</option>
+        {#if !SLOnly.includes(store.name)}
+            <option value="HL">HL</option>
+        {/if}
         <option value="SL">SL</option>
     </select>
 
-    <select bind:value={store.language} on:change={reset}>
-        <option value="">Enter language</option>
-        {#each LitLanguages as language}
-            <option value={language}>{language}</option>
-        {/each}
-    </select>
+    {#if store.name === "History" && store.level === "HL"}
+        <select bind:value={store.region} on:change={reset}>
+            <option value="">Enter HL History region</option>
+            {#each regions as r}
+                <option value={r}>{r}</option>
+            {/each}
+        </select>
+    {/if}
 
     <div class="content">
         {#if sufficientInformation && matchedCourse}
@@ -175,7 +171,7 @@
     <div class="stats">
         {#if sufficientInformation}
             Grade: {grade} / 100
-            {#if matchedLang}
+            {#if match}
                 <div>
                     {$gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
                     {#if boundary.length == 1}
@@ -195,5 +191,3 @@
         {/if}
     </div>
 </div>
-
-<link rel="stylesheet" href="group.css" />

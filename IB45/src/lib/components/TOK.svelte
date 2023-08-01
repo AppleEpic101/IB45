@@ -1,7 +1,7 @@
 <script>
 	import Slider from './slider.svelte';
-	import data from './assets/courses.json';
-	import gradeBoundary from './assets/Grade_BoundariesM22.json';
+	import data from '$lib/assets/courses.json';
+	import gradeBoundary from '$lib/assets/Grade_BoundariesM22.json';
 
 	let courses = Object.keys(data).map((courseName) => ({
 		name: courseName,

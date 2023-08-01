@@ -1,5 +1,5 @@
 <script>
-	import { selectedGroup6 } from "./store.js";
+	import { selectedGroup6 } from "$lib/stores/store.js";
 
 	function resetStorage() {
 		localStorage.removeItem('name6');
