@@ -3,6 +3,7 @@
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
+	import Dropdown from './dropdown.svelte';
 
 	const subjects = [
 		'Business Management',
@@ -21,9 +22,6 @@
 	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
 	export let groupNumber = 3;
-	let shortName;
-	let grade;
-	let fullName;
 	export let awardedMark;
 
 	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group3);
@@ -44,8 +42,9 @@
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName.trim());
 
 	$: {
-		if ((store.name === 'History' && store.level === 'SL') || store.name !== 'History')
+		if ((store.name === 'History' && store.level === 'SL') || store.name !== 'History') {
 			store.region = '';
+		}
 	}
 
 	$: {
@@ -56,15 +55,6 @@
 	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
-
-	function reset() {
-		if (matchedCourse !== undefined) {
-			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
-				Math.trunc(assessment.maxMarks / 2)
-			);
-		}
-		boundary = [];
-	}
 </script>
 
 <div class="group">
@@ -75,28 +65,11 @@
 			{fullName}
 		{/if}
 	</h2>
-	<select bind:value={store.name} on:change={reset}>
-		<option value="">Enter subject</option>
-		{#each subjects as subject}
-			<option value={subject}>{subject}</option>
-		{/each}
-	</select>
 
-	<select bind:value={store.level} on:change={reset}>
-		<option value="">Enter level</option>
-		{#if !SLOnly.includes(store.name)}
-			<option value="HL">HL</option>
-		{/if}
-		<option value="SL">SL</option>
-	</select>
-
+	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
+	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 	{#if store.name === 'History' && store.level === 'HL'}
-		<select bind:value={store.region} on:change={reset}>
-			<option value="">Enter HL History region</option>
-			{#each regions as r}
-				<option value={r}>{r}</option>
-			{/each}
-		</select>
+		<Dropdown str="Enter HL History Region" bind:value={store.region} arr={regions} />
 	{/if}
 
 	<div class="content">

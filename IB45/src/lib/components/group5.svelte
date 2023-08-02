@@ -3,6 +3,7 @@
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
+	import Dropdown from './dropdown.svelte';
 
 	let subjects = [
 		'Mathematics: Analysis And Approaches',
@@ -24,10 +25,12 @@
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
 	function reset() {
-		if (matchedCourse !== undefined)
+		if (matchedCourse !== undefined) {
 			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
 				Math.trunc(assessment.maxMarks / 2)
 			);
+		}
+		boundary = [];
 	}
 
 	$: boundary = calculateGradeBoundary(match, boundary, grade);
@@ -44,18 +47,9 @@
 			{fullName}
 		{/if}
 	</h2>
-	<select bind:value={store.name} on:change={reset}>
-		<option value="">Enter subject</option>
-		{#each subjects as subject}
-			<option value={subject}>{subject}</option>
-		{/each}
-	</select>
 
-	<select bind:value={store.level} on:change={reset}>
-		<option value="">Enter level</option>
-		<option value="HL">HL</option>
-		<option value="SL">SL</option>
-	</select>
+	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
+	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}

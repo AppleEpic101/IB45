@@ -9,15 +9,15 @@
 
 <div class="stats">
 	{#if sufficientInformation}
-		Grade: {grade} / 100
+		{$gradeBoundary}
+		Grade: {grade}/100
 		{#if match}
 			<div>
-				{$gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
 				{#if boundary.length == 1}
 					Timezone 0: {boundary[0]}
 				{:else}
 					{#each boundary as b, i}
-						Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
+						Timezone {i + 1}: {b} <br />
 					{/each}
 				{/if}
 			</div>

@@ -3,8 +3,9 @@
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
+	import Dropdown from './dropdown.svelte';
 
-	const LitLanguages = [
+	const languages = [
 		'English',
 		'French',
 		'Spanish',
@@ -56,8 +57,11 @@
 
 	$: matchedCourse = $courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
+
 	$: {
-		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
+		if (SLOnly.includes(store.name) && store.level == 'HL') {
+			store.level = 'SL';
+		}
 	}
 
 	$: grade = calculateGrade(store, matchedCourse);
@@ -83,27 +87,10 @@
 			{fullName}
 		{/if}
 	</h2>
-	<select bind:value={store.name} on:change={reset}>
-		<option value="">Enter subject</option>
-		{#each subjects as subject}
-			<option value={subject}>{subject}</option>
-		{/each}
-	</select>
 
-	<select bind:value={store.level} on:change={reset}>
-		<option value="">Enter level</option>
-		{#if !SLOnly.includes(store.name)}
-			<option value="HL">HL</option>
-		{/if}
-		<option value="SL">SL</option>
-	</select>
-
-	<select bind:value={store.language} on:change={reset}>
-		<option value="">Enter language</option>
-		{#each LitLanguages as language}
-			<option value={language}>{language}</option>
-		{/each}
-	</select>
+	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
+	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}

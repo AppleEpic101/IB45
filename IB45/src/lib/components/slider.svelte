@@ -3,16 +3,14 @@
 	export let max;
 	export let name;
 	export let weight;
-	export let value = max / 2;
-
-	function handleChange(event) {
-		value = event.target.value;
-	}
+	export let value = Math.trunc(max / 2);
 
 	$: if (value > max) {
 		value = max;
 	} else if (value < min) {
 		value = 0;
+	} else if (value % 1 !== 0) {
+		value = Math.trunc(value);
 	}
 </script>
 
@@ -38,7 +36,7 @@
 		background-color: var(--lightprimary);
 		border-radius: 5px;
 	}
-	
+
 	.c {
 		display: flex;
 		flex-direction: row;
@@ -71,7 +69,7 @@
 		margin-top: -5px;
 	}
 
-	input[type="number"] {
+	input[type='number'] {
 		width: 3em;
 		border: 2px solid black;
 		background-color: white;
