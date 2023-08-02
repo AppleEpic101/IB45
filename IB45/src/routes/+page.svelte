@@ -42,6 +42,8 @@
 		cannot be understated. Our IB predicted grade calculator incorporates official grade boundaries
 		data from previous IB administrations, in the hopes that it will generate reliable predictions.
 	</p>
+
+	<hr />
 	<strong>
 		<ul>
 			<li>
@@ -213,10 +215,6 @@
 	@media screen and (max-width: 560px) {
 		.layout {
 			display: block;
-		}
-		footer {
-			display: block;
-			height: 450px;
 		}
 		.banner {
 			height: 300px;
