@@ -1,10 +1,7 @@
 <script>
-	import { gradeBoundary, group1, group6 } from '$lib/stores/store.js';
+	import { group1, group6, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import Groupstat from '$lib/components/groupstat.svelte';
 	import Slider from '$lib/components/slider.svelte';
-	import data from '$lib/assets/courses.json';
-	import gradeBoundaryM19 from '$lib/assets/Grade_BoundariesM19';
-	import gradeBoundaryM22 from '$lib/assets/Grade_BoundariesM22';
-	import gradeBoundaryN22 from '$lib/assets/Grade_BoundariesN22';
 
 	const LitLanguages = [
 		'English',
@@ -38,31 +35,10 @@
 
 	const subjects = ['Language A: Literature', 'Language A: Language And Literature'];
 
-	let courses = Object.keys(data).map((courseName) => ({
-		name: courseName,
-		assessments: data[courseName].assessments
-	}));
-
-	let boundaries;
 	let boundary = [];
 
 	$: {
-		if ($gradeBoundary == 'M19') {
-			boundaries = Object.keys(gradeBoundaryM19).map((courseName) => ({
-				name: courseName,
-				TZ: gradeBoundaryM19[courseName].TZ
-			}));
-		} else if ($gradeBoundary == 'M22') {
-			boundaries = Object.keys(gradeBoundaryM22).map((courseName) => ({
-				name: courseName,
-				TZ: gradeBoundaryM22[courseName].TZ
-			}));
-		} else {
-			boundaries = Object.keys(gradeBoundaryN22).map((courseName) => ({
-				name: courseName,
-				TZ: gradeBoundaryN22[courseName].TZ
-			}));
-		}
+		console.log('test', $gradeBoundaryData);
 		boundary = [];
 	}
 
@@ -83,6 +59,7 @@
 	$: shortName = store.level + ' ' + store.name;
 
 	$: if (sufficientInformation) fullName = store.level + ' ' + store.language + ' ' + store.name;
+
 	$: {
 		grade = 0;
 		if (matchedCourse !== undefined) {
@@ -90,12 +67,11 @@
 				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
 			});
 		}
-
 		grade = Math.round(grade);
 	}
 
-	$: matchedCourse = courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
-	$: matchedLang = boundaries.find((course) => course.name === fullName); // HL English Language A: Language And Literature
+	$: matchedCourse = $courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
+	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
 	$: {
 		// calculate grade boundary
 		if (matchedLang !== undefined) {
@@ -110,13 +86,12 @@
 		}
 	}
 
-	function reset() {
-		// default slider values
+	const reset = () => {
 		if (matchedCourse !== undefined) {
 			store.sliderPosition = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
 		}
 		boundary = [];
-	}
+	};
 
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
@@ -162,28 +137,8 @@
 			{/each}
 		{/if}
 	</div>
-	<div class="stats">
-		{#if sufficientInformation}
-			Grade: {grade} / 100
-			{#if matchedLang}
-				<div>
-					{$gradeBoundary}&nbsp;&nbsp;&nbsp;&nbsp;
-					{#if boundary.length == 1}
-						Timezone 0: {boundary[0]}
-					{:else}
-						{#each boundary as b, i}
-							Timezone {i + 1}: {b} &nbsp&nbsp&nbsp&nbsp
-						{/each}
-					{/if}
-				</div>
-				Awarded Mark: {awardedMark}
-			{:else}
-				<h4>Boundary Not Found.</h4>
-			{/if}
-		{:else}
-			<h4>Please provide more details</h4>
-		{/if}
-	</div>
+
+	<Groupstat {sufficientInformation} {grade} match={matchedLang} {boundary} {awardedMark} />
 </div>
 
 <link rel="stylesheet" href="/style/group.css" />

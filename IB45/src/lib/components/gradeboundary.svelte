@@ -1,6 +1,27 @@
 <script>
-	import { gradeBoundary } from "$lib/stores/store.js";
-	
+	import { gradeBoundary, gradeBoundaryData } from '$lib/stores/store.js';
+	import M19 from '$lib/assets/Grade_BoundariesM19';
+	import M22 from '$lib/assets/Grade_BoundariesM22';
+	import N22 from '$lib/assets/Grade_BoundariesN22';
+
+	$: {
+		if ($gradeBoundary === 'M19') {
+			$gradeBoundaryData = Object.keys(M19).map((courseName) => ({
+				name: courseName,
+				TZ: M19[courseName].TZ
+			}));
+		} else if ($gradeBoundary === 'M22') {
+			$gradeBoundaryData = Object.keys(M22).map((courseName) => ({
+				name: courseName,
+				TZ: M22[courseName].TZ
+			}));
+		} else {
+			$gradeBoundaryData = Object.keys(N22).map((courseName) => ({
+				name: courseName,
+				TZ: N22[courseName].TZ
+			}));
+		}
+	}
 </script>
 
 <div class="body">
@@ -10,7 +31,7 @@
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="M19" />
 			<label for="May 2019">May 2019</label>
-		</div> 
+		</div>
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="M22" />
 			<label for="May 2022">May 2022 (Default)</label>
