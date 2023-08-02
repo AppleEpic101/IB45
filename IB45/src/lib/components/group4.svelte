@@ -1,5 +1,6 @@
 <script>
 	import { group4, group6, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
 
@@ -15,15 +16,7 @@
 
 	const SLOnly = ['Environmental Systems And Societies'];
 
-	let boundary = [];
-
-	$: {
-		boundary = [];
-	}
-
 	export let groupNumber = 4;
-	let grade;
-	let fullName;
 	export let awardedMark;
 
 	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group4);
@@ -34,38 +27,16 @@
 
 	$: sufficientInformation = store.name != '' && store.level != '';
 	$: fullName = store.level + ' ' + store.name;
-	$: {
-		grade = 0;
-		if (matchedCourse !== undefined) {
-			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-			});
-		}
-
-		grade = Math.round(grade);
-	}
 
 	$: matchedCourse = $courses.find((course) => course.name === fullName);
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
 	$: {
-		// calculate grade boundary
-		if (match !== undefined) {
-			match.TZ.forEach((arr, i) => {
-				boundary[i] = 0;
-				arr.forEach((element) => {
-					if (grade >= element) {
-						boundary[i]++;
-					}
-				});
-			});
-		}
-	}
-
-	$: {
 		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
 	}
 
+	$: grade = calculateGrade(store, matchedCourse);
+	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
 

@@ -1,5 +1,6 @@
 <script>
 	import { group3, group6, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
 
@@ -17,13 +18,7 @@
 		'World Religions'
 	];
 	const SLOnly = ['Environmental Systems And Societies', 'World Religions'];
-
 	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
-
-	let boundary = [];
-	$: {
-		boundary = [];
-	}
 
 	export let groupNumber = 3;
 	let shortName;
@@ -44,33 +39,10 @@
 	);
 	$: shortName = store.level + ' ' + store.name;
 	$: fullName = store.level + ' ' + store.name + ' ' + store.region;
-	$: {
-		grade = 0;
-		if (matchedCourse !== undefined) {
-			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-			});
-		}
-
-		grade = Math.round(grade);
-	}
 
 	$: matchedCourse = $courses.find((course) => course.name === shortName);
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName.trim());
 
-	$: {
-		// calculate grade boundary
-		if (match !== undefined) {
-			match.TZ.forEach((arr, i) => {
-				boundary[i] = 0;
-				arr.forEach((element) => {
-					if (grade >= element) {
-						boundary[i]++;
-					}
-				});
-			});
-		}
-	}
 	$: {
 		if ((store.name === 'History' && store.level === 'SL') || store.name !== 'History')
 			store.region = '';
@@ -80,14 +52,18 @@
 		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
 	}
 
+	$: grade = calculateGrade(store, matchedCourse);
+	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
 
 	function reset() {
-		if (matchedCourse !== undefined)
+		if (matchedCourse !== undefined) {
 			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
 				Math.trunc(assessment.maxMarks / 2)
 			);
+		}
+		boundary = [];
 	}
 </script>
 

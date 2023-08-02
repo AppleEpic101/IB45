@@ -42,7 +42,6 @@
 	let SLOnly = ['Language AB Initio'];
 
 	export let groupNumber = 2;
-	let fullName, shortName, grade;
 	export let awardedMark;
 
 	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group2);
@@ -53,14 +52,18 @@
 
 	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
 	$: shortName = store.level + ' ' + store.name;
-	$: if (sufficientInformation) fullName = store.level + ' ' + store.language + ' ' + store.name;
+	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
-	$: matchedCourse = $courses.find((course) => course.name === shortName);
-	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName);
-
+	$: matchedCourse = $courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
+	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
 	$: {
 		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
 	}
+
+	$: grade = calculateGrade(store, matchedCourse);
+	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
+	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
+	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 
 	function reset() {
 		if (matchedCourse !== undefined) {
@@ -70,11 +73,6 @@
 		}
 		boundary = [];
 	}
-
-	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
-	$: grade = calculateGrade(store, matchedCourse);
-	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 </script>
 
 <div class="group">

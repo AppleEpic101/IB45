@@ -1,18 +1,12 @@
 <script>
 	import { group6, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
 
 	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts', 'Literature And Performance'];
 
-	let boundary = [];
-	$: {
-		boundary = [];
-	}
-
 	const groupNumber = 6;
-	let grade;
-	let fullName;
 	export let awardedMark;
 
 	let store = JSON.parse($group6);
@@ -22,34 +16,12 @@
 
 	$: sufficientInformation = store.name != '' && store.level != '';
 	$: fullName = store.level + ' ' + store.name;
-	$: {
-		grade = 0;
-		if (matchedCourse !== undefined) {
-			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-			});
-		}
-
-		grade = Math.round(grade);
-	}
 
 	$: matchedCourse = $courses.find((course) => course.name === fullName);
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
-	$: {
-		// calculate grade boundary
-		if (match !== undefined) {
-			match.TZ.forEach((arr, i) => {
-				boundary[i] = 0;
-				arr.forEach((element) => {
-					if (grade >= element) {
-						boundary[i]++;
-					}
-				});
-			});
-		}
-	}
-
+	$: grade = calculateGrade(store, matchedCourse);
+	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !match) awardedMark = 0;
 

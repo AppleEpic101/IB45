@@ -1,5 +1,6 @@
 <script>
 	import { group1, group6, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Groupstat from '$lib/components/groupstat.svelte';
 	import Slider from '$lib/components/slider.svelte';
 
@@ -35,18 +36,7 @@
 
 	const subjects = ['Language A: Literature', 'Language A: Language And Literature'];
 
-	let boundary = [];
-
-	$: {
-		console.log('test', $gradeBoundaryData);
-		boundary = [];
-	}
-
 	export let groupNumber = 1;
-
-	let shortName;
-	let grade;
-	let fullName;
 	export let awardedMark;
 
 	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group1);
@@ -57,42 +47,22 @@
 
 	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
 	$: shortName = store.level + ' ' + store.name;
-
-	$: if (sufficientInformation) fullName = store.level + ' ' + store.language + ' ' + store.name;
-
-	$: {
-		grade = 0;
-		if (matchedCourse !== undefined) {
-			matchedCourse.assessments.forEach((assessment, i) => {
-				grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-			});
-		}
-		grade = Math.round(grade);
-	}
+	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
 	$: matchedCourse = $courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
-	$: {
-		// calculate grade boundary
-		if (matchedLang !== undefined) {
-			matchedLang.TZ.forEach((arr, i) => {
-				boundary[i] = 0;
-				arr.forEach((element) => {
-					if (grade >= element) {
-						boundary[i]++;
-					}
-				});
-			});
-		}
-	}
 
-	const reset = () => {
+	function reset() {
 		if (matchedCourse !== undefined) {
-			store.sliderPosition = matchedCourse.assessments.map((assessment) => assessment.maxMarks / 2);
+			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
+				Math.trunc(assessment.maxMarks / 2)
+			);
 		}
 		boundary = [];
-	};
+	}
 
+	$: grade = calculateGrade(store, matchedCourse);
+	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
 	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
 	$: if (!matchedCourse || !matchedLang) awardedMark = 0;
 </script>
