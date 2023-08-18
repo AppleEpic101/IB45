@@ -9,11 +9,13 @@
 	/>
 	<div class="top-links">
 		<a href="/">Home</a>
-		<!-- <a href="./About">About</a> -->
+		<a href="./changelog">Changelog</a>
 	</div>
 </nav>
 
-<slot />
+<div class="slot">
+	<slot />
+</div>
 
 <footer>
 	<div>
@@ -29,6 +31,8 @@
 		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com
 	</div>
 </footer>
+
+<link rel="stylesheet" href="/style/light.css" />
 
 <style>
 	:global(html) {
@@ -58,7 +62,6 @@
 		justify-content: flex-end;
 		align-items: center;
 		margin-right: 5px;
-
 		width: 100%;
 	}
 
@@ -70,12 +73,16 @@
 		font-size: 1.2em;
 	}
 
+	.slot {
+		min-height: 60vh;
+	}
+
 	footer {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: flex-start;
 		background-color: var(--primary);
-		height: 200px;
+		height: 25vh;
 		border-top: 1px solid black;
 	}
 
@@ -90,8 +97,10 @@
 	}
 
 	nav img {
-		width: 150px;
-		height: 75px;
+		width: 20vh;
+		height: 10vh;
+		min-height: 75px;
+		min-width: 150px;
 		cursor: pointer;
 		align-self: flex-start;
 		margin-left: 5px;

@@ -1,6 +1,7 @@
 <script>
 	import {
 		gradeBoundary,
+		timezone,
 		group1,
 		group2,
 		group3,
@@ -127,7 +128,8 @@
 <div class="box">
 	HLCount: {HLCount} <br />
 	SLCount: {SLCount} <br />
-	Boundary: {$gradeBoundary}
+	Boundary: {$gradeBoundary} <br />
+	Timezone: {$timezone}
 </div>
 
 <div class="notice" />

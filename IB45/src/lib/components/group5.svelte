@@ -1,5 +1,5 @@
 <script>
-	import { group5, courses, gradeBoundaryData } from '$lib/stores/store.js';
+	import { group5, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
@@ -24,19 +24,10 @@
 	$: matchedCourse = $courses.find((course) => course.name === fullName);
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
-	function reset() {
-		if (matchedCourse !== undefined) {
-			store.sliderPosition = matchedCourse.assessments.map((assessment) =>
-				Math.trunc(assessment.maxMarks / 2)
-			);
-		}
-		boundary = [];
-	}
-
 	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: grade = calculateGrade(store, matchedCourse);
-	$: awardedMark = boundary.length > 0 ? Math.min(...boundary) : 0;
-	$: if (!matchedCourse || !match) awardedMark = 0;
+	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
+	$: if (!matchedCourse || !match || !awardedMark) awardedMark = 0;
 </script>
 
 <div class="group">

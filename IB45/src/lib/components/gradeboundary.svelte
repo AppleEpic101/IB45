@@ -30,15 +30,18 @@
 	<form>
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="M19" />
-			<label for="May 2019">May 2019</label>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>May 2019</label>
 		</div>
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="M22" />
-			<label for="May 2022">May 2022 (Default)</label>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>May 2022 (Default)</label>
 		</div>
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="N22" />
-			<label for="November 2022">November 2022</label>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>November 2022</label>
 		</div>
 	</form>
 </div>

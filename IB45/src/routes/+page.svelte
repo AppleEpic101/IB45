@@ -10,6 +10,7 @@
 	import DetailedTable from '$lib/components/detailedTable.svelte';
 	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
 	import GradeBoundary from '$lib/components/gradeboundary.svelte';
+	import Timezone from '$lib/components/timezone.svelte';
 
 	let scores = [];
 	let totalScore;
@@ -34,7 +35,7 @@
 <div class="intro">
 	<div>
 		<h1>Welcome to IB Predict!</h1>
-		<h3>Last updated August 1, 2023</h3>
+		<h3>Last updated August 19, 2023</h3>
 	</div>
 	<p>
 		Our primary aim is to assist IB Diploma Programme students in predicting their final IB grade
@@ -47,10 +48,6 @@
 	<strong>
 		<ul>
 			<li>
-				NOTE: For a given subject, if there is more than one timezone, the one with a stricter
-				grading system (more challenging mark band) will be applied.
-			</li>
-			<li>
 				NOTE: Subjects with fewer than 100 candidates do not have published boundaries. Therefore,
 				you will have to rely on mocks and teacher predictions for guidance.
 			</li>
@@ -61,6 +58,7 @@
 	<div class="multipleChoice">
 		<SelectedGroup6 />
 		<GradeBoundary />
+		<Timezone />
 	</div>
 	<!-- <label>
 		<input type="checkbox" />
@@ -118,8 +116,6 @@
 		</div>
 	</div>
 </div>
-
-<link rel="stylesheet" href="/style/light.css" />
 
 <style>
 	:global(html) {
@@ -189,7 +185,7 @@
 		padding: 0;
 		height: 400px;
 		border-bottom: 2px solid black;
-		font-family: cursive;
+		font-family: 'Courier New', Courier, monospace;
 	}
 
 	.intro {

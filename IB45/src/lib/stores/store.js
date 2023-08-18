@@ -23,6 +23,11 @@ gradeBoundary.subscribe((val) => {
     if(browser && localStorage) localStorage.setItem("gradeBoundary", val)
 });
 
+export const timezone = writable(browser && localStorage && localStorage.getItem("timezone") || "1")
+timezone.subscribe((val) => {
+    if(browser && localStorage) localStorage.setItem("timezone", val)
+});
+
 export const group1 = writable(browser && localStorage && localStorage.getItem("group1") || '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}');
 group1.subscribe((val) => {
     if(browser && localStorage) JSON.stringify(localStorage.setItem("group1", val));
