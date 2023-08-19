@@ -1,4 +1,5 @@
 <script>
+	// NEEDS FIXING (shouldnt only take data from M22)
 	import Slider from './slider.svelte';
 	import data from '$lib/assets/courses.json';
 	import gradeBoundary from '$lib/assets/Grade_BoundariesM22.json';
@@ -69,6 +70,8 @@
 				});
 				boundary[i] = letterGrades[boundary[i] - 1];
 			});
+			console.log(fullName);
+			console.log(match.TZ);
 		}
 	}
 

@@ -48,10 +48,9 @@
 	<strong>
 		<ul>
 			<li>
-				NOTE: Subjects with fewer than 100 candidates do not have published boundaries. Therefore,
-				you will have to rely on mocks and teacher predictions for guidance.
+				NOTE: May 2023 grade boundaries are coming soon (official boundaries likely released in
+				October).
 			</li>
-			<li>NOTE: May 2023 grade boundaries are coming soon.</li>
 		</ul>
 	</strong>
 

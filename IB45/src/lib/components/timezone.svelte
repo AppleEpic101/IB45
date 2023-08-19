@@ -1,8 +1,8 @@
 <script>
 	import { timezone, gradeBoundary } from '$lib/stores/store.js';
 
-	const singleTimezones = ['N22'];
-	const doubleTimezones = ['M19', 'M22'];
+	const singleTimezones = ['N21', 'N22'];
+	const doubleTimezones = ['M19', 'M21', 'M22'];
 	const tripleTimezones = ['M23'];
 
 	const singleLocations = [' (Worldwide)'];

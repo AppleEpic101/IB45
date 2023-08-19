@@ -7,6 +7,7 @@
 			<li>Interface change</li>
 			<li>Timezone selection</li>
 			<li>Added changelog</li>
+			<li>May 2021 boundaries added</li>
 		</ul>
 	</div>
 

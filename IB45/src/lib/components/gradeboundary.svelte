@@ -1,6 +1,7 @@
 <script>
 	import { gradeBoundary, gradeBoundaryData } from '$lib/stores/store.js';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
+	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 
@@ -10,12 +11,17 @@
 				name: courseName,
 				TZ: M19[courseName].TZ
 			}));
+		} else if ($gradeBoundary === 'M21') {
+			$gradeBoundaryData = Object.keys(M21).map((courseName) => ({
+				name: courseName,
+				TZ: M21[courseName].TZ
+			}));
 		} else if ($gradeBoundary === 'M22') {
 			$gradeBoundaryData = Object.keys(M22).map((courseName) => ({
 				name: courseName,
 				TZ: M22[courseName].TZ
 			}));
-		} else {
+		} else if ($gradeBoundary === 'N22') {
 			$gradeBoundaryData = Object.keys(N22).map((courseName) => ({
 				name: courseName,
 				TZ: N22[courseName].TZ
@@ -32,6 +38,11 @@
 			<input type="radio" bind:group={$gradeBoundary} value="M19" />
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>May 2019</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={$gradeBoundary} value="M21" />
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>May 2021</label>
 		</div>
 		<div class="option">
 			<input type="radio" bind:group={$gradeBoundary} value="M22" />
