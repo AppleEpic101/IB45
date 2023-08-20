@@ -34,7 +34,7 @@
 </div>
 <div class="intro">
 	<div>
-		<h1>Welcome to IB Predict!</h1>
+		<h2>Welcome to IB Predict!</h2>
 		<h3>Last updated August 19, 2023</h3>
 	</div>
 	<p>
