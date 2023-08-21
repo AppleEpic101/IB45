@@ -34,14 +34,14 @@
 </div>
 <div class="intro">
 	<div>
-		<h1>Welcome to IB Predict!</h1>
+		<h2>Welcome to IB Predict!</h2>
 		<h3>Last updated August 19, 2023</h3>
 	</div>
 	<p>
-		Our primary aim is to assist IB Diploma Programme students in predicting their final IB grade
+		This score calculator allows IB Diploma Programme students to predict their final IB grade
 		accurately. The significance of score predictions when it comes to university applications
 		cannot be understated. Our IB predicted grade calculator incorporates official grade boundaries
-		data from previous IB administrations, in the hopes that it will generate reliable predictions.
+		data from previous IB administrations, giving you the most accurate grade predictions possible.
 	</p>
 
 	<hr />
