@@ -187,7 +187,7 @@
 		<div class="grade">
 			<h3>Historical Grade Boundaries</h3>
 			{#if SLOnly.includes(pageStore)}
-				<h5>This course is only offered at the SL level</h5>
+				<h5>{pageStore} is only offered at the SL level</h5>
 			{/if}
 			{#if isLanguageSubject}
 				<Dropdown str="Enter language" arr={languages} bind:value={language} />

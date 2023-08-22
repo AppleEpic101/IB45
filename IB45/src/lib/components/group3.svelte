@@ -72,6 +72,10 @@
 		{/if}
 	</h2>
 
+	{#if SLOnly.includes(store.name)}
+		<h5>{store.name} is only offered at the SL level</h5>
+	{/if}
+
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
 	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 	{#if store.name === 'History' && store.level === 'HL'}

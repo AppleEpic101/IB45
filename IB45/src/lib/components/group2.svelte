@@ -52,7 +52,6 @@
 	}
 
 	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
-	$: shortName = store.level + ' ' + store.name;
 	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
 	$: foo = $courses.find((course) => course.name === store.name);
@@ -83,6 +82,10 @@
 			{fullName}
 		{/if}
 	</h2>
+
+	{#if SLOnly.includes(store.name)}
+		<h5>{store.name} is only offered at the SL level</h5>
+	{/if}
 
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
 	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
