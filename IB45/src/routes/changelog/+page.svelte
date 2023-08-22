@@ -36,27 +36,18 @@
 
 	<div class="change">
 		<h2>June 8, 2023</h2>
-		<p>Initial release</p>
+		<ul><li>Initial release</li></ul>
 	</div>
 </div>
 
 <style>
 	.changes {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		padding-bottom: 20px;
+		margin: 0 50px;
 	}
 
-	.change {
-		display: inline-block;
-		margin: 0 auto;
-	}
-
-	h1,
-	h2,
-	p {
-		text-align: center;
+	h1 {
+		margin: 20px 50px;
 	}
 
 	ul {
@@ -65,5 +56,14 @@
 
 	li::before {
 		content: '• ';
+	}
+
+	@media screen and (max-width: 380px) {
+		.changes {
+			margin: 0 10px;
+		}
+		h1 {
+			margin: 10px;
+		}
 	}
 </style>

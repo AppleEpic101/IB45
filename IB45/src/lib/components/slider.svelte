@@ -11,6 +11,8 @@
 		value = 0;
 	} else if (value % 1 !== 0) {
 		value = Math.trunc(value);
+	} else if (value === undefined || value === null) {
+		value = 0;
 	}
 </script>
 
