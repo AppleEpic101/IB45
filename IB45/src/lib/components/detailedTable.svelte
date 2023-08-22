@@ -89,16 +89,16 @@
 </script>
 
 <table>
-	<tr style="background-color: var(--lightprimary)">
+	<tr>
 		<th>Subject</th>
 		<th>Awarded Mark</th>
 	</tr>
 	<tr>
-		<td style="background-color: var(--lightprimary)">Points</td>
+		<td>Points</td>
 		<td style="background-color: {getRowColor(parseInt(points) / 6.42)}">{points} / 45</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--lightprimary)">Diploma Awarded?</td>
+		<td>Diploma Awarded?</td>
 		{#if diplomaAwarded}
 			<td style="background-color: {getRowColor(7)}">YES</td>
 		{:else}
@@ -107,20 +107,20 @@
 	</tr>
 	{#each awardedMarks as mark, i}
 		<tr>
-			<td style="background-color: var(--lightprimary)">Group {i + 1}</td>
+			<td>Group {i + 1}</td>
 			<td style="background-color: {getRowColor(mark)}">{mark}</td>
 		</tr>
 	{/each}
 	<tr>
-		<td style="background-color: var(--lightprimary)">TOK</td>
+		<td>TOK</td>
 		<td style="background-color: {tok ? getRowColor(q[p.indexOf(tok)]) : 0}">{tok}</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--lightprimary)">EE</td>
+		<td>EE</td>
 		<td style="background-color: {ee ? getRowColor(q[p.indexOf(ee)]) : 0}">{ee}</td>
 	</tr>
 	<tr>
-		<td style="background-color: var(--lightprimary)">Core Points</td>
+		<td>Core Points</td>
 		<td style="background-color: {getRowColor((parseInt(corePoints) * 7) / 3)}">{corePoints}</td>
 	</tr>
 </table>
@@ -143,6 +143,7 @@
 		border-collapse: collapse;
 		text-align: center;
 		width: 100%;
+		background-color: var(--lightprimary);
 	}
 	table {
 		margin-top: 10px;

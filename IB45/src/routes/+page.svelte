@@ -90,6 +90,8 @@
 			<Group3 bind:awardedMark={scores[5]} groupNumber="6" />
 		{:else if $selectedGroup6 == '4'}
 			<Group4 bind:awardedMark={scores[5]} groupNumber="6" />
+		{:else if $selectedGroup6 == '5'}
+			<Group5 bind:awardedMark={scores[5]} groupNumber="6" />
 		{/if}
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 		<button

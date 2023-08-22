@@ -1,5 +1,5 @@
 <script>
-	import { selectedGroup6 } from "$lib/stores/store.js";
+	import { selectedGroup6 } from '$lib/stores/store.js';
 
 	function resetStorage() {
 		localStorage.removeItem('name6');
@@ -11,7 +11,7 @@
 
 <div class="body">
 	<p>
-		If you are replacing your Group 6 selection with a subject from Groups 1-4, please mark the
+		If you are replacing your Group 6 selection with a subject from Groups 1-5, please mark the
 		appropriate group.
 	</p>
 
@@ -35,6 +35,10 @@
 		<div class="option">
 			<input type="radio" bind:group={$selectedGroup6} value="4" on:click={resetStorage} />
 			<label for="group4">Group 4</label>
+		</div>
+		<div class="option">
+			<input type="radio" bind:group={$selectedGroup6} value="5" on:click={resetStorage} />
+			<label for="group4">Group 5</label>
 		</div>
 	</form>
 </div>
