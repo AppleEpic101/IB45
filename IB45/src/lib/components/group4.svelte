@@ -29,7 +29,13 @@
 	$: sufficientInformation = store.name != '' && store.level != '';
 	$: fullName = store.level + ' ' + store.name;
 
-	$: matchedCourse = $courses.find((course) => course.name === fullName);
+	$: foo = $courses.find((course) => course.name === store.name);
+	let matchedCourse;
+	$: if (store.level === 'SL') {
+		matchedCourse = foo?.SL;
+	} else if (store.level === 'HL') {
+		matchedCourse = foo?.HL;
+	}
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
 	$: {
@@ -58,7 +64,7 @@
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}
-			{#each matchedCourse.assessments as assessment, i}
+			{#each matchedCourse as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
 					name={assessment.name}

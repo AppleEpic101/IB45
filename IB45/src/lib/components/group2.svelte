@@ -55,9 +55,14 @@
 	$: shortName = store.level + ' ' + store.name;
 	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
-	$: matchedCourse = $courses.find((course) => course.name === shortName); // HL Language A: Language And Literature
-	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
-
+	$: foo = $courses.find((course) => course.name === store.name);
+	let matchedCourse;
+	$: if (store.level === 'SL') {
+		matchedCourse = foo?.SL;
+	} else if (store.level === 'HL') {
+		matchedCourse = foo?.HL;
+	}
+	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName);
 	$: {
 		if (SLOnly.includes(store.name) && store.level == 'HL') {
 			store.level = 'SL';
@@ -85,7 +90,7 @@
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}
-			{#each matchedCourse.assessments as assessment, i}
+			{#each matchedCourse as assessment, i}
 				<Slider
 					max={assessment.maxMarks}
 					name={assessment.name}

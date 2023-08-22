@@ -16,7 +16,7 @@ export function calculateGradeBoundary(matchedLang, boundary, grade) {
 export function calculateGrade(store, matchedCourse) {
     let grade = 0;
     if (matchedCourse !== undefined) {
-        matchedCourse.assessments.forEach((assessment, i) => {
+        matchedCourse.forEach((assessment, i) => {
             grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
         });
     }

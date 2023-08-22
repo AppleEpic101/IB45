@@ -5,7 +5,8 @@ import M22 from '$lib/assets/Grade_BoundariesM22.json';
 
 export const courses = writable(Object.keys(data).map((courseName) => ({
     name: courseName,
-    assessments: data[courseName].assessments
+    SL: data[courseName].SLAssessments,
+    HL: data[courseName].HLAssessments
 })));
 
 export const gradeBoundaryData = writable(Object.keys(M22).map((courseName) => ({

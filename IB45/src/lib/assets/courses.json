@@ -1,8 +1,8 @@
 {
-	"SL Language A: Literature": {
+	"Language A: Literature": {
 		"firstAssessment": "2021",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
 				"maxMarks": 20,
@@ -18,13 +18,8 @@
 				"maxMarks": 40,
 				"weight": 0.3
 			}
-		]
-	},
-
-	"HL Language A: Literature": {
-		"firstAssessment": "2021",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
 				"maxMarks": 40,
@@ -48,10 +43,10 @@
 		]
 	},
 
-	"SL Language A: Language And Literature": {
+	"Language A: Language And Literature": {
 		"firstAssessment": "2021",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
 				"maxMarks": 20,
@@ -67,13 +62,8 @@
 				"maxMarks": 40,
 				"weight": 0.3
 			}
-		]
-	},
-
-	"HL Language A: Language And Literature": {
-		"firstAssessment": "2021",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
 				"maxMarks": 40,
@@ -96,10 +86,11 @@
 			}
 		]
 	},
-	"SL Language AB Initio": {
+
+	"Language AB Initio": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Writing",
 				"maxMarks": 30,
@@ -118,10 +109,27 @@
 		]
 	},
 
-	"SL Language B": {
+	"Language B": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
+			{
+				"name": "Paper 1: Writing",
+				"maxMarks": 30,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 2: Listening & Reading Comprehension",
+				"maxMarks": 65,
+				"weight": 0.5
+			},
+			{
+				"name": "Individual Oral Assessment",
+				"maxMarks": 30,
+				"weight": 0.25
+			}
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Writing",
 				"maxMarks": 30,
@@ -140,31 +148,10 @@
 		]
 	},
 
-	"HL Language B": {
-		"firstAssessment": "2020",
-		"lastAssessment": "Present",
-		"assessments": [
-			{
-				"name": "Paper 1: Writing",
-				"maxMarks": 30,
-				"weight": 0.25
-			},
-			{
-				"name": "Paper 2: Listening & Reading Comprehension",
-				"maxMarks": 65,
-				"weight": 0.5
-			},
-			{
-				"name": "Individual Oral Assessment",
-				"maxMarks": 30,
-				"weight": 0.25
-			}
-		]
-	},
-	"SL Business Management": {
+	"Business Management": {
 		"firstAssessment": "2016",
 		"lastAssessment": "2024",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Case Study",
 				"maxMarks": 40,
@@ -180,12 +167,8 @@
 				"maxMarks": 25,
 				"weight": 0.25
 			}
-		]
-	},
-	"HL Business Management": {
-		"firstAssessment": "2016",
-		"lastAssessment": "2024",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Case Study",
 				"maxMarks": 60,
@@ -203,10 +186,10 @@
 			}
 		]
 	},
-	"SL Economics": {
+	"Economics": {
 		"firstAssessment": "2022",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 25,
@@ -222,12 +205,8 @@
 				"maxMarks": 45,
 				"weight": 0.3
 			}
-		]
-	},
-	"HL Economics": {
-		"firstAssessment": "2022",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Extended Response",
 				"maxMarks": 25,
@@ -250,10 +229,10 @@
 			}
 		]
 	},
-	"SL Geography": {
+	"Geography": {
 		"firstAssessment": "2019",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 40,
@@ -269,12 +248,8 @@
 				"maxMarks": 25,
 				"weight": 0.25
 			}
-		]
-	},
-	"HL Geography": {
-		"firstAssessment": "2019",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 60,
@@ -297,10 +272,10 @@
 			}
 		]
 	},
-	"SL Global Politics": {
+	"Global Politics": {
 		"firstAssessment": "2017",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 25,
@@ -316,12 +291,8 @@
 				"maxMarks": 20,
 				"weight": 0.25
 			}
-		]
-	},
-	"HL Global Politics": {
-		"firstAssessment": "2017",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 25,
@@ -344,10 +315,10 @@
 			}
 		]
 	},
-	"SL Information Technology In A Global Society": {
+	"Information Technology In A Global Society": {
 		"firstAssessment": "2012",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 40,
@@ -363,12 +334,8 @@
 				"maxMarks": 30,
 				"weight": 0.3
 			}
-		]
-	},
-	"HL Information Technology In A Global Society": {
-		"firstAssessment": "2012",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 60,
@@ -391,10 +358,10 @@
 			}
 		]
 	},
-	"SL Philosophy": {
+	"Philosophy": {
 		"firstAssessment": "2016",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 50,
@@ -410,12 +377,8 @@
 				"maxMarks": 25,
 				"weight": 0.25
 			}
-		]
-	},
-	"HL Philosophy": {
-		"firstAssessment": "2016",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 50,
@@ -438,10 +401,10 @@
 			}
 		]
 	},
-	"SL Psychology": {
+	"Psychology": {
 		"firstAssessment": "2019",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 49,
@@ -457,13 +420,8 @@
 				"maxMarks": 22,
 				"weight": 0.25
 			}
-		]
-	},
-
-	"HL Psychology": {
-		"firstAssessment": "2019",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 49,
@@ -486,10 +444,10 @@
 			}
 		]
 	},
-	"SL History": {
+	"History": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Source-Based",
 				"maxMarks": 24,
@@ -505,12 +463,8 @@
 				"maxMarks": 25,
 				"weight": 0.25
 			}
-		]
-	},
-	"HL History": {
-		"firstAssessment": "2020",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Source-Based",
 				"maxMarks": 24,
@@ -533,10 +487,10 @@
 			}
 		]
 	},
-	"SL Social And Cultural Anthropology": {
+	"Social And Cultural Anthropology": {
 		"firstAssessment": "2019",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 30,
@@ -552,12 +506,8 @@
 				"maxMarks": 26,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Social And Cultural Anthropology": {
-		"firstAssessment": "2019",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 40,
@@ -575,10 +525,10 @@
 			}
 		]
 	},
-	"SL World Religions": {
+	"World Religions": {
 		"firstAssessment": "2013",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 50,
@@ -596,10 +546,10 @@
 			}
 		]
 	},
-	"SL Biology": {
+	"Biology": {
 		"firstAssessment": "2016",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 30,
@@ -620,12 +570,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Biology": {
-		"firstAssessment": "2016",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 40,
@@ -648,10 +594,10 @@
 			}
 		]
 	},
-	"SL Chemistry": {
+	"Chemistry": {
 		"firstAssessment": "2016",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 30,
@@ -672,12 +618,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Chemistry": {
-		"firstAssessment": "2016",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 40,
@@ -700,10 +642,10 @@
 			}
 		]
 	},
-	"SL Computer Science": {
+	"Computer Science": {
 		"firstAssessment": "2014",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 70,
@@ -719,12 +661,8 @@
 				"maxMarks": 34,
 				"weight": 0.3
 			}
-		]
-	},
-	"HL Computer Science": {
-		"firstAssessment": "2014",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 100,
@@ -747,10 +685,10 @@
 			}
 		]
 	},
-	"SL Design Technology": {
+	"Design Technology": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 30,
@@ -766,12 +704,8 @@
 				"maxMarks": 36,
 				"weight": 0.4
 			}
-		]
-	},
-	"HL Design Technology": {
-		"firstAssessment": "2020",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 40,
@@ -794,10 +728,10 @@
 			}
 		]
 	},
-	"SL Environmental Systems And Societies": {
+	"Environmental Systems And Societies": {
 		"firstAssessment": "2017",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Case Study",
 				"maxMarks": 35,
@@ -815,10 +749,10 @@
 			}
 		]
 	},
-	"SL Physics": {
+	"Physics": {
 		"firstAssessment": "2016",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 30,
@@ -839,12 +773,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Physics": {
-		"firstAssessment": "2016",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Multiple Choice",
 				"maxMarks": 40,
@@ -867,10 +797,10 @@
 			}
 		]
 	},
-	"SL Sports, Excercise And Health Science": {
+	"Sports, Excercise And Health Science": {
 		"firstAssessment": "2018",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 30,
@@ -891,12 +821,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Sports, Excercise And Health Science": {
-		"firstAssessment": "2018",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1",
 				"maxMarks": 40,
@@ -919,10 +845,10 @@
 			}
 		]
 	},
-	"SL Mathematics: Analysis And Approaches": {
+	"Mathematics: Analysis And Approaches": {
 		"firstAssessment": "2021",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: No Technology",
 				"maxMarks": 80,
@@ -938,12 +864,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Mathematics: Analysis And Approaches": {
-		"firstAssessment": "2021",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: No Technology",
 				"maxMarks": 110,
@@ -966,10 +888,10 @@
 			}
 		]
 	},
-	"SL Mathematics: Applications And Interpretation": {
+	"Mathematics: Applications And Interpretation": {
 		"firstAssessment": "2021",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Technology Required",
 				"maxMarks": 80,
@@ -985,12 +907,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
-	},
-	"HL Mathematics: Applications And Interpretation": {
-		"firstAssessment": "2021",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Paper 1: Technology Required",
 				"maxMarks": 110,
@@ -1013,10 +931,10 @@
 			}
 		]
 	},
-	"SL Dance": {
+	"Dance": {
 		"firstAssessment": "2014",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Composition And Analysis",
 				"maxMarks": 20,
@@ -1032,12 +950,8 @@
 				"maxMarks": 22,
 				"weight": 0.4
 			}
-		]
-	},
-	"HL Dance": {
-		"firstAssessment": "2014",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Composition And Analysis",
 				"maxMarks": 30,
@@ -1055,10 +969,10 @@
 			}
 		]
 	},
-	"SL Film": {
+	"Film": {
 		"firstAssessment": "2019",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Textual Analysis",
 				"maxMarks": 24,
@@ -1074,12 +988,8 @@
 				"maxMarks": 30,
 				"weight": 0.4
 			}
-		]
-	},
-	"HL Film": {
-		"firstAssessment": "2019",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Textual Analysis",
 				"maxMarks": 24,
@@ -1102,10 +1012,10 @@
 			}
 		]
 	},
-	"SL Music": {
+	"Music": {
 		"firstAssessment": "2022",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Exploring Music In Context",
 				"maxMarks": 24,
@@ -1121,12 +1031,8 @@
 				"maxMarks": 38,
 				"weight": 0.4
 			}
-		]
-	},
-	"HL Music": {
-		"firstAssessment": "2022",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Exploring Music In Context",
 				"maxMarks": 24,
@@ -1149,10 +1055,10 @@
 			}
 		]
 	},
-	"SL Theatre": {
+	"Theatre": {
 		"firstAssessment": "2017",
 		"lastAssessment": "2023",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Task 2: Director's Notebook",
 				"maxMarks": 32,
@@ -1168,12 +1074,8 @@
 				"maxMarks": 32,
 				"weight": 0.35
 			}
-		]
-	},
-	"HL Theatre": {
-		"firstAssessment": "2017",
-		"lastAssessment": "2023",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Task 1: Solo Theatre Piece",
 				"maxMarks": 32,
@@ -1196,10 +1098,10 @@
 			}
 		]
 	},
-	"SL Visual Arts": {
+	"Visual Arts": {
 		"firstAssessment": "2017",
 		"lastAssessment": "Present",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Part 1: Comparative Study",
 				"maxMarks": 30,
@@ -1215,12 +1117,8 @@
 				"maxMarks": 30,
 				"weight": 0.4
 			}
-		]
-	},
-	"HL Visual Arts": {
-		"firstAssessment": "2017",
-		"lastAssessment": "Present",
-		"assessments": [
+		],
+		"HLAssessments": [
 			{
 				"name": "Part 1: Comparative Study",
 				"maxMarks": 42,
@@ -1238,10 +1136,10 @@
 			}
 		]
 	},
-	"SL Literature And Performance": {
+	"Literature And Performance": {
 		"firstAssessment": "2015",
 		"lastAssessment": "2023",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Part 1: Prose And Performance",
 				"maxMarks": 20,
