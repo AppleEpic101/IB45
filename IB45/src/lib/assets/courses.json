@@ -1271,6 +1271,7 @@
 		]
 	},
 	"Theory Of Knowledge": {
+		"description": "The theory of knowledge (TOK) course plays a special role in the DP by providing an opportunity for students to reflect on the nature, scope and limitations of knowledge and the process of knowing. In this way, the main focus of TOK is not on students acquiring new knowledge but on helping students to reflect on, and put into perspective, what they already know. TOK underpins and helps to unite the subjects that students encounter in the rest of their DP studies. It engages students in explicit reflection on how knowledge is arrived at in different disciplines and areas of knowledge, on what these areas have in common and the differences between them.",
 		"assessments": [
 			{
 				"name": "Theory Of Knowledge Essay",
@@ -1283,5 +1284,11 @@
 				"weight": 0.33
 			}
 		]
+	},
+	"Extended Essay": {
+		"description": "The extended essay is a compulsory, externally assessed piece of independent research into a topic chosen by the student and presented as a formal piece of academic writing. The extended essay is intended to promote high-level research and writing skills, intellectual discovery, and creativity while engaging students in personal research. This leads to a major piece of formally presented, structured writing of up to 4,000 words in which ideas and findings are communicated in a reasoned, coherent, and appropriate manner. Students are guided through the process of research and writing by an assigned supervisor (a teacher in the school). All students undertake three mandatory reflection sessions with their supervisor, including a short interview, or viva voce, following the completion of the extended essay. Extended essay topics may be chosen from a list of approved DP subjects—normally one of the student’s six chosen subjects for the IB diploma or the world studies option. World studies provides students with the opportunity to carry out an in-depth interdisciplinary study of an issue of contemporary global significance, using two IB disciplines."
+	},
+	"Creativity, Activity, Service": {
+		"description": "Creativity, activity, service (CAS) is at the heart of the DP, designed to strengthen and extend students' personal and interpersonal learning from the Primary Years Programme (PYP) and Middle Years Programme (MYP). CAS is organized around the three strands of creativity, activity, and service, each defined as follows: Creativity involves exploring and extending ideas leading to an original or interpretive product or performance. Activity encompasses physical exertion contributing to a healthy lifestyle. Service entails collaborative and reciprocal engagement with the community in response to an authentic need. A CAS experience is a specific event in which the student engages with one or more of the three CAS strands. It can be a single event or an extended series of events. A CAS project is a collaborative series of sequential CAS experiences lasting at least one month. Typically, a student's CAS program combines planned/unplanned singular and ongoing experiences. All are valuable and may lead to personal development. However, a meaningful CAS program must be more than just a series of unplanned/singular experiences. Students must be involved in at least one CAS project during the program."
 	}
 }

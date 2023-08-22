@@ -3,6 +3,8 @@
 	import data from '$lib/assets/courses.json';
 	import Links from '$lib/components/Links.svelte';
 	import Dropdown from '$lib/components/Dropdown.svelte';
+	import BoundaryTable from '$lib/components/boundaryTable.svelte';
+	import CoreTable from '$lib/components/coreTable.svelte';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
 	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
@@ -52,6 +54,7 @@
 		'World Religions',
 		'Literature And Performance'
 	];
+	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
 	const isLanguageSubject = languageSubjects.includes(pageStore);
 	let language;
@@ -91,15 +94,82 @@
 				});
 			}
 		});
-		console.log(HLResults);
-		console.log(SLResults);
 	}
+
+	const historyResults = [[], [], [], []];
+	regions.forEach((r, i) => {
+		b.forEach((boundary) => {
+			const info = boundary['info'];
+			const c = boundary['HL History ' + r];
+
+			if (c && info) {
+				let timezone = [...c.TZ];
+				timezone.forEach((tz) => {
+					if (timezone.length === 1) {
+						historyResults[i].push({
+							tz,
+							name: info.short + ' TZ0',
+							courseName: 'HL History ' + r
+						});
+					} else {
+						historyResults[i].push({
+							tz,
+							name: info.short + ' TZ' + (i + 1),
+							courseName: 'HL History ' + r
+						});
+					}
+				});
+			}
+		});
+	});
+
+	const TOK = [];
+	const EE = [];
+	b.forEach((boundary) => {
+		const info = boundary['info'];
+		const c = boundary['Theory Of Knowledge'];
+		const d = boundary['Extended Essay'];
+
+		if (c && d && info) {
+			let timezone = [...c.TZ];
+			let timezone1 = [...d.TZ];
+			timezone.forEach((tz) => {
+				if (timezone.length === 1) {
+					TOK.push({
+						tz,
+						name: info.short + ' TZ0',
+						courseName: 'Theory Of Knowledge'
+					});
+				} else {
+					TOK.push({
+						tz,
+						name: info.short + ' TZ' + (i + 1),
+						courseName: 'Theory Of Knowledge'
+					});
+				}
+			});
+			timezone1.forEach((tz) => {
+				if (timezone1.length === 1) {
+					EE.push({
+						tz,
+						name: info.short + ' TZ0',
+						courseName: 'Extended Essay'
+					});
+				} else {
+					EE.push({
+						tz,
+						name: info.short + ' TZ' + (i + 1),
+						courseName: 'Extended Essay'
+					});
+				}
+			});
+		}
+	});
 </script>
 
 <div class="body">
 	<h1>{pageStore}</h1>
 	<Links />
-	<br />
 	<div class="description">
 		<h3>Description</h3>
 		{subject.description}
@@ -112,90 +182,45 @@
 			</ul>
 		{/each}
 	</div> -->
-	<div class="grade">
-		<h3>Historical Grade Boundaries</h3>
-		{#if SLOnly.includes(pageStore)}
-			<h5>This course is only offered at the SL level</h5>
-		{/if}
-		{#if isLanguageSubject}
-			<Dropdown str="Enter language" arr={languages} bind:value={language} />
-		{/if}
-		<div class="tables">
-			<table>
-				<tr>
-					<th colspan="8">{'SL ' + name}</th>
-				</tr>
-				<tr>
-					<th rowspan="2">Timezone</th>
-					<th colspan="7">Grade</th>
-				</tr>
-				<tr class="small">
-					{#each { length: 7 } as _, i}
-						<th>{i + 1}</th>
-					{/each}
-				</tr>
-
-				{#each SLResults as result}
-					<tr>
-						<td>{result.name}</td>
-						{#each result.tz as tz}
-							<td>{tz}</td>
-						{/each}
-					</tr>
-				{/each}
-			</table>
-			{#if !SLOnly.includes(pageStore)}
-				<table>
-					<tr>
-						<th colspan="8">{'HL ' + name}</th>
-					</tr>
-					<tr>
-						<th rowspan="2">Timezone</th>
-						<th colspan="7">Grade</th>
-					</tr>
-					<tr class="small">
-						{#each { length: 7 } as _, i}
-							<th>{i + 1}</th>
-						{/each}
-					</tr>
-
-					{#each HLResults as result}
-						<tr>
-							<td>{result.name}</td>
-							{#each result.tz as tz}
-								<td>{tz}</td>
-							{/each}
-						</tr>
-					{/each}
-				</table>
+	{#if pageStore !== 'Creativity, Activity, Service'}
+		<div class="grade">
+			<h3>Historical Grade Boundaries</h3>
+			{#if SLOnly.includes(pageStore)}
+				<h5>This course is only offered at the SL level</h5>
 			{/if}
+			{#if isLanguageSubject}
+				<Dropdown str="Enter language" arr={languages} bind:value={language} />
+			{/if}
+			<div class="tables">
+				{#if pageStore === 'Theory Of Knowledge'}
+					<CoreTable name={'TOK'} res={TOK} />
+				{:else if pageStore === 'Extended Essay'}
+					<CoreTable name={'EE'} res={EE} />
+				{:else}
+					<BoundaryTable name={'SL ' + name} res={SLResults} />
+					{#if pageStore === 'History'}
+						{#each regions as r, i}
+							<BoundaryTable name={'HL History ' + r} res={historyResults[i]} />
+						{/each}
+					{:else if !SLOnly.includes(pageStore)}
+						<BoundaryTable name={'HL ' + name} res={HLResults} />
+					{/if}
+				{/if}
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style>
 	.body {
 		margin: 10px 50px;
+		padding-bottom: 20px;
 	}
 
 	.tables {
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
-	}
-
-	table,
-	tr,
-	th,
-	td {
-		border: 2px solid black;
-		border-collapse: collapse;
-		text-align: center;
-		background-color: var(--lightprimary);
-	}
-	table {
-		width: 25vw;
-		margin-top: 10px;
 	}
 
 	@media screen and (max-width: 380px) {
