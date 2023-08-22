@@ -1,16 +1,9 @@
+<script>
+	import Navigation from '$lib/components/navigation.svelte';
+</script>
+
 <nav>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<img
-		src="flc_design20230531154582.png"
-		alt="Logo"
-		on:click={() => {
-			location.reload();
-		}}
-	/>
-	<div class="top-links">
-		<a href="/">Home</a>
-		<a href="./changelog">Changelog</a>
-	</div>
+	<Navigation />
 </nav>
 
 <div class="slot">
@@ -57,22 +50,6 @@
 		border-bottom: 1px solid black;
 	}
 
-	:global(.top-links) {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		margin-right: 5px;
-		width: 100%;
-	}
-
-	:global(.top-links a) {
-		margin-right: 10px;
-		margin-left: 20px;
-		color: black;
-		text-decoration: none;
-		font-size: 1.2em;
-	}
-
 	.slot {
 		min-height: 60vh;
 	}
@@ -94,22 +71,6 @@
 	footer div::before {
 		content: '\A';
 		white-space: pre;
-	}
-
-	nav img {
-		width: 20vh;
-		height: 10vh;
-		min-height: 75px;
-		min-width: 150px;
-		cursor: pointer;
-		align-self: flex-start;
-		margin-left: 5px;
-		transition: 0.3s ease-in-out;
-	}
-
-	nav img:hover {
-		transform: scale(1.05);
-		-webkit-transform: scale(1.05);
 	}
 
 	@media screen and (max-width: 560px) {

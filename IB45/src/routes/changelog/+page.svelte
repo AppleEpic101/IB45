@@ -1,4 +1,9 @@
+<script>
+	import Links from '$lib/components/links.svelte';
+</script>
+
 <h1>Changelog</h1>
+<Links />
 
 <div class="changes">
 	<div class="change">

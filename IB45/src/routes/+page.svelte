@@ -11,6 +11,8 @@
 	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
 	import GradeBoundary from '$lib/components/gradeboundary.svelte';
 	import Timezone from '$lib/components/timezone.svelte';
+	import Links from '$lib/components/links.svelte';
+	import Refresh from '$lib/components/refresh.svelte';
 
 	let scores = [];
 	let totalScore;
@@ -37,6 +39,7 @@
 		<h2>Welcome to IB Predict!</h2>
 		<h3>Last updated August 19, 2023</h3>
 	</div>
+	<Links />
 	<p>
 		This score calculator allows IB Diploma Programme students to predict their final IB grade
 		accurately. The significance of score predictions when it comes to university applications
@@ -67,14 +70,7 @@
 
 <div class="layout">
 	<div class="left-column">
-		<button
-			on:click={() => {
-				localStorage.clear();
-				location.reload();
-			}}
-		>
-			Reset Selections
-		</button>
+		<Refresh />
 		<Group1 bind:awardedMark={scores[0]} />
 		<Group2 bind:awardedMark={scores[1]} />
 		<Group3 bind:awardedMark={scores[2]} />
@@ -94,14 +90,7 @@
 			<Group5 bind:awardedMark={scores[5]} groupNumber="6" />
 		{/if}
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
-		<button
-			on:click={() => {
-				localStorage.clear();
-				location.reload();
-			}}
-		>
-			Reset Selections
-		</button>
+		<Refresh />
 	</div>
 	<div class="right-column">
 		<div class="data">
@@ -158,21 +147,6 @@
 	}
 	p {
 		line-height: 2;
-	}
-
-	button {
-		background-color: var(--lightprimary);
-		padding: 15px;
-		margin: 10px 0;
-		cursor: pointer;
-		border: 2px solid black;
-		border-radius: 5px;
-		color: black;
-	}
-
-	button:hover {
-		background-color: var(--primary);
-		transition: 0.3s ease-in-out;
 	}
 
 	.banner {
