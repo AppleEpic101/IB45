@@ -1,8 +1,8 @@
 <script>
 	import { page } from '$app/stores';
 	import data from '$lib/assets/courses.json';
-	import Links from '$lib/components/Links.svelte';
-	import Dropdown from '$lib/components/Dropdown.svelte';
+	import Links from '$lib/components/links.svelte';
+	import Dropdown from '$lib/components/dropdown.svelte';
 	import BoundaryTable from '$lib/components/boundaryTable.svelte';
 	import CoreTable from '$lib/components/coreTable.svelte';
 	import CoreMatrix from '$lib/components/coreMatrix.svelte';
