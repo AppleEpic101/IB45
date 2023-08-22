@@ -25,6 +25,11 @@
 			{/each}
 		</tr>
 	{/each}
+	{#if res.length === 0}
+		<tr>
+			<td colspan="8">No results found</td>
+		</tr>
+	{/if}
 </table>
 
 <style>

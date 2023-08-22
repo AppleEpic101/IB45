@@ -14,9 +14,9 @@
 	</div>
 	<div class="title">
 		<strong>RESOURCES</strong><br />
-		<a href="May 2019 Grade Boundaries.pdf" target="_blank">May 2019 Grade Boundary</a><br />
-		<a href="May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a><br />
-		<a href="November 2022 Grade Boundaries.pdf" target="_blank">November 2022 Grade Boundary</a>
+		<a href="/May 2019 Grade Boundaries.pdf" target="_blank">May 2019 Grade Boundary</a><br />
+		<a href="/May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a><br />
+		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">November 2022 Grade Boundary</a>
 	</div>
 	<div>
 		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com

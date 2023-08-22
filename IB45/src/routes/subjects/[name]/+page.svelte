@@ -5,6 +5,7 @@
 	import Dropdown from '$lib/components/Dropdown.svelte';
 	import BoundaryTable from '$lib/components/boundaryTable.svelte';
 	import CoreTable from '$lib/components/coreTable.svelte';
+	import CoreMatrix from '$lib/components/coreMatrix.svelte';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
 	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
@@ -205,6 +206,9 @@
 					{:else if !SLOnly.includes(pageStore)}
 						<BoundaryTable name={'HL ' + name} res={HLResults} />
 					{/if}
+				{/if}
+				{#if pageStore === 'Theory Of Knowledge' || pageStore === 'Extended Essay'}
+					<CoreMatrix name={pageStore} />
 				{/if}
 			</div>
 		</div>
