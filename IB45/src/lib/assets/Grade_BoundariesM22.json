@@ -1,491 +1,558 @@
 {
-    "SL Nature of Science": {
-        "TZ": [[0, 18, 36, 43, 51, 61, 71]]
-    },
-    "HL Film": {
-        "TZ": [[0, 12, 25, 36, 52, 68, 84]]
-    },
-    "SL Film": {
-        "TZ": [[0, 14, 27, 38, 52, 72, 87]]
-    },
-    "HL Information Technology In A Global Society": {
-        "TZ": [[0, 10, 21, 35, 45, 55, 65]]
-    },
-    "SL Information Technology In A Global Society": {
-        "TZ": [[0, 8, 16, 26, 40, 52, 63]]  
-    },
-    "HL Dance": {
-        "TZ": [[0, 18, 40, 57, 68, 78, 88]]
-    },
-    "SL Dance": {
-        "TZ": [[0, 18, 37, 60, 72, 79, 87]]
-    },
-    "HL Latin": {
-        "TZ": [[0, 9, 19, 33, 47, 60, 73]]
-    },
-    "SL Latin": {
-        "TZ": [[0, 9, 21, 34, 47, 58, 71]]
-    },
-    "HL Music": {
-        "TZ": [[0, 11, 23, 37, 51, 65, 79]]
-    },
-    "SL Music": {
-        "TZ": [[0, 9, 18, 30, 45, 61, 77]]
-    },
-    "HL Biology": {
-        "TZ": [[0, 14, 21, 29, 43, 57, 71], [0, 15, 23, 33, 47, 60, 74]]
-    },
-    "SL Biology": {
-        "TZ": [[0, 14, 24, 34, 49, 64, 79], [0, 13, 22, 33, 48, 61, 71]]
-    },
-    "HL Business Management": {
-        "TZ": [[0, 15, 27, 38, 50, 57, 68]]
-    },
-    "SL Business Management": {
-        "TZ": [[0, 12, 22, 39, 50, 61, 72]]
-    },
-    "HL Dutch Language B": {
-        "TZ": [[0, 16, 32, 42, 56, 68, 82]]
-    },
-    "SL Dutch Language B": {
-        "TZ": [[0, 15, 31, 42, 55, 70, 84]]
-    },
-    "HL Hindi Language B": {
-        "TZ": [[0, 16, 33, 44, 57, 67, 79]]
-    },
-    "SL Hindi Language B": {
-        "TZ": [[0, 9, 19, 28, 44, 62, 78]]
-    },
-    "SL History": {
-        "TZ": [[0, 8, 21, 34, 48, 62, 75], [0, 8, 21, 34, 48, 62, 75]]
-    },
-    "HL History Europe": {
-        "TZ": [[0, 9, 22, 34, 47, 60, 73], [0, 9, 22, 34, 47, 60, 73]]
-    },
-    "HL History Americas": {
-        "TZ": [[0, 9, 22, 34, 47, 60, 73], [0, 9, 22, 34, 47, 60, 73]]
-    },
-    "HL History Asia And Oceania": {
-        "TZ": [[0, 9, 22, 34, 47, 60, 73], [0, 9, 22, 34, 47, 60, 73]]
-    },
-    "HL History Africa And Middle East": {
-        "TZ": [[0, 9, 22, 34, 47, 60, 73], [0, 9, 22, 34, 47, 60, 73]]
-    },
-    "HL Physics": {
-        "TZ": [[0, 12, 19, 27, 38, 50, 63], [0, 15, 25, 35, 46, 58, 70]]
-    },
-    "SL Physics": {
-        "TZ": [[0, 11, 20, 27, 37, 47, 58], [0, 12, 21, 32, 43, 54, 65]]
-    },
-    "HL Theatre": {
-        "TZ": [[0, 8, 18, 30, 46, 63, 79]]
-    },
-    "SL Theatre": {
-        "TZ": [[0, 7, 17, 26, 45, 62, 79]]
-    },
-    "HL Arabic Language B": {
-        "TZ": [[0, 15, 30, 46, 59, 70, 84]]
-    },
-    "SL Arabic Language B": {
-        "TZ": [[0, 11, 24, 36, 51, 64, 79]]
-    },
-    "HL Danish Language B": {
-        "TZ": [[0, 9, 20, 41, 55, 70, 84]]
-    },
-    "HL French Language B": {
-        "TZ": [[0, 13, 27, 46, 59, 72, 85]]
-    },
-    "SL French Language B": {
-        "TZ": [[0, 10, 23, 34, 49, 66, 81]]
-    },
-    "HL German Language B": {
-        "TZ": [[0, 9, 17, 32, 50, 67, 85]]
-    },
-    "SL German Language B": {
-        "TZ": [[0, 10, 22, 34, 48, 63, 78]]
-    },
-    "HL Chemistry": {
-        "TZ": [[0, 11, 24, 36, 48, 61, 73], [0, 12, 23, 34, 46, 57, 69]]
-    },
-    "SL Chemistry": {
-        "TZ": [[0, 11, 23, 36, 48, 61, 73], [0, 10, 22, 33, 46, 56, 69]]
-    },
-    "HL Chinese Language B": {
-        "TZ": [[0, 9, 19, 36, 49, 65, 78]]
-    },
-    "SL Chinese Language B": {
-        "TZ": [[0, 9, 20, 33, 47, 61, 76]]
-    },
-    "HL Economics": {
-        "TZ": [[0, 11, 21, 30, 43, 58, 71]]
-    },
-    "SL Economics": {
-        "TZ": [[0, 10, 22, 35, 48, 60, 73]]
-    },
-    "HL English Language B": {
-        "TZ": [[0, 13, 27, 40, 55, 71, 87]]
-    },
-    "SL English Language B": {
-        "TZ": [[0, 11, 23, 39, 55, 71, 88]]
-    },
-    "HL Geography": {
-        "TZ": [[0, 12, 25, 39, 50, 63, 74]]
-    },
-    "SL Geography": {
-        "TZ": [[0, 11, 24, 38, 49, 65, 76]]
-    },
-    "HL Global Politics": {
-        "TZ": [[0, 10, 20, 29, 40, 51, 62]]
-    },
-    "SL Global Politics": {
-        "TZ": [[0, 7, 17, 27, 35, 47, 57]]
-    },
-    "HL Italian Language B": {
-        "TZ": [[0, 13, 26, 42, 57, 71, 86]]
-    },
-    "SL Italian Language B": {
-        "TZ": [[0, 12, 23, 38, 55, 73, 90]]
-    },
-    "HL Mathematics: Applications And Interpretation": {
-        "TZ": [[0, 8, 16, 26, 37, 50, 63], [0, 10, 18, 26, 37, 49, 62]]
-    },
-    "SL Mathematics: Applications And Interpretation": {
-        "TZ": [[0, 6, 13, 23, 35, 50, 67], [0, 8, 14, 23, 37, 53, 67]]
-    },
-    "SL Russian Language B": {
-        "TZ": [[0, 9, 19, 36, 50, 64, 79]]
-    },
-    "HL Spanish Language B": {
-        "TZ": [[0, 12, 24, 37, 53, 67, 83]]
-    },
-    "SL Spanish Language B": {
-        "TZ": [[0, 6, 14, 25, 41, 60, 77]]
-    },
-    "HL Swedish Language B": {
-        "TZ": [[0, 16, 33, 49, 63, 74, 87]]
-    },
-    "SL Swedish Language B": {
-        "TZ": [[0, 13, 28, 41, 54, 68, 81]]
-    },
-    "SL Arabic Language AB Initio": {
-        "TZ": [[0, 9, 21, 34, 51, 68, 85]]
-    },
-    "SL French Language AB Initio": {
-        "TZ": [[0, 13, 25, 38, 53, 66, 81]]
-    },
-    "SL German Language AB Initio": {
-        "TZ": [[0, 9, 21, 33, 49, 64, 80]]
-    },
-    "HL Japanese Language B": {
-        "TZ": [[0, 16, 32, 47, 59, 70, 83]]
-    },
-    "SL Japanese Language B": {
-        "TZ": [[0, 9, 19, 30, 48, 66, 83]]
-    },
-    "HL Philosophy": {
-        "TZ": [[0, 11, 25, 38, 49, 62, 75]]
-    },
-    "SL Philosophy": {
-        "TZ": [[0, 13, 25, 39, 50, 62, 74]]
-    },
-    "HL Psychology": {
-        "TZ": [[0, 6, 14, 27, 41, 54, 68], [0, 9, 19, 33, 46, 59, 72]]
-    },
-    "SL Psychology": {
-        "TZ": [[0, 6, 13, 24, 40, 52, 68], [0, 9, 20, 31, 45, 56, 70]]
-    },
-    "SL Thai Language A: Language and Literature": {
-        "TZ": [[0, 10, 23, 35, 49, 65, 79]]
-    },
-    "SL Art History": {
-        "TZ": [[0, 9, 18, 27, 42, 55, 69]]
-    },
-    "SL Dutch Language A: Language And Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL English Language AB Initio": {
-        "TZ": [[0, 14, 28, 41, 56, 70, 86]]
-    },
-    "SL Italian Language AB Initio": {
-        "TZ": [[0, 8, 18, 35, 50, 64, 79]]
-    },
-    "SL Malay Language A: Literature": {
-        "TZ": [[0, 16, 31, 46, 60, 71, 85]]
-    },
-    "SL Marine Science": {
-        "TZ": [[0, 14, 28, 39, 47, 55, 64]]
-    },
-    "HL Norwegian Language B": {
-        "TZ": [[0, 12, 24, 37, 53, 68, 83]]
-    },
-    "*HL Ref Project": {
-        "TZ": [[0, 11, 17, 23, 27]]
-    },
-    "SL Spanish Language AB Initio": {
-        "TZ": [[0, 13, 25, 39, 53, 68, 82]]
-    },
-    "SL Swedish Language AB Initio": {
-        "TZ": [[0, 10, 22, 36, 48, 62, 76]]
-    },
-    "HL Visual Arts": {
-        "TZ": [[0, 10, 21, 37, 51, 65, 79]]
-    },
-    "SL Visual Arts": {
-        "TZ": [[0, 11, 22, 34, 49, 65, 80]]
-    },
-    "HL Arabic Language A: Language And Literature": {
-        "TZ": [[0, 13, 26, 41, 54, 66, 79]]
-    },
-    "SL Arabic Language A: Language And Literature": {
-        "TZ": [[0, 16, 31, 43, 54, 68, 79]]
-    },
-    "SL Arabic Language A: Literature": {
-        "TZ": [[0, 13, 25, 38, 49, 60, 71]]
-    },
-    "HL Computer Science": {
-        "TZ": [[0, 11, 21, 32, 44, 57, 69]]
-    },
-    "SL Computer Science": {
-        "TZ": [[0, 9, 20 , 34, 45, 56, 67]]
-    },
-    "HL Danish Language A: Literature": {
-        "TZ": [[0, 15, 30, 42, 57, 68, 83]]
-    },
-    "HL Design Technology": {
-        "TZ": [[0, 8, 19, 27, 38, 50, 61]]
-    },
-    "SL Design Technology": {
-        "TZ": [[0, 7, 16, 24, 33, 44, 53]]
-    },
-    "HL French Language A: Language And Literature": {
-        "TZ": [[0, 12, 25, 38, 52, 63, 77]]
-    },
-    "SL French Language A: Language And Literature": {
-        "TZ": [[0, 13, 25, 40, 52, 63, 77]]
-    },
-    "HL French Language A: Literature": {
-        "TZ": [[0, 16, 31, 43, 57, 67, 80]]
-    },
-    "SL French Language A: Literature self taught": {
-        "TZ": [[0, 16, 28, 40, 57, 71, 82]]
-    },
-    "HL German Language A: Language And Literature": {
-        "TZ": [[0, 15, 30, 40, 54, 66, 80]]
-    },
-    "SL German Language A: Language And Literature": {
-        "TZ": [[0, 13, 28, 40, 54, 68, 82]]
-    },
-    "HL German Language A: Literature": {
-        "TZ": [[0, 15, 30, 40, 53, 65, 78]]
-    },
-    "SL German Language A: Literature": {
-        "TZ": [[0, 13, 25, 38, 52, 65, 79]]
-    },
-    "SL German Language A: Literature self taught": {
-        "TZ": [[0, 13, 25, 38, 52, 65, 79]]
-    },
-    "HL Indonesian Language B": {
-        "TZ": [[0, 8, 23, 40, 54, 70, 81]]
-    },
-    "SL Indonesian Language B": {
-        "TZ": [[0, 8, 26, 39, 55, 73, 83]]
-    },
-    "SL Japanese Language AB Initio": {
-        "TZ": [[0, 9, 20, 32, 46, 61, 75]]
-    },
-    "HL Korean Language A: Language And Literature": {
-        "TZ": [[0, 13, 27, 40, 53, 65, 78]]
-    },
-    "SL Korean Language A: Language And Literature": {
-        "TZ": [[0, 10, 23, 38, 52, 63, 77]]
-    },
-    "SL Korean Language A: Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL Korean Language A: Literature self taught": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL Literature And Performance": {
-        "TZ": [[0, 12, 28, 46, 58, 72, 84]]
-    },
-    "SL Chinese Language AB Initio": {
-        "TZ": [[0, 7, 16, 30, 45, 59, 74]]
-    },
-    "HL Polish Language A: Literature": {
-        "TZ": [[0, 13, 27, 41, 54, 66, 79]]
-    },
-    "SL Polish Language A: Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL Portuguese Language B": {
-        "TZ": [[0, 11, 22, 37, 49, 63, 76]]
-    },
-    "SL World Religions": {
-        "TZ": [[0, 14, 27, 42, 54, 67, 79]]
-    },
-    "SL Braz.Soc.Stud": {
-        "TZ": [[0, 11, 24, 36, 48, 60, 76]]
-    },
-    "HL Catalan Language A: Literature": {
-        "TZ": [[0, 17, 33, 51, 63, 75, 87]]
-    },
-    "HL Chinese Language A: Language And Literature": {
-        "TZ": [[0, 13, 26, 41, 54, 66, 79]]
-    },
-    "SL Chinese Language A: Language And Literature": {
-        "TZ": [[0, 10, 23, 38, 52, 63, 77]]
-    },
-    "HL Chinese Language A: Literature": {
-        "TZ": [[0, 13, 26, 41, 54, 66, 79]]
-    },
-    "SL Chinese Language A: Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL Chinese Language A: Literature self taught": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "HL English Language A: Language And Literature": {
-        "TZ": [[0, 12, 26, 38, 50, 63, 78], [0, 13, 26, 36, 50, 62, 77]]
-    },
-    "SL English Language A: Language And Literature": {
-        "TZ": [[0, 10, 23, 35, 46, 60, 77], [0, 10, 23, 35, 49, 60 ,77]]
-    },
-    "HL English Language A: Literature": {
-        "TZ": [[0, 12, 25, 38, 53, 66, 80], [0, 12, 25, 38, 50, 62, 74]]
-    },
-    "SL English Language A: Literature": {
-        "TZ": [[0, 10, 23, 35, 49, 65, 79], [0, 10, 23, 35, 46, 57, 68]]
-    },
-    "SL Environmental Systems And Societies": {
-        "TZ": [[0, 10, 18, 30, 40, 52, 62]]
-    },
-    "HL Environmental Systems And Societies": {
-        "TZ": [[0, 15, 28, 43, 57, 68, 82]]
-    },
-    "SL French Language A: Literature": {
-        "TZ": [[0, 13, 28, 40, 52, 63, 77]]
-    },
-    "HL Indonesian Language A: Language And Literature": {
-        "TZ": [[0, 16, 28, 42, 55, 67, 80]]
-    },
-    "SL Indonesian Language A: Language And Literature": {
-        "TZ": [[0, 16, 31, 46, 60, 71, 85]]
-    },
-    "SL Indonesian Language A: Literature": {
-        "TZ": [[0, 16, 31, 43, 57, 68, 82]]
-    },
-    "HL Italian Language A: Language And Literature": {
-        "TZ": [[0, 11, 22, 35, 49, 62, 77]]
-    },
-    "SL Italian Language A: Language And Literature": {
-        "TZ": [[0, 10, 23, 35, 49, 63, 77]]
-    },
-    "HL Italian Language A: Literature": {
-        "TZ": [[0, 16, 31, 45, 58, 70, 83]]
-    },
-    "SL Italian Language A: Literature": {
-        "TZ": [[0, 16, 31, 43, 54, 68, 79]]
-    },
-    "HL Japanese Language A: Language And Literature": {
-        "TZ": [[0, 11, 21, 32, 45, 57, 70]]
-    },
-    "SL Japanese Language A: Language And Literature": {
-        "TZ": [[0, 10, 25, 35, 46, 57, 68]]
-    },
-    "SL Lithuanian Language A: Literature": {
-        "TZ": [[0, 10, 25, 35, 46, 54, 79]]
-    },
-    "HL Mathematics: Analysis And Approaches": {
-        "TZ": [[0, 7, 15, 24, 37, 51, 65], [0, 10, 18, 28, 39, 52, 65]]
-    },
-    "SL Mathematics: Analysis And Approaches": {
-        "TZ": [[0, 5, 12, 21, 33, 48, 66], [0, 8, 14, 25, 41, 56, 71]]
-    },
-    "SL Modern Greek Language A: Language And Literature": {
-        "TZ": [[0, 16, 31, 40, 54, 65, 79]]
-    },
-    "SL Modern Greek Language A: Literature": {
-        "TZ": [[0, 16, 25, 40, 54, 65, 79]]
-    },
-    "HL Norwegian Language A: Literature": {
-        "TZ": [[0, 16, 31, 43, 55, 66, 80]]
-    },
-    "SL Norwegian Language A: Literature": {
-        "TZ": [[0, 16, 31, 43, 54, 68, 79]]
-    },
-    "HL Portuguese Language A: Language And Literature": {
-        "TZ": [[0, 15, 28, 43, 55, 66, 79]]
-    },
-    "SL Portuguese Language A: Language And Literature": {
-        "TZ": [[0, 13, 28, 43, 57, 68, 82]]
-    },
-    "SL Russian Language A: Language And Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "HL Russian Language A: Literature": {
-        "TZ": [[0, 13, 26, 41, 54, 66, 79]]
-    },
-    "SL Russian Language A: Literature": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "SL Russian Language A: Literature self taught": {
-        "TZ": [[0, 13, 25, 40, 54, 65, 79]]
-    },
-    "HL Social And Cultural Anthropology": {
-        "TZ": [[0, 12, 25, 43, 54, 64, 77]]
-    },
-    "SL Social And Cultural Anthropology": {
-        "TZ": [[0, 14, 29, 45, 56, 70, 81]]
-    },
-    "HL Spanish Language A: Language And Literature": {
-        "TZ": [[0, 12, 25, 38, 53, 65, 79]]
-    },
-    "SL Spanish Language A: Language And Literature": {
-        "TZ": [[0, 13, 25, 38, 52, 65, 79]]
-    },
-    "HL Spanish Language A: Literature": {
-        "TZ": [[0, 15, 30, 42, 55, 67, 80]]
-    },
-    "SL Spanish Language A: Literature": {
-        "TZ": [[0, 13, 25, 38, 52, 65, 79]]
-    },
-    "SL Spanish Language A: Literature self taught": {
-        "TZ": [[0, 13, 25, 38, 52, 65, 79]]
-    },
-    "HL Sports, Excercise And Health Science": {
-        "TZ": [[0, 14, 19, 30, 43, 55, 69]]
-    },
-    "SL Sports, Excercise And Health Science": {
-        "TZ": [[0, 14, 22, 34, 44, 56, 69]]
-    },
-    "SL Swedish Language A: Language And Literature": {
-        "TZ": [[0, 10, 20, 35, 49, 60, 74]]
-    },
-    "HL Swedish Language A: Literature": {
-        "TZ": [[0, 11, 21, 36, 49, 61, 74]]
-    },
-    "SL Swedish Language A: Literature": {
-        "TZ": [[0, 10, 23, 38, 52, 63, 77]]
-    },
-    "HL Theatre (Pilot)": {
-        "TZ": [[0, 5, 10, 25, 48, 65, 81]]
-    },
-    "Theory Of Knowledge": {
-        "TZ": [[0, 4, 10, 16, 22]]
-    },
-    "Extended Essay": {
-        "TZ": [[0, 6, 13, 20, 26]]
-    },
-    "SL Turkey In The 20th Century": {
-        "TZ": [[0, 12, 27, 39, 52, 64, 78]]
-    },
-    "HL Turkish Language A: Literature": {
-        "TZ": [[0, 13, 26, 37, 50, 62, 75]]
-    },
-    "SL Turkish Language A: Literature": {
-        "TZ": [[0, 13, 25, 38, 49, 60, 71]]
-    },
-    "SL Vietnamese Language A: Literature": {
-        "TZ": [[0, 16, 31, 46, 57, 71, 82]]
-    }
+	"info": {
+		"name": "May 2022",
+		"short": "M22"
+	},
+	"SL Nature of Science": {
+		"TZ": [[0, 18, 36, 43, 51, 61, 71]]
+	},
+	"HL Film": {
+		"TZ": [[0, 12, 25, 36, 52, 68, 84]]
+	},
+	"SL Film": {
+		"TZ": [[0, 14, 27, 38, 52, 72, 87]]
+	},
+	"HL Information Technology In A Global Society": {
+		"TZ": [[0, 10, 21, 35, 45, 55, 65]]
+	},
+	"SL Information Technology In A Global Society": {
+		"TZ": [[0, 8, 16, 26, 40, 52, 63]]
+	},
+	"HL Dance": {
+		"TZ": [[0, 18, 40, 57, 68, 78, 88]]
+	},
+	"SL Dance": {
+		"TZ": [[0, 18, 37, 60, 72, 79, 87]]
+	},
+	"HL Latin": {
+		"TZ": [[0, 9, 19, 33, 47, 60, 73]]
+	},
+	"SL Latin": {
+		"TZ": [[0, 9, 21, 34, 47, 58, 71]]
+	},
+	"HL Music": {
+		"TZ": [[0, 11, 23, 37, 51, 65, 79]]
+	},
+	"SL Music": {
+		"TZ": [[0, 9, 18, 30, 45, 61, 77]]
+	},
+	"HL Biology": {
+		"TZ": [
+			[0, 14, 21, 29, 43, 57, 71],
+			[0, 15, 23, 33, 47, 60, 74]
+		]
+	},
+	"SL Biology": {
+		"TZ": [
+			[0, 14, 24, 34, 49, 64, 79],
+			[0, 13, 22, 33, 48, 61, 71]
+		]
+	},
+	"HL Business Management": {
+		"TZ": [[0, 15, 27, 38, 50, 57, 68]]
+	},
+	"SL Business Management": {
+		"TZ": [[0, 12, 22, 39, 50, 61, 72]]
+	},
+	"HL Dutch Language B": {
+		"TZ": [[0, 16, 32, 42, 56, 68, 82]]
+	},
+	"SL Dutch Language B": {
+		"TZ": [[0, 15, 31, 42, 55, 70, 84]]
+	},
+	"HL Hindi Language B": {
+		"TZ": [[0, 16, 33, 44, 57, 67, 79]]
+	},
+	"SL Hindi Language B": {
+		"TZ": [[0, 9, 19, 28, 44, 62, 78]]
+	},
+	"SL History": {
+		"TZ": [
+			[0, 8, 21, 34, 48, 62, 75],
+			[0, 8, 21, 34, 48, 62, 75]
+		]
+	},
+	"HL History Europe": {
+		"TZ": [
+			[0, 9, 22, 34, 47, 60, 73],
+			[0, 9, 22, 34, 47, 60, 73]
+		]
+	},
+	"HL History Americas": {
+		"TZ": [
+			[0, 9, 22, 34, 47, 60, 73],
+			[0, 9, 22, 34, 47, 60, 73]
+		]
+	},
+	"HL History Asia And Oceania": {
+		"TZ": [
+			[0, 9, 22, 34, 47, 60, 73],
+			[0, 9, 22, 34, 47, 60, 73]
+		]
+	},
+	"HL History Africa And Middle East": {
+		"TZ": [
+			[0, 9, 22, 34, 47, 60, 73],
+			[0, 9, 22, 34, 47, 60, 73]
+		]
+	},
+	"HL Physics": {
+		"TZ": [
+			[0, 12, 19, 27, 38, 50, 63],
+			[0, 15, 25, 35, 46, 58, 70]
+		]
+	},
+	"SL Physics": {
+		"TZ": [
+			[0, 11, 20, 27, 37, 47, 58],
+			[0, 12, 21, 32, 43, 54, 65]
+		]
+	},
+	"HL Theatre": {
+		"TZ": [[0, 8, 18, 30, 46, 63, 79]]
+	},
+	"SL Theatre": {
+		"TZ": [[0, 7, 17, 26, 45, 62, 79]]
+	},
+	"HL Arabic Language B": {
+		"TZ": [[0, 15, 30, 46, 59, 70, 84]]
+	},
+	"SL Arabic Language B": {
+		"TZ": [[0, 11, 24, 36, 51, 64, 79]]
+	},
+	"HL Danish Language B": {
+		"TZ": [[0, 9, 20, 41, 55, 70, 84]]
+	},
+	"HL French Language B": {
+		"TZ": [[0, 13, 27, 46, 59, 72, 85]]
+	},
+	"SL French Language B": {
+		"TZ": [[0, 10, 23, 34, 49, 66, 81]]
+	},
+	"HL German Language B": {
+		"TZ": [[0, 9, 17, 32, 50, 67, 85]]
+	},
+	"SL German Language B": {
+		"TZ": [[0, 10, 22, 34, 48, 63, 78]]
+	},
+	"HL Chemistry": {
+		"TZ": [
+			[0, 11, 24, 36, 48, 61, 73],
+			[0, 12, 23, 34, 46, 57, 69]
+		]
+	},
+	"SL Chemistry": {
+		"TZ": [
+			[0, 11, 23, 36, 48, 61, 73],
+			[0, 10, 22, 33, 46, 56, 69]
+		]
+	},
+	"HL Chinese Language B": {
+		"TZ": [[0, 9, 19, 36, 49, 65, 78]]
+	},
+	"SL Chinese Language B": {
+		"TZ": [[0, 9, 20, 33, 47, 61, 76]]
+	},
+	"HL Economics": {
+		"TZ": [[0, 11, 21, 30, 43, 58, 71]]
+	},
+	"SL Economics": {
+		"TZ": [[0, 10, 22, 35, 48, 60, 73]]
+	},
+	"HL English Language B": {
+		"TZ": [[0, 13, 27, 40, 55, 71, 87]]
+	},
+	"SL English Language B": {
+		"TZ": [[0, 11, 23, 39, 55, 71, 88]]
+	},
+	"HL Geography": {
+		"TZ": [[0, 12, 25, 39, 50, 63, 74]]
+	},
+	"SL Geography": {
+		"TZ": [[0, 11, 24, 38, 49, 65, 76]]
+	},
+	"HL Global Politics": {
+		"TZ": [[0, 10, 20, 29, 40, 51, 62]]
+	},
+	"SL Global Politics": {
+		"TZ": [[0, 7, 17, 27, 35, 47, 57]]
+	},
+	"HL Italian Language B": {
+		"TZ": [[0, 13, 26, 42, 57, 71, 86]]
+	},
+	"SL Italian Language B": {
+		"TZ": [[0, 12, 23, 38, 55, 73, 90]]
+	},
+	"HL Mathematics: Applications And Interpretation": {
+		"TZ": [
+			[0, 8, 16, 26, 37, 50, 63],
+			[0, 10, 18, 26, 37, 49, 62]
+		]
+	},
+	"SL Mathematics: Applications And Interpretation": {
+		"TZ": [
+			[0, 6, 13, 23, 35, 50, 67],
+			[0, 8, 14, 23, 37, 53, 67]
+		]
+	},
+	"SL Russian Language B": {
+		"TZ": [[0, 9, 19, 36, 50, 64, 79]]
+	},
+	"HL Spanish Language B": {
+		"TZ": [[0, 12, 24, 37, 53, 67, 83]]
+	},
+	"SL Spanish Language B": {
+		"TZ": [[0, 6, 14, 25, 41, 60, 77]]
+	},
+	"HL Swedish Language B": {
+		"TZ": [[0, 16, 33, 49, 63, 74, 87]]
+	},
+	"SL Swedish Language B": {
+		"TZ": [[0, 13, 28, 41, 54, 68, 81]]
+	},
+	"SL Arabic Language AB Initio": {
+		"TZ": [[0, 9, 21, 34, 51, 68, 85]]
+	},
+	"SL French Language AB Initio": {
+		"TZ": [[0, 13, 25, 38, 53, 66, 81]]
+	},
+	"SL German Language AB Initio": {
+		"TZ": [[0, 9, 21, 33, 49, 64, 80]]
+	},
+	"HL Japanese Language B": {
+		"TZ": [[0, 16, 32, 47, 59, 70, 83]]
+	},
+	"SL Japanese Language B": {
+		"TZ": [[0, 9, 19, 30, 48, 66, 83]]
+	},
+	"HL Philosophy": {
+		"TZ": [[0, 11, 25, 38, 49, 62, 75]]
+	},
+	"SL Philosophy": {
+		"TZ": [[0, 13, 25, 39, 50, 62, 74]]
+	},
+	"HL Psychology": {
+		"TZ": [
+			[0, 6, 14, 27, 41, 54, 68],
+			[0, 9, 19, 33, 46, 59, 72]
+		]
+	},
+	"SL Psychology": {
+		"TZ": [
+			[0, 6, 13, 24, 40, 52, 68],
+			[0, 9, 20, 31, 45, 56, 70]
+		]
+	},
+	"SL Thai Language A: Language and Literature": {
+		"TZ": [[0, 10, 23, 35, 49, 65, 79]]
+	},
+	"SL Art History": {
+		"TZ": [[0, 9, 18, 27, 42, 55, 69]]
+	},
+	"SL Dutch Language A: Language And Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL English Language AB Initio": {
+		"TZ": [[0, 14, 28, 41, 56, 70, 86]]
+	},
+	"SL Italian Language AB Initio": {
+		"TZ": [[0, 8, 18, 35, 50, 64, 79]]
+	},
+	"SL Malay Language A: Literature": {
+		"TZ": [[0, 16, 31, 46, 60, 71, 85]]
+	},
+	"SL Marine Science": {
+		"TZ": [[0, 14, 28, 39, 47, 55, 64]]
+	},
+	"HL Norwegian Language B": {
+		"TZ": [[0, 12, 24, 37, 53, 68, 83]]
+	},
+	"*HL Ref Project": {
+		"TZ": [[0, 11, 17, 23, 27]]
+	},
+	"SL Spanish Language AB Initio": {
+		"TZ": [[0, 13, 25, 39, 53, 68, 82]]
+	},
+	"SL Swedish Language AB Initio": {
+		"TZ": [[0, 10, 22, 36, 48, 62, 76]]
+	},
+	"HL Visual Arts": {
+		"TZ": [[0, 10, 21, 37, 51, 65, 79]]
+	},
+	"SL Visual Arts": {
+		"TZ": [[0, 11, 22, 34, 49, 65, 80]]
+	},
+	"HL Arabic Language A: Language And Literature": {
+		"TZ": [[0, 13, 26, 41, 54, 66, 79]]
+	},
+	"SL Arabic Language A: Language And Literature": {
+		"TZ": [[0, 16, 31, 43, 54, 68, 79]]
+	},
+	"SL Arabic Language A: Literature": {
+		"TZ": [[0, 13, 25, 38, 49, 60, 71]]
+	},
+	"HL Computer Science": {
+		"TZ": [[0, 11, 21, 32, 44, 57, 69]]
+	},
+	"SL Computer Science": {
+		"TZ": [[0, 9, 20, 34, 45, 56, 67]]
+	},
+	"HL Danish Language A: Literature": {
+		"TZ": [[0, 15, 30, 42, 57, 68, 83]]
+	},
+	"HL Design Technology": {
+		"TZ": [[0, 8, 19, 27, 38, 50, 61]]
+	},
+	"SL Design Technology": {
+		"TZ": [[0, 7, 16, 24, 33, 44, 53]]
+	},
+	"HL French Language A: Language And Literature": {
+		"TZ": [[0, 12, 25, 38, 52, 63, 77]]
+	},
+	"SL French Language A: Language And Literature": {
+		"TZ": [[0, 13, 25, 40, 52, 63, 77]]
+	},
+	"HL French Language A: Literature": {
+		"TZ": [[0, 16, 31, 43, 57, 67, 80]]
+	},
+	"SL French Language A: Literature self taught": {
+		"TZ": [[0, 16, 28, 40, 57, 71, 82]]
+	},
+	"HL German Language A: Language And Literature": {
+		"TZ": [[0, 15, 30, 40, 54, 66, 80]]
+	},
+	"SL German Language A: Language And Literature": {
+		"TZ": [[0, 13, 28, 40, 54, 68, 82]]
+	},
+	"HL German Language A: Literature": {
+		"TZ": [[0, 15, 30, 40, 53, 65, 78]]
+	},
+	"SL German Language A: Literature": {
+		"TZ": [[0, 13, 25, 38, 52, 65, 79]]
+	},
+	"SL German Language A: Literature self taught": {
+		"TZ": [[0, 13, 25, 38, 52, 65, 79]]
+	},
+	"HL Indonesian Language B": {
+		"TZ": [[0, 8, 23, 40, 54, 70, 81]]
+	},
+	"SL Indonesian Language B": {
+		"TZ": [[0, 8, 26, 39, 55, 73, 83]]
+	},
+	"SL Japanese Language AB Initio": {
+		"TZ": [[0, 9, 20, 32, 46, 61, 75]]
+	},
+	"HL Korean Language A: Language And Literature": {
+		"TZ": [[0, 13, 27, 40, 53, 65, 78]]
+	},
+	"SL Korean Language A: Language And Literature": {
+		"TZ": [[0, 10, 23, 38, 52, 63, 77]]
+	},
+	"SL Korean Language A: Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL Korean Language A: Literature self taught": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL Literature And Performance": {
+		"TZ": [[0, 12, 28, 46, 58, 72, 84]]
+	},
+	"SL Chinese Language AB Initio": {
+		"TZ": [[0, 7, 16, 30, 45, 59, 74]]
+	},
+	"HL Polish Language A: Literature": {
+		"TZ": [[0, 13, 27, 41, 54, 66, 79]]
+	},
+	"SL Polish Language A: Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL Portuguese Language B": {
+		"TZ": [[0, 11, 22, 37, 49, 63, 76]]
+	},
+	"SL World Religions": {
+		"TZ": [[0, 14, 27, 42, 54, 67, 79]]
+	},
+	"SL Braz.Soc.Stud": {
+		"TZ": [[0, 11, 24, 36, 48, 60, 76]]
+	},
+	"HL Catalan Language A: Literature": {
+		"TZ": [[0, 17, 33, 51, 63, 75, 87]]
+	},
+	"HL Chinese Language A: Language And Literature": {
+		"TZ": [[0, 13, 26, 41, 54, 66, 79]]
+	},
+	"SL Chinese Language A: Language And Literature": {
+		"TZ": [[0, 10, 23, 38, 52, 63, 77]]
+	},
+	"HL Chinese Language A: Literature": {
+		"TZ": [[0, 13, 26, 41, 54, 66, 79]]
+	},
+	"SL Chinese Language A: Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL Chinese Language A: Literature self taught": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"HL English Language A: Language And Literature": {
+		"TZ": [
+			[0, 12, 26, 38, 50, 63, 78],
+			[0, 13, 26, 36, 50, 62, 77]
+		]
+	},
+	"SL English Language A: Language And Literature": {
+		"TZ": [
+			[0, 10, 23, 35, 46, 60, 77],
+			[0, 10, 23, 35, 49, 60, 77]
+		]
+	},
+	"HL English Language A: Literature": {
+		"TZ": [
+			[0, 12, 25, 38, 53, 66, 80],
+			[0, 12, 25, 38, 50, 62, 74]
+		]
+	},
+	"SL English Language A: Literature": {
+		"TZ": [
+			[0, 10, 23, 35, 49, 65, 79],
+			[0, 10, 23, 35, 46, 57, 68]
+		]
+	},
+	"SL Environmental Systems And Societies": {
+		"TZ": [[0, 10, 18, 30, 40, 52, 62]]
+	},
+	"HL Environmental Systems And Societies": {
+		"TZ": [[0, 15, 28, 43, 57, 68, 82]]
+	},
+	"SL French Language A: Literature": {
+		"TZ": [[0, 13, 28, 40, 52, 63, 77]]
+	},
+	"HL Indonesian Language A: Language And Literature": {
+		"TZ": [[0, 16, 28, 42, 55, 67, 80]]
+	},
+	"SL Indonesian Language A: Language And Literature": {
+		"TZ": [[0, 16, 31, 46, 60, 71, 85]]
+	},
+	"SL Indonesian Language A: Literature": {
+		"TZ": [[0, 16, 31, 43, 57, 68, 82]]
+	},
+	"HL Italian Language A: Language And Literature": {
+		"TZ": [[0, 11, 22, 35, 49, 62, 77]]
+	},
+	"SL Italian Language A: Language And Literature": {
+		"TZ": [[0, 10, 23, 35, 49, 63, 77]]
+	},
+	"HL Italian Language A: Literature": {
+		"TZ": [[0, 16, 31, 45, 58, 70, 83]]
+	},
+	"SL Italian Language A: Literature": {
+		"TZ": [[0, 16, 31, 43, 54, 68, 79]]
+	},
+	"HL Japanese Language A: Language And Literature": {
+		"TZ": [[0, 11, 21, 32, 45, 57, 70]]
+	},
+	"SL Japanese Language A: Language And Literature": {
+		"TZ": [[0, 10, 25, 35, 46, 57, 68]]
+	},
+	"SL Lithuanian Language A: Literature": {
+		"TZ": [[0, 10, 25, 35, 46, 54, 79]]
+	},
+	"HL Mathematics: Analysis And Approaches": {
+		"TZ": [
+			[0, 7, 15, 24, 37, 51, 65],
+			[0, 10, 18, 28, 39, 52, 65]
+		]
+	},
+	"SL Mathematics: Analysis And Approaches": {
+		"TZ": [
+			[0, 5, 12, 21, 33, 48, 66],
+			[0, 8, 14, 25, 41, 56, 71]
+		]
+	},
+	"SL Modern Greek Language A: Language And Literature": {
+		"TZ": [[0, 16, 31, 40, 54, 65, 79]]
+	},
+	"SL Modern Greek Language A: Literature": {
+		"TZ": [[0, 16, 25, 40, 54, 65, 79]]
+	},
+	"HL Norwegian Language A: Literature": {
+		"TZ": [[0, 16, 31, 43, 55, 66, 80]]
+	},
+	"SL Norwegian Language A: Literature": {
+		"TZ": [[0, 16, 31, 43, 54, 68, 79]]
+	},
+	"HL Portuguese Language A: Language And Literature": {
+		"TZ": [[0, 15, 28, 43, 55, 66, 79]]
+	},
+	"SL Portuguese Language A: Language And Literature": {
+		"TZ": [[0, 13, 28, 43, 57, 68, 82]]
+	},
+	"SL Russian Language A: Language And Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"HL Russian Language A: Literature": {
+		"TZ": [[0, 13, 26, 41, 54, 66, 79]]
+	},
+	"SL Russian Language A: Literature": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"SL Russian Language A: Literature self taught": {
+		"TZ": [[0, 13, 25, 40, 54, 65, 79]]
+	},
+	"HL Social And Cultural Anthropology": {
+		"TZ": [[0, 12, 25, 43, 54, 64, 77]]
+	},
+	"SL Social And Cultural Anthropology": {
+		"TZ": [[0, 14, 29, 45, 56, 70, 81]]
+	},
+	"HL Spanish Language A: Language And Literature": {
+		"TZ": [[0, 12, 25, 38, 53, 65, 79]]
+	},
+	"SL Spanish Language A: Language And Literature": {
+		"TZ": [[0, 13, 25, 38, 52, 65, 79]]
+	},
+	"HL Spanish Language A: Literature": {
+		"TZ": [[0, 15, 30, 42, 55, 67, 80]]
+	},
+	"SL Spanish Language A: Literature": {
+		"TZ": [[0, 13, 25, 38, 52, 65, 79]]
+	},
+	"SL Spanish Language A: Literature self taught": {
+		"TZ": [[0, 13, 25, 38, 52, 65, 79]]
+	},
+	"HL Sports, Excercise And Health Science": {
+		"TZ": [[0, 14, 19, 30, 43, 55, 69]]
+	},
+	"SL Sports, Excercise And Health Science": {
+		"TZ": [[0, 14, 22, 34, 44, 56, 69]]
+	},
+	"SL Swedish Language A: Language And Literature": {
+		"TZ": [[0, 10, 20, 35, 49, 60, 74]]
+	},
+	"HL Swedish Language A: Literature": {
+		"TZ": [[0, 11, 21, 36, 49, 61, 74]]
+	},
+	"SL Swedish Language A: Literature": {
+		"TZ": [[0, 10, 23, 38, 52, 63, 77]]
+	},
+	"HL Theatre (Pilot)": {
+		"TZ": [[0, 5, 10, 25, 48, 65, 81]]
+	},
+	"Theory Of Knowledge": {
+		"TZ": [[0, 4, 10, 16, 22]]
+	},
+	"Extended Essay": {
+		"TZ": [[0, 6, 13, 20, 26]]
+	},
+	"SL Turkey In The 20th Century": {
+		"TZ": [[0, 12, 27, 39, 52, 64, 78]]
+	},
+	"HL Turkish Language A: Literature": {
+		"TZ": [[0, 13, 26, 37, 50, 62, 75]]
+	},
+	"SL Turkish Language A: Literature": {
+		"TZ": [[0, 13, 25, 38, 49, 60, 71]]
+	},
+	"SL Vietnamese Language A: Literature": {
+		"TZ": [[0, 16, 31, 46, 57, 71, 82]]
+	}
 }

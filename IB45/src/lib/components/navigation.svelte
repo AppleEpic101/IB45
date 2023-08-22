@@ -1,19 +1,23 @@
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<img
-	src="flc_design20230531154582.png"
-	alt="Logo"
-	on:click={() => {
-		location.reload();
-	}}
-/>
+<nav>
+	<a href="/"><img src="/flc_design20230531154582.png" alt="Logo" /></a>
 
-<div class="top-links">
-	<a href="/">Home</a>
-	<a href="./subjects">Subjects</a>
-	<a href="./changelog">Changelog</a>
-</div>
+	<div class="top-links">
+		<a href="/">Home</a>
+		<a href="/subjects">Subjects</a>
+		<a href="/changelog">Changelog</a>
+	</div>
+</nav>
 
 <style>
+	nav {
+		width: 100%;
+		display: flex;
+		background-color: var(--primary);
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid black;
+	}
+
 	.top-links {
 		display: flex;
 		justify-content: flex-end;
@@ -56,7 +60,7 @@
 		}
 	}
 
-	@media screen and (max-width: 360px) {
+	@media screen and (max-width: 380px) {
 		img {
 			width: 100px;
 			height: 50px;

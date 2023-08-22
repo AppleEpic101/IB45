@@ -7,6 +7,15 @@
 
 <div class="changes">
 	<div class="change">
+		<h2>August 22, 2023</h2>
+		<ul>
+			<li>Dark mode</li>
+			<li>Comments section</li>
+			<li>Subject list</li>
+			<li>Individual subject page w/ neat grade-boundary table</li>
+		</ul>
+	</div>
+	<div class="change">
 		<h2>August 19, 2023</h2>
 		<ul>
 			<li>Interface change</li>

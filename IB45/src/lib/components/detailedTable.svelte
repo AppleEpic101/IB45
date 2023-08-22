@@ -148,9 +148,11 @@
 	table {
 		margin-top: 10px;
 	}
+
 	th {
 		height: 50px;
 	}
+
 	.box {
 		margin-top: 10px;
 		padding: 5px;

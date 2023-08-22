@@ -37,7 +37,7 @@
 <div class="intro">
 	<div>
 		<h2>Welcome to IB Predict!</h2>
-		<h3>Last updated August 19, 2023</h3>
+		<h3>Last updated August 22, 2023</h3>
 	</div>
 	<Links />
 	<p>
@@ -145,6 +145,7 @@
 		text-decoration: none;
 		font-size: 1.2em;
 	}
+
 	p {
 		line-height: 2;
 	}

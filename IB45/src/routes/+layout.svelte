@@ -2,9 +2,7 @@
 	import Navigation from '$lib/components/navigation.svelte';
 </script>
 
-<nav>
-	<Navigation />
-</nav>
+<Navigation />
 
 <div class="slot">
 	<slot />
@@ -41,13 +39,8 @@
 		overscroll-behavior-x: none;
 	}
 
-	:global(nav) {
-		width: 100%;
-		display: flex;
-		background-color: var(--primary);
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: 1px solid black;
+	:global(a:link, a:visited) {
+		color: black;
 	}
 
 	.slot {
