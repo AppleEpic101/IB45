@@ -13,6 +13,7 @@
 			<li>Comments section</li>
 			<li>Subject list</li>
 			<li>Individual subject page w/ neat grade-boundary table</li>
+			<li>November 2019 and November 2020 boundaries added</li>
 		</ul>
 	</div>
 	<div class="change">

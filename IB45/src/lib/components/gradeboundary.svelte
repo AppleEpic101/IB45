@@ -25,17 +25,50 @@
 </script>
 
 <div class="body">
-	<p>Select the grade boundary.</p>
-	<form>
+	<h3>Select the grade boundary.</h3>
+
+	<div class="buttons">
 		{#each { length: gradeBoundaries.length } as _, i}
-			<div class="option">
-				<input type="radio" bind:group={$gradeBoundary} value={'' + str[i]} />
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label
-					>{gradeBoundaries[i]['info'].name}
-					{#if i == 4} (Default) {/if}</label
-				>
-			</div>
+			<input
+				type="radio"
+				label={gradeBoundaries[i]['info'].name}
+				value={'' + str[i]}
+				bind:group={$gradeBoundary}
+			/>
 		{/each}
-	</form>
+	</div>
 </div>
+
+<style>
+	.buttons {
+		padding: 4px;
+		border-radius: 3px;
+		position: relative;
+		width: fit-content;
+	}
+
+	.buttons input {
+		appearance: none;
+		cursor: pointer;
+		border-radius: 10px;
+		padding: 5px 10px;
+		background-color: var(--lightprimary);
+		color: black;
+		font-size: 15px;
+		font-family: sans-serif;
+		transition: all 0.1s;
+		border: 2px solid black;
+	}
+
+	.buttons input:checked {
+		background: var(--banner);
+		color: white;
+		box-shadow: 0 1px 1px black;
+		text-shadow: 0 2px 2px #808080;
+	}
+
+	.buttons input::before {
+		content: attr(label);
+		text-align: center;
+	}
+</style>

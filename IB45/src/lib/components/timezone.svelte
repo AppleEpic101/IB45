@@ -27,21 +27,45 @@
 </script>
 
 <div class="body">
-	<p>Select the timezone.</p>
+	<h3>Select the timezone.</h3>
 
-	<form>
+	<div class="buttons">
 		{#each { length: numTimezones } as _, i}
-			<div class="option">
-				<input type="radio" bind:group={$timezone} value={i + 1 + ''} />
-				<label for="Timezone {i + 1}"
-					>Timezone {i + 1}
-					{#if numTimezones == 1}
-						{singleLocations[i]}
-					{:else if numTimezones == 2}
-						{doubleLocations[i]}
-					{/if}
-				</label>
-			</div>
+			<input type="radio" bind:group={$timezone} value={i + 1 + ''} label={'Timezone ' + (i + 1)} />
 		{/each}
-	</form>
+	</div>
 </div>
+
+<style>
+	.buttons {
+		padding: 4px;
+		border-radius: 3px;
+		position: relative;
+		width: fit-content;
+	}
+
+	.buttons input {
+		appearance: none;
+		cursor: pointer;
+		border-radius: 10px;
+		padding: 5px 10px;
+		background-color: var(--lightprimary);
+		color: black;
+		font-size: 15px;
+		font-family: sans-serif;
+		transition: all 0.1s;
+		border: 2px solid black;
+	}
+
+	.buttons input:checked {
+		background: var(--banner);
+		color: white;
+		box-shadow: 0 1px 1px black;
+		text-shadow: 0 2px 2px #808080;
+	}
+
+	.buttons input::before {
+		content: attr(label);
+		text-align: center;
+	}
+</style>

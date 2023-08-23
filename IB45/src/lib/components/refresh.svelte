@@ -4,7 +4,7 @@
 		location.reload();
 	}}
 >
-	Reset Selections
+	Reset All Selections
 </button>
 
 <style>

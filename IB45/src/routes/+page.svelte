@@ -45,25 +45,16 @@
 		cannot be understated. Our IB predicted grade calculator incorporates official grade boundaries
 		data from previous IB administrations, giving you the most accurate grade predictions possible.
 	</p>
-
-	<hr />
 	<strong>
-		<ul>
-			<li>
-				NOTE: May 2023 grade boundaries are coming soon (official boundaries likely released in
-				October).
-			</li>
-		</ul>
+		NOTE: May 2023 grade boundaries are coming soon (official boundaries likely released in
+		October).
 	</strong>
+	<hr />
 
 	<div class="multipleChoice">
 		<GradeBoundary />
 		<Timezone />
 	</div>
-	<!-- <label>
-		<input type="checkbox" />
-		<span class="slider round">Detailed Mode</span>
-	</label> -->
 </div>
 
 <div class="layout">

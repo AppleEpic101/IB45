@@ -12,12 +12,13 @@
 	<div>
 		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang
 	</div>
-	<div class="title">
+	<!-- <div>
 		<strong>RESOURCES</strong><br />
-		<a href="/May 2019 Grade Boundaries.pdf" target="_blank">May 2019 Grade Boundary</a><br />
-		<a href="/May 2022 Grade Boundaries.pdf" target="_blank">May 2022 Grade Boundary</a><br />
-		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">November 2022 Grade Boundary</a>
-	</div>
+		<a href="/May 2019 Grade Boundaries.pdf" target="_blank">M19</a>
+		<a href="/November 2019 Grade Boundaries.pdf" target="_blank">N19</a><br />
+		<a href="/May 2022 Grade Boundaries.pdf" target="_blank">M22</a>
+		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">N22</a>
+	</div> -->
 	<div>
 		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com
 	</div>
@@ -69,7 +70,7 @@
 	@media screen and (max-width: 560px) {
 		footer {
 			display: block;
-			height: 450px;
+			height: 325px;
 		}
 	}
 </style>

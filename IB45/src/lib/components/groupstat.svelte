@@ -27,16 +27,14 @@
 			<div class="tooltip">
 				<div class="txt">Boundary Not Found.</div>
 				<span class="tooltiptext">
-					<ul>
-						<li>
-							Your selected subject may have fewer than 100 candidates, those of which do not have
-							official, published boundaries.
-						</li>
-						<li>
-							Your selected subject may not exist and therefore incompatible with your current grade
-							boundary year.
-						</li>
-					</ul>
+					<p>
+						Your selected subject may have fewer than 100 candidates, those of which do not have
+						official, published boundaries.
+					</p>
+					<p>
+						Your selected subject may not exist and therefore incompatible with your current grade
+						boundary year.
+					</p>
 				</span>
 			</div>
 		{/if}
@@ -60,9 +58,9 @@
 	.tooltip .tooltiptext {
 		visibility: hidden;
 		background-color: var(--lightprimary);
-		text-align: center;
-		padding: 5px;
+		text-align: left;
 		border-radius: 6px;
+		padding-left: 10px;
 		border: 2px solid black;
 
 		position: absolute;
@@ -75,9 +73,5 @@
 
 	.tooltip:hover .tooltiptext {
 		visibility: visible;
-	}
-
-	ul {
-		text-align: left;
 	}
 </style>
