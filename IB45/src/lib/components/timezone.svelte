@@ -46,6 +46,7 @@
 
 	.buttons input {
 		appearance: none;
+		-webkit-appearance: none;
 		cursor: pointer;
 		border-radius: 10px;
 		padding: 5px 10px;
