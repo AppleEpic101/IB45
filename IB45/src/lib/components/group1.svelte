@@ -4,6 +4,7 @@
 	import Groupstat from '$lib/components/groupstat.svelte';
 	import Slider from '$lib/components/slider.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
+	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
 
 	const languages = [
 		'English',
@@ -59,8 +60,6 @@
 	}
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
 
-	$: console.log(foo);
-
 	$: grade = calculateGrade(store, matchedCourse);
 	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
 	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
@@ -76,6 +75,9 @@
 		{/if}
 	</h2>
 
+	{#if groupNumber == 6}
+		<SelectedGroup6 />
+	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
 	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 	<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
