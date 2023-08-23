@@ -5,21 +5,25 @@
 	export let weight;
 	export let value = Math.trunc(max / 2);
 
-	$: if (value > max) {
-		value = max;
-	} else if (value < min) {
-		value = 0;
-	} else if (value % 1 !== 0) {
-		value = Math.trunc(value);
-	} else if (value === undefined || value === null) {
-		value = 0;
+	$: {
+		if (value > max) {
+			value = max;
+		}
+		if (value < min) {
+			value = 0;
+		}
+		if (value % 1 !== 0) {
+			value = Math.trunc(value);
+		}
+		if (value === undefined || value === null || Number.isNaN(value)) {
+			value = Math.trunc(max / 2);
+		}
 	}
 </script>
 
 <div class="slider">
 	<p>{name}</p>
 	<p>Weight: {weight * 100}%</p>
-
 	<div class="c">
 		<input type="range" bind:value {min} {max} />
 		<p><input type="number" bind:value {min} {max} /> / {max}</p>

@@ -1,58 +1,41 @@
 <script>
 	import { gradeBoundary, gradeBoundaryData } from '$lib/stores/store.js';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
+	import N19 from '$lib/assets/Grade_BoundariesN19';
+	import N20 from '$lib/assets/Grade_BoundariesN20';
 	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 
+	const str = ['M19', 'N19', 'N20', 'M21', 'M22', 'N22'];
+	const gradeBoundaries = [M19, N19, N20, M21, M22, N22];
+	let data = [];
+
+	gradeBoundaries.forEach((b) => {
+		let arr = Object.keys(b).map((courseName) => ({
+			name: courseName,
+			TZ: b[courseName].TZ
+		}));
+		data.push(arr);
+	});
+
 	$: {
-		if ($gradeBoundary === 'M19') {
-			$gradeBoundaryData = Object.keys(M19).map((courseName) => ({
-				name: courseName,
-				TZ: M19[courseName].TZ
-			}));
-		} else if ($gradeBoundary === 'M21') {
-			$gradeBoundaryData = Object.keys(M21).map((courseName) => ({
-				name: courseName,
-				TZ: M21[courseName].TZ
-			}));
-		} else if ($gradeBoundary === 'M22') {
-			$gradeBoundaryData = Object.keys(M22).map((courseName) => ({
-				name: courseName,
-				TZ: M22[courseName].TZ
-			}));
-		} else if ($gradeBoundary === 'N22') {
-			$gradeBoundaryData = Object.keys(N22).map((courseName) => ({
-				name: courseName,
-				TZ: N22[courseName].TZ
-			}));
-		}
+		$gradeBoundaryData = data[str.indexOf($gradeBoundary)];
 	}
 </script>
 
 <div class="body">
 	<p>Select the grade boundary.</p>
-
 	<form>
-		<div class="option">
-			<input type="radio" bind:group={$gradeBoundary} value="M19" />
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>May 2019</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={$gradeBoundary} value="M21" />
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>May 2021</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={$gradeBoundary} value="M22" />
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>May 2022 (Default)</label>
-		</div>
-		<div class="option">
-			<input type="radio" bind:group={$gradeBoundary} value="N22" />
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>November 2022</label>
-		</div>
+		{#each { length: gradeBoundaries.length } as _, i}
+			<div class="option">
+				<input type="radio" bind:group={$gradeBoundary} value={'' + str[i]} />
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label
+					>{gradeBoundaries[i]['info'].name}
+					{#if i == 4} (Default) {/if}</label
+				>
+			</div>
+		{/each}
 	</form>
 </div>

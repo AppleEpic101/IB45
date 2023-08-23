@@ -1,0 +1,207 @@
+{
+	"info": {
+		"name": "November 2020",
+		"short": "N20"
+	},
+	"HL Film": {
+		"TZ": [[0, 14, 28, 39, 53, 68, 82]]
+	},
+	"HL Information Technology In A Global Society": {
+		"TZ": [[0, 13, 26, 39, 50, 60, 71]]
+	},
+	"SL Information Technology In A Global Society": {
+		"TZ": [[0, 12, 24, 35, 47, 58, 70]]
+	},
+	"HL Music": {
+		"TZ": [[0, 17, 35, 50, 60, 71, 81]]
+	},
+	"HL Biology": {
+		"TZ": [[0, 16, 28, 40, 54, 67, 81]]
+	},
+	"SL Biology": {
+		"TZ": [[0, 15, 26, 39, 51, 63, 75]]
+	},
+	"HL Business Management": {
+		"TZ": [[0, 13, 24, 33, 45, 55, 67]]
+	},
+	"SL Business Management": {
+		"TZ": [[0, 15, 29, 42, 53, 64, 75]]
+	},
+	"SL History": {
+		"TZ": [[0, 11, 24, 34, 47, 62, 75]]
+	},
+	"HL History Europe": {
+		"TZ": [[0, 12, 25, 34, 46, 59, 72]]
+	},
+	"HL History Americas": {
+		"TZ": [[0, 12, 25, 34, 46, 59, 72]]
+	},
+	"HL History Asia And Oceania": {
+		"TZ": [[0, 12, 25, 34, 46, 59, 72]]
+	},
+	"SL Malay Language B": {
+		"TZ": [[0, 11, 23, 36, 51, 67, 82]]
+	},
+	"HL Physics": {
+		"TZ": [[0, 16, 30, 44, 53, 64, 73]]
+	},
+	"SL Physics": {
+		"TZ": [[0, 14, 25, 35, 45, 56, 68]]
+	},
+	"SL Tamil Language B": {
+		"TZ": [[0, 12, 26, 40, 55, 68, 84]]
+	},
+	"HL Theatre": {
+		"TZ": [[0, 10, 21, 33, 50, 64, 82]]
+	},
+	"SL Theatre": {
+		"TZ": [[0, 9, 20, 31, 49, 65, 81]]
+	},
+	"HL French Language B": {
+		"TZ": [[0, 13, 27, 45, 57, 69, 80]]
+	},
+	"SL French Language B": {
+		"TZ": [[0, 9, 18, 28, 46, 65, 83]]
+	},
+	"HL German Language B": {
+		"TZ": [[0, 10, 20, 30, 48, 66, 84]]
+	},
+	"SL German Language B": {
+		"TZ": [[0, 9, 18, 31, 49, 67, 86]]
+	},
+	"HL Chemistry": {
+		"TZ": [[0, 17, 31, 45, 56, 67, 78]]
+	},
+	"SL Chemistry": {
+		"TZ": [[0, 15, 27, 40, 51, 64, 75]]
+	},
+	"HL Chinese Language B": {
+		"TZ": [[0, 12, 25, 40, 54, 66, 80]]
+	},
+	"SL Chinese Language B": {
+		"TZ": [[0, 10, 21, 35, 49, 64, 78]]
+	},
+	"HL Economics": {
+		"TZ": [[0, 14, 27, 38, 50, 61, 73]]
+	},
+	"SL Economics": {
+		"TZ": [[0, 16, 31, 41, 52, 64, 75]]
+	},
+	"HL English Language B": {
+		"TZ": [[0, 10, 21, 35, 51, 66, 83]]
+	},
+	"SL English Language B": {
+		"TZ": [[0, 13, 27, 42, 56, 70, 84]]
+	},
+	"HL Geography": {
+		"TZ": [[0, 13, 26, 41, 51, 61, 71]]
+	},
+	"SL Geography": {
+		"TZ": [[0, 10, 23, 35, 47, 60, 72]]
+	},
+	"HL Global Politics": {
+		"TZ": [[0, 10, 20, 33, 44, 55, 66]]
+	},
+	"SL Global Politics": {
+		"TZ": [[0, 8, 18, 28, 40, 52, 64]]
+	},
+	"SL Spanish Language B": {
+		"TZ": [[0, 10, 21, 38, 54, 69, 84]]
+	},
+	"SL French Language AB Initio": {
+		"TZ": [[0, 10, 21, 41, 55, 67, 81]]
+	},
+	"SL Japanese Language B": {
+		"TZ": [[0, 9, 19, 31, 49, 67, 85]]
+	},
+	"HL Philosophy": {
+		"TZ": [[0, 11, 23, 40, 54, 66, 78]]
+	},
+	"SL Philosophy": {
+		"TZ": [[0, 12, 26, 38, 52, 64, 76]]
+	},
+	"HL Psychology": {
+		"TZ": [[0, 9, 19, 34, 48, 61, 75]]
+	},
+	"SL Psychology": {
+		"TZ": [[0, 10, 19, 34, 46, 58, 70]]
+	},
+	"SL English Language AB Initio": {
+		"TZ": [[0, 14, 29, 46, 60, 72, 85]]
+	},
+	"SL Spanish Language AB Initio": {
+		"TZ": [[0, 10, 22, 39, 55, 69, 85]]
+	},
+	"HL Visual Arts": {
+		"TZ": [[0, 11, 24, 39, 53, 69, 83]]
+	},
+	"SL Visual Arts": {
+		"TZ": [[0, 11, 23, 38, 52, 68, 82]]
+	},
+	"HL Computer Science": {
+		"TZ": [[0, 17, 35, 47, 55, 63, 71]]
+	},
+	"SL Computer Science": {
+		"TZ": [[0, 14, 29, 42, 50, 57, 65]]
+	},
+	"HL Design Technology": {
+		"TZ": [[0, 14, 26, 37, 48, 58, 69]]
+	},
+	"SL Japanese Language AB Initio": {
+		"TZ": [[0, 12, 26, 36, 50, 63, 77]]
+	},
+	"SL Chinese Language AB Initio": {
+		"TZ": [[0, 9, 20, 34, 47, 58, 71]]
+	},
+	"SL Chinese Language A: Language And Literature": {
+		"TZ": [[0, 16, 34, 51, 65, 74, 87]]
+	},
+	"HL English Language A: Language And Literature": {
+		"TZ": [[0, 13, 29, 44, 56, 68, 80]]
+	},
+	"SL English Language A: Language And Literature": {
+		"TZ": [[0, 13, 30, 45, 59, 70, 84]]
+	},
+	"HL English Language A: Literature": {
+		"TZ": [[0, 17, 31, 43, 56, 67, 79]]
+	},
+	"SL English Language A: Literature": {
+		"TZ": [[0, 16, 29, 42, 55, 67, 79]]
+	},
+	"SL Environmental Systems And Societies": {
+		"TZ": [[0, 12, 24, 34, 46, 59, 71]]
+	},
+	"HL Japanese Language A: Literature": {
+		"TZ": [[0, 19, 34, 46, 58, 72, 83]]
+	},
+	"HL Social And Cultural Anthropology": {
+		"TZ": [[0, 14, 27, 39, 52, 66, 81]]
+	},
+	"HL Spanish Language A: Language And Literature": {
+		"TZ": [[0, 16, 35, 49, 60, 73, 84]]
+	},
+	"SL Spanish Language A: Language And Literature": {
+		"TZ": [[0, 16, 34, 49, 62, 70, 83]]
+	},
+	"HL Spanish Language A: Literature": {
+		"TZ": [[0, 19, 36, 49, 61, 75, 86]]
+	},
+	"SL Spanish Language A: Literature": {
+		"TZ": [[0, 19, 34, 46, 59, 73, 84]]
+	},
+	"HL Sports, Excercise And Health Science": {
+		"TZ": [[0, 15, 28, 41, 53, 64, 76]]
+	},
+	"SL Sports, Excercise And Health Science": {
+		"TZ": [[0, 16, 31, 43, 54, 65, 77]]
+	},
+	"Theory Of Knowledge": {
+		"TZ": [[0, 5, 11, 17, 23]]
+	},
+	"Extended Essay": {
+		"TZ": [[0, 7, 14, 21, 27]]
+	},
+	"HL Turkish Language A: Literature": {
+		"TZ": [[0, 20, 36, 46, 59, 74, 86]]
+	}
+}

@@ -7,6 +7,8 @@
 	import CoreTable from '$lib/components/coreTable.svelte';
 	import CoreMatrix from '$lib/components/coreMatrix.svelte';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
+	import N19 from '$lib/assets/Grade_BoundariesN19';
+	import N20 from '$lib/assets/Grade_BoundariesN20';
 	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
@@ -62,7 +64,7 @@
 
 	$: name = (language ?? '') + (language ? ' ' : '') + pageStore;
 
-	const b = [M19, M21, M22, N22];
+	const b = [M19, N19, N20, M21, M22, N22];
 	let SLResults = [];
 	let HLResults = [];
 
