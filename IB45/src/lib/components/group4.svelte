@@ -4,6 +4,7 @@
 	import Slider from './slider.svelte';
 	import Groupstat from './groupstat.svelte';
 	import Dropdown from './dropdown.svelte';
+	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
 
 	const subjects = [
 		'Biology',
@@ -63,6 +64,9 @@
 		<h5>{store.name} is only offered at the SL level</h5>
 	{/if}
 
+	{#if groupNumber == 6}
+		<SelectedGroup6 />
+	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
 	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 

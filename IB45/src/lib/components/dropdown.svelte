@@ -1,13 +1,18 @@
 <script>
 	export let str;
 	export let arr;
+	export let arrVal;
 	export let value;
+
+	if (!arrVal) arrVal = arr.map((a) => a);
 </script>
 
 <select bind:value>
-	<option value="">{str}</option>
-	{#each arr as a}
-		<option value={a}>{a}</option>
+	{#if str}
+		<option value="">{str}</option>
+	{/if}
+	{#each arr as a, i}
+		<option value={arrVal[i]}>{a}</option>
 	{/each}
 </select>
 
