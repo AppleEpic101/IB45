@@ -233,5 +233,9 @@
 		.body {
 			margin: 0 10px;
 		}
+		.tables {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 </style>

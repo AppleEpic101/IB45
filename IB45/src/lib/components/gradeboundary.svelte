@@ -24,51 +24,54 @@
 	}
 </script>
 
-<div class="body">
-	<h3>Select the grade boundary.</h3>
-
-	<div class="buttons">
-		{#each { length: gradeBoundaries.length } as _, i}
-			<input
-				type="radio"
-				label={gradeBoundaries[i]['info'].name}
-				value={'' + str[i]}
-				bind:group={$gradeBoundary}
-			/>
-		{/each}
-	</div>
+<h3>Select the grade boundary</h3>
+<div class="wrap">
+	{#each { length: gradeBoundaries.length } as _, i}
+		<label>
+			<input type="radio" name="r" value={'' + str[i]} bind:group={$gradeBoundary} />
+			<div class="btn btn-sık"><span>{gradeBoundaries[i]['info'].name}</span></div>
+		</label>
+	{/each}
 </div>
 
 <style>
-	.buttons {
-		padding: 4px;
-		border-radius: 3px;
+	.wrap {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	label {
 		position: relative;
-		width: fit-content;
-	}
-
-	.buttons input {
-		appearance: none;
-		cursor: pointer;
-		border-radius: 10px;
-		padding: 5px 10px;
-		background-color: var(--lightprimary);
-		color: black;
-		font-size: 15px;
-		font-family: sans-serif;
-		transition: all 0.1s;
-		border: 2px solid black;
-	}
-
-	.buttons input:checked {
-		background: var(--banner);
-		color: white;
-		box-shadow: 0 1px 1px black;
-		text-shadow: 0 2px 2px #808080;
-	}
-
-	.buttons input::before {
-		content: attr(label);
+		display: inline-block;
 		text-align: center;
+	}
+
+	.btn:hover {
+		cursor: pointer;
+	}
+
+	.btn {
+		text-align: center;
+	}
+	.btn-sık {
+		transition: all 0.2s ease;
+		background-color: var(--lightprimary);
+		border: 2px solid black;
+		padding: 5px 10px;
+		border-radius: 10px;
+		margin: 5px;
+		box-shadow: 0 1px 1px black;
+	}
+
+	input[type='radio'] {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	input[type='radio']:checked + div {
+		background-color: var(--banner);
+	}
+	input[type='radio']:checked + div > span {
+		color: white;
+		text-shadow: 0 2px 2px #808080;
 	}
 </style>
