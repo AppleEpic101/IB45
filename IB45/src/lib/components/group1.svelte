@@ -1,10 +1,16 @@
 <script>
 	import { group1, group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
+	import { onDestroy } from 'svelte';
 	import Groupstat from '$lib/components/groupstat.svelte';
 	import Slider from '$lib/components/slider.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
+
+	onDestroy(() => {
+		if (groupNumber == 6)
+			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
+	});
 
 	const languages = [
 		'English',

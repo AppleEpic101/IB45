@@ -229,7 +229,7 @@
 		flex-wrap: wrap;
 	}
 
-	@media screen and (max-width: 380px) {
+	@media screen and (max-width: 500px) {
 		.body {
 			margin: 0 10px;
 		}

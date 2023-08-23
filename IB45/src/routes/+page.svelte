@@ -8,7 +8,6 @@
 	import Group6 from '$lib/components/group6.svelte';
 	import TOK from '$lib/components/TOK.svelte';
 	import DetailedTable from '$lib/components/detailedTable.svelte';
-	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
 	import GradeBoundary from '$lib/components/gradeboundary.svelte';
 	import Timezone from '$lib/components/timezone.svelte';
 	import Links from '$lib/components/links.svelte';
@@ -58,7 +57,6 @@
 	</strong>
 
 	<div class="multipleChoice">
-		<SelectedGroup6 />
 		<GradeBoundary />
 		<Timezone />
 	</div>
@@ -190,6 +188,12 @@
 		}
 		.banner {
 			height: 300px;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.layout {
+			margin: 20px 10px;
 		}
 	}
 </style>

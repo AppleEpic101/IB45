@@ -1,10 +1,16 @@
 <script>
-	import { group5, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
+	import { group6, group5, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
-	import Slider from './slider.svelte';
-	import Groupstat from './groupstat.svelte';
-	import Dropdown from './dropdown.svelte';
+	import { onDestroy } from 'svelte';
+	import Slider from '$lib/components/slider.svelte';
+	import Groupstat from '$lib/components/groupstat.svelte';
+	import Dropdown from '$lib/components/dropdown.svelte';
 	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
+
+	onDestroy(() => {
+		if (groupNumber == 6)
+			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
+	});
 
 	let subjects = [
 		'Mathematics: Analysis And Approaches',
@@ -14,9 +20,10 @@
 	export let groupNumber = 5;
 	export let awardedMark;
 
-	let store = JSON.parse($group5);
+	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group5);
 	$: {
-		$group5 = JSON.stringify(store);
+		if (groupNumber == 6) $group6 = JSON.stringify(store);
+		else $group5 = JSON.stringify(store);
 	}
 
 	$: sufficientInformation = store.name != '' && store.level != '';
