@@ -6,7 +6,7 @@
 
 	let courses = Object.keys(data).map((courseName) => ({
 		name: courseName,
-		assessments: data[courseName].assessments
+		assessments: data[courseName].SLAssessments
 	}));
 	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
 		name: courseName,

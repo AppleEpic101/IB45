@@ -19,7 +19,7 @@
 			value = 0;
 		}
 		if (value === undefined || value === null) {
-			value = Math.trunc(value);
+			value = Math.trunc(max / 2);
 		}
 	}
 </script>
@@ -44,11 +44,13 @@
 		border: 2px solid black;
 		background-color: var(--lightprimary);
 		border-radius: 5px;
+		max-width: 300px;
 	}
 
 	.c {
 		display: flex;
 		flex-direction: row;
+		position: relative;
 	}
 
 	input[type='range'] {
@@ -61,7 +63,6 @@
 	input[type='range']::-webkit-slider-runnable-track {
 		-webkit-appearance: none;
 		appearance: none;
-		width: 100%;
 		height: 10px;
 		background-color: var(--banner);
 		border-radius: 5px;

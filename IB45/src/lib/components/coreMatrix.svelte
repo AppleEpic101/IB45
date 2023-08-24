@@ -26,6 +26,6 @@
 	}
 	table {
 		width: 25vw;
-		margin-top: 10px;
+		margin-bottom: 20px;
 	}
 </style>

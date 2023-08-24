@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { courses } from '$lib/stores/store.js';
 	import data from '$lib/assets/courses.json';
+	import Slider from '$lib/components/slider.svelte';
 	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import BoundaryTable from '$lib/components/boundaryTable.svelte';
@@ -138,6 +139,33 @@
 			EE.push(...getTZ(timezone1, 'Extended Essay', info));
 		}
 	});
+
+	let level;
+	let s;
+	$: {
+		if (level === 'HL') {
+			s = subject.HL;
+		} else {
+			s = subject.SL;
+		}
+	}
+	$: {
+		if (s) {
+			weight = s.map((a) => a.weight);
+			marks = s.map((a) => a.maxMarks);
+		}
+	}
+	let weight = [];
+	let marks = [];
+	let assessments = [];
+	let grade;
+	$: {
+		grade = 0;
+		for (let i = 0; i < weight.length; i++) {
+			grade += (assessments[i] / marks[i]) * weight[i] * 100;
+		}
+		grade = Math.round(grade);
+	}
 </script>
 
 <div class="body">
@@ -147,15 +175,41 @@
 		<h3>Description</h3>
 		{subject.description}
 	</div>
-	<!-- <div class="assessments">
-		<h3>Assessment Model</h3>
-		{#each subject.assessmentModel as s}
-			<ul>
-				<li>{s}</li>
-			</ul>
-		{/each}
-	</div> -->
+
 	{#if pageStore !== 'Creativity, Activity, Service'}
+		<h3>Assessment Model</h3>
+		{#if pageStore !== 'Extended Essay' && pageStore !== 'Theory Of Knowledge'}
+			{#if SLOnly.includes(pageStore)}
+				<Dropdown arr={['SL']} bind:value={level} />
+			{:else}
+				<Dropdown arr={['SL', 'HL']} bind:value={level} />
+			{/if}
+		{/if}
+		<div class="assessments">
+			<div class="ass">
+				{#if s}
+					{#each s as assessment, i}
+						<Slider
+							bind:value={assessments[i]}
+							name={assessment.name}
+							weight={assessment.weight}
+							max={assessment.maxMarks}
+						/>
+					{/each}
+				{/if}
+			</div>
+
+			<div class="container">
+				<div class="x">Predicted Grade</div>
+				<div class="y">
+					{#if pageStore === 'Theory Of Knowledge' || pageStore === 'Extended Essay'}
+						{assessments[0]}
+					{:else}{grade}
+					{/if}
+				</div>
+			</div>
+		</div>
+
 		<div class="grade">
 			<h3>Historical Grade Boundaries</h3>
 			{#if SLOnly.includes(pageStore)}
@@ -197,6 +251,38 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
+	}
+
+	.assessments {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.ass {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.x {
+		font-size: 20px;
+		font-weight: bolder;
+		padding: 0 20px;
+	}
+
+	.y {
+		text-align: center;
+		font-size: 40px;
+		font-weight: bold;
+	}
+
+	.container {
+		background-color: var(--lightprimary);
+		padding: 10px;
+		border: 2px solid black;
+		border-radius: 10px;
+		margin: auto;
 	}
 
 	@media screen and (max-width: 500px) {

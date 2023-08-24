@@ -1291,7 +1291,7 @@
 	"Theory Of Knowledge": {
 		"description": "The theory of knowledge (TOK) course plays a special role in the DP by providing an opportunity for students to reflect on the nature, scope and limitations of knowledge and the process of knowing. In this way, the main focus of TOK is not on students acquiring new knowledge but on helping students to reflect on, and put into perspective, what they already know. TOK underpins and helps to unite the subjects that students encounter in the rest of their DP studies. It engages students in explicit reflection on how knowledge is arrived at in different disciplines and areas of knowledge, on what these areas have in common and the differences between them.",
 		"short": "theory-of-knowledge",
-		"assessments": [
+		"SLAssessments": [
 			{
 				"name": "Theory Of Knowledge Essay",
 				"maxMarks": 20,
@@ -1306,6 +1306,13 @@
 	},
 	"Extended Essay": {
 		"short": "extended-essay",
+		"SLAssessments": [
+			{
+				"name": "Extended Essay",
+				"maxMarks": 34,
+				"weight": 1
+			}
+		],
 		"description": "The extended essay is a compulsory, externally assessed piece of independent research into a topic chosen by the student and presented as a formal piece of academic writing. The extended essay is intended to promote high-level research and writing skills, intellectual discovery, and creativity while engaging students in personal research. This leads to a major piece of formally presented, structured writing of up to 4,000 words in which ideas and findings are communicated in a reasoned, coherent, and appropriate manner. Students are guided through the process of research and writing by an assigned supervisor (a teacher in the school). All students undertake three mandatory reflection sessions with their supervisor, including a short interview, or viva voce, following the completion of the extended essay. Extended essay topics may be chosen from a list of approved DP subjects—normally one of the student’s six chosen subjects for the IB diploma or the world studies option. World studies provides students with the opportunity to carry out an in-depth interdisciplinary study of an issue of contemporary global significance, using two IB disciplines."
 	},
 	"Creativity, Activity, Service": {

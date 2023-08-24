@@ -44,6 +44,11 @@
 	}
 	table {
 		width: 25vw;
-		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	th,
+	tr {
+		padding: 10px;
 	}
 </style>
