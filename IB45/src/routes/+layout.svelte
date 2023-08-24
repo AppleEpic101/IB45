@@ -40,7 +40,15 @@
 		overscroll-behavior-x: none;
 	}
 
-	:global(a:link, a:visited) {
+	:global(a, table, label) {
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	:global(a) {
+		text-decoration: none;
+		text-shadow: 0px 0px 0.8px black;
 		color: black;
 	}
 

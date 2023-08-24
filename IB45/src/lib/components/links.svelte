@@ -7,5 +7,8 @@
 <style>
 	.middle-links {
 		text-align: center;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 </style>
