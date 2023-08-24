@@ -15,8 +15,11 @@
 		if (value % 1 !== 0) {
 			value = Math.trunc(value);
 		}
-		if (value === undefined || value === null || Number.isNaN(value)) {
-			value = Math.trunc(max / 2);
+		if (Number.isNaN(value)) {
+			value = 0;
+		}
+		if (value === undefined || value === null) {
+			value = Math.trunc(value);
 		}
 	}
 </script>

@@ -12,7 +12,7 @@
 	<div class="subjects">
 		{#each $courses as course}
 			<div class="subject">
-				<a href="./subjects/{course.name}">{course.name}</a>
+				<a href="./subjects/{course.short}">{course.name}</a>
 			</div>
 		{/each}
 	</div>

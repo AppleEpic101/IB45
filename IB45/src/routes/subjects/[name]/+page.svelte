@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { courses } from '$lib/stores/store.js';
 	import data from '$lib/assets/courses.json';
 	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
@@ -13,8 +14,14 @@
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 
-	const pageStore = $page.params.name;
-	const subject = data[pageStore];
+	let pageStore = $page.params.name;
+	let subject;
+	$courses.forEach((obj) => {
+		if (obj.short === pageStore) {
+			subject = obj;
+			pageStore = obj.name;
+		}
+	});
 
 	const languages = [
 		'English',
@@ -64,6 +71,21 @@
 
 	$: name = (language ?? '') + (language ? ' ' : '') + pageStore;
 
+	const getTZ = (timezone, name, info) => {
+		let arr = [];
+
+		if (timezone && info) {
+			timezone.forEach((tz, i) => {
+				if (timezone.length === 1) {
+					arr.push({ tz, name: info.short + ' TZ0', courseName: name });
+				} else {
+					arr.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: name });
+				}
+			});
+		}
+		return arr;
+	};
+
 	const b = [M19, N19, N20, M21, M22, N22];
 	let SLResults = [];
 	let HLResults = [];
@@ -78,23 +100,12 @@
 
 			if (HL && info) {
 				let timezone = [...HL.TZ];
-				timezone.forEach((tz, i) => {
-					if (timezone.length === 1) {
-						HLResults.push({ tz, name: info.short + ' TZ0', courseName: 'HL ' + name });
-					} else {
-						HLResults.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: 'HL ' + name });
-					}
-				});
+				HLResults.push(...getTZ(timezone, 'HL ' + name, info));
 			}
+
 			if (SL && info) {
 				let timezone = [...SL.TZ];
-				timezone.forEach((tz, i) => {
-					if (timezone.length === 1) {
-						SLResults.push({ tz, name: info.short + ' TZ0', courseName: 'SL ' + name });
-					} else {
-						SLResults.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: 'SL ' + name });
-					}
-				});
+				SLResults.push(...getTZ(timezone, 'SL ' + name, info));
 			}
 		});
 	}
@@ -107,21 +118,7 @@
 
 			if (c && info) {
 				let timezone = [...c.TZ];
-				timezone.forEach((tz) => {
-					if (timezone.length === 1) {
-						historyResults[i].push({
-							tz,
-							name: info.short + ' TZ0',
-							courseName: 'HL History ' + r
-						});
-					} else {
-						historyResults[i].push({
-							tz,
-							name: info.short + ' TZ' + (i + 1),
-							courseName: 'HL History ' + r
-						});
-					}
-				});
+				historyResults[i].push(...getTZ(timezone, 'HL History ' + r, info));
 			}
 		});
 	});
@@ -136,36 +133,9 @@
 		if (c && d && info) {
 			let timezone = [...c.TZ];
 			let timezone1 = [...d.TZ];
-			timezone.forEach((tz) => {
-				if (timezone.length === 1) {
-					TOK.push({
-						tz,
-						name: info.short + ' TZ0',
-						courseName: 'Theory Of Knowledge'
-					});
-				} else {
-					TOK.push({
-						tz,
-						name: info.short + ' TZ' + (i + 1),
-						courseName: 'Theory Of Knowledge'
-					});
-				}
-			});
-			timezone1.forEach((tz) => {
-				if (timezone1.length === 1) {
-					EE.push({
-						tz,
-						name: info.short + ' TZ0',
-						courseName: 'Extended Essay'
-					});
-				} else {
-					EE.push({
-						tz,
-						name: info.short + ' TZ' + (i + 1),
-						courseName: 'Extended Essay'
-					});
-				}
-			});
+
+			TOK.push(...getTZ(timezone, 'Theory Of Knowledge', info));
+			EE.push(...getTZ(timezone1, 'Extended Essay', info));
 		}
 	});
 </script>
