@@ -147,43 +147,6 @@
 		]
 	},
 
-	"Language AB Initio": {
-		"firstAssessment": "2020",
-		"lastAssessment": "Present",
-		"short": "ab-initio",
-		"description": "Language acquisition consists of two modern language courses—language ab initio and language B—designed to provide students with the necessary skills and intercultural understanding to enable them to communicate successfully in an environment where the language studied is spoken. Offered at SL only, language ab initio is a language acquisition course designed for students with no previous experience in—or very little exposure to—the target language. Language ab initio students develop their receptive, productive, and interactive skills while learning to communicate in the target language in familiar and unfamiliar contexts. Students develop the ability to communicate through the study of language, themes, and texts. There are five prescribed themes: identities, experiences, human ingenuity, social organization, and sharing the planet. While the themes are common to both language ab initio and language B, the language ab initio syllabus additionally prescribes four topics for each of the five themes, for a total of 20 topics that must be addressed over the two years of the course.",
-		"assessmentModel": [
-			"Only available at standard level (SL)",
-			"The recommended teaching time to complete the course is 150 hours",
-			"Knowledge of vocabulary and grammar (the what of language) is reinforced and extended by understanding audience, context, purpose, meaning and variation (the why and how of language)",
-			"The development of international-mindedness is one of the key aims of the course",
-			"The prescribed themes of the course are inspired by the transdisciplinary themes of the Primary Years Programme (PYP) and the global contexts of the Middle Years Programme (MYP)",
-			"Students are exposed to a variety of authentic text types in relation to the prescribed themes and topics, as well as the content contained within the language-specific syllabuses",
-			"Students produce a wide variety of oral and written texts for audiences, contexts and purposes associated with academic and personal interests",
-			"Students are assessed both externally and internally",
-			"External assessment consists of Paper 1: productive skills—writing (written responses to two required tasks) and Paper 2: receptive skills—with separate sections for listening (demonstrating understanding of three audio passages) and reading (demonstrating understanding of three written passages)",
-			"Internal assessment consists of an individual oral assessment—productive and interactive skills (a presentation by the student and a follow-up discussion based on a visual stimulus linked to one of the prescribed themes of the course, and a general conversation with the teacher based on topics from at least one additional theme of the course)"
-		],
-		"groupNumber": 2,
-		"SLAssessments": [
-			{
-				"name": "Paper 1: Writing",
-				"maxMarks": 30,
-				"weight": 0.25
-			},
-			{
-				"name": "Paper 2: Listening & Reading Comprehension",
-				"maxMarks": 65,
-				"weight": 0.5
-			},
-			{
-				"name": "Individual Oral Assessment",
-				"maxMarks": 30,
-				"weight": 0.25
-			}
-		]
-	},
-
 	"Language B": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
@@ -223,6 +186,43 @@
 			}
 		],
 		"HLAssessments": [
+			{
+				"name": "Paper 1: Writing",
+				"maxMarks": 30,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 2: Listening & Reading Comprehension",
+				"maxMarks": 65,
+				"weight": 0.5
+			},
+			{
+				"name": "Individual Oral Assessment",
+				"maxMarks": 30,
+				"weight": 0.25
+			}
+		]
+	},
+
+	"Language AB Initio": {
+		"firstAssessment": "2020",
+		"lastAssessment": "Present",
+		"short": "ab-initio",
+		"description": "Language acquisition consists of two modern language courses—language ab initio and language B—designed to provide students with the necessary skills and intercultural understanding to enable them to communicate successfully in an environment where the language studied is spoken. Offered at SL only, language ab initio is a language acquisition course designed for students with no previous experience in—or very little exposure to—the target language. Language ab initio students develop their receptive, productive, and interactive skills while learning to communicate in the target language in familiar and unfamiliar contexts. Students develop the ability to communicate through the study of language, themes, and texts. There are five prescribed themes: identities, experiences, human ingenuity, social organization, and sharing the planet. While the themes are common to both language ab initio and language B, the language ab initio syllabus additionally prescribes four topics for each of the five themes, for a total of 20 topics that must be addressed over the two years of the course.",
+		"assessmentModel": [
+			"Only available at standard level (SL)",
+			"The recommended teaching time to complete the course is 150 hours",
+			"Knowledge of vocabulary and grammar (the what of language) is reinforced and extended by understanding audience, context, purpose, meaning and variation (the why and how of language)",
+			"The development of international-mindedness is one of the key aims of the course",
+			"The prescribed themes of the course are inspired by the transdisciplinary themes of the Primary Years Programme (PYP) and the global contexts of the Middle Years Programme (MYP)",
+			"Students are exposed to a variety of authentic text types in relation to the prescribed themes and topics, as well as the content contained within the language-specific syllabuses",
+			"Students produce a wide variety of oral and written texts for audiences, contexts and purposes associated with academic and personal interests",
+			"Students are assessed both externally and internally",
+			"External assessment consists of Paper 1: productive skills—writing (written responses to two required tasks) and Paper 2: receptive skills—with separate sections for listening (demonstrating understanding of three audio passages) and reading (demonstrating understanding of three written passages)",
+			"Internal assessment consists of an individual oral assessment—productive and interactive skills (a presentation by the student and a follow-up discussion based on a visual stimulus linked to one of the prescribed themes of the course, and a general conversation with the teacher based on topics from at least one additional theme of the course)"
+		],
+		"groupNumber": 2,
+		"SLAssessments": [
 			{
 				"name": "Paper 1: Writing",
 				"maxMarks": 30,
@@ -420,6 +420,52 @@
 			}
 		]
 	},
+	"History": {
+		"firstAssessment": "2020",
+		"lastAssessment": "Present",
+		"short": "history",
+		"description": "The DP history course is a world history course based on a comparative and multi-perspective approach to history. It involves the study of a variety of types of history, including political, economic, social, and cultural, and provides a balance of structure and flexibility. The course emphasizes the importance of encouraging students to think historically and to develop historical skills as well as gaining factual knowledge. It puts a premium on developing the skills of critical thinking and on developing an understanding of multiple interpretations of history. In this way, the course involves a challenging and demanding critical exploration of the past. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, transfer, and use of primary sources. There are six key concepts that have particular prominence throughout the DP history course: change, continuity, causation, consequence, significance, and perspectives.",
+		"groupNumber": 3,
+		"SLAssessments": [
+			{
+				"name": "Paper 1: Source-Based",
+				"maxMarks": 24,
+				"weight": 0.3
+			},
+			{
+				"name": "Paper 2: Essay",
+				"maxMarks": 30,
+				"weight": 0.45
+			},
+			{
+				"name": "Historical Investigation",
+				"maxMarks": 25,
+				"weight": 0.25
+			}
+		],
+		"HLAssessments": [
+			{
+				"name": "Paper 1: Source-Based",
+				"maxMarks": 24,
+				"weight": 0.2
+			},
+			{
+				"name": "Paper 2: Essay (12 World History Topics)",
+				"maxMarks": 30,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 3: Essay (4 Regional Options)",
+				"maxMarks": 45,
+				"weight": 0.35
+			},
+			{
+				"name": "Historical Investigation",
+				"maxMarks": 25,
+				"weight": 0.2
+			}
+		]
+	},
 	"Information Technology In A Global Society": {
 		"firstAssessment": "2012",
 		"lastAssessment": "Present",
@@ -554,52 +600,6 @@
 			{
 				"name": "Experimental Study",
 				"maxMarks": 22,
-				"weight": 0.2
-			}
-		]
-	},
-	"History": {
-		"firstAssessment": "2020",
-		"lastAssessment": "Present",
-		"short": "history",
-		"description": "The DP history course is a world history course based on a comparative and multi-perspective approach to history. It involves the study of a variety of types of history, including political, economic, social, and cultural, and provides a balance of structure and flexibility. The course emphasizes the importance of encouraging students to think historically and to develop historical skills as well as gaining factual knowledge. It puts a premium on developing the skills of critical thinking and on developing an understanding of multiple interpretations of history. In this way, the course involves a challenging and demanding critical exploration of the past. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, transfer, and use of primary sources. There are six key concepts that have particular prominence throughout the DP history course: change, continuity, causation, consequence, significance, and perspectives.",
-		"groupNumber": 3,
-		"SLAssessments": [
-			{
-				"name": "Paper 1: Source-Based",
-				"maxMarks": 24,
-				"weight": 0.3
-			},
-			{
-				"name": "Paper 2: Essay",
-				"maxMarks": 30,
-				"weight": 0.45
-			},
-			{
-				"name": "Historical Investigation",
-				"maxMarks": 25,
-				"weight": 0.25
-			}
-		],
-		"HLAssessments": [
-			{
-				"name": "Paper 1: Source-Based",
-				"maxMarks": 24,
-				"weight": 0.2
-			},
-			{
-				"name": "Paper 2: Essay (12 World History Topics)",
-				"maxMarks": 30,
-				"weight": 0.25
-			},
-			{
-				"name": "Paper 3: Essay (4 Regional Options)",
-				"maxMarks": 45,
-				"weight": 0.35
-			},
-			{
-				"name": "Historical Investigation",
-				"maxMarks": 25,
 				"weight": 0.2
 			}
 		]

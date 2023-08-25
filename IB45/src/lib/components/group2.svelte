@@ -45,8 +45,8 @@
 		'Language A: Literature',
 		'Language A: Language And Literature',
 		'Classical Language',
-		'Language AB Initio',
-		'Language B'
+		'Language B',
+		'Language AB Initio'
 	];
 	const SLOnly = ['Language AB Initio'];
 
