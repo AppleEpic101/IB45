@@ -61,7 +61,9 @@
 	}
 
 	$: {
-		if (SLOnly.includes(store.name) && store.level == 'HL') store.level = 'SL';
+		if (SLOnly.includes(store.name)) {
+			store.level = 'SL';
+		}
 	}
 
 	$: grade = calculateGrade(store, matchedCourse);
@@ -87,7 +89,9 @@
 		<SelectedGroup6 />
 	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
-	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{#if !SLOnly.includes(store.name)}
+		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{/if}
 	{#if store.name === 'History' && store.level === 'HL'}
 		<Dropdown str="Enter HL History Region" bind:value={store.region} arr={regions} />
 	{/if}

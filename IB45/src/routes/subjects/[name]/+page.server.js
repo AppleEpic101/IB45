@@ -35,6 +35,7 @@ const getTZ = (timezone, name, info) => {
 const languageSubjects = [
     'Language A: Literature',
     'Language A: Language And Literature',
+    'Classical Language',
     'Language AB Initio',
     'Language B'
 ];
@@ -94,6 +95,6 @@ export const load = (({params}) => {
         HL: obj.HL,
         SL: obj.SL,
         SLOnly: SL.includes(obj.name),
-        isLanguageSubject: languageSubjects.includes(obj.name)
+        isLanguageSubject: languageSubjects.includes(obj.name),
     }
 });

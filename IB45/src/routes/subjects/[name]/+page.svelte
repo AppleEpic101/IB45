@@ -38,21 +38,21 @@
 		'Portuguese',
 		'Russian',
 		'Swedish',
-		'Tamil',
 		'Thai',
 		'Turkish',
 		'Vietnamese'
 	];
 	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
+	const classical = ['Latin', 'Classical Greek'];
 
 	let language = 'English';
+	if (data.name === 'Classical Language') language = 'Latin';
 
 	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
 	const getTZ = (timezone, name, info) => {
 		let arr = [];
 
-		// if (timezone && info) {
 		timezone.forEach((tz, i) => {
 			if (timezone.length === 1) {
 				arr.push({ tz, name: info.short + ' TZ0', courseName: name });
@@ -60,7 +60,7 @@
 				arr.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: name });
 			}
 		});
-		// }
+
 		return arr;
 	};
 
@@ -179,7 +179,9 @@
 			{#if data.SLOnly}
 				<h5>{data.name} is offered only at the SL level</h5>
 			{/if}
-			{#if data.isLanguageSubject}
+			{#if data.isLanguageSubject && data.name === 'Classical Language'}
+				<Dropdown arr={classical} bind:value={language} />
+			{:else if data.isLanguageSubject}
 				<Dropdown arr={languages} bind:value={language} />
 			{/if}
 			<div class="tables">

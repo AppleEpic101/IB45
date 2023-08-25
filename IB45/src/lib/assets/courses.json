@@ -105,6 +105,48 @@
 		]
 	},
 
+	"Classical Language": {
+		"firstAssessment": "2016",
+		"lastAssessment": "Present",
+		"short": "classical-language",
+		"description": "Classical languages comprise Latin and Classical Greek, and these subjects are offered in group 2 of the IB Diploma Programme. Whereas the other subjects offered in group 2 cover a broad spectrum of modern language courses, the two classical language subjects provide students with the opportunity to study two historically significant languages that are also embedded in many modern languages. Latin and Classical Greek are separate courses, but they share the same syllabus and assessment criteria. The Diploma Programme courses in classical languages provide an opportunity for students to explore the languages, literatures and cultures of ancient Greece and Rome. These ancient civilizations have played a vital part in shaping many modern societies and cultures. The languages themselves are versatile and finely structured, and have had a major influence on the development of most modern European languages. The rich and varied literatures of Greece and Rome have left their mark on almost every genre of modern writing. The study of classical languages gives important insights into the cultures that produced them, and therefore leads to a greater understanding of contemporary languages, literature and cultures. Fundamentally, the study of classical languages trains the mind, developing skills of critical thought, memory and close analysis, as well as an appreciation of the beauty and power of language. Other classical languages such as Sanskrit, Arabic and Hebrew, which have all made important contributions to modern societies, are beyond the scope of this guide. In the classical languages it is a fundamental principle that the texts be studied in their original language. Linguistic skills lie at the heart of the courses, since it is through a deep understanding of the workings of a language that true intellectual contact can be made with the peoples of the past. Through this course, students will learn to translate Latin and Classical Greek works accurately and sensitively. Students will also study different genres of classical texts, examining the ideas in these works and their artistry within their historical, political and cultural contexts.",
+		"groupNumber": 2,
+		"SLAssessments": [
+			{
+				"name": "Paper 1: Translation",
+				"maxMarks": 90,
+				"weight": 0.35
+			},
+			{
+				"name": "Paper 2: Extract Questions",
+				"maxMarks": 45,
+				"weight": 0.45
+			},
+			{
+				"name": "Individual Study: Research Dossier",
+				"maxMarks": 24,
+				"weight": 0.2
+			}
+		],
+		"HLAssessments": [
+			{
+				"name": "Paper 1: Translation",
+				"maxMarks": 180,
+				"weight": 0.35
+			},
+			{
+				"name": "Paper 2: Extract Questions",
+				"maxMarks": 52,
+				"weight": 0.45
+			},
+			{
+				"name": "Individual Study: Research Dossier",
+				"maxMarks": 24,
+				"weight": 0.2
+			}
+		]
+	},
+
 	"Language AB Initio": {
 		"firstAssessment": "2020",
 		"lastAssessment": "Present",
@@ -1289,6 +1331,7 @@
 		]
 	},
 	"Theory Of Knowledge": {
+		"groupNumber": 99,
 		"description": "The theory of knowledge (TOK) course plays a special role in the DP by providing an opportunity for students to reflect on the nature, scope and limitations of knowledge and the process of knowing. In this way, the main focus of TOK is not on students acquiring new knowledge but on helping students to reflect on, and put into perspective, what they already know. TOK underpins and helps to unite the subjects that students encounter in the rest of their DP studies. It engages students in explicit reflection on how knowledge is arrived at in different disciplines and areas of knowledge, on what these areas have in common and the differences between them.",
 		"short": "theory-of-knowledge",
 		"SLAssessments": [
@@ -1305,6 +1348,7 @@
 		]
 	},
 	"Extended Essay": {
+		"groupNumber": 99,
 		"short": "extended-essay",
 		"SLAssessments": [
 			{
@@ -1316,6 +1360,7 @@
 		"description": "The extended essay is a compulsory, externally assessed piece of independent research into a topic chosen by the student and presented as a formal piece of academic writing. The extended essay is intended to promote high-level research and writing skills, intellectual discovery, and creativity while engaging students in personal research. This leads to a major piece of formally presented, structured writing of up to 4,000 words in which ideas and findings are communicated in a reasoned, coherent, and appropriate manner. Students are guided through the process of research and writing by an assigned supervisor (a teacher in the school). All students undertake three mandatory reflection sessions with their supervisor, including a short interview, or viva voce, following the completion of the extended essay. Extended essay topics may be chosen from a list of approved DP subjects—normally one of the student’s six chosen subjects for the IB diploma or the world studies option. World studies provides students with the opportunity to carry out an in-depth interdisciplinary study of an issue of contemporary global significance, using two IB disciplines."
 	},
 	"Creativity, Activity, Service": {
+		"groupNumber": 99,
 		"short": "creativity-activity-service",
 		"description": "Creativity, activity, service (CAS) is at the heart of the DP, designed to strengthen and extend students' personal and interpersonal learning from the Primary Years Programme (PYP) and Middle Years Programme (MYP). CAS is organized around the three strands of creativity, activity, and service, each defined as follows: Creativity involves exploring and extending ideas leading to an original or interpretive product or performance. Activity encompasses physical exertion contributing to a healthy lifestyle. Service entails collaborative and reciprocal engagement with the community in response to an authentic need. A CAS experience is a specific event in which the student engages with one or more of the three CAS strands. It can be a single event or an extended series of events. A CAS project is a collaborative series of sequential CAS experiences lasting at least one month. Typically, a student's CAS program combines planned/unplanned singular and ongoing experiences. All are valuable and may lead to personal development. However, a meaningful CAS program must be more than just a series of unplanned/singular experiences. Students must be involved in at least one CAS project during the program."
 	}

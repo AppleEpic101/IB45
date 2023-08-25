@@ -50,7 +50,7 @@
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
 	$: {
-		if (SLOnly.includes(store.name) && store.level == 'HL') {
+		if (SLOnly.includes(store.name)) {
 			store.level = 'SL';
 		}
 	}
@@ -78,7 +78,9 @@
 		<SelectedGroup6 />
 	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
-	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{#if !SLOnly.includes(store.name)}
+		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{/if}
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}

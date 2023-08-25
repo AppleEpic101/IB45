@@ -40,14 +40,15 @@
 		'Turkish',
 		'Vietnamese'
 	];
-
+	const classical = ['Latin', 'Classical Greek'];
 	const subjects = [
 		'Language A: Literature',
 		'Language A: Language And Literature',
+		'Classical Language',
 		'Language AB Initio',
 		'Language B'
 	];
-	let SLOnly = ['Language AB Initio'];
+	const SLOnly = ['Language AB Initio'];
 
 	export let groupNumber = 2;
 	export let awardedMark;
@@ -70,8 +71,17 @@
 	}
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName);
 	$: {
-		if (SLOnly.includes(store.name) && store.level == 'HL') {
+		if (SLOnly.includes(store.name)) {
 			store.level = 'SL';
+		}
+	}
+
+	$: {
+		if (store.name !== 'Classical Language' && classical.includes(store.language)) {
+			store.language = '';
+		}
+		if (store.name === 'Classical Language' && !classical.includes(store.language)) {
+			store.language = '';
 		}
 	}
 
@@ -98,8 +108,14 @@
 		<SelectedGroup6 />
 	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
-	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
-	<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
+	{#if !SLOnly.includes(store.name)}
+		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{/if}
+	{#if store.name === 'Classical Language'}
+		<Dropdown str="Enter language" bind:value={store.language} arr={classical} />
+	{:else}
+		<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
+	{/if}
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}

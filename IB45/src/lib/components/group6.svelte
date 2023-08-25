@@ -13,6 +13,7 @@
 	});
 
 	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts', 'Literature And Performance'];
+	const SLOnly = ['Literature And Performance'];
 
 	const groupNumber = 6;
 	export let awardedMark;
@@ -34,6 +35,12 @@
 	}
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
+	$: {
+		if (SLOnly.includes(store.name)) {
+			store.level = 'SL';
+		}
+	}
+
 	$: grade = calculateGrade(store, matchedCourse);
 	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
@@ -49,9 +56,15 @@
 		{/if}
 	</h2>
 
+	{#if SLOnly.includes(store.name)}
+		<h5>{store.name} is only offered at the SL level</h5>
+	{/if}
+
 	<SelectedGroup6 />
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
-	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{#if !SLOnly.includes(store.name)}
+		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{/if}
 
 	<div class="content">
 		{#if sufficientInformation && matchedCourse}

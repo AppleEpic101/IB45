@@ -42,7 +42,12 @@
 		'Vietnamese'
 	];
 
-	const subjects = ['Language A: Literature', 'Language A: Language And Literature'];
+	const subjects = [
+		'Language A: Literature',
+		'Language A: Language And Literature',
+		'Literature And Performance'
+	];
+	const SLOnly = ['Literature And Performance'];
 
 	export let groupNumber = 1;
 	export let awardedMark;
@@ -53,9 +58,15 @@
 		else $group1 = JSON.stringify(store);
 	}
 
-	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
+	$: sufficientInformation =
+		store.name !== 'Literature And Performance'
+			? store.name != '' && store.level != '' && store.language != ''
+			: store.name != '' && store.level != '';
 
-	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
+	$: fullName =
+		store.name === 'Literature And Performance'
+			? store.level + ' ' + store.name
+			: store.level + ' ' + store.language + ' ' + store.name;
 
 	$: foo = $courses.find((course) => course.name === store.name);
 	let matchedCourse;
@@ -64,7 +75,14 @@
 	} else if (store.level === 'HL') {
 		matchedCourse = foo?.HL;
 	}
+
+	$: console.log(fullName);
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
+	$: {
+		if (SLOnly.includes(store.name)) {
+			store.level = 'SL';
+		}
+	}
 
 	$: grade = calculateGrade(store, matchedCourse);
 	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
@@ -81,12 +99,20 @@
 		{/if}
 	</h2>
 
+	{#if SLOnly.includes(store.name)}
+		<h5>{store.name} is only offered at the SL level</h5>
+	{/if}
+
 	{#if groupNumber == 6}
 		<SelectedGroup6 />
 	{/if}
 	<Dropdown str="Enter subject" bind:value={store.name} arr={subjects} />
-	<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
-	<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
+	{#if !SLOnly.includes(store.name)}
+		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
+	{/if}
+	{#if store.name !== 'Literature And Performance'}
+		<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
+	{/if}
 
 	<div class="content">
 		{#if sufficientInformation && foo}

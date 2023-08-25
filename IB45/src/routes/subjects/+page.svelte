@@ -1,6 +1,15 @@
 <script>
 	import { courses } from '$lib/stores/store.js';
 	import Links from '$lib/components/links.svelte';
+
+	const groups = [
+		'Group 1: Studies in Language and Literature',
+		'Group 2: Language Acquisition',
+		'Group 3: Individuals and Societies',
+		'Group 4: Sciences',
+		'Group 5: Mathematics',
+		'Group 6: The Arts'
+	];
 </script>
 
 <div class="body">
@@ -10,11 +19,28 @@
 
 	<br />
 	<div class="subjects">
-		{#each $courses as course}
-			<div class="subject">
-				<a href="./subjects/{course.short}">{course.name}</a>
+		{#each { length: 6 } as _, i}
+			<h3>{groups[i]}</h3>
+			<div class="list">
+				{#each $courses as course}
+					{#if course.groupNumber == i + 1}
+						<div class="subject">
+							<a href="./subjects/{course.short}">{course.name}</a>
+						</div>
+					{/if}
+				{/each}
 			</div>
 		{/each}
+		<h3>Core</h3>
+		<div class="list">
+			{#each $courses as course}
+				{#if course.groupNumber == 99}
+					<div class="subject">
+						<a href="./subjects/{course.short}">{course.name}</a>
+					</div>
+				{/if}
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -22,9 +48,12 @@
 	.body {
 		margin: 0 50px;
 	}
-	.subjects {
+	.list {
 		display: flex;
 		flex-wrap: wrap;
+	}
+	.subjects {
+		margin-bottom: 25px;
 	}
 	.subject {
 		margin: 10px;
