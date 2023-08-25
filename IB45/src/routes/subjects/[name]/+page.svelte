@@ -253,7 +253,7 @@
 			<p>*Example: M22 TZ0 = May 2022 Timezone 0</p>
 			<p>Timezone 0 (Worldwide)</p>
 			<p>Timezone 1 (North America, South America)</p>
-			<p>Timezone 2 (Asia, Africa, Asia, Australia, Oceania)</p>
+			<p>Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
 		</div>
 	{/if}
 </div>
