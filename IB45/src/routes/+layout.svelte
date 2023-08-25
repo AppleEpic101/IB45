@@ -61,8 +61,8 @@
 		justify-content: space-evenly;
 		align-items: flex-start;
 		background-color: var(--primary);
-		height: 25vh;
 		border-top: 1px solid black;
+		padding-bottom: 25px;
 	}
 
 	footer div {
@@ -78,7 +78,6 @@
 	@media screen and (max-width: 560px) {
 		footer {
 			display: block;
-			height: 325px;
 		}
 	}
 </style>
