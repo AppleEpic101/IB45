@@ -1,7 +1,4 @@
 <script>
-	import { page } from '$app/stores';
-	import { courses } from '$lib/stores/store.js';
-	import data from '$lib/assets/courses.json';
 	import Slider from '$lib/components/slider.svelte';
 	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
@@ -15,14 +12,7 @@
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 
-	let pageStore = $page.params.name;
-	let subject;
-	$courses.forEach((obj) => {
-		if (obj.short === pageStore) {
-			subject = obj;
-			pageStore = obj.name;
-		}
-	});
+	export let data;
 
 	const languages = [
 		'English',
@@ -53,37 +43,24 @@
 		'Turkish',
 		'Vietnamese'
 	];
-	const languageSubjects = [
-		'Language A: Literature',
-		'Language A: Language And Literature',
-		'Language AB Initio',
-		'Language B'
-	];
-	const SLOnly = [
-		'Language AB Initio',
-		'Environmental Systems And Societies',
-		'World Religions',
-		'Literature And Performance'
-	];
 	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
-	const isLanguageSubject = languageSubjects.includes(pageStore);
-	let language;
+	let language = 'English';
 
-	$: name = (language ?? '') + (language ? ' ' : '') + pageStore;
+	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
 	const getTZ = (timezone, name, info) => {
 		let arr = [];
 
-		if (timezone && info) {
-			timezone.forEach((tz, i) => {
-				if (timezone.length === 1) {
-					arr.push({ tz, name: info.short + ' TZ0', courseName: name });
-				} else {
-					arr.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: name });
-				}
-			});
-		}
+		// if (timezone && info) {
+		timezone.forEach((tz, i) => {
+			if (timezone.length === 1) {
+				arr.push({ tz, name: info.short + ' TZ0', courseName: name });
+			} else {
+				arr.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: name });
+			}
+		});
+		// }
 		return arr;
 	};
 
@@ -111,42 +88,13 @@
 		});
 	}
 
-	const historyResults = [[], [], [], []];
-	regions.forEach((r, i) => {
-		b.forEach((boundary) => {
-			const info = boundary['info'];
-			const c = boundary['HL History ' + r];
-
-			if (c && info) {
-				let timezone = [...c.TZ];
-				historyResults[i].push(...getTZ(timezone, 'HL History ' + r, info));
-			}
-		});
-	});
-
-	const TOK = [];
-	const EE = [];
-	b.forEach((boundary) => {
-		const info = boundary['info'];
-		const c = boundary['Theory Of Knowledge'];
-		const d = boundary['Extended Essay'];
-
-		if (c && d && info) {
-			let timezone = [...c.TZ];
-			let timezone1 = [...d.TZ];
-
-			TOK.push(...getTZ(timezone, 'Theory Of Knowledge', info));
-			EE.push(...getTZ(timezone1, 'Extended Essay', info));
-		}
-	});
-
 	let level = 'SL';
 	let s;
 	$: {
 		if (level === 'HL') {
-			s = subject.HL;
+			s = data.HL;
 		} else {
-			s = subject.SL;
+			s = data.SL;
 		}
 	}
 	$: {
@@ -161,28 +109,34 @@
 	let grade;
 	$: {
 		grade = 0;
-		for (let i = 0; i < weight.length; i++) {
-			grade += (assessments[i] / marks[i]) * weight[i] * 100;
+		if (data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay') {
+			for (let i = 0; i < weight.length; i++) {
+				grade += assessments[i];
+			}
+		} else {
+			for (let i = 0; i < weight.length; i++) {
+				grade += (assessments[i] / marks[i]) * weight[i] * 100;
+			}
 		}
 		grade = Math.round(grade);
 	}
 </script>
 
 <div class="body">
-	<h1>{pageStore}</h1>
+	<h1>{data.name}</h1>
 	<Links />
 	<div class="description">
 		<h3>Description</h3>
-		{subject.description}
+		{data.description}
 	</div>
 
-	{#if pageStore !== 'Creativity, Activity, Service'}
+	{#if data.name !== 'Creativity, Activity, Service'}
 		<h3>Assessment Model</h3>
-		{#if SLOnly.includes(pageStore)}
-			<h5>{pageStore} is offered only at the SL level</h5>
+		{#if data.SLOnly}
+			<h5>{data.name} is offered only at the SL level</h5>
 		{/if}
-		{#if pageStore !== 'Extended Essay' && pageStore !== 'Theory Of Knowledge'}
-			{#if !SLOnly.includes(pageStore)}
+		{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
+			{#if !data.SLOnly}
 				<div class="wrap">
 					<label>
 						<input type="radio" name="e" value={'SL'} bind:group={level} />
@@ -215,39 +169,36 @@
 			<div class="container">
 				<div class="x">Predicted Grade</div>
 				<div class="y">
-					{#if pageStore === 'Theory Of Knowledge' || pageStore === 'Extended Essay'}
-						{assessments[0]}
-					{:else}{grade}
-					{/if}
+					{grade}
 				</div>
 			</div>
 		</div>
 
 		<div class="grade">
 			<h3>Historical Grade Boundaries</h3>
-			{#if SLOnly.includes(pageStore)}
-				<h5>{pageStore} is offered only at the SL level</h5>
+			{#if data.SLOnly}
+				<h5>{data.name} is offered only at the SL level</h5>
 			{/if}
-			{#if isLanguageSubject}
-				<Dropdown str="Enter language" arr={languages} bind:value={language} />
+			{#if data.isLanguageSubject}
+				<Dropdown arr={languages} bind:value={language} />
 			{/if}
 			<div class="tables">
-				{#if pageStore === 'Theory Of Knowledge'}
-					<CoreTable name={'TOK'} res={TOK} />
-				{:else if pageStore === 'Extended Essay'}
-					<CoreTable name={'EE'} res={EE} />
+				{#if data.name === 'Theory Of Knowledge'}
+					<CoreTable name={'TOK'} res={data.TOK} />
+				{:else if data.name === 'Extended Essay'}
+					<CoreTable name={'EE'} res={data.EE} />
 				{:else}
 					<BoundaryTable name={'SL ' + name} res={SLResults} />
-					{#if pageStore === 'History'}
+					{#if data.name === 'History'}
 						{#each regions as r, i}
-							<BoundaryTable name={'HL History ' + r} res={historyResults[i]} />
+							<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
 						{/each}
-					{:else if !SLOnly.includes(pageStore)}
+					{:else if !data.SLOnly}
 						<BoundaryTable name={'HL ' + name} res={HLResults} />
 					{/if}
 				{/if}
-				{#if pageStore === 'Theory Of Knowledge' || pageStore === 'Extended Essay'}
-					<CoreMatrix name={pageStore} />
+				{#if data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay'}
+					<CoreMatrix name={data.name} />
 				{/if}
 			</div>
 			<p>*Example: M22 TZ0 = May 2022 Timezone 0</p>

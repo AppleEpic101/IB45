@@ -1,26 +1,11 @@
 <script>
-	// NEEDS FIXING (shouldnt only take data from M22)
+	import { courses, gradeBoundaryData, timezone, tok } from '$lib/stores/store.js';
 	import Slider from './slider.svelte';
-	import data from '$lib/assets/courses.json';
-	import gradeBoundary from '$lib/assets/Grade_BoundariesM22.json';
-
-	let courses = Object.keys(data).map((courseName) => ({
-		name: courseName,
-		assessments: data[courseName].SLAssessments
-	}));
-	let boundaries = Object.keys(gradeBoundary).map((courseName) => ({
-		name: courseName,
-		TZ: gradeBoundary[courseName].TZ
-	}));
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
-	let sliderPosition = [];
 	let boundary = [];
 
-	let grade;
-	let eeRaw;
 	export let ee;
-	let fullName = 'Theory Of Knowledge';
 	export let awardedMark;
 	export let corePoints;
 
@@ -36,81 +21,75 @@
 		else corePoints = 0;
 	}
 
-	const isLocalStorageAvailable = typeof window !== 'undefined' && window.localStorage;
-
-	if (isLocalStorageAvailable) {
-		let storedSliderPosition = localStorage.getItem('sliderPositionTOK');
-		sliderPosition = storedSliderPosition ? JSON.parse(storedSliderPosition) : [0, 0];
-		eeRaw = localStorage.getItem('sliderPositionEE') ?? 0;
+	let store = JSON.parse($tok);
+	$: {
+		$tok = JSON.stringify(store);
 	}
 
-	$: {
-		if (isLocalStorageAvailable) {
-			localStorage.setItem('sliderPositionTOK', JSON.stringify(sliderPosition));
-			localStorage.setItem('sliderPositionEE', eeRaw);
-		}
-	}
+	const foo = $courses.find((course) => course.name === 'Theory Of Knowledge');
+	const bar = $courses.find((course) => course.name === 'Extended Essay');
+	const tokAssessments = foo?.SL;
+	const eeAssessments = bar?.SL;
+	$: tokBoundary = $gradeBoundaryData.find((course) => course.name === 'Theory Of Knowledge');
+	$: eeBoundary = $gradeBoundaryData.find((course) => course.name === 'Extended Essay');
+
+	$: tokGrade = store.tok.reduce((acc, curr) => acc + curr, 0);
+	$: eeGrade = store.ee.reduce((acc, curr) => acc + curr, 0);
 
 	$: {
-		grade = sliderPosition[0] + sliderPosition[1];
-	}
-
-	$: matchedCourse = courses.find((course) => course.name === fullName);
-	$: match = boundaries.find((course) => course.name === fullName);
-
-	$: {
-		// tok
-		if (match !== undefined) {
-			match.TZ.forEach((arr, i) => {
-				boundary[i] = 0;
-				arr.forEach((element) => {
-					if (grade >= element) {
-						boundary[i]++;
-					}
-				});
-				boundary[i] = letterGrades[boundary[i] - 1];
-			});
-			console.log(fullName);
-			console.log(match.TZ);
-		}
-	}
-
-	$: {
-		const b = boundaries.find((course) => course.name == 'Extended Essay').TZ;
-		let x = 0;
-		b.forEach((arr, i) => {
+		tokBoundary.TZ.forEach((arr, i) => {
+			boundary[i] = 0;
 			arr.forEach((element) => {
-				if (eeRaw >= element) {
+				if (tokGrade >= element) {
+					boundary[i]++;
+				}
+			});
+			boundary[i] = letterGrades[boundary[i] - 1];
+		});
+	}
+
+	$: {
+		let x = 0;
+		eeBoundary.TZ.forEach((arr, i) => {
+			arr.forEach((element) => {
+				if (eeGrade >= element) {
 					x++;
 				}
 			});
 		});
 		ee = letterGrades[x - 1];
 	}
-	$: awardedMark = boundary[0];
+	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
 </script>
 
 <div class="group">
 	<h2>Theory Of Knowledge</h2>
 	<div class="content">
-		{#each matchedCourse.assessments as assessment, i}
+		{#each tokAssessments as assessment, i}
 			<Slider
 				max={assessment.maxMarks}
 				name={assessment.name}
 				weight={assessment.weight}
-				bind:value={sliderPosition[i]}
+				bind:value={store.tok[i]}
 			/>
 		{/each}
 	</div>
 	<div class="stats">
-		Grade: {grade} / 30 <br />Awarded Mark: {awardedMark}
+		Grade: {tokGrade} / 30 <br />Awarded Mark: {awardedMark}
 	</div>
 	<h2>Extended Essay</h2>
 	<div class="content">
-		<Slider max="34" name="Extended Essay" weight="1" bind:value={eeRaw} />
+		{#each eeAssessments as assessment, i}
+			<Slider
+				max={assessment.maxMarks}
+				name={assessment.name}
+				weight={assessment.weight}
+				bind:value={store.ee[i]}
+			/>
+		{/each}
 	</div>
 	<div class="stats">
-		Grade: {eeRaw} / 34 <br /> Awarded Mark: {ee}
+		Grade: {eeGrade} / 34 <br /> Awarded Mark: {ee}
 	</div>
 	<br />
 	<div class="stats">

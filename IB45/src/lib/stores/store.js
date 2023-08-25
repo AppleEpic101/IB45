@@ -17,6 +17,11 @@ export const gradeBoundaryData = writable(Object.keys(M22).map((courseName) => (
     TZ: M22[courseName].TZ
 })));
 
+export const tok = writable(browser && localStorage && localStorage.getItem("tok") || '{"tok":[0, 0], "ee":[0]}')
+tok.subscribe((val) => {
+    if(browser && localStorage) localStorage.setItem("tok", val)
+});
+
 export const selectedGroup6 = writable(browser && localStorage && localStorage.getItem("selectedGroup6") || "6")
 selectedGroup6.subscribe((val) => {
     if(browser && localStorage) localStorage.setItem("selectedGroup6", val)
