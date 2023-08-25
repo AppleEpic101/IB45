@@ -178,6 +178,9 @@
 
 	{#if pageStore !== 'Creativity, Activity, Service'}
 		<h3>Assessment Model</h3>
+		{#if SLOnly.includes(pageStore)}
+			<h5>{pageStore} is offered only at the SL level</h5>
+		{/if}
 		{#if pageStore !== 'Extended Essay' && pageStore !== 'Theory Of Knowledge'}
 			{#if SLOnly.includes(pageStore)}
 				<Dropdown arr={['SL']} bind:value={level} />
@@ -213,7 +216,7 @@
 		<div class="grade">
 			<h3>Historical Grade Boundaries</h3>
 			{#if SLOnly.includes(pageStore)}
-				<h5>{pageStore} is only offered at the SL level</h5>
+				<h5>{pageStore} is offered only at the SL level</h5>
 			{/if}
 			{#if isLanguageSubject}
 				<Dropdown str="Enter language" arr={languages} bind:value={language} />
