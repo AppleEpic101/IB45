@@ -46,8 +46,8 @@
 		data from previous IB administrations, giving you the most accurate grade predictions possible.
 	</p>
 	<strong>
-		NOTE: May 2023 grade boundaries are coming soon (official boundaries likely released in
-		October).
+		NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB releases
+		its exam papers).
 	</strong>
 	<hr />
 
