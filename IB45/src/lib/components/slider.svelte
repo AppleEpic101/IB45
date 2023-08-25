@@ -19,7 +19,7 @@
 			value = 0;
 		}
 		if (value === undefined || value === null) {
-			value = Math.trunc(max / 2);
+			value = 0;
 		}
 	}
 </script>

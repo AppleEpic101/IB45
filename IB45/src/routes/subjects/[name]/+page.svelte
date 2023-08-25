@@ -140,7 +140,7 @@
 		}
 	});
 
-	let level;
+	let level = 'SL';
 	let s;
 	$: {
 		if (level === 'HL') {
@@ -182,12 +182,20 @@
 			<h5>{pageStore} is offered only at the SL level</h5>
 		{/if}
 		{#if pageStore !== 'Extended Essay' && pageStore !== 'Theory Of Knowledge'}
-			{#if SLOnly.includes(pageStore)}
-				<Dropdown arr={['SL']} bind:value={level} />
-			{:else}
-				<Dropdown arr={['SL', 'HL']} bind:value={level} />
+			{#if !SLOnly.includes(pageStore)}
+				<div class="wrap">
+					<label>
+						<input type="radio" name="e" value={'SL'} bind:group={level} />
+						<div class="btn btn-sık"><span>SL</span></div>
+					</label>
+					<label>
+						<input type="radio" name="e" value={'HL'} bind:group={level} />
+						<div class="btn btn-sık"><span>HL</span></div>
+					</label>
+				</div>
 			{/if}
 		{/if}
+		<br />
 		<div class="assessments">
 			<div class="ass">
 				{#if s}
@@ -202,6 +210,8 @@
 				{/if}
 			</div>
 
+			<br />
+			<br />
 			<div class="container">
 				<div class="x">Predicted Grade</div>
 				<div class="y">
@@ -240,11 +250,19 @@
 					<CoreMatrix name={pageStore} />
 				{/if}
 			</div>
+			<p>*Example: M22 TZ0 = May 2022 Timezone 0</p>
+			<p>Timezone 0 (Worldwide)</p>
+			<p>Timezone 1 (North America, South America)</p>
+			<p>Timezone 2 (Asia, Africa, Asia, Australia, Oceania)</p>
 		</div>
 	{/if}
 </div>
 
 <style>
+	p {
+		font-size: x-small;
+		font-weight: bold;
+	}
 	.body {
 		margin: 10px 50px;
 		padding-bottom: 20px;
@@ -286,6 +304,47 @@
 		border: 2px solid black;
 		border-radius: 10px;
 		margin: auto;
+	}
+
+	.wrap {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	label {
+		position: relative;
+		display: inline-block;
+		text-align: center;
+	}
+
+	.btn:hover {
+		cursor: pointer;
+	}
+
+	.btn {
+		text-align: center;
+	}
+	.btn-sık {
+		transition: all 0.2s ease;
+		background-color: var(--lightprimary);
+		border: 2px solid black;
+		padding: 5px 10px;
+		border-radius: 10px;
+		margin: 5px;
+		box-shadow: 0 1px 1px black;
+	}
+
+	input[type='radio'] {
+		position: absolute;
+		visibility: hidden;
+	}
+
+	input[type='radio']:checked + div {
+		background-color: var(--banner);
+	}
+	input[type='radio']:checked + div > span {
+		color: white;
+		text-shadow: 0 2px 2px #808080;
 	}
 
 	@media screen and (max-width: 500px) {
