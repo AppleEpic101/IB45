@@ -7,6 +7,13 @@
 
 <div class="changes">
 	<div class="change">
+		<h2>August 25, 2023</h2>
+		<ul>
+			<li>Added new subjects (classical language)</li>
+			<li>Better looking buttons</li>
+		</ul>
+	</div>
+	<div class="change">
 		<h2>August 22, 2023</h2>
 		<ul>
 			<li>Dark mode</li>
@@ -32,6 +39,7 @@
 			<li>Bilingual Diploma support</li>
 			<li>May 2019 boundaries added</li>
 			<li>Additional subjects</li>
+			<li>Modern greek language added</li>
 		</ul>
 	</div>
 
