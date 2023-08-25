@@ -4,7 +4,7 @@
 		"short": "M22"
 	},
 	"SL Nature of Science": {
-		"TZ": [[0, 18, 36, 43, 51, 61, 71]]
+		"TZ": [[0, 18, 36, 43, 51, 61, 70]]
 	},
 	"HL Film": {
 		"TZ": [[0, 12, 25, 36, 52, 68, 84]]
@@ -45,7 +45,7 @@
 	"SL Biology": {
 		"TZ": [
 			[0, 14, 24, 34, 49, 64, 79],
-			[0, 13, 22, 33, 48, 61, 71]
+			[0, 13, 22, 33, 48, 61, 76]
 		]
 	},
 	"HL Business Management": {
@@ -315,6 +315,9 @@
 	"HL French Language A: Literature": {
 		"TZ": [[0, 16, 31, 43, 57, 67, 80]]
 	},
+	"SL French Language A: Literature": {
+		"TZ": [[0, 16, 28, 40, 57, 71, 82]]
+	},
 	"SL French Language A: Literature self taught": {
 		"TZ": [[0, 16, 28, 40, 57, 71, 82]]
 	},
@@ -420,10 +423,10 @@
 	"SL Environmental Systems And Societies": {
 		"TZ": [[0, 10, 18, 30, 40, 52, 62]]
 	},
-	"HL Environmental Systems And Societies": {
+	"HL Finnish Language A: Literature": {
 		"TZ": [[0, 15, 28, 43, 57, 68, 82]]
 	},
-	"SL French Language A: Literature": {
+	"SL Finnish Language A: Literature": {
 		"TZ": [[0, 13, 28, 40, 52, 63, 77]]
 	},
 	"HL Indonesian Language A: Language And Literature": {
