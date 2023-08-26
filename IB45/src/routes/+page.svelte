@@ -148,7 +148,7 @@
 		color: white;
 		text-shadow: 1px 1px 1px navyblue;
 		padding: 0;
-		height: 400px;
+		height: 250px;
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
 	}
