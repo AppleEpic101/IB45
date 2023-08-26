@@ -131,6 +131,40 @@
 	</div>
 
 	{#if data.name !== 'Creativity, Activity, Service'}
+		<div class="grade">
+			<h3>Historical Grade Boundaries</h3>
+			{#if data.SLOnly}
+				<h5>{data.name} is offered only at the SL level</h5>
+			{/if}
+			{#if data.isLanguageSubject && data.name === 'Classical Language'}
+				<Dropdown arr={classical} bind:value={language} />
+			{:else if data.isLanguageSubject}
+				<Dropdown arr={languages} bind:value={language} />
+			{/if}
+			<div class="tables">
+				{#if data.name === 'Theory Of Knowledge'}
+					<CoreTable name={'TOK'} res={data.TOK} />
+				{:else if data.name === 'Extended Essay'}
+					<CoreTable name={'EE'} res={data.EE} />
+				{:else}
+					<BoundaryTable name={'SL ' + name} res={SLResults} />
+					{#if data.name === 'History'}
+						{#each regions as r, i}
+							<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
+						{/each}
+					{:else if !data.SLOnly}
+						<BoundaryTable name={'HL ' + name} res={HLResults} />
+					{/if}
+				{/if}
+				{#if data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay'}
+					<CoreMatrix name={data.name} />
+				{/if}
+			</div>
+			<p>*Example: M22 TZ0 = May 2022 Timezone 0</p>
+			<p>Timezone 0 (Worldwide)</p>
+			<p>Timezone 1 (North America, South America)</p>
+			<p>Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
+		</div>
 		<h3>Assessment Model</h3>
 		{#if data.SLOnly}
 			<h5>{data.name} is offered only at the SL level</h5>
@@ -172,41 +206,6 @@
 					{grade}
 				</div>
 			</div>
-		</div>
-
-		<div class="grade">
-			<h3>Historical Grade Boundaries</h3>
-			{#if data.SLOnly}
-				<h5>{data.name} is offered only at the SL level</h5>
-			{/if}
-			{#if data.isLanguageSubject && data.name === 'Classical Language'}
-				<Dropdown arr={classical} bind:value={language} />
-			{:else if data.isLanguageSubject}
-				<Dropdown arr={languages} bind:value={language} />
-			{/if}
-			<div class="tables">
-				{#if data.name === 'Theory Of Knowledge'}
-					<CoreTable name={'TOK'} res={data.TOK} />
-				{:else if data.name === 'Extended Essay'}
-					<CoreTable name={'EE'} res={data.EE} />
-				{:else}
-					<BoundaryTable name={'SL ' + name} res={SLResults} />
-					{#if data.name === 'History'}
-						{#each regions as r, i}
-							<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
-						{/each}
-					{:else if !data.SLOnly}
-						<BoundaryTable name={'HL ' + name} res={HLResults} />
-					{/if}
-				{/if}
-				{#if data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay'}
-					<CoreMatrix name={data.name} />
-				{/if}
-			</div>
-			<p>*Example: M22 TZ0 = May 2022 Timezone 0</p>
-			<p>Timezone 0 (Worldwide)</p>
-			<p>Timezone 1 (North America, South America)</p>
-			<p>Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
 		</div>
 	{/if}
 </div>

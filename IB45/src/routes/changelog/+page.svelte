@@ -10,6 +10,7 @@
 		<h2>August 25, 2023</h2>
 		<ul>
 			<li>Added new subjects (classical language)</li>
+			<li>Added school-based syllabi subjects</li>
 			<li>Better looking buttons</li>
 		</ul>
 	</div>

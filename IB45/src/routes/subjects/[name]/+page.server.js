@@ -44,7 +44,11 @@ const SL = [
     'Language AB Initio',
     'Environmental Systems And Societies',
     'World Religions',
-    'Literature And Performance'
+    'Literature And Performance',
+    'Art History',
+    'Brazilian Social Studies',
+    'Turkey In The 20th Century',
+    'Nature Of Science'
 ];
 
 export const ssr = false;

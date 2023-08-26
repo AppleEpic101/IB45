@@ -3,7 +3,7 @@
 		"name": "May 2019",
 		"short": "M19"
 	},
-	"SL Nature of Science": {
+	"SL Nature Of Science": {
 		"TZ": [[0, 16, 31, 40, 51, 63, 75]]
 	},
 	"HL Film": {
@@ -246,6 +246,9 @@
 	"SL Dutch Language A: Language And Literature": {
 		"TZ": [[0, 15, 32, 47, 60, 72, 84]]
 	},
+	"SL Dutch Language A: Literature": {
+		"TZ": [[0, 16, 29, 41, 54, 66, 78]]
+	},
 	"SL Dutch Language A: Literature self taught": {
 		"TZ": [[0, 16, 29, 41, 54, 66, 78]]
 	},
@@ -372,7 +375,7 @@
 	"SL World Religions": {
 		"TZ": [[0, 13, 25, 40, 54, 67, 81]]
 	},
-	"SL Braz.Soc.Stud": {
+	"SL Brazilian Social Studies": {
 		"TZ": [[0, 15, 29, 41, 53, 65, 77]]
 	},
 	"HL Catalan Language A: Literature": {
@@ -446,6 +449,9 @@
 	},
 	"HL Japanese Language A: Literature": {
 		"TZ": [[0, 18, 33, 46, 59, 71, 83]]
+	},
+	"SL Japanese Language A: Literature": {
+		"TZ": [[0, 17, 31, 45, 58, 71, 83]]
 	},
 	"SL Japanese Language A: Literature self taught": {
 		"TZ": [[0, 17, 31, 45, 58, 71, 83]]

@@ -18,11 +18,12 @@
 		'Computer Science',
 		'Design Technology',
 		'Environmental Systems And Societies',
+		'Nature Of Science',
 		'Physics',
 		'Sports, Excercise And Health Science'
 	];
 
-	const SLOnly = ['Environmental Systems And Societies'];
+	const SLOnly = ['Environmental Systems And Societies', 'Nature Of Science'];
 
 	export let groupNumber = 4;
 	export let awardedMark;

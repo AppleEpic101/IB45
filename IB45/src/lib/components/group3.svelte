@@ -13,6 +13,8 @@
 	});
 
 	const subjects = [
+		'Art History',
+		'Brazilian Social Studies',
 		'Business Management',
 		'Economics',
 		'Environmental Systems And Societies',
@@ -23,9 +25,16 @@
 		'Philosophy',
 		'Psychology',
 		'Social And Cultural Anthropology',
+		'Turkey In The 20th Century',
 		'World Religions'
 	];
-	const SLOnly = ['Environmental Systems And Societies', 'World Religions'];
+	const SLOnly = [
+		'Art History',
+		'Brazilian Social Studies',
+		'Environmental Systems And Societies',
+		'Turkey In The 20th Century',
+		'World Religions'
+	];
 	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
 
 	export let groupNumber = 3;

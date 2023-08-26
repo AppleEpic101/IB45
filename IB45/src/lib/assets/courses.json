@@ -241,6 +241,55 @@
 		]
 	},
 
+	"Art History": {
+		"firstAssessment": "2010",
+		"lastAssessment": "Present",
+		"short": "art-history",
+		"description": "Art history is the study of the rich heritage of visual arts produced by human societies. This production, ranging from painting, sculpture, architecture, design, photography, and applied arts to costume and body art, has found expression in human cultures from the earliest times and has been determined by a range of functions. The art historian is concerned with the formal appreciation of these works and the understanding of their meaning within the culture that produced them, as well as the relationships between one culture and another. Visual literacy is particularly relevant in an age when we have unprecedented access and exposure to images. As part of the IB Diploma programme, art history forms an option in group 3, individuals and societies. The discipline is fundamentally about how individuals and social groups have responded to and represented aspects of their world and experience, creating a visual response that is simultaneously that of the individual and their society. The works produced may have meaning for different sections of that society. Works are studied from a variety of approaches, which comprise the core curriculum of the syllabus. Interpretations of the art of the past are constantly changing as new evidence comes to light in art historical research, as cultural values change, and as developments occur in contemporary art. The subject requires a critical analysis of documentary and theoretical sources. To some extent, our view of the art of other cultures is necessarily conditioned by our own cultural attitudes, but by trying to understand how these works were originally intended or how societies have viewed other cultures, those societies are brought closer to us, and our own appreciation of the works is enhanced.",
+		"groupNumber": 3,
+		"SLAssessments": [
+			{
+				"name": "Paper 1: Short Answer",
+				"maxMarks": 20,
+				"weight": 0.2
+			},
+			{
+				"name": "Paper 2: Extended Response",
+				"maxMarks": 48,
+				"weight": 0.48
+			},
+			{
+				"name": "Internal Assessment",
+				"maxMarks": 32,
+				"weight": 0.32
+			}
+		]
+	},
+
+	"Brazilian Social Studies": {
+		"firstAssessment": "2012",
+		"lastAssessment": "Present",
+		"short": "brazilian-social-studies",
+		"description": "The Brazilian Social Studies course is structured into eight topics, encompassing a wide range of subjects within the geography and history of Brazil. The course aims to offer a comprehensive perspective on Brazil's historical progression and its present status as a regional influencer in the global economy. It achieves this by exploring the interconnectedness of individuals, society, and the environment across multiple dimensions: physical, political, social, economic, religious, technological, and cultural. Both history and geography components of the curriculum promote the use of investigative methods to address overarching and intricate inquiries. In the history segment, students are urged to contemplate the role of historians and embrace diverse interpretations of past events. In the realm of geography, students are guided to recognize how Brazil's physical landscape has evolved due to socio-economic processes. Moreover, they are prompted to grasp the interplay between human beings and the natural environment. The coursework also prompts students to reflect on geographical challenges that may necessitate interdisciplinary approaches. Furthermore, the curriculum guides students through a learning journey that fosters an understanding and appreciation of Brazilian culture. The evaluation of this cultural awareness is seamlessly integrated into the assessment of historical and geographical aspects of the course.",
+		"groupNumber": 3,
+		"SLAssessments": [
+			{
+				"name": "Paper 1: Short Answer",
+				"maxMarks": 40,
+				"weight": 0.4
+			},
+			{
+				"name": "Paper 2: Extended Response",
+				"maxMarks": 40,
+				"weight": 0.4
+			},
+			{
+				"name": "Internal Assessment",
+				"maxMarks": 20,
+				"weight": 0.2
+			}
+		]
+	},
 	"Business Management": {
 		"firstAssessment": "2016",
 		"lastAssessment": "2024",
@@ -645,6 +694,30 @@
 			}
 		]
 	},
+	"Turkey In The 20th Century": {
+		"firstAssessment": "2014",
+		"lastAssessment": "Present",
+		"short": "turkey-in-the-20th-century",
+		"description": "Turkey in the 20th century, previously called Turkish Social Studies, is a school-based curriculum developed for the first time in 2000 by a group of teachers working in various schools. Turkey in the 20th century, as a multi-disciplinary course, adds an international perspective to the history, geography, and sociology curricula of the Ministry of National Education (MEB). The aim was to create a course that complies with national regulations in Turkish schools offering DP. Turkey is geographically in a position where two continents meet, and culturally at the intersection of at least two great civilizations. This situation not only affected Turkey culturally and historically, but also enabled Turkey to affect its neighbors. The aim of this course is to explore the mentioned interactions with the conceptual and analytical frameworks of these three courses required by the Ministry of National Education. An international perspective has been added to the course to raise students' awareness of Turkey's possible role in the region and other societies' perceptions of Turkey.",
+		"groupNumber": 3,
+		"SLAssessments": [
+			{
+				"name": "Paper 1",
+				"maxMarks": 45,
+				"weight": 0.3
+			},
+			{
+				"name": "Paper 2",
+				"maxMarks": 40,
+				"weight": 0.3
+			},
+			{
+				"name": "Internal Assessment",
+				"maxMarks": 50,
+				"weight": 0.4
+			}
+		]
+	},
 	"World Religions": {
 		"firstAssessment": "2013",
 		"lastAssessment": "Present",
@@ -884,6 +957,30 @@
 				"name": "Individual Investigation",
 				"maxMarks": 30,
 				"weight": 0.25
+			}
+		]
+	},
+	"Nature Of Science": {
+		"firstAssessment": "2017",
+		"lastAssessment": "Present",
+		"short": "nature-of-science",
+		"description": "Science itself is an international endeavor—the exchange of information and ideas across national boundaries has been essential to the progress of science. This exchange is not a new phenomenon but it has accelerated in recent times with the development of information and communication technologies. Indeed, the idea that science is a Western invention is a myth—many of the foundations of modern-day science were laid many centuries before by Arabic, Indian, and Chinese civilizations, among others. Teachers are encouraged to emphasize this contribution in their teaching of various topics, perhaps through the use of timeline websites. The scientific method in its widest sense, with its emphasis on peer review, open-mindedness, and freedom of thought, transcends politics, religion, gender, and nationality. Where appropriate within certain topics, the syllabus details sections in the group 4 guides contain links illustrating the international aspects of science. On an organizational level, many international bodies now exist to promote science. United Nations bodies such as UNESCO, UNEP, and WMO, where science plays a prominent part, are well known, but in addition, there are hundreds of international bodies representing every branch of science. The facilities for large-scale research in, for example, particle physics and the Human Genome Project are expensive, and only joint ventures involving funding from many countries allow this to take place. The data from such research is shared by scientists worldwide. Group 4 teachers and students are encouraged to access the extensive websites and databases of these international scientific organizations to enhance their appreciation of the international dimension.",
+		"groupNumber": 4,
+		"SLAssessments": [
+			{
+				"name": "Paper 1",
+				"maxMarks": 60,
+				"weight": 0.4
+			},
+			{
+				"name": "Paper 2",
+				"maxMarks": 45,
+				"weight": 0.3
+			},
+			{
+				"name": "Internal Assessment",
+				"maxMarks": 28,
+				"weight": 0.3
 			}
 		]
 	},
