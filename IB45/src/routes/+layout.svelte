@@ -20,7 +20,7 @@
 		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">N22</a>
 	</div> -->
 	<div>
-		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br />admin@ibpredict.com
+		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br /><a href="mailto:admin@ibpredict.com">admin@ibpredict.com</a>
 	</div>
 </footer>
 
