@@ -86,7 +86,7 @@
 
 	@media screen and (max-width: 380px) {
 		input[type='range'] {
-			width: 30vw;
+			width: 27vw;
 		}
 	}
 </style>
