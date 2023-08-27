@@ -204,7 +204,7 @@
 		display: none;
 	}
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 1000px) {
 		p {
 			line-height: 1.5;
 		}
@@ -238,6 +238,9 @@
 		}
 		.intro {
 			margin: 0 5%;
+		}
+		.main {
+			font-size: small;
 		}
 	}
 

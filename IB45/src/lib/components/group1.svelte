@@ -76,7 +76,6 @@
 		matchedCourse = foo?.HL;
 	}
 
-	$: console.log(fullName);
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName); // HL English Language A: Language And Literature
 	$: {
 		if (SLOnly.includes(store.name)) {
