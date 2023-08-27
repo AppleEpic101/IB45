@@ -1,11 +1,27 @@
 <script>
 	import Navigation from '$lib/components/navigation.svelte';
+	import { fade } from 'svelte/transition';
+	import { navigating } from '$app/stores';
+	import { onMount } from 'svelte';
+
+	let animate = !$navigating;
+	let loaded = false;
+
+	onMount(() => (loaded = true));
 </script>
 
 <Navigation />
 
 <div class="slot">
-	<slot />
+	{#if animate}
+		{#if loaded}
+			<div in:fade={{ delay: 500, duration: 500 }}>
+				<slot />
+			</div>
+		{/if}
+	{:else}
+		<slot />
+	{/if}
 </div>
 
 <footer>

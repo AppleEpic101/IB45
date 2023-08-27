@@ -75,7 +75,8 @@
 		{/each}
 	</div>
 	<div class="stats">
-		Grade: {tokGrade} / 30 <br />Awarded Mark: {awardedMark}
+		Grade: {tokGrade} / 30
+		<div class="awarded">Awarded Mark: {awardedMark}</div>
 	</div>
 	<h2>Extended Essay</h2>
 	<div class="content">
@@ -89,10 +90,18 @@
 		{/each}
 	</div>
 	<div class="stats">
-		Grade: {eeGrade} / 34 <br /> Awarded Mark: {ee}
+		Grade: {eeGrade} / 34
+		<div class="awarded">Awarded Mark: {ee}</div>
 	</div>
 	<br />
 	<div class="stats">
-		Core Points: {corePoints}
+		<div class="awarded">Core Points: {corePoints}</div>
 	</div>
 </div>
+
+<style>
+	.awarded {
+		font-weight: bold;
+		font-size: 18px;
+	}
+</style>
