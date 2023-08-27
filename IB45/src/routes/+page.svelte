@@ -36,14 +36,30 @@
 <div class="intro">
 	<div>
 		<h2>Welcome to IB Predict!</h2>
-		<h3>Last updated August 22, 2023</h3>
+		<h3>Last updated August 25, 2023</h3>
 	</div>
 	<Links />
-	<p>
-		The IB Predict score calculator serves as a valuable tool for International Baccalaureate (IB) Diploma Programme students, enabling them to make informed estimates of their eventual IB grades. Its importance is particularly evident in the context of university applications, where predicted grades play a pivotal role. By utilizing official grade boundaries data from past IB exam sessions, the calculator ensures a high level of precision in its grade predictions. This accuracy provides students with a clearer understanding of their potential outcomes, aiding their university aspirations and decisions. The incorporation of historical grade boundaries lends credibility to the predictions, offering students a reliable source of information to gauge their performance. In essence, the calculator empowers students to plan ahead and make well-informed choices based on their predicted IB grades, which can significantly impact their higher education opportunities.
+	<p class="main">
+		The IB Predict score calculator serves as a valuable tool for International Baccalaureate (IB)
+		Diploma Programme students, enabling them to make informed estimates of their eventual IB
+		grades. Its importance is particularly evident in the context of university applications, where
+		predicted grades play a pivotal role. By utilizing official grade boundaries data from past IB
+		exam sessions, the calculator ensures a high level of precision in its grade predictions. This
+		accuracy provides students with a clearer understanding of their potential outcomes, aiding
+		their university aspirations and decisions.
 	</p>
-	<p>
-		Introducing our latest enhancement to IB Predict! We're thrilled to introduce a brand new feature that enables students to accurately predict their grades for individual subjects. Try it out <a href="/subjects">here.</a>
+
+	<p class="main">
+		The incorporation of historical grade boundaries lends credibility to the predictions, offering
+		students a reliable source of information to gauge their performance. In essence, the calculator
+		empowers students to plan ahead and make well-informed choices based on their predicted IB
+		grades, which can significantly impact their higher education opportunities.
+	</p>
+
+	<p class="main">
+		Introducing our latest enhancement to IB Predict! We're thrilled to introduce a brand new
+		feature that enables students to accurately predict their grades for individual subjects. Try it
+		out <a href="/subjects">here.</a>
 	</p>
 	<strong>
 		NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB releases
@@ -148,9 +164,12 @@
 		color: white;
 		text-shadow: 1px 1px 1px navyblue;
 		padding: 0;
-		height: 250px;
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
+	}
+
+	.banner h1 {
+		margin: 50px;
 	}
 
 	.intro {
@@ -173,18 +192,37 @@
 		padding: 5px;
 	}
 
+	@media screen and (max-width: 800px) {
+		p {
+			line-height: 1.5;
+		}
+	}
+
 	@media screen and (max-width: 560px) {
 		.layout {
 			display: block;
-		}
-		.banner {
-			height: 300px;
 		}
 	}
 
 	@media screen and (max-width: 600px) {
 		.layout {
 			margin: 20px 10px;
+		}
+		.banner h1 {
+			font-size: 23px;
+			margin: 20px;
+		}
+		.intro {
+			margin: 0 5%;
+		}
+	}
+
+	@media screen and (max-width: 420px) {
+		.main {
+			font-size: 0.8em;
+		}
+		p {
+			line-height: 1.3;
 		}
 	}
 </style>

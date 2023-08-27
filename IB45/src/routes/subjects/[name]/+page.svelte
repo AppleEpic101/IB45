@@ -131,6 +131,47 @@
 	</div>
 
 	{#if data.name !== 'Creativity, Activity, Service'}
+		<h3>Assessment Model</h3>
+		{#if data.SLOnly}
+			<h5>{data.name} is offered only at the SL level</h5>
+		{/if}
+		{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
+			{#if !data.SLOnly}
+				<div class="wrap">
+					<label>
+						<input type="radio" name="e" value={'SL'} bind:group={level} />
+						<div class="btn btn-sık"><span>SL</span></div>
+					</label>
+					<label>
+						<input type="radio" name="e" value={'HL'} bind:group={level} />
+						<div class="btn btn-sık"><span>HL</span></div>
+					</label>
+				</div>
+			{/if}
+		{/if}
+		<div class="assessments">
+			<div class="ass">
+				{#if s}
+					{#each s as assessment, i}
+						<Slider
+							bind:value={assessments[i]}
+							name={assessment.name}
+							weight={assessment.weight}
+							max={assessment.maxMarks}
+						/>
+					{/each}
+				{/if}
+			</div>
+
+			<br />
+			<br />
+			<div class="container">
+				<div class="x">Predicted Grade</div>
+				<div class="y">
+					{grade}
+				</div>
+			</div>
+		</div>
 		<div class="grade">
 			<h3>Historical Grade Boundaries</h3>
 			{#if data.SLOnly}
@@ -164,48 +205,6 @@
 			<p>Timezone 0 (Worldwide)</p>
 			<p>Timezone 1 (North America, South America)</p>
 			<p>Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
-		</div>
-		<h3>Assessment Model</h3>
-		{#if data.SLOnly}
-			<h5>{data.name} is offered only at the SL level</h5>
-		{/if}
-		{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
-			{#if !data.SLOnly}
-				<div class="wrap">
-					<label>
-						<input type="radio" name="e" value={'SL'} bind:group={level} />
-						<div class="btn btn-sık"><span>SL</span></div>
-					</label>
-					<label>
-						<input type="radio" name="e" value={'HL'} bind:group={level} />
-						<div class="btn btn-sık"><span>HL</span></div>
-					</label>
-				</div>
-			{/if}
-		{/if}
-		<br />
-		<div class="assessments">
-			<div class="ass">
-				{#if s}
-					{#each s as assessment, i}
-						<Slider
-							bind:value={assessments[i]}
-							name={assessment.name}
-							weight={assessment.weight}
-							max={assessment.maxMarks}
-						/>
-					{/each}
-				{/if}
-			</div>
-
-			<br />
-			<br />
-			<div class="container">
-				<div class="x">Predicted Grade</div>
-				<div class="y">
-					{grade}
-				</div>
-			</div>
 		</div>
 	{/if}
 </div>
@@ -299,6 +298,12 @@
 		text-shadow: 0 2px 2px #808080;
 	}
 
+	@media screen and (max-width: 800px) {
+		.description {
+			font-size: small;
+		}
+	}
+
 	@media screen and (max-width: 500px) {
 		.body {
 			margin: 0 10px;
@@ -306,6 +311,9 @@
 		.tables {
 			flex-direction: column;
 			align-items: center;
+		}
+		.description {
+			font-size: x-small;
 		}
 	}
 </style>

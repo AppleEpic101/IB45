@@ -43,12 +43,26 @@
 		background-color: var(--lightprimary);
 	}
 	table {
-		width: 25vw;
+		width: 100%;
+		max-width: 280px;
 		margin-bottom: 20px;
 	}
 
 	th,
 	tr {
 		padding: 10px;
+	}
+
+	@media screen and (max-width: 410px) {
+		th,
+		tr {
+			padding: 5px;
+		}
+	}
+
+	@media screen and (max-width: 320px) {
+		table {
+			max-width: 100%;
+		}
 	}
 </style>

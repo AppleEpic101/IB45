@@ -66,4 +66,22 @@
 			height: 50px;
 		}
 	}
+
+	@media screen and (max-width: 330px) {
+		img {
+			display: none;
+		}
+
+		nav {
+			height: 50px;
+		}
+
+		.top-links {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			margin-right: 5px;
+			width: 100%;
+		}
+	}
 </style>
