@@ -124,6 +124,7 @@
 
 <div class="body">
 	<h1>{data.name}</h1>
+	<h4>Assessed from {data.firstAssessment} to {data.lastAssessment}</h4>
 	<Links />
 	<div class="description">
 		<h3>Description</h3>
@@ -162,8 +163,6 @@
 					{/each}
 				{/if}
 			</div>
-
-			<br />
 			<br />
 			<div class="container">
 				<div class="x">Predicted Grade</div>

@@ -12,7 +12,9 @@ const courses = Object.keys(data).map((courseName) => ({
     short: data[courseName].short,
     assessmentModel: data[courseName].assessmentModel,
     SL: data[courseName].SLAssessments,
-    HL: data[courseName].HLAssessments
+    HL: data[courseName].HLAssessments,
+    firstAssessment: data[courseName].firstAssessment,
+    lastAssessment: data[courseName].lastAssessment
 }));
 
 const b = [M19, N19, N20, M21, M22, N22];
@@ -93,6 +95,8 @@ export const load = (({params}) => {
         name: obj.name,
         short: params.name,
         description: obj.description,
+        firstAssessment: obj.firstAssessment,
+        lastAssessment: obj.lastAssessment,
         historyResults: historyResults,
         TOK: TOK,
         EE: EE,
