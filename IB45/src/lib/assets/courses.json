@@ -7,12 +7,16 @@
 		"description": "The language A: literature course aims at exploring the various manifestations of literature as a particularly powerful mode of writing across cultures and throughout history. The course aims at developing an understanding of factors that contribute to the production and reception of literature—the creativity of writers and readers, the nature of their interaction with their respective contexts and with literary tradition, the ways in which language can give rise to meaning and/or effect, and the performative and transformative potential of literary creation and response. Through close analysis of a range of literary texts in a number of literary forms and from different times and places, students will consider their own interpretations as well as the critical perspectives of others, to explore how such positions are shaped by cultural belief systems and to negotiate meanings for texts.",
 		"SLAssessments": [
 			{
-				"name": "Paper 1: Guided Textual Analysis",
+				"name": "Paper 1: Guided Literary Analysis",
+				"format": "Guided analysis of unseen literary passage / passages from different text types",
+				"time": 1.25,
 				"maxMarks": 20,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2: Comparative Essay",
+				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
+				"time": 1.75,
 				"maxMarks": 30,
 				"weight": 0.35
 			},
@@ -24,22 +28,28 @@
 		],
 		"HLAssessments": [
 			{
-				"name": "Paper 1: Guided Textual Analysis",
+				"name": "Paper 1: Guided Literary Analysis",
+				"format": "Guided analysis of unseen literary passage/passages from different text types",
+				"time": 2.25,
 				"maxMarks": 40,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2: Comparative Essay",
+				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
+				"time": 1.75,
 				"maxMarks": 30,
 				"weight": 0.25
 			},
 			{
 				"name": "HL Essay",
+				"format": "Written coursework component: 1,200-1,500 word essay on one work studied.",
 				"maxMarks": 20,
 				"weight": 0.2
 			},
 			{
 				"name": "Individual Oral",
+				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.2
 			}
@@ -51,32 +61,25 @@
 		"lastAssessment": "Present",
 		"short": "language-and-literature",
 		"description": "The language A: language and literature course aims at studying the complex and dynamic nature of language and exploring both its practical and aesthetic dimensions. The course will explore the crucial role language plays in communication, reflecting experience and shaping the world, and the roles of individuals themselves as producers of language. Throughout the course, students will explore the various ways in which language choices, text types, literary forms, and contextual elements all affect meaning. Through close analysis of various text types and literary forms, students will consider their own interpretations, as well as the critical perspectives of others, to explore how such positions are shaped by cultural belief systems and to negotiate meanings for texts.",
-		"assessmentModel": [
-			"Higher level study requires a minimum of 240 class hours",
-			"Standard level study requires a minimum of 150 class hours",
-			"Students study 6 works at higher level and 4 works at standard level from a representative selection of literary forms, periods and places",
-			"Students study a range of non-literary texts and bodies of work that include a wide variety of text-types",
-			"Students develop the techniques needed for the critical analysis of communication, becoming alert to interactions between text, audience and purpose",
-			"An understanding of how language, culture and context determine the construction of meaning is developed through the exploration of texts, some of which are studied in translation, from a variety of cultures, periods, text-types and literary forms",
-			"Students are assessed through a combination of formal examinations and oral and written coursework and oral activities",
-			"The formal examination comprises two essay papers, one requiring the analysis of unseen non-literary text, and the other a comparative response to a question based on two literary works studied",
-			"Students also perform an oral activity presenting their analysis of a literary work and a non-literary body of work studied",
-			"HL students comply with an additional written coursework requirement which consists of writing a 1200 - 1500 word essay on one of the works or bodies of work studied."
-		],
 		"groupNumber": 1,
 		"SLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
+				"format": "Guided analysis of unseen non-literary passage/passages from different text types.",
+				"time": 1.25,
 				"maxMarks": 20,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2: Comparative Essay",
+				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
+				"time": 1.75,
 				"maxMarks": 30,
 				"weight": 0.35
 			},
 			{
 				"name": "Individual Oral",
+				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.3
 			}
@@ -84,21 +87,25 @@
 		"HLAssessments": [
 			{
 				"name": "Paper 1: Guided Textual Analysis",
+				"format": "Guided analysis of unseen non-literary passage/passages from different text types.",
 				"maxMarks": 40,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2: Comparative Essay",
+				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
 				"maxMarks": 30,
 				"weight": 0.25
 			},
 			{
 				"name": "HL Essay",
+				"format": "Written coursework component: 1,200-1,500 word essay on one work studied.",
 				"maxMarks": 20,
 				"weight": 0.2
 			},
 			{
 				"name": "Individual Oral",
+				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.2
 			}

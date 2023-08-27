@@ -132,7 +132,7 @@
 	</div>
 
 	{#if data.name !== 'Creativity, Activity, Service'}
-		<h3>Assessment Model</h3>
+		<h3>Grade Calculator</h3>
 		{#if data.SLOnly}
 			<h5>{data.name} is offered only at the SL level</h5>
 		{/if}
