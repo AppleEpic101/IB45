@@ -27,5 +27,24 @@
 	table {
 		width: 25vw;
 		margin-bottom: 20px;
+		margin-left: 5px;
+	}
+
+	th,
+	tr {
+		padding: 5px;
+	}
+
+	@media screen and (max-width: 320px) {
+		table {
+			max-width: 100%;
+			font-size: x-small;
+		}
+	}
+
+	@media screen and (max-width: 235px) {
+		table {
+			font-size: xx-small;
+		}
 	}
 </style>

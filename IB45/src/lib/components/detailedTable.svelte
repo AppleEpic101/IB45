@@ -154,8 +154,10 @@
 	}
 
 	.box {
-		margin-top: 10px;
-		padding: 5px;
-		border: 5px solid black;
+		border: 2px solid black;
+		border-top: 0;
+		margin-top: 0px;
+		background-color: var(--lightprimary);
+		text-align: center;
 	}
 </style>

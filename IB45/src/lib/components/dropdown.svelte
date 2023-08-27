@@ -19,7 +19,7 @@
 <style>
 	select {
 		background-color: var(--lightprimary);
-		padding: 10px;
+		padding: 5px 10px;
 		color: black;
 		border: 2px solid black;
 		border-radius: 5px;
@@ -37,7 +37,13 @@
 		transition: background-color 0.3s ease;
 	}
 
-	select option::after {
+	select * {
 		background-color: black;
+	}
+
+	@media screen and (max-width: 380px) {
+		select {
+			max-width: 100%;
+		}
 	}
 </style>

@@ -63,6 +63,13 @@
 	@media screen and (max-width: 320px) {
 		table {
 			max-width: 100%;
+			font-size: x-small;
+		}
+	}
+
+	@media screen and (max-width: 235px) {
+		table {
+			font-size: xx-small;
 		}
 	}
 </style>

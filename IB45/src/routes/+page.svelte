@@ -71,6 +71,19 @@
 		<GradeBoundary />
 		<Timezone />
 	</div>
+	<div class="top-table">
+		<div class="data">
+			<div class="table">
+				<DetailedTable
+					points={totalScore}
+					awardedMarks={scores}
+					tok={tokGrade}
+					ee={eeGrade}
+					{corePoints}
+				/>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="layout">
@@ -140,7 +153,6 @@
 		justify-content: flex-end;
 		align-items: center;
 		margin-right: 5px;
-
 		width: 100%;
 	}
 
@@ -169,7 +181,7 @@
 	}
 
 	.banner h1 {
-		margin: 50px;
+		margin: 80px 50px;
 	}
 
 	.intro {
@@ -178,7 +190,7 @@
 
 	.layout {
 		display: grid;
-		grid-template-columns: 4fr 1fr;
+		grid-template-columns: 4fr 275px;
 		margin: 20px 5%;
 	}
 
@@ -188,8 +200,8 @@
 		top: 10px;
 	}
 
-	li {
-		padding: 5px;
+	.top-table {
+		display: none;
 	}
 
 	@media screen and (max-width: 800px) {
@@ -198,13 +210,25 @@
 		}
 	}
 
+	@media screen and (max-width: 710px) {
+		.layout {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
 	@media screen and (max-width: 560px) {
+		.right-column {
+			display: none;
+		}
+
+		.top-table {
+			display: initial;
+		}
 		.layout {
 			display: block;
 		}
 	}
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 700px) {
 		.layout {
 			margin: 20px 10px;
 		}

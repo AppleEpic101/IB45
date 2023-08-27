@@ -47,4 +47,24 @@
 	tr {
 		padding: 10px;
 	}
+
+	@media screen and (max-width: 410px) {
+		th,
+		tr {
+			padding: 5px;
+		}
+	}
+
+	@media screen and (max-width: 320px) {
+		table {
+			max-width: 100%;
+			font-size: x-small;
+		}
+	}
+
+	@media screen and (max-width: 235px) {
+		table {
+			font-size: xx-small;
+		}
+	}
 </style>

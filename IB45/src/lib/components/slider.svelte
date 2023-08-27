@@ -35,7 +35,7 @@
 
 <style>
 	p {
-		margin: 0px;
+		margin: 0;
 	}
 	.slider {
 		padding: 10px;
@@ -44,7 +44,6 @@
 		border: 2px solid black;
 		background-color: var(--lightprimary);
 		border-radius: 5px;
-		max-width: 300px;
 	}
 
 	.c {
@@ -83,5 +82,11 @@
 		width: 3em;
 		border: 2px solid black;
 		background-color: white;
+	}
+
+	@media screen and (max-width: 380px) {
+		input[type='range'] {
+			width: 30vw;
+		}
 	}
 </style>

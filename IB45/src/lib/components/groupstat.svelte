@@ -21,7 +21,7 @@
 					{/each}
 				{/if}
 			</div>
-			Awarded Mark: {awardedMark}
+			<div class="awarded">Awarded Mark: {awardedMark}</div>
 		{:else}
 			<br />
 			<div class="tooltip">
@@ -73,5 +73,10 @@
 
 	.tooltip:hover .tooltiptext {
 		visibility: visible;
+	}
+
+	.awarded {
+		font-weight: bold;
+		font-size: 18px;
 	}
 </style>
