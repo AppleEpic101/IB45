@@ -133,6 +133,8 @@
 			{:else}
 				Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
 			{/if}
+		{:else if data.groupNumber[0] === 99}
+			Core subject <br />
 		{:else if data.groupNumber.length === 1}
 			Group {data.groupNumber} subject <br />
 		{/if}
