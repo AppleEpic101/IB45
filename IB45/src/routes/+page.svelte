@@ -191,7 +191,7 @@
 	.layout {
 		display: grid;
 		grid-template-columns: 4fr 275px;
-		margin: 20px 5%;
+		margin: 20px 10%;
 	}
 
 	.data {
@@ -228,10 +228,13 @@
 		}
 	}
 
-	@media screen and (max-width: 700px) {
+	@media screen and (max-width: 770px) {
 		.layout {
 			margin: 20px 10px;
 		}
+	}
+
+	@media screen and (max-width: 700px) {
 		.banner h1 {
 			font-size: 23px;
 			margin: 20px;
