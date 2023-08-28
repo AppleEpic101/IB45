@@ -124,7 +124,19 @@
 
 <div class="body">
 	<h1>{data.name}</h1>
-	<h4>Assessed from {data.firstAssessment} to {data.lastAssessment}</h4>
+
+	<h4>
+		{#if data.groupNumber.length === 2}
+			{#if data.groupNumber[1] === 's'}
+				Group {data.groupNumber[0]} school-based syllabus subject <br />
+			{:else}
+				Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
+			{/if}
+		{:else if data.groupNumber.length === 1}
+			Group {data.groupNumber} subject <br />
+		{/if}
+		Assessments from {data.firstAssessment} to {data.lastAssessment}
+	</h4>
 	<Links />
 	<div class="description">
 		<h3>Description</h3>
@@ -209,8 +221,9 @@
 
 <style>
 	p {
-		font-size: x-small;
+		font-size: small;
 		font-weight: bold;
+		margin: 0;
 	}
 	.body {
 		margin: 10px 50px;

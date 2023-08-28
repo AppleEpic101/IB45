@@ -180,6 +180,7 @@
 		padding: 0;
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
+		border-right: 0.5px solid var(--lightprimary);
 	}
 
 	.banner h1 {
@@ -230,13 +231,16 @@
 		}
 	}
 
-	@media screen and (max-width: 700px) {
+	@media screen and (max-width: 770px) {
 		.layout {
 			margin: 20px 10px;
 		}
+	}
+
+	@media screen and (max-width: 700px) {
 		.banner h1 {
 			font-size: 23px;
-			margin: 20px;
+			margin: 50px 30px;
 		}
 		.intro {
 			margin: 0 5%;
