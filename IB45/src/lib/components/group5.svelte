@@ -12,10 +12,8 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	let subjects = [
-		'Mathematics: Analysis And Approaches',
-		'Mathematics: Applications And Interpretation'
-	];
+	const info = $courses.find((c) => c.name === 'info');
+	const subjects = info.info.group5;
 
 	export let groupNumber = 5;
 	export let awardedMark;

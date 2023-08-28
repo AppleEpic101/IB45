@@ -6,6 +6,7 @@ import M21 from '$lib/assets/Grade_BoundariesM21.json';
 import M22 from '$lib/assets/Grade_BoundariesM22.json';
 import N22 from '$lib/assets/Grade_BoundariesN22.json';
 
+const info = data['info'];
 const courses = Object.keys(data).map((courseName) => ({
     name: courseName,
     description: data[courseName].description,
@@ -35,24 +36,11 @@ const getTZ = (timezone, name, info) => {
     return arr;
 };
 
-const languageSubjects = [
-    'Language A: Literature',
-    'Language A: Language And Literature',
-    'Classical Language',
-    'Language AB Initio',
-    'Language B'
-];
-const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
-const SL = [
-    'Language AB Initio',
-    'Environmental Systems And Societies',
-    'World Religions',
-    'Literature And Performance',
-    'Art History',
-    'Brazilian Social Studies',
-    'Turkey In The 20th Century',
-    'Nature Of Science'
-];
+const languageSubjects = info.group1
+    .concat(info.group2)
+    .filter((e) => e !== 'Literature And Performance');
+const regions = info.region;
+const SL = info.SLOnly;
 
 export const ssr = false;
 export const load = (({params}) => {

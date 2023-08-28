@@ -12,18 +12,9 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	const subjects = [
-		'Biology',
-		'Chemistry',
-		'Computer Science',
-		'Design Technology',
-		'Environmental Systems And Societies',
-		'Nature Of Science',
-		'Physics',
-		'Sports, Excercise And Health Science'
-	];
-
-	const SLOnly = ['Environmental Systems And Societies', 'Nature Of Science'];
+	const info = $courses.find((c) => c.name === 'info');
+	const subjects = info.info.group4;
+	const SLOnly = info.info.SLOnly;
 
 	export let groupNumber = 4;
 	export let awardedMark;

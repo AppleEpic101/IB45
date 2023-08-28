@@ -11,39 +11,13 @@
 	import M21 from '$lib/assets/Grade_BoundariesM21';
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
+	import d from '$lib/assets/courses';
 
 	export let data;
 
-	const languages = [
-		'English',
-		'French',
-		'Spanish',
-		'Arabic',
-		'Chinese',
-		'Catalan',
-		'Danish',
-		'Dutch',
-		'Finnish',
-		'German',
-		'Hindi',
-		'Indonesian',
-		'Italian',
-		'Japanese',
-		'Korean',
-		'Lithuanian',
-		'Malay',
-		'Modern Greek',
-		'Norwegian',
-		'Polish',
-		'Portuguese',
-		'Russian',
-		'Swedish',
-		'Thai',
-		'Turkish',
-		'Vietnamese'
-	];
-	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
-	const classical = ['Latin', 'Classical Greek'];
+	const languages = d['info'].lang;
+	const regions = d['info'].region;
+	const classical = d['info'].classical;
 
 	let language = 'English';
 	if (data.name === 'Classical Language') language = 'Latin';

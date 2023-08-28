@@ -11,6 +11,7 @@ export const courses = writable(Object.keys(data).map((courseName) => ({
     SL: data[courseName].SLAssessments,
     HL: data[courseName].HLAssessments,
     groupNumber: data[courseName].groupNumber,
+    info: data['info']
 })));
 
 export const gradeBoundaryData = writable(Object.keys(M22).map((courseName) => ({

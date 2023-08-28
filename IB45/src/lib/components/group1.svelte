@@ -12,42 +12,10 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	const languages = [
-		'English',
-		'French',
-		'Spanish',
-		'Arabic',
-		'Chinese',
-		'Catalan',
-		'Danish',
-		'Dutch',
-		'Finnish',
-		'German',
-		'Hindi',
-		'Indonesian',
-		'Italian',
-		'Japanese',
-		'Korean',
-		'Lithuanian',
-		'Malay',
-		'Modern Greek',
-		'Norwegian',
-		'Polish',
-		'Portuguese',
-		'Russian',
-		'Swedish',
-		'Tamil',
-		'Thai',
-		'Turkish',
-		'Vietnamese'
-	];
-
-	const subjects = [
-		'Language A: Literature',
-		'Language A: Language And Literature',
-		'Literature And Performance'
-	];
-	const SLOnly = ['Literature And Performance'];
+	const info = $courses.find((c) => c.name === 'info');
+	const subjects = info.info.group1;
+	const languages = info.info.lang;
+	const SLOnly = info.info.SLOnly;
 
 	export let groupNumber = 1;
 	export let awardedMark;

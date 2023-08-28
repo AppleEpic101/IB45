@@ -12,8 +12,9 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	let subjects = ['Dance', 'Film', 'Music', 'Theatre', 'Visual Arts', 'Literature And Performance'];
-	const SLOnly = ['Literature And Performance'];
+	const info = $courses.find((c) => c.name === 'info');
+	const subjects = info.info.group6;
+	const SLOnly = info.info.SLOnly;
 
 	const groupNumber = 6;
 	export let awardedMark;

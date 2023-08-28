@@ -29,7 +29,7 @@
 			<h3>{groups[i]}</h3>
 			<div class="list">
 				{#each $courses as course}
-					{#if course.groupNumber.includes(i + 1)}
+					{#if course.name !== 'info' && course.groupNumber.includes(i + 1)}
 						<div class="subject">
 							<a href="./subjects/{course.short}"
 								>{course.name}{#if course.groupNumber.length === 2 && course.groupNumber[1] === 's'}**
@@ -44,7 +44,7 @@
 		<h3>Core</h3>
 		<div class="list">
 			{#each $courses as course}
-				{#if course.groupNumber.includes(99)}
+				{#if course.name !== 'info' && course.groupNumber.includes(99)}
 					<div class="subject">
 						<a href="./subjects/{course.short}">{course.name}</a>
 					</div>

@@ -12,30 +12,10 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	const subjects = [
-		'Art History',
-		'Brazilian Social Studies',
-		'Business Management',
-		'Economics',
-		'Environmental Systems And Societies',
-		'Geography',
-		'Global Politics',
-		'History',
-		'Information Technology In A Global Society',
-		'Philosophy',
-		'Psychology',
-		'Social And Cultural Anthropology',
-		'Turkey In The 20th Century',
-		'World Religions'
-	];
-	const SLOnly = [
-		'Art History',
-		'Brazilian Social Studies',
-		'Environmental Systems And Societies',
-		'Turkey In The 20th Century',
-		'World Religions'
-	];
-	const regions = ['Africa And Middle East', 'Americas', 'Asia And Oceania', 'Europe'];
+	const info = $courses.find((c) => c.name === 'info');
+	const subjects = info.info.group3;
+	const SLOnly = info.info.SLOnly;
+	const regions = info.info.region;
 
 	export let groupNumber = 3;
 	export let awardedMark;

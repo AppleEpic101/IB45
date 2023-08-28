@@ -1,4 +1,84 @@
 {
+	"info": {
+		"group1": [
+			"Language A: Literature",
+			"Language A: Language And Literature",
+			"Literature And Performance"
+		],
+		"group2": ["Classical Language", "Language B", "Language AB Initio"],
+		"group3": [
+			"Art History",
+			"Brazilian Social Studies",
+			"Business Management",
+			"Economics",
+			"Environmental Systems And Societies",
+			"Geography",
+			"Global Politics",
+			"History",
+			"Information Technology In A Global Society",
+			"Philosophy",
+			"Psychology",
+			"Social And Cultural Anthropology",
+			"Turkey In The 20th Century",
+			"World Religions"
+		],
+		"group4": [
+			"Biology",
+			"Chemistry",
+			"Computer Science",
+			"Design Technology",
+			"Environmental Systems And Societies",
+			"Nature Of Science",
+			"Physics",
+			"Sports, Excercise And Health Science"
+		],
+		"group5": [
+			"Mathematics: Analysis And Approaches",
+			"Mathematics: Applications And Interpretation"
+		],
+		"group6": ["Dance", "Film", "Music", "Theatre", "Visual Arts", "Literature And Performance"],
+		"lang": [
+			"English",
+			"French",
+			"Spanish",
+			"Arabic",
+			"Chinese",
+			"Catalan",
+			"Danish",
+			"Dutch",
+			"Finnish",
+			"German",
+			"Hindi",
+			"Indonesian",
+			"Italian",
+			"Japanese",
+			"Korean",
+			"Lithuanian",
+			"Malay",
+			"Modern Greek",
+			"Norwegian",
+			"Polish",
+			"Portuguese",
+			"Russian",
+			"Swedish",
+			"Tamil",
+			"Thai",
+			"Turkish",
+			"Vietnamese"
+		],
+		"classical": ["Latin", "Classical Greek"],
+		"SLOnly": [
+			"Language AB Initio",
+			"Environmental Systems And Societies",
+			"World Religions",
+			"Literature And Performance",
+			"Art History",
+			"Brazilian Social Studies",
+			"Turkey In The 20th Century",
+			"Nature Of Science"
+		],
+		"region": ["Africa And Middle East", "Americas", "Asia And Oceania", "Europe"]
+	},
 	"Language A: Literature": {
 		"firstAssessment": 2021,
 		"lastAssessment": "Present",
