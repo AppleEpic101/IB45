@@ -123,6 +123,7 @@
 </script>
 
 <div class="body">
+  <a href="/subjects"><button class="btn btn-sık">back</button></a>
 	<h1>{data.name}</h1>
 
 	<h4>
@@ -226,7 +227,7 @@
 		margin: 0;
 	}
 	.body {
-		margin: 10px 50px;
+		margin: 10px 12%;
 		padding-bottom: 20px;
 	}
 
