@@ -212,15 +212,15 @@
 					<CoreMatrix name={data.name} />
 				{/if}
 			</div>
-			<p>*Timezone 0 (Worldwide)</p>
-			<p>*Timezone 1 (North America, South America)</p>
-			<p>*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
+			<p class="p">*Timezone 0 (Worldwide)</p>
+			<p class="p">*Timezone 1 (North America, South America)</p>
+			<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
 		</div>
 	{/if}
 </div>
 
 <style>
-	p {
+	.p {
 		font-size: small;
 		font-weight: bold;
 		margin: 0;
