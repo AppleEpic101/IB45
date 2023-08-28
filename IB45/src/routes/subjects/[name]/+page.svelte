@@ -123,7 +123,7 @@
 </script>
 
 <div class="body">
-  <a href="/subjects"><button class="btn btn-sık">back</button></a>
+	<a href="/subjects"><button class="btn btn-sık">back</button></a>
 	<h1>{data.name}</h1>
 
 	<h4>
