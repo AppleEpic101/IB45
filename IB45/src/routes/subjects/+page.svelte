@@ -81,8 +81,4 @@
 			margin: 0 10px;
 		}
 	}
-	.p {
-		font-size: small;
-		font-weight: bold;
-	}
 </style>
