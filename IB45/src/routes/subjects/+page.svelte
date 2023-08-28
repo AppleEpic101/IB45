@@ -16,9 +16,9 @@
 	<h1>Subject List</h1>
 
 	<Links />
-  <p>
-    Here you can calculate your grade for a single subject and get a breakdown of the course. By inputting specific details about the subject, level, and other relevant factors, you gain insight into your performance and potential outcomes. This feature offers a tailored evaluation, allowing you to analyze your strengths and areas for improvement within the subject's curriculum.
-  </p>
+	<p>
+		Here you can calculate your grade for a single subject and get a breakdown of the course. By inputting specific details about the subject, level, and other relevant factors, you gain insight into your performance and potential outcomes. This feature offers a tailored evaluation, allowing you to analyze your strengths and areas for improvement within the subject's curriculum.
+	</p>
 	<br />
 	<div class="subjects">
 		{#each { length: 6 } as _, i}
