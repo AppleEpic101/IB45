@@ -61,10 +61,12 @@
 		feature that enables students to accurately predict their grades for individual subjects. Try it
 		out <a href="/subjects">here.</a>
 	</p>
+	<p>
 	<strong>
 		NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB releases
 		its exam papers).
 	</strong>
+	</p>
 	<hr />
 
 	<div class="multipleChoice">
@@ -186,13 +188,13 @@
 	}
 
 	.intro {
-		margin: 0 10%;
+		margin: 0 12%;
 	}
 
 	.layout {
 		display: grid;
 		grid-template-columns: 4fr 275px;
-		margin: 20px 10%;
+		margin: 20px 12%;
 	}
 
 	.data {
