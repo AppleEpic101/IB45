@@ -23,9 +23,13 @@
 			<h3>{groups[i]}</h3>
 			<div class="list">
 				{#each $courses as course}
-					{#if course.groupNumber == i + 1}
+					{#if course.groupNumber.includes(i + 1)}
 						<div class="subject">
-							<a href="./subjects/{course.short}">{course.name}</a>
+							<a href="./subjects/{course.short}"
+								>{course.name}{#if course.groupNumber.length === 2 && course.groupNumber[1] === 's'}**
+								{:else if course.groupNumber.length === 2}*
+								{/if}</a
+							>
 						</div>
 					{/if}
 				{/each}
@@ -34,7 +38,7 @@
 		<h3>Core</h3>
 		<div class="list">
 			{#each $courses as course}
-				{#if course.groupNumber == 99}
+				{#if course.groupNumber.includes(99)}
 					<div class="subject">
 						<a href="./subjects/{course.short}">{course.name}</a>
 					</div>
@@ -42,6 +46,10 @@
 			{/each}
 		</div>
 	</div>
+	<p>
+		* = Interdisciplinary subject <br />
+		** = School-based syllabus subject
+	</p>
 </div>
 
 <style>
@@ -66,5 +74,9 @@
 		.body {
 			margin: 0 10px;
 		}
+	}
+	p {
+		font-size: small;
+		font-weight: bold;
 	}
 </style>
