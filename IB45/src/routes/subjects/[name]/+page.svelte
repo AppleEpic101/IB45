@@ -197,7 +197,6 @@
 </div>
 
 <svelte:head>
-	<title>IB {data.name} Calculator</title>
 	{#if data.name !== 'Creativity, Activity, Service' && data.name !== 'Theory Of Knowledge' && data.name !== 'Extended Essay'}
 		<title>IB {data.name} Calculator</title>
 		<meta
