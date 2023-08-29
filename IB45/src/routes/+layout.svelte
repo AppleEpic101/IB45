@@ -26,7 +26,7 @@
 
 <footer>
 	<div>
-		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Winston Thov<br />Richard Yang
+		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Richard Yang<br /><span style="font-size:8px"><s>Winston Thov</s></span>
 	</div>
 	<!-- <div>
 		<strong>RESOURCES</strong><br />
