@@ -1,6 +1,5 @@
 <script>
 	import Navigation from '$lib/components/navigation.svelte';
-	import { fade } from 'svelte/transition';
 	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
 
@@ -15,7 +14,7 @@
 <div class="slot">
 	{#if animate}
 		{#if loaded}
-			<div in:fade={{ delay: 50, duration: 500 }}>
+			<div>
 				<slot />
 			</div>
 		{/if}
@@ -26,7 +25,9 @@
 
 <footer>
 	<div>
-		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Richard Yang<br /><span style="font-size:8px"><s>Winston Thov</s></span>
+		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Richard Yang<br /><span
+			style="font-size:8px"><s>Winston Thov</s></span
+		>
 	</div>
 	<!-- <div>
 		<strong>RESOURCES</strong><br />

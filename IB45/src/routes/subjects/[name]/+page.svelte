@@ -100,7 +100,7 @@
 <div class="body">
 	<a href="/subjects"><button class="btn btn-sık">back</button></a>
 
-	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+	<div in:fly={{ duration: 1400, x: 200 }}>
 		<h1>{data.name}</h1>
 
 		<h4>
@@ -120,8 +120,8 @@
 	</div>
 	<Links />
 	<div class="description">
-		<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Description</h3>
-		<div in:fly={{ delay: 400, duration: 1000, y: 25 }}>{data.description}</div>
+		<h3 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h3>
+		<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{data.description}</div>
 	</div>
 
 	{#if data.name !== 'Creativity, Activity, Service'}
