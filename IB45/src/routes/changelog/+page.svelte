@@ -8,7 +8,7 @@
 
 <div in:fade={{ delay: 400, duration: 1000 }} class="changes">
 	<div class="change">
-		<h2>August 25, 2023</h2>
+		<h2 in:fly={{ delay: 400, duration: 1000, x: 200 }}>August 25, 2023</h2>
 		<ul>
 			<li>Added new subjects (classical language)</li>
 			<li>Added school-based syllabi subjects</li>
@@ -16,7 +16,7 @@
 		</ul>
 	</div>
 	<div class="change">
-		<h2>August 22, 2023</h2>
+		<h2 in:fly={{ delay: 400, duration: 1000, x: 200 }}>August 22, 2023</h2>
 		<ul>
 			<li>Dark mode</li>
 			<li>Comments section</li>
@@ -26,7 +26,7 @@
 		</ul>
 	</div>
 	<div class="change">
-		<h2>August 19, 2023</h2>
+		<h2 in:fly={{ delay: 400, duration: 1000, x: 200 }}>August 19, 2023</h2>
 		<ul>
 			<li>Interface change</li>
 			<li>Timezone selection</li>
@@ -36,7 +36,7 @@
 	</div>
 
 	<div class="change">
-		<h2>June 9, 2023</h2>
+		<h2 in:fly={{ delay: 400, duration: 1000, x: 200 }}>June 9, 2023</h2>
 		<ul>
 			<li>Bilingual Diploma support</li>
 			<li>May 2019 boundaries added</li>

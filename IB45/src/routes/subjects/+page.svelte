@@ -13,11 +13,11 @@
 	];
 </script>
 
-<div in:fade={{ duration: 500 }} out:fade={{ duration: 250 }} class="body">
-	<h1 in:fly={{ delay: 150, duration: 1200, x: 200 }}>Subject List</h1>
+<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }} class="body">
+	<h1 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Subject List</h1>
 
 	<Links />
-	<p in:fly={{ delay: 150, duration: 1200, y: 50 }}>
+	<p in:fly={{ delay: 400, duration: 1000, y: 50 }}>
 		Here you can calculate your grade for a single subject and get a breakdown of the course. By
 		inputting specific details about the subject, level, and other relevant factors, you gain
 		insight into your performance and potential outcomes. This feature offers a tailored evaluation,
@@ -27,7 +27,7 @@
 	<br />
 	<div in:fade={{ delay: 300, duration: 500 }} class="subjects">
 		{#each { length: 6 } as _, i}
-			<h3>{groups[i]}</h3>
+			<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>{groups[i]}</h3>
 			<div class="list">
 				{#each $courses as course}
 					{#if course.name !== 'info' && course.groupNumber.includes(i + 1)}

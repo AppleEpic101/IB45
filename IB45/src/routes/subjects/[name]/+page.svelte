@@ -127,7 +127,9 @@
 	{#if data.name !== 'Creativity, Activity, Service'}
 		<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h3>
 		{#if data.SLOnly}
-			<h5>{data.name} is offered only at the SL level</h5>
+			<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+				{data.name} is offered only at the SL level
+			</h5>
 		{/if}
 		{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
 			{#if !data.SLOnly}
@@ -167,7 +169,9 @@
 		<div class="grade">
 			<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
 			{#if data.SLOnly}
-				<h5>{data.name} is offered only at the SL level</h5>
+				<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+					{data.name} is offered only at the SL level
+				</h5>
 			{/if}
 			{#if data.isLanguageSubject && data.name === 'Classical Language'}
 				<Dropdown arr={classical} bind:value={language} />

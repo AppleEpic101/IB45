@@ -29,19 +29,19 @@
 	}
 </script>
 
-<div in:fade={{ duration: 500 }} out:fade={{ duration: 250 }}>
+<div in:fade={{ duration: 250 }} out:fade={{ duration: 250 }}>
 	<div class="banner">
 		<h1 in:scale={{ duration: 1500, start: 0.3, opacity: 0.5 }}>
 			International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator
 		</h1>
 	</div>
 	<div class="intro">
-		<div in:fly={{ delay: 300, duration: 1300, x: 200 }}>
+		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 			<h2>Welcome to IB Predict!</h2>
 			<h3>Last updated August 25, 2023</h3>
 		</div>
 		<Links />
-		<div in:fly={{ delay: 150, duration: 1300, y: 200 }}>
+		<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
 			<p class="main">
 				The IB Predict score calculator serves as a valuable tool for International Baccalaureate
 				(IB) Diploma Programme students, enabling them to make informed estimates of their eventual
