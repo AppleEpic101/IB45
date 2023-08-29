@@ -1,11 +1,12 @@
 <script>
 	import Links from '$lib/components/links.svelte';
+	import { fade, fly, scale } from 'svelte/transition';
 </script>
 
-<h1>Changelog</h1>
+<h1 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Changelog</h1>
 <Links />
 
-<div class="changes">
+<div in:fade={{ delay: 400, duration: 1000 }} class="changes">
 	<div class="change">
 		<h2>August 25, 2023</h2>
 		<ul>

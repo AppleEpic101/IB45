@@ -1,4 +1,5 @@
 <script>
+	import { fade, fly, scale } from 'svelte/transition';
 	import Slider from '$lib/components/slider.svelte';
 	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
@@ -98,30 +99,33 @@
 
 <div class="body">
 	<a href="/subjects"><button class="btn btn-sık">back</button></a>
-	<h1>{data.name}</h1>
 
-	<h4>
-		{#if data.groupNumber.length === 2}
-			{#if data.groupNumber[1] === 's'}
-				Group {data.groupNumber[0]} school-based syllabus subject <br />
-			{:else}
-				Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
+	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+		<h1>{data.name}</h1>
+
+		<h4>
+			{#if data.groupNumber.length === 2}
+				{#if data.groupNumber[1] === 's'}
+					Group {data.groupNumber[0]} school-based syllabus subject <br />
+				{:else}
+					Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
+				{/if}
+			{:else if data.groupNumber[0] === 99}
+				Core subject <br />
+			{:else if data.groupNumber.length === 1}
+				Group {data.groupNumber} subject <br />
 			{/if}
-		{:else if data.groupNumber[0] === 99}
-			Core subject <br />
-		{:else if data.groupNumber.length === 1}
-			Group {data.groupNumber} subject <br />
-		{/if}
-		Assessments from {data.firstAssessment} to {data.lastAssessment}
-	</h4>
+			Assessments from {data.firstAssessment} to {data.lastAssessment}
+		</h4>
+	</div>
 	<Links />
 	<div class="description">
-		<h3>Description</h3>
-		{data.description}
+		<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Description</h3>
+		<div in:fly={{ delay: 400, duration: 1000, y: 25 }}>{data.description}</div>
 	</div>
 
 	{#if data.name !== 'Creativity, Activity, Service'}
-		<h3>Grade Calculator</h3>
+		<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h3>
 		{#if data.SLOnly}
 			<h5>{data.name} is offered only at the SL level</h5>
 		{/if}
@@ -161,7 +165,7 @@
 			</div>
 		</div>
 		<div class="grade">
-			<h3>Historical Grade Boundaries</h3>
+			<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
 			{#if data.SLOnly}
 				<h5>{data.name} is offered only at the SL level</h5>
 			{/if}

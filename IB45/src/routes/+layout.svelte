@@ -15,7 +15,7 @@
 <div class="slot">
 	{#if animate}
 		{#if loaded}
-			<div in:fade={{ delay: 500, duration: 500 }}>
+			<div in:fade={{ delay: 50, duration: 500 }}>
 				<slot />
 			</div>
 		{/if}

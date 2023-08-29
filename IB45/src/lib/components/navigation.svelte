@@ -1,3 +1,7 @@
+<script>
+	import { fly } from 'svelte/transition';
+</script>
+
 <nav>
 	<a href="/"><img src="/flc_design20230531154582.png" alt="IB SCORE CALCULATOR" /></a>
 
