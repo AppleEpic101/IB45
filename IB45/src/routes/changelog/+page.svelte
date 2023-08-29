@@ -50,6 +50,14 @@
 	</div>
 </div>
 
+<svelte:head>
+	<title>Changelog</title>
+	<meta
+		name="description"
+		content="See the most recent updates in IB curricula and grade boundaries. Click NOW to view the latest features of the IB Predict score calculator!"
+	/>
+</svelte:head>
+
 <style>
 	.changes {
 		padding-bottom: 20px;
