@@ -58,6 +58,14 @@
 	</p>
 </div>
 
+<svelte:head>
+	<title>Individual Subject List</title>
+	<meta
+		name="description"
+		content="View all the subjects offered in the IBDP. Click NOW to calculate your IB grade for a single subject with ease!"
+	/>
+</svelte:head>
+
 <style>
 	.body {
 		margin: 0 12%;

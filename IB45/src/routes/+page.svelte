@@ -62,10 +62,10 @@
 		out <a href="/subjects">here.</a>
 	</p>
 	<p>
-	<strong>
-		NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB releases
-		its exam papers).
-	</strong>
+		<strong>
+			NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB
+			releases its exam papers).
+		</strong>
 	</p>
 	<hr />
 
@@ -126,6 +126,14 @@
 		</div>
 	</div>
 </div>
+
+<svelte:head>
+	<title>IB Grade Calculator</title>
+	<meta
+		name="description"
+		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB score calculator to find out!"
+	/>
+</svelte:head>
 
 <style>
 	:global(html) {
