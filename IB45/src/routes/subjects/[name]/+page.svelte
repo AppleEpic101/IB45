@@ -201,12 +201,12 @@
 	{#if data.name !== 'Creativity, Activity, Service' && data.name !== 'Theory Of Knowledge' && data.name !== 'Extended Essay'}
 		<meta
 			name="description"
-			content="Calculate your IB {data.name} score TODAY! See historical grade boundary data, course descriptions, and MORE!"
+			content="Calculate your IB {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
 		/>
 	{:else}
 		<meta
 			name="description"
-			content="Calculate your {data.name} score TODAY! See historical grade boundary data, course descriptions, and MORE!"
+			content="Calculate your {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
 		/>
 	{/if}
 </svelte:head>

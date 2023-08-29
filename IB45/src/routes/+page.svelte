@@ -131,7 +131,7 @@
 	<title>IB Grade Calculator</title>
 	<meta
 		name="description"
-		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB score calculator to find out!"
+		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!"
 	/>
 </svelte:head>
 

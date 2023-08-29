@@ -54,7 +54,7 @@
 	<title>Changelog</title>
 	<meta
 		name="description"
-		content="See the most recent updates in IB curricula and grade boundaries. Click NOW to view the latest features of the IB Predict score calculator!"
+		content="See the most recent updates in IB curricula and grade boundaries. Click NOW to view the latest features of the IB Predict grade calculator!"
 	/>
 </svelte:head>
 
