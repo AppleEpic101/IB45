@@ -50,7 +50,7 @@ export const load = (({params}) => {
             obj = o;
         }
     });
-
+    let lastHistory = [[], [], [], []]
     let historyResults = [[], [], [], []];
 	regions.forEach((r, i) => {
 		b.forEach((boundary) => {
@@ -59,6 +59,7 @@ export const load = (({params}) => {
 
 			if (c && info) {
 				let timezone = [...c.TZ];
+                lastHistory[i] = getTZ(timezone, 'HL History ' + r, info);
 				historyResults[i].push(...getTZ(timezone, 'HL History ' + r, info));
 			}
 		});
@@ -66,6 +67,8 @@ export const load = (({params}) => {
 
 	let TOK = [];
 	let EE = [];
+    let lastTOK;
+    let lastEE;
 	b.forEach((boundary) => {
 		const info = boundary['info'];
 		const c = boundary['Theory Of Knowledge'];
@@ -75,6 +78,8 @@ export const load = (({params}) => {
 			let timezone = [...c.TZ];
 			let timezone1 = [...d.TZ];
 
+            lastTOK = getTZ(timezone, 'Theory Of Knowledge', info);
+            lastEE = getTZ(timezone1, 'Extended Essay', info);
 			TOK.push(...getTZ(timezone, 'Theory Of Knowledge', info));
 			EE.push(...getTZ(timezone1, 'Extended Essay', info));
 		}
@@ -94,5 +99,8 @@ export const load = (({params}) => {
         SL: obj.SL,
         SLOnly: SL.includes(obj.name),
         isLanguageSubject: languageSubjects.includes(obj.name),
+        lastHistory: lastHistory,
+        lastTOK: lastTOK,
+        lastEE: lastEE,
     }
 });

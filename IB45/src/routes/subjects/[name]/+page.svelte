@@ -13,6 +13,8 @@
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 	import d from '$lib/assets/courses';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data;
 
@@ -43,6 +45,9 @@
 	let SLResults = [];
 	let HLResults = [];
 
+	let lastSL;
+	let lastHL;
+
 	$: {
 		HLResults = [];
 		SLResults = [];
@@ -53,11 +58,13 @@
 
 			if (HL && info) {
 				let timezone = [...HL.TZ];
+				lastHL = getTZ(timezone, 'HL ' + name, info);
 				HLResults.push(...getTZ(timezone, 'HL ' + name, info));
 			}
 
 			if (SL && info) {
 				let timezone = [...SL.TZ];
+				lastSL = getTZ(timezone, 'SL ' + name, info);
 				SLResults.push(...getTZ(timezone, 'SL ' + name, info));
 			}
 		});
@@ -95,10 +102,77 @@
 		}
 		grade = Math.round(grade);
 	}
+
+	let reg = 'Americas';
+
+	let mark, str;
+	const letters = ['E', 'D', 'C', 'B', 'A'];
+	$: {
+		mark = 0;
+		if (data.name === 'History' && level === 'HL') {
+			const h = data.lastHistory[regions.indexOf(reg)];
+			h[0].tz.forEach((a, i) => {
+				if (grade >= a) {
+					mark++;
+				}
+			});
+			str = 'Using the ' + h[0].name + ' grade boundary';
+		} else if (
+			data.name !== 'Theory Of Knowledge' &&
+			data.name !== 'Extended Essay' &&
+			data.name !== 'Creativity, Activity, Service'
+		) {
+			if (lastSL && level === 'SL') {
+				lastSL[0].tz.forEach((a, i) => {
+					if (grade >= a) {
+						mark++;
+					}
+				});
+				str =
+					lastSL.length === 1
+						? 'Using the ' + lastSL[0].name + ' grade boundary'
+						: 'Using the ' + lastSL[0].name + ' grade boundary';
+			} else if (lastHL && level === 'HL') {
+				lastHL[0].tz.forEach((a, i) => {
+					if (grade >= a) {
+						mark++;
+					}
+				});
+				str =
+					lastHL.length === 1
+						? 'Using the ' + lastHL[0].name + ' grade boundary'
+						: 'Using the ' + lastHL[0].name + ' grade boundary';
+			}
+		} else if (data.name === 'Theory Of Knowledge') {
+			const t = data.lastTOK;
+			t[0].tz.forEach((a, i) => {
+				if (grade >= a) {
+					mark++;
+				}
+			});
+			str = 'Using the ' + t[0].name + ' grade boundary';
+			mark = letters[parseInt(mark) - 1];
+		} else if (data.name === 'Extended Essay') {
+			const e = data.lastEE;
+			str = 'Using the ' + e[0].name + ' grade boundary';
+			e[0].tz.forEach((a, i) => {
+				if (grade >= a) {
+					mark++;
+				}
+			});
+			mark = letters[parseInt(mark) - 1];
+		}
+	}
+
+	// const newUrl = new URL($page.url);
+	// newUrl?.searchParams?.set('hello', 'world');
+	// goto(newUrl);
 </script>
 
 <div class="body">
-	<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}><button class="btn btn-sık">back</button></a>
+	<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
+		><button class="btn btn-sık">back</button></a
+	>
 
 	<div in:fly={{ duration: 1400, x: 200 }}>
 		<h1>{data.name}</h1>
@@ -131,6 +205,22 @@
 				{data.name} is offered only at the SL level
 			</h5>
 		{/if}
+		<div class="dropdown">
+			{#if data.isLanguageSubject && data.name === 'Classical Language'}
+				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+					<Dropdown arr={classical} bind:value={language} />
+				</div>
+			{:else if data.isLanguageSubject}
+				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+					<Dropdown arr={languages} bind:value={language} />
+				</div>
+			{/if}
+			{#if data.name === 'History' && level === 'HL'}
+				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+					<Dropdown arr={regions} bind:value={reg} />
+				</div>
+			{/if}
+		</div>
 		{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
 			{#if !data.SLOnly}
 				<div class="wrap">
@@ -159,10 +249,17 @@
 				{/if}
 			</div>
 			<br />
-			<div class="container">
-				<div class="x">Predicted Grade</div>
-				<div class="y">
-					{grade}
+			<div class="predicted">
+				<div class="container">
+					<div class="x">Predicted Grade</div>
+					<div class="y">
+						{grade}
+					</div>
+				</div>
+				<div class="container">
+					<div class="x">Predicted Mark</div>
+					<div class="pp">{str}</div>
+					<div class="y">{mark}</div>
 				</div>
 			</div>
 		</div>
@@ -173,11 +270,17 @@
 					{data.name} is offered only at the SL level
 				</h5>
 			{/if}
-			{#if data.isLanguageSubject && data.name === 'Classical Language'}
-				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}><Dropdown arr={classical} bind:value={language} /></div>
-			{:else if data.isLanguageSubject}
-				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}><Dropdown arr={languages} bind:value={language} /></div>
-			{/if}
+			<div class="dropdown">
+				{#if data.isLanguageSubject && data.name === 'Classical Language'}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={classical} bind:value={language} />
+					</div>
+				{:else if data.isLanguageSubject}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={languages} bind:value={language} />
+					</div>
+				{/if}
+			</div>
 			<div class="tables">
 				{#if data.name === 'Theory Of Knowledge'}
 					<CoreTable name={'TOK'} res={data.TOK} />
@@ -226,6 +329,12 @@
 		font-weight: bold;
 		margin: 0;
 	}
+	.pp {
+		font-size: 8px;
+		font-weight: 550;
+		margin: 0;
+		text-align: center;
+	}
 	.body {
 		margin: 10px 18%;
 		padding-bottom: 20px;
@@ -249,6 +358,12 @@
 		justify-content: center;
 	}
 
+	.predicted {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
 	.x {
 		font-size: 20px;
 		font-weight: bolder;
@@ -266,7 +381,7 @@
 		padding: 10px;
 		border: 2px solid black;
 		border-radius: 10px;
-		margin: auto;
+		margin: 10px;
 	}
 
 	.wrap {
@@ -278,6 +393,11 @@
 		position: relative;
 		display: inline-block;
 		text-align: center;
+	}
+
+	.dropdown {
+		display: flex;
+		justify-content: center;
 	}
 
 	.btn:hover {
