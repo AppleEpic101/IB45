@@ -199,13 +199,13 @@
 	}
 
 	.intro {
-		margin: 0 12%;
+		margin: 0 18%;
 	}
 
 	.layout {
 		display: grid;
 		grid-template-columns: 4fr 275px;
-		margin: 20px 12%;
+		margin: 20px 18%;
 	}
 
 	.data {
