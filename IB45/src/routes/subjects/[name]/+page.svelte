@@ -98,7 +98,7 @@
 </script>
 
 <div class="body">
-	<a href="/subjects"><button class="btn btn-sık">back</button></a>
+	<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}><button class="btn btn-sık">back</button></a>
 
 	<div in:fly={{ duration: 1400, x: 200 }}>
 		<h1>{data.name}</h1>
@@ -174,9 +174,9 @@
 				</h5>
 			{/if}
 			{#if data.isLanguageSubject && data.name === 'Classical Language'}
-				<Dropdown arr={classical} bind:value={language} />
+				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}><Dropdown arr={classical} bind:value={language} /></div>
 			{:else if data.isLanguageSubject}
-				<Dropdown arr={languages} bind:value={language} />
+				<div in:fly={{ delay: 100, duration: 1300, y: 25 }}><Dropdown arr={languages} bind:value={language} /></div>
 			{/if}
 			<div class="tables">
 				{#if data.name === 'Theory Of Knowledge'}
@@ -227,7 +227,7 @@
 		margin: 0;
 	}
 	.body {
-		margin: 10px 12%;
+		margin: 10px 18%;
 		padding-bottom: 20px;
 	}
 

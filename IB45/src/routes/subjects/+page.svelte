@@ -69,7 +69,7 @@
 
 <style>
 	.body {
-		margin: 0 12%;
+		margin: 0 18%;
 	}
 	.list {
 		display: flex;

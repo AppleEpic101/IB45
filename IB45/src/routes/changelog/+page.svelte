@@ -62,11 +62,11 @@
 <style>
 	.changes {
 		padding-bottom: 20px;
-		margin: 0 50px;
+		margin: 0 18%;
 	}
 
 	h1 {
-		margin: 20px 50px;
+		margin: 20px 18%;
 	}
 
 	ul {
