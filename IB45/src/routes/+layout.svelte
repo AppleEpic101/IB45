@@ -71,6 +71,12 @@
 		color: black;
 	}
 
+	:global(input[type="range"]::-moz-range-track) {
+		background-color: #053f54;
+		height: 8px;
+		border-radius: 4px;
+	}
+
 	.slot {
 		min-height: 60vh;
 	}
