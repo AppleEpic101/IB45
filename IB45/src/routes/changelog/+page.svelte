@@ -3,20 +3,20 @@
 	import { fade, fly, scale } from 'svelte/transition';
 </script>
 
-<h1 in:fly={{ delay: 100, duration: 1400, x: 200 }}>Changelog</h1>
+<h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Changelog</h1>
 <Links />
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
-	<div class="change">
-		<h2 in:fly={{ delay: 100, duration: 1300, x: 200 }}>August 25, 2023</h2>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>August 25, 2023</h2>
 		<ul>
 			<li>Added new subjects (classical language)</li>
 			<li>Added school-based syllabi subjects</li>
 			<li>Better looking buttons</li>
 		</ul>
 	</div>
-	<div class="change">
-		<h2 in:fly={{ delay: 100, duration: 1300, x: 200 }}>August 22, 2023</h2>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>August 22, 2023</h2>
 		<ul>
 			<li>Dark mode</li>
 			<li>Comments section</li>
@@ -25,8 +25,8 @@
 			<li>November 2019 and November 2020 boundaries added</li>
 		</ul>
 	</div>
-	<div class="change">
-		<h2 in:fly={{ delay: 100, duration: 1300, x: 200 }}>August 19, 2023</h2>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>August 19, 2023</h2>
 		<ul>
 			<li>Interface change</li>
 			<li>Timezone selection</li>
@@ -35,8 +35,8 @@
 		</ul>
 	</div>
 
-	<div class="change">
-		<h2 in:fly={{ delay: 100, duration: 1300, x: 200 }}>June 9, 2023</h2>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>June 9, 2023</h2>
 		<ul>
 			<li>Bilingual Diploma support</li>
 			<li>May 2019 boundaries added</li>
@@ -45,8 +45,8 @@
 		</ul>
 	</div>
 
-	<div class="change">
-		<h2 in:fly={{ delay: 100, duration: 1300, x: 200 }}>June 8, 2023</h2>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>June 8, 2023</h2>
 		<ul><li>Initial release</li></ul>
 	</div>
 </div>
