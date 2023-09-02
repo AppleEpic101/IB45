@@ -18,6 +18,10 @@
 
 	export let data;
 
+	// const newUrl = new URL($page.url);
+	// newUrl?.searchParams?.set('hello', 'world');
+	// goto(newUrl);
+
 	const languages = d['info'].lang;
 	const regions = d['info'].region;
 	const classical = d['info'].classical;
@@ -111,7 +115,7 @@
 		mark = 0;
 		if (data.name === 'History' && level === 'HL') {
 			const h = data.lastHistory[regions.indexOf(reg)];
-			h[0].tz.forEach((a, i) => {
+			h[0].tz.forEach((a) => {
 				if (grade >= a) {
 					mark++;
 				}
@@ -123,7 +127,7 @@
 			data.name !== 'Creativity, Activity, Service'
 		) {
 			if (lastSL && level === 'SL') {
-				lastSL[0].tz.forEach((a, i) => {
+				lastSL[0].tz.forEach((a) => {
 					if (grade >= a) {
 						mark++;
 					}
@@ -133,7 +137,7 @@
 						? 'Using the ' + lastSL[0].name + ' grade boundary'
 						: 'Using the ' + lastSL[0].name + ' grade boundary';
 			} else if (lastHL && level === 'HL') {
-				lastHL[0].tz.forEach((a, i) => {
+				lastHL[0].tz.forEach((a) => {
 					if (grade >= a) {
 						mark++;
 					}
@@ -145,7 +149,7 @@
 			}
 		} else if (data.name === 'Theory Of Knowledge') {
 			const t = data.lastTOK;
-			t[0].tz.forEach((a, i) => {
+			t[0].tz.forEach((a) => {
 				if (grade >= a) {
 					mark++;
 				}
@@ -155,7 +159,7 @@
 		} else if (data.name === 'Extended Essay') {
 			const e = data.lastEE;
 			str = 'Using the ' + e[0].name + ' grade boundary';
-			e[0].tz.forEach((a, i) => {
+			e[0].tz.forEach((a) => {
 				if (grade >= a) {
 					mark++;
 				}
@@ -163,10 +167,6 @@
 			mark = letters[parseInt(mark) - 1];
 		}
 	}
-
-	// const newUrl = new URL($page.url);
-	// newUrl?.searchParams?.set('hello', 'world');
-	// goto(newUrl);
 </script>
 
 <div class="body">
@@ -248,7 +248,6 @@
 					{/each}
 				{/if}
 			</div>
-			<br />
 			<div class="predicted">
 				<div class="container">
 					<div class="x">Predicted Grade</div>
@@ -344,6 +343,7 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
+		margin-top: 10px;
 	}
 
 	.assessments {
@@ -356,6 +356,7 @@
 		flex-wrap: wrap;
 		align-items: flex-start;
 		justify-content: center;
+		margin-top: 8px;
 	}
 
 	.predicted {
