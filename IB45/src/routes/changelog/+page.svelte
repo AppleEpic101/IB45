@@ -3,6 +3,14 @@
 	import { fade, fly, scale } from 'svelte/transition';
 </script>
 
+<svelte:head>
+	<title>Changelog</title>
+	<meta
+		name="description"
+		content="See the most recent updates in IB curricula and grade boundaries. Click NOW to view the latest features of the IB Predict grade calculator!"
+	/>
+</svelte:head>
+
 <h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Changelog</h1>
 <Links />
 
@@ -50,14 +58,6 @@
 		<ul><li>Initial release</li></ul>
 	</div>
 </div>
-
-<svelte:head>
-	<title>Changelog</title>
-	<meta
-		name="description"
-		content="See the most recent updates in IB curricula and grade boundaries. Click NOW to view the latest features of the IB Predict grade calculator!"
-	/>
-</svelte:head>
 
 <style>
 	.changes {

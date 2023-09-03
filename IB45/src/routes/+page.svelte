@@ -29,6 +29,14 @@
 	}
 </script>
 
+<svelte:head>
+	<title>IB Grade Calculator</title>
+	<meta
+		name="description"
+		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!"
+	/>
+</svelte:head>
+
 <div class="banner">
 	<h1 in:scale={{ duration: 1500, start: 0.3, opacity: 0.5 }}>
 		International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator
@@ -129,14 +137,6 @@
 		</div>
 	</div>
 </div>
-
-<svelte:head>
-	<title>IB Grade Calculator</title>
-	<meta
-		name="description"
-		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!"
-	/>
-</svelte:head>
 
 <style>
 	:global(html) {
@@ -242,7 +242,7 @@
 		}
 	}
 
-	@media screen and (max-width: 770px) {
+	@media screen and (max-width: 1000px) {
 		.layout {
 			margin: 20px 10px;
 		}

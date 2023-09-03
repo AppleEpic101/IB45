@@ -199,6 +199,22 @@
 	}
 </script>
 
+<svelte:head>
+	{#if data.name !== 'Creativity, Activity, Service' && data.name !== 'Theory Of Knowledge' && data.name !== 'Extended Essay'}
+		<title>IB {data.name} Calculator</title>
+		<meta
+			name="description"
+			content="Calculate your IB {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
+		/>
+	{:else}
+		<title>{data.name} Calculator</title>
+		<meta
+			name="description"
+			content="Calculate your {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
+		/>
+	{/if}
+</svelte:head>
+
 <div class="body">
 	<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
 		><button class="btn btn-sık">back</button></a
@@ -335,22 +351,6 @@
 		</div>
 	{/if}
 </div>
-
-<svelte:head>
-	{#if data.name !== 'Creativity, Activity, Service' && data.name !== 'Theory Of Knowledge' && data.name !== 'Extended Essay'}
-		<title>IB {data.name} Calculator</title>
-		<meta
-			name="description"
-			content="Calculate your IB {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
-		/>
-	{:else}
-		<title>{data.name} Calculator</title>
-		<meta
-			name="description"
-			content="Calculate your {data.name} grade TODAY! See historical grade boundary data, course descriptions, and MORE!"
-		/>
-	{/if}
-</svelte:head>
 
 <style>
 	.p {

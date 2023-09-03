@@ -13,6 +13,14 @@
 	];
 </script>
 
+<svelte:head>
+	<title>IB DP Subject List</title>
+	<meta
+		name="description"
+		content="View all the subjects offered in the IBDP. Click NOW to calculate your IB score for a single subject with ease!"
+	/>
+</svelte:head>
+
 <div class="body">
 	<h1 in:fly={{ duration: 1400, x: 200 }}>Subject List</h1>
 
@@ -58,14 +66,6 @@
 		** = School-based syllabus subject
 	</p>
 </div>
-
-<svelte:head>
-	<title>IB DP Subject List</title>
-	<meta
-		name="description"
-		content="View all the subjects offered in the IBDP. Click NOW to calculate your IB score for a single subject with ease!"
-	/>
-</svelte:head>
 
 <style>
 	.body {

@@ -42,7 +42,7 @@ const languageSubjects = info.group1
 const regions = info.region;
 const SL = info.SLOnly;
 
-export const ssr = false;
+// export const ssr = false;
 export const load = (({params}) => {
     let obj;
     courses.forEach((o) => {
