@@ -77,7 +77,7 @@
 		content: '• ';
 	}
 
-	@media screen and (max-width: 380px) {
+	@media screen and (max-width: 480px) {
 		.changes {
 			margin: 0 10px;
 		}

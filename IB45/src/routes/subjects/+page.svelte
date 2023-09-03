@@ -85,7 +85,7 @@
 		border-radius: 10px;
 		border: 2px solid black;
 	}
-	@media screen and (max-width: 380px) {
+	@media screen and (max-width: 480px) {
 		.body {
 			margin: 0 10px;
 		}

@@ -18,16 +18,24 @@
 
 	export let data;
 
-	// const newUrl = new URL($page.url);
-	// newUrl?.searchParams?.set('hello', 'world');
-	// goto(newUrl);
+	const newUrl = new URL($page.url);
 
 	const languages = d['info'].lang;
 	const regions = d['info'].region;
 	const classical = d['info'].classical;
 
-	let language = 'English';
-	if (data.name === 'Classical Language') language = 'Latin';
+	let language;
+	if (
+		(languages.includes($page.url.searchParams.get('language')) &&
+			data.name !== 'Classical Language') ||
+		(classical.includes($page.url.searchParams.get('language')) &&
+			data.name === 'Classical Language')
+	) {
+		language = $page.url.searchParams.get('language');
+	} else {
+		if (data.name === 'Classical Language') language = 'Latin';
+		else language = 'English';
+	}
 
 	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
@@ -74,7 +82,12 @@
 		});
 	}
 
-	let level = 'SL';
+	let level =
+		$page.url.searchParams.get('level') &&
+		!data.SLOnly &&
+		['SL', 'HL'].includes($page.url.searchParams.get('level'))
+			? $page.url.searchParams.get('level')
+			: 'SL';
 	let s;
 	$: {
 		if (level === 'HL') {
@@ -165,6 +178,23 @@
 				}
 			});
 			mark = letters[parseInt(mark) - 1];
+		}
+		if (!str) {
+			str = 'No grade boundary data available';
+		}
+	}
+
+	$: {
+		if (data.isLanguageSubject) {
+			newUrl?.searchParams?.set('language', language);
+			goto(newUrl);
+		}
+		if (level === 'HL' && !data.isCoreSubject) {
+			newUrl?.searchParams?.set('level', 'HL');
+			goto(newUrl);
+		} else if (level === 'SL' && !data.SLOnly && !data.isCoreSubject) {
+			newUrl?.searchParams?.set('level', 'SL');
+			goto(newUrl);
 		}
 	}
 </script>

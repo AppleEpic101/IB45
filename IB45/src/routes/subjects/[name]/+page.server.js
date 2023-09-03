@@ -99,6 +99,7 @@ export const load = (({params}) => {
         SL: obj.SL,
         SLOnly: SL.includes(obj.name),
         isLanguageSubject: languageSubjects.includes(obj.name),
+        isCoreSubject: obj.name === "Theory Of Knowledge" || obj.name === "Extended Essay" || obj.name === "Creativity, Activity, Service",
         lastHistory: lastHistory,
         lastTOK: lastTOK,
         lastEE: lastEE,
