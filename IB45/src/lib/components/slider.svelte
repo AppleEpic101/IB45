@@ -44,6 +44,7 @@
 		border: 2px solid black;
 		background-color: var(--lightprimary);
 		border-radius: 5px;
+		max-width: 300px;
 	}
 
 	.c {

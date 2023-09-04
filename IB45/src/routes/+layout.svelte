@@ -1,26 +1,12 @@
 <script>
 	import Navigation from '$lib/components/navigation.svelte';
-	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
-
-	let animate = !$navigating;
-	let loaded = false;
-
-	onMount(() => (loaded = true));
 </script>
 
 <Navigation />
 
 <div class="slot">
-	{#if animate}
-		{#if loaded}
-			<div>
-				<slot />
-			</div>
-		{/if}
-	{:else}
-		<slot />
-	{/if}
+	<slot />
 </div>
 
 <footer>
@@ -71,7 +57,7 @@
 		color: black;
 	}
 
-	:global(input[type="range"]::-moz-range-track) {
+	:global(input[type='range']::-moz-range-track) {
 		background-color: #053f54;
 		height: 8px;
 		border-radius: 4px;

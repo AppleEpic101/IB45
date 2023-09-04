@@ -14,6 +14,7 @@
 	</h1>
 {/if}
 
+<!-- svelte-ignore a11y-missing-attribute -->
 <img src="/flc_design20230531154582.png" />
 
 <style>
