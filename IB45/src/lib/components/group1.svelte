@@ -84,12 +84,14 @@
 	<div class="content">
 		{#if sufficientInformation && foo}
 			{#each matchedCourse as assessment, i}
-				<Slider
-					max={assessment.maxMarks}
-					name={assessment.name}
-					weight={assessment.weight}
-					bind:value={store.sliderPosition[i]}
-				/>
+				<div>
+					<Slider
+						max={assessment.maxMarks}
+						name={assessment.name}
+						weight={assessment.weight}
+						bind:value={store.sliderPosition[i]}
+					/>
+				</div>
 			{/each}
 		{/if}
 	</div>

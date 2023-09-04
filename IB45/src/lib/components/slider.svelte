@@ -24,14 +24,16 @@
 	}
 </script>
 
-<div class="slider">
-	<p>{name}</p>
-	<p>Weight: {weight * 100}%</p>
-	<div class="c">
-		<input type="range" bind:value {min} {max} />
-		<p><input type="number" bind:value {min} {max} /> / {max}</p>
+{#key max}
+	<div class="slider">
+		<p>{name}</p>
+		<p>Weight: {weight * 100}%</p>
+		<div class="c">
+			<input type="range" bind:value {min} {max} />
+			<p><input type="number" bind:value {min} {max} /> / {max}</p>
+		</div>
 	</div>
-</div>
+{/key}
 
 <style>
 	p {
