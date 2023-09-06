@@ -9,6 +9,7 @@
 		<a href="/">Home</a>
 		<a href="/subjects">Subjects</a>
 		<a href="/changelog">Changelog</a>
+		<a href="/faq">FAQ</a>
 	</div>
 </nav>
 
@@ -64,14 +65,14 @@
 		}
 	}
 
-	@media screen and (max-width: 380px) {
+	@media screen and (max-width: 415px) {
 		img {
 			width: 100px;
 			height: 50px;
 		}
 	}
 
-	@media screen and (max-width: 330px) {
+	@media screen and (max-width: 360px) {
 		img {
 			display: none;
 		}

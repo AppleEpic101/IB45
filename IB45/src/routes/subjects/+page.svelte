@@ -29,9 +29,9 @@
 		<h1 in:fly={{ duration: 1400, x: 200 }}>Subject List</h1>
 
 		<Links />
-		<p in:fly={{ duration: 1400, y: 50 }}>
+		<p class="intro" in:fly={{ duration: 1400, y: 50 }}>
 			View course descriptions, calculate your grade for a subject, and see historical grade
-			boundaries all from a single page! Click on a subject to get started.
+			boundaries all from a single page! <strong>Click on a subject to get started.</strong>
 		</p>
 		<br />
 		<div in:fade={{ delay: 300, duration: 500 }} class="subjects">
@@ -73,6 +73,11 @@
 	.body {
 		margin: 0 18%;
 	}
+
+	.intro {
+		line-height: 2;
+	}
+
 	.list {
 		display: flex;
 		flex-wrap: wrap;
