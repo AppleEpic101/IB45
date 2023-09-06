@@ -22,6 +22,7 @@
 		<ul>
 			{#each bullet as b}
 				<li>{b}</li>
+				<br />
 			{/each}
 		</ul>
 		<div class="line" />
@@ -34,7 +35,7 @@
 	}
 
 	.line {
-		border-bottom: 2px solid var(--banner);
+		border-bottom: 1px solid var(--banner);
 	}
 
 	.b {
@@ -43,12 +44,13 @@
 		padding: 0;
 		margin: 0;
 		padding-bottom: 10px;
-		border-bottom: 2px solid var(--banner);
+		border-bottom: 1px solid var(--banner);
 		background-color: transparent;
 		text-align: left;
 		font-size: x-large;
 		font-weight: bold;
 		display: flex;
+		color: black;
 	}
 
 	.answer {

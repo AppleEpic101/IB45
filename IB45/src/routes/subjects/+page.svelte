@@ -40,13 +40,13 @@
 				<div class="list">
 					{#each $courses as course}
 						{#if course.name !== 'info' && course.groupNumber.includes(i + 1)}
-							<div class="subject">
-								<a href="./subjects/{course.short}"
+							<a href="./subjects/{course.short}"
+								><button class="subject"
 									>{course.name}{#if course.groupNumber.length === 2 && course.groupNumber[1] === 's'}**
 									{:else if course.groupNumber.length === 2}*
-									{/if}</a
-								>
-							</div>
+									{/if}</button
+								></a
+							>
 						{/if}
 					{/each}
 				</div>
@@ -55,9 +55,11 @@
 			<div class="list">
 				{#each $courses as course}
 					{#if course.name !== 'info' && course.groupNumber.includes(99)}
-						<div class="subject">
-							<a href="./subjects/{course.short}">{course.name}</a>
-						</div>
+						<a href="./subjects/{course.short}"
+							><button class="subject">
+								{course.name}
+							</button></a
+						>
 					{/if}
 				{/each}
 			</div>
@@ -91,6 +93,17 @@
 		padding: 10px;
 		border-radius: 10px;
 		border: 2px solid black;
+		text-decoration: none;
+		text-shadow: 0px 0px 0.8px black;
+		color: black;
+		font-size: 1.15em;
+	}
+
+	.subject:hover {
+		transition: all 0.2s ease;
+		cursor: pointer;
+		background-color: var(--banner);
+		color: white;
 	}
 	@media screen and (max-width: 480px) {
 		.body {

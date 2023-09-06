@@ -19,7 +19,10 @@
 	}
 
 	button:hover {
-		background-color: var(--primary);
-		transition: 0.3s ease-in-out;
+		transition: all 0.2s ease;
+		background-color: var(--banner);
+		color: white;
+		text-shadow: 0 2px 2px #808080;
+		box-shadow: 0 1px 1px black;
 	}
 </style>

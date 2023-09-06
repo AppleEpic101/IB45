@@ -218,8 +218,8 @@
 
 {#if ready}
 	<div class="body">
-		<button class="btn btn-sık"
-			><a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}>back</a></button
+		<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
+			><button class="btn btn-sık">back</button></a
 		>
 
 		<div in:fly={{ duration: 1400, x: 200 }}>
@@ -358,6 +358,9 @@
 {/if}
 
 <style>
+	h1 {
+		margin: 0;
+	}
 	.p {
 		font-size: small;
 		font-weight: bold;
@@ -451,6 +454,7 @@
 		border-radius: 10px;
 		margin: 5px;
 		box-shadow: 0 1px 1px black;
+		color: black;
 	}
 
 	input[type='radio'] {

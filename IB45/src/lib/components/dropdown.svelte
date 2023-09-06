@@ -23,18 +23,20 @@
 		color: black;
 		border: 2px solid black;
 		border-radius: 5px;
-		transition: 0.3s ease-in-out;
 		cursor: pointer;
 		margin-bottom: 5px;
 	}
 
 	select:hover {
-		background-color: var(--primary);
+		transition: all 0.2s ease;
+		text-shadow: 0 2px 2px #808080;
+		color: white;
+		background-color: var(--banner);
 	}
 
 	select option {
 		background-color: var(--lightprimary);
-		transition: background-color 0.3s ease;
+		color: black;
 	}
 
 	select * {
