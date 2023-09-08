@@ -63,6 +63,24 @@
 		border-radius: 4px;
 	}
 
+	:global(.btn:hover) {
+		cursor: pointer;
+	}
+
+	:global(.btn) {
+		text-align: center;
+	}
+	:global(.btn-sik) {
+		transition: all 0.2s ease;
+		background-color: var(--lightprimary);
+		border: 2px solid black;
+		padding: 5px 10px;
+		border-radius: 10px;
+		margin: 5px;
+		box-shadow: 0 1px 1px black;
+		color: black;
+	}
+
 	.slot {
 		min-height: 60vh;
 	}

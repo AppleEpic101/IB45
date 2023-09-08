@@ -2,6 +2,7 @@
 	import { group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import { onDestroy } from 'svelte';
+	import { page } from '$app/stores';
 	import Slider from '$lib/components/slider.svelte';
 	import Groupstat from '$lib/components/groupstat.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
@@ -46,6 +47,23 @@
 	$: boundary = calculateGradeBoundary(match, boundary, grade);
 	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
 	$: if (!matchedCourse || !match || !awardedMark) awardedMark = 0;
+
+	let url = new URL($page.url);
+	$: {
+		let short;
+		$courses.forEach((c) => {
+			if (store.name === c.name) {
+				short = c.short;
+			}
+		});
+		url.pathname = '/subjects/' + short;
+
+		if (store.level === 'HL') {
+			url.searchParams.set('lvl', 'HL');
+		} else {
+			url.searchParams.set('lvl', 'SL');
+		}
+	}
 </script>
 
 <div class="group">
@@ -81,4 +99,15 @@
 	</div>
 
 	<Groupstat {sufficientInformation} {grade} {match} {boundary} {awardedMark} />
+	{#if sufficientInformation}
+		<br />
+		<button class="btn btn-sik"><a href={url} target="_blank">More details</a></button>
+	{/if}
 </div>
+
+<style>
+	button {
+		margin: 0;
+		margin-top: 10px;
+	}
+</style>

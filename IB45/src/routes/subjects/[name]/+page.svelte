@@ -83,6 +83,9 @@
 				SLResults.push(...getTZ(timezone, 'SL ' + name, info));
 			}
 		});
+
+		console.log(HLResults);
+		console.log(SLResults);
 	}
 
 	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
@@ -177,8 +180,12 @@
 			});
 			mark = letters[parseInt(mark) - 1];
 		}
-		if (!str) {
+		if (level === 'SL' && SLResults.length === 0) {
 			str = 'No grade boundary data available';
+			mark = 'N/A';
+		} else if (level === 'HL' && HLResults.length === 0) {
+			str = 'No grade boundary data available';
+			mark = 'N/A';
 		}
 	}
 
@@ -219,7 +226,7 @@
 {#if ready}
 	<div class="body">
 		<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
-			><button class="btn btn-sık">back</button></a
+			><button class="btn btn-sik">back</button></a
 		>
 
 		<div in:fly={{ duration: 1400, x: 200 }}>
@@ -275,11 +282,11 @@
 						<div class="wrap">
 							<label>
 								<input type="radio" name="e" value={'SL'} bind:group={level} />
-								<div class="btn btn-sık"><span>SL</span></div>
+								<div class="btn btn-sik"><span>SL</span></div>
 							</label>
 							<label>
 								<input type="radio" name="e" value={'HL'} bind:group={level} />
-								<div class="btn btn-sık"><span>HL</span></div>
+								<div class="btn btn-sik"><span>HL</span></div>
 							</label>
 						</div>
 					{/if}
@@ -437,24 +444,6 @@
 	.dropdown {
 		display: flex;
 		justify-content: center;
-	}
-
-	.btn:hover {
-		cursor: pointer;
-	}
-
-	.btn {
-		text-align: center;
-	}
-	.btn-sık {
-		transition: all 0.2s ease;
-		background-color: var(--lightprimary);
-		border: 2px solid black;
-		padding: 5px 10px;
-		border-radius: 10px;
-		margin: 5px;
-		box-shadow: 0 1px 1px black;
-		color: black;
 	}
 
 	input[type='radio'] {

@@ -25,17 +25,7 @@
 		{:else}
 			<br />
 			<div class="tooltip">
-				<div class="txt">Boundary Not Found.</div>
-				<span class="tooltiptext">
-					<p>
-						Your selected subject may have fewer than 100 candidates, those of which do not have
-						official, published boundaries.
-					</p>
-					<p>
-						Your selected subject may not exist and therefore incompatible with your current grade
-						boundary year.
-					</p>
-				</span>
+				<div class="txt"><a href="/faq">Boundary Not Found.</a></div>
 			</div>
 		{/if}
 	{:else}
@@ -53,26 +43,6 @@
 		position: relative;
 		display: inline-block;
 		border-bottom: 1px dotted black;
-	}
-
-	.tooltip .tooltiptext {
-		visibility: hidden;
-		background-color: var(--lightprimary);
-		text-align: left;
-		border-radius: 6px;
-		padding-left: 10px;
-		border: 2px solid black;
-
-		position: absolute;
-		z-index: 1;
-	}
-
-	.tooltip:hover {
-		cursor: pointer;
-	}
-
-	.tooltip:hover .tooltiptext {
-		visibility: visible;
 	}
 
 	.awarded {
