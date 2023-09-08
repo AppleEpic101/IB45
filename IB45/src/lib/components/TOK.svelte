@@ -78,6 +78,10 @@
 		Grade: {tokGrade} / 30
 		<div class="awarded">Awarded Mark: {awardedMark}</div>
 	</div>
+	<br />
+	<button class="btn btn-sik"
+		><a href="/subjects/theory-of-knowledge" target="_blank">More details</a></button
+	>
 	<h2>Extended Essay</h2>
 	<div class="content">
 		{#each eeAssessments as assessment, i}
@@ -94,6 +98,10 @@
 		<div class="awarded">Awarded Mark: {ee}</div>
 	</div>
 	<br />
+	<button class="btn btn-sik"
+		><a href="/subjects/extended-essay" target="_blank">More details</a></button
+	>
+	<br />
 	<div class="stats">
 		<div class="awarded">Core Points: {corePoints}</div>
 	</div>
@@ -103,5 +111,11 @@
 	.awarded {
 		font-weight: bold;
 		font-size: 18px;
+	}
+
+	button {
+		margin: 0;
+		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 </style>

@@ -180,10 +180,20 @@
 			});
 			mark = letters[parseInt(mark) - 1];
 		}
-		if (level === 'SL' && SLResults.length === 0) {
+		if (
+			level === 'SL' &&
+			SLResults.length === 0 &&
+			data.name !== 'Theory Of Knowledge' &&
+			data.name !== 'Extended Essay'
+		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
-		} else if (level === 'HL' && HLResults.length === 0) {
+		} else if (
+			level === 'HL' &&
+			HLResults.length === 0 &&
+			data.name !== 'Theory Of Knowledge' &&
+			data.name !== 'Extended Essay'
+		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
 		}
