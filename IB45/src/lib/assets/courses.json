@@ -782,7 +782,7 @@
 		]
 	},
 	"Turkey In The 20th Century": {
-		"firstAssessment": 2014,
+		"firstAssessment": 2022,
 		"lastAssessment": "Present",
 		"short": "turkey-in-the-20th-century",
 		"description": "Turkey in the 20th century, previously called Turkish Social Studies, is a school-based curriculum developed for the first time in 2000 by a group of teachers working in various schools. Turkey in the 20th century, as a multi-disciplinary course, adds an international perspective to the history, geography, and sociology curricula of the Ministry of National Education (MEB). The aim was to create a course that complies with national regulations in Turkish schools offering DP. Turkey is geographically in a position where two continents meet, and culturally at the intersection of at least two great civilizations. This situation not only affected Turkey culturally and historically, but also enabled Turkey to affect its neighbors. The aim of this course is to explore the mentioned interactions with the conceptual and analytical frameworks of these three courses required by the Ministry of National Education. An international perspective has been added to the course to raise students' awareness of Turkey's possible role in the region and other societies' perceptions of Turkey.",
@@ -790,20 +790,48 @@
 		"SLAssessments": [
 			{
 				"name": "Paper 1",
-				"maxMarks": 45,
+				"format": "Four structured questions based on one unit of the curriculum (except unit 6). The unit varies from year to year.",
+				"time": 1,
+				"maxMarks": 24,
 				"weight": 0.3
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 40,
-				"weight": 0.3
+				"format": "Essay questions based on the five units in the syllabus. Candidates answer two questions.",
+				"time": 1.5,
+				"maxMarks": 30,
+				"weight": 0.45
 			},
 			{
-				"name": "Internal Assessment",
-				"maxMarks": 50,
-				"weight": 0.4
+				"name": "Internal Assessment: Research Project",
+				"maxMarks": 25,
+				"weight": 0.25
 			}
-		]
+		],
+		"old": {
+			"firstAssessment": 2014,
+			"lastAssessment": 2021,
+			"short": "turkey-in-the-20th-century",
+			"description": "Turkey in the 20th century, previously called Turkish Social Studies, is a school-based curriculum developed for the first time in 2000 by a group of teachers working in various schools. Turkey in the 20th century, as a multi-disciplinary course, adds an international perspective to the history, geography, and sociology curricula of the Ministry of National Education (MEB). The aim was to create a course that complies with national regulations in Turkish schools offering DP. Turkey is geographically in a position where two continents meet, and culturally at the intersection of at least two great civilizations. This situation not only affected Turkey culturally and historically, but also enabled Turkey to affect its neighbors. The aim of this course is to explore the mentioned interactions with the conceptual and analytical frameworks of these three courses required by the Ministry of National Education. An international perspective has been added to the course to raise students' awareness of Turkey's possible role in the region and other societies' perceptions of Turkey.",
+			"groupNumber": [3, "s"],
+			"SLAssessments": [
+				{
+					"name": "Paper 1",
+					"maxMarks": 45,
+					"weight": 0.3
+				},
+				{
+					"name": "Paper 2",
+					"maxMarks": 40,
+					"weight": 0.3
+				},
+				{
+					"name": "Internal Assessment",
+					"maxMarks": 50,
+					"weight": 0.4
+				}
+			]
+		}
 	},
 	"World Religions": {
 		"firstAssessment": 2013,

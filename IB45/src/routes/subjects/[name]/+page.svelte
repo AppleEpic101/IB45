@@ -83,9 +83,6 @@
 				SLResults.push(...getTZ(timezone, 'SL ' + name, info));
 			}
 		});
-
-		console.log(HLResults);
-		console.log(SLResults);
 	}
 
 	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
