@@ -181,7 +181,8 @@
 			level === 'SL' &&
 			SLResults.length === 0 &&
 			data.name !== 'Theory Of Knowledge' &&
-			data.name !== 'Extended Essay'
+			data.name !== 'Extended Essay' &&
+			data.name !== 'History'
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
@@ -189,7 +190,8 @@
 			level === 'HL' &&
 			HLResults.length === 0 &&
 			data.name !== 'Theory Of Knowledge' &&
-			data.name !== 'Extended Essay'
+			data.name !== 'Extended Essay' &&
+			data.name !== 'History'
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';

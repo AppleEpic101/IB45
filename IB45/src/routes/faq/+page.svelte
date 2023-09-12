@@ -38,6 +38,10 @@
 				answer="A bilingual diploma is awarded when a mark of 3 or higher is achieved in at least two Group 1 subjects (excluding Literature And Performance; correct me if I am wrong. The second Group 1 subject may be selected under Group 2. You may even select a third by replacing your Group 6 with a Group 1 subject. "
 			/>
 			<Collapsible
+				question="How does the calculator work?"
+				answer="Your grade out of 100 is calculated using a weighted average of the inputed assessment scores, then rounded to the nearest integer. A score is then assigned using that grade with a grade boundary."
+			/>
+			<Collapsible
 				question="Where are the [BLANK] grade boundaries?"
 				bullet={[
 					'Only grade boundaries from May 2019 to present are offered. If you would like past grade boundaries to be included and have a good reason for it, please contact me.',
