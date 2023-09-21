@@ -327,7 +327,15 @@
 
 				<h3>Graphs</h3>
 				<div class="graph">
-					<Bargraph {level} {SLResults} {HLResults} {grade} />
+					<Bargraph
+						name={data.name}
+						region={reg}
+						historyResults={data.historyResults}
+						{level}
+						{SLResults}
+						{HLResults}
+						{grade}
+					/>
 				</div>
 
 				<div class="grade">
@@ -474,7 +482,7 @@
 	.graph {
 		display: flex;
 		justify-content: center;
-		height: 30vh;
+		height: 35vh;
 	}
 
 	@media screen and (max-width: 800px) {
