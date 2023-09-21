@@ -1,6 +1,6 @@
 <script>
 	import { courses, gradeBoundaryData, timezone, tok } from '$lib/stores/store.js';
-	import Slider from './slider.svelte';
+	import Slider from '$lib/components/slider.svelte';
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
 	let boundary = [];

@@ -3,9 +3,9 @@
 	import Slider from '$lib/components/slider.svelte';
 	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
-	import BoundaryTable from '$lib/components/boundaryTable.svelte';
-	import CoreTable from '$lib/components/coreTable.svelte';
-	import CoreMatrix from '$lib/components/coreMatrix.svelte';
+	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
+	import CoreTable from '$lib/components/subject/coreTable.svelte';
+	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import M19 from '$lib/assets/Grade_BoundariesM19';
 	import N19 from '$lib/assets/Grade_BoundariesN19';
 	import N20 from '$lib/assets/Grade_BoundariesN20';

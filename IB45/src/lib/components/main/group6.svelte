@@ -4,9 +4,9 @@
 	import { onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import Slider from '$lib/components/slider.svelte';
-	import Groupstat from '$lib/components/groupstat.svelte';
+	import Groupstat from '$lib/components/main/groupstat.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
-	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
+	import SelectedGroup6 from '$lib/components/main/selectedGroup6.svelte';
 
 	onDestroy(() => {
 		if (groupNumber == 6)

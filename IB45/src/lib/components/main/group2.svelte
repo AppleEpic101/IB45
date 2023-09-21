@@ -1,12 +1,12 @@
 <script>
-	import { group3, group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
+	import { group2, group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
 	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
 	import { onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import Slider from '$lib/components/slider.svelte';
-	import Groupstat from '$lib/components/groupstat.svelte';
+	import Groupstat from '$lib/components/main/groupstat.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
-	import SelectedGroup6 from '$lib/components/selectedGroup6.svelte';
+	import SelectedGroup6 from '$lib/components/main/selectedGroup6.svelte';
 
 	onDestroy(() => {
 		if (groupNumber == 6)
@@ -14,26 +14,24 @@
 	});
 
 	const info = $courses.find((c) => c.name === 'info');
-	const subjects = info.info.group3;
+	const languages = info.info.lang;
+	const classical = info.info.classical;
+	const subjects = info.info.group1
+		.concat(info.info.group2)
+		.filter((e) => e !== 'Literature And Performance');
 	const SLOnly = info.info.SLOnly;
-	const regions = info.info.region;
 
-	export let groupNumber = 3;
+	export let groupNumber = 2;
 	export let awardedMark;
 
-	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group3);
+	let store = groupNumber == 6 ? JSON.parse($group6) : JSON.parse($group2);
 	$: {
 		if (groupNumber == 6) $group6 = JSON.stringify(store);
-		else $group3 = JSON.stringify(store);
+		else $group2 = JSON.stringify(store);
 	}
 
-	$: sufficientInformation = !(
-		(shortName == 'HL History' && store.region == '') ||
-		store.name == '' ||
-		store.level == ''
-	);
-	$: shortName = store.level + ' ' + store.name;
-	$: fullName = store.level + ' ' + store.name + ' ' + store.region;
+	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
+	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
 	$: foo = $courses.find((course) => course.name === store.name);
 	let matchedCourse;
@@ -42,24 +40,26 @@
 	} else if (store.level === 'HL') {
 		matchedCourse = foo?.HL;
 	}
-	$: match = $gradeBoundaryData.find((course) => course.name === fullName.trim());
-
-	$: {
-		if ((store.name === 'History' && store.level === 'SL') || store.name !== 'History') {
-			store.region = '';
-		}
-	}
-
+	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName);
 	$: {
 		if (SLOnly.includes(store.name)) {
 			store.level = 'SL';
 		}
 	}
 
+	$: {
+		if (store.name !== 'Classical Language' && classical.includes(store.language)) {
+			store.language = '';
+		}
+		if (store.name === 'Classical Language' && !classical.includes(store.language)) {
+			store.language = '';
+		}
+	}
+
 	$: grade = calculateGrade(store, matchedCourse);
-	$: boundary = calculateGradeBoundary(match, boundary, grade);
+	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
 	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
-	$: if (!matchedCourse || !match || !awardedMark) awardedMark = 0;
+	$: if (!matchedCourse || !matchedLang || !awardedMark) awardedMark = 0;
 
 	let url = new URL($page.url);
 	$: {
@@ -71,6 +71,7 @@
 		});
 		url.pathname = '/subjects/' + short;
 
+		url.searchParams.set('lang', store.language);
 		if (store.level === 'HL') {
 			url.searchParams.set('lvl', 'HL');
 		} else {
@@ -82,7 +83,7 @@
 <div class="group">
 	<h2>
 		{#if !sufficientInformation}
-			Group {groupNumber}: Individuals And Societies
+			Group {groupNumber}: Language Acquisition
 		{:else}
 			{fullName}
 		{/if}
@@ -99,8 +100,10 @@
 	{#if !SLOnly.includes(store.name)}
 		<Dropdown str="Enter level" bind:value={store.level} arr={['HL', 'SL']} />
 	{/if}
-	{#if store.name === 'History' && store.level === 'HL'}
-		<Dropdown str="Enter HL History Region" bind:value={store.region} arr={regions} />
+	{#if store.name === 'Classical Language'}
+		<Dropdown str="Enter language" bind:value={store.language} arr={classical} />
+	{:else}
+		<Dropdown str="Enter language" bind:value={store.language} arr={languages} />
 	{/if}
 
 	<div class="content">
@@ -116,7 +119,7 @@
 		{/if}
 	</div>
 
-	<Groupstat {sufficientInformation} {grade} {match} {boundary} {awardedMark} />
+	<Groupstat {sufficientInformation} {grade} match={matchedLang} {boundary} {awardedMark} />
 	{#if sufficientInformation}
 		<br />
 		<button class="btn btn-sik"><a href={url} target="_blank">More details</a></button>
