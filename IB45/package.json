@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"chart.js": "^4.4.0",
 		"js-cookie": "^3.0.5"
 	}
 }

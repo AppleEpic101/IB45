@@ -102,5 +102,7 @@ export const load = (({params}) => {
         lastHistory: lastHistory,
         lastTOK: lastTOK,
         lastEE: lastEE,
+        boundaryArray: b,
+        info: info,
     }
 });

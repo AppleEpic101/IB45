@@ -6,28 +6,23 @@
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
 	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
-	import M19 from '$lib/assets/Grade_BoundariesM19';
-	import N19 from '$lib/assets/Grade_BoundariesN19';
-	import N20 from '$lib/assets/Grade_BoundariesN20';
-	import M21 from '$lib/assets/Grade_BoundariesM21';
-	import M22 from '$lib/assets/Grade_BoundariesM22';
-	import N22 from '$lib/assets/Grade_BoundariesN22';
-	import d from '$lib/assets/courses';
+	import Bargraph from '$lib/components/subject/bargraph.svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	export let data;
+
+	// svelte transitions
 	let ready = false;
 	onMount(() => (ready = true));
 
-	export let data;
-
 	const newUrl = new URL($page.url);
+	const languages = data.info.lang;
+	const regions = data.info.region;
+	const classical = data.info.classical;
 
-	const languages = d['info'].lang;
-	const regions = d['info'].region;
-	const classical = d['info'].classical;
-
+	// select default language
 	let language;
 	if (
 		(languages.includes($page.url.searchParams.get('lang')) &&
@@ -56,7 +51,8 @@
 		return arr;
 	};
 
-	const b = [M19, N19, N20, M21, M22, N22];
+	// display table
+	const b = data.boundaryArray;
 	let SLResults = [];
 	let HLResults = [];
 
@@ -257,6 +253,7 @@
 			</h4>
 		</div>
 		<Links />
+
 		<div class="description">
 			<h3 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h3>
 			<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{data.description}</div>
@@ -327,6 +324,12 @@
 						</div>
 					</div>
 				</div>
+
+				<h3>Graphs</h3>
+				<div class="graph">
+					<Bargraph {level} {SLResults} {HLResults} {grade} />
+				</div>
+
 				<div class="grade">
 					<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
 					{#if data.SLOnly}
@@ -466,6 +469,12 @@
 	input[type='radio']:checked + div > span {
 		color: white;
 		text-shadow: 0 2px 2px #808080;
+	}
+
+	.graph {
+		display: flex;
+		justify-content: center;
+		height: 30vh;
 	}
 
 	@media screen and (max-width: 800px) {
