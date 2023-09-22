@@ -50,7 +50,7 @@
 	<div class="intro">
 		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 			<h2>Welcome to IB Predict!</h2>
-			<h3>Last updated August 25, 2023</h3>
+			<h4>Last updated September 22, 2023<br />Made By Alexander Du</h4>
 		</div>
 		<Links />
 		<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
@@ -70,8 +70,7 @@
 			</p>
 			<p>
 				<strong>
-					NOTE: May 2023 grade boundaries are coming soon (likely on September 11th, 2023 when IB
-					releases its exam papers).
+					NOTE: May 2023 grade boundaries are coming soon (whenever I can find them).
 				</strong>
 			</p>
 		</div>
@@ -214,6 +213,10 @@
 
 	.top-table {
 		display: none;
+	}
+
+	h2 {
+		margin-bottom: 0;
 	}
 
 	@media screen and (max-width: 1000px) {
