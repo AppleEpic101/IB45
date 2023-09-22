@@ -84,7 +84,7 @@
 
 	function getRowColor(mark) {
 		const hue = (mark / 5) * 120;
-		return `hsl(${hue}, 100%, 50%)`;
+		return `hsl(${hue}, 100%, 68%)`;
 	}
 </script>
 

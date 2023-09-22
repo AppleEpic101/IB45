@@ -331,6 +331,8 @@
 						name={data.name}
 						region={reg}
 						historyResults={data.historyResults}
+						TOK={data.TOK}
+						EE={data.EE}
 						{level}
 						{SLResults}
 						{HLResults}
@@ -480,9 +482,10 @@
 	}
 
 	.graph {
-		display: flex;
-		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
 		height: 35vh;
+		max-width: 75vh;
 	}
 
 	@media screen and (max-width: 800px) {

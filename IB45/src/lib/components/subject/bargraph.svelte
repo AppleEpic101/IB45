@@ -1,47 +1,55 @@
 <script>
 	import { onMount } from 'svelte';
-	import d from '$lib/assets/courses.json';
 	import Chart from 'chart.js/auto';
 
 	export let name;
 	export let level;
-	export let region;
 	export let grade;
 	export let SLResults;
 	export let HLResults;
 	export let historyResults;
+	export let TOK;
+	export let EE;
 
-	let probabilities = Array(7).fill(0);
+	const len = name === 'Theory Of Knowledge' || name === 'Extended Essay' ? 5 : 7;
+	let probabilities = Array(len).fill(0);
 
 	let total;
 	let count;
 
+	const calculate = (arr, grade, count) => {
+		arr.forEach((b) => {
+			let mark = 0;
+			b.tz.forEach((e) => {
+				if (grade >= e) mark++;
+			});
+			count[mark - 1]++;
+		});
+		console.log(count);
+		return count;
+	};
+
 	$: {
-		count = Array(7).fill(0);
+		count = Array(len).fill(0);
 		if (name === 'History' && level === 'HL') {
-			total = historyResults[historyResults].length;
+			total = historyResults[0].length;
+			count = calculate(historyResults[0], grade, count);
+		} else if (name === 'Theory Of Knowledge') {
+			total = TOK.length;
+			count = calculate(TOK, grade, count);
+		} else if (name === 'Extended Essay') {
+			total = EE.length;
+			count = calculate(EE, grade, count);
 		} else if (level === 'SL') {
 			total = SLResults.length;
-			SLResults.forEach((b) => {
-				let mark = 0;
-				b.tz.forEach((e) => {
-					if (grade >= e) mark++;
-				});
-				count[mark - 1]++;
-			});
+			count = calculate(SLResults, grade, count);
 		} else if (level === 'HL') {
 			total = HLResults.length;
-			HLResults.forEach((b) => {
-				let mark = 0;
-				b.tz.forEach((e) => {
-					if (grade >= e) mark++;
-				});
-				count[mark - 1]++;
-			});
+			count = calculate(HLResults, grade, count);
 		}
 	}
 
-	const labels = ['1', '2', '3', '4', '5', '6', '7'];
+	const labels = len === 7 ? ['1', '2', '3', '4', '5', '6', '7'] : ['E', 'D', 'C', 'B', 'A'];
 	let chartCanvas;
 	let ctx;
 
@@ -72,6 +80,7 @@
 			type: 'bar',
 			options: {
 				responsive: true,
+				maintainAspectRatio: false,
 				plugins: {
 					legend: {
 						display: false
@@ -83,7 +92,8 @@
 				},
 				scales: {
 					y: {
-						max: 1,
+						min: 0,
+						max: 1.2,
 						beginAtZero: true
 					}
 				}
@@ -93,22 +103,22 @@
 				datasets: [
 					{
 						backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(255, 159, 64, 0.2)',
-							'rgba(255, 205, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(201, 203, 207, 0.2)'
+							'rgba(255, 99, 132, 0.3)',
+							'rgba(255, 159, 64, 0.3)',
+							'rgba(255, 205, 86, 0.3)',
+							'rgba(75, 192, 192, 0.3)',
+							'rgba(138, 218, 234, 0.3)',
+							'rgba(54, 162, 235, 0.3)',
+							'rgba(153, 102, 255, 0.3)'
 						],
 						borderColor: [
 							'rgb(255, 99, 132)',
 							'rgb(255, 159, 64)',
 							'rgb(255, 205, 86)',
 							'rgb(75, 192, 192)',
+							'rgb(82, 201, 224)',
 							'rgb(54, 162, 235)',
-							'rgb(153, 102, 255)',
-							'rgb(201, 203, 207)'
+							'rgb(153, 102, 255)'
 						],
 						borderWidth: 1,
 						label: 'Probability',
