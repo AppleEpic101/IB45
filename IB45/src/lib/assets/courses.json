@@ -28,6 +28,7 @@
 			"Computer Science",
 			"Design Technology",
 			"Environmental Systems And Societies",
+			"Marine Science",
 			"Nature Of Science",
 			"Physics",
 			"Sports, Excercise And Health Science"
@@ -76,6 +77,7 @@
 			"Art History",
 			"Brazilian Social Studies",
 			"Turkey In The 20th Century",
+			"Marine Science",
 			"Nature Of Science"
 		],
 		"region": ["Africa And Middle East", "Americas", "Asia And Oceania", "Europe"]
@@ -1073,6 +1075,30 @@
 				"name": "Individual Investigation",
 				"maxMarks": 30,
 				"weight": 0.25
+			}
+		]
+	},
+	"Marine Science": {
+		"firstAssessment": "Unknown",
+		"lastAssessment": "Present",
+		"short": "marine-science",
+		"description": "if someone has a subject guide for this, please send it to me. assessment details may be outdated",
+		"groupNumber": [4, "s"],
+		"SLAssessments": [
+			{
+				"name": "Paper 1",
+				"maxMarks": 65,
+				"weight": 0.5
+			},
+			{
+				"name": "Paper 2",
+				"maxMarks": 35,
+				"weight": 0.3
+			},
+			{
+				"name": "Internal Assessment",
+				"maxMarks": 24,
+				"weight": 0.2
 			}
 		]
 	},

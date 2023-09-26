@@ -20,6 +20,13 @@
 
 	<div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 		<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+			<h2>September 25, 2023</h2>
+			<ul>
+				<li>Added May 2023 grade boundaries (catastrophic)</li>
+				<li>Added Marine Science</li>
+			</ul>
+		</div>
+		<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
 			<h2>September 22, 2023</h2>
 			<ul>
 				<li>Probability distribution graphs</li>
