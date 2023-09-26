@@ -2,11 +2,7 @@
 	import { timezone, gradeBoundary } from '$lib/stores/store.js';
 
 	const singleTimezones = ['N19', 'N20', 'N21', 'N22'];
-	const doubleTimezones = ['M19', 'M21', 'M22'];
-	const tripleTimezones = ['M23'];
-
-	const singleLocations = [' (Worldwide)'];
-	const doubleLocations = [' (North America, South America)', ' (Europe, Africa, Asia, Oceania)'];
+	const doubleTimezones = ['M19', 'M21', 'M22', 'M23'];
 
 	let numTimezones;
 	$: {
@@ -14,8 +10,6 @@
 			numTimezones = 1;
 		} else if (doubleTimezones.includes($gradeBoundary)) {
 			numTimezones = 2;
-		} else if (tripleTimezones.includes($gradeBoundary)) {
-			numTimezones = 3;
 		}
 	}
 

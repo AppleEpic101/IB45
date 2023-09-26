@@ -5,6 +5,7 @@ import N20 from '$lib/assets/Grade_BoundariesN20.json';
 import M21 from '$lib/assets/Grade_BoundariesM21.json';
 import M22 from '$lib/assets/Grade_BoundariesM22.json';
 import N22 from '$lib/assets/Grade_BoundariesN22.json';
+import M23 from '$lib/assets/Grade_BoundariesM23.json';
 
 const info = data['info'];
 const courses = Object.keys(data).map((courseName) => ({
@@ -19,7 +20,7 @@ const courses = Object.keys(data).map((courseName) => ({
     lastAssessment: data[courseName].lastAssessment
 }));
 
-const b = [M19, N19, N20, M21, M22, N22];
+const b = [M19, N19, N20, M21, M22, N22, M23];
 
 const getTZ = (timezone, name, info) => {
     let arr = [];
