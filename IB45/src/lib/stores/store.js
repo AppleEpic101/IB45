@@ -29,7 +29,7 @@ selectedGroup6.subscribe((val) => {
     if(browser && localStorage) localStorage.setItem("selectedGroup6", val)
 });
 
-export const gradeBoundary = writable(browser && localStorage && localStorage.getItem("gradeBoundary") || "M22")
+export const gradeBoundary = writable(browser && localStorage && localStorage.getItem("gradeBoundary") || "M23")
 gradeBoundary.subscribe((val) => {
     if(browser && localStorage) localStorage.setItem("gradeBoundary", val)
 });
