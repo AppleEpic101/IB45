@@ -46,8 +46,7 @@
 				bullet={[
 					'Only grade boundaries from May 2019 to present are offered. If you would like past grade boundaries to be included and have a good reason for it, please contact me.',
 					'May 2020 grade boundaries do not exist because examinations were cancelled.',
-					'November 2021 grade boundaries do not exist because I cannot find them. If you have them, please contact me and I will add them to the website. ',
-					'May 2023 grade boundaries will be added once they are released.'
+					'November 2021 grade boundaries do not exist because I cannot find them. If you have them, please contact me and I will add them to the website. '
 				]}
 			/>
 			<Collapsible

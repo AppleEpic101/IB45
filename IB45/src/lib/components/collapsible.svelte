@@ -59,10 +59,6 @@
 		line-height: 1.5;
 	}
 
-	li {
-		line-height: 1.5;
-	}
-
 	span {
 		transition: transform 0.2s;
 		display: inline-block;
