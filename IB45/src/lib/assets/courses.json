@@ -1578,7 +1578,7 @@
 		"SLAssessments": [
 			{
 				"name": "Theory Of Knowledge Essay",
-				"maxMarks": 20,
+				"maxMarks": 10,
 				"weight": 0.67
 			},
 			{

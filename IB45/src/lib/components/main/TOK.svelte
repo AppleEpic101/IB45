@@ -33,7 +33,7 @@
 	$: tokBoundary = $gradeBoundaryData.find((course) => course.name === 'Theory Of Knowledge');
 	$: eeBoundary = $gradeBoundaryData.find((course) => course.name === 'Extended Essay');
 
-	$: tokGrade = store.tok.reduce((acc, curr) => acc + curr, 0);
+	$: tokGrade = store.tok.reduce((acc, curr) => 2 * acc + curr, 0);
 	$: eeGrade = store.ee.reduce((acc, curr) => acc + curr, 0);
 
 	$: {
