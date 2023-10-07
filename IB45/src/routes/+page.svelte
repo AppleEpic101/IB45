@@ -50,7 +50,7 @@
 	<div class="intro">
 		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 			<h2>Welcome to IB Predict!</h2>
-			<h4>Last updated September 25, 2023<br />Made By Alexander Du</h4>
+			<h4>Last updated September 25, 2023<br />Made By Alexander Du and Richard Yang</h4>
 		</div>
 		<Links />
 		<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
