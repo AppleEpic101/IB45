@@ -102,8 +102,10 @@
 	let grade;
 	$: {
 		grade = 0;
-		if (data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay') {
+		if (data.name === 'Theory Of Knowledge') {
 			grade = 2 * assessments[0] + assessments[1];
+		} else if (data.name === 'Extended Essay') {
+			grade = assessments[0];
 		} else {
 			for (let i = 0; i < weight.length; i++) {
 				grade += (assessments[i] / marks[i]) * weight[i] * 100;

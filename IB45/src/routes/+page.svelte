@@ -50,26 +50,26 @@
 	<div class="intro">
 		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 			<h2>Welcome to IB Predict!</h2>
-			<h4>Last updated September 25, 2023<br />Made By Alexander Du and Richard Yang</h4>
+			<h4>Last updated September 25, 2023</h4>
 		</div>
 		<Links />
 		<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
 			<p class="main">
-				The IB Predict score calculator serves as a valuable tool for International Baccalaureate
-				(IB) Diploma Programme students. Its importance cannot be understated in the context of
-				university applications, where predicted grades play a critical role in admissions. By
-				utilizing official grade boundaries data from past IB exam sessions, the calculator ensures
-				a high level of precision in its grade predictions, thereby aiding their university
-				aspirations and decisions.
+				Getting into the university of your dreams won't be easy, but IB Predict is here to help you
+				along the way. IB exams are hard for a reason. They separate the skilled from the unskilled,
+				prepared from the unprepared, and the knowers from the throwers. In many cases, teachers are
+				more than willing to inflate their students' predicted grades, deluding them into a
+				dangerous state of overconfidence. The IB Predict calculator absolutely does not lie. It
+				uses grade boundary data from past IB examinations to ensure precision. Wtih IB Predict,
+				you'll know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
 			</p>
 
 			<p class="main">
-				Introducing the latest feature to IB Predict! For all IB DP subjects, students may now view
-				course descriptions, enter assessment scores, and view past grade boundaries on an
-				individual subject page. Try it out <a href="/subjects">here!</a>
+				View course descriptions, enter assessment scores, and view past grade boundaries for an
+				individual subject <a href="/subjects">here.</a>
 			</p>
 			<p>
-				<strong> NOTE: May 2023 grade boundaries have arrived! </strong>
+				<strong> NOTE: May 2023 grade boundaries have arrived! &#127881;&#127881;&#127881;</strong>
 			</p>
 		</div>
 		<hr />
