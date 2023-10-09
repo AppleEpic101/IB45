@@ -60,7 +60,7 @@
 				prepared from the unprepared, and the knowers from the throwers. In many cases, teachers are
 				more than willing to inflate their students' predicted grades, deluding them into a
 				dangerous state of overconfidence. The IB Predict calculator absolutely does not lie. It
-				uses grade boundary data from past IB examinations to ensure precision. Wtih IB Predict,
+				uses grade boundary data from past IB examinations to ensure precision. With IB Predict,
 				you'll know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
 			</p>
 
