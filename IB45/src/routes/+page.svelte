@@ -57,8 +57,8 @@
 			<p class="main">
 				Getting into the university of your dreams won't be easy, but IB Predict is here to help you
 				along the way. IB exams are hard for a reason. They separate the skilled from the unskilled,
-				prepared from the unprepared, and the knowers from the throwers. In many cases, teachers are
-				more than willing to inflate their students' predicted grades, deluding them into a
+				the prepared from the unprepared, and the knowers from the throwers. In many cases, teachers
+				are more than willing to inflate their students' predicted grades, deluding them into a
 				dangerous state of overconfidence. The IB Predict calculator absolutely does not lie. It
 				uses grade boundary data from past IB examinations to ensure precision. With IB Predict,
 				you'll know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
