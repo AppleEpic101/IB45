@@ -197,17 +197,17 @@
 	$: {
 		if (data.isLanguageSubject) {
 			newUrl?.searchParams?.set('lang', language);
-			if (browser) goto(newUrl);
+			if (browser) goto(newUrl, { replaceState: true });
 		} else {
 			newUrl?.searchParams?.delete('lang');
-			if (browser) goto(newUrl);
+			if (browser) goto(newUrl, { replaceState: true });
 		}
 		if (level === 'HL' && !data.isCoreSubject) {
 			newUrl?.searchParams?.set('lvl', 'HL');
-			if (browser) goto(newUrl);
+			if (browser) goto(newUrl, { replaceState: true });
 		} else if (level === 'SL') {
 			newUrl?.searchParams?.delete('lvl');
-			if (browser) goto(newUrl);
+			if (browser) goto(newUrl, { replaceState: true });
 		}
 	}
 </script>
