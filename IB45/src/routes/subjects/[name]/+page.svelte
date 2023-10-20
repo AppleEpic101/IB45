@@ -228,42 +228,121 @@
 	{/if}
 </svelte:head>
 
-{#if ready}
-	<div class="body">
-		<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
-			><button class="btn btn-sik">back</button></a
-		>
+<div class="body">
+	<a href="/subjects" in:fly={{ delay: 100, duration: 1300, y: 25 }}
+		><button class="btn btn-sik">back</button></a
+	>
 
-		<div in:fly={{ duration: 1400, x: 200 }}>
-			<h1>{data.name}</h1>
+	<div in:fly={{ duration: 1400, x: 200 }}>
+		<h1>{data.name}</h1>
 
-			<h4>
-				{#if data.groupNumber.length === 2}
-					{#if data.groupNumber[1] === 's'}
-						Group {data.groupNumber[0]} school-based syllabus subject <br />
-					{:else}
-						Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
-					{/if}
-				{:else if data.groupNumber[0] === 99}
-					Core subject <br />
-				{:else if data.groupNumber.length === 1}
-					Group {data.groupNumber} subject <br />
+		<h4>
+			{#if data.groupNumber.length === 2}
+				{#if data.groupNumber[1] === 's'}
+					Group {data.groupNumber[0]} school-based syllabus subject <br />
+				{:else}
+					Group {data.groupNumber[0]} and {data.groupNumber[1]} interdisciplinary subject<br />
 				{/if}
-				Assessments from {data.firstAssessment} to {data.lastAssessment}
-			</h4>
-		</div>
-		<Links />
+			{:else if data.groupNumber[0] === 99}
+				Core subject <br />
+			{:else if data.groupNumber.length === 1}
+				Group {data.groupNumber} subject <br />
+			{/if}
+			Assessments from {data.firstAssessment} to {data.lastAssessment}
+		</h4>
+	</div>
+	<Links />
 
-		<div class="description">
-			<h3 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h3>
-			<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{data.description}</div>
-		</div>
+	<div class="description">
+		<h3 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h3>
+		<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{data.description}</div>
+	</div>
 
-		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
-			{#if data.name !== 'Creativity, Activity, Service'}
-				<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h3>
+	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+		{#if data.name !== 'Creativity, Activity, Service'}
+			<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h3>
+			{#if data.SLOnly}
+				<h5>
+					{data.name} is offered only at the SL level
+				</h5>
+			{/if}
+			<div class="dropdown">
+				{#if data.isLanguageSubject && data.name === 'Classical Language'}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={classical} bind:value={language} />
+					</div>
+				{:else if data.isLanguageSubject}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={languages} bind:value={language} />
+					</div>
+				{/if}
+				{#if data.name === 'History' && level === 'HL'}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={regions} bind:value={reg} />
+					</div>
+				{/if}
+			</div>
+			{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
+				{#if !data.SLOnly}
+					<div class="wrap">
+						<label>
+							<input type="radio" name="e" value={'SL'} bind:group={level} />
+							<div class="btn btn-sik"><span>SL</span></div>
+						</label>
+						<label>
+							<input type="radio" name="e" value={'HL'} bind:group={level} />
+							<div class="btn btn-sik"><span>HL</span></div>
+						</label>
+					</div>
+				{/if}
+			{/if}
+			<div class="assessments">
+				<div class="ass">
+					{#if s}
+						{#each s as assessment, i}
+							<Slider
+								bind:value={assessments[i]}
+								name={assessment.name}
+								weight={assessment.weight}
+								max={assessment.maxMarks}
+							/>
+						{/each}
+					{/if}
+				</div>
+				<div class="predicted">
+					<div class="container">
+						<div class="x">Predicted Grade</div>
+						<div class="y">
+							{grade}
+						</div>
+					</div>
+					<div class="container">
+						<div class="x">Predicted Mark</div>
+						<div class="pp">{str}</div>
+						<div class="y">{mark}</div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Graphs</h3>
+			<div class="graph">
+				<Bargraph
+					name={data.name}
+					region={reg}
+					historyResults={data.historyResults}
+					TOK={data.TOK}
+					EE={data.EE}
+					{level}
+					{SLResults}
+					{HLResults}
+					{grade}
+				/>
+			</div>
+
+			<div class="grade">
+				<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
 				{#if data.SLOnly}
-					<h5>
+					<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 						{data.name} is offered only at the SL level
 					</h5>
 				{/if}
@@ -277,114 +356,33 @@
 							<Dropdown arr={languages} bind:value={language} />
 						</div>
 					{/if}
-					{#if data.name === 'History' && level === 'HL'}
-						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-							<Dropdown arr={regions} bind:value={reg} />
-						</div>
-					{/if}
 				</div>
-				{#if data.name !== 'Extended Essay' && data.name !== 'Theory Of Knowledge'}
-					{#if !data.SLOnly}
-						<div class="wrap">
-							<label>
-								<input type="radio" name="e" value={'SL'} bind:group={level} />
-								<div class="btn btn-sik"><span>SL</span></div>
-							</label>
-							<label>
-								<input type="radio" name="e" value={'HL'} bind:group={level} />
-								<div class="btn btn-sik"><span>HL</span></div>
-							</label>
-						</div>
-					{/if}
-				{/if}
-				<div class="assessments">
-					<div class="ass">
-						{#if s}
-							{#each s as assessment, i}
-								<Slider
-									bind:value={assessments[i]}
-									name={assessment.name}
-									weight={assessment.weight}
-									max={assessment.maxMarks}
-								/>
+				<div class="tables">
+					{#if data.name === 'Theory Of Knowledge'}
+						<CoreTable name={'TOK'} res={data.TOK} />
+					{:else if data.name === 'Extended Essay'}
+						<CoreTable name={'EE'} res={data.EE} />
+					{:else}
+						<BoundaryTable name={'SL ' + name} res={SLResults} />
+						{#if data.name === 'History'}
+							{#each regions as r, i}
+								<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
 							{/each}
+						{:else if !data.SLOnly}
+							<BoundaryTable name={'HL ' + name} res={HLResults} />
 						{/if}
-					</div>
-					<div class="predicted">
-						<div class="container">
-							<div class="x">Predicted Grade</div>
-							<div class="y">
-								{grade}
-							</div>
-						</div>
-						<div class="container">
-							<div class="x">Predicted Mark</div>
-							<div class="pp">{str}</div>
-							<div class="y">{mark}</div>
-						</div>
-					</div>
-				</div>
-
-				<h3>Graphs</h3>
-				<div class="graph">
-					<Bargraph
-						name={data.name}
-						region={reg}
-						historyResults={data.historyResults}
-						TOK={data.TOK}
-						EE={data.EE}
-						{level}
-						{SLResults}
-						{HLResults}
-						{grade}
-					/>
-				</div>
-
-				<div class="grade">
-					<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
-					{#if data.SLOnly}
-						<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
-							{data.name} is offered only at the SL level
-						</h5>
 					{/if}
-					<div class="dropdown">
-						{#if data.isLanguageSubject && data.name === 'Classical Language'}
-							<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-								<Dropdown arr={classical} bind:value={language} />
-							</div>
-						{:else if data.isLanguageSubject}
-							<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-								<Dropdown arr={languages} bind:value={language} />
-							</div>
-						{/if}
-					</div>
-					<div class="tables">
-						{#if data.name === 'Theory Of Knowledge'}
-							<CoreTable name={'TOK'} res={data.TOK} />
-						{:else if data.name === 'Extended Essay'}
-							<CoreTable name={'EE'} res={data.EE} />
-						{:else}
-							<BoundaryTable name={'SL ' + name} res={SLResults} />
-							{#if data.name === 'History'}
-								{#each regions as r, i}
-									<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
-								{/each}
-							{:else if !data.SLOnly}
-								<BoundaryTable name={'HL ' + name} res={HLResults} />
-							{/if}
-						{/if}
-						{#if data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay'}
-							<CoreMatrix name={data.name} />
-						{/if}
-					</div>
-					<p class="p">*Timezone 0 (Worldwide)</p>
-					<p class="p">*Timezone 1 (North America, South America)</p>
-					<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
+					{#if data.name === 'Theory Of Knowledge' || data.name === 'Extended Essay'}
+						<CoreMatrix name={data.name} />
+					{/if}
 				</div>
-			{/if}
-		</div>
+				<p class="p">*Timezone 0 (Worldwide)</p>
+				<p class="p">*Timezone 1 (North America, South America)</p>
+				<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
+			</div>
+		{/if}
 	</div>
-{/if}
+</div>
 
 <style>
 	h1 {

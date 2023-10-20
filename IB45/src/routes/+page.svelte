@@ -41,97 +41,95 @@
 	/>
 </svelte:head>
 
-{#if ready}
-	<div class="banner">
-		<h1 in:scale={{ duration: 1500, start: 0.3, opacity: 0.5 }}>
-			International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator
-		</h1>
+<div class="banner">
+	<h1 in:scale={{ duration: 1500, start: 0.3, opacity: 0.5 }}>
+		International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator
+	</h1>
+</div>
+<div class="intro">
+	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+		<h2>Welcome to IB Predict!</h2>
+		<h4>Last updated September 25, 2023</h4>
 	</div>
-	<div class="intro">
-		<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
-			<h2>Welcome to IB Predict!</h2>
-			<h4>Last updated September 25, 2023</h4>
-		</div>
-		<Links />
-		<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
-			<p class="main">
-				Getting into the university of your dreams won't be easy, but IB Predict is here to help you
-				along the way. IB exams are hard for a reason. They separate the skilled from the unskilled,
-				the prepared from the unprepared, and the knowers from the throwers. In many cases, teachers
-				are more than willing to inflate their students' predicted grades, deluding them into a
-				dangerous state of overconfidence. The IB Predict calculator absolutely does not lie. It
-				uses grade boundary data from past IB examinations to ensure precision. With IB Predict,
-				you'll know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
-			</p>
+	<Links />
+	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
+		<p class="main">
+			Getting into the university of your dreams won't be easy, but IB Predict is here to help you
+			along the way. IB exams are hard for a reason. They separate the skilled from the unskilled,
+			the prepared from the unprepared, and the knowers from the throwers. In many cases, teachers
+			are more than willing to inflate their students' predicted grades, deluding them into a
+			dangerous state of overconfidence. The IB Predict calculator absolutely does not lie. It uses
+			grade boundary data from past IB examinations to ensure precision. With IB Predict, you'll
+			know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
+		</p>
 
-			<p class="main">
-				View course descriptions, enter assessment scores, and view past grade boundaries for an
-				individual subject <a href="/subjects">here.</a>
-			</p>
-			<p>
-				<strong> NOTE: May 2023 grade boundaries have arrived! &#127881;&#127881;&#127881;</strong>
-			</p>
-		</div>
-		<hr />
+		<p class="main">
+			View course descriptions, enter assessment scores, and view past grade boundaries for an
+			individual subject <a href="/subjects">here.</a>
+		</p>
+		<p>
+			<strong> NOTE: May 2023 grade boundaries have arrived! &#127881;&#127881;&#127881;</strong>
+		</p>
+	</div>
+	<hr />
 
-		<div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
-			<GradeBoundary />
-			<Timezone />
-		</div>
-		<div class="top-table">
-			<div class="data">
-				<div class="table">
-					<DetailedTable
-						points={totalScore}
-						awardedMarks={scores}
-						tok={tokGrade}
-						ee={eeGrade}
-						{corePoints}
-					/>
-				</div>
+	<div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
+		<GradeBoundary />
+		<Timezone />
+	</div>
+	<div class="top-table">
+		<div class="data">
+			<div class="table">
+				<DetailedTable
+					points={totalScore}
+					awardedMarks={scores}
+					tok={tokGrade}
+					ee={eeGrade}
+					{corePoints}
+				/>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="layout">
-		<div in:fly={{ delay: 250, duration: 1500, x: -300 }} class="left-column">
-			<Refresh />
-			<Group1 bind:awardedMark={scores[0]} />
-			<Group2 bind:awardedMark={scores[1]} />
-			<Group3 bind:awardedMark={scores[2]} />
-			<Group4 bind:awardedMark={scores[3]} />
-			<Group5 bind:awardedMark={scores[4]} />
-			{#if $selectedGroup6 == '6'}
-				<Group6 bind:awardedMark={scores[5]} />
-			{:else if $selectedGroup6 == '1'}
-				<Group1 bind:awardedMark={scores[5]} groupNumber="6" />
-			{:else if $selectedGroup6 == '2'}
-				<Group2 bind:awardedMark={scores[5]} groupNumber="6" />
-			{:else if $selectedGroup6 == '3'}
-				<Group3 bind:awardedMark={scores[5]} groupNumber="6" />
-			{:else if $selectedGroup6 == '4'}
-				<Group4 bind:awardedMark={scores[5]} groupNumber="6" />
-			{:else if $selectedGroup6 == '5'}
-				<Group5 bind:awardedMark={scores[5]} groupNumber="6" />
-			{/if}
-			<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
-			<Refresh />
-		</div>
-		<div class="right-column">
-			<div class="data">
-				<div class="table">
-					<DetailedTable
-						points={totalScore}
-						awardedMarks={scores}
-						tok={tokGrade}
-						ee={eeGrade}
-						{corePoints}
-					/>
-				</div>
+<div class="layout">
+	<div in:fly={{ delay: 250, duration: 1500, x: -300 }} class="left-column">
+		<Refresh />
+		<Group1 bind:awardedMark={scores[0]} />
+		<Group2 bind:awardedMark={scores[1]} />
+		<Group3 bind:awardedMark={scores[2]} />
+		<Group4 bind:awardedMark={scores[3]} />
+		<Group5 bind:awardedMark={scores[4]} />
+		{#if $selectedGroup6 == '6'}
+			<Group6 bind:awardedMark={scores[5]} />
+		{:else if $selectedGroup6 == '1'}
+			<Group1 bind:awardedMark={scores[5]} groupNumber="6" />
+		{:else if $selectedGroup6 == '2'}
+			<Group2 bind:awardedMark={scores[5]} groupNumber="6" />
+		{:else if $selectedGroup6 == '3'}
+			<Group3 bind:awardedMark={scores[5]} groupNumber="6" />
+		{:else if $selectedGroup6 == '4'}
+			<Group4 bind:awardedMark={scores[5]} groupNumber="6" />
+		{:else if $selectedGroup6 == '5'}
+			<Group5 bind:awardedMark={scores[5]} groupNumber="6" />
+		{/if}
+		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
+		<Refresh />
+	</div>
+	<div class="right-column">
+		<div class="data">
+			<div class="table">
+				<DetailedTable
+					points={totalScore}
+					awardedMarks={scores}
+					tok={tokGrade}
+					ee={eeGrade}
+					{corePoints}
+				/>
 			</div>
 		</div>
 	</div>
-{/if}
+</div>
 
 <style>
 	:global(html) {

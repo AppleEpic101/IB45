@@ -1,3 +1,4 @@
+export const prerender = false;
 import data from '$lib/assets/courses.json';
 import M19 from '$lib/assets/Grade_BoundariesM19.json';
 import N19 from '$lib/assets/Grade_BoundariesN19.json';
