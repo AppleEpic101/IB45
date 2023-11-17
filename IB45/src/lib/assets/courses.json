@@ -136,7 +136,8 @@
 				"maxMarks": 40,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 
 	"Language A: Language And Literature": {
@@ -192,7 +193,8 @@
 				"maxMarks": 40,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 
 	"Classical Language": {
@@ -233,6 +235,55 @@
 				"name": "Individual Study: Research Dossier",
 				"maxMarks": 24,
 				"weight": 0.2
+			}
+		],
+		"old": [
+			{
+				"name": "Classical Language",
+				"firstAssessment": 2024,
+				"lastAssessment": "Present",
+				"short": "classical-language",
+				"description": "Classical languages comprise Latin and Classical Greek, and these subjects are offered in group 2 of the IB Diploma Programme. Whereas the other subjects offered in group 2 cover a broad spectrum of modern language courses, the two classical language subjects provide students with the opportunity to study two historically significant languages that are also embedded in many modern languages. Latin and Classical Greek are separate courses, but they share the same syllabus and assessment criteria. The Diploma Programme courses in classical languages provide an opportunity for students to explore the languages, literatures and cultures of ancient Greece and Rome. These ancient civilizations have played a vital part in shaping many modern societies and cultures. The languages themselves are versatile and finely structured, and have had a major influence on the development of most modern European languages. The rich and varied literatures of Greece and Rome have left their mark on almost every genre of modern writing. The study of classical languages gives important insights into the cultures that produced them, and therefore leads to a greater understanding of contemporary languages, literature and cultures. Fundamentally, the study of classical languages trains the mind, developing skills of critical thought, memory and close analysis, as well as an appreciation of the beauty and power of language. Other classical languages such as Sanskrit, Arabic and Hebrew, which have all made important contributions to modern societies, are beyond the scope of this guide. In the classical languages it is a fundamental principle that the texts be studied in their original language. Linguistic skills lie at the heart of the courses, since it is through a deep understanding of the workings of a language that true intellectual contact can be made with the peoples of the past. Through this course, students will learn to translate Latin and Classical Greek works accurately and sensitively. Students will also study different genres of classical texts, examining the ideas in these works and their artistry within their historical, political and cultural contexts.",
+				"groupNumber": [2],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 30,
+						"weight": 0.35
+					},
+					{
+						"name": "Paper 2: Extract Questions",
+						"maxMarks": 32,
+						"weight": 0.35
+					},
+					{
+						"name": "Individual Study: Research Dossier",
+						"maxMarks": 28,
+						"weight": 0.3
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 40,
+						"weight": 0.3
+					},
+					{
+						"name": "Paper 2: Extract Questions",
+						"maxMarks": 32,
+						"weight": 0.3
+					},
+					{
+						"name": "Higher Level Composition",
+						"maxMarks": 25,
+						"weight": 0.2
+					},
+					{
+						"name": "Individual Study: Research Dossier",
+						"maxMarks": 28,
+						"weight": 0.2
+					}
+				]
 			}
 		]
 	},
@@ -291,7 +342,8 @@
 				"maxMarks": 30,
 				"weight": 0.25
 			}
-		]
+		],
+		"old": []
 	},
 
 	"Language AB Initio": {
@@ -328,7 +380,8 @@
 				"maxMarks": 30,
 				"weight": 0.25
 			}
-		]
+		],
+		"old": []
 	},
 
 	"Art History": {
@@ -353,7 +406,8 @@
 				"maxMarks": 32,
 				"weight": 0.32
 			}
-		]
+		],
+		"old": []
 	},
 
 	"Brazilian Social Studies": {
@@ -378,7 +432,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Business Management": {
 		"firstAssessment": 2016,
@@ -418,6 +473,55 @@
 				"name": "Internal Assessment",
 				"maxMarks": 25,
 				"weight": 0.25
+			}
+		],
+		"old": [
+			{
+				"name": "Business Management",
+				"firstAssessment": 2024,
+				"lastAssessment": 2031,
+				"short": "business-management",
+				"description": "The business management course is designed to meet the current and future needs of students who want to develop their knowledge of business content, concepts, and tools to assist with business decision-making. Future employees, business leaders, entrepreneurs, or social entrepreneurs need to be confident, creative, and compassionate as change agents for business in an increasingly interconnected global marketplace. The business management course is designed to encourage the development of these attributes. Through the exploration of four interdisciplinary concepts: creativity, change, ethics, and sustainability, this course empowers students to explore these concepts from a business perspective. Business management focuses on business functions, management processes, and decision-making in contemporary contexts of strategic uncertainty. Students examine how business decisions are influenced by factors that are internal and external to an organization and how these decisions impact upon a range of internal and external stakeholders. Emphasis is placed on strategic decision-making and the operational business functions of human resource management, finance and accounts, marketing, and operations management. Business management is a challenging and dynamic discipline that more than meets the needs of our students growing and developing in a complex business environment. This course prepares students to be global citizens ready to face up to the challenges and opportunities awaiting them in our ever-changing world.",
+				"groupNumber": [3],
+				"SL": [
+					{
+						"name": "Paper 1: Case Study",
+						"maxMarks": 30,
+						"weight": 0.35
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 40,
+						"weight": 0.35
+					},
+					{
+						"name": "Internal Assessment",
+						"maxMarks": 25,
+						"weight": 0.3
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1: Case Study",
+						"maxMarks": 30,
+						"weight": 0.25
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 50,
+						"weight": 0.3
+					},
+					{
+						"name": "Paper 3",
+						"maxMarks": 25,
+						"weight": 0.25
+					},
+					{
+						"name": "Internal Assessment",
+						"maxMarks": 25,
+						"weight": 0.2
+					}
+				]
 			}
 		]
 	},
@@ -465,7 +569,8 @@
 				"maxMarks": 45,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Geography": {
 		"firstAssessment": 2019,
@@ -511,7 +616,8 @@
 				"maxMarks": 25,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Global Politics": {
 		"firstAssessment": 2017,
@@ -557,7 +663,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"History": {
 		"firstAssessment": 2020,
@@ -603,7 +710,8 @@
 				"maxMarks": 25,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Information Technology In A Global Society": {
 		"firstAssessment": 2012,
@@ -648,6 +756,55 @@
 				"name": "Project",
 				"maxMarks": 30,
 				"weight": 0.2
+			}
+		],
+		"old": [
+			{
+				"name": "Digital Society",
+				"firstAssessment": 2024,
+				"lastAssessment": "Present",
+				"short": "digital-society",
+				"description": "Digital society is an interdisciplinary course within the individuals and societies subject group. The course is designed for young people interested in exploring the impact and importance of digital systems and technologies in the contemporary world. Digital society is intended to appeal to a broad range of teachers in the social studies, media, humanities, IT and related subject areas. ",
+				"groupNumber": [3],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 40,
+						"weight": 0.4
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 24,
+						"weight": 0.3
+					},
+					{
+						"name": "Inquiry Project",
+						"maxMarks": 24,
+						"weight": 0.3
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 52,
+						"weight": 0.35
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 24,
+						"weight": 0.2
+					},
+					{
+						"name": "Paper 3",
+						"maxMarks": 30,
+						"weight": 0.25
+					},
+					{
+						"name": "Inquiry Project",
+						"maxMarks": 24,
+						"weight": 0.2
+					}
+				]
 			}
 		]
 	},
@@ -695,7 +852,8 @@
 				"maxMarks": 25,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Psychology": {
 		"firstAssessment": 2019,
@@ -741,7 +899,8 @@
 				"maxMarks": 22,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Social And Cultural Anthropology": {
 		"firstAssessment": 2019,
@@ -782,7 +941,8 @@
 				"maxMarks": 26,
 				"weight": 0.25
 			}
-		]
+		],
+		"old": []
 	},
 	"Turkey In The 20th Century": {
 		"firstAssessment": 2022,
@@ -811,30 +971,33 @@
 				"weight": 0.25
 			}
 		],
-		"old": {
-			"firstAssessment": 2014,
-			"lastAssessment": 2021,
-			"short": "turkey-in-the-20th-century",
-			"description": "Turkey in the 20th century, previously called Turkish Social Studies, is a school-based curriculum developed for the first time in 2000 by a group of teachers working in various schools. Turkey in the 20th century, as a multi-disciplinary course, adds an international perspective to the history, geography, and sociology curricula of the Ministry of National Education (MEB). The aim was to create a course that complies with national regulations in Turkish schools offering DP. Turkey is geographically in a position where two continents meet, and culturally at the intersection of at least two great civilizations. This situation not only affected Turkey culturally and historically, but also enabled Turkey to affect its neighbors. The aim of this course is to explore the mentioned interactions with the conceptual and analytical frameworks of these three courses required by the Ministry of National Education. An international perspective has been added to the course to raise students' awareness of Turkey's possible role in the region and other societies' perceptions of Turkey.",
-			"groupNumber": [3, "s"],
-			"SLAssessments": [
-				{
-					"name": "Paper 1",
-					"maxMarks": 45,
-					"weight": 0.3
-				},
-				{
-					"name": "Paper 2",
-					"maxMarks": 40,
-					"weight": 0.3
-				},
-				{
-					"name": "Internal Assessment",
-					"maxMarks": 50,
-					"weight": 0.4
-				}
-			]
-		}
+		"old": [
+			{
+				"name": "Turkey In The 20th Century",
+				"firstAssessment": 2014,
+				"lastAssessment": 2021,
+				"short": "turkey-in-the-20th-century",
+				"description": "Turkey in the 20th century, previously called Turkish Social Studies, is a school-based curriculum developed for the first time in 2000 by a group of teachers working in various schools. Turkey in the 20th century, as a multi-disciplinary course, adds an international perspective to the history, geography, and sociology curricula of the Ministry of National Education (MEB). The aim was to create a course that complies with national regulations in Turkish schools offering DP. Turkey is geographically in a position where two continents meet, and culturally at the intersection of at least two great civilizations. This situation not only affected Turkey culturally and historically, but also enabled Turkey to affect its neighbors. The aim of this course is to explore the mentioned interactions with the conceptual and analytical frameworks of these three courses required by the Ministry of National Education. An international perspective has been added to the course to raise students' awareness of Turkey's possible role in the region and other societies' perceptions of Turkey.",
+				"groupNumber": [3, "s"],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 45,
+						"weight": 0.3
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 40,
+						"weight": 0.3
+					},
+					{
+						"name": "Internal Assessment",
+						"maxMarks": 50,
+						"weight": 0.4
+					}
+				]
+			}
+		]
 	},
 	"World Religions": {
 		"firstAssessment": 2013,
@@ -858,7 +1021,8 @@
 				"maxMarks": 30,
 				"weight": 0.25
 			}
-		]
+		],
+		"old": []
 	},
 	"Biology": {
 		"firstAssessment": 2016,
@@ -909,7 +1073,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Chemistry": {
 		"firstAssessment": 2016,
@@ -960,7 +1125,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Computer Science": {
 		"firstAssessment": 2014,
@@ -1052,7 +1218,8 @@
 				"maxMarks": 54,
 				"weight": 0.4
 			}
-		]
+		],
+		"old": []
 	},
 	"Environmental Systems And Societies": {
 		"firstAssessment": 2017,
@@ -1076,7 +1243,8 @@
 				"maxMarks": 30,
 				"weight": 0.25
 			}
-		]
+		],
+		"old": []
 	},
 	"Marine Science": {
 		"firstAssessment": "Unknown",
@@ -1100,7 +1268,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Nature Of Science": {
 		"firstAssessment": 2017,
@@ -1124,7 +1293,8 @@
 				"maxMarks": 28,
 				"weight": 0.3
 			}
-		]
+		],
+		"old": []
 	},
 	"Physics": {
 		"firstAssessment": 2016,
@@ -1175,7 +1345,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Sports, Excercise And Health Science": {
 		"firstAssessment": 2018,
@@ -1226,7 +1397,8 @@
 				"maxMarks": 24,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Mathematics: Analysis And Approaches": {
 		"firstAssessment": 2021,
@@ -1272,7 +1444,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Mathematics: Applications And Interpretation": {
 		"firstAssessment": 2021,
@@ -1318,7 +1491,8 @@
 				"maxMarks": 20,
 				"weight": 0.2
 			}
-		]
+		],
+		"old": []
 	},
 	"Dance": {
 		"firstAssessment": 2014,
@@ -1359,7 +1533,8 @@
 				"maxMarks": 22,
 				"weight": 0.4
 			}
-		]
+		],
+		"old": []
 	},
 	"Film": {
 		"firstAssessment": 2019,
@@ -1405,7 +1580,8 @@
 				"maxMarks": 24,
 				"weight": 0.35
 			}
-		]
+		],
+		"old": []
 	},
 	"Music": {
 		"firstAssessment": 2022,
@@ -1451,10 +1627,11 @@
 				"maxMarks": 38,
 				"weight": 0.3
 			}
-		]
+		],
+		"old": []
 	},
 	"Theatre": {
-		"firstAssessment": 2016,
+		"firstAssessment": 2017,
 		"lastAssessment": 2023,
 		"short": "theatre",
 		"description": "The IB Diploma Programme theatre course is a multifaceted theatre-making course. It gives students the opportunity to make theatre as creators, designers, directors, and performers. It emphasizes the importance of working both individually and as part of an ensemble. It offers the opportunity to engage actively in the creative process of inquiring, developing, presenting, and evaluating. Students are encouraged to work as inquisitive and imaginative artists, transforming ideas into action and communicating these to an audience. Theatre students learn to apply research and theory to inform and contextualize their work as they experience the course through practical and physical engagement. They understand that knowledge resides in the body and that research can be conducted physically through both action and practice. In this respect, the theatre course encourages students to appreciate that through the processes of researching, creating, preparing, presenting, and critically reflecting on theatre—as participants and spectators—they gain a richer understanding of themselves, their community, and the world. Through the study of theatre, students strengthen their awareness of their own personal and cultural perspectives, developing an appreciation of the diversity of theatre practices, their processes, and their modes of presentation. This enables students to discover and engage with different forms of theatre across time, place, and culture and promotes international-mindedness. Participation in the DP theatre course results in the development of both theatre and life skills, building confidence, imagination, creativity, and a collaborative mindset.",
@@ -1497,6 +1674,55 @@
 				"maxMarks": 32,
 				"weight": 0.25
 			}
+		],
+		"old": [
+			{
+				"name": "Theatre",
+				"firstAssessment": 2024,
+				"lastAssessment": "Present",
+				"short": "theatre",
+				"description": "The IB Diploma Programme theatre course is a multifaceted theatre-making course. It gives students the opportunity to make theatre as creators, designers, directors, and performers. It emphasizes the importance of working both individually and as part of an ensemble. It offers the opportunity to engage actively in the creative process of inquiring, developing, presenting, and evaluating. Students are encouraged to work as inquisitive and imaginative artists, transforming ideas into action and communicating these to an audience. Theatre students learn to apply research and theory to inform and contextualize their work as they experience the course through practical and physical engagement. They understand that knowledge resides in the body and that research can be conducted physically through both action and practice. In this respect, the theatre course encourages students to appreciate that through the processes of researching, creating, preparing, presenting, and critically reflecting on theatre—as participants and spectators—they gain a richer understanding of themselves, their community, and the world. Through the study of theatre, students strengthen their awareness of their own personal and cultural perspectives, developing an appreciation of the diversity of theatre practices, their processes, and their modes of presentation. This enables students to discover and engage with different forms of theatre across time, place, and culture and promotes international-mindedness. Participation in the DP theatre course results in the development of both theatre and life skills, building confidence, imagination, creativity, and a collaborative mindset.",
+				"groupNumber": [6],
+				"SL": [
+					{
+						"name": "Research Presentation",
+						"maxMarks": 24,
+						"weight": 0.3
+					},
+					{
+						"name": "Collaborative Project",
+						"maxMarks": 24,
+						"weight": 0.4
+					},
+					{
+						"name": "IA: Production Proposal",
+						"maxMarks": 20,
+						"weight": 0.3
+					}
+				],
+				"HL": [
+					{
+						"name": "Research Presentation",
+						"maxMarks": 24,
+						"weight": 0.2
+					},
+					{
+						"name": "Collaborative Project",
+						"maxMarks": 24,
+						"weight": 0.25
+					},
+					{
+						"name": "Solo Theatre Piece",
+						"maxMarks": 24,
+						"weight": 0.35
+					},
+					{
+						"name": "IA: Production Proposal",
+						"maxMarks": 20,
+						"weight": 0.2
+					}
+				]
+			}
 		]
 	},
 	"Visual Arts": {
@@ -1538,7 +1764,8 @@
 				"maxMarks": 30,
 				"weight": 0.4
 			}
-		]
+		],
+		"old": []
 	},
 	"Literature And Performance": {
 		"firstAssessment": 2015,
@@ -1567,6 +1794,33 @@
 				"maxMarks": 40,
 				"weight": 0.4
 			}
+		],
+		"old": [
+			{
+				"name": "Literature And Performance",
+				"firstAssessment": 2024,
+				"lastAssessment": "Present",
+				"short": "literature-and-performance",
+				"description": "Literature and performance is an interdisciplinary synthesis of literature and theatre. It brings together literary analysis, based on close reading, critical writing, and discussion, with practical and aesthetic elements of theatre. In this course, students engage with a range of literary works, perform dramatic texts, and transform texts into realized performances. The course is grounded in knowledge, skills, and processes associated with the individual disciplines while developing interdisciplinary understandings generated from the interactions between literature and performance. Literature and performance is only available as a standard level (SL) course. Literature and performance is one of the three Diploma Programme (DP) courses grounded in the study of language and literature. Expectations of language usage, the level of analysis, and critical reflection are the same across the three studies in language and literature courses. Yet literature and performance is unique in that it asks students to integrate understandings from two disciplines to develop further insight and create products that would not be possible within the single disciplines alone. Investigating a literary text through performance provides students with a unique perspective on the text; likewise, grounding a theatrical performance in literary understanding provides students with deeper sensitivity to the process of theatre-making. As an interdisciplinary course, literature and performance shares the course aims of both studies in language and literature and arts subjects.",
+				"groupNumber": [1, 6],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 30,
+						"weight": 0.3
+					},
+					{
+						"name": "Written Assignment",
+						"maxMarks": 26,
+						"weight": 0.3
+					},
+					{
+						"name": "Transformative Performance And Individual Oral",
+						"maxMarks": 32,
+						"weight": 0.4
+					}
+				]
+			}
 		]
 	},
 	"Theory Of Knowledge": {
@@ -1586,7 +1840,8 @@
 				"maxMarks": 10,
 				"weight": 0.33
 			}
-		]
+		],
+		"old": []
 	},
 	"Extended Essay": {
 		"groupNumber": [99],
@@ -1600,6 +1855,7 @@
 				"weight": 1
 			}
 		],
+		"old": [],
 		"description": "The extended essay is a compulsory, externally assessed piece of independent research into a topic chosen by the student and presented as a formal piece of academic writing. The extended essay is intended to promote high-level research and writing skills, intellectual discovery, and creativity while engaging students in personal research. This leads to a major piece of formally presented, structured writing of up to 4,000 words in which ideas and findings are communicated in a reasoned, coherent, and appropriate manner. Students are guided through the process of research and writing by an assigned supervisor (a teacher in the school). All students undertake three mandatory reflection sessions with their supervisor, including a short interview, or viva voce, following the completion of the extended essay. Extended essay topics may be chosen from a list of approved DP subjects—normally one of the student’s six chosen subjects for the IB diploma or the world studies option. World studies provides students with the opportunity to carry out an in-depth interdisciplinary study of an issue of contemporary global significance, using two IB disciplines."
 	},
 	"Creativity, Activity, Service": {
@@ -1607,6 +1863,7 @@
 		"firstAssessment": 2017,
 		"lastAssessment": "Present",
 		"short": "creativity-activity-service",
+		"old": [],
 		"description": "Creativity, activity, service (CAS) is at the heart of the DP, designed to strengthen and extend students' personal and interpersonal learning from the Primary Years Programme (PYP) and Middle Years Programme (MYP). CAS is organized around the three strands of creativity, activity, and service, each defined as follows: Creativity involves exploring and extending ideas leading to an original or interpretive product or performance. Activity encompasses physical exertion contributing to a healthy lifestyle. Service entails collaborative and reciprocal engagement with the community in response to an authentic need. A CAS experience is a specific event in which the student engages with one or more of the three CAS strands. It can be a single event or an extended series of events. A CAS project is a collaborative series of sequential CAS experiences lasting at least one month. Typically, a student's CAS program combines planned/unplanned singular and ongoing experiences. All are valuable and may lead to personal development. However, a meaningful CAS program must be more than just a series of unplanned/singular experiences. Students must be involved in at least one CAS project during the program."
 	}
 }

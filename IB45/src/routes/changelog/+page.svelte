@@ -19,6 +19,23 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>November 17, 2023</h2>
+		<ul>
+			<li>
+				Updated subject syllabus changes for upcoming May 2024 Exams
+				<ul>
+					<li><a href="./subjects/business-management?syl=2024">Business Management</a></li>
+					<li><a href="./subjects/classical-language?syl=2024">Classical Language</a></li>
+					<li><a href="./subjects/itgs?syl=2024">Digital Society</a></li>
+					<li>
+						<a href="./subjects/literature-and-performance?syl=2024">Literature And Performance</a>
+					</li>
+					<li><a href="./subjects/theatre?syl=2024">Theatre</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
 		<h2>September 25, 2023</h2>
 		<ul>
 			<li>Added May 2023 grade boundaries (catastrophic)</li>

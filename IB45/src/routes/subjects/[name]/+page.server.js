@@ -18,7 +18,8 @@ const courses = Object.keys(data).map((courseName) => ({
     HL: data[courseName].HLAssessments,
     groupNumber: data[courseName].groupNumber,
     firstAssessment: data[courseName].firstAssessment,
-    lastAssessment: data[courseName].lastAssessment
+    lastAssessment: data[courseName].lastAssessment,
+    old: data[courseName].old,
 }));
 
 const b = [M19, N19, N20, M21, M22, N22, M23];
@@ -106,5 +107,6 @@ export const load = (({params}) => {
         lastEE: lastEE,
         boundaryArray: b,
         info: info,
+        old: obj.old,
     }
 });
