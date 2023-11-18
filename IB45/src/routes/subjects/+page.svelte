@@ -62,6 +62,22 @@
 				{/if}
 			{/each}
 		</div>
+		<h3>Upcoming Syllabus Changes</h3>
+		<div class="list">
+			<button class="subject"
+				><a href="./subjects/business-management?syl=2024">Business Management (2024)</a></button
+			>
+			<button class="subject"
+				><a href="./subjects/classical-language?syl=2024">Classical Language (2024)</a></button
+			>
+			<button class="subject"><a href="./subjects/itgs?syl=2024">Digital Society (2024)</a></button>
+			<button class="subject"
+				><a href="./subjects/literature-and-performance?syl=2024"
+					>Literature And Performance (2024)</a
+				></button
+			>
+			<button class="subject"><a href="./subjects/theatre?syl=2024">Theatre (2024)</a></button>
+		</div>
 	</div>
 	<p class="p">
 		* = Interdisciplinary subject <br />
