@@ -11,7 +11,13 @@
 
 <footer>
 	<div>
-		<strong>THE SYNDICATE</strong><br />Alexander Du<br />Richard Yang<br />Winston Thov
+		<strong>THE SYNDICATE</strong>
+		<br>
+		Alexander Du
+		<br>
+		Richard Yang
+		<br>
+		Winston Thov
 	</div>
 	<!-- <div>
 		<strong>RESOURCES</strong><br />
@@ -21,9 +27,11 @@
 		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">N22</a>
 	</div> -->
 	<div>
-		<strong>CONTACT</strong><br />Report errors, ask questions, etc.<br /><a
-			href="mailto:admin@ibpredict.com">admin@ibpredict.com</a
-		>
+		<strong>CONTACT</strong>
+		<br>
+		Report errors, ask questions, etc.
+		<br>
+		<a href="mailto:admin@ibpredict.org">admin@ibpredict.org</a>
 	</div>
 </footer>
 
