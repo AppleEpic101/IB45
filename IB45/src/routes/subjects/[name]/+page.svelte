@@ -419,9 +419,6 @@
 				<p class="p">*Timezone 1 (North America, South America)</p>
 				<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
 			</div>
-			<p class="p">*Timezone 0 (Worldwide)</p>
-			<p class="p">*Timezone 1 (North America, South America)</p>
-			<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
 		{/if}
 	</div>
 </div>
