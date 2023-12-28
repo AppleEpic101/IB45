@@ -8,7 +8,7 @@ import M22 from '$lib/assets/Grade_BoundariesM22.json';
 import N22 from '$lib/assets/Grade_BoundariesN22.json';
 import M23 from '$lib/assets/Grade_BoundariesM23.json';
 
-const info = data['info'];
+const info = data.meta;
 const courses = Object.keys(data).map((courseName) => ({
     name: courseName,
     description: data[courseName].description,

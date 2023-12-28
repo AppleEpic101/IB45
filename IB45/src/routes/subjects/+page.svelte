@@ -1,19 +1,19 @@
 <script>
-	import { courses } from '$lib/stores/store.js';
+	import data from '$lib/assets/courses.json';
 	import { fade, fly, scale } from 'svelte/transition';
 	import Links from '$lib/components/links.svelte';
 	import { onMount } from 'svelte';
 	let ready = false;
 	onMount(() => (ready = true));
 
-	const groups = [
-		'Group 1: Studies in Language and Literature',
-		'Group 2: Language Acquisition',
-		'Group 3: Individuals and Societies',
-		'Group 4: Sciences',
-		'Group 5: Mathematics',
-		'Group 6: The Arts'
-	];
+	let courses = [];
+	for (let course in data) {
+		if (course !== 'meta') {
+			courses.push({ name: course, ...data[course] });
+		}
+	}
+
+	const groups = data.meta.groups;
 </script>
 
 <svelte:head>
@@ -37,8 +37,8 @@
 		{#each { length: 6 } as _, i}
 			<h3 in:fly={{ duration: 1400, x: 200 }}>{groups[i]}</h3>
 			<div class="list">
-				{#each $courses as course}
-					{#if course.name !== 'info' && course.groupNumber.includes(i + 1)}
+				{#each courses as course}
+					{#if course.name !== 'meta' && course?.groupNumber?.includes(i + 1)}
 						<a href="./subjects/{course.short}"
 							><button class="subject"
 								>{course.name}{#if course.groupNumber.length === 2 && course.groupNumber[1] === 's'}**
@@ -52,8 +52,8 @@
 		{/each}
 		<h3>Core</h3>
 		<div class="list">
-			{#each $courses as course}
-				{#if course.name !== 'info' && course.groupNumber.includes(99)}
+			{#each courses as course}
+				{#if course?.name !== 'meta' && course?.groupNumber?.includes(99)}
 					<a href="./subjects/{course.short}"
 						><button class="subject">
 							{course.name}
