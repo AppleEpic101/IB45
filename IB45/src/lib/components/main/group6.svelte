@@ -1,6 +1,7 @@
 <script>
-	import { group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
-	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
+	import { group6, gradeBoundaryData, timezone } from '$lib/stores/store.js';
+	import courses from '$lib/assets/courses.json';
+	import { calculateResults, constructURL } from '$lib/group.js';
 	import { onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import Slider from '$lib/components/slider.svelte';
@@ -13,9 +14,8 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	const info = $courses.find((c) => c.name === 'info');
-	const subjects = info.info.group6;
-	const SLOnly = info.info.SLOnly;
+	const subjects = courses.meta.group6;
+	const SLOnly = courses.meta.SLOnly;
 
 	const groupNumber = 6;
 	export let awardedMark;
@@ -28,13 +28,7 @@
 	$: sufficientInformation = store.name != '' && store.level != '';
 	$: fullName = store.level + ' ' + store.name;
 
-	$: foo = $courses.find((course) => course.name === store.name);
-	let matchedCourse;
-	$: if (store.level === 'SL') {
-		matchedCourse = foo?.SL;
-	} else if (store.level === 'HL') {
-		matchedCourse = foo?.HL;
-	}
+	$: matchedCourse = courses[store.name]?.[store.level + 'Assessments'];
 	$: match = $gradeBoundaryData.find((course) => course.name === fullName);
 
 	$: {
@@ -43,27 +37,15 @@
 		}
 	}
 
-	$: grade = calculateGrade(store, matchedCourse);
-	$: boundary = calculateGradeBoundary(match, boundary, grade);
-	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
-	$: if (!matchedCourse || !match || !awardedMark) awardedMark = 0;
+	$: results = calculateResults(store, matchedCourse, match, $timezone);
+	$: awardedMark = results.awardedMark;
 
-	let url = new URL($page.url);
-	$: {
-		let short;
-		$courses.forEach((c) => {
-			if (store.name === c.name) {
-				short = c.short;
-			}
-		});
-		url.pathname = '/subjects/' + short;
-
-		if (store.level === 'HL') {
-			url.searchParams.set('lvl', 'HL');
-		} else {
-			url.searchParams.set('lvl', 'SL');
-		}
-	}
+	$: url = constructURL(
+		new URL($page.url),
+		courses[store.name]?.short,
+		store.language,
+		store.level
+	);
 </script>
 
 <div class="group">
@@ -98,7 +80,13 @@
 		{/if}
 	</div>
 
-	<Groupstat {sufficientInformation} {grade} {match} {boundary} {awardedMark} />
+	<Groupstat
+		{sufficientInformation}
+		grade={results.grade}
+		{match}
+		boundary={results.boundary}
+		awardedMark={results.awardedMark}
+	/>
 	{#if sufficientInformation}
 		<br />
 		<button class="btn btn-sik"><a href={url} target="_blank">More details</a></button>

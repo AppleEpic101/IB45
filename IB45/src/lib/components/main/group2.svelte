@@ -1,6 +1,7 @@
 <script>
-	import { group2, group6, courses, gradeBoundaryData, timezone } from '$lib/stores/store.js';
-	import { calculateGradeBoundary, calculateGrade } from '$lib/group.js';
+	import { group2, group6, gradeBoundaryData, timezone } from '$lib/stores/store.js';
+	import courses from '$lib/assets/courses.json';
+	import { calculateResults, constructURL } from '$lib/group.js';
 	import { onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 	import Slider from '$lib/components/slider.svelte';
@@ -13,13 +14,12 @@
 			$group6 = '{"name":"", "level":"", "language":"", "region": "","sliderPosition":[]}';
 	});
 
-	const info = $courses.find((c) => c.name === 'info');
-	const languages = info.info.lang;
-	const classical = info.info.classical;
-	const subjects = info.info.group1
-		.concat(info.info.group2)
+	const languages = courses.meta.lang;
+	const classical = courses.meta.classical;
+	const subjects = courses.meta.group1
+		.concat(courses.meta.group2)
 		.filter((e) => e !== 'Literature And Performance');
-	const SLOnly = info.info.SLOnly;
+	const SLOnly = courses.meta.SLOnly;
 
 	export let groupNumber = 2;
 	export let awardedMark;
@@ -33,13 +33,7 @@
 	$: sufficientInformation = store.name != '' && store.level != '' && store.language != '';
 	$: fullName = store.level + ' ' + store.language + ' ' + store.name;
 
-	$: foo = $courses.find((course) => course.name === store.name);
-	let matchedCourse;
-	$: if (store.level === 'SL') {
-		matchedCourse = foo?.SL;
-	} else if (store.level === 'HL') {
-		matchedCourse = foo?.HL;
-	}
+	$: matchedCourse = courses[store.name]?.[store.level + 'Assessments'];
 	$: matchedLang = $gradeBoundaryData.find((course) => course.name === fullName);
 	$: {
 		if (SLOnly.includes(store.name)) {
@@ -56,28 +50,15 @@
 		}
 	}
 
-	$: grade = calculateGrade(store, matchedCourse);
-	$: boundary = calculateGradeBoundary(matchedLang, boundary, grade);
-	$: awardedMark = boundary.length > 1 ? boundary[parseInt($timezone) - 1] : boundary[0];
-	$: if (!matchedCourse || !matchedLang || !awardedMark) awardedMark = 0;
+	$: results = calculateResults(store, matchedCourse, matchedLang, $timezone);
+	$: awardedMark = results.awardedMark;
 
-	let url = new URL($page.url);
-	$: {
-		let short;
-		$courses.forEach((c) => {
-			if (store.name === c.name) {
-				short = c.short;
-			}
-		});
-		url.pathname = '/subjects/' + short;
-
-		url.searchParams.set('lang', store.language);
-		if (store.level === 'HL') {
-			url.searchParams.set('lvl', 'HL');
-		} else {
-			url.searchParams.set('lvl', 'SL');
-		}
-	}
+	$: url = constructURL(
+		new URL($page.url),
+		courses[store.name]?.short,
+		store.language,
+		store.level
+	);
 </script>
 
 <div class="group">
@@ -119,7 +100,13 @@
 		{/if}
 	</div>
 
-	<Groupstat {sufficientInformation} {grade} match={matchedLang} {boundary} {awardedMark} />
+	<Groupstat
+		{sufficientInformation}
+		grade={results.grade}
+		match={matchedLang}
+		boundary={results.boundary}
+		awardedMark={results.awardedMark}
+	/>
 	{#if sufficientInformation}
 		<br />
 		<button class="btn btn-sik"><a href={url} target="_blank">More details</a></button>

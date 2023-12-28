@@ -1,5 +1,6 @@
 <script>
-	import { courses, gradeBoundaryData, timezone, tok } from '$lib/stores/store.js';
+	import { gradeBoundaryData, timezone, tok } from '$lib/stores/store.js';
+	import courses from '$lib/assets/courses.json';
 	import Slider from '$lib/components/slider.svelte';
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
@@ -26,10 +27,10 @@
 		$tok = JSON.stringify(store);
 	}
 
-	const foo = $courses.find((course) => course.name === 'Theory Of Knowledge');
-	const bar = $courses.find((course) => course.name === 'Extended Essay');
-	const tokAssessments = foo?.SL;
-	const eeAssessments = bar?.SL;
+	const foo = courses['Theory Of Knowledge'];
+	const bar = courses['Extended Essay'];
+	const tokAssessments = foo?.SLAssessments;
+	const eeAssessments = bar?.SLAssessments;
 	$: tokBoundary = $gradeBoundaryData.find((course) => course.name === 'Theory Of Knowledge');
 	$: eeBoundary = $gradeBoundaryData.find((course) => course.name === 'Extended Essay');
 
