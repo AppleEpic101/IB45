@@ -1,3 +1,49 @@
+import courses from '$lib/assets/courses.json';
+import M19 from '$lib/assets/Grade_BoundariesM19.json';
+import N19 from '$lib/assets/Grade_BoundariesN19.json';
+import N20 from '$lib/assets/Grade_BoundariesN20.json';
+import M21 from '$lib/assets/Grade_BoundariesM21.json';
+import M22 from '$lib/assets/Grade_BoundariesM22.json';
+import N22 from '$lib/assets/Grade_BoundariesN22.json';
+import M23 from '$lib/assets/Grade_BoundariesM23.json';
+
+const b = [M19, N19, N20, M21, M22, N22, M23];
+
+export const calculateNormalResults = (grade, boundary) => {
+    let mark = 0;
+    boundary?.forEach((arr) => {
+        if(grade >= arr) {
+            mark++;
+        }
+    });
+    return mark;
+}
+
+export const calculateCoreResults = (grade, boundary) => {
+    const core = ['E', 'D', 'C', 'B', 'A'];
+    let index = -1;
+    boundary?.forEach((arr) => {
+        if(grade >= arr) {
+            index++;
+        }
+    });
+    return core[index];
+}
+
+export const calculateGrade = (assessments, marks, weight, subjectName) => {
+    if(subjectName === "Theory Of Knowledge") {
+        return 2 * assessments[0] + assessments[1];
+    } else if(subjectName === "Extended Essay") {
+        return assessments[0];
+    } else {
+        let grade = 0;
+        for(let i = 0; i < marks.length; i++) {
+            grade += (assessments[i] / marks[i]) * weight[i];
+        }
+        return Math.round(grade * 100);
+    }
+}
+
 export const calculateResults = (store, matchedCourse, matchedLang, timezone) => {
 
     // compute weighted average
@@ -37,27 +83,66 @@ export const constructURL = (url, short, lang, lvl) => {
     return url;
 }
 
-export function calculateGradeBoundary(matchedLang, boundary, grade) {
-    boundary = [];
-    if (matchedLang !== undefined) {
-        matchedLang.TZ.forEach((arr, i) => {
-            boundary[i] = 0;
-            arr.forEach((element) => {
-                if (grade >= element) {
-                    boundary[i]++;
-                }
-            });
-        });
-    }
-    return boundary;
+const getTZ = (name, short, timezone) => {
+    let arr = [];
+    timezone?.forEach((tz, i) => {
+        arr.push(
+            {
+                name, 
+                short,
+                timezone: timezone.length === 1 ? 0 : i + 1,
+                fullName: timezone.length === 1 ? short + ' TZ0' : short + ' TZ' + (i + 1),
+                tz,
+            }
+        );
+    });
+   return arr;
 }
 
-export function calculateGrade(store, matchedCourse) {
-    let grade = 0;
-    if (matchedCourse !== undefined) {
-        matchedCourse.forEach((assessment, i) => {
-            grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-        });
+export const getAllBoundaries = (name, lang="none") => {
+    let SL = [];
+    let HL = [];
+
+    let fullName = lang === "none" ? name : lang + " " + name;
+    b.forEach((boundary, i) => {
+        SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['SL ' + fullName]?.TZ));
+        if(name === "History") {
+            HL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['HL History Americas']?.TZ))
+        } else if(name === "Theory Of Knowledge" || name === "Extended Essay") {
+            SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary[fullName]?.TZ));
+        } else {
+            HL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['HL ' + fullName]?.TZ));
+        }
+    });
+    return {
+        course:courses[name],
+        SL,
+        HL,
     }
-    return Math.round(grade);
+
 }
+
+// export function calculateGradeBoundary(matchedLang, boundary, grade) {
+//     boundary = [];
+//     if (matchedLang !== undefined) {
+//         matchedLang.TZ.forEach((arr, i) => {
+//             boundary[i] = 0;
+//             arr.forEach((element) => {
+//                 if (grade >= element) {
+//                     boundary[i]++;
+//                 }
+//             });
+//         });
+//     }
+//     return boundary;
+// }
+
+// export function calculateGrade(store, matchedCourse) {
+//     let grade = 0;
+//     if (matchedCourse !== undefined) {
+//         matchedCourse.forEach((assessment, i) => {
+//             grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
+//         });
+//     }
+//     return Math.round(grade);
+// }

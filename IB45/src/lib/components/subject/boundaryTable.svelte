@@ -19,7 +19,7 @@
 
 	{#each res as result}
 		<tr>
-			<td>{result.name}</td>
+			<td>{result.fullName}</td>
 			{#each result.tz as tz}
 				<td>{tz}</td>
 			{/each}

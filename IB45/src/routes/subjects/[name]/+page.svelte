@@ -11,8 +11,13 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import {
+		calculateNormalResults,
+		calculateCoreResults,
+		getAllBoundaries,
+		calculateGrade
+	} from '$lib/group.js';
 	export let data;
-
 	let version = $page?.url.searchParams.get('syl')
 		? $page.url.searchParams.get('syl')
 		: data?.firstAssessment;
@@ -44,157 +49,59 @@
 
 	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
-	const getTZ = (timezone, name, info) => {
-		let arr = [];
+	// gets all previous grade boundaries
+	$: SLResults = data.isLanguageSubject
+		? getAllBoundaries(data.name, language).SL
+		: getAllBoundaries(data.name).SL;
+	$: HLResults = data.isLanguageSubject
+		? getAllBoundaries(data.name, language).HL
+		: getAllBoundaries(data.name).HL;
 
-		timezone.forEach((tz, i) => {
-			if (timezone.length === 1) {
-				arr.push({ tz, name: info.short + ' TZ0', courseName: name });
-			} else {
-				arr.push({ tz, name: info.short + ' TZ' + (i + 1), courseName: name });
-			}
-		});
+	// gets the latest grade boundary
+	$: lastSL =
+		SLResults[SLResults.length - 1]?.timezone === 2
+			? SLResults[SLResults.length - 2]
+			: SLResults[SLResults.length - 1];
 
-		return arr;
-	};
-
-	// display table
-	const b = data.boundaryArray;
-	let SLResults = [];
-	let HLResults = [];
-
-	let lastSL;
-	let lastHL;
-
-	$: {
-		HLResults = [];
-		SLResults = [];
-		b.forEach((boundary) => {
-			const info = boundary['info'];
-			const HL = boundary['HL ' + name];
-			const SL = boundary['SL ' + name];
-
-			if (HL && info) {
-				let timezone = [...HL.TZ];
-				lastHL = getTZ(timezone, 'HL ' + name, info);
-				HLResults.push(...getTZ(timezone, 'HL ' + name, info));
-			}
-
-			if (SL && info) {
-				let timezone = [...SL.TZ];
-				lastSL = getTZ(timezone, 'SL ' + name, info);
-				SLResults.push(...getTZ(timezone, 'SL ' + name, info));
-			}
-		});
-	}
+	$: lastHL =
+		HLResults[HLResults.length - 1]?.timezone === 2
+			? HLResults[HLResults.length - 2]
+			: HLResults[HLResults.length - 1];
 
 	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
-	let s;
-	$: {
-		if (level === 'HL') {
-			s = syllabus.HL;
-		} else {
-			s = syllabus.SL;
-		}
-	}
-	$: {
-		if (s) {
-			weight = s.map((a) => a.weight);
-			marks = s.map((a) => a.maxMarks);
-		}
-	}
+	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
+
+	// calculate weighted average (percentage out of 100)
 	let weight = [];
 	let marks = [];
 	let assessments = [];
-	let grade;
 	$: {
-		grade = 0;
-		if (data.name === 'Theory Of Knowledge') {
-			grade = 2 * assessments[0] + assessments[1];
-		} else if (data.name === 'Extended Essay') {
-			grade = assessments[0];
-		} else {
-			for (let i = 0; i < weight.length; i++) {
-				grade += (assessments[i] / marks[i]) * weight[i] * 100;
-			}
-		}
-		grade = Math.round(grade);
+		weight = s?.map((a) => a.weight);
+		marks = s?.map((a) => a.maxMarks);
 	}
+	$: grade = calculateGrade(assessments, marks, weight, data.name);
 
 	let reg = 'Americas';
 
+	// calculate mark
 	let mark, str;
-	const letters = ['E', 'D', 'C', 'B', 'A'];
 	$: {
-		mark = 0;
-		if (data.name === 'History' && level === 'HL') {
-			const h = data.lastHistory[regions.indexOf(reg)];
-			h[0].tz.forEach((a) => {
-				if (grade >= a) {
-					mark++;
-				}
-			});
-			str = 'Using the ' + h[0].name + ' grade boundary';
-		} else if (
-			data.name !== 'Theory Of Knowledge' &&
-			data.name !== 'Extended Essay' &&
-			data.name !== 'Creativity, Activity, Service'
-		) {
-			if (lastSL && level === 'SL') {
-				lastSL[0].tz.forEach((a) => {
-					if (grade >= a) {
-						mark++;
-					}
-				});
-				str =
-					lastSL.length === 1
-						? 'Using the ' + lastSL[0].name + ' grade boundary'
-						: 'Using the ' + lastSL[0].name + ' grade boundary';
-			} else if (lastHL && level === 'HL') {
-				lastHL[0].tz.forEach((a) => {
-					if (grade >= a) {
-						mark++;
-					}
-				});
-				str =
-					lastHL.length === 1
-						? 'Using the ' + lastHL[0].name + ' grade boundary'
-						: 'Using the ' + lastHL[0].name + ' grade boundary';
+		if (data.isCoreSubject) {
+			mark = calculateCoreResults(grade, lastSL?.tz);
+			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
+		} else {
+			if (level === 'HL') {
+				mark = calculateNormalResults(grade, lastHL?.tz);
+				str = 'Using the ' + lastHL?.fullName + ' grade boundary';
+			} else {
+				mark = calculateNormalResults(grade, lastSL?.tz);
+				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
-		} else if (data.name === 'Theory Of Knowledge') {
-			const t = data.lastTOK;
-			t[0].tz.forEach((a) => {
-				if (grade >= a) {
-					mark++;
-				}
-			});
-			str = 'Using the ' + t[0].name + ' grade boundary';
-			mark = letters[parseInt(mark) - 1];
-		} else if (data.name === 'Extended Essay') {
-			const e = data.lastEE;
-			str = 'Using the ' + e[0].name + ' grade boundary';
-			e[0].tz.forEach((a) => {
-				if (grade >= a) {
-					mark++;
-				}
-			});
-			mark = letters[parseInt(mark) - 1];
 		}
+
 		if (
-			level === 'SL' &&
-			SLResults.length === 0 &&
-			data.name !== 'Theory Of Knowledge' &&
-			data.name !== 'Extended Essay' &&
-			data.name !== 'History'
-		) {
-			str = 'No grade boundary data available';
-			mark = 'N/A';
-		} else if (
-			level === 'HL' &&
-			HLResults.length === 0 &&
-			data.name !== 'Theory Of Knowledge' &&
-			data.name !== 'Extended Essay' &&
-			data.name !== 'History'
+			(level === 'SL' && SLResults.length === 0 && !data.isCoreSubject) ||
+			(level === 'HL' && HLResults.length === 0 && !data.isCoreSubject)
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
@@ -313,11 +220,6 @@
 						<Dropdown arr={languages} bind:value={language} />
 					</div>
 				{/if}
-				{#if syllabus.name === 'History' && level === 'HL'}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-						<Dropdown arr={regions} bind:value={reg} />
-					</div>
-				{/if}
 			</div>
 			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
 				{#if !data.SLOnly}
@@ -344,8 +246,8 @@
 								max={assessment.maxMarks}
 							/>
 						{/each}
-					{:else if !data.SLOnly}
-						<BoundaryTable name={'HL ' + name} res={HLResults} />
+						<!-- {:else if !data.SLOnly}
+						<BoundaryTable name={'HL ' + name} res={HLResults} /> -->
 					{/if}
 				</div>
 				<div class="predicted">
@@ -397,22 +299,14 @@
 					{/if}
 				</div>
 				<div class="tables">
-					{#if syllabus.name === 'Theory Of Knowledge'}
-						<CoreTable name={'TOK'} res={data.TOK} />
-					{:else if syllabus.name === 'Extended Essay'}
-						<CoreTable name={'EE'} res={data.EE} />
+					{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
+						<CoreTable {name} res={SLResults} />
+						<CoreMatrix name={syllabus.name} />
 					{:else}
 						<BoundaryTable name={'SL ' + name} res={SLResults} />
-						{#if syllabus.name === 'History'}
-							{#each regions as r, i}
-								<BoundaryTable name={'HL History ' + r} res={data.historyResults[i]} />
-							{/each}
-						{:else if !data.SLOnly}
+						{#if !data.SLOnly}
 							<BoundaryTable name={'HL ' + name} res={HLResults} />
 						{/if}
-					{/if}
-					{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
-						<CoreMatrix name={syllabus.name} />
 					{/if}
 				</div>
 				<p class="p">*Timezone 0 (Worldwide)</p>
