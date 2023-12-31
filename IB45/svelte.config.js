@@ -1,9 +1,7 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-netlify';
 
 export default {
-	kit: {
-		adapter: adapter({			
-			precompress: true,
-		})
-	}
+  kit: {
+    adapter: adapter()
+  }
 };
