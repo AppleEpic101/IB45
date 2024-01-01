@@ -8,9 +8,6 @@
 	export let grade;
 	export let SLResults;
 	export let HLResults;
-	export let historyResults;
-	export let TOK;
-	export let EE;
 
 	const len = name === 'Theory Of Knowledge' || name === 'Extended Essay' ? 5 : 7;
 	let probabilities = Array(len).fill(0);
@@ -31,21 +28,12 @@
 
 	$: {
 		count = Array(len).fill(0);
-		if (name === 'History' && level === 'HL') {
-			total = historyResults[0].length;
-			count = calculate(historyResults[0], grade, count);
-		} else if (name === 'Theory Of Knowledge') {
-			total = TOK.length;
-			count = calculate(TOK, grade, count);
-		} else if (name === 'Extended Essay') {
-			total = EE.length;
-			count = calculate(EE, grade, count);
-		} else if (level === 'SL') {
-			total = SLResults.length;
-			count = calculate(SLResults, grade, count);
-		} else if (level === 'HL') {
+		if (level === 'HL') {
 			total = HLResults.length;
 			count = calculate(HLResults, grade, count);
+		} else {
+			total = SLResults.length;
+			count = calculate(SLResults, grade, count);
 		}
 	}
 

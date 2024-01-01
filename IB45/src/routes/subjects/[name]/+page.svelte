@@ -7,49 +7,40 @@
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
 	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import Bargraph from '$lib/components/subject/bargraph.svelte';
-	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
+
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 	import {
 		calculateNormalResults,
 		calculateCoreResults,
 		getAllBoundaries,
 		calculateGrade
 	} from '$lib/group.js';
+
 	export let data;
-	let version = $page?.url.searchParams.get('syl')
-		? $page.url.searchParams.get('syl')
-		: data?.firstAssessment;
+	let version = $page.url.searchParams.get('syl') || data?.firstAssessment;
 	const datas = [data, ...data.old];
 
 	$: syllabus = datas.find((a) => a.firstAssessment == version);
 
-	// svelte transitions
-	let ready = false;
-	onMount(() => (ready = true));
-
-	const newUrl = new URL($page.url);
 	const languages = data.info.lang;
-	const regions = data.info.region;
 	const classical = data.info.classical;
 
-	// select default language
+	// get language from query parameters
 	let language;
-	if (
-		(languages.includes($page.url.searchParams.get('lang')) &&
-			data.name !== 'Classical Language') ||
-		(classical.includes($page.url.searchParams.get('lang')) && data.name === 'Classical Language')
-	) {
-		language = $page.url.searchParams.get('lang');
-	} else {
-		if (data.name === 'Classical Language') language = 'Latin';
-		else language = 'English';
+	let langQuery = $page.url.searchParams.get('lang');
+	if (data.name === 'Classical Language') {
+		language = classical.includes(langQuery) ? langQuery : 'Latin';
+	} else if (data.isLanguageSubject) {
+		language = languages.includes(langQuery) ? langQuery : 'English';
 	}
+
+	// get level from query parameters
+	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
+	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
 
 	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
-	// gets all previous grade boundaries
+	// gets all previous grade boundaries (for table display)
 	$: SLResults = data.isLanguageSubject
 		? getAllBoundaries(data.name, language).SL
 		: getAllBoundaries(data.name).SL;
@@ -57,7 +48,7 @@
 		? getAllBoundaries(data.name, language).HL
 		: getAllBoundaries(data.name).HL;
 
-	// gets the latest grade boundary
+	// gets the latest grade boundary (for awarded mark calculation)
 	$: lastSL =
 		SLResults[SLResults.length - 1]?.timezone === 2
 			? SLResults[SLResults.length - 2]
@@ -67,9 +58,6 @@
 		HLResults[HLResults.length - 1]?.timezone === 2
 			? HLResults[HLResults.length - 2]
 			: HLResults[HLResults.length - 1];
-
-	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
-	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
 
 	// calculate weighted average (percentage out of 100)
 	let weight = [];
@@ -81,9 +69,7 @@
 	}
 	$: grade = calculateGrade(assessments, marks, weight, data.name);
 
-	let reg = 'Americas';
-
-	// calculate mark
+	// calculate awarded mark
 	let mark, str;
 	$: {
 		if (data.isCoreSubject) {
@@ -99,6 +85,7 @@
 			}
 		}
 
+		// boundary not found
 		if (
 			(level === 'SL' && SLResults.length === 0 && !data.isCoreSubject) ||
 			(level === 'HL' && HLResults.length === 0 && !data.isCoreSubject)
@@ -108,28 +95,30 @@
 		}
 	}
 
-	$: {
-		if (data.isLanguageSubject) {
-			newUrl?.searchParams?.set('lang', language);
-			if (browser) goto(newUrl, { replaceState: true });
+	// update url with new query parameters
+	const newUrl = new URL($page.url);
+	const updateUrl = (param, condition, value) => {
+		if (condition) {
+			newUrl?.searchParams?.set(param, value);
 		} else {
-			newUrl?.searchParams?.delete('lang');
-			if (browser) goto(newUrl, { replaceState: true });
+			newUrl?.searchParams?.delete(param);
 		}
-		if (level === 'HL' && !data.isCoreSubject) {
-			newUrl?.searchParams?.set('lvl', 'HL');
-			if (browser) goto(newUrl, { replaceState: true });
-		} else if (level === 'SL') {
-			newUrl?.searchParams?.delete('lvl');
-			if (browser) goto(newUrl, { replaceState: true });
-		}
+	};
 
-		if (version && version !== data.firstAssessment) {
-			newUrl?.searchParams?.set('syl', version);
-			if (browser) goto(newUrl, { replaceState: true });
-		} else if (version && version === data.firstAssessment) {
-			newUrl?.searchParams?.delete('syl');
-			if (browser) goto(newUrl, { replaceState: true });
+	const go = () => {
+		if (newUrl?.searchParams?.toString()) {
+			history.replaceState({}, '', `?${newUrl.searchParams.toString()}`);
+		} else {
+			history.replaceState({}, '', `${$page.url.pathname}`);
+		}
+	};
+
+	$: {
+		if (typeof window !== 'undefined') {
+			updateUrl('lang', data.isLanguageSubject, language);
+			updateUrl('lvl', level === 'HL' && !data.isCoreSubject, 'HL');
+			updateUrl('syl', version && version !== data.firstAssessment, version);
+			go();
 		}
 	}
 </script>
@@ -237,18 +226,14 @@
 			{/if}
 			<div class="assessments">
 				<div class="ass">
-					{#if s}
-						{#each s as assessment, i}
-							<Slider
-								bind:value={assessments[i]}
-								name={assessment.name}
-								weight={assessment.weight}
-								max={assessment.maxMarks}
-							/>
-						{/each}
-						<!-- {:else if !data.SLOnly}
-						<BoundaryTable name={'HL ' + name} res={HLResults} /> -->
-					{/if}
+					{#each s as assessment, i}
+						<Slider
+							bind:value={assessments[i]}
+							name={assessment.name}
+							weight={assessment.weight}
+							max={assessment.maxMarks}
+						/>
+					{/each}
 				</div>
 				<div class="predicted">
 					<div class="container">
@@ -267,17 +252,7 @@
 
 			<h3>Graphs</h3>
 			<div class="graph">
-				<Bargraph
-					name={syllabus.name}
-					region={reg}
-					historyResults={data.historyResults}
-					TOK={data.TOK}
-					EE={data.EE}
-					{level}
-					{SLResults}
-					{HLResults}
-					{grade}
-				/>
+				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
 			</div>
 
 			<div class="grade">
