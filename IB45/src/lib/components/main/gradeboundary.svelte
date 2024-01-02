@@ -25,7 +25,7 @@
 	}
 </script>
 
-<h3>Select the grade boundary</h3>
+<p><strong>Select the grade boundary.</strong></p>
 <div class="wrap">
 	{#each { length: gradeBoundaries.length } as _, i}
 		<label>

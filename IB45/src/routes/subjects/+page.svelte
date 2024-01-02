@@ -3,8 +3,6 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import Links from '$lib/components/links.svelte';
 	import { onMount } from 'svelte';
-	let ready = false;
-	onMount(() => (ready = true));
 
 	let courses = [];
 	for (let course in data) {

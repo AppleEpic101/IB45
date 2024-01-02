@@ -21,7 +21,7 @@
 </script>
 
 <div class="wrap">
-	<h3>Select the timezone.</h3>
+	<p><strong>Select the timezone.</strong></p>
 	{#each { length: numTimezones } as _, i}
 		<label>
 			<input type="radio" name="radio" bind:group={$timezone} value={i + 1 + ''} />

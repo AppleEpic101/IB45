@@ -1,7 +1,6 @@
 <script>
 	import { selectedGroup6 } from '$lib/stores/store.js';
 	import { fly, scale, fade } from 'svelte/transition';
-	import { onMount } from 'svelte';
 	import Group1 from '$lib/components/main/group1.svelte';
 	import Group2 from '$lib/components/main/group2.svelte';
 	import Group3 from '$lib/components/main/group3.svelte';
@@ -14,9 +13,7 @@
 	import Timezone from '$lib/components/main/timezone.svelte';
 	import Links from '$lib/components/links.svelte';
 	import Refresh from '$lib/components/main/refresh.svelte';
-
-	let ready = false;
-	onMount(() => (ready = true));
+	import Button from '$lib/components/button.svelte';
 
 	let scores = [];
 	let totalScore;
@@ -49,7 +46,7 @@
 <div class="intro">
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated November 17, 2023</h4>
+		<h4>Last updated January 2, 2024</h4>
 	</div>
 	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
@@ -63,15 +60,40 @@
 			know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
 		</p>
 
-		<p class="main">
-			View course descriptions, enter assessment scores, and view past grade boundaries for an
-			individual subject <a href="/subjects">here.</a>
-		</p>
 		<p>
 			<strong> NOTE: May 2023 grade boundaries have arrived! &#127881;&#127881;&#127881;</strong>
 		</p>
+
+		<hr />
+		<p><strong>Individual Grade Calculators</strong></p>
+
+		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
+		<Button href={'./subjects/literature'} text={'Literature'} />
+		<Button href={'./subjects/language-b'} text={'Language B'} />
+		<Button href={'./subjects/language-ab'} text={'AB Initio'} />
+		<Button href={'./subjects/business-management'} text={'Business Management'} />
+		<Button href={'./subjects/economics'} text={'Economics'} />
+		<Button href={'./subjects/history'} text={'History'} />
+		<Button href={'./subjects/psychology'} text={'Psychology'} />
+		<Button href={'./subjects/biology'} text={'Biology'} />
+		<Button href={'./subjects/chemistry'} text={'Chemistry'} />
+		<Button href={'./subjects/physics'} text={'Physics'} />
+		<Button href={'./subjects/environmental-systems-and-societies'} text={'ESS'} />
+		<Button href={'./subjects/visual-arts'} text={'Visual Arts'} />
+		<Button href={'./subjects/theory-of-knowledge'} text={'TOK'} />
+		<Button href={'./subjects/extended-essay'} text={'EE'} />
+		<Button href={'./subjects'} text={'More...'} />
+
+		<p><strong>Upcoming May 2024 Syllabus Changes</strong></p>
+		<Button href={'./subjects/business-management?syl=2024'} text={'Business Management (2024)'} />
+		<Button href={'./subjects/classical-language?syl=2024'} text={'Classical Language (2024)'} />
+		<Button href={'./subjects/itgs?syl=2024'} text={'Digital Society (2024)'} />
+		<Button
+			href={'./subjects/literature-and-performance?syl=2024'}
+			text={'Literature & Performance (2024)'}
+		/>
+		<hr />
 	</div>
-	<hr />
 
 	<div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
 		<GradeBoundary />
