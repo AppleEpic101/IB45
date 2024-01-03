@@ -79,6 +79,8 @@
 		<Button href={'./subjects/chemistry'} text={'Chemistry'} />
 		<Button href={'./subjects/physics'} text={'Physics'} />
 		<Button href={'./subjects/environmental-systems-and-societies'} text={'ESS'} />
+		<Button href={'./subjects/analysis-and-approaches'} text={'Math AA'} />
+		<Button href={'./subjects/applications-and-interpretation'} text={'Math AI'} />
 		<Button href={'./subjects/visual-arts'} text={'Visual Arts'} />
 		<Button href={'./subjects/theory-of-knowledge'} text={'TOK'} />
 		<Button href={'./subjects/extended-essay'} text={'EE'} />
