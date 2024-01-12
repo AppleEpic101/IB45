@@ -28,6 +28,18 @@
 		}
 		totalScore += corePoints;
 	}
+
+	const components = {
+		'1': Group1,
+		'2': Group2,
+		'3': Group3,
+		'4': Group4,
+		'5': Group5,
+		'6': Group6
+	};
+
+	let Component;
+	$: Component = components[$selectedGroup6];
 </script>
 
 <svelte:head>
@@ -39,9 +51,8 @@
 </svelte:head>
 
 <div class="banner">
-	<h1 in:scale={{ duration: 1500, start: 0.3, opacity: 0.5 }}>
-		International Baccalaureate Diploma Programme <br /> <br /> Predicted Score Calculator
-	</h1>
+	<h1>International Baccalaureate Diploma Programme</h1>
+	<h1>Predicted Score Calculator</h1>
 </div>
 <div class="intro">
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
@@ -124,18 +135,8 @@
 		<Group3 bind:awardedMark={scores[2]} />
 		<Group4 bind:awardedMark={scores[3]} />
 		<Group5 bind:awardedMark={scores[4]} />
-		{#if $selectedGroup6 == '6'}
-			<Group6 bind:awardedMark={scores[5]} />
-		{:else if $selectedGroup6 == '1'}
-			<Group1 bind:awardedMark={scores[5]} groupNumber="6" />
-		{:else if $selectedGroup6 == '2'}
-			<Group2 bind:awardedMark={scores[5]} groupNumber="6" />
-		{:else if $selectedGroup6 == '3'}
-			<Group3 bind:awardedMark={scores[5]} groupNumber="6" />
-		{:else if $selectedGroup6 == '4'}
-			<Group4 bind:awardedMark={scores[5]} groupNumber="6" />
-		{:else if $selectedGroup6 == '5'}
-			<Group5 bind:awardedMark={scores[5]} groupNumber="6" />
+		{#if Component}
+			<svelte:component this={Component} bind:awardedMark={scores[5]} groupNumber="6" />
 		{/if}
 		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
 		<Refresh />
@@ -198,25 +199,22 @@
 	}
 
 	.banner {
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		text-align: center;
 		background-color: var(--banner);
 		color: white;
-		text-shadow: 1px 1px 1px navyblue;
-		padding: 0;
+		padding: 1px;
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
 		border-right: 0.5px solid var(--lightprimary);
 	}
 
 	.banner h1 {
-		margin: 80px 50px;
+		margin: 65px;
 	}
 
 	.intro {
-		margin: 0 18%;
+		width: 950px;
+		margin: 0 auto;
 	}
 
 	.layout {
@@ -240,6 +238,10 @@
 	}
 
 	@media screen and (max-width: 1000px) {
+		.intro {
+			margin: 0 25px;
+			width: auto;
+		}
 		p {
 			line-height: 1.5;
 		}

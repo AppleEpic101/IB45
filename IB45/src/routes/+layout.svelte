@@ -1,6 +1,6 @@
 <script>
 	import Navigation from '$lib/components/navigation.svelte';
-	import { onMount } from 'svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <Navigation />
@@ -9,31 +9,7 @@
 	<slot />
 </div>
 
-<footer>
-	<div>
-		<strong>THE SYNDICATE</strong>
-		<br>
-		Alexander Du
-		<br>
-		Richard Yang
-		<br>
-		Winston Thov
-	</div>
-	<!-- <div>
-		<strong>RESOURCES</strong><br />
-		<a href="/May 2019 Grade Boundaries.pdf" target="_blank">M19</a>
-		<a href="/November 2019 Grade Boundaries.pdf" target="_blank">N19</a><br />
-		<a href="/May 2022 Grade Boundaries.pdf" target="_blank">M22</a>
-		<a href="/November 2022 Grade Boundaries.pdf" target="_blank">N22</a>
-	</div> -->
-	<div>
-		<strong>CONTACT</strong>
-		<br>
-		Report errors, ask questions, etc.
-		<br>
-		<a href="mailto:admin@ibpredict.org">admin@ibpredict.org</a>
-	</div>
-</footer>
+<Footer />
 
 <link rel="stylesheet" href="/style/light.css" />
 
@@ -89,30 +65,5 @@
 
 	.slot {
 		min-height: 60vh;
-	}
-
-	footer {
-		display: flex;
-		justify-content: space-evenly;
-		align-items: flex-start;
-		background-color: var(--primary);
-		border-top: 1px solid black;
-		padding-bottom: 25px;
-	}
-
-	footer div {
-		text-align: center;
-		line-height: 2;
-	}
-
-	footer div::before {
-		content: '\A';
-		white-space: pre;
-	}
-
-	@media screen and (max-width: 560px) {
-		footer {
-			display: block;
-		}
 	}
 </style>
