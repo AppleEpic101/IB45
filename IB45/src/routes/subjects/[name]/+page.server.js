@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 export const prerender = false;
 import data from '$lib/assets/courses.json';
 
@@ -20,26 +21,24 @@ const languageSubjects = info.group1
     .filter((e) => e !== 'Literature And Performance');
 const SL = info.SLOnly;
 
-export const load = (({params}) => {
-    let obj;
-    courses.forEach((o) => {
-        if (o.short === params.name) {
-            obj = o;
-        }
-    });
+export const load = (({ params }) => {
+    let subjectData;
+    subjectData = courses.find(course => course.short === params.name);
+    console.log(subjectData);
+    if (!subjectData) { throw error(404, 'Subject not found'); }
     return {
-        name: obj.name,
+        name: subjectData.name,
         short: params.name,
-        description: obj.description,
-        firstAssessment: obj.firstAssessment,
-        lastAssessment: obj.lastAssessment,
-        groupNumber: obj.groupNumber,
-        HL: obj.HL,
-        SL: obj.SL,
-        SLOnly: SL.includes(obj.name),
-        isLanguageSubject: languageSubjects.includes(obj.name),
-        isCoreSubject: obj.name === "Theory Of Knowledge" || obj.name === "Extended Essay" || obj.name === "Creativity, Activity, Service",
+        description: subjectData.description,
+        firstAssessment: subjectData.firstAssessment,
+        lastAssessment: subjectData.lastAssessment,
+        groupNumber: subjectData.groupNumber,
+        HL: subjectData.HL,
+        SL: subjectData.SL,
+        SLOnly: SL.includes(subjectData.name),
+        isLanguageSubject: languageSubjects.includes(subjectData.name),
+        isCoreSubject: ["Theory Of Knowledge", "Extended Essay", "Creativity, Activity, Service"].includes(subjectData.name),
         info: info,
-        old: obj.old,
+        old: subjectData.old,
     }
 });
