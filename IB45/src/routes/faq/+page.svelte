@@ -21,7 +21,7 @@
 	<div in:fly={{ delay: 100, duration: 1300, y: 50 }}>
 		<p>
 			I have compiled a list of the most frequently asked questions by users. You may contact me at <a
-				href="mailto:admin@ibpredict.com">admin@ibpredict.com</a
+				href="mailto:admin@ibpredict.org">admin@ibpredict.org</a
 			> if you would like to see a question added to this page.
 		</p>
 		<hr />
