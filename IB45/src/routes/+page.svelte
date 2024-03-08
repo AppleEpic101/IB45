@@ -81,7 +81,7 @@
 		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
 		<Button href={'./subjects/literature'} text={'Literature'} />
 		<Button href={'./subjects/language-b'} text={'Language B'} />
-		<Button href={'./subjects/language-ab'} text={'AB Initio'} />
+		<Button href={'./subjects/ab-initio'} text={'AB Initio'} />
 		<Button href={'./subjects/business-management'} text={'Business Management'} />
 		<Button href={'./subjects/economics'} text={'Economics'} />
 		<Button href={'./subjects/history'} text={'History'} />
