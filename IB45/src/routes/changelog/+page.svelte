@@ -19,6 +19,10 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>March 15, 2024</h2>
+		<ul>
+			<li>Added November 2023 grade boundaries</li>
+		</ul>
 		<h2>January 2, 2024</h2>
 		<ul>
 			<li>Updated main page with buttons</li>

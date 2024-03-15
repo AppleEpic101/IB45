@@ -24,7 +24,7 @@ const SL = info.SLOnly;
 export const load = (({ params }) => {
     let subjectData;
     subjectData = courses.find(course => course.short === params.name);
-    console.log(subjectData);
+    // console.log(subjectData);
     if (!subjectData) { throw error(404, 'Subject not found'); }
     return {
         name: subjectData.name,

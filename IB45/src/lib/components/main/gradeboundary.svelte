@@ -7,9 +7,10 @@
 	import M22 from '$lib/assets/Grade_BoundariesM22';
 	import N22 from '$lib/assets/Grade_BoundariesN22';
 	import M23 from '$lib/assets/Grade_BoundariesM23';
+	import N23 from '$lib/assets/Grade_BoundariesN23';
 
-	const str = ['M19', 'N19', 'N20', 'M21', 'M22', 'N22', 'M23'];
-	const gradeBoundaries = [M19, N19, N20, M21, M22, N22, M23];
+	const str = ['M19', 'N19', 'N20', 'M21', 'M22', 'N22', 'M23', 'N23'];
+	const gradeBoundaries = [M19, N19, N20, M21, M22, N22, M23, N23];
 	let data = [];
 
 	gradeBoundaries.forEach((b) => {

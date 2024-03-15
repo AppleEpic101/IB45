@@ -57,7 +57,7 @@
 <div class="intro">
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated January 2, 2024</h4>
+		<h4>Last updated March 15, 2024</h4>
 	</div>
 	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
@@ -71,10 +71,33 @@
 			know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
 		</p>
 
-		<p>
-			<strong> NOTE: May 2023 grade boundaries have arrived! &#127881;&#127881;&#127881;</strong>
-		</p>
-
+		<div class="message">
+			<div class="announcement">&#x1F440;Announcement&#x1F440;</div>
+			<p>
+				I have updated the site with November 2023 grade boundaries. Compared to M23 and N22, N23
+				boundaries have somewhat increased.
+			</p>
+			<ul>
+				<li>
+					There have been significant point increases in the following major subjects: SL/HL English
+					LAL, SL/HL English Lit, SL/HL Math AA, HL Math AI, SL Physics, ESS, SL/HL SEHS, SL Visual
+					Arts, SL BM, SL Economics, SL Geography, SL/HL Global Politics.
+				</li>
+				<li>There have been significant point decreases in the following subjects: SL/HL Dance.</li>
+				<li>Extended essay boundaries were raised by 1 point to pre-covid levels.</li>
+			</ul>
+			<p>
+				Take this information with a grain of salt. The N23 cohort only had about 20k candidates, as
+				opposed to the approximate 180k candidates during M23. Due to the small sample size, it may
+				be the case that N23 had a higher concentration of intelligent individuals. N23 boundaries
+				therefore should not be taken as a strong indicator of M24 boundaries.
+			</p>
+			<p>
+				Please report all errors and concerns to <a href="mailto:admin@ibpredict.org"
+					>admin@ibpredict.org</a
+				>. Thank you and good luck to all M24 candidates!
+			</p>
+		</div>
 		<hr />
 		<p><strong>Individual Grade Calculators</strong></p>
 
@@ -196,6 +219,20 @@
 
 	p {
 		line-height: 2;
+	}
+
+	.message {
+		border: 2px solid black;
+		padding: 0 20px;
+	}
+	.message .announcement {
+		font-size: 1.2em;
+		text-align: center;
+		font-weight: bold;
+		margin: 10px 0 0 0;
+	}
+	.message p {
+		line-height: 1.3;
 	}
 
 	.banner {
