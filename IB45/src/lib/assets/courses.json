@@ -883,7 +883,7 @@
 		"HLAssessments": [
 			{
 				"name": "Paper 1",
-				"maxMarks": 50,
+				"maxMarks": 75,
 				"weight": 0.4
 			},
 			{
