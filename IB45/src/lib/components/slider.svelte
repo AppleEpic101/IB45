@@ -26,7 +26,7 @@
 
 {#key max}
 	<div class="slider">
-		<p>{name}</p>
+		<p class="name">{name}</p>
 		<p>Weight: {weight * 100}%</p>
 		<div class="c">
 			<input type="range" bind:value {min} {max} />
@@ -49,6 +49,10 @@
 		max-width: 300px;
 	}
 
+	.name {
+		font-style: italic;
+		margin-bottom: 5px;
+	}
 	.c {
 		display: flex;
 		flex-direction: row;

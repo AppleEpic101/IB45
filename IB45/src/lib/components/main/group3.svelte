@@ -36,7 +36,12 @@
 	$: fullName = store.level + ' ' + store.name + ' ' + store.region;
 
 	$: matchedCourse = courses[store.name]?.[store.level + 'Assessments'];
-	$: match = $gradeBoundaryData.find((course) => course.name === fullName.trim());
+	$: match = $gradeBoundaryData.find((course) => {
+		if (store.name == 'Digital Society') {
+			return course.name === store.level + ' ' + 'Information Technology In A Global Society';
+		}
+		return course.name === fullName.trim();
+	});
 
 	$: {
 		if ((store.name === 'History' && store.level === 'SL') || store.name !== 'History') {

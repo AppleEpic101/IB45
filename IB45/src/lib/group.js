@@ -105,6 +105,7 @@ export const getAllBoundaries = (name, lang = "none") => {
     let HL = [];
 
     let fullName = lang === "none" ? name : lang + " " + name;
+    let oldNames = courses[name]?.oldNames;
     b.forEach((boundary, i) => {
         SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['SL ' + fullName]?.TZ));
         if (name === "History") {
@@ -113,6 +114,14 @@ export const getAllBoundaries = (name, lang = "none") => {
             SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary[fullName]?.TZ));
         } else {
             HL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['HL ' + fullName]?.TZ));
+        }
+
+        if (oldNames) {
+            oldNames.forEach((oldName) => {
+                SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['SL ' + oldName]?.TZ));
+                HL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['HL ' + oldName]?.TZ));
+
+            });
         }
     });
     return {

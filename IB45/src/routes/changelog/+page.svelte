@@ -19,6 +19,13 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>April 9, 2024</h2>
+		<ul>
+			<li>
+				Archived old syllabuses for Business Management, Digital Society, Classical Language,
+				Literature & Performance (M24 new syllabus changes)
+			</li>
+		</ul>
 		<h2>March 15, 2024</h2>
 		<ul>
 			<li>Added November 2023 grade boundaries</li>

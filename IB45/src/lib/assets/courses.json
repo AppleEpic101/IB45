@@ -23,7 +23,7 @@
 			"Geography",
 			"Global Politics",
 			"History",
-			"Information Technology In A Global Society",
+			"Digital Society",
 			"Philosophy",
 			"Psychology",
 			"Social And Cultural Anthropology",
@@ -214,8 +214,8 @@
 	},
 
 	"Classical Language": {
-		"firstAssessment": 2016,
-		"lastAssessment": 2023,
+		"firstAssessment": 2024,
+		"lastAssessment": "Present",
 		"short": "classical-language",
 		"isLang": true,
 		"SLOnly": false,
@@ -223,45 +223,51 @@
 		"isCore": false,
 		"description": "Classical languages comprise Latin and Classical Greek, and these subjects are offered in group 2 of the IB Diploma Programme. Whereas the other subjects offered in group 2 cover a broad spectrum of modern language courses, the two classical language subjects provide students with the opportunity to study two historically significant languages that are also embedded in many modern languages. Latin and Classical Greek are separate courses, but they share the same syllabus and assessment criteria. The Diploma Programme courses in classical languages provide an opportunity for students to explore the languages, literatures and cultures of ancient Greece and Rome. These ancient civilizations have played a vital part in shaping many modern societies and cultures. The languages themselves are versatile and finely structured, and have had a major influence on the development of most modern European languages. The rich and varied literatures of Greece and Rome have left their mark on almost every genre of modern writing. The study of classical languages gives important insights into the cultures that produced them, and therefore leads to a greater understanding of contemporary languages, literature and cultures. Fundamentally, the study of classical languages trains the mind, developing skills of critical thought, memory and close analysis, as well as an appreciation of the beauty and power of language. Other classical languages such as Sanskrit, Arabic and Hebrew, which have all made important contributions to modern societies, are beyond the scope of this guide. In the classical languages it is a fundamental principle that the texts be studied in their original language. Linguistic skills lie at the heart of the courses, since it is through a deep understanding of the workings of a language that true intellectual contact can be made with the peoples of the past. Through this course, students will learn to translate Latin and Classical Greek works accurately and sensitively. Students will also study different genres of classical texts, examining the ideas in these works and their artistry within their historical, political and cultural contexts.",
 		"groupNumber": [2],
-		"SLAssessments": [
+		"SLAsssesments": [
 			{
-				"name": "Paper 1: Translation",
-				"maxMarks": 90,
+				"name": "Paper 1",
+				"maxMarks": 30,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2: Extract Questions",
-				"maxMarks": 45,
-				"weight": 0.45
+				"maxMarks": 32,
+				"weight": 0.35
 			},
 			{
 				"name": "Individual Study: Research Dossier",
-				"maxMarks": 24,
-				"weight": 0.2
+				"maxMarks": 28,
+				"weight": 0.3
 			}
 		],
 		"HLAssessments": [
 			{
-				"name": "Paper 1: Translation",
-				"maxMarks": 180,
-				"weight": 0.35
+				"name": "Paper 1",
+				"maxMarks": 40,
+				"weight": 0.3
 			},
 			{
 				"name": "Paper 2: Extract Questions",
-				"maxMarks": 52,
-				"weight": 0.45
+				"maxMarks": 32,
+				"weight": 0.3
+			},
+			{
+				"name": "Higher Level Composition",
+				"maxMarks": 25,
+				"weight": 0.2
 			},
 			{
 				"name": "Individual Study: Research Dossier",
-				"maxMarks": 24,
+				"maxMarks": 28,
 				"weight": 0.2
 			}
 		],
+
 		"old": [
 			{
 				"name": "Classical Language",
-				"firstAssessment": 2024,
-				"lastAssessment": "Present",
+				"firstAssessment": 2016,
+				"lastAssessment": 2023,
 				"short": "classical-language",
 				"isLang": true,
 				"SLOnly": false,
@@ -271,40 +277,35 @@
 				"groupNumber": [2],
 				"SL": [
 					{
-						"name": "Paper 1",
-						"maxMarks": 30,
+						"name": "Paper 1: Translation",
+						"maxMarks": 90,
 						"weight": 0.35
 					},
 					{
 						"name": "Paper 2: Extract Questions",
-						"maxMarks": 32,
-						"weight": 0.35
+						"maxMarks": 45,
+						"weight": 0.45
 					},
 					{
 						"name": "Individual Study: Research Dossier",
-						"maxMarks": 28,
-						"weight": 0.3
+						"maxMarks": 24,
+						"weight": 0.2
 					}
 				],
 				"HL": [
 					{
-						"name": "Paper 1",
-						"maxMarks": 40,
-						"weight": 0.3
+						"name": "Paper 1: Translation",
+						"maxMarks": 180,
+						"weight": 0.35
 					},
 					{
 						"name": "Paper 2: Extract Questions",
-						"maxMarks": 32,
-						"weight": 0.3
-					},
-					{
-						"name": "Higher Level Composition",
-						"maxMarks": 25,
-						"weight": 0.2
+						"maxMarks": 52,
+						"weight": 0.45
 					},
 					{
 						"name": "Individual Study: Research Dossier",
-						"maxMarks": 28,
+						"maxMarks": 24,
 						"weight": 0.2
 					}
 				]
@@ -449,8 +450,8 @@
 		"old": []
 	},
 	"Business Management": {
-		"firstAssessment": 2016,
-		"lastAssessment": 2023,
+		"firstAssessment": 2024,
+		"lastAssessment": 2031,
 		"short": "business-management",
 		"isLang": false,
 		"SLOnly": false,
@@ -461,42 +462,48 @@
 		"SLAssessments": [
 			{
 				"name": "Paper 1: Case Study",
-				"maxMarks": 40,
-				"weight": 0.3
+				"maxMarks": 30,
+				"weight": 0.35
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 50,
-				"weight": 0.45
+				"maxMarks": 40,
+				"weight": 0.35
 			},
 			{
 				"name": "Internal Assessment",
 				"maxMarks": 25,
-				"weight": 0.25
+				"weight": 0.3
 			}
 		],
 		"HLAssessments": [
 			{
 				"name": "Paper 1: Case Study",
-				"maxMarks": 60,
-				"weight": 0.35
+				"maxMarks": 30,
+				"weight": 0.25
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 70,
-				"weight": 0.4
+				"maxMarks": 50,
+				"weight": 0.3
+			},
+			{
+				"name": "Paper 3",
+				"maxMarks": 25,
+				"weight": 0.25
 			},
 			{
 				"name": "Internal Assessment",
 				"maxMarks": 25,
-				"weight": 0.25
+				"weight": 0.2
 			}
 		],
+
 		"old": [
 			{
 				"name": "Business Management",
-				"firstAssessment": 2024,
-				"lastAssessment": 2031,
+				"firstAssessment": 2016,
+				"lastAssessment": 2023,
 				"short": "business-management",
 				"isLang": false,
 				"SLOnly": false,
@@ -507,40 +514,35 @@
 				"SL": [
 					{
 						"name": "Paper 1: Case Study",
-						"maxMarks": 30,
-						"weight": 0.35
+						"maxMarks": 40,
+						"weight": 0.3
 					},
 					{
 						"name": "Paper 2",
-						"maxMarks": 40,
-						"weight": 0.35
+						"maxMarks": 50,
+						"weight": 0.45
 					},
 					{
 						"name": "Internal Assessment",
 						"maxMarks": 25,
-						"weight": 0.3
+						"weight": 0.25
 					}
 				],
 				"HL": [
 					{
 						"name": "Paper 1: Case Study",
-						"maxMarks": 30,
-						"weight": 0.25
+						"maxMarks": 60,
+						"weight": 0.35
 					},
 					{
 						"name": "Paper 2",
-						"maxMarks": 50,
-						"weight": 0.3
-					},
-					{
-						"name": "Paper 3",
-						"maxMarks": 25,
-						"weight": 0.25
+						"maxMarks": 70,
+						"weight": 0.4
 					},
 					{
 						"name": "Internal Assessment",
 						"maxMarks": 25,
-						"weight": 0.2
+						"weight": 0.25
 					}
 				]
 			}
@@ -750,15 +752,16 @@
 		],
 		"old": []
 	},
-	"Information Technology In A Global Society": {
-		"firstAssessment": 2012,
-		"lastAssessment": 2023,
-		"short": "itgs",
+	"Digital Society": {
+		"firstAssessment": 2024,
+		"lastAssessment": "Present",
+		"short": "digital-society",
+		"oldNames": ["Information Technology In A Global Society"],
 		"isLang": false,
 		"SLOnly": false,
 		"schoolOnly": false,
 		"isCore": false,
-		"description": "The IB DP information technology in a global society (ITGS) course is the study and evaluation of the impacts of information technology (IT) on individuals and society. It explores the advantages and disadvantages of the access and use of digitized information at the local and global level. ITGS provides a framework for the student to make informed judgments and decisions about the use of IT within social contexts.",
+		"description": "Digital society is an interdisciplinary course within the individuals and societies subject group. The course is designed for young people interested in exploring the impact and importance of digital systems and technologies in the contemporary world. Digital society is intended to appeal to a broad range of teachers in the social studies, media, humanities, IT and related subject areas. ",
 		"groupNumber": [3],
 		"SLAssessments": [
 			{
@@ -768,24 +771,24 @@
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 26,
+				"maxMarks": 24,
 				"weight": 0.3
 			},
 			{
-				"name": "Project",
-				"maxMarks": 30,
+				"name": "Inquiry Project",
+				"maxMarks": 24,
 				"weight": 0.3
 			}
 		],
 		"HLAssessments": [
 			{
 				"name": "Paper 1",
-				"maxMarks": 60,
+				"maxMarks": 52,
 				"weight": 0.35
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 26,
+				"maxMarks": 24,
 				"weight": 0.2
 			},
 			{
@@ -794,22 +797,23 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Project",
-				"maxMarks": 30,
+				"name": "Inquiry Project",
+				"maxMarks": 24,
 				"weight": 0.2
 			}
 		],
+
 		"old": [
 			{
-				"name": "Digital Society",
-				"firstAssessment": 2024,
-				"lastAssessment": "Present",
-				"short": "digital-society",
+				"name": "Information Technology In A Global Society",
+				"firstAssessment": 2012,
+				"lastAssessment": 2023,
+				"short": "itgs",
 				"isLang": false,
 				"SLOnly": false,
 				"schoolOnly": false,
 				"isCore": false,
-				"description": "Digital society is an interdisciplinary course within the individuals and societies subject group. The course is designed for young people interested in exploring the impact and importance of digital systems and technologies in the contemporary world. Digital society is intended to appeal to a broad range of teachers in the social studies, media, humanities, IT and related subject areas. ",
+				"description": "The IB DP information technology in a global society (ITGS) course is the study and evaluation of the impacts of information technology (IT) on individuals and society. It explores the advantages and disadvantages of the access and use of digitized information at the local and global level. ITGS provides a framework for the student to make informed judgments and decisions about the use of IT within social contexts.",
 				"groupNumber": [3],
 				"SL": [
 					{
@@ -819,24 +823,24 @@
 					},
 					{
 						"name": "Paper 2",
-						"maxMarks": 24,
+						"maxMarks": 26,
 						"weight": 0.3
 					},
 					{
-						"name": "Inquiry Project",
-						"maxMarks": 24,
+						"name": "Project",
+						"maxMarks": 30,
 						"weight": 0.3
 					}
 				],
 				"HL": [
 					{
 						"name": "Paper 1",
-						"maxMarks": 52,
+						"maxMarks": 60,
 						"weight": 0.35
 					},
 					{
 						"name": "Paper 2",
-						"maxMarks": 24,
+						"maxMarks": 26,
 						"weight": 0.2
 					},
 					{
@@ -845,8 +849,8 @@
 						"weight": 0.25
 					},
 					{
-						"name": "Inquiry Project",
-						"maxMarks": 24,
+						"name": "Project",
+						"maxMarks": 30,
 						"weight": 0.2
 					}
 				]
@@ -1906,8 +1910,8 @@
 		"old": []
 	},
 	"Literature And Performance": {
-		"firstAssessment": 2015,
-		"lastAssessment": 2023,
+		"firstAssessment": 2024,
+		"lastAssessment": "Present",
 		"short": "literature-and-performance",
 		"isLang": false,
 		"SLOnly": false,
@@ -1917,31 +1921,26 @@
 		"groupNumber": [1, 6],
 		"SLAssessments": [
 			{
-				"name": "Part 1: Prose And Performance",
-				"maxMarks": 20,
-				"weight": 0.2
+				"name": "Paper 1",
+				"maxMarks": 30,
+				"weight": 0.3
 			},
 			{
-				"name": "Part 2: Process Portfolio",
-				"maxMarks": 25,
-				"weight": 0.2
+				"name": "Written Assignment",
+				"maxMarks": 26,
+				"weight": 0.3
 			},
 			{
-				"name": "Written Coursework: Major Playwrights In Performance",
-				"maxMarks": 20,
-				"weight": 0.2
-			},
-			{
-				"name": "Performance And Individual Oral Presentation",
-				"maxMarks": 40,
+				"name": "Transformative Performance And Individual Oral",
+				"maxMarks": 32,
 				"weight": 0.4
 			}
 		],
 		"old": [
 			{
 				"name": "Literature And Performance",
-				"firstAssessment": 2024,
-				"lastAssessment": "Present",
+				"firstAssessment": 2015,
+				"lastAssessment": 2023,
 				"short": "literature-and-performance",
 				"isLang": false,
 				"SLOnly": false,
@@ -1951,18 +1950,23 @@
 				"groupNumber": [1, 6],
 				"SL": [
 					{
-						"name": "Paper 1",
-						"maxMarks": 30,
-						"weight": 0.3
+						"name": "Part 1: Prose And Performance",
+						"maxMarks": 20,
+						"weight": 0.2
 					},
 					{
-						"name": "Written Assignment",
-						"maxMarks": 26,
-						"weight": 0.3
+						"name": "Part 2: Process Portfolio",
+						"maxMarks": 25,
+						"weight": 0.2
 					},
 					{
-						"name": "Transformative Performance And Individual Oral",
-						"maxMarks": 32,
+						"name": "Written Coursework: Major Playwrights In Performance",
+						"maxMarks": 20,
+						"weight": 0.2
+					},
+					{
+						"name": "Performance And Individual Oral Presentation",
+						"maxMarks": 40,
 						"weight": 0.4
 					}
 				]

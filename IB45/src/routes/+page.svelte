@@ -57,7 +57,7 @@
 <div class="intro">
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated March 15, 2024</h4>
+		<h4>Last updated April 9, 2024</h4>
 	</div>
 	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
@@ -98,7 +98,6 @@
 				>. Thank you and good luck to all M24 candidates!
 			</p>
 		</div>
-		<hr />
 		<p><strong>Individual Grade Calculators</strong></p>
 
 		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
