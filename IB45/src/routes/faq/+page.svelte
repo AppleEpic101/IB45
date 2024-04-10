@@ -31,7 +31,7 @@
 		<Collapsible
 			question="Why is the Boundary Not Found?"
 			bullet={[
-				'If you are using a November grade boundary, it is likely because the subject was very unpopular. Subjects that do not garner enough candidates (more than 100) do no have available grade boundary data. Please refer to the individual grade boundary calculator by clicking "More..."',
+				'If you are using a November grade boundary, it is likely because the subject was very unpopular. Subjects that do not garner enough candidates (more than 100) do no have available grade boundary data. Please refer to the individual grade boundary calculator by clicking "More details"',
 				'Analysis And Approaches and Applications And Interpretation were introduced in 2021. Data from before 2021 cannot be found for these subjects because it did not exist.',
 				'Music was revised in 2022. SL Music cannot be found in data before 2022 because it did not exist.'
 			]}
