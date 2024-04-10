@@ -29,6 +29,14 @@
 	<br />
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }}>
 		<Collapsible
+			question="Why is the Boundary Not Found?"
+			bullet={[
+				'If you are using a November grade boundary, it is likely because the subject was very unpopular. Subjects that do not garner enough candidates (more than 100) do no have available grade boundary data. Please refer to the individual grade boundary calculator by clicking "More..."',
+				'Analysis And Approaches and Applications And Interpretation were introduced in 2021. Data from before 2021 cannot be found for these subjects because it did not exist.',
+				'Music was revised in 2022. SL Music cannot be found in data before 2022 because it did not exist.'
+			]}
+		/>
+		<Collapsible
 			question="How do I replace my Group 6 subject with a subject from Groups 1-5?"
 			answer="Very simple. Navigate to the Group 6 component of the home page. Then, click the first of three dropdowns and select the alternate group number. The second dropdown is the subject name and it will have changed to reflect the new group. "
 		/>
@@ -63,15 +71,6 @@
 				'The sum of the scores of your HL subjects is less than 12',
 				'You take 3 SL subjects and the sum of the scores of your SL subjects is less than 9',
 				'You take 2 SL subjects (consquently 4 HL subjects) and the sum of the scores of your SL subjects is less than 5'
-			]}
-		/>
-
-		<Collapsible
-			question="Why is the 'Boundary Not Found'"
-			bullet={[
-				'Analysis And Approaches and Applications And Interpretation were introduced in 2021. Data from before 2021 cannot be found for these subjects because it did not exist.',
-				'Music was revised in 2022. SL Music cannot be found in data before 2022 because it did not exist.',
-				'Otherwise, it is because that subject did not garner enough candidates (more than 100) to have data released for that particular grade boundary. It may be available for other grade boundaries. Simply cycle through the grade boundaries or more easily, go to its individual subject page and view all the past boundaries from there. If still none are found, it is because the subject has never garner enough people for data to be released from 2019 to present.'
 			]}
 		/>
 		<br />

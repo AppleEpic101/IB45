@@ -169,7 +169,7 @@
 	<Links />
 
 	<div class="description">
-		<h3 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h3>
+		<h4 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h4>
 		<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{syllabus.description}</div>
 	</div>
 
@@ -193,7 +193,7 @@
 
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		{#if syllabus.name !== 'Creativity, Activity, Service'}
-			<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h3>
+			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h4>
 			{#if data.SLOnly}
 				<h5>
 					{syllabus.name} is offered only at the SL level
@@ -250,13 +250,13 @@
 				</div>
 			</div>
 
-			<h3>Graphs</h3>
+			<h4>Graphs</h4>
 			<div class="graph">
 				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
 			</div>
 
 			<div class="grade">
-				<h3 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h3>
+				<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
 				{#if data.SLOnly}
 					<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 						{syllabus.name} is offered only at the SL level
@@ -401,6 +401,9 @@
 	}
 
 	@media screen and (max-width: 500px) {
+		h1 {
+			font-size: 1.3em;
+		}
 		.body {
 			margin: 0 10px;
 		}

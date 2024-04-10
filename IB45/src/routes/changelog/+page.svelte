@@ -42,7 +42,7 @@
 				<ul>
 					<li><a href="./subjects/business-management?syl=2024">Business Management</a></li>
 					<li><a href="./subjects/classical-language?syl=2024">Classical Language</a></li>
-					<li><a href="./subjects/itgs?syl=2024">Digital Society</a></li>
+					<li><a href="./subjects/digital-society?syl=2024">Digital Society</a></li>
 					<li>
 						<a href="./subjects/literature-and-performance?syl=2024">Literature And Performance</a>
 					</li>

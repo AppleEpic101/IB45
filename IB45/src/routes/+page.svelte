@@ -119,12 +119,14 @@
 		<Button href={'./subjects/extended-essay'} text={'EE'} />
 		<Button href={'./subjects'} text={'More...'} />
 
-		<p><strong>Upcoming May 2024 Syllabus Changes</strong></p>
-		<Button href={'./subjects/business-management?syl=2024'} text={'Business Management (2024)'} />
-		<Button href={'./subjects/classical-language?syl=2024'} text={'Classical Language (2024)'} />
-		<Button href={'./subjects/itgs?syl=2024'} text={'Digital Society (2024)'} />
+		<p>
+			<strong>Upcoming May 2024 Syllabus Changes (old syllabuses archived as of April 9)</strong>
+		</p>
+		<Button href={'./subjects/business-management'} text={'Business Management (2024)'} />
+		<Button href={'./subjects/classical-language'} text={'Classical Language (2024)'} />
+		<Button href={'./subjects/digital-society'} text={'Digital Society (2024)'} />
 		<Button
-			href={'./subjects/literature-and-performance?syl=2024'}
+			href={'./subjects/literature-and-performance'}
 			text={'Literature & Performance (2024)'}
 		/>
 		<hr />
@@ -256,7 +258,8 @@
 	.layout {
 		display: grid;
 		grid-template-columns: 4fr 275px;
-		margin: 20px 18%;
+		margin: 20px auto;
+		max-width: 950px;
 	}
 
 	.data {
@@ -321,6 +324,14 @@
 	}
 
 	@media screen and (max-width: 420px) {
+		.intro h2 {
+			font-size: 1.2em;
+			margin-bottom: 0;
+		}
+		.intro h4 {
+			font-size: 1em;
+			margin: 5px 0 15px 0;
+		}
 		.main {
 			font-size: 0.8em;
 		}

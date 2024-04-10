@@ -29,8 +29,8 @@ selectedGroup6.subscribe((val) => {
     if (browser && localStorage) localStorage.setItem("selectedGroup6", val)
 });
 
-// change default
-export const gradeBoundary = writable(browser && localStorage && localStorage.getItem("gradeBoundary") || "N23")
+// change default here
+export const gradeBoundary = writable(browser && localStorage && localStorage.getItem("gradeBoundary") || "M23")
 gradeBoundary.subscribe((val) => {
     if (browser && localStorage) localStorage.setItem("gradeBoundary", val)
 });
