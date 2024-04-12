@@ -29,11 +29,32 @@
 	<br />
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }}>
 		<Collapsible
+			question="Are these grade boundaries real/legit?"
+			answer="Yes. These are official grade boundaries from past examinations."
+		/>
+		<Collapsible
 			question="Why is the Boundary Not Found?"
 			bullet={[
 				'If you are using a November grade boundary, it is likely because the subject was very unpopular. Subjects that do not garner enough candidates (more than 100) do no have available grade boundary data. Please refer to the individual grade boundary calculator by clicking "More details"',
 				'Analysis And Approaches and Applications And Interpretation were introduced in 2021. Data from before 2021 cannot be found for these subjects because it did not exist.',
 				'Music was revised in 2022. SL Music cannot be found in data before 2022 because it did not exist.'
+			]}
+		/>
+		<Collapsible
+			question="Why is the table indicating that the diploma is not awarded?"
+			answer="The following are the only reasons for why the diploma was not awarded (pay attention to wording such as 'at least', 'less than', or 'less than or equal to'):"
+			bullet={[
+				'You have not selected 6 subjects in the calculator',
+				'You have less than 24 total points',
+				'You scored an E in TOK',
+				'You scored an E on the Extended Essay',
+				"You don't have either 3 or 4 HL subjects selected",
+				'You scored at least single 1 on any subject',
+				'You scored more than two 2s on any subjects',
+				'You scored more than three 3s on any subjects',
+				'The sum of the scores of your HL subjects is less than 12',
+				'You take 3 SL subjects and the sum of the scores of your SL subjects is less than 9',
+				'You take 2 SL subjects (consquently 4 HL subjects) and the sum of the scores of your SL subjects is less than 5'
 			]}
 		/>
 		<Collapsible
@@ -56,23 +77,7 @@
 				'November 2021 grade boundaries do not exist because I cannot find them. If you have them, please contact me and I will add them to the website. '
 			]}
 		/>
-		<Collapsible
-			question="Why is the table indicating that the diploma is not awarded?"
-			answer="The following are the only reasons for why the diploma was not awarded (pay attention to wording such as 'at least', 'less than', or 'less than or equal to'):"
-			bullet={[
-				'You have not selected 6 subjects in the calculator',
-				'You have less than 24 total points',
-				'You scored an E in TOK',
-				'You scored an E on the Extended Essay',
-				"You don't have either 3 or 4 HL subjects selected",
-				'You scored at least single 1 on any subject',
-				'You scored more than two 2s on any subjects',
-				'You scored more than three 3s on any subjects',
-				'The sum of the scores of your HL subjects is less than 12',
-				'You take 3 SL subjects and the sum of the scores of your SL subjects is less than 9',
-				'You take 2 SL subjects (consquently 4 HL subjects) and the sum of the scores of your SL subjects is less than 5'
-			]}
-		/>
+
 		<br />
 	</div>
 </div>
