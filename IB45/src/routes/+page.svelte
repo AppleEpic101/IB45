@@ -89,8 +89,8 @@
 			<p>
 				Take this information with a grain of salt. The N23 cohort only had about 20k candidates, as
 				opposed to the approximate 180k candidates during M23. Due to the small sample size, it may
-				be the case that N23 had a higher concentration of intelligent individuals. N23 boundaries
-				therefore should not be taken as a strong indicator of M24 boundaries.
+				be the case that N23 exihibited relatively higher signs of intelligence. N23 boundaries
+				therefore should not be taken as a strong indicator of M24 boundaries - use M23 instead.
 			</p>
 			<p>
 				Please report all errors and concerns to <a href="mailto:admin@ibpredict.org"
