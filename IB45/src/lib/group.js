@@ -36,6 +36,8 @@ export const calculateGrade = (assessments, marks, weight, subjectName) => {
         return 2 * assessments[0] + assessments[1];
     } else if (subjectName === "Extended Essay") {
         return assessments[0];
+    } else if (subjectName === "Creativity, Activity, Service") {
+        return;
     } else {
         let grade = 0;
         for (let i = 0; i < marks.length; i++) {

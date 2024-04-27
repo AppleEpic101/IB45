@@ -13,6 +13,11 @@
 		name="description"
 		content="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
 	/>
+	<meta name="og:title" content="Frequently Asked Questions" />
+	<meta
+		name="og:description"
+		content="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
+	/>
 </svelte:head>
 
 <div class="content">
