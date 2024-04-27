@@ -12,6 +12,11 @@
 		name="description"
 		content="See the most recent updates in IB curricula and grade boundaries. Click to learn the latest features of the IB Predict."
 	/>
+	<meta name="og:title" content="Changelog" />
+	<meta
+		name="og:description"
+		content="See the most recent updates in IB curricula and grade boundaries. Click to learn the latest features of the IB Predict."
+	/>
 </svelte:head>
 
 <h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Changelog</h1>

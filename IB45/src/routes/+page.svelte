@@ -48,6 +48,8 @@
 		name="description"
 		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!"
 	/>
+	<meta name="og:title" content="IB Predict" />
+	<meta name="og:description" content="International Baccalaureate Grade Calculator" />
 </svelte:head>
 
 <div class="banner">

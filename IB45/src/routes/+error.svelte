@@ -3,9 +3,14 @@
 	import { fade, fly, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import Links from '$lib/components/links.svelte';
-	let ready = false;
-	onMount(() => (ready = true));
 </script>
+
+<svelte:head>
+	<title>Error: {$page.status}</title>
+	<meta name="description" content="An error occurred on the IB Predict website." />
+	<meta name="og:title" content="Error: {$page.status}" />
+	<meta name="og:description" content={$page.error.message} />
+</svelte:head>
 
 <div in:fly={{ duration: 1400, x: 100 }}>
 	<h1>Status Code: {$page.status}</h1>

@@ -20,6 +20,11 @@
 		name="description"
 		content="View all the subjects offered in the IB DP. Click to calculate your IB grade for an individual subject."
 	/>
+	<meta name="og:title" content="IB DP Subject List" />
+	<meta
+		name="og:description"
+		content="View all the subjects offered in the IB DP, and calculate your grade for individual subjects"
+	/>
 </svelte:head>
 
 <div class="body">
