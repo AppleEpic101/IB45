@@ -1,3 +1,7 @@
+<script>
+	import Discord from '$lib/components/Discord.svelte';
+</script>
+
 <footer>
 	<div>
 		<strong>THE SYNDICATE</strong>
@@ -12,6 +16,7 @@
 		<div>
 			<a href="mailto:admin@ibpredict.org">admin@ibpredict.org</a>
 		</div>
+		<Discord />
 	</div>
 </footer>
 

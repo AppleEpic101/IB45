@@ -12,6 +12,7 @@
 	}
 
 	const groups = data.meta.groups;
+	import Discord from '$lib/components/Discord.svelte';
 </script>
 
 <svelte:head>
@@ -35,7 +36,7 @@
 		View course descriptions, calculate your grade for a subject, and see historical grade
 		boundaries all from a single page! <strong>Click on a subject to get started.</strong>
 	</p>
-	<br />
+	<Discord />
 	<div in:fade={{ delay: 300, duration: 500 }} class="subjects">
 		{#each { length: 6 } as _, i}
 			<h3 in:fly={{ duration: 1400, x: 200 }}>{groups[i]}</h3>

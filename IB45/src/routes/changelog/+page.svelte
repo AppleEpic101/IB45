@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	let ready = false;
 	onMount(() => (ready = true));
+	import Discord from '$lib/components/Discord.svelte';
 </script>
 
 <svelte:head>
@@ -24,6 +25,20 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>April 29, 2024</h2>
+		<ul>
+			<li>
+				I have been getting a lot of questions lately and figured a discord server would offer
+				faster and more efficient communication. You may use this server to talk academics and the
+				discuss the test/grade boundaries after exam discussion is permitted. You may still contact
+				me via admin@ibpredict.org.
+			</li>
+			<li>
+				Permanent invite link: <a href="https://discord.gg/G8UvbTJHp8"
+					>https://discord.gg/G8UvbTJHp8</a
+				>
+			</li>
+		</ul>
 		<h2>April 9, 2024</h2>
 		<ul>
 			<li>

@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	let ready = false;
 	onMount(() => (ready = true));
+	import Discord from '$lib/components/Discord.svelte';
 </script>
 
 <svelte:head>
@@ -29,6 +30,7 @@
 				href="mailto:admin@ibpredict.org">admin@ibpredict.org</a
 			> if you would like to see a question added to this page.
 		</p>
+		<Discord />
 		<hr />
 	</div>
 	<br />
