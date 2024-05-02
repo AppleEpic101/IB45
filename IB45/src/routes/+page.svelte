@@ -60,7 +60,7 @@
 <div class="intro">
 	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated April 29, 2024</h4>
+		<h4>Last updated May 2, 2024</h4>
 	</div>
 	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
@@ -91,9 +91,13 @@
 			</ul>
 			<p>
 				Take this information with a grain of salt. The N23 cohort only had about 20k candidates, as
-				opposed to the approximate 180k candidates during M23. Due to the small sample size, it may
-				be the case that N23 exihibited relatively higher signs of intelligence. N23 boundaries
-				therefore should not be taken as a strong indicator of M24 boundaries - use M23 instead.
+				opposed to the approximate 120k candidates during M23. Due to the small sample size, it may
+				be the case that N23 exihibited relatively higher signs of intelligence.
+
+				<strong
+					>N23 boundaries therefore should not be taken as a strong indicator of M24 boundaries -
+					use M23 instead.</strong
+				>
 			</p>
 			<Discord />
 			<p>

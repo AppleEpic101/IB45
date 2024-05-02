@@ -421,7 +421,7 @@
 	},
 
 	"Brazilian Social Studies": {
-		"firstAssessment": 2012,
+		"firstAssessment": 2022,
 		"lastAssessment": "Present",
 		"short": "brazilian-social-studies",
 		"isLang": false,
@@ -432,22 +432,53 @@
 		"groupNumber": [3, "s"],
 		"SLAssessments": [
 			{
-				"name": "Paper 1: Short Answer",
+				"name": "Paper 1: Source-Based",
 				"maxMarks": 40,
-				"weight": 0.4
+				"weight": 0.35
 			},
 			{
-				"name": "Paper 2: Extended Response",
-				"maxMarks": 40,
+				"name": "Paper 2: Essay",
+				"maxMarks": 30,
 				"weight": 0.4
 			},
 			{
 				"name": "Internal Assessment",
-				"maxMarks": 20,
-				"weight": 0.2
+				"maxMarks": 28,
+				"weight": 0.25
 			}
 		],
-		"old": []
+
+		"old": [
+			{
+				"name": "Brazilian Social Studies",
+				"firstAssessment": 2012,
+				"lastAssessment": 2021,
+				"short": "brazilian-social-studies",
+				"isLang": false,
+				"SLOnly": true,
+				"schoolOnly": true,
+				"isCore": false,
+				"description": "The Brazilian Social Studies course is structured into eight topics, encompassing a wide range of subjects within the geography and history of Brazil. The course aims to offer a comprehensive perspective on Brazil's historical progression and its present status as a regional influencer in the global economy. It achieves this by exploring the interconnectedness of individuals, society, and the environment across multiple dimensions: physical, political, social, economic, religious, technological, and cultural. Both history and geography components of the curriculum promote the use of investigative methods to address overarching and intricate inquiries. In the history segment, students are urged to contemplate the role of historians and embrace diverse interpretations of past events. In the realm of geography, students are guided to recognize how Brazil's physical landscape has evolved due to socio-economic processes. Moreover, they are prompted to grasp the interplay between human beings and the natural environment. The coursework also prompts students to reflect on geographical challenges that may necessitate interdisciplinary approaches. Furthermore, the curriculum guides students through a learning journey that fosters an understanding and appreciation of Brazilian culture. The evaluation of this cultural awareness is seamlessly integrated into the assessment of historical and geographical aspects of the course.",
+				"groupNumber": [3, "s"],
+				"SL": [
+					{
+						"name": "Paper 1: Short Answer",
+						"maxMarks": 40,
+						"weight": 0.4
+					},
+					{
+						"name": "Paper 2: Extended Response",
+						"maxMarks": 40,
+						"weight": 0.4
+					},
+					{
+						"name": "Internal Assessment",
+						"maxMarks": 20,
+						"weight": 0.2
+					}
+				]
+			}
+		]
 	},
 	"Business Management": {
 		"firstAssessment": 2024,

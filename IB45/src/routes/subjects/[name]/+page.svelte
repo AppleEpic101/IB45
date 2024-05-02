@@ -124,15 +124,17 @@
 </script>
 
 <svelte:head>
-	<title>IB {data.name} Grade Calculator</title>
+	<title>IB {language || ''} {data.name} Grade Calculator</title>
 	<meta
 		name="description"
-		content="Calculate your IB {data.name} grade! See historical grade boundary data, course descriptions, and more."
+		content="Calculate your IB {language ||
+			''} {data.name} grade! See historical grade boundary data, course descriptions, and more."
 	/>
-	<meta name="og:title" content="IB {data.name} Grade Calculator" />
+	<meta name="og:title" content="IB {language || ''} {data.name} Grade Calculator" />
 	<meta
 		name="og:description"
-		content="Calculate your IB {data.name} grade! See historical grade boundary data, course descriptions, and more."
+		content="Calculate your IB {language ||
+			''} {data.name} grade! See historical grade boundary data, course descriptions, and more."
 	/>
 </svelte:head>
 
