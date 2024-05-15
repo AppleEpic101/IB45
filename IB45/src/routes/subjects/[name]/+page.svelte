@@ -326,6 +326,14 @@
 				<p class="p">*Timezone 0 (Worldwide)</p>
 				<p class="p">*Timezone 1 (North America, South America)</p>
 				<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
+				<p class="p">
+					NOTE: N20, M21, N21, M22, N22 grade boundaries were artificially low due to COVID. There
+					were also
+				</p>
+				<p class="p">
+					NOTE: Beware of using outdated grade boundaries. Many subjects have since updated their
+					syllabus.
+				</p>
 			</div>
 		{/if}
 	</div>
