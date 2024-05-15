@@ -25,6 +25,14 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>May 14, 2024</h2>
+		<ul>
+			<li>Added option to apply different grade boundaries to individual grade calculators</li>
+			<li>Individual grade calculators now use M23 as default instead of N23</li>
+			<li>
+				Join the Discord: <a href="https://discord.gg/G8UvbTJHp8">https://discord.gg/G8UvbTJHp8</a>
+			</li>
+		</ul>
 		<h2>April 29, 2024</h2>
 		<ul>
 			<li>

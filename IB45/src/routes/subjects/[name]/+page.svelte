@@ -7,6 +7,7 @@
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
 	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import Bargraph from '$lib/components/subject/bargraph.svelte';
+	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
 	import {
@@ -41,6 +42,9 @@
 	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
 
 	// gets all previous grade boundaries (for table display)
+	let lastSL;
+	let lastHL;
+
 	$: SLResults = data.isLanguageSubject
 		? getAllBoundaries(data.name, language).SL
 		: getAllBoundaries(data.name).SL;
@@ -49,15 +53,34 @@
 		: getAllBoundaries(data.name).HL;
 
 	// gets the latest grade boundary (for awarded mark calculation)
-	$: lastSL =
-		SLResults[SLResults.length - 1]?.timezone === 2
-			? SLResults[SLResults.length - 2]
-			: SLResults[SLResults.length - 1];
+	$: SLoptions = SLResults.filter((obj) => obj.short === 'M23' || obj.short === 'N23');
+	$: HLoptions = HLResults.filter((obj) => obj.short === 'M23' || obj.short === 'N23');
 
-	$: lastHL =
-		HLResults[HLResults.length - 1]?.timezone === 2
-			? HLResults[HLResults.length - 2]
-			: HLResults[HLResults.length - 1];
+	const init = async () => {
+		if (SLoptions && HLoptions) {
+			lastSL = SLoptions?.find(
+				(obj) => obj.short === 'M23' && (obj.timezone === 0 || obj.timezone === 1)
+			);
+
+			lastHL = HLoptions?.find(
+				(obj) => obj.short === 'M23' && (obj.timezone === 0 || obj.timezone === 1)
+			);
+
+			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M23');
+			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N23');
+			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
+
+			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M23');
+			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N23');
+			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
+		}
+	};
+
+	$: language && init();
+
+	onMount(() => {
+		init();
+	});
 
 	// calculate weighted average (percentage out of 100)
 	let weight = [];
@@ -223,6 +246,23 @@
 					</div>
 				{/if}
 			{/if}
+			<div class="wrap">
+				{#if level === 'HL'}
+					{#each HLoptions as tz}
+						<label>
+							<input type="radio" name="f" value={tz} bind:group={lastHL} />
+							<div class="btn btn-sik"><span>{tz.fullName}</span></div>
+						</label>
+					{/each}
+				{:else}
+					{#each SLoptions as tz}
+						<label>
+							<input type="radio" name="g" value={tz} bind:group={lastSL} />
+							<div class="btn btn-sik"><span>{tz.fullName}</span></div>
+						</label>
+					{/each}
+				{/if}
+			</div>
 			<div class="assessments">
 				<div class="ass">
 					{#each s as assessment, i}
