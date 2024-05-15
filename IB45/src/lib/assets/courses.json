@@ -1702,38 +1702,45 @@
 		"SLAssessments": [
 			{
 				"name": "Textual Analysis",
-				"maxMarks": 24,
+				"type": "External",
+				"maxMarks": 28,
 				"weight": 0.3
 			},
 			{
 				"name": "Comparative Study",
+				"type": "External",
 				"maxMarks": 32,
 				"weight": 0.3
 			},
 			{
 				"name": "Film Portfolio",
-				"maxMarks": 30,
+				"type": "Internal",
+				"maxMarks": 24,
 				"weight": 0.4
 			}
 		],
 		"HLAssessments": [
 			{
 				"name": "Textual Analysis",
-				"maxMarks": 24,
+				"type": "External",
+				"maxMarks": 28,
 				"weight": 0.2
 			},
 			{
 				"name": "Comparative Study",
+				"type": "External",
 				"maxMarks": 32,
 				"weight": 0.2
 			},
 			{
 				"name": "Film Portfolio",
-				"maxMarks": 30,
+				"type": "Internal",
+				"maxMarks": 24,
 				"weight": 0.25
 			},
 			{
 				"name": "Collaborative Film Project",
+				"type": "Internal",
 				"maxMarks": 24,
 				"weight": 0.35
 			}
@@ -1792,8 +1799,9 @@
 		"old": []
 	},
 	"Theatre": {
-		"firstAssessment": 2017,
-		"lastAssessment": 2023,
+		"name": "Theatre",
+		"firstAssessment": 2024,
+		"lastAssessment": "Present",
 		"short": "theatre",
 		"isLang": false,
 		"SLOnly": false,
@@ -1803,48 +1811,48 @@
 		"groupNumber": [6],
 		"SLAssessments": [
 			{
-				"name": "Task 2: Director's Notebook",
-				"maxMarks": 32,
-				"weight": 0.35
-			},
-			{
-				"name": "Task 3: Research Presentation",
-				"maxMarks": 32,
+				"name": "Research Presentation",
+				"maxMarks": 24,
 				"weight": 0.3
 			},
 			{
-				"name": "Task 4: Collaborative Project",
-				"maxMarks": 32,
-				"weight": 0.35
+				"name": "Collaborative Project",
+				"maxMarks": 24,
+				"weight": 0.4
+			},
+			{
+				"name": "Production Proposal",
+				"maxMarks": 20,
+				"weight": 0.3
 			}
 		],
 		"HLAssessments": [
 			{
-				"name": "Task 1: Solo Theatre Piece",
-				"maxMarks": 32,
+				"name": "Research Presentation",
+				"maxMarks": 24,
+				"weight": 0.2
+			},
+			{
+				"name": "Collaborative Project",
+				"maxMarks": 24,
+				"weight": 0.25
+			},
+			{
+				"name": "Solo Theatre Piece",
+				"maxMarks": 24,
 				"weight": 0.35
 			},
 			{
-				"name": "Task 2: Director's Notebook",
-				"maxMarks": 32,
+				"name": "Production Proposal",
+				"maxMarks": 20,
 				"weight": 0.2
-			},
-			{
-				"name": "Task 3: Research Presentation",
-				"maxMarks": 32,
-				"weight": 0.2
-			},
-			{
-				"name": "Task 4: Collaborative Project",
-				"maxMarks": 32,
-				"weight": 0.25
 			}
 		],
+
 		"old": [
 			{
-				"name": "Theatre",
-				"firstAssessment": 2024,
-				"lastAssessment": "Present",
+				"firstAssessment": 2017,
+				"lastAssessment": 2023,
 				"short": "theatre",
 				"isLang": false,
 				"SLOnly": false,
@@ -1854,41 +1862,41 @@
 				"groupNumber": [6],
 				"SL": [
 					{
-						"name": "Research Presentation",
-						"maxMarks": 24,
+						"name": "Task 2: Director's Notebook",
+						"maxMarks": 32,
+						"weight": 0.35
+					},
+					{
+						"name": "Task 3: Research Presentation",
+						"maxMarks": 32,
 						"weight": 0.3
 					},
 					{
-						"name": "Collaborative Project",
-						"maxMarks": 24,
-						"weight": 0.4
-					},
-					{
-						"name": "IA: Production Proposal",
-						"maxMarks": 20,
-						"weight": 0.3
+						"name": "Task 4: Collaborative Project",
+						"maxMarks": 32,
+						"weight": 0.35
 					}
 				],
 				"HL": [
 					{
-						"name": "Research Presentation",
-						"maxMarks": 24,
-						"weight": 0.2
-					},
-					{
-						"name": "Collaborative Project",
-						"maxMarks": 24,
-						"weight": 0.25
-					},
-					{
-						"name": "Solo Theatre Piece",
-						"maxMarks": 24,
+						"name": "Task 1: Solo Theatre Piece",
+						"maxMarks": 32,
 						"weight": 0.35
 					},
 					{
-						"name": "IA: Production Proposal",
-						"maxMarks": 20,
+						"name": "Task 2: Director's Notebook",
+						"maxMarks": 32,
 						"weight": 0.2
+					},
+					{
+						"name": "Task 3: Research Presentation",
+						"maxMarks": 32,
+						"weight": 0.2
+					},
+					{
+						"name": "Task 4: Collaborative Project",
+						"maxMarks": 32,
+						"weight": 0.25
 					}
 				]
 			}
