@@ -330,9 +330,14 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Paper 2: Listening & Reading Comprehension",
-				"maxMarks": 65,
-				"weight": 0.5
+				"name": "Paper 2: Reading Comprehension",
+				"maxMarks": 40,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 2: Listening",
+				"maxMarks": 25,
+				"weight": 0.25
 			},
 			{
 				"name": "Individual Oral Assessment",
@@ -347,9 +352,14 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Paper 2: Listening & Reading Comprehension",
-				"maxMarks": 65,
-				"weight": 0.5
+				"name": "Paper 2: Reading Comprehension",
+				"maxMarks": 40,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 2: Listening",
+				"maxMarks": 25,
+				"weight": 0.25
 			},
 			{
 				"name": "Individual Oral Assessment",
@@ -377,9 +387,14 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Paper 2: Listening & Reading Comprehension",
-				"maxMarks": 65,
-				"weight": 0.5
+				"name": "Paper 2: Reading Comprehension",
+				"maxMarks": 40,
+				"weight": 0.25
+			},
+			{
+				"name": "Paper 2: Listening",
+				"maxMarks": 25,
+				"weight": 0.25
 			},
 			{
 				"name": "Individual Oral Assessment",
