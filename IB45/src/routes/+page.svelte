@@ -14,12 +14,12 @@
 	import Links from '$lib/components/links.svelte';
 	import Refresh from '$lib/components/main/refresh.svelte';
 	import Button from '$lib/components/button.svelte';
-	import Discord from '$lib/components/Discord.svelte';
+	import Message from '$lib/components/Message.svelte';
 
-	let scores = [];
-	let totalScore;
-	let tokGrade;
-	let eeGrade;
+	let scores = [0, 0, 0, 0, 0, 0];
+	let totalScore = 0;
+	let tokGrade = 'E';
+	let eeGrade = 'E';
 	let corePoints;
 
 	$: {
@@ -58,7 +58,7 @@
 	<h1>Predicted Score Calculator</h1>
 </div>
 <div class="intro">
-	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+	<div class="welcome" in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
 		<h4>Last updated May 14, 2024</h4>
 	</div>
@@ -74,40 +74,8 @@
 			know exactly what is needed in order to score a 4, 5, 6, or 7. No more, no less.
 		</p>
 
-		<div class="message">
-			<div class="announcement">&#x1F440;Announcement&#x1F440;</div>
-			<p>
-				I have updated the site with November 2023 grade boundaries. Compared to M23 and N22, N23
-				boundaries have somewhat increased.
-			</p>
-			<ul>
-				<li>
-					There have been significant point increases in the following major subjects: SL/HL English
-					LAL, SL/HL English Lit, SL/HL Math AA, HL Math AI, SL Physics, ESS, SL/HL SEHS, SL Visual
-					Arts, SL BM, SL Economics, SL Geography, SL/HL Global Politics.
-				</li>
-				<li>There have been significant point decreases in the following subjects: SL/HL Dance.</li>
-				<li>Extended essay boundaries were raised by 1 point to pre-covid levels.</li>
-			</ul>
-			<p>
-				Take this information with a grain of salt. The N23 cohort only had about 20k candidates, as
-				opposed to the approximate 120k candidates during M23. Due to the small sample size, it may
-				be the case that N23 exihibited relatively higher signs of intelligence.
+		<Message />
 
-				<strong
-					>N23 boundaries therefore should not be taken as a strong indicator of M24 boundaries -
-					use M23 instead.</strong
-				>
-			</p>
-			<Discord />
-			<p>
-				Please report all errors and concerns to <a href="mailto:admin@ibpredict.org"
-					>admin@ibpredict.org</a
-				>
-				or <a href="https://discord.gg/G8UvbTJHp8">join the Discord Server.</a> Thank you and good luck
-				to all M24 candidates!
-			</p>
-		</div>
 		<p><strong>Individual Grade Calculators</strong></p>
 
 		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
@@ -190,23 +158,12 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
+	$font-family: 'Space Grotesk', sans-serif;
+
 	p {
 		line-height: 2;
-	}
-
-	.message {
-		border: 2px solid black;
-		padding: 0 20px;
-	}
-	.message .announcement {
-		font-size: 1.2em;
-		text-align: center;
-		font-weight: bold;
-		margin: 10px 0 0 0;
-	}
-	.message p {
-		line-height: 1.3;
 	}
 
 	.banner {
@@ -217,10 +174,10 @@
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
 		border-right: 0.5px solid var(--lightprimary);
-	}
 
-	.banner h1 {
-		margin: 65px;
+		h1 {
+			margin: 65px;
+		}
 	}
 
 	.intro {
@@ -245,8 +202,15 @@
 		display: none;
 	}
 
-	h2 {
-		margin-bottom: 0;
+	.welcome {
+		font-family: $font-family;
+
+		h2 {
+			margin-bottom: 0;
+		}
+		h4 {
+			margin: 0;
+		}
 	}
 
 	@media screen and (max-width: 1000px) {

@@ -1,7 +1,7 @@
 import { writable } from "svelte/store"
 import { browser } from "$app/environment"
 import data from '$lib/assets/courses.json';
-import M22 from '$lib/assets/Grade_BoundariesM22.json';
+import M22 from '$lib/assets/M22.json';
 
 export const courses = writable(Object.keys(data).map((courseName) => ({
     name: courseName,
@@ -14,10 +14,7 @@ export const courses = writable(Object.keys(data).map((courseName) => ({
     info: data['info']
 })));
 
-export const gradeBoundaryData = writable(Object.keys(M22).map((courseName) => ({
-    name: courseName,
-    TZ: M22[courseName].TZ
-})));
+export const gradeBoundaryData = writable();
 
 export const tok = writable(browser && localStorage && localStorage.getItem("tok") || '{"tok":[0, 0], "ee":[0]}')
 tok.subscribe((val) => {

@@ -1,12 +1,12 @@
 import courses from '$lib/assets/courses.json';
-import M19 from '$lib/assets/Grade_BoundariesM19.json';
-import N19 from '$lib/assets/Grade_BoundariesN19.json';
-import N20 from '$lib/assets/Grade_BoundariesN20.json';
-import M21 from '$lib/assets/Grade_BoundariesM21.json';
-import M22 from '$lib/assets/Grade_BoundariesM22.json';
-import N22 from '$lib/assets/Grade_BoundariesN22.json';
-import M23 from '$lib/assets/Grade_BoundariesM23.json';
-import N23 from '$lib/assets/Grade_BoundariesN23.json';
+import M19 from '$lib/assets/M19.json';
+import N19 from '$lib/assets/N19.json';
+import N20 from '$lib/assets/N20.json';
+import M21 from '$lib/assets/M21.json';
+import M22 from '$lib/assets/M22.json';
+import N22 from '$lib/assets/N22.json';
+import M23 from '$lib/assets/M23.json';
+import N23 from '$lib/assets/N23.json';
 
 const b = [M19, N19, N20, M21, M22, N22, M23, N23];
 

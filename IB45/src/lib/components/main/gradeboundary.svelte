@@ -1,13 +1,13 @@
 <script>
 	import { gradeBoundary, gradeBoundaryData } from '$lib/stores/store.js';
-	import M19 from '$lib/assets/Grade_BoundariesM19';
-	import N19 from '$lib/assets/Grade_BoundariesN19';
-	import N20 from '$lib/assets/Grade_BoundariesN20';
-	import M21 from '$lib/assets/Grade_BoundariesM21';
-	import M22 from '$lib/assets/Grade_BoundariesM22';
-	import N22 from '$lib/assets/Grade_BoundariesN22';
-	import M23 from '$lib/assets/Grade_BoundariesM23';
-	import N23 from '$lib/assets/Grade_BoundariesN23';
+	import M19 from '$lib/assets/M19';
+	import N19 from '$lib/assets/N19';
+	import N20 from '$lib/assets/N20';
+	import M21 from '$lib/assets/M21';
+	import M22 from '$lib/assets/M22';
+	import N22 from '$lib/assets/N22';
+	import M23 from '$lib/assets/M23';
+	import N23 from '$lib/assets/N23';
 
 	const str = ['M19', 'N19', 'N20', 'M21', 'M22', 'N22', 'M23', 'N23'];
 	const gradeBoundaries = [M19, N19, N20, M21, M22, N22, M23, N23];
