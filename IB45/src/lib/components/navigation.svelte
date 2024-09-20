@@ -31,7 +31,7 @@
 		.nav-group {
 			display: flex;
 			width: 950px;
-			margin: 0 auto;
+			margin: 10px auto;
 
 			.logo-group {
 				display: flex;
