@@ -191,43 +191,6 @@
 </div>
 
 <style>
-	:global(html) {
-		font-family: Verdana, Geneva, Tahoma, sans-serif;
-		background-color: var(--primary);
-		color: black;
-	}
-
-	:global(body) {
-		background-color: var(--background);
-		margin: 0;
-		padding: 0;
-		overscroll-behavior-x: none;
-	}
-
-	:global(nav) {
-		width: 100%;
-		display: flex;
-		background-color: var(--primary);
-		justify-content: space-between;
-		align-items: center;
-		border-bottom: 1px solid black;
-	}
-
-	:global(.top-links) {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		margin-right: 5px;
-		width: 100%;
-	}
-
-	:global(.top-links a) {
-		margin-right: 10px;
-		color: black;
-		text-decoration: none;
-		font-size: 1.2em;
-	}
-
 	p {
 		line-height: 2;
 	}

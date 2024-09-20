@@ -19,22 +19,22 @@
 </nav>
 
 <style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
+	$font-family: 'Space Grotesk', sans-serif;
+
 	nav {
-		width: 100%;
+		display: flex;
 		background-color: var(--primary);
 		justify-content: space-between;
-		align-items: center;
 		border-bottom: 1px solid black;
-
 		.logo-group {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 
 			#img {
-				width: 75px;
+				width: 50px;
 				margin: 5px 20px;
-				align-self: flex-start;
 				transition: 0.3s ease-in-out;
 
 				&:hover {
@@ -46,6 +46,7 @@
 			}
 
 			.logo-text {
+				font-family: $font-family;
 				font-size: 2em;
 				white-space: nowrap;
 				margin-right: 20px;
@@ -58,7 +59,7 @@
 			align-items: center;
 			margin-right: 5px;
 			width: 100%;
-
+			font-family: $font-family;
 			a {
 				margin-right: 10px;
 				margin-left: 20px;
