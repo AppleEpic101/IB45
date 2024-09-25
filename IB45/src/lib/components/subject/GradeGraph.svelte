@@ -154,7 +154,7 @@
 {#if showGraph}
 	<div class="title">
 		Historical Grade Boundaries Graph for<br />
-		{`${level} ${language} ${name}`}
+		{`${level} ${language || ''} ${name}`}
 	</div>
 	<div class="dropdown">
 		<Dropdown arr={Array.from({ length: 7 }, (_, i) => i + 1)} bind:value={number} />
