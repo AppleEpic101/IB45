@@ -42,6 +42,7 @@
 
 	function createChart() {
 		if (!results || results.length === 0) {
+			console.log('no rsults');
 			showGraph = false;
 			return;
 		} else {
@@ -143,27 +144,26 @@
 	});
 
 	$: {
-		if (number || results || language) {
+		if (language || number || results) {
+			console.log('rerender');
 			createChart();
 		}
 	}
 </script>
 
-<div class="title">
-	Historical Grade Boundaries Graph for<br />
-	{`${level} ${language} ${name}`}
-</div>
-<div class="dropdown">
-	<Dropdown arr={Array.from({ length: 7 }, (_, i) => i + 1)} bind:value={number} />
-</div>
+{#if showGraph}
+	<div class="title">
+		Historical Grade Boundaries Graph for<br />
+		{`${level} ${language} ${name}`}
+	</div>
+	<div class="dropdown">
+		<Dropdown arr={Array.from({ length: 7 }, (_, i) => i + 1)} bind:value={number} />
+	</div>
 
-<div class="graph">
-	{#if showGraph}
-		<canvas bind:this={chartCanvas} style="display: block;" />
-	{:else}
-		<canvas bind:this={chartCanvas} style="display: hidden;" />
-	{/if}
-</div>
+	<div class="graph">
+		<canvas bind:this={chartCanvas} class="" />
+	</div>
+{/if}
 
 <style>
 	.graph {
