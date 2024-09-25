@@ -72,10 +72,6 @@
 				plugins: {
 					legend: {
 						display: false
-					},
-					title: {
-						display: true,
-						text: 'Predicted Mark Probability Distribution'
 					}
 				},
 				scales: {
@@ -118,7 +114,13 @@
 	});
 </script>
 
+<div class="title">Predicted Mark Probability Distribution</div>
 <canvas bind:this={chartCanvas} />
 
 <style>
+	.title {
+		font-size: 1rem;
+		margin: 10px 0;
+		text-align: center;
+	}
 </style>

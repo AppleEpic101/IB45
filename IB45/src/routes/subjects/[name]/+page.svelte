@@ -7,6 +7,7 @@
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
 	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import Bargraph from '$lib/components/subject/bargraph.svelte';
+	import GradeGraph from '$lib/components/subject/GradeGraph.svelte';
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
@@ -301,6 +302,20 @@
 						{syllabus.name} is offered only at the SL level
 					</h5>
 				{/if}
+				{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
+					{#if !data.SLOnly}
+						<div class="wrap">
+							<label>
+								<input type="radio" name="e" value={'SL'} bind:group={level} />
+								<div class="btn btn-sik"><span>SL</span></div>
+							</label>
+							<label>
+								<input type="radio" name="e" value={'HL'} bind:group={level} />
+								<div class="btn btn-sik"><span>HL</span></div>
+							</label>
+						</div>
+					{/if}
+				{/if}
 				<div class="dropdown">
 					{#if data.isLanguageSubject && syllabus.name === 'Classical Language'}
 						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
@@ -312,6 +327,9 @@
 						</div>
 					{/if}
 				</div>
+
+				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
+
 				<div class="tables">
 					{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
 						<CoreTable {name} res={SLResults} />
@@ -435,8 +453,7 @@
 	}
 
 	.graph {
-		margin-left: auto;
-		margin-right: auto;
+		margin: 0 auto 80px auto;
 		height: 35vh;
 		max-width: 75vh;
 	}
