@@ -97,7 +97,7 @@
 		<Button href={'./subjects/extended-essay'} text={'EE'} />
 		<Button href={'./subjects'} text={'More...'} />
 
-		<p>
+		<!-- <p>
 			<strong>Upcoming May 2024 Syllabus Changes (old syllabuses archived as of April 9)</strong>
 		</p>
 		<Button href={'./subjects/business-management'} text={'Business Management (2024)'} />
@@ -106,7 +106,7 @@
 		<Button
 			href={'./subjects/literature-and-performance'}
 			text={'Literature & Performance (2024)'}
-		/>
+		/> -->
 		<hr />
 	</div>
 
