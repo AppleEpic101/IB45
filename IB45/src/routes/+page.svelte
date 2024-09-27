@@ -209,7 +209,7 @@
 			margin-bottom: 0;
 		}
 		h4 {
-			margin: 0;
+			margin: 0 0 15px 0;
 		}
 	}
 

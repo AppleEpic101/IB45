@@ -28,18 +28,18 @@
 	/>
 </svelte:head>
 
-<div class="body">
-	<h1 in:fly={{ duration: 1400, x: 200 }}>Subject List</h1>
+<div class="body" in:fly={{ duration: 1400, x: 200 }}>
+	<h1>Subject List</h1>
 
 	<Links />
-	<p class="intro" in:fly={{ duration: 1400, y: 50 }}>
+	<p class="intro">
 		View course descriptions, calculate your grade for a subject, and see historical grade
 		boundaries all from a single page! <strong>Click on a subject to get started.</strong>
 	</p>
 	<Discord />
 	<div in:fade={{ delay: 300, duration: 500 }} class="subjects">
 		{#each { length: 6 } as _, i}
-			<h3 in:fly={{ duration: 1400, x: 200 }}>{groups[i]}</h3>
+			<h3>{groups[i]}</h3>
 			<div class="list">
 				{#each courses as course}
 					{#if course.name !== 'meta' && course?.groupNumber?.includes(i + 1)}

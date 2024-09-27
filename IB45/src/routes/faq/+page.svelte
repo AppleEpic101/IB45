@@ -21,10 +21,10 @@
 	/>
 </svelte:head>
 
-<div class="content">
-	<h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Frequently Asked Questions</h1>
+<div class="content" in:fly={{ duration: 1400, x: 200 }}>
+	<h1>Frequently Asked Questions</h1>
 	<Links />
-	<div in:fly={{ delay: 100, duration: 1300, y: 50 }}>
+	<div>
 		<p>
 			I have compiled a list of the most frequently asked questions by users. You may contact me at <a
 				href="mailto:admin@ibpredict.org">admin@ibpredict.org</a
@@ -34,7 +34,7 @@
 		<hr />
 	</div>
 	<br />
-	<div in:fly={{ delay: 100, duration: 1300, x: 200 }}>
+	<div>
 		<Collapsible
 			question="Are these grade boundaries real/legit?"
 			answer="Yes. These are official grade boundaries from past examinations."
