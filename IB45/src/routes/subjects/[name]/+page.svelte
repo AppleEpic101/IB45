@@ -8,6 +8,7 @@
 	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import Bargraph from '$lib/components/subject/bargraph.svelte';
 	import GradeGraph from '$lib/components/subject/GradeGraph.svelte';
+	import Collapsible2 from '$lib/components/Collapsible2.svelte';
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
@@ -191,10 +192,7 @@
 	</div>
 	<Links />
 
-	<div class="description">
-		<h4 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Description</h4>
-		<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>{syllabus.description}</div>
-	</div>
+	<Collapsible2 title="Description" content={syllabus.description} />
 
 	<h4>Past Syllabuses</h4>
 	<button
@@ -279,7 +277,7 @@
 					<div class="container">
 						<div class="x">Predicted Grade</div>
 						<div class="y">
-							{grade}%
+							{grade}
 						</div>
 					</div>
 					<div class="container">
