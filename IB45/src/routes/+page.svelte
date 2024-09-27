@@ -195,7 +195,7 @@
 	.data {
 		position: -webkit-sticky;
 		position: sticky;
-		top: 10px;
+		top: 70px;
 	}
 
 	.top-table {

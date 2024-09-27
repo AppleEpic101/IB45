@@ -104,8 +104,8 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-bottom: 1px solid black;
-		padding: 5px;
+		border-bottom: 2px solid black;
+		padding: 0px;
 		position: sticky;
 		top: 0;
 		z-index: 100;
