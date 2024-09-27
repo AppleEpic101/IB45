@@ -54,25 +54,25 @@
 		: getAllBoundaries(data.name).HL;
 
 	// gets the latest grade boundary (for awarded mark calculation)
-	$: SLoptions = SLResults.filter((obj) => obj.short === 'M23' || obj.short === 'N23');
-	$: HLoptions = HLResults.filter((obj) => obj.short === 'M23' || obj.short === 'N23');
+	$: SLoptions = SLResults.filter((obj) => obj.short === 'N23' || obj.short === 'M24');
+	$: HLoptions = HLResults.filter((obj) => obj.short === 'N23' || obj.short === 'M24');
 
 	const init = async () => {
 		if (SLoptions && HLoptions) {
 			lastSL = SLoptions?.find(
-				(obj) => obj.short === 'M23' && (obj.timezone === 0 || obj.timezone === 1)
+				(obj) => obj.short === 'N23' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
 			lastHL = HLoptions?.find(
-				(obj) => obj.short === 'M23' && (obj.timezone === 0 || obj.timezone === 1)
+				(obj) => obj.short === 'N23' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M23');
 			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N23');
+			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M24');
 			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
 
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M23');
 			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N23');
+			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M24');
 			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
 		}
 	};
@@ -237,11 +237,11 @@
 				{#if !data.SLOnly}
 					<div class="wrap">
 						<label>
-							<input type="radio" name="e" value={'SL'} bind:group={level} />
+							<input type="radio" name="ef" value={'SL'} bind:group={level} />
 							<div class="btn btn-sik"><span>SL</span></div>
 						</label>
 						<label>
-							<input type="radio" name="e" value={'HL'} bind:group={level} />
+							<input type="radio" name="ef" value={'HL'} bind:group={level} />
 							<div class="btn btn-sik"><span>HL</span></div>
 						</label>
 					</div>
@@ -279,7 +279,7 @@
 					<div class="container">
 						<div class="x">Predicted Grade</div>
 						<div class="y">
-							{grade}
+							{grade}%
 						</div>
 					</div>
 					<div class="container">

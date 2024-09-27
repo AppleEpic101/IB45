@@ -2,7 +2,7 @@
 	import { timezone, gradeBoundary } from '$lib/stores/store.js';
 
 	const singleTimezones = ['N19', 'N20', 'N21', 'N22'];
-	const doubleTimezones = ['M19', 'M21', 'M22', 'M23', 'N23'];
+	const doubleTimezones = ['M19', 'M21', 'M22', 'M23', 'N23', 'M24'];
 
 	let numTimezones;
 	$: {

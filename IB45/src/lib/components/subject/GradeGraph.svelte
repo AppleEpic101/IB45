@@ -145,7 +145,6 @@
 
 	$: {
 		if (language || number || results) {
-			console.log('rerender');
 			createChart();
 		}
 	}

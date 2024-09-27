@@ -5,9 +5,15 @@
 <div class="message">
 	<div class="announcement">&#x1F440;Announcement&#x1F440;</div>
 	<p>
-		In anticipation for November 2024 and May 2025 examinations, I am currently working to implement
-		additional features and insight tools. Please be patient as I work to improve the website. M24,
-		if you have access to the M24 Grade Boundaries PDF, please email or DM it to me (contact below).
+		I have updated the site with the official May 2024 grade boundaries. The M24 largely reflects
+		the same grade boundaries as M23, meaning everything is back to normal. I have added graphs to
+		the subject pages to help everyone visualize the changing grade boundaries better. November
+		grade boundaries are usually higher than May grade boundaries, so N24 candidates should predict
+		use the N23 boundaries for the most reliable predictions.
+	</p>
+	<p>
+		I will continue updating the site for forseeable future. I hope this tool will continue to be
+		useful for future IB candidates. Good luck to all N24 candidates!
 	</p>
 
 	<Discord />

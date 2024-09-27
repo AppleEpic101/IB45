@@ -7,8 +7,9 @@ import M22 from '$lib/assets/M22.json';
 import N22 from '$lib/assets/N22.json';
 import M23 from '$lib/assets/M23.json';
 import N23 from '$lib/assets/N23.json';
+import M24 from '$lib/assets/M24.json';
 
-const b = [M19, N19, N20, M21, M22, N22, M23, N23];
+const b = [M19, N19, N20, M21, M22, N22, M23, N23, M24];
 
 export const calculateNormalResults = (grade, boundary) => {
     let mark = 0;
