@@ -51,10 +51,10 @@
 					bind:this={dropdownElement}
 					transition:fly={{ y: -5, duration: 200 }}
 				>
-					<a href="/">Home</a>
-					<a href="/subjects">Subjects</a>
-					<a href="/changelog">Changelog</a>
-					<a href="/faq">FAQ</a>
+					<a href="/" on:click={toggleDropdown}>Home</a>
+					<a href="/subjects" on:click={toggleDropdown}>Subjects</a>
+					<a href="/changelog" on:click={toggleDropdown}>Changelog</a>
+					<a href="/faq" on:click={toggleDropdown}>FAQ</a>
 				</div>
 			{/if}
 		</div>
