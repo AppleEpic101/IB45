@@ -24,3 +24,12 @@
     border: 2px solid black;
     border-radius: 5px;
 }
+
+h2 {
+    margin-bottom: 5px;
+}
+
+h5 {
+    margin-top: 0;
+}
+

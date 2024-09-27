@@ -95,7 +95,7 @@
 	/>
 	{#if sufficientInformation}
 		<br />
-		<button class="btn btn-sik"><a href={url} target="_blank">More details</a></button>
+		<button class="btn btn-sik"><a href={url} target="_blank">Goto subject page</a></button>
 	{/if}
 </div>
 

@@ -81,7 +81,7 @@
 	</div>
 	<br />
 	<button class="btn btn-sik"
-		><a href="/subjects/theory-of-knowledge" target="_blank">More details</a></button
+		><a href="/subjects/theory-of-knowledge" target="_blank">Goto subject page</a></button
 	>
 	<h2>Extended Essay</h2>
 	<div class="content">
@@ -100,7 +100,7 @@
 	</div>
 	<br />
 	<button class="btn btn-sik"
-		><a href="/subjects/extended-essay" target="_blank">More details</a></button
+		><a href="/subjects/extended-essay" target="_blank">Goto subject page</a></button
 	>
 	<br />
 	<div class="stats">
