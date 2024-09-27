@@ -16,6 +16,9 @@
 	import Button from '$lib/components/button.svelte';
 	import Message from '$lib/components/Message.svelte';
 
+	import GradeBoundarySelector from '$lib/components/MainCalculator/GradeBoundarySelector.svelte';
+	import GradePredictor from '$lib/components/MainCalculator/GradePredictor.svelte';
+
 	let scores = [0, 0, 0, 0, 0, 0];
 	let totalScore = 0;
 	let tokGrade = 'E';
@@ -108,9 +111,12 @@
 			text={'Literature & Performance (2024)'}
 		/> -->
 		<hr />
+		<GradeBoundarySelector />
+		<GradePredictor />
 	</div>
+</div>
 
-	<div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
+<!-- <div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
 		<GradeBoundary />
 		<Timezone />
 	</div>
@@ -156,7 +162,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');

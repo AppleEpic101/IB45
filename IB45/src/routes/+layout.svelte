@@ -48,13 +48,6 @@
 		border-radius: 4px;
 	}
 
-	:global(.btn:hover) {
-		cursor: pointer;
-	}
-
-	:global(.btn) {
-		text-align: center;
-	}
 	:global(.btn-sik) {
 		transition: all 0.2s ease;
 		background-color: var(--lightprimary);

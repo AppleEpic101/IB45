@@ -1,3 +1,4 @@
+
 import { writable } from "svelte/store"
 import { browser } from "$app/environment"
 import data from '$lib/assets/courses.json';
