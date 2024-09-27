@@ -11,7 +11,8 @@
 	export let SLResults = [];
 	export let HLResults = [];
 
-	let number = 7;
+	let isAE = name === 'Extended Essay' || name === 'Theory Of Knowledge';
+	let number = isAE ? 5 : 7;
 
 	$: results = level === 'HL' ? HLResults : SLResults;
 
@@ -42,7 +43,6 @@
 
 	function createChart() {
 		if (!results || results.length === 0) {
-			console.log('no rsults');
 			showGraph = false;
 			return;
 		} else {
@@ -153,10 +153,14 @@
 {#if showGraph}
 	<div class="title">
 		Historical Grade Boundaries Graph for<br />
-		{`${level} ${language || ''} ${name}`}
+		{isAE ? `${name}` : `${level} ${language || ''} ${name}`}
 	</div>
 	<div class="dropdown">
-		<Dropdown arr={Array.from({ length: 7 }, (_, i) => i + 1)} bind:value={number} />
+		<Dropdown
+			arr={isAE ? ['E', 'D', 'C', 'B', 'A'] : [1, 2, 3, 4, 5, 6, 7]}
+			arrVal={isAE ? [1, 2, 3, 4, 5] : [1, 2, 3, 4, 5, 6, 7]}
+			bind:value={number}
+		/>
 	</div>
 
 	<div class="graph">
