@@ -3,13 +3,13 @@
 	export let score;
 	export let name;
 	export let predictedGrade;
-	export let isMisc = false;
+	export let isCore = false;
 	export let maxScore = 100;
 </script>
 
 <div class="main">
 	<div>{name} Grade: {score}/{maxScore}</div>
-	{#if !isMisc}
+	{#if !isCore}
 		{#each grades as grade, i}
 			<div>Timezone {i + (grades.length == 2 ? 1 : 0)}: {grade}</div>
 		{/each}

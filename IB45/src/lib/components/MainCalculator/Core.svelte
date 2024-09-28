@@ -84,7 +84,7 @@
 		predictedGrade={tokGrade}
 		score={tokPredictedScore}
 		name={$selectedBoundaryId}
-		isMisc={true}
+		isCore={true}
 		maxScore={30}
 	/>
 	<a href="/subjects/tok" target="_blank"><button class="goto">Goto subject page</button></a>
@@ -106,7 +106,7 @@
 		predictedGrade={eeGrade}
 		score={eePredictedScore}
 		name={$selectedBoundaryId}
-		isMisc={true}
+		isCore={true}
 		maxScore={34}
 	/>
 	<a href="/subjects/extended-essay" target="_blank"

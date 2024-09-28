@@ -1,6 +1,6 @@
 <script>
-	import SubjectGroup from '$lib/components/MainCalculator/SubjectGroup.svelte';
-	import MiscGroup from '$lib/components/MainCalculator/MiscGroup.svelte';
+	import Group from '$lib/components/MainCalculator/Group.svelte';
+	import Core from '$lib/components/MainCalculator/Core.svelte';
 	import GradeTable from '$lib/components/MainCalculator/GradeTable.svelte';
 	import Refresh from '$lib/components/MainCalculator/Refresh.svelte';
 
@@ -25,13 +25,13 @@
 <div class="main">
 	<div class="left-column">
 		{#each Array(6).fill(0) as _, i}
-			<SubjectGroup
+			<Group
 				group={i}
 				bind:predictedGrade={subjectGrades[i].grade}
 				bind:level={subjectGrades[i].level}
 			/>
 		{/each}
-		<MiscGroup
+		<Core
 			bind:tokGrade={subjectGrades.tokGrade}
 			bind:eeGrade={subjectGrades.eeGrade}
 			bind:coreGrade={subjectGrades.coreGrade}

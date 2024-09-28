@@ -1,49 +1,12 @@
 <script>
-	import { selectedGroup6 } from '$lib/stores/store.js';
 	import { fly, scale, fade } from 'svelte/transition';
-	import Group1 from '$lib/components/main/group1.svelte';
-	import Group2 from '$lib/components/main/group2.svelte';
-	import Group3 from '$lib/components/main/group3.svelte';
-	import Group4 from '$lib/components/main/group4.svelte';
-	import Group5 from '$lib/components/main/group5.svelte';
-	import Group6 from '$lib/components/main/group6.svelte';
-	import TOK from '$lib/components/main/TOK.svelte';
-	import DetailedTable from '$lib/components/main/detailedTable.svelte';
-	import GradeBoundary from '$lib/components/main/gradeboundary.svelte';
-	import Timezone from '$lib/components/main/timezone.svelte';
+
 	import Links from '$lib/components/links.svelte';
-	import Refresh from '$lib/components/main/refresh.svelte';
 	import Button from '$lib/components/button.svelte';
 	import Message from '$lib/components/Message.svelte';
 
 	import GradeBoundarySelector from '$lib/components/MainCalculator/GradeBoundarySelector.svelte';
-	import GradePredictor from '$lib/components/MainCalculator/GradePredictor.svelte';
-
-	let scores = [0, 0, 0, 0, 0, 0];
-	let totalScore = 0;
-	let tokGrade = 'E';
-	let eeGrade = 'E';
-	let corePoints;
-
-	$: {
-		totalScore = 0;
-		for (let i = 0; i < scores.length; i++) {
-			totalScore += scores[i];
-		}
-		totalScore += corePoints;
-	}
-
-	const components = {
-		'1': Group1,
-		'2': Group2,
-		'3': Group3,
-		'4': Group4,
-		'5': Group5,
-		'6': Group6
-	};
-
-	let Component;
-	$: Component = components[$selectedGroup6];
+	import MainCalculator from '$lib/components/MainCalculator/MainCalculator.svelte';
 </script>
 
 <svelte:head>
@@ -112,7 +75,7 @@
 		/> -->
 		<hr />
 		<GradeBoundarySelector />
-		<GradePredictor />
+		<MainCalculator />
 	</div>
 </div>
 
