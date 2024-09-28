@@ -122,7 +122,6 @@
 	.main {
 		border-radius: 0.5rem;
 		border: 2px solid black;
-		margin: 0 1rem 1rem 0;
 		padding: 1rem;
 		background-color: var(--darkwhite);
 	}

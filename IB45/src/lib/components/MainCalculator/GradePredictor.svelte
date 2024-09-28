@@ -17,9 +17,13 @@
 	};
 </script>
 
+<div class="mobile-table">
+	<GradeTable gradeData={subjectGrades} />
+</div>
 <Refresh />
+
 <div class="main">
-	<div>
+	<div class="left-column">
 		{#each Array(6).fill(0) as _, i}
 			<SubjectGroup
 				group={i}
@@ -33,15 +37,42 @@
 			bind:coreGrade={subjectGrades.coreGrade}
 		/>
 	</div>
-	<div>
+	<div class="desktop-table">
 		<GradeTable gradeData={subjectGrades} />
 	</div>
 </div>
+<div class="mobile-table">
+	<GradeTable gradeData={subjectGrades} />
+</div>
+<Refresh />
 
-<style>
+<style lang="scss">
 	.main {
 		display: grid;
 		grid-template-columns: 4fr 275px;
 		margin: 20px auto;
+		gap: 10px;
+	}
+
+	.mobile-table {
+		display: none;
+	}
+
+	@media (max-width: 700px) {
+		.main {
+			display: flex;
+			margin: 20px auto;
+			.left-column {
+				width: 100%;
+			}
+		}
+		.desktop-table {
+			display: none;
+		}
+
+		.mobile-table {
+			margin: 10px 0;
+			display: block;
+		}
 	}
 </style>
