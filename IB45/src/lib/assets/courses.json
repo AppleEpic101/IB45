@@ -31,6 +31,7 @@
 			"World Religions"
 		],
 		"group4": [
+			"Astronomy",
 			"Biology",
 			"Chemistry",
 			"Computer Science",
@@ -87,9 +88,39 @@
 			"Brazilian Social Studies",
 			"Turkey In The 20th Century",
 			"Marine Science",
-			"Nature Of Science"
+			"Nature Of Science",
+			"Astronomy"
 		],
 		"region": ["Africa And Middle East", "Americas", "Asia And Oceania", "Europe"]
+	},
+	"Astronomy": {
+		"firstAssessment": 2017,
+		"lastAssessment": "Present",
+		"short": "astronomy",
+		"isLang": false,
+		"SLOnly": true,
+		"schoolOnly": true,
+		"isCore": false,
+		"groupNumber": [4, "s"],
+		"description": "Astronomy is the study of the universe and its contents outside of Earth's atmosphere. It includes the examination of the positions, motions, and properties of celestial objects. Astronomy is one of the oldest sciences, and it has been practiced by ancient civilizations. The course is designed to provide students with a broad understanding of the universe and the methods used to study it. The course covers a wide range of topics, including the history of astronomy, the solar system, stars, galaxies, and cosmology. The course also includes the study of the tools and techniques used by astronomers to observe and interpret the universe. The course is designed to be accessible to students with no prior knowledge of astronomy, and it is suitable for students who are interested in learning more about the universe and how it works. The course is designed to be engaging and interactive, with a focus on hands-on activities and real-world examples. The course is designed to help students develop critical thinking skills and to encourage them to ask questions and seek answers about the universe and their place in it.",
+		"SLAssessments": [
+			{
+				"name": "Paper 1",
+				"maxMarks": 30,
+				"weight": 0.3
+			},
+			{
+				"name": "Paper 2",
+				"maxMarks": 40,
+				"weight": 0.5
+			},
+			{
+				"name": "IA: Indvidiual Investigation",
+				"maxMarks": 30,
+				"weight": 0.2
+			}
+		],
+		"old": []
 	},
 	"Language A: Literature": {
 		"firstAssessment": 2021,
@@ -117,7 +148,7 @@
 				"weight": 0.35
 			},
 			{
-				"name": "Individual Oral",
+				"name": "IA: Individual Oral",
 				"maxMarks": 40,
 				"weight": 0.3
 			}
@@ -138,13 +169,13 @@
 				"weight": 0.25
 			},
 			{
-				"name": "HL Essay",
+				"name": "Higher Level Essay",
 				"format": "Written coursework component: 1,200-1,500 word essay on one work studied.",
 				"maxMarks": 20,
 				"weight": 0.2
 			},
 			{
-				"name": "Individual Oral",
+				"name": "IA: Individual Oral",
 				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.2
@@ -179,7 +210,7 @@
 				"weight": 0.35
 			},
 			{
-				"name": "Individual Oral",
+				"name": "IA: Individual Oral",
 				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.3
@@ -199,13 +230,13 @@
 				"weight": 0.25
 			},
 			{
-				"name": "HL Essay",
+				"name": "Higher Level Essay",
 				"format": "Written coursework component: 1,200-1,500 word essay on one work studied.",
 				"maxMarks": 20,
 				"weight": 0.2
 			},
 			{
-				"name": "Individual Oral",
+				"name": "IA: Individual Oral",
 				"format": "Prepared oral response on the way that one work originally written in the language studied and one work studied in translation have approached a common global issue.",
 				"maxMarks": 40,
 				"weight": 0.2
@@ -236,7 +267,7 @@
 				"weight": 0.35
 			},
 			{
-				"name": "Individual Study: Research Dossier",
+				"name": "IA: Research Dossier",
 				"maxMarks": 28,
 				"weight": 0.3
 			}
@@ -258,7 +289,7 @@
 				"weight": 0.2
 			},
 			{
-				"name": "Individual Study: Research Dossier",
+				"name": "IA: Research Dossier",
 				"maxMarks": 28,
 				"weight": 0.2
 			}
@@ -288,7 +319,7 @@
 						"weight": 0.45
 					},
 					{
-						"name": "Individual Study: Research Dossier",
+						"name": "IA: Research Dossier",
 						"maxMarks": 24,
 						"weight": 0.2
 					}
@@ -305,7 +336,7 @@
 						"weight": 0.45
 					},
 					{
-						"name": "Individual Study: Research Dossier",
+						"name": "IA: Research Dossier",
 						"maxMarks": 24,
 						"weight": 0.2
 					}
@@ -341,7 +372,7 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Individual Oral Assessment",
+				"name": "IA: Individual Oral",
 				"maxMarks": 30,
 				"weight": 0.25
 			}
@@ -363,7 +394,7 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Individual Oral Assessment",
+				"name": "IA: Individual Oral",
 				"maxMarks": 30,
 				"weight": 0.25
 			}
@@ -398,7 +429,7 @@
 				"weight": 0.25
 			},
 			{
-				"name": "Individual Oral Assessment",
+				"name": "IA: Individual Oral",
 				"maxMarks": 30,
 				"weight": 0.25
 			}

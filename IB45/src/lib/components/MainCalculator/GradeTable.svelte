@@ -7,6 +7,7 @@
 	const tokGradeWeights = [0, 1, 3, 5, 7];
 
 	let diplomaAwarded;
+	let message;
 	$: {
 		diplomaAwarded = true;
 		let gradesTally = [0, 0, 0, 0, 0, 0, 0];
@@ -14,13 +15,15 @@
 			gradesTally[gradeData[i].grade - 1] += 1;
 		}
 
-		let HLsum = 0;
+		// only 3 highest HL grades count
+		let HLgrades = [];
 		for (let i = 0; i < 6; i++) {
-			if (gradeData[i].level != 'HL') {
-				continue;
+			if (gradeData[i].level == 'HL') {
+				HLgrades.push(gradeData[i].grade);
 			}
-			HLsum += gradeData[i].grade;
 		}
+		HLgrades.sort((a, b) => b - a);
+		let HLsum = HLgrades.slice(0, 3).reduce((sum, grade) => sum + grade, 0);
 
 		let SLsum = 0;
 		for (let i = 0; i < 6; i++) {
@@ -31,33 +34,38 @@
 		}
 
 		if (HLcount + SLcount != 6) {
-			console.log('Not 6 subjects');
+			message = 'Not 6 subjects selected';
 			diplomaAwarded = false;
 		} else if (totalPoints < 24) {
-			console.log('Not enough points');
+			message = 'Less than 24 total points';
 			diplomaAwarded = false;
 		} else if (HLcount != 3 && HLcount != 4) {
-			console.log('Not 3 or 4 HLs');
+			message = 'Not 3 or 4 HLs selected';
 			diplomaAwarded = false;
-		} else if (
-			gradesTally[0] >= 1 ||
-			gradesTally[1] >= 1 ||
-			gradesTally[2] >= 2 ||
-			gradesTally[3] >= 3
-		) {
-			console.log('Not enough high grades');
+		} else if (gradesTally[0] >= 1) {
+			message = 'Grade 1s in any subject';
+			diplomaAwarded = false;
+		} else if (gradesTally[1] > 2) {
+			message = 'More than two grade 2s in any subject';
+			diplomaAwarded = false;
+		} else if (gradesTally[2] > 3) {
+			message = 'More than three grade 3s in any subject';
 			diplomaAwarded = false;
 		} else if (HLsum < 12) {
-			console.log('Not enough HL points');
+			if (HLcount == 3) {
+				message = 'Less than 12 HL points';
+			} else if (HLcount == 4) {
+				message = 'Less than 12 HL points (Only the 3 highest HLs count)';
+			}
 			diplomaAwarded = false;
 		} else if (SLcount == 3 && SLsum < 9) {
-			console.log('Not enough SL points');
+			message = 'Less than 9 SL points';
 			diplomaAwarded = false;
 		} else if (SLcount == 2 && SLsum < 5) {
-			console.log('Not enough SL points');
+			message = 'Less than 5 SL points';
 			diplomaAwarded = false;
 		} else if (gradeData.tokGrade == 'E' || gradeData.eeGrade == 'E') {
-			console.log('EE or TOK grade is E');
+			message = 'EE or TOK grade is E';
 			diplomaAwarded = false;
 		}
 	}
@@ -151,6 +159,12 @@
 		</tr>
 	</table>
 
+	{#if !diplomaAwarded}
+		<div class="additional-info red">
+			<div>Failing Condition:</div>
+			<div>{message}</div>
+		</div>
+	{/if}
 	<div class="additional-info">
 		HL Count: {HLcount} <br />
 		SL Count: {SLcount} <br />
@@ -187,5 +201,10 @@
 		background-color: var(--primary);
 		border: 2px solid black;
 		border-top: 0;
+	}
+
+	.red {
+		color: red;
+		font-weight: bold;
 	}
 </style>
