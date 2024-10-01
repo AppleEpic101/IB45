@@ -31,8 +31,7 @@ export const selectedTimezone = persisted('selectedTimezone', 0)
 
 const predictorSelectedOptions = persisted('predictorSelectedOptions', { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} })
 export function getPredictorSelectedOptions(group) {
-    const { subscribe, set } = writable(get(predictorSelectedOptions)[group]);
-    predictorSelectedOptions.subscribe(value => set(value[group]));
+    const { subscribe, update } = writable(get(predictorSelectedOptions)[group]);
     return {
         subscribe,
         set: function (value) {
@@ -40,6 +39,7 @@ export function getPredictorSelectedOptions(group) {
                 current[group] = value;
                 return current;
             });
+            update(e => e);
         },
     }
 }
