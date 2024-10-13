@@ -112,7 +112,7 @@
 
 		.nav-group {
 			display: flex;
-			width: 950px;
+			width: 1150px;
 			margin: 10px auto;
 			justify-content: space-between;
 

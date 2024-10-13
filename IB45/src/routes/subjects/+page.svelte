@@ -90,13 +90,21 @@
 	</p>
 </div>
 
-<style>
+<style lang="scss">
 	.body {
-		margin: 0 18%;
+		width: 1115px;
+		margin: 0 auto;
+
+		.intro {
+			line-height: 2;
+		}
 	}
 
-	.intro {
-		line-height: 2;
+	@media screen and (max-width: 1200px) {
+		.body {
+			width: 100%;
+			margin: 0 10px;
+		}
 	}
 
 	.list {
@@ -123,10 +131,5 @@
 		cursor: pointer;
 		background-color: var(--banner);
 		color: white;
-	}
-	@media screen and (max-width: 480px) {
-		.body {
-			margin: 0 10px;
-		}
 	}
 </style>

@@ -79,54 +79,6 @@
 	</div>
 </div>
 
-<!-- <div in:fade={{ delay: 150, duration: 1300 }} class="multipleChoice">
-		<GradeBoundary />
-		<Timezone />
-	</div>
-	<div class="top-table">
-		<div class="data">
-			<div class="table">
-				<DetailedTable
-					points={totalScore}
-					awardedMarks={scores}
-					tok={tokGrade}
-					ee={eeGrade}
-					{corePoints}
-				/>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="layout">
-	<div in:fly={{ delay: 250, duration: 1500, x: -300 }} class="left-column">
-		<Refresh />
-		<Group1 bind:awardedMark={scores[0]} />
-		<Group2 bind:awardedMark={scores[1]} />
-		<Group3 bind:awardedMark={scores[2]} />
-		<Group4 bind:awardedMark={scores[3]} />
-		<Group5 bind:awardedMark={scores[4]} />
-		{#if Component}
-			<svelte:component this={Component} bind:awardedMark={scores[5]} groupNumber="6" />
-		{/if}
-		<TOK bind:awardedMark={tokGrade} bind:ee={eeGrade} bind:corePoints />
-		<Refresh />
-	</div>
-	<div class="right-column">
-		<div class="data">
-			<div class="table">
-				<DetailedTable
-					points={totalScore}
-					awardedMarks={scores}
-					tok={tokGrade}
-					ee={eeGrade}
-					{corePoints}
-				/>
-			</div>
-		</div>
-	</div>
-</div> -->
-
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
 	$font-family: 'Space Grotesk', sans-serif;
@@ -150,7 +102,7 @@
 	}
 
 	.intro {
-		width: 950px;
+		width: 1150px;
 		margin: 0 auto;
 	}
 
@@ -182,7 +134,7 @@
 		}
 	}
 
-	@media screen and (max-width: 1000px) {
+	@media screen and (max-width: 1150px) {
 		.intro {
 			margin: 0 25px;
 			width: auto;

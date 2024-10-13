@@ -163,12 +163,12 @@
 	/>
 </svelte:head>
 
-<div class="body">
+<div class="body" in:fly={{ duration: 1400, x: 200 }}>
 	<a href="/subjects">
-		<button class="btn btn-sik" in:fly={{ duration: 1300, y: 25 }}>back</button>
+		<button class="btn btn-sik">back</button>
 	</a>
 
-	<div in:fly={{ duration: 1400, x: 200 }}>
+	<div>
 		<h1>
 			{syllabus.name}
 			{#if syllabus.firstAssessment !== data.firstAssessment} ({syllabus.firstAssessment}) {/if}
@@ -212,9 +212,9 @@
 		{/each}
 	{/if}
 
-	<div in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+	<div>
 		{#if syllabus.name !== 'Creativity, Activity, Service'}
-			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Grade Calculator</h4>
+			<h4>Grade Calculator</h4>
 			{#if data.SLOnly}
 				<h5>
 					{syllabus.name} is offered only at the SL level
@@ -222,11 +222,11 @@
 			{/if}
 			<div class="dropdown">
 				{#if data.isLanguageSubject && syllabus.name === 'Classical Language'}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+					<div>
 						<Dropdown arr={classical} bind:value={language} />
 					</div>
 				{:else if data.isLanguageSubject}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+					<div>
 						<Dropdown arr={languages} bind:value={language} />
 					</div>
 				{/if}
@@ -371,8 +371,16 @@
 		text-align: center;
 	}
 	.body {
-		margin: 10px 18%;
+		width: 1100px;
+		margin: 10px auto;
 		padding-bottom: 20px;
+	}
+
+	@media screen and (max-width: 1100px) {
+		.body {
+			margin: 10px 10px;
+			width: calc(100% - 50px);
+		}
 	}
 
 	.tables {
