@@ -14,7 +14,7 @@ Since then, we have made extensive changes to our site. The most notable of whic
 On top of that, we have added predicted mark probability graphs, which can help you get a better idea of your grade in the context of all the past grade boundaries. Make of that information as you well - since a disproportionate amount of grade boundaries come from the COVID times. 
 
 
-If you catch any errors, have any question or suggestions, make sure to email us at admin@ibpredict.com. As for now, we will continue maintain the site after every IB exam session to include the updated grade boundaries and syllabi changes.
+If you catch any errors, have any question or suggestions, make sure to email us at admin@ibpredict.org. As for now, we will continue maintain the site after every IB exam session to include the updated grade boundaries and syllabi changes.
 
 ## Features
   - Easy user interface
