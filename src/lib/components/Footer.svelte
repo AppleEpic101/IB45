@@ -8,7 +8,6 @@
 			<h3>THE SYNDICATE</h3>
 			<ul>
 				<li>Alexander Du (Founder)</li>
-				<li>Richard Yang</li>
 				<li>Winston Thov</li>
 			</ul>
 		</div>
