@@ -23,6 +23,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://ibpredict.org/blog</loc>
+  <lastmod>2023-12-04T02:34:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://ibpredict.org/faq</loc>
   <lastmod>2023-12-04T02:34:29+00:00</lastmod>
   <priority>0.80</priority>
@@ -35,6 +40,21 @@
 <url>
   <loc>https://ibpredict.org/subjects/extended-essay</loc>
   <lastmod>2023-12-04T02:43:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/blog/m23-grade-boundaries</loc>
+  <lastmod>2023-12-04T02:34:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/blog/m24-grade-boundaries</loc>
+  <lastmod>2023-12-04T02:34:29+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/blog/n23-grade-boundaries</loc>
+  <lastmod>2023-12-04T02:34:29+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
