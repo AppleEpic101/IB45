@@ -510,18 +510,6 @@
 	"SL Portuguese Language B": {
 		"TZ": [[0, 13, 28, 40, 52, 66, 78]]
 	},
-	"HL Psychology": {
-		"TZ": [
-			[0, 11, 23, 36, 49, 61, 73],
-			[0, 11, 23, 37, 49, 61, 73]
-		]
-	},
-	"SL Psychology": {
-		"TZ": [
-			[0, 12, 26, 37, 49, 61, 74],
-			[0, 12, 26, 38, 50, 61, 74]
-		]
-	},
 	"SL World Religions": {
 		"TZ": [[0, 12, 25, 40, 52, 66, 79]]
 	},
@@ -548,18 +536,6 @@
 	},
 	"SL Chinese Language A: Literature self taught": {
 		"TZ": [[0, 14, 29, 43, 55, 67, 79]]
-	},
-	"HL Economics": {
-		"TZ": [
-			[0, 12, 24, 36, 49, 62, 75],
-			[0, 12, 24, 36, 49, 62, 75]
-		]
-	},
-	"SL Economics": {
-		"TZ": [
-			[0, 15, 30, 41, 52, 64, 75],
-			[0, 15, 30, 41, 52, 64, 75]
-		]
 	},
 	"HL English Language A: Language And Literature": {
 		"TZ": [
