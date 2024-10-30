@@ -1,6 +1,6 @@
 <script>
 	import ExcelJS from 'exceljs';
-	import Dropdown from '$lib/components/Dropdown.svelte';
+	import Dropdown from '$lib/components/dropdown.svelte';
 
 	// Sample data
 	export let name;
@@ -81,6 +81,7 @@
 </script>
 
 <div class="container">
+	<img src="/excel.png" width="25" />
 	<div>Educators Predicted Grades Excel Tool</div>
 	<div>
 		<Dropdown
