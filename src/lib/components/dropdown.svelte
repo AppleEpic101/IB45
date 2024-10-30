@@ -5,6 +5,11 @@
 	export let value;
 
 	if (!arrVal) arrVal = arr.map((a) => a);
+	$: {
+		if (!arrVal.includes(value)) {
+			value = arrVal[0];
+		}
+	}
 </script>
 
 <select bind:value>

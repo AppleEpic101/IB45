@@ -59,6 +59,10 @@
 		color: black;
 	}
 
+	:global(.btn-sik:hover) {
+		cursor: pointer;
+	}
+
 	.slot {
 		min-height: 60vh;
 	}

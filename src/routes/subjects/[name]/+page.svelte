@@ -9,6 +9,7 @@
 	import Bargraph from '$lib/components/subject/bargraph.svelte';
 	import GradeGraph from '$lib/components/subject/GradeGraph.svelte';
 	import Collapsible2 from '$lib/components/Collapsible2.svelte';
+	import Excel from '$lib/components/subject/Excel.svelte';
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
@@ -286,6 +287,18 @@
 						<div class="y">{mark}</div>
 					</div>
 				</div>
+				{#if !data.isCoreSubject}
+					<div class="excel">
+						<Excel
+							assessments={s}
+							name={syllabus.name}
+							{level}
+							{language}
+							{SLResults}
+							{HLResults}
+							firstAssessment={data.firstAssessment}
+						/>
+					</div>{/if}
 			</div>
 
 			<h4>Graphs</h4>
@@ -395,6 +408,10 @@
 		flex-direction: column;
 	}
 
+	.excel {
+		display: flex;
+		justify-content: center;
+	}
 	.ass {
 		display: flex;
 		flex-wrap: wrap;

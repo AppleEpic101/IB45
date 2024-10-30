@@ -22,7 +22,8 @@
 {#if parseInt($page.status) === 500}
 	<h1>
 		This site requires the use of cookies. Please turn on or allow cookies in your browser settings
-		for functionality.
+		for functionality. If this doesn't work, try resetting your cache and local storage for this
+		site.
 	</h1>
 {/if}
 
