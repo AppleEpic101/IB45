@@ -1229,7 +1229,54 @@
 				"weight": 0.2
 			}
 		],
-		"old": []
+		"old": [
+			{
+				"name": "Biology",
+				"firstAssessment": 2025,
+				"lastAssessment": "Present",
+				"short": "biology",
+				"isLang": false,
+				"SLOnly": false,
+				"schoolOnly": false,
+				"isCore": false,
+				"description": "Biology is the study of life. The vast diversity of species makes biology both an endless source of fascination and a considerable challenge. Biologists attempt to understand the living world at all levels from the micro to the macro using many different approaches and techniques. Biology is still a young science and great progress is expected in the 21st century. This progress is important at a time of growing pressure on the human population and the environment. By studying biology in the DP, students should become aware of how scientists work and communicate with each other. While the scientific method may take on a wide variety of forms, it is the emphasis on a practical approach through experimental work that characterizes the sciences. Teachers provide students with opportunities to design investigations, collect data, develop manipulative skills, analyze results, collaborate with peers, and evaluate and communicate their findings.",
+				"groupNumber": [4],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 55,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 50,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.2
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 75,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 80,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.2
+					}
+				]
+			}
+		]
 	},
 	"Chemistry": {
 		"firstAssessment": 2016,
@@ -1285,7 +1332,54 @@
 				"weight": 0.2
 			}
 		],
-		"old": []
+		"old": [
+			{
+				"name": "Chemistry",
+				"firstAssessment": 2025,
+				"lastAssessment": "Present",
+				"short": "chemistry",
+				"isLang": false,
+				"SLOnly": false,
+				"schoolOnly": false,
+				"isCore": false,
+				"description": "Chemistry is an experimental science that combines academic study with the acquisition of practical and investigational skills. Chemical principles underpin both the physical environment in which we live and all biological systems. Chemistry is often a prerequisite for many other courses in higher education, such as medicine, biological science, and environmental science. Both theory and practical work should be undertaken by all students as they complement one another naturally, both in school and in the wider scientific community. The DP chemistry course allows students to develop a wide range of practical skills and to increase their facility in the use of mathematics. It also enables students to develop interpersonal and information technology skills, which are essential for life in the 21st century. By studying chemistry, students should become aware of how scientists work and communicate with each other. While the scientific method may take on a wide variety of forms, it is the emphasis on a practical approach through experimental work that characterizes the subject. Teachers provide students with opportunities to develop manipulative skills, design investigations, collect data, analyze results, and evaluate and communicate their findings.",
+				"groupNumber": [4],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 55,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 50,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.2
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 75,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 90,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.2
+					}
+				]
+			}
+		]
 	},
 	"Computer Science": {
 		"firstAssessment": 2014,
@@ -1530,7 +1624,54 @@
 				"weight": 0.2
 			}
 		],
-		"old": []
+		"old": [
+			{
+				"name": "Physics",
+				"firstAssessment": 2025,
+				"lastAssessment": "Present",
+				"short": "physics",
+				"isLang": false,
+				"SLOnly": false,
+				"schoolOnly": false,
+				"isCore": false,
+				"description": "Physics is the most fundamental of the experimental sciences as it seeks to explain the universe itself, from the very smallest particles to the vast distances between galaxies. Despite the exciting and extraordinary development of ideas throughout the history of physics, observations remain essential to the very core of the subject. Models are developed to try to understand observations, and these themselves can become theories that attempt to explain the observations. Besides helping us better understand the natural world, physics gives us the ability to alter our environments. This raises the issue of the impact of physics on society, the moral and ethical dilemmas, and the social, economic, and environmental implications of the work of physicists. By studying physics, students should become aware of how scientists work and communicate with each other. While the scientific method may take on a wide variety of forms, it is the emphasis on a practical approach through experimental work that characterizes the subject. Teachers provide students with opportunities to develop manipulative skills, design investigations, collect data, analyze results, and evaluate and communicate their findings.",
+				"groupNumber": [4],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 45,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 55,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.20
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 60,
+						"weight": 0.36
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 90,
+						"weight": 0.44
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 24,
+						"weight": 0.20
+					}
+				]
+			}
+		]
 	},
 	"Sports, Excercise And Health Science": {
 		"firstAssessment": 2018,

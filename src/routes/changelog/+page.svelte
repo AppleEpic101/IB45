@@ -25,6 +25,18 @@
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">
+		<h2>October 23, 2024</h2>
+		<ul>
+			<li>
+				Updated subject syllabus changes for upcoming May 2025 Exams
+				<ul>
+					<li><a href="./subjects/physics?syl=2025">Physics (2025)</a></li>
+					<li><a href="./subjects/chemistry?syl=2025">Chemistry(2025)</a></li>
+					<li><a href="./subjects/biology?syl=2025">Biology (2025)</a></li>
+				</ul>
+			</li>
+		</ul>
+	
 		<h2>September 26, 2024</h2>
 		<ul>
 			<li>Added May 2024 grade boundaries</li>

@@ -8,8 +8,7 @@
 		I have updated the site with the official May 2024 grade boundaries. The M24 largely reflects
 		the same grade boundaries as M23, meaning everything is back to normal. I have added graphs to
 		the subject pages to help everyone visualize the changing grade boundaries better. November
-		grade boundaries are usually higher than May grade boundaries, so N24 candidates should predict
-		use the N23 boundaries for the most reliable predictions.
+		grade boundaries are usually higher than May grade boundaries, so N24 candidates should use the N23 boundaries for the most reliable predictions.
 	</p>
 	<p>
 		I will continue updating the site for forseeable future. I hope this tool will continue to be

@@ -63,16 +63,13 @@
 		<Button href={'./subjects/extended-essay'} text={'EE'} />
 		<Button href={'./subjects'} text={'More...'} />
 
-		<!-- <p>
-			<strong>Upcoming May 2024 Syllabus Changes (old syllabuses archived as of April 9)</strong>
+		<p>
+			<strong>Upcoming May 2025 Syllabus Changes</strong>
 		</p>
-		<Button href={'./subjects/business-management'} text={'Business Management (2024)'} />
-		<Button href={'./subjects/classical-language'} text={'Classical Language (2024)'} />
-		<Button href={'./subjects/digital-society'} text={'Digital Society (2024)'} />
-		<Button
-			href={'./subjects/literature-and-performance'}
-			text={'Literature & Performance (2024)'}
-		/> -->
+		<Button href={'./subjects/physics?syl=2025'} text={'Physics (2025)'} />
+		<Button href={'./subjects/chemistry?syl=2025'} text={'Chemistry (2025)'} />
+		<Button href={'./subjects/biology?syl=2025'} text={'Biology (2025)'} />
+
 		<hr />
 		<GradeBoundarySelector />
 		<MainCalculator />
