@@ -45,32 +45,17 @@
 		}
 	}
 
-	let slOnly = false;
-	$: {
-		slOnly = courses.meta.SLOnly.includes($settings['subject']);
-		if (slOnly) {
-			$settings['level'] = 'SL';
-		}
-	}
+	$: slOnly = courses[$settings['subject']]?.SLOnly || false;
+	$: isLang = courses[$settings['subject']]?.isLang || false;
 
-	let languages = courses.meta.lang,
-		isLanguageSubject;
-	$: {
-		isLanguageSubject = courses[$settings['subject']]?.isLang || false;
-		if ($settings['subject'] == 'Classical Language') {
-			languages = courses.meta.classical;
-		} else {
-			languages = courses.meta.lang;
-		}
-	}
+	$: languages = courses.name == 'Classical Language' ? courses.meta.classical : courses.meta.lang;
 
-	let isHistoryHL;
 	$: isHistoryHL = $settings['subject'] == 'History' && $settings['level'] == 'HL';
 
 	let sufficientData = false;
 	$: {
 		sufficientData = $settings['subject'] && $settings['level'];
-		if (isLanguageSubject) {
+		if (isLang) {
 			sufficientData = sufficientData && $settings['language'];
 		}
 		if (isHistoryHL) {
@@ -82,7 +67,7 @@
 	let groupTitle = courses.meta.groups[selectedGroup];
 	$: {
 		if (sufficientData) {
-			if (isLanguageSubject) {
+			if (isLang) {
 				groupTitle = `${$settings['level']} ${$settings['language'] || ''} ${$settings['subject']}`;
 			} else if (isHistoryHL) {
 				groupTitle = `${$settings['level']} ${$settings['subject']} ${$settings['region'] || ''}`;
@@ -102,7 +87,7 @@
 			let query = groupTitle;
 			query = query.trim();
 			query = query.replaceAll('  ', ' ');
-			assessments = courses[$settings['subject']][`${$settings['level']}Assessments`];
+			assessments = courses[$settings['subject']][`${$settings['level']}`];
 			boundaries = $selectedBoundary[query]?.TZ;
 			if (!boundaries) {
 				boundaries = [];
@@ -159,7 +144,7 @@
 	{#if !slOnly}
 		<Select options={['HL', 'SL']} placeholder="Enter level" bind:selected={$settings['level']} />
 	{/if}
-	{#if isLanguageSubject}
+	{#if isLang}
 		<Select
 			options={languages}
 			placeholder="Enter language"

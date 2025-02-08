@@ -34,7 +34,7 @@
 	let langQuery = $page.url.searchParams.get('lang');
 	if (data.name === 'Classical Language') {
 		language = classical.includes(langQuery) ? langQuery : 'Latin';
-	} else if (data.isLanguageSubject) {
+	} else if (data.isLang) {
 		language = languages.includes(langQuery) ? langQuery : 'English';
 	}
 
@@ -42,16 +42,16 @@
 	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
 	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
 
-	$: name = data.isLanguageSubject ? language + ' ' + data.name : data.name;
+	$: name = data.isLang ? language + ' ' + data.name : data.name;
 
 	// gets all previous grade boundaries (for table display)
 	let lastSL;
 	let lastHL;
 
-	$: SLResults = data.isLanguageSubject
+	$: SLResults = data.isLang
 		? getAllBoundaries(data.name, language).SL
 		: getAllBoundaries(data.name).SL;
-	$: HLResults = data.isLanguageSubject
+	$: HLResults = data.isLang
 		? getAllBoundaries(data.name, language).HL
 		: getAllBoundaries(data.name).HL;
 
@@ -98,7 +98,7 @@
 	// calculate awarded mark
 	let mark, str;
 	$: {
-		if (data.isCoreSubject) {
+		if (data.isCore) {
 			mark = calculateCoreResults(grade, lastSL?.tz);
 			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 		} else {
@@ -113,8 +113,8 @@
 
 		// boundary not found
 		if (
-			(level === 'SL' && SLResults.length === 0 && !data.isCoreSubject) ||
-			(level === 'HL' && HLResults.length === 0 && !data.isCoreSubject)
+			(level === 'SL' && SLResults.length === 0 && !data.isCore) ||
+			(level === 'HL' && HLResults.length === 0 && !data.isCore)
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
@@ -141,8 +141,8 @@
 
 	$: {
 		if (typeof window !== 'undefined') {
-			updateUrl('lang', data.isLanguageSubject, language);
-			updateUrl('lvl', level === 'HL' && !data.isCoreSubject, 'HL');
+			updateUrl('lang', data.isLang, language);
+			updateUrl('lvl', level === 'HL' && !data.isCore, 'HL');
 			updateUrl('syl', version && version !== data.firstAssessment, version);
 			go();
 		}
@@ -222,11 +222,11 @@
 				</h5>
 			{/if}
 			<div class="dropdown">
-				{#if data.isLanguageSubject && syllabus.name === 'Classical Language'}
+				{#if data.isLang && syllabus.name === 'Classical Language'}
 					<div>
 						<Dropdown arr={classical} bind:value={language} />
 					</div>
-				{:else if data.isLanguageSubject}
+				{:else if data.isLang}
 					<div>
 						<Dropdown arr={languages} bind:value={language} />
 					</div>
@@ -287,7 +287,7 @@
 						<div class="y">{mark}</div>
 					</div>
 				</div>
-				{#if !data.isCoreSubject}
+				{#if !data.isCore}
 					<div class="excel">
 						<Excel
 							assessments={s}
@@ -328,11 +328,11 @@
 					{/if}
 				{/if}
 				<div class="dropdown">
-					{#if data.isLanguageSubject && syllabus.name === 'Classical Language'}
+					{#if data.isLang && syllabus.name === 'Classical Language'}
 						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
 							<Dropdown arr={classical} bind:value={language} />
 						</div>
-					{:else if data.isLanguageSubject}
+					{:else if data.isLang}
 						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
 							<Dropdown arr={languages} bind:value={language} />
 						</div>

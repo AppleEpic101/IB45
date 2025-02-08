@@ -20,7 +20,7 @@
 	let settings = getPredictorSelectedOptions(6);
 	$settings['chosenScores'] = $settings['chosenScores'] || { tok: [0, 0], ee: [0] };
 
-	let tokAssessments = courses['Theory Of Knowledge'].SLAssessments,
+	let tokAssessments = courses['Theory Of Knowledge'].SL,
 		tokBoundaries = $selectedBoundary['Theory Of Knowledge'].TZ[0],
 		tokPredictedScore,
 		tokPredictedGrade;
@@ -36,7 +36,7 @@
 		}
 	}
 
-	let eeAssesments = courses['Extended Essay'].SLAssessments,
+	let eeAssesments = courses['Extended Essay'].SL,
 		eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0],
 		eePredictedScore,
 		eePredictedGrade;
