@@ -26,7 +26,7 @@
 <div class="intro">
 	<div class="welcome" in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated October 31, 2024</h4>
+		<h4>Last updated February 7, 2025</h4>
 	</div>
 	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
