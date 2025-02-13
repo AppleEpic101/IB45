@@ -1002,6 +1002,7 @@
 		"old": []
 	},
 	"Psychology": {
+		"name": "Psychology",
 		"firstAssessment": 2019,
 		"lastAssessment": "Present",
 		"short": "psychology",
