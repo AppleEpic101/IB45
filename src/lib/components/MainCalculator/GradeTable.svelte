@@ -204,7 +204,7 @@
 	}
 
 	.red {
-		color: red;
-		font-weight: bold;
+		color: rgb(204, 43, 43);
+		text-shadow: 0.2px 0.2px 0.2px black;
 	}
 </style>

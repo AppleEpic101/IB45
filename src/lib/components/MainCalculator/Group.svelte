@@ -45,8 +45,14 @@
 		}
 	}
 
-	$: slOnly = courses[$settings['subject']]?.SLOnly || false;
 	$: isLang = courses[$settings['subject']]?.isLang || false;
+	let slOnly;
+	$: {
+		slOnly = courses[$settings['subject']]?.SLOnly || false;
+		if (slOnly) {
+			$settings['level'] = 'SL';
+		}
+	}
 
 	$: languages = courses.name == 'Classical Language' ? courses.meta.classical : courses.meta.lang;
 
@@ -62,6 +68,8 @@
 			sufficientData = sufficientData && $settings['region'];
 		}
 	}
+
+	$: console.log(sufficientData, $settings['subject'], $settings['level'], $settings['language']);
 
 	// sets the group title
 	let groupTitle = courses.meta.groups[selectedGroup];
@@ -215,5 +223,12 @@
 			color: white;
 			cursor: pointer;
 		}
+	}
+
+	.group-title {
+		margin: 0;
+	}
+	.slOnlyWarning {
+		margin-top: 0;
 	}
 </style>
