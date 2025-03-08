@@ -1,0 +1,558 @@
+{
+    "courses": {
+        "Accounting": {
+            "name": "Accounting",
+            "short": "accounting",
+            "board": "CIE", 
+            "code": "9706",
+            "startYear": "2023",
+            "endYear": "2025",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "30 multiple-choice questions. Questions are based on sections 1 and 2 of the subject content.",
+                    "duration": 1, 
+                    "marks": 30,
+                    "weight": 0.28
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Fundamentals of Accounting",
+                    "evaluation": "External", 
+                    "description": "Four structured questions. Questions are based on sections 1 and 2 of the subject content.",
+                    "duration": 1.75, 
+                    "marks": 90,
+                    "weight": 0.72
+                }
+            ],
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "30 multiple-choice questions. Questions are based on sections 1 and 2 of the subject content.",
+                    "duration": 1, 
+                    "marks": 30,
+                    "weight": 0.14
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Fundamentals of Accounting",
+                    "evaluation": "External", 
+                    "description": "Four structured questions. Questions are based on sections 1 and 2 of the subject content.",
+                    "duration": 1.75, 
+                    "marks": 90,
+                    "weight": 0.36
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Financial Accounting",
+                    "evaluation": "External", 
+                    "description": "Three structured questions. Questions are based on section 3 of the subject content; knowledge of material from the AS Level subject content is assumed.",
+                    "duration": 1.5, 
+                    "marks": 75,
+                    "weight": 0.3
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "Cost and Management Accounting",
+                    "evaluation": "External", 
+                    "description": "Two structured questions. Questions are based on section 4 of the subject content; knowledge of material from the AS Level subject content is assumed.",
+                    "duration": 1, 
+                    "marks": 50,
+                    "weight": 0.2
+                }
+            ]
+        }, 
+        "Art & Design": {
+            "name": "Art & Design",
+            "short": "art-and-design",
+            "board": "CIE",
+            "code": "9479",
+            "startYear": "2025",
+            "endYear": "2025",
+            "AS": [
+                {
+                    "name": "Component 1",
+                    "type": "Coursework",
+                    "evaluation": "External", 
+                    "description": "Candidates research, develop and realise a project from one area of study in the syllabus content. There are two parts to the coursework: a portfolio and a final outcome.", 
+                    "duration": 0, 
+                    "marks": 100,
+                    "weight": 0.5
+                }, 
+                {
+                    "name": "Component 2",
+                    "type": "Externally Set Assignment",
+                    "evaluation": "External", 
+                    "description": "Candidates choose one starting point to develop into a personal response. There are two parts to the assignment: supporting studies, created during the preparation period and a final outcome, produced during a supervised test of 15 hours total duration.",
+                    "duration": 0, 
+                    "marks": 100,
+                    "weight": 0.5
+                }
+            ],
+            "A2": [
+                {
+                    "name": "Component 1",
+                    "type": "Coursework",
+                    "evaluation": "External", 
+                    "description": "Candidates research, develop and realise a project from one area of study in the syllabus content. There are two parts to the coursework: a portfolio and a final outcome.", 
+                    "duration": 0, 
+                    "marks": 100,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Component 2",
+                    "type": "Externally Set Assignment",
+                    "evaluation": "External", 
+                    "description": "Candidates choose one starting point to develop into a personal response. There are two parts to the assignment: supporting studies, created during the preparation period and a final outcome, produced during a supervised test of 15 hours total duration.",
+                    "duration": 0, 
+                    "marks": 100,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Component 3",
+                    "type": "Personal Investigation",
+                    "evaluation": "External", 
+                    "description": "Candidates investigate a theme, idea, concept or process that is personal to them. There are two parts to the investigation: practical work and written analysis (1000 to 1500 words).", 
+                    "duration": 0, 
+                    "marks": 100,
+                    "weight": 0.50
+                }
+            ]
+        },
+        "Biblical Studies": {
+            "name": "Biblical Studies",
+            "short": "biblical-studies",
+            "board": "CIE",
+            "code": "9484",
+            "startYear": "2024",
+            "endYear": "2026",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "The Four Gospels",
+                    "evaluation": "External",
+                    "description": "Section A: Short passage questions. Candidates answer three questions from a choice of four. \nSection B: Longer passage question. All candidates answer this question. \nSection C: Structured question. Candidates answer one question from a choice of two.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.5
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "The Development of Christianity",
+                    "evaluation": "External",
+                    "description": "Section A: Structured question. Candidates answer one question from a choice of two. \nSection B: Structured question. Candidates answer one question from a choice of two.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.5
+                }
+            ], 
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "The Four Gospels",
+                    "evaluation": "External",
+                    "description": "Section A: Short passage questions. Candidates answer three questions from a choice of four. \nSection B: Longer passage question. All candidates answer this question. \nSection C: Structured question. Candidates answer one question from a choice of two.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "The Development of Christianity",
+                    "evaluation": "External",
+                    "description": "Section A: Structured question. Candidates answer one question from a choice of two. \nSection B: Structured question. Candidates answer one question from a choice of two.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 3", 
+                    "type": "Prophets of the Old Testament",
+                    "evaluation": "External",
+                    "description": "Section A: Short passage questions. Candidates answer two questions from a choice of three. \nSection B: Longer passage question. All candidates answer this question. \nSection C: Essay question. Candidates answer one question from a choice of two.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "Christian Understandings of God, Life and the Universe",
+                    "evaluation": "External",
+                    "description": "Essay questions. Candidates answer two questions from a choice of three.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.25
+                }
+            ]
+        },
+        "Biology": {
+            "name": "Biology",
+            "board": "CIE", 
+            "code": "9700",
+            "startYear": "2025",
+            "endYear": "2027",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "40 Multiple-choice questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.31
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "AS Level Structured Questions ",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 60,
+                    "weight": 0.46
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Advanced Practical Skills",
+                    "evaluation": "External", 
+                    "description": "Practical work and structured questions. Questions are based on the practical skills in the Practical assessment section of the syllabus. The context of the questions may be outside the syllabus content.",
+                    "duration": 2, 
+                    "marks": 40,
+                    "weight": 0.23
+                }
+            ],
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "40 Multiple-choice questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.155
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "AS Level Structured Questions ",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 60,
+                    "weight": 0.23
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Advanced Practical Skills",
+                    "evaluation": "External", 
+                    "description": "Practical work and structured questions. Questions are based on the practical skills in the Practical assessment section of the syllabus. The context of the questions may be outside the syllabus content.",
+                    "duration": 2, 
+                    "marks": 40,
+                    "weight": 0.115
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "A Level Structured Questions",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the A Level syllabus content; knowledge of material from the AS Level syllabus content will be required.",
+                    "duration": 2, 
+                    "marks": 100,
+                    "weight": 0.385
+                }, 
+                {
+                    "name": "Paper 5",
+                    "type": "Planning, Analysis and Evaluation",
+                    "evaluation": "External", 
+                    "description": " Questions are based on the practical skills of planning, analysis and evaluation. The context of the questions may be outside the syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 30,
+                    "weight": 0.115
+                }
+            ]
+        }, 
+        "Business": {
+            "name": "Business",
+            "short": "business",
+            "board": "CIE",
+            "code": "9609",
+            "startYear": "2023",
+            "endYear": "2025",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Business Concepts 1",
+                    "evaluation": "External", 
+                    "description": "Section A: four short answer questions. There are two parts to the first three questions. Section B: one essay from a choice of two. There are two parts to each essay. Questions are based on the AS Level subject content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.40
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Business Concepts 2",
+                    "evaluation": "External", 
+                    "description": "Two data response questions. There are six parts to each question. Questions are based on the AS Level subject content.",
+                    "duration": 1.5, 
+                    "marks": 60,
+                    "weight": 0.60
+                }
+            ],
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Business Concepts 1",
+                    "evaluation": "External", 
+                    "description": "Section A: four short answer questions. There are two parts to the first three questions. Section B: one essay from a choice of two. There are two parts to each essay. Questions are based on the AS Level subject content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.2
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Business Concepts 2",
+                    "evaluation": "External", 
+                    "description": "Two data response questions. There are six parts to each question. Questions are based on the AS Level subject content.",
+                    "duration": 1.5, 
+                    "marks": 60,
+                    "weight": 0.3
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Business Decision-Making",
+                    "evaluation": "External", 
+                    "description": "Five questions based on a case study. There are three parts to Question 3 and two parts to Question 4. Questions are based on the A Level subject content; knowledge of material from the AS Level subject content is assumed.",
+                    "duration": 1.75, 
+                    "marks": 60,
+                    "weight": 0.3
+                },
+                {
+                    "name": "Paper 4",
+                    "type": "Business Strategy",
+                    "evaluation": "External", 
+                    "description": "Two essay questions based on a case study. Questions are based on the A Level subject; knowledge of material from the AS Level subject content is assumed.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.2
+                }
+            ]
+        }, 
+        "Chemistry": {
+            "name": "Chemistry",
+            "short": "chemistry",
+            "board": "CIE",
+            "code": "9701",
+            "startYear": "2025",
+            "endYear": "2027",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "40 Multiple-choice questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.31
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "AS Level Structured Questions",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 60,
+                    "weight": 0.46
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Advanced Practical Skills",
+                    "evaluation": "External", 
+                    "description": "Practical work and structured questions. Questions are based on the practical skills in the Practical assessment section of the syllabus. The context of the questions may be outside the syllabus content.",
+                    "duration": 2, 
+                    "marks": 40,
+                    "weight": 0.23
+                }
+            ], 
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Multiple Choice",
+                    "evaluation": "External", 
+                    "description": "40 Multiple-choice questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 40,
+                    "weight": 0.155
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "AS Level Structured Questions",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the AS Level syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 60,
+                    "weight": 0.23
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Advanced Practical Skills",
+                    "evaluation": "External", 
+                    "description": "Practical work and structured questions. Questions are based on the practical skills in the Practical assessment section of the syllabus. The context of the questions may be outside the syllabus content.",
+                    "duration": 2, 
+                    "marks": 40,
+                    "weight": 0.115
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "A Level Structured Questions",
+                    "evaluation": "External", 
+                    "description": "Structured questions. Questions are based on the A Level syllabus content; knowledge of material from the AS Level syllabus content will be required.",
+                    "duration": 2, 
+                    "marks": 100,
+                    "weight": 0.385
+                }, 
+                {
+                    "name": "Paper 5",
+                    "type": "Planning, Analysis and Evaluation",
+                    "evaluation": "External", 
+                    "description": "Questions are based on the practical skills of planning, analysis and evaluation. The context of the questions may be outside the syllabus content.",
+                    "duration": 1.25, 
+                    "marks": 30,
+                    "weight": 0.115
+                }
+            ]
+        },
+        "Classical Studies": {
+            "name": "Classical Studies",
+            "short": "classical-studies",
+            "board": "CIE",
+            "code": "9274",
+            "startYear": "2025",
+            "endYear": "2027",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Greek Civilisation",
+                    "evaluation": "External",
+                    "description": "Structured question and essay questions. \nCandidates answer questions on one topic from a choice of Alexander the Great, Aristophanes or Themes in Greek Vase Painting. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.5
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Roman Civilisation",
+                    "evaluation": "External", 
+                    "description": "Structured question and essay questions. \nCandidates answer questions on one topic from a choice of Augustus, Virgil's Aenid or Architecture of the Roman City. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5, 
+                    "marks": 50,
+                    "weight": 0.5
+                }
+            ], 
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Greek Civilisation",
+                    "evaluation": "External",
+                    "description": "Structured question and essay questions. \nCandidates answer questions on one topic from a choice of Alexander the Great, Aristophanes or Themes in Greek Vase Painting. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5,
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Roman Civilisation",
+                    "evaluation": "External", 
+                    "description": "Structured question and essay questions. \nCandidates answer questions on one topic from a choice of Augustus, Virgil's Aenid or Architecture of the Roman City. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5, 
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 3",
+                    "type": "Classical History",
+                    "evaluation": "External", 
+                    "description": "Source-based question and essay questions. \nCandidates answer questions on either Athens and Sparta or Emperors and Subjects. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5, 
+                    "marks": 50,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "Greek Literature",
+                    "evaluation": "External", 
+                    "description": "Source-based question and essay questions. \nCandidates answer questions on either Greek Tragedy or Homeric Epic. \nCandidates answer two questions, one compulsory source-based question and one essay question on their chosen topic.",
+                    "duration": 1.5, 
+                    "marks": 50,
+                    "weight": 0.25
+                }
+            ]
+        }, 
+        "Computer Science": {
+            "name": "Computer Science",
+            "short": "computer-science",
+            "board": "CIE",
+            "code": "9618",
+            "startYear": "2024",
+            "endYear": "2025",
+            "AS": [
+                {
+                    "name": "Paper 1",
+                    "type": "Theory Fundamentals",
+                    "evaluation": "External", 
+                    "description": "Written paper. Paper 1 will assess sections 1 to 8 of the syllabus content. ",
+                    "duration": 1.5, 
+                    "marks": 75,
+                    "weight": 0.5
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Fundamental Problem-solving and Programming Skills",
+                    "evaluation": "External", 
+                    "description": "Written Paper. Paper 2 will assess sections 9 to 12 of the syllabus content. Candidates will need to write answers in pseudocode.",
+                    "duration": 1.5, 
+                    "marks": 75,
+                    "weight": 0.5
+                }
+            ],
+            "A2": [
+                {
+                    "name": "Paper 1",
+                    "type": "Theory Fundamentals",
+                    "evaluation": "External", 
+                    "description": "Written paper. Paper 1 will assess sections 1 to 8 of the syllabus content. ",
+                    "duration": 1.5, 
+                    "marks": 75,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 2",
+                    "type": "Fundamental Problem-solving and Programming Skills",
+                    "evaluation": "External", 
+                    "description": "Written Paper. Paper 2 will assess sections 9 to 12 of the syllabus content. Candidates will need to write answers in pseudocode.",
+                    "duration": 2, 
+                    "marks": 75,
+                    "weight": 0.25
+                },
+                {
+                    "name": "Paper 3",
+                    "type": "Advanced Theory",
+                    "evaluation": "External",
+                    "description": "Written paper. Paper 3 will assess sections 13 to 20 of the syllabus content.",
+                    "duration": 1.5,
+                    "marks": 75,
+                    "weight": 0.25
+                }, 
+                {
+                    "name": "Paper 4",
+                    "type": "Practical",
+                    "evaluation": "External", 
+                    "description": "Paper 4 will assess sections 19 to 20 of the syllabus content, except for low-level and declarative programming. \nCandidates will submit complete program code and evidence of testing. \nCandidates will be required to use either Java (console mode), Visual Basic* (console mode) or Python (console mode) programming languages.",
+                    "duration": 2.5, 
+                    "marks": 75,
+                    "weight": 0.25
+                }
+            ]
+        }
+    }
+}
