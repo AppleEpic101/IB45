@@ -69,8 +69,6 @@
 		}
 	}
 
-	$: console.log(sufficientData, $settings['subject'], $settings['level'], $settings['language']);
-
 	// sets the group title
 	let groupTitle = courses.meta.groups[selectedGroup];
 	$: {
@@ -113,7 +111,7 @@
 					($settings['chosenScores'][i] / assessments[i].maxMarks) * assessments[i].weight;
 			}
 			predictedScore *= 100;
-			predictedScore = Math.round(predictedScore);
+			predictedScore = Math.round(predictedScore + 1e-10);
 			predictedTimezoneGrades = [];
 			for (let boundary of boundaries) {
 				let grade = 0;
