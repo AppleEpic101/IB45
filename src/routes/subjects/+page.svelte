@@ -68,20 +68,9 @@
 		</div>
 		<h3>Upcoming Syllabus Changes</h3>
 		<div class="list">
-			<button class="subject"
-				><a href="./subjects/business-management">Business Management (2024)</a></button
-			>
-			<button class="subject"
-				><a href="./subjects/classical-language">Classical Language (2024)</a></button
-			>
-			<button class="subject"
-				><a href="./subjects/digital-society">Digital Society (2024)</a></button
-			>
-			<button class="subject"
-				><a href="./subjects/literature-and-performance">Literature And Performance (2024)</a
-				></button
-			>
-			<button class="subject"><a href="./subjects/theatre">Theatre (2024)</a></button>
+			<button class="subject"><a href="./subjects/physics">Physics (2025)</a></button>
+			<button class="subject"><a href="./subjects/chemistry">Chemistry (2025)</a></button>
+			<button class="subject"><a href="./subjects/digital-society">Biology (2025)</a></button>
 		</div>
 	</div>
 	<p class="p">
@@ -115,7 +104,7 @@
 		margin-bottom: 25px;
 	}
 	.subject {
-		margin: 10px;
+		margin: 4px;
 		background-color: var(--lightprimary);
 		padding: 10px;
 		border-radius: 10px;

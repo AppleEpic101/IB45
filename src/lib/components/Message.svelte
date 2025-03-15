@@ -5,24 +5,27 @@
 <div class="message">
 	<div class="announcement">&#x1F440;Announcement&#x1F440;</div>
 	<p>
-		I have updated the site with the official May 2024 grade boundaries. The M24 largely reflects
-		the same grade boundaries as M23, meaning everything is back to normal. I have added graphs to
-		the subject pages to help everyone visualize the changing grade boundaries better. November
-		grade boundaries are usually higher than May grade boundaries, so N24 candidates should use the N23 boundaries for the most reliable predictions.
+		I have updated the site with the official November 2024 grade boundaries. As a general rule of
+		thumb, November grade boundaries are usually higher than May grade boundaries, so M25 candidates
+		should use the M24 boundaries for the most reliable predictions. Additionally, Timezone 2
+		boundaries (Europe, Africa, Asia, Australia) are usually higher than Timezone 1 (North/South
+		America).
 	</p>
 	<p>
-		I will continue updating the site for forseeable future. I hope this tool will continue to be
-		useful for future IB candidates. Good luck to all N24 candidates!
+		If you are interested in contributing to IB Predict, please contact me via email or DMs on
+		Discord for more details. I will continue updating the site for the foreseeable future. I am
+		grateful for the level of support this tool has received and hope it can continue to serve
+		future IB candidates long into the future.
 	</p>
+	<p>Best of luck to all M25 candidates!</p>
 
-	<Discord />
 	<p>
 		Please report all errors and concerns to <a href="mailto:admin@ibpredict.org"
 			>admin@ibpredict.org</a
 		>
-		or <a href="https://discord.gg/G8UvbTJHp8">join the Discord Server.</a> Thank you and good luck to
-		all N24 candidates!
+		or <a href="https://discord.gg/G8UvbTJHp8">join the Discord Server.</a>
 	</p>
+	<Discord />
 </div>
 
 <style lang="scss">

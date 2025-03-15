@@ -11,6 +11,7 @@ import N22 from '$lib/assets/N22.json';
 import M23 from '$lib/assets/M23.json';
 import N23 from '$lib/assets/N23.json';
 import M24 from '$lib/assets/M24.json';
+import N24 from '$lib/assets/N24.json';
 
 export const availableBoundaries = [
 	M19,
@@ -21,10 +22,11 @@ export const availableBoundaries = [
 	N22,
 	M23,
 	N23,
-	M24
+	M24, 
+	N24
 ];
 
-const CURRENT_VERSION = '1.0.0';
+const CURRENT_VERSION = '1.0.1';
 
 /**
  * Initialize a store with version checking and optional persistence.
@@ -53,7 +55,7 @@ function initializeVersionedStore(key, defaultValue) {
 
 // Stores
 export const appVersion = initializeVersionedStore('appVersion', CURRENT_VERSION);
-export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'N23'); // Change DEFAULT here
+export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'M24'); // Change DEFAULT here
 export const selectedBoundary = derived(selectedBoundaryId, ($selectedBoundaryId) =>
 	availableBoundaries.find((boundary) => boundary.info.short === $selectedBoundaryId)
 );

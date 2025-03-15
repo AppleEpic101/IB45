@@ -56,25 +56,25 @@
 		: getAllBoundaries(data.name).HL;
 
 	// gets the latest grade boundary (for awarded mark calculation)
-	$: SLoptions = SLResults.filter((obj) => obj.short === 'N23' || obj.short === 'M24');
-	$: HLoptions = HLResults.filter((obj) => obj.short === 'N23' || obj.short === 'M24');
+	$: SLoptions = SLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
+	$: HLoptions = HLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
 
 	const init = async () => {
 		if (SLoptions && HLoptions) {
 			lastSL = SLoptions?.find(
-				(obj) => obj.short === 'N23' && (obj.timezone === 0 || obj.timezone === 1)
+				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
 			lastHL = HLoptions?.find(
-				(obj) => obj.short === 'N23' && (obj.timezone === 0 || obj.timezone === 1)
+				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N23');
 			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M24');
+			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N24');
 			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
 
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N23');
 			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M24');
+			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N24');
 			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
 		}
 	};
@@ -172,7 +172,7 @@
 	<div>
 		<h1>
 			{syllabus.name}
-			{#if syllabus.firstAssessment !== data.firstAssessment} ({syllabus.firstAssessment}) {/if}
+			({syllabus.firstAssessment})
 		</h1>
 
 		<h4>
