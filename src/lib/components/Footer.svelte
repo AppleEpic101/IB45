@@ -5,7 +5,7 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-section">
-			<h3>THE SYNDICATE</h3>
+			<h3>Maintainers</h3>
 			<ul>
 				<li>Alexander Du (Founder)</li>
 				<li>Winston Thov</li>
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="footer-bottom">
-		<p>&copy; {new Date().getFullYear()} THE SYNDICATE. All rights reserved.</p>
+		<p>&copy; {new Date().getFullYear()} IB Predict. All rights reserved.</p>
 	</div>
 </footer>
 
