@@ -951,8 +951,8 @@
 	},
 	"Philosophy": {
 		"name": "Philosophy",
-		"firstAssessment": 2016,
-		"lastAssessment": 2024,
+		"firstAssessment": 2025,
+		"lastAssessment": "Present",
 		"short": "philosophy",
 		"isLang": false,
 		"SLOnly": false,
@@ -999,7 +999,59 @@
 				"weight": 0.2
 			}
 		],
-		"old": []
+		"old": [
+			{
+				"name": "Philosophy",
+				"firstAssessment": 2016,
+				"lastAssessment": 2024,
+				"short": "philosophy",
+				"isLang": false,
+				"SLOnly": false,
+				"schoolOnly": false,
+				"isCore": false,
+				"description": "The philosophy course provides an opportunity for students to engage with some of the world’s most interesting and influential thinkers. It also develops highly transferable skills such as the ability to formulate arguments clearly, to make reasoned judgments, and to evaluate highly complex and multifaceted issues. The emphasis of the DP philosophy course is on “doing philosophy,” that is, on actively engaging students in philosophical activity. The course is focused on stimulating students’ intellectual curiosity and encouraging them to examine both their own perspectives and those of others. Students are challenged to develop their own philosophical voice and to grow into independent thinkers. They develop their skills through the study of philosophical themes and the close reading of a philosophical text. They also learn to apply their philosophical knowledge and skills to real-life situations and to explore how non-philosophical material can be treated in a philosophical way. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, transfer, and use of primary sources.",
+				"groupNumber": [3],
+				"SL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 50,
+						"weight": 0.5
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 25,
+						"weight": 0.25
+					},
+					{
+						"name": "Philosophical Analysis Of A Non-Philosophical Stimulus",
+						"maxMarks": 25,
+						"weight": 0.25
+					}
+				],
+				"HL": [
+					{
+						"name": "Paper 1",
+						"maxMarks": 75,
+						"weight": 0.4
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 25,
+						"weight": 0.2
+					},
+					{
+						"name": "Paper 3",
+						"maxMarks": 25,
+						"weight": 0.2
+					},
+					{
+						"name": "Philosophical Analysis Of A Non-Philosophical Stimulus",
+						"maxMarks": 25,
+						"weight": 0.2
+					}
+				]
+			}
+		]
 	},
 	"Psychology": {
 		"name": "Psychology",
