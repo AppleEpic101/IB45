@@ -87,7 +87,9 @@
 		isCore={true}
 		maxScore={30}
 	/>
-	<a href="/subjects/tok" target="_blank"><button class="goto">Goto subject page</button></a>
+	<a href="/subjects/theory-of-knowledge" target="_blank"
+		><button class="goto">Goto subject page</button></a
+	>
 	<br />
 	<br />
 	<h2 class="groupTitle">Extended Essay</h2>
