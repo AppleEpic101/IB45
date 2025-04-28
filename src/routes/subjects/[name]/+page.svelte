@@ -287,18 +287,6 @@
 						<div class="y">{mark}</div>
 					</div>
 				</div>
-				{#if !data.isCore}
-					<div class="excel">
-						<Excel
-							assessments={s}
-							name={syllabus.name}
-							{level}
-							{language}
-							{SLResults}
-							{HLResults}
-							firstAssessment={data.firstAssessment}
-						/>
-					</div>{/if}
 			</div>
 
 			<h4>Graphs</h4>
@@ -352,6 +340,18 @@
 						{/if}
 					{/if}
 				</div>
+				{#if !data.isCore}
+					<div class="excel">
+						<Excel
+							assessments={s}
+							name={syllabus.name}
+							{level}
+							{language}
+							{SLResults}
+							{HLResults}
+							firstAssessment={data.firstAssessment}
+						/>
+					</div>{/if}
 				<p class="p">*Timezone 0 (Worldwide)</p>
 				<p class="p">*Timezone 1 (North America, South America)</p>
 				<p class="p">*Timezone 2 (Europe, Africa, Asia, Australia, Oceania)</p>
