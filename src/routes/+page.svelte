@@ -7,6 +7,7 @@
 
 	import GradeBoundarySelector from '$lib/components/MainCalculator/GradeBoundarySelector.svelte';
 	import MainCalculator from '$lib/components/MainCalculator/MainCalculator.svelte';
+	import Footnote from '$lib/components/Footnote.svelte';
 </script>
 
 <svelte:head>
@@ -74,6 +75,7 @@
 		<hr />
 		<GradeBoundarySelector />
 		<MainCalculator />
+		<Footnote />
 	</div>
 </div>
 
