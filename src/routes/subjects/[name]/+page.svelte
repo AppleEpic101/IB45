@@ -193,8 +193,9 @@
 	</div>
 	<Links />
 
-	<Collapsible2 title="Description" content={syllabus.description} />
-
+	{#if syllabus.name === 'Creativity, Activity, Service'}
+		<Collapsible2 title="Description" content={syllabus.description} />
+	{/if}
 	<h4>Past Syllabuses</h4>
 	<button
 		class="btn btn-sik"
