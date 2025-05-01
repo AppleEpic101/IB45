@@ -97,17 +97,27 @@
 	$: grade = calculateGrade(assessments, marks, weight, data.name);
 
 	// calculate awarded mark
-	let mark, str;
+	let mark, str, marksToIncrease;
 	$: {
 		if (data.isCore) {
 			mark = calculateCoreResults(grade, lastSL?.tz);
+			const gradeMap = {
+				E: 1,
+				D: 2,
+				C: 3,
+				B: 4,
+				A: 5
+			};
+			marksToIncrease = lastSL?.tz[gradeMap[mark]] - grade;
 			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 		} else {
 			if (level === 'HL') {
 				mark = calculateNormalResults(grade, lastHL?.tz);
+				marksToIncrease = lastHL?.tz[mark] - grade;
 				str = 'Using the ' + lastHL?.fullName + ' grade boundary';
 			} else {
 				mark = calculateNormalResults(grade, lastSL?.tz);
+				marksToIncrease = lastSL?.tz[mark] - grade;
 				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
 		}
@@ -279,6 +289,9 @@
 				<div class="predicted">
 					<div class="container">
 						<div class="x">Predicted Grade</div>
+						{#if marksToIncrease}
+							<div class="pp">{marksToIncrease} points away from next mark</div>
+						{/if}
 						<div class="y">
 							{grade}
 						</div>
