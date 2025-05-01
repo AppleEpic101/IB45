@@ -44,6 +44,10 @@
 			answer="Assume yes with good judgement. Boundaries always vary year to year, so if you are near a borderline threshold, it could go either way. If you are taking a new course (e.g. new 2025 sciences courses), then slightly less so because there's no existing data, so the best we can do is give an approximation based on the old curriculum.  "
 		/>
 		<Collapsible
+			question="Why does the calculator predict a different grade than my official predicted grade?"
+			answer="Your IB Predicted Grade is determined by your teacher (e.g. performance in class, mock exams). Your final exam is determined by your performance on the actual IB exams. The latter is what IB Predict is trying to predict. The calculator is not meant to replace your official predicted grade, but rather to give you an idea of how you might perform on the final exam based on your current performance."
+		/>
+		<Collapsible
 			question="When will grade boundaries be posted for the latest exam session?"
 			answer="September for May examinations and March for November examinations. This is because the IB takes a while to release grade boundaries, and I have to wait until they are released before I can update the website. If you get them before I do, please send it to me. "
 		/>
