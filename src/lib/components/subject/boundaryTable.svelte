@@ -9,7 +9,7 @@
 	</tr>
 	<tr>
 		<th rowspan="2">Boundary*</th>
-		<th colspan="7">Markband</th>
+		<th colspan="7">Markband (≥)</th>
 	</tr>
 	<tr class="small">
 		{#each { length: 7 } as _, i}
