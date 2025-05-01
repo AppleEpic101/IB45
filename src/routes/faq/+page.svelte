@@ -40,6 +40,14 @@
 			answer="Yes. These are official grade boundaries from past examinations."
 		/>
 		<Collapsible
+			question="Is this calculator accurate?"
+			answer="Assume yes with good judgement. Boundaries always vary year to year, so if you are near a borderline threshold, it could go either way. If you are taking a new course (e.g. new 2025 sciences courses), then slightly less so because there's no existing data, so the best we can do is give an approximation based on the old curriculum.  "
+		/>
+		<Collapsible
+			question="When will grade boundaries be posted for the latest exam session?"
+			answer="September for May examinations and March for November examinations. This is because the IB takes a while to release grade boundaries, and I have to wait until they are released before I can update the website. If you get them before I do, please send it to me. "
+		/>
+		<Collapsible
 			question="Why is the Boundary Not Found?"
 			bullet={[
 				'If you are using a November grade boundary, it is likely because the subject was very unpopular. Subjects that do not garner enough candidates (more than 100) do no have available grade boundary data. Please refer to the individual grade boundary calculator by clicking "More details"',
