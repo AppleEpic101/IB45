@@ -33,7 +33,7 @@
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
 		<p class="main">
 			Getting into the university of your dreams won't be easy, but IB Predict is here to help you
-			along the way. Thank you to over 350,000 people that have used this calculator since its
+			along the way. Thank you to over 500,000 people that have used this calculator since its
 			launch in June 2023. The IB Predict calculator uses grade boundary data from past IB
 			examinations to ensure precision. IB Predict is intended for use by teachers, candidates, and
 			school coordinators to ensure that predicted grades are accurate, fair, and serve a reliable
