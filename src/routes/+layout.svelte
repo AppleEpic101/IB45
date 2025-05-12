@@ -1,6 +1,14 @@
 <script>
 	import Navigation from '$lib/components/navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import DiscordWidget from '$lib/components/DiscordWidget.svelte';
+	import { showDiscord } from '$lib/stores/stores.js';
+	import { onMount } from 'svelte';
+
+	let mounted = false;
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <Navigation />
@@ -10,6 +18,10 @@
 </div>
 
 <Footer />
+
+{#if $showDiscord && mounted}
+	<DiscordWidget />
+{/if}
 
 <link rel="stylesheet" href="/style/light.css" />
 

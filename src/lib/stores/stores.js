@@ -47,6 +47,7 @@ function initializeVersionedStore(key, defaultValue) {
 
         localStorage.setItem('selectedTimezone', '0');
         localStorage.setItem("predictorSelectedOptions", JSON.stringify({0:{},1:{},2:{},3:{},4:{},5:{},6:{}}));
+		localStorage.setItem('showDiscord', true);
 	}
 
 	// Return a persisted store if in the browser
@@ -56,6 +57,7 @@ function initializeVersionedStore(key, defaultValue) {
 // Stores
 export const appVersion = initializeVersionedStore('appVersion', CURRENT_VERSION);
 export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'M24'); // Change DEFAULT here
+export const showDiscord = initializeVersionedStore('showDiscord', true);
 export const selectedBoundary = derived(selectedBoundaryId, ($selectedBoundaryId) =>
 	availableBoundaries.find((boundary) => boundary.info.short === $selectedBoundaryId)
 );
