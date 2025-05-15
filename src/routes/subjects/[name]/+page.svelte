@@ -11,6 +11,7 @@
 	import Collapsible2 from '$lib/components/Collapsible2.svelte';
 	import Excel from '$lib/components/subject/Excel.svelte';
 	import Footnote from '$lib/components/Footnote.svelte';
+	import GlobalBulletin from '$lib/components/subject/GlobalBulletin.svelte';
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
@@ -305,6 +306,9 @@
 			</div>
 
 			<h4>Graphs</h4>
+			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge' && syllabus.name !== 'Creativity, Activity, Service'}
+				<div class="graph"><GlobalBulletin name={level + ' ' + syllabus.name} {mark} /></div>
+			{/if}
 			<div class="graph">
 				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
 			</div>
