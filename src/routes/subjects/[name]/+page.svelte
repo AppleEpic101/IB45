@@ -14,6 +14,7 @@
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import {
 		calculateNormalResults,
 		calculateCoreResults,
@@ -22,8 +23,8 @@
 	} from '$lib/group.js';
 
 	export let data;
-	let version = $page.url.searchParams.get('syl') || data?.firstAssessment;
-	const datas = [data, ...data.old];
+	export let version = data.version;
+	const datas = [data.data, ...data.data.old];
 
 	$: syllabus = datas.find((a) => a.firstAssessment == version);
 
@@ -32,29 +33,30 @@
 
 	// get language from query parameters
 	let language;
-	let langQuery = $page.url.searchParams.get('lang');
-	if (data.name === 'Classical Language') {
+	export let langQuery = data.langQuery;
+	// let langQuery = $page.url.searchParams.get('lang');
+	if (data.data.name === 'Classical Language') {
 		language = classical.includes(langQuery) ? langQuery : 'Latin';
-	} else if (data.isLang) {
+	} else if (data.data.isLang) {
 		language = languages.includes(langQuery) ? langQuery : 'English';
 	}
 
 	// get level from query parameters
-	let level = $page.url.searchParams.get('lvl') === 'HL' ? 'HL' : 'SL';
+	export let level = data.level;
 	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
 
-	$: name = data.isLang ? language + ' ' + data.name : data.name;
+	$: name = data.data.isLang ? language + ' ' + data.data.name : data.data.name;
 
 	// gets all previous grade boundaries (for table display)
 	let lastSL;
 	let lastHL;
 
-	$: SLResults = data.isLang
-		? getAllBoundaries(data.name, language).SL
-		: getAllBoundaries(data.name).SL;
-	$: HLResults = data.isLang
-		? getAllBoundaries(data.name, language).HL
-		: getAllBoundaries(data.name).HL;
+	$: SLResults = data.data.isLang
+		? getAllBoundaries(data.data.name, language).SL
+		: getAllBoundaries(data.data.name).SL;
+	$: HLResults = data.data.isLang
+		? getAllBoundaries(data.data.name, language).HL
+		: getAllBoundaries(data.data.name).HL;
 
 	// gets the latest grade boundary (for awarded mark calculation)
 	$: SLoptions = SLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
@@ -94,12 +96,12 @@
 		weight = s?.map((a) => a.weight);
 		marks = s?.map((a) => a.maxMarks);
 	}
-	$: grade = calculateGrade(assessments, marks, weight, data.name);
+	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
 
 	// calculate awarded mark
 	let mark, str, marksToIncrease;
 	$: {
-		if (data.isCore) {
+		if (data.data.isCore) {
 			mark = calculateCoreResults(grade, lastSL?.tz);
 			const gradeMap = {
 				E: 1,
@@ -124,8 +126,8 @@
 
 		// boundary not found
 		if (
-			(level === 'SL' && SLResults.length === 0 && !data.isCore) ||
-			(level === 'HL' && HLResults.length === 0 && !data.isCore)
+			(level === 'SL' && SLResults.length === 0 && !data.data.isCore) ||
+			(level === 'HL' && HLResults.length === 0 && !data.data.isCore)
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
@@ -152,26 +154,26 @@
 
 	$: {
 		if (typeof window !== 'undefined') {
-			updateUrl('lang', data.isLang, language);
-			updateUrl('lvl', level === 'HL' && !data.isCore, 'HL');
-			updateUrl('syl', version && version !== data.firstAssessment, version);
+			updateUrl('lang', data.data.isLang, language);
+			updateUrl('lvl', level === 'HL' && !data.data.isCore, 'HL');
+			updateUrl('syl', version && version !== data.data.firstAssessment, version);
 			go();
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>IB {language || ''} {data.name} Grade Calculator</title>
+	<title>IB {language || ''} {data.data.name} Grade Calculator</title>
 	<meta
 		name="description"
-		content="Calculate your IB {language ||
-			''} {data.name} grade! See historical grade boundary data, course descriptions, and more."
+		content="Calculate your IB {language || ''} {data.data
+			.name} grade! See historical grade boundary data, course descriptions, and more."
 	/>
-	<meta name="og:title" content="IB {language || ''} {data.name} Grade Calculator" />
+	<meta name="og:title" content="IB {language || ''} {data.data.name} Grade Calculator" />
 	<meta
 		name="og:description"
-		content="Calculate your IB {language ||
-			''} {data.name} grade! See historical grade boundary data, course descriptions, and more."
+		content="Calculate your IB {language || ''} {data.data
+			.name} grade! See historical grade boundary data, course descriptions, and more."
 	/>
 </svelte:head>
 
@@ -211,11 +213,11 @@
 	<button
 		class="btn btn-sik"
 		on:click={() => {
-			version = data.firstAssessment;
-		}}>Current ({data.firstAssessment})</button
+			version = data.data.firstAssessment;
+		}}>Current ({data.data.firstAssessment})</button
 	>
-	{#if data.old}
-		{#each data.old as old}
+	{#if data.data.old}
+		{#each data.data.old as old}
 			<button
 				class="btn btn-sik"
 				on:click={() => {
@@ -228,24 +230,24 @@
 	<div>
 		{#if syllabus.name !== 'Creativity, Activity, Service'}
 			<h4>Grade Calculator</h4>
-			{#if data.SLOnly}
+			{#if data.data.SLOnly}
 				<h5>
 					{syllabus.name} is offered only at the SL level
 				</h5>
 			{/if}
 			<div class="dropdown">
-				{#if data.isLang && syllabus.name === 'Classical Language'}
+				{#if data.data.isLang && syllabus.name === 'Classical Language'}
 					<div>
 						<Dropdown arr={classical} bind:value={language} />
 					</div>
-				{:else if data.isLang}
+				{:else if data.data.isLang}
 					<div>
 						<Dropdown arr={languages} bind:value={language} />
 					</div>
 				{/if}
 			</div>
 			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-				{#if !data.SLOnly}
+				{#if !data.data.SLOnly}
 					<div class="wrap">
 						<label>
 							<input type="radio" name="ef" value={'SL'} bind:group={level} />
@@ -311,13 +313,13 @@
 
 			<div class="grade">
 				<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
-				{#if data.SLOnly}
+				{#if data.data.SLOnly}
 					<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
 						{syllabus.name} is offered only at the SL level
 					</h5>
 				{/if}
 				{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-					{#if !data.SLOnly}
+					{#if !data.data.SLOnly}
 						<div class="wrap">
 							<label>
 								<input type="radio" name="e" value={'SL'} bind:group={level} />
@@ -331,11 +333,11 @@
 					{/if}
 				{/if}
 				<div class="dropdown">
-					{#if data.isLang && syllabus.name === 'Classical Language'}
+					{#if data.data.isLang && syllabus.name === 'Classical Language'}
 						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
 							<Dropdown arr={classical} bind:value={language} />
 						</div>
-					{:else if data.isLang}
+					{:else if data.data.isLang}
 						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
 							<Dropdown arr={languages} bind:value={language} />
 						</div>
@@ -350,12 +352,12 @@
 						<CoreMatrix name={syllabus.name} />
 					{:else}
 						<BoundaryTable name={'SL ' + name} res={SLResults} />
-						{#if !data.SLOnly}
+						{#if !data.data.SLOnly}
 							<BoundaryTable name={'HL ' + name} res={HLResults} />
 						{/if}
 					{/if}
 				</div>
-				{#if !data.isCore}
+				{#if !data.data.isCore}
 					<div class="excel">
 						<Excel
 							assessments={s}
@@ -364,7 +366,7 @@
 							{language}
 							{SLResults}
 							{HLResults}
-							firstAssessment={data.firstAssessment}
+							firstAssessment={data.data.firstAssessment}
 						/>
 					</div>{/if}
 				<Footnote />
