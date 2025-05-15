@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-export const prerender = false;
+export const prerender = true;
 import data from '$lib/assets/courses.json';
 
 const info = data.meta;
