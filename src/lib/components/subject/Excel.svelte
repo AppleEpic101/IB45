@@ -28,7 +28,6 @@
 			results = HLResults.slice().reverse();
 		}
 	}
-	$: console.log(boundary);
 
 	// Function to create and download the Excel file
 	async function downloadExcel() {
