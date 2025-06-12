@@ -8,17 +8,13 @@
 	import GradeBoundarySelector from '$lib/components/MainCalculator/GradeBoundarySelector.svelte';
 	import MainCalculator from '$lib/components/MainCalculator/MainCalculator.svelte';
 	import Footnote from '$lib/components/Footnote.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
 
-<svelte:head>
-	<title>IB Grade Calculator</title>
-	<meta
-		name="description"
-		content="Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!"
-	/>
-	<meta name="og:title" content="IB Predict" />
-	<meta name="og:description" content="International Baccalaureate Grade Calculator" />
-</svelte:head>
+<PageHeader
+	title={'IB Grade Calculator'}
+	description={'Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!'}
+/>
 
 <div class="banner">
 	<h1>International Baccalaureate Diploma Programme</h1>

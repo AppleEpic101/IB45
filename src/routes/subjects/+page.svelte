@@ -13,20 +13,13 @@
 
 	const groups = data.meta.groups;
 	import Discord from '$lib/components/Discord.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
 
-<svelte:head>
-	<title>IB DP Subject List</title>
-	<meta
-		name="description"
-		content="View all the subjects offered in the IB DP. Click to calculate your IB grade for an individual subject."
-	/>
-	<meta name="og:title" content="IB DP Subject List" />
-	<meta
-		name="og:description"
-		content="View all the subjects offered in the IB DP, and calculate your grade for individual subjects"
-	/>
-</svelte:head>
+<PageHeader
+	title="IB DP Subject List"
+	description="View all the subjects offered in the IB DP. Click to calculate your IB grade for an individual subject."
+/>
 
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
 	<h1>Subject List</h1>

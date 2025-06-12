@@ -6,20 +6,13 @@
 	let ready = false;
 	onMount(() => (ready = true));
 	import Discord from '$lib/components/Discord.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
 
-<svelte:head>
-	<title>Frequently Asked Questions</title>
-	<meta
-		name="description"
-		content="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
-	/>
-	<meta name="og:title" content="Frequently Asked Questions" />
-	<meta
-		name="og:description"
-		content="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
-	/>
-</svelte:head>
+<PageHeader
+	title="Frequently Asked Questions"
+	description="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
+/>
 
 <div class="content" in:fly={{ duration: 1400, x: 200 }}>
 	<h1>Frequently Asked Questions</h1>

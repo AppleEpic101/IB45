@@ -5,20 +5,14 @@
 	let ready = false;
 	onMount(() => (ready = true));
 	import Discord from '$lib/components/Discord.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
+	import Page from '../+page.svelte';
 </script>
 
-<svelte:head>
-	<title>Changelog</title>
-	<meta
-		name="description"
-		content="See the most recent updates in IB curricula and grade boundaries. Click to learn the latest features of the IB Predict."
-	/>
-	<meta name="og:title" content="Changelog" />
-	<meta
-		name="og:description"
-		content="See the most recent updates in IB curricula and grade boundaries. Click to learn the latest features of the IB Predict."
-	/>
-</svelte:head>
+<PageHeader
+	title="Changelog"
+	description="See the most recent updates in IB curricula and grade boundaries. Click to learn the latest features of the IB Predict."
+/>
 
 <h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Changelog</h1>
 <Links />
@@ -36,7 +30,7 @@
 				</ul>
 			</li>
 		</ul>
-	
+
 		<h2>September 26, 2024</h2>
 		<ul>
 			<li>Added May 2024 grade boundaries</li>

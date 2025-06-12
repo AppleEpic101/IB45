@@ -12,6 +12,7 @@
 	import Excel from '$lib/components/subject/Excel.svelte';
 	import Footnote from '$lib/components/Footnote.svelte';
 	import GlobalBulletin from '$lib/components/subject/GlobalBulletin.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { onMount } from 'svelte';
 
 	import { page } from '$app/stores';
@@ -164,20 +165,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>IB {language || ''} {data.data.name} Grade Calculator</title>
-	<meta
-		name="description"
-		content="Calculate your IB {language || ''} {data.data
-			.name} grade! See historical grade boundary data, course descriptions, and more."
-	/>
-	<meta name="og:title" content="IB {language || ''} {data.data.name} Grade Calculator" />
-	<meta
-		name="og:description"
-		content="Calculate your IB {language || ''} {data.data
-			.name} grade! See historical grade boundary data, course descriptions, and more."
-	/>
-</svelte:head>
+<PageHeader
+	title={`IB ${language || ''} ${data.data.name} Grade Calculator`}
+	description={`Calculate your IB ${data.data.name} grade! See historical grade boundary data, course descriptions, and more.`}
+/>
 
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
 	<a href="/subjects">
