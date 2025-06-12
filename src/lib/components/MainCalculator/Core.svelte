@@ -58,7 +58,7 @@
 				coreGrade = 3;
 			} else if (cumScore >= 5) {
 				coreGrade = 2;
-			} else if (cumScore >= 3) {
+			} else if (cumScore >= 4) {
 				coreGrade = 1;
 			} else {
 				coreGrade = 0;
