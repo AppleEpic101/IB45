@@ -9,13 +9,13 @@
 
 <div class="main">
 	<div>{name} Grade: {score}/{maxScore}</div>
-	{#if !isCore}
+	<!-- {#if !isCore}
 		{#each grades as grade, i}
 			<div>Timezone {i + (grades.length == 2 ? 1 : 0)}: {grade}</div>
 		{/each}
-	{/if}
+	{/if} -->
 	{#if predictedGrade}
-		<b>Awarded Mark: {predictedGrade}</b>
+		<b class="progress-container">Awarded Mark: {predictedGrade}</b>
 	{:else}
 		<b class="not-found"><a href="/faq" target="_blank">Boundary Not Found</a></b>
 	{/if}

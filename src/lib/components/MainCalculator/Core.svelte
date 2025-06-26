@@ -148,7 +148,7 @@
 
 	.goto {
 		transition: all 0.2s ease;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		border: 2px solid black;
 		padding: 5px 10px;
 		border-radius: 10px;

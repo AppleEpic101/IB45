@@ -9,7 +9,7 @@
 
 <style>
 	button {
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		padding: 15px;
 		margin: 10px 0;
 		cursor: pointer;

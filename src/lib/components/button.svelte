@@ -8,7 +8,7 @@
 <style>
 	.subject {
 		margin: 5px;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		padding: 8px;
 		border-radius: 10px;
 		border: 2px solid black;

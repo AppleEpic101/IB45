@@ -1,7 +1,8 @@
 :root {
     /* --primary:  rgb(20, 181, 235); */
-    --primary: rgb(135, 215, 241);
-    --nav: rgb(86, 187, 220);
+    /* --primary: rgb(135, 215, 241); */
+    --primary: #a3d3f4;
+    --nav: rgb(130, 171, 221);;
     --lightprimary: rgb(135, 215, 241);
     --background: rgb(247, 247, 247);
     --darkwhite: rgb(241, 241, 241);

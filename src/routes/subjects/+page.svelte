@@ -98,7 +98,7 @@
 	}
 	.subject {
 		margin: 4px;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		padding: 10px;
 		border-radius: 10px;
 		border: 2px solid black;

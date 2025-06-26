@@ -25,7 +25,6 @@
 		<h2>Welcome to IB Predict!</h2>
 		<h4>Last updated April 22, 2025</h4>
 	</div>
-	<Links />
 	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
 		<p class="main">
 			Meeting the conditional offers for your universities won't be easy, but IB Predict is here to
@@ -60,7 +59,7 @@
 		<Button href={'./subjects/extended-essay'} text={'EE'} />
 		<Button href={'./subjects'} text={'More...'} />
 
-		<p>
+		<!-- <p>
 			<strong>Upcoming May 2025 Syllabus Changes</strong>
 		</p>
 		<Button href={'./subjects/physics?syl=2025'} text={'Physics (2025)'} />
@@ -68,6 +67,8 @@
 		<Button href={'./subjects/biology?syl=2025'} text={'Biology (2025)'} />
 		<Button href={'./subjects/philosophy?syl=2025'} text={'Philosophy (2025)'} />
 
+		<hr /> -->
+		<hr />
 		<hr />
 		<GradeBoundarySelector />
 		<MainCalculator />
@@ -90,7 +91,7 @@
 		padding: 1px;
 		border-bottom: 2px solid black;
 		font-family: 'Courier New', Courier, monospace;
-		border-right: 0.5px solid var(--lightprimary);
+		border-right: 0.5px solid var(--primary);
 
 		h1 {
 			margin: 65px;

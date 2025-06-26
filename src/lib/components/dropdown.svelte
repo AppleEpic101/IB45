@@ -23,7 +23,7 @@
 
 <style>
 	select {
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		padding: 5px 10px;
 		color: black;
 		border: 2px solid black;
@@ -40,7 +40,7 @@
 	}
 
 	select option {
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		color: black;
 	}
 

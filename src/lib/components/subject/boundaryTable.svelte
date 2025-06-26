@@ -40,7 +40,7 @@
 		border: 2px solid black;
 		border-collapse: collapse;
 		text-align: center;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 	}
 	table {
 		width: 100%;

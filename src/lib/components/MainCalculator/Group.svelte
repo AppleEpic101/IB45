@@ -199,7 +199,8 @@
 	}
 
 	.group-title {
-		margin-top: 0;
+		font-size: 1.75rem;
+		padding-bottom: 10px;
 	}
 
 	.grade-sliders {
@@ -209,7 +210,7 @@
 
 	.goto {
 		transition: all 0.2s ease;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		border: 2px solid black;
 		padding: 5px 10px;
 		margin-top: 15px;

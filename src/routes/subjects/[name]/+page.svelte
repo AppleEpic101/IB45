@@ -446,7 +446,7 @@
 	}
 
 	.container {
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		padding: 10px;
 		border: 2px solid black;
 		border-radius: 10px;

@@ -30,7 +30,8 @@
 
 <style lang="scss">
 	.message {
-		border: 2px solid black;
+		border: 2px solid var(--nav);
+		border-radius: 10px;
 		padding: 0 20px;
 
 		.announcement {

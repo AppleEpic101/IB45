@@ -44,7 +44,7 @@
 		margin-right: 5px;
 		margin-bottom: 5px;
 		border: 2px solid black;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 		border-radius: 5px;
 		max-width: 300px;
 	}
@@ -63,7 +63,7 @@
 		-webkit-appearance: none;
 		appearance: none;
 		cursor: pointer;
-		background-color: var(--lightprimary);
+		background-color: var(--primary);
 	}
 
 	input[type='range']::-webkit-slider-runnable-track {
