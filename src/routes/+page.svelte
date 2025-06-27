@@ -17,7 +17,9 @@
 />
 
 <div class="banner">
-	<h1>The World's #1 IB Diploma Predicted Score Calculator</h1>
+	<h1>World #1 Predicted Score Calculator</h1>
+	<h1>for the</h1>
+	<h1>IB Diploma Program</h1>
 </div>
 <div class="intro">
 	<div class="welcome" in:fly={{ delay: 400, duration: 1000, x: 200 }}>
@@ -33,8 +35,9 @@
 			candidates, and school coordinators to ensure that predicted grades are accurate, fair, and
 			serve a reliable basis for university admissions. With IB Predict, you'll know exactly what is
 			needed in order to score a 4, 5, 6, or 7. No more, no less.
-			<br /><br />
+			<!-- <br /><br />
 			Founded by successful IB DP alumni at Oxford, Caltech, and more, we support over hundreds of thousands of students and teachers from 150+ countries every year. Now maintained by current IB students, we are a community dedicated to supporting current students in their IB and future educational endeavors.
+		</p> -->
 		</p>
 
 		<Message />
@@ -89,13 +92,14 @@
 		text-align: center;
 		background-color: var(--banner);
 		color: white;
-		padding: 40px 1px;
+		padding: 20px 1px;
 		border-bottom: 2px solid black;
 		font-family: 'Montserrat Alternates', 'Courier New', Courier, monospace;
 		border-right: 0.5px solid var(--primary);
 
 		h1 {
-			margin: 65px;
+			margin: 20px;
+			font-weight: bold;
 		}
 	}
 
