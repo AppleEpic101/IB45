@@ -65,7 +65,7 @@
 
 <style lang="scss">
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
-	$font-family: 'Space Grotesk', sans-serif;
+	$font-family: 'Montserrat','Space Grotesk', sans-serif;
 
 	.dropdown {
 		display: none;
@@ -115,17 +115,20 @@
 		.nav-group {
 			display: flex;
 			width: 1150px;
-			margin: 10px auto;
+			margin: auto;
 			justify-content: space-between;
+			align-items: center;
+			min-height: 100%;
 
 			.logo-group {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				margin: 10px auto;
 
 				#img {
 					width: 40px;
-					margin: 0 20px;
+					margin: 0px 20px;
 					transition: 0.3s ease-in-out;
 
 					&:hover {
@@ -147,13 +150,13 @@
 
 		.top-links {
 			display: flex;
-			justify-content: flex-end;
-			align-items: center;
+			align-items: flex-end;
 			margin-right: 5px;
 			font-family: $font-family;
 
 			a {
-				padding: 10px;
+				height: 100%;
+				padding: 18px 10px;
 				color: black;
 				text-decoration: none;
 				font-size: 1.2em;

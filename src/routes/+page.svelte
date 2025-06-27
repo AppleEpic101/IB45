@@ -17,8 +17,7 @@
 />
 
 <div class="banner">
-	<h1>International Baccalaureate Diploma Programme</h1>
-	<h1>Predicted Score Calculator</h1>
+	<h1>The World's #1 IB Diploma Predicted Score Calculator</h1>
 </div>
 <div class="intro">
 	<div class="welcome" in:fly={{ delay: 400, duration: 1000, x: 200 }}>
@@ -34,6 +33,8 @@
 			candidates, and school coordinators to ensure that predicted grades are accurate, fair, and
 			serve a reliable basis for university admissions. With IB Predict, you'll know exactly what is
 			needed in order to score a 4, 5, 6, or 7. No more, no less.
+			<br /><br />
+			Founded by successful IB DP alumni at Oxford, Caltech, and more, we support over hundreds of thousands of students and teachers from 150+ countries every year. Now maintained by current IB students, we are a community dedicated to supporting current students in their IB and future educational endeavors.
 		</p>
 
 		<Message />
@@ -77,8 +78,8 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
-	$font-family: 'Space Grotesk', sans-serif;
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+	$font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 
 	p {
 		line-height: 2;
@@ -88,9 +89,9 @@
 		text-align: center;
 		background-color: var(--banner);
 		color: white;
-		padding: 1px;
+		padding: 40px 1px;
 		border-bottom: 2px solid black;
-		font-family: 'Courier New', Courier, monospace;
+		font-family: 'Montserrat Alternates', 'Courier New', Courier, monospace;
 		border-right: 0.5px solid var(--primary);
 
 		h1 {
