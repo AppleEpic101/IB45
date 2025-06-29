@@ -29,7 +29,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 	:global(html) {
-		font-family: var(--textfont);
+		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 		background-color: var(--primary);
 		color: black;
 	}

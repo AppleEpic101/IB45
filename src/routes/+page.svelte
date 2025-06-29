@@ -93,7 +93,7 @@
 		color: white;
 		padding: 20px 1px;
 		border-bottom: 2px solid black;
-		font-family: var(--headerfont);
+		font-family: 'Montserrat Alternates', 'Courier New', Courier, monospace;
 		border-right: 0.5px solid var(--primary);
 
 		h1 {
@@ -125,7 +125,7 @@
 	}
 
 	.welcome {
-		font-family: var(--textfont);
+		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 
 		h2 {
 			margin-bottom: 0;

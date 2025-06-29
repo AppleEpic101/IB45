@@ -35,7 +35,7 @@
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;
-		font-family: var(--textfont);
+		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 	}
 
 	select:hover {

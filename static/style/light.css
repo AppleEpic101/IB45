@@ -8,7 +8,7 @@
     --darkwhite: rgb(241, 241, 241);
     --banner: #053f54;
     --headerfont: 'Montserrat Alternates', 'Courier New', Courier, monospace;
-    --textfont: 'Montserrat', 'Space Grotesk', sans-serif
+    --textfont: 'Montserrat', 'Space Grotesk', sans-serif;
 }
 
 *::-webkit-scrollbar {

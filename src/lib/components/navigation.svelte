@@ -139,7 +139,7 @@
 				}
 
 				.logo-text {
-					font-family: var(--textfont);
+					font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 					font-size: 1.75em;
 					white-space: nowrap;
 					margin-right: 20px;
@@ -151,7 +151,7 @@
 			display: flex;
 			align-items: flex-end;
 			margin-right: 5px;
-			font-family: var(--textfont);
+			font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 
 			a {
 				height: 100%;

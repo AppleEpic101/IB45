@@ -16,7 +16,7 @@
 		border: 2px solid black;
 		border-radius: 10px;
 		font-size: 1rem;
-		font-family: var(--textfont);
+		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 		color: black;
 	}
 

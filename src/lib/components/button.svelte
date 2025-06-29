@@ -15,7 +15,7 @@
 		text-decoration: none;
 		font-weight: 500;
 		font-size: 1em;
-		font-family: var(--textfont);
+		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
 		color: black;
 	}
 
