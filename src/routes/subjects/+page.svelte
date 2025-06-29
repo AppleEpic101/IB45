@@ -103,9 +103,10 @@
 		border-radius: 10px;
 		border: 2px solid black;
 		text-decoration: none;
-		text-shadow: 0px 0px 0.8px black;
 		color: black;
+		font-weight: 500;
 		font-size: 1.15em;
+		font-family: var(--textfont);
 	}
 
 	.subject:hover {

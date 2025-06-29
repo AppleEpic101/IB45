@@ -35,6 +35,7 @@
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;
+		font-family: var(--textfont);
 	}
 
 	select:hover {
