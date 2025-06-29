@@ -64,8 +64,7 @@
 </nav>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap');
-	$font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 	.dropdown {
 		display: none;
@@ -140,7 +139,7 @@
 				}
 
 				.logo-text {
-					font-family: $font-family;
+					font-family: var(--textfont);
 					font-size: 1.75em;
 					white-space: nowrap;
 					margin-right: 20px;
@@ -152,7 +151,7 @@
 			display: flex;
 			align-items: flex-end;
 			margin-right: 5px;
-			font-family: $font-family;
+			font-family: var(--textfont);
 
 			a {
 				height: 100%;
