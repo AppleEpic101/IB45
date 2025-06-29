@@ -10,11 +10,13 @@
 <style>
 	button {
 		background-color: var(--primary);
-		padding: 15px;
+		padding: 12px;
 		margin: 10px 0;
 		cursor: pointer;
 		border: 2px solid black;
-		border-radius: 5px;
+		border-radius: 10px;
+		font-size: 1rem;
+		font-family: var(--textfont);
 		color: black;
 	}
 
