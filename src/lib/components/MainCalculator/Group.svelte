@@ -136,6 +136,11 @@
 		$settings['language'],
 		$settings['level']
 	);
+
+	let show = true;
+	function toggleShow() {
+		show = !show;
+	}
 </script>
 
 <div class="main">
@@ -164,21 +169,35 @@
 			bind:selected={$settings['region']}
 		/>
 	{/if}
-	<div class="grade-sliders">
-		{#if sufficientData}
-			{#each assessments as assessment, i}
-				<ScoreSelector
-					name={assessment.name}
-					maxMarks={assessment.maxMarks}
-					weight={assessment.weight}
-					bind:value={$settings['chosenScores'][i]}
-				/>
-			{/each}
-		{:else}
-			<NotEnoughDetails />
-		{/if}
-	</div>
+	{#if show}
+		<div class="grade-sliders">
+			{#if sufficientData}
+				{#each assessments as assessment, i}
+					<ScoreSelector
+						name={assessment.name}
+						maxMarks={assessment.maxMarks}
+						weight={assessment.weight}
+						bind:value={$settings['chosenScores'][i]}
+					/>
+				{/each}
+			{:else}
+				<NotEnoughDetails />
+			{/if}
+		</div>
+	{/if}
 	{#if sufficientData}
+		<img 
+			src="/toggle-button.svg" 
+			alt="toggle" 
+			class="toggle-button"
+			class:flipped={!show} 
+			on:click={toggleShow} 
+			on:keydown={e => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					toggleShow();
+				}
+			}}
+		/>
 		<GradeResults
 			grades={predictedTimezoneGrades}
 			{predictedGrade}
@@ -196,6 +215,21 @@
 		margin-bottom: 10px;
 		padding: 1rem;
 		background-color: var(--darkwhite);
+		position: relative;
+	}
+
+	.toggle-button {
+		cursor: pointer;
+		position: absolute;
+		right: 8px;
+		top: 10px;
+		transform: rotate(0deg);
+		transition: transform 0.5s;
+	}
+
+	.flipped {
+		transform: rotate(180deg);
+		
 	}
 
 	.group-title {
