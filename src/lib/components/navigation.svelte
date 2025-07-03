@@ -157,7 +157,7 @@
 			a {
 				height: 100%;
 				padding: 18px 10px;
-				color: var(--primary);
+				color: white;
 				text-decoration: none;
 				font-size: 1.2em;
 

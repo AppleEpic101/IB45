@@ -33,7 +33,7 @@
 	tr,
 	th,
 	td {
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		border-collapse: collapse;
 		text-align: center;
 		background-color: var(--primary);

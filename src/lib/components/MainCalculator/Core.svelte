@@ -123,7 +123,7 @@
 <style>
 	.main {
 		border-radius: 0.5rem;
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		padding: 1rem;
 		background-color: var(--darkwhite);
 	}
@@ -142,7 +142,7 @@
 
 	.core-points {
 		background-color: var(--primary);
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		border-radius: 5px;
 		width: fit-content;
 		padding: 0.5rem;
@@ -152,7 +152,7 @@
 	.goto {
 		transition: all 0.2s ease;
 		background-color: var(--primary);
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		padding: 0.5rem;
 		margin-top: 15px;
 		border-radius: 10px;

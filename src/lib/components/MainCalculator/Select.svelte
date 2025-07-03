@@ -31,7 +31,7 @@
 		background-color: var(--primary);
 		padding: 10px 15px;
 		color: black;
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;

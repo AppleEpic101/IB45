@@ -62,7 +62,7 @@
 	:global(.btn-sik) {
 		transition: all 0.2s ease;
 		background-color: var(--primary);
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		padding: 5px 10px;
 		border-radius: 10px;
 		margin: 5px;

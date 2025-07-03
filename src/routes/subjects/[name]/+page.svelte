@@ -448,7 +448,7 @@
 	.container {
 		background-color: var(--primary);
 		padding: 10px;
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		border-radius: 10px;
 		margin: 10px;
 	}

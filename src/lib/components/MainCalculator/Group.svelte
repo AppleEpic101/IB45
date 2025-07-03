@@ -251,7 +251,7 @@
 	.goto {
 		transition: all 0.2s ease;
 		background-color: var(--primary);
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		padding: 0.5rem;
 		margin-top: 15px;
 		border-radius: 10px;

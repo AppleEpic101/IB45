@@ -97,7 +97,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		padding: 10px;
 	}
 </style>

@@ -202,7 +202,7 @@
 
 	.additional-info {
 		background-color: var(--primary);
-		border: 1px solid var(--bordercolor);
+		border: 1px solid #d1d5db;
 		border-top: 0;
 	}
 
