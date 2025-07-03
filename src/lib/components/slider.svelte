@@ -39,11 +39,12 @@
 	p {
 		margin: 0;
 	}
+	
 	.slider {
 		padding: 10px;
 		margin-right: 5px;
 		margin-bottom: 5px;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		background-color: var(--primary);
 		border-radius: 5px;
 		max-width: 300px;
@@ -87,8 +88,12 @@
 
 	input[type='number'] {
 		width: 3em;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
+		border-radius: 6px;
 		background-color: white;
+		margin-left: 4px;
+		position: relative;
+		top: -2px;
 	}
 
 	@media screen and (max-width: 380px) {

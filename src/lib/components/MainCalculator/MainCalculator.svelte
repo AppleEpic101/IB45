@@ -49,7 +49,7 @@
 <style lang="scss">
 	.main {
 		display: grid;
-		grid-template-columns: 4fr 275px;
+		grid-template-columns: 1fr 225px;
 		margin: 20px auto;
 		gap: 10px;
 	}

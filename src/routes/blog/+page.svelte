@@ -52,7 +52,7 @@
 	}
 
 	article {
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		padding: 10px;
 		margin: 10px 0;
 		h2 {

@@ -30,13 +30,13 @@
 	p {
 		margin: 0;
 	}
+
 	.slider {
 		padding: 10px;
-		margin-right: 5px;
-		margin-bottom: 5px;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		background-color: var(--primary);
-		border-radius: 5px;
+		border-radius: 8px;
 		max-width: 300px;
 	}
 
@@ -78,8 +78,12 @@
 
 	input[type='number'] {
 		width: 3em;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
+		border-radius: 6px;
 		background-color: white;
+		margin-left: 4px;
+		position: relative;
+		top: -2px;
 	}
 
 	@media screen and (max-width: 380px) {

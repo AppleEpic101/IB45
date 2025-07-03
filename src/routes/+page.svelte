@@ -94,7 +94,6 @@
 		padding: 20px 1px;
 		border-bottom: 2px solid black;
 		font-family: 'Montserrat Alternates', 'Courier New', Courier, monospace;
-		border-right: 0.5px solid var(--primary);
 
 		h1 {
 			margin: 20px;

@@ -143,6 +143,7 @@
 					font-size: 1.75em;
 					white-space: nowrap;
 					margin-right: 20px;
+					color: white;
 				}
 			}
 		}
@@ -156,7 +157,7 @@
 			a {
 				height: 100%;
 				padding: 18px 10px;
-				color: black;
+				color: var(--primary);
 				text-decoration: none;
 				font-size: 1.2em;
 

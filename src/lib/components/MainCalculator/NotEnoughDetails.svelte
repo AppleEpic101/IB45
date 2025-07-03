@@ -5,7 +5,7 @@
 <style>
 	.main {
 		background-color: var(--primary);
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		border-radius: 5px;
 		width: fit-content;
 		padding: 0 1rem;

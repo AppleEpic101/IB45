@@ -1,12 +1,13 @@
 :root {
     /* --primary:  rgb(20, 181, 235); */
     /* --primary: rgb(135, 215, 241); */
-    --primary: #a3d3f4;
-    --nav: rgb(130, 171, 221);;
+    --primary: #e0f2fe;
+    --nav: #1e3a8a;
     --lightprimary: rgb(135, 215, 241);
-    --background: rgb(247, 247, 247);
-    --darkwhite: rgb(241, 241, 241);
+    --background: #f8fafc;
+    --darkwhite: #ffffff;
     --banner: #053f54;
+    --bordercolor: #d1d5db;
     --headerfont: 'Montserrat Alternates', 'Courier New', Courier, monospace;
     --textfont: 'Montserrat', 'Space Grotesk', sans-serif;
 }

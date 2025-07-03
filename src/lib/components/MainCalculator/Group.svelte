@@ -210,12 +210,20 @@
 
 <style lang="scss">
 	.main {
-		border-radius: 0.5rem;
-		border: 2px solid black;
+		border-radius: 1rem;
+		border: 1px solid #e5e7eb;
 		margin-bottom: 10px;
-		padding: 1rem;
+		box-shadow: 0 4 12px rgba(0,0,0,0.1);
+		padding: 1.5rem;
 		background-color: var(--darkwhite);
+		background-color: #fff;
 		position: relative;
+	}
+	
+	.group-title {
+		font-size: 1.75rem;
+		padding-bottom: 10px;
+		margin: 0;
 	}
 
 	.toggle-button {
@@ -223,30 +231,28 @@
 		position: absolute;
 		right: 8px;
 		top: 10px;
+		width: 56px;
 		transform: rotate(0deg);
 		transition: transform 0.5s;
 	}
 
 	.flipped {
 		transform: rotate(180deg);
-		
-	}
-
-	.group-title {
-		font-size: 1.75rem;
-		padding-bottom: 10px;
 	}
 
 	.grade-sliders {
 		display: flex;
 		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 
 	.goto {
 		transition: all 0.2s ease;
 		background-color: var(--primary);
-		border: 2px solid black;
-		padding: 5px 10px;
+		border: 1px solid var(--bordercolor);
+		padding: 0.5rem;
 		margin-top: 15px;
 		border-radius: 10px;
 		font-weight: bolder;

@@ -178,13 +178,16 @@
 		position: sticky;
 		top: 80px;
 		text-align: center;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 	}
 
 	table,
 	tr,
 	th,
 	td {
-		border: 2px solid black;
+		border: 1px solid #d1d5db;
 		border-collapse: collapse;
 		background-color: var(--primary);
 	}
@@ -199,7 +202,7 @@
 
 	.additional-info {
 		background-color: var(--primary);
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		border-top: 0;
 	}
 

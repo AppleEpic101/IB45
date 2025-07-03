@@ -110,7 +110,7 @@ export const getAllBoundaries = (name, lang = "none") => {
 
     let fullName = lang === "none" ? name : lang + " " + name;
     let oldNames = courses[name]?.oldNames;
-    b.forEach((boundary, i) => {
+    b.forEach(boundary => {
         SL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['SL ' + fullName]?.TZ));
         if (name === "History") {
             HL.push(...getTZ(boundary.info.name, boundary.info.short, boundary['HL History Americas']?.TZ))

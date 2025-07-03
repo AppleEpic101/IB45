@@ -26,7 +26,7 @@
 		background-color: var(--primary);
 		padding: 5px 10px;
 		color: black;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;

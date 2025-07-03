@@ -123,7 +123,7 @@
 <style>
 	.main {
 		border-radius: 0.5rem;
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		padding: 1rem;
 		background-color: var(--darkwhite);
 	}
@@ -135,11 +135,14 @@
 	.gradeSelectors {
 		display: flex;
 		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 
 	.core-points {
 		background-color: var(--primary);
-		border: 2px solid black;
+		border: 1px solid var(--bordercolor);
 		border-radius: 5px;
 		width: fit-content;
 		padding: 0.5rem;
@@ -149,8 +152,9 @@
 	.goto {
 		transition: all 0.2s ease;
 		background-color: var(--primary);
-		border: 2px solid black;
-		padding: 5px 10px;
+		border: 1px solid var(--bordercolor);
+		padding: 0.5rem;
+		margin-top: 15px;
 		border-radius: 10px;
 		font-weight: bolder;
 
