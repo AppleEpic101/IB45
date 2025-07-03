@@ -101,7 +101,7 @@
 	}
 
 	nav {
-		background-color: var(--nav);
+		background-color: #1e3a8a;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -162,7 +162,7 @@
 				font-size: 1.2em;
 
 				&:hover {
-					background-color: var(--banner);
+					background-color: #053f54;
 					color: white;
 					transition: background-color 0.3s ease, color 0.3s ease;
 				}

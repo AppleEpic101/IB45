@@ -35,7 +35,7 @@
 		padding: 10px;
 		border: 1px solid #d1d5db;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border-radius: 8px;
 		max-width: 300px;
 	}
@@ -54,14 +54,14 @@
 		-webkit-appearance: none;
 		appearance: none;
 		cursor: pointer;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 	}
 
 	input[type='range']::-webkit-slider-runnable-track {
 		-webkit-appearance: none;
 		appearance: none;
 		height: 10px;
-		background-color: var(--banner);
+		background-color: #053f54;
 		border-radius: 5px;
 	}
 
@@ -71,8 +71,8 @@
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background-color: var(--primary);
-		border: 5px solid var(--banner);
+		background-color: #e0f2fe;
+		border: 5px solid #053f54;
 		margin-top: -5px;
 	}
 

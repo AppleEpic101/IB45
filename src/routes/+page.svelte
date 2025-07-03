@@ -89,7 +89,7 @@
 
 	.banner {
 		text-align: center;
-		background-color: var(--banner);
+		background-color: #053f54;
 		color: white;
 		padding: 20px 1px;
 		border-bottom: 2px solid black;

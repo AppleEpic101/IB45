@@ -23,7 +23,7 @@
 
 <style lang="scss">
 	.main {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		border-radius: 5px;
 		width: fit-content;

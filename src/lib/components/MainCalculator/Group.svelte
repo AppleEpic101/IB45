@@ -215,7 +215,7 @@
 		margin-bottom: 10px;
 		box-shadow: 0 4 12px rgba(0,0,0,0.1);
 		padding: 1.5rem;
-		background-color: var(--darkwhite);
+		background-color: #ffffff;
 		background-color: #fff;
 		position: relative;
 	}
@@ -250,7 +250,7 @@
 
 	.goto {
 		transition: all 0.2s ease;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		padding: 0.5rem;
 		margin-top: 15px;
@@ -258,7 +258,7 @@
 		font-weight: bolder;
 
 		&:hover {
-			background-color: var(--banner);
+			background-color: #053f54;
 			color: white;
 			cursor: pointer;
 		}

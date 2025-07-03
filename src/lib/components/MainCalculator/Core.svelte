@@ -125,7 +125,7 @@
 		border-radius: 0.5rem;
 		border: 1px solid #d1d5db;
 		padding: 1rem;
-		background-color: var(--darkwhite);
+		background-color: #ffffff;
 	}
 
 	.groupTitle {
@@ -141,7 +141,7 @@
 	}
 
 	.core-points {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		border-radius: 5px;
 		width: fit-content;
@@ -151,7 +151,7 @@
 
 	.goto {
 		transition: all 0.2s ease;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		padding: 0.5rem;
 		margin-top: 15px;
@@ -159,7 +159,7 @@
 		font-weight: bolder;
 
 		&:hover {
-			background-color: var(--banner);
+			background-color: #053f54;
 			color: white;
 			cursor: pointer;
 		}

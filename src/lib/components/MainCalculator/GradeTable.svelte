@@ -189,7 +189,7 @@
 	td {
 		border: 1px solid #d1d5db;
 		border-collapse: collapse;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 	}
 
 	table {
@@ -201,7 +201,7 @@
 	}
 
 	.additional-info {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		border-top: 0;
 	}

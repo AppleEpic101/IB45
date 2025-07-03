@@ -35,7 +35,7 @@
 	}
 
 	.line {
-		border-bottom: 1px solid var(--banner);
+		border-bottom: 1px solid #053f54;
 	}
 
 	.b {
@@ -44,7 +44,7 @@
 		padding: 0;
 		margin: 0;
 		padding-bottom: 10px;
-		border-bottom: 1px solid var(--banner);
+		border-bottom: 1px solid #053f54;
 		background-color: transparent;
 		text-align: left;
 		font-size: x-large;

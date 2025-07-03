@@ -54,7 +54,7 @@
 
 <style>
 	footer {
-		background-color: var(--banner);
+		background-color: #053f54;
 		color: white;
 		padding: 2rem 1rem;
 	}

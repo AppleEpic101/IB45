@@ -446,7 +446,7 @@
 	}
 
 	.container {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		padding: 10px;
 		border: 1px solid #d1d5db;
 		border-radius: 10px;
@@ -475,7 +475,7 @@
 	}
 
 	input[type='radio']:checked + div {
-		background-color: var(--banner);
+		background-color: #053f54;
 	}
 	input[type='radio']:checked + div > span {
 		color: white;

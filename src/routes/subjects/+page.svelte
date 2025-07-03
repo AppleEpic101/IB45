@@ -98,7 +98,7 @@
 	}
 	.subject {
 		margin: 4px;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		padding: 10px;
 		border-radius: 10px;
 		border: 2px solid black;
@@ -112,7 +112,7 @@
 	.subject:hover {
 		transition: all 0.2s ease;
 		cursor: pointer;
-		background-color: var(--banner);
+		background-color: #053f54;
 		color: white;
 	}
 </style>

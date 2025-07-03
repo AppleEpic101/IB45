@@ -30,12 +30,12 @@
 
 	:global(html) {
 		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		color: black;
 	}
 
 	:global(body) {
-		background-color: var(--background);
+		background-color: #f8fafc;
 		margin: 0;
 		padding: 0;
 		overscroll-behavior-x: none;
@@ -61,7 +61,7 @@
 
 	:global(.btn-sik) {
 		transition: all 0.2s ease;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		padding: 5px 10px;
 		border-radius: 10px;

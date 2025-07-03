@@ -9,7 +9,7 @@
 
 <style>
 	button {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		padding: 12px;
 		margin: 10px 0;
 		cursor: pointer;
@@ -22,7 +22,7 @@
 
 	button:hover {
 		transition: all 0.2s ease;
-		background-color: var(--banner);
+		background-color: #053f54;
 		color: white;
 		text-shadow: 0 2px 2px #808080;
 		box-shadow: 0 1px 1px black;

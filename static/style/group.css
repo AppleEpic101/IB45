@@ -7,7 +7,7 @@
 }
 
 .group {
-    background-color: var(--darkwhite);
+    background-color: #ffffff;
     border: 1px solid #d1d5db;
     border-radius: 5px;
     margin: 0 20px 20px 0;
@@ -16,7 +16,7 @@
 
 .stats {
     display:inline-block;
-    background-color: var(--lightprimary);
+    background-color: rgb(135, 215, 241);
     padding: 5px;
     margin-top: 10px;
     border: 1px solid #d1d5db;

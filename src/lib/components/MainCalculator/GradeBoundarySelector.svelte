@@ -78,7 +78,7 @@
 	.option {
 		text-align: center;
 		transition: all 0.2s ease;
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		border: 2px solid black;
 		padding: 5px 10px;
 		border-radius: 10px;
@@ -91,7 +91,7 @@
 	}
 
 	input[type='radio']:checked + div {
-		background-color: var(--banner);
+		background-color: #053f54;
 		color: white;
 	}
 </style>

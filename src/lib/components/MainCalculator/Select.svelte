@@ -28,7 +28,7 @@
 
 <style>
 	select {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		padding: 10px 15px;
 		color: black;
 		border: 1px solid #d1d5db;
@@ -42,11 +42,11 @@
 		transition: all 0.2s ease;
 		text-shadow: 0 2px 2px #808080;
 		color: white;
-		background-color: var(--banner);
+		background-color: #053f54;
 	}
 
 	select option {
-		background-color: var(--primary);
+		background-color: #e0f2fe;
 		color: black;
 	}
 

@@ -30,7 +30,7 @@
 
 <style lang="scss">
 	.message {
-		border: 2px solid var(--nav);
+		border: 2px solid #1e3a8a;
 		border-radius: 10px;
 		padding: 0 20px;
 
