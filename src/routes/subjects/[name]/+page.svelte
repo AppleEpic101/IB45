@@ -150,7 +150,7 @@
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
 	<BackButton />
 
-	<SubjectHeader {syllabus} />
+	<SubjectHeader {syllabus} {level} />
 
 	{#if syllabus.name === 'Creativity, Activity, Service'}
 		<Collapsible2 title="Description" content={syllabus.description} />

@@ -34,13 +34,13 @@
 		}
 
 		if (HLcount + SLcount != 6) {
-			message = 'Not 6 subjects selected';
+			message = 'Fewer than 6 subjects selected';
 			diplomaAwarded = false;
 		} else if (totalPoints < 24) {
-			message = 'Less than 24 total points';
+			message = 'Fewer than 24 total points';
 			diplomaAwarded = false;
 		} else if (HLcount != 3 && HLcount != 4) {
-			message = 'Not 3 or 4 HLs selected';
+			message = '3 or 4 HLs not selected';
 			diplomaAwarded = false;
 		} else if (gradesTally[0] >= 1) {
 			message = 'Grade 1s in any subject';
@@ -53,19 +53,19 @@
 			diplomaAwarded = false;
 		} else if (HLsum < 12) {
 			if (HLcount == 3) {
-				message = 'Less than 12 HL points';
+				message = 'Fewer than 12 HL points';
 			} else if (HLcount == 4) {
-				message = 'Less than 12 HL points (Only the 3 highest HLs count)';
+				message = 'Fewer than 12 HL points (Only the 3 highest HLs count)';
 			}
 			diplomaAwarded = false;
 		} else if (SLcount == 3 && SLsum < 9) {
-			message = 'Less than 9 SL points';
+			message = 'Fewer than 9 SL points';
 			diplomaAwarded = false;
 		} else if (SLcount == 2 && SLsum < 5) {
-			message = 'Less than 5 SL points';
+			message = 'Fewer than 5 SL points';
 			diplomaAwarded = false;
 		} else if (gradeData.tokGrade == 'E' || gradeData.eeGrade == 'E') {
-			message = 'EE or TOK grade is E';
+			message = 'E grade for TOK or EE';
 			diplomaAwarded = false;
 		}
 	}
