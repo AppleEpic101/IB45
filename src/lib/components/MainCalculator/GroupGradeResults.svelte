@@ -17,10 +17,14 @@
 		{/each}
 	{/if} -->
 	{#if predictedGrade}
-		<b class="progress-container">Awarded Mark:</b>
-		<div class="circle-parent">
-			<SegmentedCircle mark={predictedGrade} />
-		</div>
+		{#if isCore}
+			<b class="progress-container">Awarded Mark: {predictedGrade}</b>
+		{:else}
+			<b class="progress-container">Awarded Mark:</b>
+			<div class="circle-parent">
+				<SegmentedCircle mark={predictedGrade} />
+			</div>
+		{/if}
 	{:else}
 		<b class="not-found"><a href="/faq" target="_blank">Boundary Not Found</a></b>
 	{/if}
