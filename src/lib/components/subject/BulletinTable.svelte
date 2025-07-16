@@ -29,7 +29,7 @@
 			{#each data as res}
 				<tr>
 					<td>{res.short}</td>
-					<td>{res.total}</td>
+					<td>{res.total.toLocaleString('en-US')}</td>
 					<td>{res.mean}</td>
 					{#each res?.distribution as dist, i}
 						<td>{dist}</td>
