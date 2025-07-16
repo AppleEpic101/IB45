@@ -1,6 +1,6 @@
 <script>
 	import Dropdown from '$lib/components/Dropdown.svelte';
-	import Slider from '$lib/components/Slider.svelte';
+	import Slider from '$lib/components/slider.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 
 	import SLonlyWarning from '$lib/components/subject/SLonlyWarning.svelte';
