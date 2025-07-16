@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import Links from '$lib/components/links.svelte';
 </script>
 
 <svelte:head>
@@ -16,8 +15,6 @@
 	<h1>Status Code: {$page.status}</h1>
 	<h3>Message: {$page.error.message}</h3>
 </div>
-
-<br /><Links /><br /><br />
 
 {#if parseInt($page.status) === 500}
 	<h1>

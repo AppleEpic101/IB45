@@ -1,7 +1,5 @@
 <script>
 	import { fly, scale, fade } from 'svelte/transition';
-
-	import Links from '$lib/components/links.svelte';
 	import Button from '$lib/components/button.svelte';
 	import Message from '$lib/components/Message.svelte';
 
@@ -35,9 +33,6 @@
 			candidates, and school coordinators to ensure that predicted grades are accurate, fair, and
 			serve a reliable basis for university admissions. With IB Predict, you'll know exactly what is
 			needed in order to score a 4, 5, 6, or 7. No more, no less.
-			<!-- <br /><br />
-			Founded by successful IB DP alumni at Oxford, Caltech, and more, we support over hundreds of thousands of students and teachers from 150+ countries every year. Now maintained by current IB students, we are a community dedicated to supporting current students in their IB and future educational endeavors.
-		</p> -->
 		</p>
 
 		<Message />

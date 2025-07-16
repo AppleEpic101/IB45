@@ -1,7 +1,6 @@
 <script>
 	import data from '$lib/assets/courses.json';
 	import { fade, fly, scale } from 'svelte/transition';
-	import Links from '$lib/components/links.svelte';
 	import { onMount } from 'svelte';
 
 	let courses = [];
@@ -24,7 +23,6 @@
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
 	<h1>Subject List</h1>
 
-	<Links />
 	<p class="intro">
 		View course descriptions, calculate your grade for a subject, and see historical grade
 		boundaries all from a single page! <strong>Click on a subject to get started.</strong>

@@ -1,5 +1,4 @@
 <script>
-	import Links from '$lib/components/links.svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import Collapsible from '$lib/components/collapsible.svelte';
 	import { onMount } from 'svelte';
@@ -16,7 +15,6 @@
 
 <div class="content" in:fly={{ duration: 1400, x: 200 }}>
 	<h1>Frequently Asked Questions</h1>
-	<Links />
 	<div>
 		<p>
 			I have compiled a list of the most frequently asked questions by users. You may contact me at <a

@@ -1,5 +1,4 @@
 <script>
-	import Links from '$lib/components/links.svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -13,7 +12,6 @@
 	description={'Read blogs on IB news, grade boundary reports, and more...'}
 />
 <h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Blog</h1>
-<Links />
 <div class="main-content" in:fly={{ delay: 100, duration: 1300, x: 200 }}>
 	<div class="paragraph-text">
 		Occasionally, I will write about IB, whether it's expressing my personal opinions or sharing and

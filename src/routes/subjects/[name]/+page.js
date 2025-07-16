@@ -12,7 +12,7 @@ export const load = (({ params, url }) => {
             break;
         }
     }
-    // console.log(subjectData);
+
     if (!subjectData) { throw error(404, 'Subject not found'); }
 
     const version = url.searchParams.get('syl') || subjectData.firstAssessment;

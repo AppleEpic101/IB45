@@ -1,5 +1,4 @@
 <script>
-	import Links from '$lib/components/links.svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	let ready = false;
@@ -15,7 +14,6 @@
 />
 
 <h1 in:fly={{ delay: 100, duration: 1300, x: 200 }}>Changelog</h1>
-<Links />
 
 <div in:fade={{ delay: 100, duration: 1300 }} class="changes">
 	<div in:fly={{ delay: 100, duration: 1300, x: 200 }} class="change">

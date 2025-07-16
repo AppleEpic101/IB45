@@ -1,7 +1,6 @@
 <script>
 	import { fade, fly, scale } from 'svelte/transition';
 	import Slider from '$lib/components/slider.svelte';
-	import Links from '$lib/components/links.svelte';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
@@ -132,9 +131,6 @@
 			go();
 		}
 	}
-
-	$: console.log(level + ' ' + name);
-	$: console.log(showBulletin);
 </script>
 
 <PageHeader
@@ -146,7 +142,6 @@
 	<BackButton />
 
 	<SubjectHeader {syllabus} />
-	<Links />
 
 	{#if syllabus.name === 'Creativity, Activity, Service'}
 		<Collapsible2 title="Description" content={syllabus.description} />
