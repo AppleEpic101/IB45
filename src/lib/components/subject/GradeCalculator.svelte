@@ -1,5 +1,5 @@
 <script>
-	import Dropdown from '$lib/components/Dropdown.svelte';
+	import Dropdown from '$lib/components/dropdown.svelte';
 	import Slider from '$lib/components/slider.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 
