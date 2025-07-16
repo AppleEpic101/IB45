@@ -15,14 +15,15 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { onMount } from 'svelte';
 
+	import BackButton from '$lib/components/subject/BackButton.svelte';
+	import SubjectHeader from '$lib/components/subject/SubjectHeader.svelte';
+	import Syllabus from '$lib/components/subject/Syllabus.svelte';
+	import GradeCalculator from '$lib/components/subject/GradeCalculator.svelte';
+	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
+
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import {
-		calculateNormalResults,
-		calculateCoreResults,
-		getAllBoundaries,
-		calculateGrade
-	} from '$lib/group.js';
+	import { getAllBoundaries, calculateGrade } from '$lib/group.js';
 
 	export let data;
 	export let version = data.version;
@@ -101,42 +102,6 @@
 	}
 	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
 
-	// calculate awarded mark
-	let mark, str, marksToIncrease;
-	$: {
-		if (data.data.isCore) {
-			mark = calculateCoreResults(grade, lastSL?.tz);
-			const gradeMap = {
-				E: 1,
-				D: 2,
-				C: 3,
-				B: 4,
-				A: 5
-			};
-			marksToIncrease = lastSL?.tz[gradeMap[mark]] - grade;
-			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
-		} else {
-			if (level === 'HL') {
-				mark = calculateNormalResults(grade, lastHL?.tz);
-				marksToIncrease = lastHL?.tz[mark] - grade;
-				str = 'Using the ' + lastHL?.fullName + ' grade boundary';
-			} else {
-				mark = calculateNormalResults(grade, lastSL?.tz);
-				marksToIncrease = lastSL?.tz[mark] - grade;
-				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
-			}
-		}
-
-		// boundary not found
-		if (
-			(level === 'SL' && SLResults.length === 0 && !data.data.isCore) ||
-			(level === 'HL' && HLResults.length === 0 && !data.data.isCore)
-		) {
-			str = 'No grade boundary data available';
-			mark = 'N/A';
-		}
-	}
-
 	// update url with new query parameters
 	const newUrl = new URL($page.url);
 	const updateUrl = (param, condition, value) => {
@@ -171,225 +136,110 @@
 />
 
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
-	<a href="/subjects">
-		<button class="btn btn-sik">back</button>
-	</a>
+	<BackButton />
 
-	<div>
-		<h1>
-			{syllabus.name}
-			({syllabus.firstAssessment})
-		</h1>
-
-		<h4>
-			{#if syllabus.groupNumber.length === 2}
-				{#if syllabus.groupNumber[1] === 's'}
-					Group {syllabus.groupNumber[0]} school-based syllabus subject <br />
-				{:else}
-					Group {syllabus.groupNumber[0]} and {syllabus.groupNumber[1]} interdisciplinary subject<br
-					/>
-				{/if}
-			{:else if syllabus.groupNumber[0] === 99}
-				Core subject <br />
-			{:else if syllabus.groupNumber.length === 1}
-				Group {syllabus.groupNumber} subject <br />
-			{/if}
-			Assessments from {syllabus.firstAssessment} to {syllabus.lastAssessment}
-		</h4>
-	</div>
+	<SubjectHeader {syllabus} />
 	<Links />
 
 	{#if syllabus.name === 'Creativity, Activity, Service'}
 		<Collapsible2 title="Description" content={syllabus.description} />
 	{/if}
-	<h4>Past Syllabuses</h4>
-	<button
-		class="btn btn-sik"
-		on:click={() => {
-			version = data.data.firstAssessment;
-		}}>Current ({data.data.firstAssessment})</button
-	>
-	{#if data.data.old}
-		{#each data.data.old as old}
-			<button
-				class="btn btn-sik"
-				on:click={() => {
-					version = old.firstAssessment;
-				}}>{old.firstAssessment}-{old.lastAssessment}</button
-			>
-		{/each}
+
+	<Syllabus data={data.data} bind:version />
+
+	{#if syllabus.name !== 'Creativity, Activity, Service'}
+		<GradeCalculator
+			data={data.data}
+			{syllabus}
+			{s}
+			{grade}
+			{language}
+			bind:level
+			{HLResults}
+			{SLResults}
+			{lastSL}
+			{lastHL}
+			{SLoptions}
+			{HLoptions}
+			bind:assessments
+			{classical}
+			{languages}
+		/>
 	{/if}
 
-	<div>
-		{#if syllabus.name !== 'Creativity, Activity, Service'}
-			<h4>Grade Calculator</h4>
-			{#if data.data.SLOnly}
-				<h5>
-					{syllabus.name} is offered only at the SL level
-				</h5>
-			{/if}
-			<div class="dropdown">
-				{#if data.data.isLang && syllabus.name === 'Classical Language'}
-					<div>
-						<Dropdown arr={classical} bind:value={language} />
-					</div>
-				{:else if data.data.isLang}
-					<div>
-						<Dropdown arr={languages} bind:value={language} />
-					</div>
-				{/if}
-			</div>
-			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-				{#if !data.data.SLOnly}
-					<div class="wrap">
-						<label>
-							<input type="radio" name="ef" value={'SL'} bind:group={level} />
-							<div class="btn btn-sik"><span>SL</span></div>
-						</label>
-						<label>
-							<input type="radio" name="ef" value={'HL'} bind:group={level} />
-							<div class="btn btn-sik"><span>HL</span></div>
-						</label>
-					</div>
-				{/if}
-			{/if}
-			<div class="wrap">
-				{#if level === 'HL'}
-					{#each HLoptions as tz}
-						<label>
-							<input type="radio" name="f" value={tz} bind:group={lastHL} />
-							<div class="btn btn-sik"><span>{tz.fullName}</span></div>
-						</label>
-					{/each}
-				{:else}
-					{#each SLoptions as tz}
-						<label>
-							<input type="radio" name="g" value={tz} bind:group={lastSL} />
-							<div class="btn btn-sik"><span>{tz.fullName}</span></div>
-						</label>
-					{/each}
-				{/if}
-			</div>
-			<div class="assessments">
-				<div class="ass">
-					{#each s as assessment, i}
-						<Slider
-							bind:value={assessments[i]}
-							name={assessment.name}
-							weight={assessment.weight}
-							max={assessment.maxMarks}
-						/>
-					{/each}
-				</div>
-				<div class="predicted">
-					<div class="container">
-						<div class="x">Predicted Grade</div>
-						{#if marksToIncrease}
-							<div class="pp">{marksToIncrease} points away from next mark</div>
-						{/if}
-						<div class="y">
-							{grade}
-						</div>
-					</div>
-					<div class="container">
-						<div class="x">Predicted Mark</div>
-						<div class="pp">{str}</div>
-						<div class="y">{mark}</div>
-					</div>
-				</div>
-			</div>
+	{#if syllabus.name !== 'Creativity, Activity, Service'}
+		<h4>Graphs</h4>
 
-			<h4>Graphs</h4>
-
-			<!-- {#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge' && syllabus.name !== 'Creativity, Activity, Service' && showBulletin}
+		<!-- {#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge' && syllabus.name !== 'Creativity, Activity, Service' && showBulletin}
 				<div class="graph">
 					<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
 				</div>
 			{/if} -->
 
-			<div class="graph">
-				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
+		<div class="graph">
+			<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
+		</div>
+
+		<div class="grade">
+			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
+			{#if data.data.SLOnly}
+				<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+					{syllabus.name} is offered only at the SL level
+				</h5>
+			{/if}
+			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
+				{#if !data.data.SLOnly}
+					<ToggleSelect
+						identifier="e"
+						arr={['SL', 'HL']}
+						arrVal={['SL', 'HL']}
+						bind:value={level}
+					/>
+				{/if}
+			{/if}
+			<div class="dropdown">
+				{#if data.data.isLang && syllabus.name === 'Classical Language'}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={classical} bind:value={language} />
+					</div>
+				{:else if data.data.isLang}
+					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
+						<Dropdown arr={languages} bind:value={language} />
+					</div>
+				{/if}
 			</div>
 
-			<div class="grade">
-				<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
-				{#if data.data.SLOnly}
-					<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
-						{syllabus.name} is offered only at the SL level
-					</h5>
-				{/if}
-				{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
+			<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
+
+			<div class="tables">
+				{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
+					<CoreTable {name} res={SLResults} />
+					<CoreMatrix name={syllabus.name} />
+				{:else}
+					<BoundaryTable name={'SL ' + name} res={SLResults} />
 					{#if !data.data.SLOnly}
-						<div class="wrap">
-							<label>
-								<input type="radio" name="e" value={'SL'} bind:group={level} />
-								<div class="btn btn-sik"><span>SL</span></div>
-							</label>
-							<label>
-								<input type="radio" name="e" value={'HL'} bind:group={level} />
-								<div class="btn btn-sik"><span>HL</span></div>
-							</label>
-						</div>
+						<BoundaryTable name={'HL ' + name} res={HLResults} />
 					{/if}
 				{/if}
-				<div class="dropdown">
-					{#if data.data.isLang && syllabus.name === 'Classical Language'}
-						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-							<Dropdown arr={classical} bind:value={language} />
-						</div>
-					{:else if data.data.isLang}
-						<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-							<Dropdown arr={languages} bind:value={language} />
-						</div>
-					{/if}
-				</div>
-
-				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
-
-				<div class="tables">
-					{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
-						<CoreTable {name} res={SLResults} />
-						<CoreMatrix name={syllabus.name} />
-					{:else}
-						<BoundaryTable name={'SL ' + name} res={SLResults} />
-						{#if !data.data.SLOnly}
-							<BoundaryTable name={'HL ' + name} res={HLResults} />
-						{/if}
-					{/if}
-				</div>
-				{#if !data.data.isCore}
-					<div class="excel">
-						<Excel
-							assessments={s}
-							name={syllabus.name}
-							{level}
-							{language}
-							{SLResults}
-							{HLResults}
-							firstAssessment={data.data.firstAssessment}
-						/>
-					</div>{/if}
-				<Footnote />
 			</div>
-		{/if}
-	</div>
+			{#if !data.data.isCore}
+				<div class="excel">
+					<Excel
+						assessments={s}
+						name={syllabus.name}
+						{level}
+						{language}
+						{SLResults}
+						{HLResults}
+						firstAssessment={data.data.firstAssessment}
+					/>
+				</div>{/if}
+			<Footnote />
+		</div>
+	{/if}
 </div>
 
 <style>
-	h1 {
-		margin: 0;
-	}
-	.p {
-		font-size: small;
-		font-weight: bold;
-		margin: 0;
-	}
-	.pp {
-		font-size: 8px;
-		font-weight: 550;
-		margin: 0;
-		text-align: center;
-	}
 	.body {
 		width: 1100px;
 		margin: 10px auto;
@@ -410,47 +260,9 @@
 		margin-top: 10px;
 	}
 
-	.assessments {
-		display: flex;
-		flex-direction: column;
-	}
-
 	.excel {
 		display: flex;
 		justify-content: center;
-	}
-	.ass {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		justify-content: center;
-		margin-top: 8px;
-	}
-
-	.predicted {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-
-	.x {
-		font-size: 20px;
-		font-weight: bolder;
-		padding: 0 20px;
-	}
-
-	.y {
-		text-align: center;
-		font-size: 40px;
-		font-weight: bold;
-	}
-
-	.container {
-		background-color: #e0f2fe;
-		padding: 10px;
-		border: 1px solid #d1d5db;
-		border-radius: 10px;
-		margin: 10px;
 	}
 
 	.wrap {
