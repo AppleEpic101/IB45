@@ -20,6 +20,7 @@
 	import Syllabus from '$lib/components/subject/Syllabus.svelte';
 	import GradeCalculator from '$lib/components/subject/GradeCalculator.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
+	import BulletinTable from '$lib/components/subject/BulletinTable.svelte';
 
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
@@ -32,6 +33,8 @@
 	$: syllabus = datas.find((a) => a.firstAssessment == version);
 
 	let showBulletin = true;
+	let showGradeGraphs = true;
+
 	const languages = data.info.lang;
 	const classical = data.info.classical;
 
@@ -101,6 +104,7 @@
 		marks = s?.map((a) => a.maxMarks);
 	}
 	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
+	let mark, marksToIncrease;
 
 	// update url with new query parameters
 	const newUrl = new URL($page.url);
@@ -128,6 +132,9 @@
 			go();
 		}
 	}
+
+	$: console.log(level + ' ' + name);
+	$: console.log(showBulletin);
 </script>
 
 <PageHeader
@@ -153,7 +160,7 @@
 			{syllabus}
 			{s}
 			{grade}
-			{language}
+			bind:language
 			bind:level
 			{HLResults}
 			{SLResults}
@@ -161,24 +168,33 @@
 			{lastHL}
 			{SLoptions}
 			{HLoptions}
+			bind:mark
+			{marksToIncrease}
 			bind:assessments
+			bind:showGradeGraphs
 			{classical}
 			{languages}
 		/>
 	{/if}
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
-		<h4>Graphs</h4>
+		{#if !data.data.isCore}
+			<h4>Grade Distributions</h4>
 
-		<!-- {#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge' && syllabus.name !== 'Creativity, Activity, Service' && showBulletin}
-				<div class="graph">
-					<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
-				</div>
-			{/if} -->
+			<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
 
-		<div class="graph">
-			<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
-		</div>
+			<div class="tables">
+				<BulletinTable name={level + ' ' + name} />
+			</div>
+		{/if}
+
+		{#if showGradeGraphs}
+			<h4>Historical Probability Distribution</h4>
+
+			<div class="graph">
+				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
+			</div>
+		{/if}
 
 		<div class="grade">
 			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
@@ -209,8 +225,9 @@
 				{/if}
 			</div>
 
-			<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
-
+			{#if showGradeGraphs}
+				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
+			{/if}
 			<div class="tables">
 				{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
 					<CoreTable {name} res={SLResults} />
@@ -265,15 +282,10 @@
 		justify-content: center;
 	}
 
-	.wrap {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-	label {
-		position: relative;
-		display: inline-block;
-		text-align: center;
+	.graph {
+		margin: 0 auto 80px auto;
+		height: 35vh;
+		max-width: 75vh;
 	}
 
 	.dropdown {
@@ -281,44 +293,13 @@
 		justify-content: center;
 	}
 
-	input[type='radio'] {
-		position: absolute;
-		visibility: hidden;
-	}
-
-	input[type='radio']:checked + div {
-		background-color: #053f54;
-	}
-	input[type='radio']:checked + div > span {
-		color: white;
-		text-shadow: 0 2px 2px #808080;
-	}
-
-	.graph {
-		margin: 0 auto 80px auto;
-		height: 35vh;
-		max-width: 75vh;
-	}
-
-	@media screen and (max-width: 800px) {
-		.description {
-			font-size: small;
-		}
-	}
-
 	@media screen and (max-width: 500px) {
-		h1 {
-			font-size: 1.3em;
-		}
 		.body {
 			margin: 0 10px;
 		}
 		.tables {
 			flex-direction: column;
 			align-items: center;
-		}
-		.description {
-			font-size: x-small;
 		}
 	}
 </style>

@@ -20,12 +20,15 @@
 	export let SLResults;
 	export let HLResults;
 
+	export let showGradeGraphs;
+
+	export let mark;
+	export let marksToIncrease;
+
 	export let assessments;
 	export let classical;
 	export let languages;
 
-	let mark;
-	let marksToIncrease;
 	let str;
 	$: {
 		if (data.isCore) {
@@ -57,6 +60,9 @@
 		) {
 			str = 'No grade boundary data available';
 			mark = 'N/A';
+			showGradeGraphs = false;
+		} else {
+			showGradeGraphs = true;
 		}
 	}
 </script>

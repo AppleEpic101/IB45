@@ -710,6 +710,465 @@
             "distribution": [2.0, 0, 1.3, 6.5, 19.6, 32.7, 24.8, 13.1]
         }]
     },
+    "HL Arabic Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1130,
+            "mean": 5.6,
+            "distribution": [0, 0.1, 0.8, 3.3, 13.3, 20.9, 43.5, 18.1]
+        }]
+    },
+    "SL Arabic Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1122,
+            "mean": 5.4,
+            "distribution": [0.3, 0.2, 2.7, 5.3, 9.0, 26.1, 44.5, 12.0]
+        }]
+    },
+    "HL Chinese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 796,
+            "mean": 6.0,
+            "distribution": [0.3, 0, 0, 2.1, 6.0, 14.4, 40.3, 36.8]
+        }]
+    },
+    "SL Chinese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 2946,
+            "mean": 5.7,
+            "distribution": [0.9, 0, 1.5, 4.7, 12.9, 19.8, 26.0, 34.3]
+        }]
+    },
+    "HL Danish Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 274,
+            "mean": 5.5, 
+            "distribution": [1.5, 0, 0, 5.8, 14.6, 24.1, 33.6, 20.4]
+        }]
+    },
+    "HL Dutch Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 130,
+            "mean": 5.7, 
+            "distribution": [0, 0, 0, 1.5, 8.5, 30.0, 43.1, 16.9]
+        }]
+    },
+    "SL Dutch Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 316,
+            "mean": 5.0,
+            "distribution": [0, 0, 0.6, 7.3, 24.1, 36.4, 27.2, 4.4]
+        }]
+    },
+    "HL English Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 21502,
+            "mean": 5.7,
+            "distribution": [0.8, 0, 0.1, 1.9, 7.5, 25.1, 51.2, 13.3]
+        }]
+    },
+    "SL English Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 4611,
+            "mean": 5.5,
+            "distribution": [1.3, 0, 0.7, 4.7, 10.3, 25.0, 43.1, 14.9]
+        }]
+    },
+    "HL French Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 3452,
+            "mean": 5.3, 
+            "distribution": [0.7, 0.2, 3.2, 9.4, 13.1, 20.0, 33.9, 19.4]
+        }]
+    },
+    "SL French Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 12032,
+            "mean": 5.1,
+            "distribution": [1.2, 0.1, 1.5, 8.3, 21.3, 28.6, 25.6, 13.5]
+        }]
+    },
+    "HL German Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1871,
+            "mean": 5.7,
+            "distribution": [0.9, 0, 0.1, 1.8, 12.1, 22.9, 40.4, 21.9]
+        }]
+    },
+    "SL German Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 2213,
+            "mean": 5.1,
+            "distribution": [0.9, 0, 0.6, 8.3, 23.3, 27.9, 25.1, 14.0]
+        }]
+    },
+    "HL Hindi Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 309,
+            "mean": 5.4, 
+            "distribution": [0, 0, 0.3, 2.9, 16.8, 31.4, 36.2, 12.3]
+        }]
+    },
+    "SL Hindi Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1356,
+            "mean": 5.6,
+            "distribution": [0.5, 0, 0.1, 0.4, 7.4, 28.2, 55.0, 8.4]
+        }]
+    },
+    "HL Indonesian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 210,
+            "mean": 5.9, 
+            "distribution": [0.5, 0, 0, 0.5, 8.1, 17.6, 47.6, 25.7]
+        }]
+    },
+    "SL Indonesian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 341,
+            "mean": 5.9, 
+            "distribution": [0.3, 0, 0, 1.2, 6.5, 18.2, 52.5, 21.4]
+        }]
+    },
+    "HL Italian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 242,
+            "mean": 5.8, 
+            "distribution": [0.4, 0, 0.8, 8.7, 9.5, 16.1, 24.8, 39.7]
+        }]
+    },
+    "SL Italian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 455,
+            "mean": 5.1, 
+            "distribution": [0.7, 0, 0.9, 12.5, 21.1, 23.1, 23.3, 18.5]
+        }]
+    },
+    "HL Japanese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 115,
+            "mean": 6.3, 
+            "distribution": [0, 0, 0.9, 3.5, 6.1, 5.2, 26.1, 58.3]
+        }]
+    },
+    "SL Japanese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 394,
+            "mean": 5.1, 
+            "distribution": [1.8, 0, 1.8, 11.7, 25.1, 20.8, 17.8, 21.1]
+        }]
+    },
+    "HL Norwegian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 184,
+            "mean": 5.3, 
+            "distribution": [1.6, 0, 3.8, 8.2, 17.4, 17.9, 25.0, 26.1]
+        }]
+    },
+    "HL Portuguese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 112,
+            "mean": 5.0, 
+            "distribution": [5.4, 3.6, 8.9, 5.4, 12.5, 17.9, 26.8, 19.6]
+        }]
+    },
+    "SL Portuguese Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 145,
+            "mean": 5.6,
+            "distribution": [0, 0, 1.4, 4.8, 11.7, 21.4, 36.6, 24.1]
+        }]
+    },
+    "SL Russian Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 115,
+            "mean": 6.2, 
+            "distribution": [0, 0, 0, 0, 10.4, 13.0, 24.3, 52.2]
+        }]
+    },
+    "HL Spanish Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 8203,
+            "mean": 5.2, 
+            "distribution": [2.6, 0.2, 1.6, 7.6, 17.7, 26.0, 28.4, 15.9]
+        }]
+    },
+    "SL Spanish Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 21026,
+            "mean": 4.9, 
+            "distribution": [2.5, 0.1, 1.3, 8.0, 25.0, 34.7, 19.1, 9.3]
+        }]
+    },
+    "HL Swedish Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 162,
+            "mean": 5.4, 
+            "distribution": [1.9, 0, 0.6, 4.9, 16.7, 23.5, 41.4, 11.1]
+        }]
+    },
+    "SL Swedish Language B": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 156,
+            "mean": 5.2,
+            "distribution": [0.6, 0, 0, 5.1, 25.0, 26.3, 28.2, 14.7]
+        }]
+    },
+    "SL Art History": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 116,
+            "mean": 4.2,
+            "distribution": [6.9, 3.4, 15.5, 12.9, 17.2, 21.6, 12.1, 10.3]
+        }]
+    },
+    "SL Brazilian Social Studies": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 381,
+            "mean": 5.0,
+            "distribution": [3.4, 0, 3.1, 10.5, 18.6, 30.2, 23.4, 10.8]
+        }]
+    },
+    "HL Business Management": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 22190,
+            "mean": 4.9,
+            "distribution": [1.2, 0.2, 2.2, 8.4, 23.3, 32.2, 24.8, 7.7]
+        }]
+    },
+    "SL Business Management": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 11925,
+            "mean": 4.9,
+            "distribution": [4.2, 0.4, 3.3, 11.0, 19.5, 28.5, 22.4, 10.7]
+        }]
+    },
+    "HL Digital Society": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1210,
+            "mean": 4.4,
+            "distribution": [1.7, 0.4, 2.4, 15.7, 34.5, 31.4, 13.3, 0.6]
+        }]
+    },
+    "SL Digital Society": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1165,
+            "mean": 4.4,
+            "distribution": [1.7, 0.3, 5.2, 15.5, 33.0, 25.7, 16.6, 2.2]
+        }]
+    },
+    "HL Economics": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 18449,
+            "mean": 5.1,
+            "distribution": [0.8, 0.2, 2.3, 8.2, 19.3, 26.7, 27.6, 15.0]
+        }]
+    },
+    "SL Economics": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 10088,
+            "mean": 4.8,
+            "distribution": [2.4, 0.8, 5.7, 13.1, 18.0, 24.3, 21.6, 14.1]
+        }]
+    },
+    "HL Geography": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 4977,
+            "mean": 5.3,
+            "distribution": [0.5, 0.1, 0.5, 5.0, 18.0, 32.9, 28.6, 14.3]
+        }]
+    },
+    "SL Geography": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 4494,
+            "mean": 4.8,
+            "distribution": [2.9, 0.2, 3.6, 13.8, 19.2, 30.0, 21.7, 8.7]
+        }]
+    },
+    "HL Global Politics": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 5298,
+            "mean": 5.0, 
+            "distribution": [1.2, 0.1, 1.5, 5.3, 21.5, 36.1, 28.3, 6.0]
+        }]
+    },
+    "SL Global Politics": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 3503,
+            "mean": 4.8, 
+            "distribution": [4.6, 0.2, 3.4, 11.5, 23.5, 29.7, 19.6, 7.6]
+        }]
+    },
+    "HL History": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 37549, 
+            "mean": 4.4,
+            "distribution": [3.2, 0.6, 5.3, 13.9, 31.7, 27.6, 14.8, 2.9]
+        }]
+    },
+    "SL History": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 9307,
+            "mean": 4.7, 
+            "distribution": [3.1, 0.5, 3.8, 8.3, 25.6, 35.5, 19.4, 3.7]
+        }]
+    },
+    "HL Philosophy": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1944, 
+            "mean": 5.0,
+            "distribution": [1.2, 0, 0.9, 7.9, 24.6, 32.6, 23.4, 9.5]
+        }]
+    },
+    "SL Philosophy": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 2685,
+            "mean": 5.0, 
+            "distribution": [3.5, 0.2, 1.7, 8.2, 23.6, 30.5, 22.8, 9.4]
+        }]
+    },
+    "HL Psychology": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 14568,
+            "mean": 4.8,
+            "distribution": [2.2, 0.5, 3.2, 11.2, 23.6, 29.5, 24.2, 5.7]
+        }]
+    },
+    "SL Psychology": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 13234,
+            "mean": 4.4, 
+            "distribution": [6.6, 0.9, 8.0, 14.2, 23.6, 23.3, 19.1, 4.3]
+        }]
+    },
+    "HL Social And Cultural Anthropology": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1080,
+            "mean": 4.9,
+            "distribution": [1.1, 0.2, 2.0, 11.0, 25.7, 27.4, 21.9, 10.6]
+        }]
+    },
+    "SL Social And Cultural Anthropology": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 1938,
+            "mean": 4.5,
+            "distribution": [4.5, 0.3, 3.9, 13.9, 30.8, 28.2, 15.4, 3.0]
+        }]
+    },
+    "SL Turkey In The 20th Century": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 854,
+            "mean": 5.4,
+            "distribution": [1.6, 0.1, 0.7, 6.2, 16.2, 25.4, 32.8, 17.0]
+        }]
+    },
+    "SL World Religions": {
+        "grades": [{
+            "name":"May 2024",
+            "short": "M24",
+            "total": 2011,
+            "mean": 4.7,
+            "distribution": [5.3, 0.1, 1.6, 14.1, 24.2, 33.9, 17.1, 3.8]
+        }]
+    },
     "SL Astronomy": {
 		"grades": [{
             "name": "May 2024",
@@ -969,6 +1428,24 @@
             "total": 6109, 
             "mean": 3.9,
             "distribution": [4.6, 0.4, 7.3, 23.8, 41.1, 16.3, 5.8, 0.7]
+        }]
+    },
+    "SL Environmental Systems And Societies": {
+        "grades": [{
+            "name": "May 2024",
+            "short": "M24",
+            "total": 21108, 
+            "mean": 4.2,
+            "distribution": [3.2, 1.5, 8.2, 22.1, 25.3, 23.4, 11.5, 4.8]
+        }]
+    },
+    "SL Literature And Performance": {
+        "grades": [{
+            "name": "May 2024",
+            "short": "M24",
+            "total": 504, 
+            "mean": 4.7,
+            "distribution": [3.0, 0.2, 2.4, 12.9, 22.4, 34.1, 19.8, 5.2]
         }]
     }
 }
