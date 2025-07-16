@@ -68,6 +68,15 @@
 	$: SLoptions = SLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
 	$: HLoptions = HLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
 
+	$: {
+		if (SLoptions.length === 0) {
+			SLoptions = SLResults;
+		}
+		if (HLoptions.length === 0) {
+			HLoptions = HLResults;
+		}
+	}
+
 	const init = async () => {
 		if (SLoptions && HLoptions) {
 			lastSL = SLoptions?.find(
