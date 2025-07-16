@@ -1,4 +1,6 @@
 <script>
+	import SegmentedCircle from "./SegmentedCircle.svelte";
+
 	export let grades;
 	export let score;
 	export let name;
@@ -15,7 +17,10 @@
 		{/each}
 	{/if} -->
 	{#if predictedGrade}
-		<b class="progress-container">Awarded Mark: {predictedGrade}</b>
+		<b class="progress-container">Awarded Mark:</b>
+		<div class="circle-parent">
+			<SegmentedCircle mark={predictedGrade} />
+		</div>
 	{:else}
 		<b class="not-found"><a href="/faq" target="_blank">Boundary Not Found</a></b>
 	{/if}
@@ -34,5 +39,10 @@
 	.not-found {
 		border-bottom: 1px dotted black;
 		cursor: pointer;
+	}
+
+	.circle-parent {
+		margin-top: 8px;
+		filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
 	}
 </style>
