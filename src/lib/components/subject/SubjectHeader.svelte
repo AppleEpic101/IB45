@@ -1,9 +1,11 @@
 <script>
 	export let syllabus;
+	export let level;
 </script>
 
 <div>
 	<h1>
+		{level}
 		{syllabus.name}
 		({syllabus.firstAssessment})
 	</h1>

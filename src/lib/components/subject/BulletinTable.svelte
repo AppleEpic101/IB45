@@ -43,11 +43,15 @@
 
 <style>
 	.table-wrapper {
+		display: flex;
+		justify-content: center;
 		overflow-x: auto;
+		width: 100%;
+		max-width: 100vw;
 	}
 
 	table {
-		min-width: 600px;
+		width: max-content;
 		border-collapse: collapse;
 		background-color: #e0f2fe;
 	}
@@ -58,6 +62,7 @@
 		text-align: center;
 		padding: 8px;
 		font-size: 14px;
+		white-space: nowrap;
 	}
 
 	th[colspan='11'] {

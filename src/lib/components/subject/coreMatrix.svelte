@@ -6,11 +6,31 @@
 		>
 	</thead>
 	<tbody>
-		<tr><th>A</th><td>3</td><td>3</td><td>2</td><td>2</td><td>Fail</td></tr>
-		<tr><th>B</th><td>3</td><td>2</td><td>2</td><td>1</td><td>Fail</td></tr>
-		<tr><th>C</th><td>2</td><td>2</td><td>1</td><td>0</td><td>Fail</td></tr>
-		<tr><th>D</th><td>2</td><td>1</td><td>0</td><td>0</td><td>Fail</td></tr>
-		<tr><th>E</th><td>Fail</td><td>Fail</td><td>Fail</td><td>Fail</td><td>Fail</td></tr>
+		<tr
+			><th>A</th><td data-score="3">3</td><td data-score="3">3</td><td data-score="2">2</td><td
+				data-score="2">2</td
+			><td data-score="fail">Fail</td></tr
+		>
+		<tr
+			><th>B</th><td data-score="3">3</td><td data-score="2">2</td><td data-score="2">2</td><td
+				data-score="1">1</td
+			><td data-score="fail">Fail</td></tr
+		>
+		<tr
+			><th>C</th><td data-score="2">2</td><td data-score="2">2</td><td data-score="1">1</td><td
+				data-score="0">0</td
+			><td data-score="fail">Fail</td></tr
+		>
+		<tr
+			><th>D</th><td data-score="2">2</td><td data-score="1">1</td><td data-score="0">0</td><td
+				data-score="0">0</td
+			><td data-score="fail">Fail</td></tr
+		>
+		<tr
+			><th>E</th><td data-score="fail">Fail</td><td data-score="fail">Fail</td><td data-score="fail"
+				>Fail</td
+			><td data-score="fail">Fail</td><td data-score="fail">Fail</td></tr
+		>
 	</tbody>
 </table>
 
@@ -24,6 +44,7 @@
 		text-align: center;
 		background-color: #e0f2fe;
 	}
+
 	table {
 		width: 25vw;
 		margin-bottom: 20px;
@@ -33,6 +54,23 @@
 	th,
 	tr {
 		padding: 5px;
+	}
+
+	/* Green to Red Spectrum */
+	td[data-score='3'] {
+		background-color: #86efac; /* green */
+	}
+	td[data-score='2'] {
+		background-color: #fde68a; /* yellow */
+	}
+	td[data-score='1'] {
+		background-color: #fdba74; /* orange */
+	}
+	td[data-score='0'] {
+		background-color: #fca5a5; /* light red */
+	}
+	td[data-score='fail'] {
+		background-color: #f87171; /* dark red */
 	}
 
 	@media screen and (max-width: 320px) {

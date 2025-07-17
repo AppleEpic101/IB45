@@ -109,6 +109,8 @@
 			data,
 			options: {
 				scales: {
+					responsive: true,
+					maintainAspectRatio: false,
 					y: {
 						min: 0,
 
@@ -172,12 +174,9 @@
 		text-align: center;
 	}
 
-	.hidden {
-		visibility: hidden;
-		height: 0;
-	}
-
-	.chart-container {
-		width: 100%;
+	@media screen and (max-width: 500px) {
+		.graph {
+			margin-bottom: 0;
+		}
 	}
 </style>
