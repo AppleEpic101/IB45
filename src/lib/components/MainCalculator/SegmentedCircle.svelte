@@ -6,7 +6,7 @@
   const strokeWidth = 10;
 
   const totalSegments = 7;
-  const gapAngle = 24;
+  const gapAngle = 0;
   const segmentAngle = (360 / totalSegments) - gapAngle;
   const rainbow = Array.from({ length: totalSegments }, (_, i) => `hsl(${(i + 1) / 5 * 120}, 100%, 68%)`);
 
