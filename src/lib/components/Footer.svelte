@@ -1,7 +1,7 @@
 <script>
 	import Discord from '$lib/components/Discord.svelte';
 </script>
-
+ 
 <footer>
 	<div class="footer-content">
 		<div class="footer-section">
