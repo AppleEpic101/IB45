@@ -9,7 +9,7 @@
 			<ul>
 				<li>Alexander Du (Founder)</li>
 				<li>Winston Thov</li>
-				<li>David Yeo</li>
+				<li>Daksh Gupta</li>
 			</ul>
 		</div>
 		<div class="footer-section">
