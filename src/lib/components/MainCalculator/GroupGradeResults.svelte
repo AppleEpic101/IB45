@@ -6,6 +6,7 @@
 	export let name;
 	export let predictedGrade;
 	export let isCore = false;
+	export let isCondensed = false;
 	export let maxScore = 100;
 </script>
 
@@ -17,7 +18,7 @@
 		{/each}
 	{/if} -->
 	{#if predictedGrade}
-		{#if isCore}
+		{#if isCore || isCondensed}
 			<b class="progress-container">Awarded Mark: {predictedGrade}</b>
 		{:else}
 			<b class="progress-container">Awarded Mark:</b>
@@ -38,6 +39,11 @@
 		width: fit-content;
 		padding: 0.5rem;
 		margin: 0 0.5rem 0.5rem 0;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
 	.not-found {
@@ -47,6 +53,7 @@
 
 	.circle-parent {
 		margin-top: 8px;
-		filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
+		filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.15));
 	}
 </style>
+

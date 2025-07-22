@@ -169,23 +169,9 @@
 			bind:selected={$settings['region']}
 		/>
 	{/if}
-	{#if show}
-		<div class="grade-sliders">
-			{#if sufficientData}
-				{#each assessments as assessment, i}
-					<ScoreSelector
-						name={assessment.name}
-						maxMarks={assessment.maxMarks}
-						weight={assessment.weight}
-						bind:value={$settings['chosenScores'][i]}
-					/>
-				{/each}
-			{:else}
-				<NotEnoughDetails />
-			{/if}
-		</div>
-	{/if}
-	{#if sufficientData}
+	{#if !sufficientData}
+		<NotEnoughDetails />
+	{:else}
 		<img 
 			src="/toggle-button.svg" 
 			alt="toggle" 
@@ -198,12 +184,39 @@
 				}
 			}}
 		/>
-		<GradeResults
-			grades={predictedTimezoneGrades}
-			{predictedGrade}
-			score={predictedScore}
-			name={$selectedBoundaryId}
-		/>
+		<div class="grade-panel">
+			{#if !show}
+				<GradeResults
+					isCondensed={true}
+					grades={predictedTimezoneGrades}
+					{predictedGrade}
+					score={predictedScore}
+					name={$selectedBoundaryId}
+				/>
+			{:else}
+				<div class="grade-io">
+					<div class="grade-sliders">
+						{#each assessments as assessment, i}
+							<ScoreSelector
+								name={assessment.name}
+								maxMarks={assessment.maxMarks}
+								weight={assessment.weight}
+								bind:value={$settings['chosenScores'][i]}
+							/>
+						{/each}
+					</div>
+					<div class="grade-results">
+						<GradeResults
+							grades={predictedTimezoneGrades}
+							{predictedGrade}
+							score={predictedScore}
+							name={$selectedBoundaryId}
+						/>
+					</div>
+				</div>
+			{/if}
+		</div>
+
 		<a href={url} target="_blank"><button class="goto">Goto subject page</button></a>
 	{/if}
 </div>
@@ -213,7 +226,7 @@
 		border-radius: 1rem;
 		border: 1px solid #e5e7eb;
 		margin-bottom: 10px;
-		box-shadow: 0 4 12px rgba(0,0,0,0.1);
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 		padding: 1.5rem;
 		background-color: #ffffff;
 		background-color: #fff;
@@ -240,12 +253,23 @@
 		transform: rotate(180deg);
 	}
 
+	.grade-panel {
+		padding-top: 10px;
+		padding-bottom: 15px;
+	}
+
+	.grade-io {
+		display: flex;
+	}
+
 	.grade-sliders {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-		margin-top: 10px;
-		margin-bottom: 15px;
+	}
+
+	.grade-results {
+		min-width: 180px;
 	}
 
 	.goto {
@@ -253,7 +277,6 @@
 		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		padding: 0.5rem;
-		margin-top: 15px;
 		border-radius: 10px;
 		font-weight: bolder;
 
@@ -271,3 +294,4 @@
 		margin-top: 0;
 	}
 </style>
+
