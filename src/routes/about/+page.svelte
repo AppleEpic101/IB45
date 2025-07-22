@@ -20,7 +20,7 @@
     },
     {
       name: "Daksh Gupta",
-      title: "Marketing Manager",
+      title: "Maintainer, Co-owner",
       photo: "/placeholder.png",
       linkedin: "https://www.linkedin.com/in/miles-xing-9692a330b/"
     },
