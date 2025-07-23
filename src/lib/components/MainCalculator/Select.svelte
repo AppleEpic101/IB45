@@ -35,7 +35,7 @@
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;
-		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 	}
 
 	select:hover {

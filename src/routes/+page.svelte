@@ -76,7 +76,7 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 	p {
 		line-height: 2;
@@ -88,7 +88,7 @@
 		color: white;
 		padding: 20px 1px;
 		border-bottom: 2px solid black;
-		font-family: 'Montserrat Alternates', 'Courier New', Courier, monospace;
+		font-family: 'Montserrat Alternates', 'Consolas', 'Courier New', Courier, monospace;
 
 		h1 {
 			margin: 20px;
@@ -119,7 +119,7 @@
 	}
 
 	.welcome {
-		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 
 		h2 {
 			margin-bottom: 0;

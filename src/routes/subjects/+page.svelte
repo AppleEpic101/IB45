@@ -104,7 +104,7 @@
 		color: black;
 		font-weight: 500;
 		font-size: 1.15em;
-		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 	}
 
 	.subject:hover {

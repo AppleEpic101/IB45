@@ -258,10 +258,6 @@
 		padding-bottom: 15px;
 	}
 
-	.grade-io {
-		display: flex;
-	}
-
 	.grade-sliders {
 		display: flex;
 		flex-wrap: wrap;
@@ -269,7 +265,18 @@
 	}
 
 	.grade-results {
-		min-width: 180px;
+		margin-top: 1rem;
+	}
+
+	@media (min-width: 53rem) {
+		.grade-io {
+			display: flex;
+		}
+
+		.grade-results {
+			margin: 0;
+			margin-left: 1rem;
+		}
 	}
 
 	.goto {
@@ -290,6 +297,7 @@
 	.group-title {
 		margin: 0;
 	}
+	
 	.slOnlyWarning {
 		margin-top: 0;
 	}

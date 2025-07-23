@@ -11,7 +11,7 @@
 </script>
 
 <div class="main">
-	<div>{name} Grade: {score}/{maxScore}</div>
+	<div>{name} Grade: <span class="grade">{score}/{maxScore}</span></div>
 	<!-- {#if !isCore}
 		{#each grades as grade, i}
 			<div>Timezone {i + (grades.length == 2 ? 1 : 0)}: {grade}</div>
@@ -19,9 +19,9 @@
 	{/if} -->
 	{#if predictedGrade}
 		{#if isCore || isCondensed}
-			<b class="progress-container">Awarded Mark: {predictedGrade}</b>
+			<b class="awarded-mark">Awarded Mark: {predictedGrade}</b>
 		{:else}
-			<b class="progress-container">Awarded Mark:</b>
+			<b class="awarded-mark">Awarded Mark:</b>
 			<div class="circle-parent">
 				<SegmentedCircle mark={predictedGrade} />
 			</div>
@@ -36,7 +36,7 @@
 		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
 		border-radius: 5px;
-		width: fit-content;
+		width: 15ch;
 		padding: 0.5rem;
 		margin: 0 0.5rem 0.5rem 0;
 
@@ -44,6 +44,12 @@
 		flex-direction: column;
 		align-items: center;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.grade {
+		display: inline-block;
+		width: 6ch;
+		text-align: center;
 	}
 
 	.not-found {

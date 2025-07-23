@@ -15,7 +15,7 @@
 		text-decoration: none;
 		font-weight: 500;
 		font-size: 1em;
-		font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
 		color: black;
 	}
 
