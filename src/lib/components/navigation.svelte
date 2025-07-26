@@ -102,6 +102,7 @@
 
 	nav {
 		background-color: #1e3a8a;
+		opacity: 0.95;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

@@ -1,78 +1,77 @@
 <script>
-	let isOpen = false;
-
-	export let question = '';
-	export let answer = '';
-	export let bullet = [];
-
-	function toggle() {
-		isOpen = !isOpen;
-	}
+	let open = false;
+	export let question;
 </script>
 
 <div class="collapsible">
-	<button class="b" on:click={toggle}>
-		<span class:opened={isOpen} class:closed={!isOpen}>&#9658;</span>&nbsp;&nbsp;&nbsp;
-		<div class="question">{question}</div></button
-	>
+	<div class="header" on:click={() => (open = !open)}>
+		{question}
+		<span class="icon" class:open
+			><svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="chevron"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<polyline points="6 9 12 15 18 9" />
+			</svg></span
+		>
+	</div>
 
-	{#if isOpen}
-		<div class="answer">{answer}</div>
-
-		<ul>
-			{#each bullet as b}
-				<li>{b}</li>
-				<br />
-			{/each}
-		</ul>
-		<div class="line" />
+	{#if open}
+		<div class="content">
+			<slot />
+		</div>
 	{/if}
 </div>
 
 <style>
 	.collapsible {
-		margin-bottom: 10px;
+		border-bottom: 1px solid #ccc;
+		padding: 1rem 0;
 	}
 
-	.line {
-		border-bottom: 1px solid #053f54;
-	}
-
-	.b {
-		width: 100%;
-		border: none;
-		padding: 0;
-		margin: 0;
-		padding-bottom: 10px;
-		border-bottom: 1px solid #053f54;
-		background-color: transparent;
-		text-align: left;
-		font-size: x-large;
+	.header {
+		cursor: pointer;
 		font-weight: bold;
+		font-size: 1.1rem;
 		display: flex;
-		color: black;
+		justify-content: space-between;
+		align-items: center;
 	}
 
-	.answer {
-		margin-left: 5px;
-		margin-top: 10px;
-		line-height: 1.5;
+	.content {
+		margin-top: 0.75rem;
+		line-height: 1.6;
 	}
 
-	span {
-		transition: transform 0.2s;
-		display: inline-block;
+	ul {
+		margin-top: 0.5rem;
+		padding-left: 1.25rem;
+	}
+
+	.icon {
+		font-size: 1.2rem;
+		transform: rotate(0deg);
+		transition: transform 0.2s ease;
+	}
+
+	.icon.open {
+		transform: rotate(180deg);
+	}
+
+	.chevron {
 		width: 1rem;
 		height: 1rem;
+		transform-origin: center;
+		transition: transform 0.2s ease;
 	}
 
-	.opened {
-		transform: rotate(90deg);
-		transform-origin: center;
-	}
-
-	.closed {
-		transform: rotate(0deg);
-		transform-origin: center;
+	.chevron.open {
+		transform: rotate(180deg);
 	}
 </style>
