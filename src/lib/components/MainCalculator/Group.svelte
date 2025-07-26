@@ -54,7 +54,10 @@
 		}
 	}
 
-	$: languages = courses.name == 'Classical Language' ? courses.meta.classical : courses.meta.lang;
+	$: languages =
+		$settings['subject'] == 'Classical Language' ? courses.meta.classical : courses.meta.lang;
+
+	$: console.log(courses.name);
 
 	$: isHistoryHL = $settings['subject'] == 'History' && $settings['level'] == 'HL';
 
@@ -172,13 +175,13 @@
 	{#if !sufficientData}
 		<NotEnoughDetails />
 	{:else}
-		<img 
-			src="/toggle-button.svg" 
-			alt="toggle" 
+		<img
+			src="/toggle-button.svg"
+			alt="toggle"
 			class="toggle-button"
-			class:flipped={!show} 
-			on:click={toggleShow} 
-			on:keydown={e => {
+			class:flipped={!show}
+			on:click={toggleShow}
+			on:keydown={(e) => {
 				if (e.key === 'Enter' || e.key === ' ') {
 					toggleShow();
 				}
@@ -232,7 +235,7 @@
 		background-color: #fff;
 		position: relative;
 	}
-	
+
 	.group-title {
 		font-size: 1.75rem;
 		padding-bottom: 10px;
@@ -297,9 +300,8 @@
 	.group-title {
 		margin: 0;
 	}
-	
+
 	.slOnlyWarning {
 		margin-top: 0;
 	}
 </style>
-
