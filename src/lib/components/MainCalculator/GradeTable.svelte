@@ -160,12 +160,12 @@
 	</table>
 
 	{#if !diplomaAwarded}
-		<div class="additional-info red">
-			<div>Failing Condition:</div>
-			<div>{message}</div>
+		<div class="additional-info">
+			<div class="title">Failing Condition:</div>
+			<div class="failing">{message}</div>
 		</div>
 	{/if}
-	<div class="additional-info">
+	<div class="">
 		HL Count: {HLcount} <br />
 		SL Count: {SLcount} <br />
 		Boundary: {$selectedBoundaryId} <br />
@@ -173,8 +173,9 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.main {
+		background-color: #e0f2fe;
 		position: sticky;
 		top: 80px;
 		text-align: center;
@@ -201,9 +202,19 @@
 	}
 
 	.additional-info {
-		background-color: #e0f2fe;
-		border: 1px solid #d1d5db;
 		border-top: 0;
+		margin: 10px;
+		border: red 1px solid;
+
+		.title {
+			color: rgb(204, 43, 43);
+			font-weight: bold;
+			text-shadow: 0.2px 0.2px 0.2px black;
+		}
+		.failing {
+			color: rgb(204, 43, 43);
+			text-shadow: 0.2px 0.2px 0.2px black;
+		}
 	}
 
 	.red {
