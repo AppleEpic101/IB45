@@ -2,6 +2,8 @@
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import Slider from '$lib/components/slider.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
+	import Meter from '$lib/components/subject/Meter.svelte';
+	import GradeBoundaryUsed from '$lib/components/subject/GradeBoundaryUsed.svelte';
 
 	import SLonlyWarning from '$lib/components/subject/SLonlyWarning.svelte';
 
@@ -29,26 +31,40 @@
 	export let classical;
 	export let languages;
 
+	const gradeMap = {
+		E: 1,
+		D: 2,
+		C: 3,
+		B: 4,
+		A: 5
+	};
+
 	let str;
+	let gradeBoundaryUsed;
 	$: {
 		if (data.isCore) {
 			mark = calculateCoreResults(grade, lastSL?.tz);
-			const gradeMap = {
-				E: 1,
-				D: 2,
-				C: 3,
-				B: 4,
-				A: 5
+			gradeBoundaryUsed = {
+				name: lastSL?.fullName,
+				marks: lastSL?.tz
 			};
 			marksToIncrease = lastSL?.tz[gradeMap[mark]] - grade;
 			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 		} else {
 			if (level === 'HL') {
 				mark = calculateNormalResults(grade, lastHL?.tz);
+				gradeBoundaryUsed = {
+					name: lastHL?.fullName,
+					marks: lastHL?.tz
+				};
 				marksToIncrease = lastHL?.tz[mark] - grade;
 				str = 'Using the ' + lastHL?.fullName + ' grade boundary';
 			} else {
 				mark = calculateNormalResults(grade, lastSL?.tz);
+				gradeBoundaryUsed = {
+					name: lastSL?.fullName,
+					marks: lastSL?.tz
+				};
 				marksToIncrease = lastSL?.tz[mark] - grade;
 				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
@@ -105,7 +121,7 @@
 {/if}
 
 <div class="assessments">
-	<div class="ass">
+	<div class="left">
 		{#each s as assessment, i}
 			<Slider
 				bind:value={assessments[i]}
@@ -116,27 +132,44 @@
 		{/each}
 	</div>
 
-	<div class="predicted">
+	<div class="right">
 		<div class="container">
-			<div class="x">Predicted Grade</div>
-			{#if marksToIncrease}
-				<div class="pp">{marksToIncrease} points away from next mark</div>
-			{/if}
-			<div class="y">
-				{grade}
+			<div>
+				<div class="x">Predicted Mark</div>
+				{#if data.isCore}
+					<Meter value={gradeMap[mark]} totalSegments={5} isCore={data.isCore} />
+				{:else}
+					<Meter value={mark} />
+				{/if}
+
+				<div class="pp">{str}</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="x">Predicted Mark</div>
-			<div class="pp">{str}</div>
-			<div class="y">{mark}</div>
+			<div class="predicted">
+				<div class="row">
+					<div class="y">Grade</div>
+
+					<div class="y">
+						{grade}%
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="y">Points Away From Next Mark</div>
+					{#if marksToIncrease}
+						<div class="y">{marksToIncrease}%</div>
+					{:else}
+						<div class="y">N/A</div>
+					{/if}
+				</div>
+				<GradeBoundaryUsed {gradeBoundaryUsed} mark={data.isCore ? gradeMap[mark] : mark} />
+			</div>
 		</div>
 	</div>
 </div>
 
 <style lang="scss">
 	.pp {
-		font-size: 8px;
+		font-size: 12px;
 		font-weight: 550;
 		margin: 0;
 		text-align: center;
@@ -149,33 +182,23 @@
 
 	.assessments {
 		display: flex;
-		flex-direction: column;
-
-		.ass {
+		flex-direction: row;
+		gap: 50px;
+		.left {
+			flex: 3;
 			display: flex;
+			flex-direction: column;
 			flex-wrap: wrap;
 			align-items: flex-start;
-			justify-content: center;
 			margin-top: 8px;
 		}
 	}
 
-	.wrap {
+	.right {
+		flex: 2;
 		display: flex;
+		flex-direction: column;
 		flex-wrap: wrap;
-		justify-content: center;
-
-		label {
-			position: relative;
-			display: inline-block;
-			text-align: center;
-		}
-	}
-
-	.predicted {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
 
 		.container {
 			background-color: #e0f2fe;
@@ -184,16 +207,38 @@
 			border-radius: 10px;
 			margin: 10px;
 
+			.predicted {
+				margin-top: 20px;
+
+				.row {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+
 			.x {
-				font-size: 20px;
+				text-align: center;
+				font-size: 25px;
 				font-weight: bolder;
 				padding: 0 20px;
 			}
 
 			.y {
-				text-align: center;
-				font-size: 40px;
+				font-size: 20px;
 				font-weight: bold;
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		.assessments {
+			flex-direction: column;
+			gap: 0;
+			.left {
+				width: 100%;
+			}
+			.right {
+				width: 100%;
 			}
 		}
 	}

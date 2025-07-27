@@ -37,9 +37,10 @@
 
 <style>
 	p {
+		min-width: 90px;
 		margin: 0;
 	}
-	
+
 	.slider {
 		padding: 10px;
 		margin-right: 5px;
@@ -47,11 +48,13 @@
 		border: 1px solid #d1d5db;
 		background-color: #e0f2fe;
 		border-radius: 5px;
-		max-width: 300px;
+		width: 100%;
 	}
 
 	.name {
 		font-style: italic;
+		font-weight: bold;
+		font-size: 18px;
 		margin-bottom: 5px;
 	}
 	.c {
@@ -61,6 +64,7 @@
 	}
 
 	input[type='range'] {
+		width: 100%;
 		-webkit-appearance: none;
 		appearance: none;
 		cursor: pointer;
