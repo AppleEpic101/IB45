@@ -25,6 +25,8 @@
 	import { browser } from '$app/environment';
 	import { getAllBoundaries, calculateGrade } from '$lib/group.js';
 
+	import Banners from '$lib/assets/banners.json';
+
 	export let data;
 	export let version = data.version;
 	const datas = [data.data, ...data.data.old];
@@ -156,6 +158,10 @@
 		<Collapsible2 title="Description" content={syllabus.description} />
 	{/if}
 
+	{#if Banners[data.data.name]}
+		<img class="banner" src={Banners[data.data.name].banner} alt="" />
+	{/if}
+
 	<Syllabus data={data.data} bind:version />
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
@@ -261,6 +267,18 @@
 </div>
 
 <style>
+	.banner {
+		display: flex;
+		justify-content: center;
+		margin: 10px auto;
+		width: 600px;
+	}
+
+	@media screen and (max-width: 600px) {
+		.banner {
+			width: 100%;
+		}
+	}
 	.body {
 		width: 1100px;
 		margin: 10px auto;
