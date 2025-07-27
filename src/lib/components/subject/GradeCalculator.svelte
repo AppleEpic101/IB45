@@ -154,7 +154,7 @@
 				</div>
 
 				<div class="row">
-					<div class="y">Points Away From Next Mark</div>
+					<div class="y">Points Away</div>
 					{#if marksToIncrease}
 						<div class="y">{marksToIncrease}%</div>
 					{:else}
