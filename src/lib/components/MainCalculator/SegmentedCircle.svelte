@@ -8,7 +8,18 @@
   const totalSegments = 7;
   const gapAngle = 0;
   const segmentAngle = (360 / totalSegments) - gapAngle;
-  const rainbow = Array.from({ length: totalSegments }, (_, i) => `hsl(${(i + 1) / 5 * 120}, 100%, 68%)`);
+  const colors = [
+		'rgba(255, 99, 132)',
+		'rgba(255, 159, 64)',
+		'rgba(255, 205, 86)',
+		'rgba(75, 192, 192)',
+		'rgba(138, 218, 234)',
+		'rgba(54, 162, 235)',
+		'rgba(153, 102, 255)',
+		'rgba(201, 203, 207)',
+		'rgba(255, 99, 255)',
+		'rgba(99, 255, 132)'
+  ];
 
   function polarToCartesian(cx, cy, r, angleInDegrees) {
     const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -37,7 +48,7 @@
     <path
       d="{describeArc(center, center, radius, i * (segmentAngle + gapAngle), i * (segmentAngle + gapAngle) + segmentAngle)}"
       fill="none"
-      stroke="{rainbow[i]}"
+      stroke="{colors[i]}"
       stroke-width="{strokeWidth}"
       stroke-linecap="round"
     />

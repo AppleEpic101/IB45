@@ -1,7 +1,6 @@
 <script>
 	import SegmentedCircle from "./SegmentedCircle.svelte";
 
-	export let grades;
 	export let score;
 	export let name;
 	export let predictedGrade;
