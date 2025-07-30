@@ -35,6 +35,7 @@
 		border-radius: 5px;
 		cursor: pointer;
 		margin-bottom: 5px;
+		margin-right: calc(1rem - 6px);
 		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 	}
 

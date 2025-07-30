@@ -1,11 +1,12 @@
 <script>
   export let mark = 0;
+  export let totalSegments = 7;
+  export let isCore = false;
   const size = 125;
   const center = size / 2;
   const radius = 45;
   const strokeWidth = 10;
 
-  const totalSegments = 7;
   const gapAngle = 0;
   const segmentAngle = (360 / totalSegments) - gapAngle;
   const colors = [
@@ -20,6 +21,17 @@
 		'rgba(255, 99, 255)',
 		'rgba(99, 255, 132)'
   ];
+	const gradeMap = {
+		E: 1,
+		D: 2,
+		C: 3,
+		B: 4,
+		A: 5
+	};
+  // console.log('mark: ', mark);
+  // console.log('isCore: ', isCore);
+  // console.log('gradeMap[mark]: ', gradeMap[mark]);
+
 
   function polarToCartesian(cx, cy, r, angleInDegrees) {
     const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -43,8 +55,7 @@
 </script>
 
 <svg width="{size}" height="{size}" viewBox="0 0 {size} {size}">
-  <g>
-  {#each Array(mark).fill(0) as _, i}
+  {#each Array(isCore ? gradeMap[mark] : mark).fill(0) as _, i}
     <path
       d="{describeArc(center, center, radius, i * (segmentAngle + gapAngle), i * (segmentAngle + gapAngle) + segmentAngle)}"
       fill="none"
@@ -53,7 +64,6 @@
       stroke-linecap="round"
     />
   {/each}
-  </g>
   <text x="{center}" y="{center + 7}" text-anchor="middle" font-size="20" font-weight="bold" fill="black">
     {mark}
   </text>

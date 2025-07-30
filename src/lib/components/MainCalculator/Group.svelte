@@ -15,7 +15,7 @@
 	import Select from '$lib/components/MainCalculator/Select.svelte';
 	import NotEnoughDetails from '$lib/components/MainCalculator/NotEnoughDetails.svelte';
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
-	import GradeResults from '$lib/components/MainCalculator/GroupGradeResults.svelte';
+	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
 
 	import { constructURL } from '$lib/group.js';
 	import { page } from '$app/stores';
@@ -198,6 +198,14 @@
 				/>
 			{:else}
 				<div class="grade-io">
+					<div class="grade-results">
+						<GradeResults
+							grades={predictedTimezoneGrades}
+							{predictedGrade}
+							score={predictedScore}
+							name={$selectedBoundaryId}
+						/>
+					</div>
 					<div class="grade-sliders">
 						{#each assessments as assessment, i}
 							<ScoreSelector
@@ -207,14 +215,6 @@
 								bind:value={$settings['chosenScores'][i]}
 							/>
 						{/each}
-					</div>
-					<div class="grade-results">
-						<GradeResults
-							grades={predictedTimezoneGrades}
-							{predictedGrade}
-							score={predictedScore}
-							name={$selectedBoundaryId}
-						/>
 					</div>
 				</div>
 			{/if}
@@ -232,7 +232,6 @@
 		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 		padding: 1.5rem;
 		background-color: #ffffff;
-		background-color: #fff;
 		position: relative;
 	}
 
@@ -248,6 +247,7 @@
 		right: 8px;
 		top: 10px;
 		width: 56px;
+		filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 		transform: rotate(0deg);
 		transition: transform 0.5s;
 	}
@@ -274,11 +274,13 @@
 	@media (min-width: 53rem) {
 		.grade-io {
 			display: flex;
+			justify-content: left;
+			align-items: start;
 		}
 
 		.grade-results {
 			margin: 0;
-			margin-left: 1rem;
+			margin-right: 0.5rem;
 		}
 	}
 
@@ -286,6 +288,7 @@
 		transition: all 0.2s ease;
 		background-color: #e0f2fe;
 		border: 1px solid #d1d5db;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		padding: 0.5rem;
 		border-radius: 10px;
 		font-weight: bolder;

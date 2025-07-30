@@ -9,11 +9,11 @@
 	.subject {
 		margin: 5px;
 		background-color: #e0f2fe;
-		padding: 8px;
+		padding: 7px 10px;
 		border-radius: 10px;
 		border: 2px solid black;
+		box-shadow: 0 1px 1px black;
 		text-decoration: none;
-		font-weight: 500;
 		font-size: 1em;
 		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
 		color: black;
@@ -24,5 +24,6 @@
 		cursor: pointer;
 		background-color: #053f54;
 		color: white;
+		text-shadow: 0 2px 2px #808080;
 	}
 </style>

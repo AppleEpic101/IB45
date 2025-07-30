@@ -32,9 +32,9 @@
 	}
 
 	.slider {
-		padding: 10px;
+		padding: 12px 10px;
 		border: 1px solid #d1d5db;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);	
 		background-color: #e0f2fe;
 		border-radius: 8px;
 		max-width: 300px;

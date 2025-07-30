@@ -21,5 +21,6 @@
 		font-size: small;
 		font-weight: bold;
 		margin: 0;
+		margin-left: 7px;
 	}
 </style>

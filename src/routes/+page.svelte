@@ -37,7 +37,7 @@
 
 		<Message />
 
-		<p><strong>Individual Grade Calculators</strong></p>
+		<p class="grade-calculators"><strong>Individual Grade Calculators</strong></p>
 
 		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
 		<Button href={'./subjects/literature'} text={'Literature'} />
@@ -80,6 +80,19 @@
 
 	p {
 		line-height: 2;
+	}
+
+	p.grade-calculators {
+		margin-left: 7px;
+		margin-bottom: -3px;
+	}
+
+	hr:first-of-type {
+		margin-top: 20px;
+	}
+
+	hr:last-of-type {
+		margin-bottom: 15px;
 	}
 
 	.banner {
