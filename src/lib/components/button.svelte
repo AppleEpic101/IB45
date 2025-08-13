@@ -1,9 +1,10 @@
 <script>
 	export let href;
 	export let text;
+	export let variant;
 </script>
 
-<a {href}><button class="subject">{text}</button></a>
+<a {href}><button class={['subject', variant].join(' ')}>{text}</button></a>
 
 <style>
 	.subject {
@@ -25,5 +26,9 @@
 		background-color: #053f54;
 		color: white;
 		text-shadow: 0 2px 2px #808080;
+	}
+
+	.subject.larger {
+		font-size: 1.25em;
 	}
 </style>

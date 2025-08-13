@@ -13,6 +13,7 @@
 	const groups = data.meta.groups;
 	import Discord from '$lib/components/Discord.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import Button from '../../lib/components/button.svelte';
 </script>
 
 <PageHeader
@@ -34,13 +35,11 @@
 			<div class="list">
 				{#each courses as course}
 					{#if course.name !== 'meta' && course?.groupNumber?.includes(i + 1)}
-						<a href="./subjects/{course.short}"
-							><button class="subject"
-								>{course.name}{#if course.groupNumber.length === 2 && course.groupNumber[1] === 's'}**
-								{:else if course.groupNumber.length === 2}*
-								{/if}</button
-							></a
-						>
+						<Button
+							variant="larger"
+							href="./subjects/{course.short}"
+							text={course.name + (course.groupNumber.length === 2 ? course.groupNumber[1] === 's' ? '**' : '*' : '')}
+						/>
 					{/if}
 				{/each}
 			</div>
@@ -49,19 +48,19 @@
 		<div class="list">
 			{#each courses as course}
 				{#if course?.name !== 'meta' && course?.groupNumber?.includes(99)}
-					<a href="./subjects/{course.short}"
-						><button class="subject">
-							{course.name}
-						</button></a
-					>
+					<Button
+						variant="larger"
+						href="./subjects/{course.short}"
+						text={course.name}
+					/>
 				{/if}
 			{/each}
 		</div>
 		<h3>Upcoming Syllabus Changes</h3>
 		<div class="list">
-			<button class="subject"><a href="./subjects/physics">Physics (2025)</a></button>
-			<button class="subject"><a href="./subjects/chemistry">Chemistry (2025)</a></button>
-			<button class="subject"><a href="./subjects/digital-society">Biology (2025)</a></button>
+			<Button variant="larger" href="./subjects/physics" text="Physics (2025)" />
+			<Button variant="larger" href="./subjects/chemistry" text="Chemistry (2025)" />
+			<Button variant="larger" href="./subjects/digital-society" text="Biology (2025)" />
 		</div>
 	</div>
 	<p class="p">
@@ -91,26 +90,8 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
+
 	.subjects {
 		margin-bottom: 25px;
-	}
-	.subject {
-		margin: 4px;
-		background-color: #e0f2fe;
-		padding: 10px;
-		border-radius: 10px;
-		border: 2px solid black;
-		text-decoration: none;
-		color: black;
-		font-weight: 500;
-		font-size: 1.15em;
-		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-	}
-
-	.subject:hover {
-		transition: all 0.2s ease;
-		cursor: pointer;
-		background-color: #053f54;
-		color: white;
 	}
 </style>
