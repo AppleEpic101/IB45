@@ -67,8 +67,8 @@
 		: getAllBoundaries(data.data.name).HL;
 
 	// gets the latest grade boundary (for awarded mark calculation)
-	$: SLoptions = SLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
-	$: HLoptions = HLResults.filter((obj) => obj.short === 'M24' || obj.short === 'N24');
+	$: SLoptions = SLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N24');
+	$: HLoptions = HLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N24');
 
 	$: {
 		if (SLoptions.length === 0) {
@@ -89,11 +89,11 @@
 				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M24');
+			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M25');
 			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N24');
 			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
 
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M24');
+			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M25');
 			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N24');
 			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
 		}
