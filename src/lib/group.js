@@ -92,15 +92,17 @@ export const constructURL = (url, short, lang, lvl) => {
 const getTZ = (name, short, timezone) => {
     let arr = [];
     timezone?.forEach((tz, i) => {
-        arr.push(
-            {
-                name,
-                short,
-                timezone: timezone.length === 1 ? 0 : i + 1,
-                fullName: timezone.length === 1 ? short + ' TZ0' : short + ' TZ' + (i + 1),
-                tz,
-            }
-        );
+        if (tz.length > 0) {
+            arr.push(
+                {
+                    name,
+                    short,
+                    timezone: timezone.length === 1 ? 0 : i + 1,
+                    fullName: timezone.length === 1 ? short + ' TZ0' : short + ' TZ' + (i + 1),
+                    tz,
+                }
+            );
+        }
     });
     return arr;
 }

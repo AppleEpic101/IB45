@@ -1,11 +1,13 @@
 <script>
 	export let syllabus;
 	export let level;
+	export let language
 </script>
 
 <div>
 	<h1>
 		{level}
+		{language || ''}
 		{syllabus.name}
 		({syllabus.firstAssessment})
 	</h1>
