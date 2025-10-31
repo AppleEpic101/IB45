@@ -8,6 +8,9 @@
 			<h3>Maintainers</h3>
 			<ul>
 				<li>Alexander Du (Founder)</li>
+				<li>Miles Xing (President)</li>
+				<li>William Yoon (Marketing)</li>
+				<li>Stella Luu (Outreach)</li>
 				<li>Winston Thov</li>
 				<li>Daksh Gupta</li>
 			</ul>
