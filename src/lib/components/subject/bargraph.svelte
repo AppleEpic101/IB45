@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Chart from 'chart.js/auto';
-	import { calculateNormalResults, calculateCoreResults } from '$lib/group.js';
+	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
 	export let name;
 	export let level;

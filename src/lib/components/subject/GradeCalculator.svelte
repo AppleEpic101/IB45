@@ -7,7 +7,7 @@
 
 	import SLonlyWarning from '$lib/components/subject/SLonlyWarning.svelte';
 
-	import { calculateNormalResults, calculateCoreResults } from '$lib/group.js';
+	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
 	export let data;
 	export let syllabus;

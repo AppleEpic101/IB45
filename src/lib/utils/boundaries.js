@@ -13,6 +13,12 @@ import M25 from '$lib/assets/M25.json';
 
 const b = [M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25];
 
+/**
+ * Calculates normal results based on grade and boundary.
+ * @param {number} grade - The student's grade.
+ * @param {number[]} boundary - Array of boundary scores.
+ * @returns {number} The calculated mark.
+ */
 export const calculateNormalResults = (grade, boundary) => {
     let mark = 0;
     boundary?.forEach((arr) => {
@@ -23,6 +29,12 @@ export const calculateNormalResults = (grade, boundary) => {
     return mark;
 }
 
+/**
+ * Calculates core results based on grade and boundary.
+ * @param {number} grade - The student's grade.
+ * @param {number[]} boundary - Array of boundary scores.
+ * @returns {string} The core grade (A-E).
+ */
 export const calculateCoreResults = (grade, boundary) => {
     const core = ['E', 'D', 'C', 'B', 'A'];
     let index = -1;
@@ -32,61 +44,6 @@ export const calculateCoreResults = (grade, boundary) => {
         }
     });
     return core[index];
-}
-
-export const calculateGrade = (assessments, marks, weight, subjectName) => {
-    if (subjectName === "Theory Of Knowledge") {
-        return 2 * assessments[0] + assessments[1];
-    } else if (subjectName === "Extended Essay") {
-        return assessments[0];
-    } else if (subjectName === "Creativity, Activity, Service") {
-        return;
-    } else {
-        let grade = 0;
-        for (let i = 0; i < marks.length; i++) {
-            grade += (assessments[i] / marks[i]) * weight[i];
-        }
-        return Math.round(grade * 100 + 1e-10);
-    }
-}
-
-export const calculateResults = (store, matchedCourse, matchedLang, timezone) => {
-
-    // compute weighted average
-    let grade = 0;
-    matchedCourse?.forEach((assessment, i) => {
-        grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-    });
-    grade = Math.round(grade);
-
-    // use boundary data to calculate grade
-
-    let boundary = [];
-    matchedLang?.TZ?.forEach((arr, i) => {
-        boundary[i] = 0;
-        arr.forEach((element) => {
-            if (grade >= element) {
-                boundary[i]++;
-            }
-        });
-    });
-
-    // get result from timezone
-    let awardedMark = boundary.length > 1 ? boundary[parseInt(timezone) - 1] : boundary[0];
-    if (awardedMark === undefined) awardedMark = 0;
-
-    return {
-        grade,
-        boundary,
-        awardedMark,
-    }
-}
-
-export const constructURL = (url, short, lang, lvl) => {
-    url.pathname = '/subjects/' + short;
-    if (lang) url.searchParams.set('lang', lang);
-    url.searchParams.set('lvl', lvl);
-    return url;
 }
 
 const getTZ = (name, short, timezone) => {
@@ -107,6 +64,12 @@ const getTZ = (name, short, timezone) => {
     return arr;
 }
 
+/**
+ * Retrieves all boundaries for a given subject and language.
+ * @param {string} name - Subject name.
+ * @param {string} lang - Language (default "none").
+ * @returns {object} Object containing course info, SL boundaries, and HL boundaries.
+ */
 export const getAllBoundaries = (name, lang = "none") => {
     let SL = [];
     let HL = [];
@@ -138,28 +101,3 @@ export const getAllBoundaries = (name, lang = "none") => {
     }
 
 }
-
-// export function calculateGradeBoundary(matchedLang, boundary, grade) {
-//     boundary = [];
-//     if (matchedLang !== undefined) {
-//         matchedLang.TZ.forEach((arr, i) => {
-//             boundary[i] = 0;
-//             arr.forEach((element) => {
-//                 if (grade >= element) {
-//                     boundary[i]++;
-//                 }
-//             });
-//         });
-//     }
-//     return boundary;
-// }
-
-// export function calculateGrade(store, matchedCourse) {
-//     let grade = 0;
-//     if (matchedCourse !== undefined) {
-//         matchedCourse.forEach((assessment, i) => {
-//             grade += (store.sliderPosition[i] / assessment.maxMarks) * assessment.weight * 100;
-//         });
-//     }
-//     return Math.round(grade);
-// }

@@ -7,6 +7,7 @@
 	import MainCalculator from '$lib/components/MainCalculator/MainCalculator.svelte';
 	import Footnote from '$lib/components/Footnote.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import { subjects } from '$lib/data/subjects.js';
 </script>
 
 <PageHeader
@@ -39,23 +40,9 @@
 
 		<p class="grade-calculators"><strong>Individual Grade Calculators</strong></p>
 
-		<Button href={'./subjects/language-and-literature'} text={'Language & Literature'} />
-		<Button href={'./subjects/literature'} text={'Literature'} />
-		<Button href={'./subjects/language-b'} text={'Language B'} />
-		<Button href={'./subjects/ab-initio'} text={'AB Initio'} />
-		<Button href={'./subjects/business-management'} text={'Business Management'} />
-		<Button href={'./subjects/economics'} text={'Economics'} />
-		<Button href={'./subjects/history'} text={'History'} />
-		<Button href={'./subjects/psychology'} text={'Psychology'} />
-		<Button href={'./subjects/biology'} text={'Biology'} />
-		<Button href={'./subjects/chemistry'} text={'Chemistry'} />
-		<Button href={'./subjects/physics'} text={'Physics'} />
-		<Button href={'./subjects/environmental-systems-and-societies'} text={'ESS'} />
-		<Button href={'./subjects/analysis-and-approaches'} text={'Math AA'} />
-		<Button href={'./subjects/applications-and-interpretation'} text={'Math AI'} />
-		<Button href={'./subjects/visual-arts'} text={'Visual Arts'} />
-		<Button href={'./subjects/theory-of-knowledge'} text={'TOK'} />
-		<Button href={'./subjects/extended-essay'} text={'EE'} />
+		{#each subjects as subject}
+			<Button href={subject.href} text={subject.text} />
+		{/each}
 		<Button href={'./subjects'} text={'More...'} />
 
 		<!-- <p>

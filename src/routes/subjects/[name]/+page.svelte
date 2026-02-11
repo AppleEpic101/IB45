@@ -23,7 +23,8 @@
 
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import { getAllBoundaries, calculateGrade } from '$lib/group.js';
+	import { getAllBoundaries } from '$lib/utils/boundaries.js';
+	import { calculateGrade } from '$lib/utils/grades.js';
 
 	import Banners from '$lib/assets/banners.json';
 

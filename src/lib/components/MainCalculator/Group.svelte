@@ -17,7 +17,7 @@
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
 
-	import { constructURL } from '$lib/group.js';
+	import { constructURL } from '$lib/utils/urls.js';
 	import { page } from '$app/stores';
 
 	let settings = getPredictorSelectedOptions(group);
