@@ -146,7 +146,7 @@
 				"name": "Paper 2: Comparative Essay",
 				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
 				"time": 1.75,
-				"maxMarks": 30,
+				"maxMarks": 25,
 				"weight": 0.35
 			},
 			{
@@ -209,7 +209,7 @@
 				"name": "Paper 2: Comparative Essay",
 				"format": "Comparative essay based on two literary works written in response to a choice of one out of four questions.",
 				"time": 1.75,
-				"maxMarks": 30,
+				"maxMarks": 25,
 				"weight": 0.35
 			},
 			{
