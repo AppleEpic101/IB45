@@ -8,15 +8,13 @@
 			name: 'Alex Du',
 			title: 'Co-founder',
 			gradYear: "'25",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		},
 		{
 			name: 'Winston Thov',
 			title: 'Co-founder',
 			gradYear: "'25",
-			photo: '/placeholder.png',
-			linkedin: 'https://www.linkedin.com/in/winston-thov-2209a120b/'
+			photo: '/placeholder.png'
 		}
 	];
 
@@ -25,22 +23,19 @@
 			name: 'Miles Xing',
 			title: 'President',
 			gradYear: "'26",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		},
 		{
 			name: 'William Yoon',
 			title: 'Marketing Lead',
 			gradYear: "'27",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		},
 		{
 			name: 'Stella Luu',
 			title: 'Outreach Lead',
 			gradYear: "'26",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		}
 	];
 
@@ -49,15 +44,13 @@
 			name: 'Daksh Gupta',
 			title: 'Maintainer',
 			gradYear: "'25",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		},
 		{
 			name: 'Krishna Sridhar',
 			title: 'Maintainer',
 			gradYear: "'27",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		}
 	];
 
@@ -66,8 +59,7 @@
 			name: 'David Yeo',
 			title: 'Past Maintainer',
 			gradYear: "'25",
-			photo: '/placeholder.png',
-			linkedin: ''
+			photo: '/placeholder.png'
 		}
 	];
 </script>
@@ -124,9 +116,6 @@
 						<div class="member-card" in:fade={{ delay: 400 + i * 100 }}>
 							<div class="photo-wrapper">
 								<img src={member.photo} alt={member.name} class="member-photo" />
-								<a href={member.linkedin} target="_blank" class="linkedin-overlay">
-									<img src="/icons/linkedin.png" alt="LinkedIn" />
-								</a>
 							</div>
 							<div class="member-info">
 								<div class="member-name">{member.name}</div>
@@ -147,9 +136,6 @@
 						<div class="member-card" in:fade={{ delay: 500 + i * 100 }}>
 							<div class="photo-wrapper">
 								<img src={member.photo} alt={member.name} class="member-photo" />
-								<a href={member.linkedin} target="_blank" class="linkedin-overlay">
-									<img src="/icons/linkedin.png" alt="LinkedIn" />
-								</a>
 							</div>
 							<div class="member-info">
 								<div class="member-name">{member.name}</div>
@@ -170,9 +156,6 @@
 						<div class="member-card" in:fade={{ delay: 600 + i * 100 }}>
 							<div class="photo-wrapper">
 								<img src={member.photo} alt={member.name} class="member-photo" />
-								<a href={member.linkedin} target="_blank" class="linkedin-overlay">
-									<img src="/icons/linkedin.png" alt="LinkedIn" />
-								</a>
 							</div>
 							<div class="member-info">
 								<div class="member-name">{member.name}</div>
@@ -193,9 +176,6 @@
 						<div class="member-card" in:fade={{ delay: 700 + i * 100 }}>
 							<div class="photo-wrapper">
 								<img src={member.photo} alt={member.name} class="member-photo" />
-								<a href={member.linkedin} target="_blank" class="linkedin-overlay">
-									<img src="/icons/linkedin.png" alt="LinkedIn" />
-								</a>
 							</div>
 							<div class="member-info">
 								<div class="member-name">{member.name}</div>
@@ -367,10 +347,6 @@
 
 			&:hover {
 				transform: scale(1.05);
-
-				.linkedin-overlay {
-					opacity: 1;
-				}
 			}
 		}
 
@@ -378,26 +354,6 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-		}
-
-		.linkedin-overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(14, 165, 233, 0.6);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-
-			img {
-				width: 32px;
-				height: 32px;
-				filter: brightness(0) invert(1);
-			}
 		}
 
 		.member-name {
