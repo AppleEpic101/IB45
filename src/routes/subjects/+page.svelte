@@ -117,10 +117,6 @@
 			line-height: 1.6;
 			margin-bottom: 2rem;
 		}
-
-		.discord-wrapper {
-			margin-bottom: 3rem;
-		}
 	}
 
 	.group-section {
@@ -181,6 +177,7 @@
 		display: flex;
 		gap: 0.5rem;
 		flex-shrink: 0;
+		align-items: center;
 	}
 
 	.lvl-btn {
@@ -191,21 +188,22 @@
 		border-radius: var(--radius-md);
 		transition: all 0.2s ease;
 		border: 1px solid transparent;
-		position: relative;
-		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 44px; /* Ensure SL and HL buttons are the same width */
+		text-align: center;
 
 		&.sl {
 			background: rgba(14, 165, 233, 0.1);
 			color: #0ea5e9;
 			border-color: rgba(14, 165, 233, 0.2);
+			position: static; /* Required for the pseudo-element to look up to .subject-card */
 
 			&::after {
 				content: '';
 				position: absolute;
-				top: -1.25rem;
-				bottom: -1.25rem;
-				left: -20rem; /* Cover the whole card title area */
-				right: -1.5rem;
+				inset: 0; /* Cover the entire .subject-card */
 				z-index: 1;
 			}
 
@@ -220,6 +218,8 @@
 			background: rgba(249, 115, 22, 0.1);
 			color: #f97316;
 			border-color: rgba(249, 115, 22, 0.2);
+			position: relative;
+			z-index: 2; /* Ensure HL button is above the SL hit area */
 
 			&:hover {
 				background: #f97316;
