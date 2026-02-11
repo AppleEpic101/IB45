@@ -188,8 +188,6 @@
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
 		{#if !data.data.isCore}
-			<h4>Grade Distributions</h4>
-
 			<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
 
 			<div class="tables">
@@ -198,8 +196,6 @@
 		{/if}
 
 		{#if showGradeGraphs}
-			<h4>Historical Probability Distribution</h4>
-
 			<div class="graph">
 				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
 			</div>
@@ -316,8 +312,7 @@
 	}
 
 	.graph {
-		margin: 0 auto 80px auto;
-		height: 35vh;
+		margin: 20px auto 40px auto;
 		max-width: 75vh;
 	}
 

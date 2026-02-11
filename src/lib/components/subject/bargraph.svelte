@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import { darkMode } from '$lib/stores/stores.js';
-	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
 	export let name;
 	export let level;
@@ -22,7 +21,7 @@
 			b.tz.forEach((e) => {
 				if (grade >= e) mark++;
 			});
-			count[mark - 1]++;
+			if (mark > 0) count[mark - 1]++;
 		});
 		return count;
 	};
@@ -36,102 +35,136 @@
 			total = SLResults.length;
 			count = calculate(SLResults, grade, count);
 		}
+		probabilities = count.map((e) => e / (total || 1));
 	}
 
 	const labels = len === 7 ? ['1', '2', '3', '4', '5', '6', '7'] : ['E', 'D', 'C', 'B', 'A'];
 	let chartCanvas;
-	let ctx;
+	let chartInstance;
 
-	$: {
-		probabilities = count.map((e) => e / total);
-	}
+	const createChart = () => {
+		if (!chartCanvas) return;
+		const ctx = chartCanvas.getContext('2d');
+		const isDark = $darkMode;
+		const textColor = isDark ? '#f8fafc' : '#0f172a';
+		const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
-	$: if (chartCanvas && $darkMode !== undefined) {
-		const textColor = $darkMode ? '#f8fafc' : '#0f172a';
-		const gridColor = $darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-		chartCanvas.data.datasets[0].data = probabilities;
-		if (chartCanvas.options.scales.x) {
-			chartCanvas.options.scales.x.ticks.color = textColor;
-			chartCanvas.options.scales.x.grid.color = gridColor;
-		}
-		if (chartCanvas.options.scales.y) {
-			chartCanvas.options.scales.y.ticks.color = textColor;
-			chartCanvas.options.scales.y.grid.color = gridColor;
-		}
-		chartCanvas.update();
-	}
+		if (chartInstance) chartInstance.destroy();
 
-	let exp;
-
-	$: {
-		exp = 0;
-		for (let i = 0; i < probabilities.length; i++) {
-			exp += (i + 1) * probabilities[i];
-		}
-	}
-
-	onMount(() => {
-		ctx = chartCanvas.getContext('2d');
-		Chart.defaults.scales.linear.ticks.callback = function (value) {
-			return value * 100 + '%';
-		};
-		chartCanvas = new Chart(ctx, {
+		chartInstance = new Chart(ctx, {
 			type: 'bar',
+			data: {
+				labels,
+				datasets: [
+					{
+						label: 'Probability',
+						data: probabilities,
+						backgroundColor: [
+							'rgba(244, 63, 94, 0.7)',
+							'rgba(249, 115, 22, 0.7)',
+							'rgba(245, 158, 11, 0.7)',
+							'rgba(16, 185, 129, 0.7)',
+							'rgba(20, 184, 166, 0.7)',
+							'rgba(59, 130, 246, 0.7)',
+							'rgba(139, 92, 246, 0.7)'
+						],
+						borderRadius: 8
+					}
+				]
+			},
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
 				plugins: {
-					legend: {
-						display: false
+					legend: { display: false },
+					tooltip: {
+						backgroundColor: isDark ? '#1e293b' : '#ffffff',
+						titleColor: isDark ? '#f1f5f9' : '#1e293b',
+						bodyColor: isDark ? '#cbd5e1' : '#475569',
+						borderColor: isDark ? '#334155' : '#e2e8f0',
+						borderWidth: 1,
+						callbacks: {
+							label: (item) => {
+								const val = (parseFloat(item.parsed.y) || 0) * 100;
+								return ` ${val.toFixed(1)}% chance`;
+							}
+						}
 					}
 				},
 				scales: {
+					x: {
+						grid: { display: false },
+						border: { display: false },
+						ticks: { color: textColor, font: { weight: '600' } }
+					},
 					y: {
-						min: 0,
-						max: 1.2,
-						beginAtZero: true
+						beginAtZero: true,
+						grid: { color: gridColor },
+						border: { display: false },
+						ticks: {
+							color: textColor,
+							callback: (value) => (value * 100).toFixed(0) + '%'
+						}
 					}
 				}
-			},
-			data: {
-				labels: labels,
-				datasets: [
-					{
-						backgroundColor: [
-							'rgba(255, 99, 132, 0.3)',
-							'rgba(255, 159, 64, 0.3)',
-							'rgba(255, 205, 86, 0.3)',
-							'rgba(75, 192, 192, 0.3)',
-							'rgba(138, 218, 234, 0.3)',
-							'rgba(54, 162, 235, 0.3)',
-							'rgba(153, 102, 255, 0.3)'
-						],
-						borderColor: [
-							'rgb(255, 99, 132)',
-							'rgb(255, 159, 64)',
-							'rgb(255, 205, 86)',
-							'rgb(75, 192, 192)',
-							'rgb(82, 201, 224)',
-							'rgb(54, 162, 235)',
-							'rgb(153, 102, 255)'
-						],
-						borderWidth: 1,
-						label: 'Probability',
-						data: probabilities
-					}
-				]
 			}
 		});
+	};
+
+	onMount(() => {
+		createChart();
+		return () => {
+			if (chartInstance) chartInstance.destroy();
+		};
 	});
+
+	$: if (chartCanvas && probabilities && (probabilities.length > 0 || $darkMode !== undefined)) {
+		createChart();
+	}
 </script>
 
-<div class="title">Predicted Mark Probability Distribution</div>
-<canvas bind:this={chartCanvas} />
+<div class="distribution-container">
+	<div class="distribution-header">
+		<h4 class="title">Predicted Mark Probability</h4>
+		<p class="subtitle">Likelihood of each grade based on historical session boundaries</p>
+	</div>
+	<div class="graph-wrapper">
+		<canvas bind:this={chartCanvas} />
+	</div>
+</div>
 
-<style>
-	.title {
-		font-size: 1rem;
-		margin: 10px 0;
+<style lang="scss">
+	.distribution-container {
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: 24px;
+		margin: 20px 0 40px 0;
+		box-shadow: var(--shadow-md);
+	}
+
+	.distribution-header {
 		text-align: center;
+		margin-bottom: 24px;
+
+		.title {
+			font-size: 1.1rem;
+			font-weight: 800;
+			margin: 0;
+			color: var(--color-text-main);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.subtitle {
+			font-size: 0.85rem;
+			color: var(--color-text-muted);
+			margin: 4px 0 0 0;
+		}
+	}
+
+	.graph-wrapper {
+		height: 40vh;
+		position: relative;
 	}
 </style>
