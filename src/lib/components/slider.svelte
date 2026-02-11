@@ -45,8 +45,8 @@
 		padding: 10px;
 		margin-right: 5px;
 		margin-bottom: 5px;
-		border: 1px solid #d1d5db;
-		background-color: #e0f2fe;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-surface-variant);
 		border-radius: 5px;
 		width: 100%;
 	}
@@ -68,14 +68,14 @@
 		-webkit-appearance: none;
 		appearance: none;
 		cursor: pointer;
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
 	}
 
 	input[type='range']::-webkit-slider-runnable-track {
 		-webkit-appearance: none;
 		appearance: none;
 		height: 10px;
-		background-color: #053f54;
+		background-color: var(--color-primary-dark);
 		border-radius: 5px;
 	}
 
@@ -85,16 +85,17 @@
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
-		background-color: #e0f2fe;
-		border: 5px solid #053f54;
+		background-color: var(--color-surface-variant);
+		border: 5px solid var(--color-primary-dark);
 		margin-top: -5px;
 	}
 
 	input[type='number'] {
 		width: 3em;
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--color-border);
 		border-radius: 6px;
-		background-color: white;
+		background-color: var(--color-surface);
+		color: var(--color-text-main);
 		margin-left: 4px;
 		position: relative;
 		top: -2px;

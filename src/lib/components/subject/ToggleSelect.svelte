@@ -9,21 +9,25 @@
 	{#each arr as item, i}
 		<label>
 			<input type="radio" name={identifier} value={arrVal[i]} bind:group={value} />
-			<div class="btn btn-sik"><span>{item}</span></div>
+			<div class="btn">{item}</div>
 		</label>
 	{/each}
 </div>
 
 <style lang="scss">
 	.wrap {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
+		display: inline-flex;
+		background-color: var(--color-surface-variant);
+		border: 1px solid var(--color-border);
+		padding: 4px;
+		border-radius: var(--radius-md);
+		gap: 4px;
 
 		label {
 			position: relative;
 			display: inline-block;
 			text-align: center;
+			cursor: pointer;
 		}
 	}
 
@@ -32,11 +36,25 @@
 		visibility: hidden;
 	}
 
-	input[type='radio']:checked + div {
-		background-color: #053f54;
+	.btn {
+		padding: 6px 14px;
+		border-radius: var(--radius-sm);
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-text-muted);
+		transition: all 0.2s ease;
+		border: none;
+		box-shadow: none;
+		margin: 0;
+
+		&:hover {
+			color: var(--color-text-main);
+		}
 	}
-	input[type='radio']:checked + div > span {
-		color: white;
-		text-shadow: 0 2px 2px #808080;
+
+	input[type='radio']:checked + .btn {
+		background-color: var(--color-surface);
+		color: var(--color-primary);
+		box-shadow: var(--shadow-sm);
 	}
 </style>

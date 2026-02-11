@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta name="keywords" content="ib, grade, score, calculator, predict, predicter, predictor" />
-		<meta charset="utf-8" />
-		<meta property="og:image" content="/flc_design20230531154582.png" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7855742356909089"
-     crossorigin="anonymous"></script>
-		<meta
-			name="viewport"
-			content="width=device-width, height=device-height, initial-scale=1, user-scalable=no"
-		/>
-		%sveltekit.head%
-	</head>
+<html lang="en" data-theme="dark">
 
-	<body data-sveltekit-preload-data="hover">
-		<div id="mainBody">%sveltekit.body%</div>
-	</body>
+<head>
+	<meta name="keywords" content="ib, grade, score, calculator, predict, predicter, predictor" />
+	<meta charset="utf-8" />
+	<meta property="og:image" content="/flc_design20230531154582.png" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7855742356909089"
+		crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no" />
+	<script>
+		(function () {
+			try {
+				const darkMode = localStorage.getItem('darkMode');
+				const theme = darkMode === 'false' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', theme);
+			} catch (e) {
+				document.documentElement.setAttribute('data-theme', 'dark');
+			}
+		})();
+	</script>
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div id="mainBody">%sveltekit.body%</div>
+</body>
+
 </html>

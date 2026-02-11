@@ -2,13 +2,18 @@
 	import Navigation from '$lib/components/navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import DiscordWidget from '$lib/components/DiscordWidget.svelte';
-	import { showDiscord } from '$lib/stores/stores.js';
+	import { showDiscord, darkMode } from '$lib/stores/stores.js';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	let mounted = false;
 	onMount(() => {
 		mounted = true;
 	});
+
+	$: if (browser && mounted) {
+		document.documentElement.setAttribute('data-theme', $darkMode ? 'dark' : 'light');
+	}
 </script>
 
 <Navigation />
@@ -23,22 +28,28 @@
 	<DiscordWidget />
 {/if}
 
-<link rel="stylesheet" href="/style/light.css" />
+<link rel="stylesheet" href="/style/main.css" />
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 	:global(html) {
-		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-		background-color: #e0f2fe;
-		color: black;
+		font-family: var(--font-body);
+		background-color: var(--color-bg);
+		color: var(--color-text-main);
 	}
 
 	:global(body) {
-		background-color: #f8fafc;
+		background-color: var(--color-bg);
 		margin: 0;
 		padding: 0;
 		overscroll-behavior-x: none;
+		overflow-x: hidden;
+	}
+
+	:global(h1, h2, h3, h4, h5, h6) {
+		font-family: var(--font-heading);
+		color: var(--color-text-main);
 	}
 
 	:global(a, table, label) {
@@ -50,28 +61,33 @@
 	:global(a) {
 		text-decoration: none;
 		font-weight: 500;
-		color: black;
+		color: var(--color-text-main);
 	}
 
 	:global(input[type='range']::-moz-range-track) {
-		background-color: #053f54;
+		background-color: var(--color-primary-dark);
 		height: 8px;
 		border-radius: 4px;
 	}
 
 	:global(.btn-sik) {
 		transition: all 0.2s ease;
-		background-color: #e0f2fe;
-		border: 1px solid #d1d5db;
-		padding: 5px 10px;
-		border-radius: 10px;
+		background-color: var(--color-surface-variant);
+		border: 1px solid var(--color-border);
+		padding: 6px 16px;
+		border-radius: var(--radius-md);
 		margin: 5px;
-		box-shadow: 0 1px 1px black;
-		color: black;
-	}
+		box-shadow: var(--shadow-sm);
+		color: var(--color-text-main);
+		font-weight: 600;
+		font-size: 0.875rem;
 
-	:global(.btn-sik:hover) {
-		cursor: pointer;
+		&:hover {
+			background-color: var(--color-primary);
+			border-color: var(--color-primary);
+			color: #000;
+			cursor: pointer;
+		}
 	}
 
 	.slot {

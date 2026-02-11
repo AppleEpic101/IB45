@@ -53,12 +53,13 @@
 	table {
 		width: max-content;
 		border-collapse: collapse;
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
+		color: var(--color-text-main);
 	}
 
 	th,
 	td {
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--color-border);
 		text-align: center;
 		padding: 8px;
 		font-size: 14px;

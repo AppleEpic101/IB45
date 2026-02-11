@@ -4,8 +4,8 @@
 
 <style>
 	.main {
-		background-color: #e0f2fe;
-		border: 1px solid #d1d5db;
+		background-color: var(--color-surface-variant);
+		border: 1px solid var(--color-border);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		border-radius: 5px;
 		width: fit-content;

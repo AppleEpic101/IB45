@@ -80,7 +80,7 @@
 </script>
 
 <div class="container">
-	<img src="/excel.png" width="25" />
+	<img src="/excel.png" width="25" alt="Excel Icon" />
 	<div>Educators Predicted Grades Excel Tool</div>
 	<div>
 		<Dropdown
@@ -89,7 +89,7 @@
 			bind:value={boundary}
 		/>
 	</div>
-	<button class="btn-sik hover" on:click={downloadExcel}>Download for {fullName}</button>
+	<button class="btn btn-sik hover" on:click={downloadExcel}>Download for {fullName}</button>
 </div>
 
 <style lang="scss">
@@ -97,7 +97,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--color-border);
 		padding: 10px;
 	}
 </style>

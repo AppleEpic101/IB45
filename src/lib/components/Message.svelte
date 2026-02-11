@@ -3,7 +3,7 @@
 </script>
 
 <div class="message">
-	<div class="announcement">&#x1F440;Announcement&#x1F440;</div>
+	<div class="announcement">Latest Announcements</div>
 	<p>
 		I have updated the site with the official November 2024 grade boundaries. As a general rule of
 		thumb, November grade boundaries are usually higher than May grade boundaries, so M25 candidates
@@ -30,19 +30,57 @@
 
 <style lang="scss">
 	.message {
-		border: 2px solid #1e3a8a;
-		border-radius: 10px;
-		padding: 0 20px;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-surface);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		margin-top: 1rem;
+		text-align: left;
+		box-shadow: var(--shadow-sm);
 
 		.announcement {
-			font-size: 1.2em;
-			text-align: center;
-			font-weight: bold;
-			margin: 10px 0 0 0;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 1rem;
+			font-weight: 700;
+			margin-bottom: 1.25rem;
+			color: var(--color-primary);
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+
+			&::before {
+				content: '';
+				display: block;
+				width: 4px;
+				height: 20px;
+				background: var(--color-primary);
+				border-radius: var(--radius-full);
+			}
 		}
 
 		p {
-			line-height: 1.3;
+			line-height: 1.7;
+			margin-bottom: 1.25rem;
+			color: var(--color-text-muted);
+			font-size: 0.95rem;
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
+			padding-top: 1.25rem;
+			border-top: 1px solid var(--color-border);
+		}
+
+		a {
+			color: var(--color-primary);
+			font-weight: 600;
+			transition: opacity 0.2s;
+		}
+
+		a:hover {
+			opacity: 0.8;
+			text-decoration: underline;
 		}
 	}
 </style>

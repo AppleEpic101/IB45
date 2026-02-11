@@ -56,7 +56,7 @@
 	th,
 	td {
 		width: 100%;
-		border: 1px solid black;
+		border: 1px solid var(--color-border);
 		border-collapse: collapse;
 		text-align: center;
 	}

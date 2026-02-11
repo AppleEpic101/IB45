@@ -79,12 +79,12 @@
 	.option {
 		text-align: center;
 		transition: all 0.2s ease;
-		background-color: #e0f2fe;
-		border: 2px solid black;
+		background-color: var(--color-surface-variant);
+		border: 2px solid var(--color-text-main);
 		padding: 7px 10px;
 		border-radius: 10px;
 		margin: 5px;
-		box-shadow: 0 1px 1px black;
+		box-shadow: var(--shadow-sm);
 	}
 
 	input[type='radio'] {
@@ -92,8 +92,9 @@
 	}
 
 	input[type='radio']:checked + div {
-		background-color: #053f54;
+		background-color: var(--color-primary);
 		color: white;
-		text-shadow: 0 2px 2px #808080;
+		text-shadow: none;
+		border-color: var(--color-primary);
 	}
 </style>

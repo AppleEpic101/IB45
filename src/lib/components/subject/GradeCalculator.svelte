@@ -83,42 +83,45 @@
 	}
 </script>
 
-<h4>Grade Calculator</h4>
-<SLonlyWarning {data} {syllabus} />
+<div class="calculator-controls">
+	<div class="control-group">
+		{#if data.isLang}
+			<div class="control-item">
+				<span class="control-label">Language</span>
+				<Dropdown
+					arr={syllabus.name === 'Classical Language' ? classical : languages}
+					bind:value={language}
+				/>
+			</div>
+		{/if}
 
-<div class="dropdown">
-	{#if data.isLang && syllabus.name === 'Classical Language'}
-		<div>
-			<Dropdown arr={classical} bind:value={language} />
-		</div>
-	{:else if data.isLang}
-		<div>
-			<Dropdown arr={languages} bind:value={language} />
-		</div>
-	{/if}
+		{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge' && !data.SLOnly}
+			<div class="control-item">
+				<span class="control-label">Level</span>
+				<ToggleSelect identifier="ef" arr={['SL', 'HL']} arrVal={['SL', 'HL']} bind:value={level} />
+			</div>
+		{/if}
+	</div>
+
+	<div class="control-item">
+		<span class="control-label">Timezone / Session</span>
+		{#if level === 'HL'}
+			<ToggleSelect
+				identifier="f"
+				arr={HLoptions.map((tz) => tz.fullName)}
+				arrVal={HLoptions}
+				bind:value={lastHL}
+			/>
+		{:else}
+			<ToggleSelect
+				identifier="g"
+				arr={SLoptions.map((tz) => tz.fullName)}
+				arrVal={SLoptions}
+				bind:value={lastSL}
+			/>
+		{/if}
+	</div>
 </div>
-
-{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-	{#if !data.SLOnly}
-		<ToggleSelect identifier="ef" arr={['SL', 'HL']} arrVal={['SL', 'HL']} bind:value={level} />
-	{/if}
-{/if}
-
-{#if level === 'HL'}
-	<ToggleSelect
-		identifier="f"
-		arr={HLoptions.map((tz) => tz.fullName)}
-		arrVal={HLoptions}
-		bind:value={lastHL}
-	/>
-{:else}
-	<ToggleSelect
-		identifier="g"
-		arr={SLoptions.map((tz) => tz.fullName)}
-		arrVal={SLoptions}
-		bind:value={lastSL}
-	/>
-{/if}
 
 <div class="assessments">
 	<div class="left">
@@ -175,37 +178,70 @@
 		text-align: center;
 	}
 
-	.dropdown {
+	.calculator-controls {
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-bottom: 2.5rem;
+		padding: 1.5rem;
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.control-group {
+		display: flex;
+		gap: 3rem;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+
+	.control-item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		align-items: flex-start;
+	}
+
+	.control-label {
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
 	}
 
 	.assessments {
 		display: flex;
 		flex-direction: row;
-		gap: 50px;
+		gap: 32px;
+		align-items: flex-start;
+		margin-top: 20px;
+
 		.left {
-			flex: 3;
+			flex: 1.4;
 			display: flex;
 			flex-direction: column;
-			flex-wrap: wrap;
-			align-items: flex-start;
-			margin-top: 8px;
+			gap: 12px;
 		}
 	}
 
 	.right {
-		flex: 2;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
-		flex-wrap: wrap;
+		position: sticky;
+		top: 100px;
 
 		.container {
-			background-color: #e0f2fe;
-			padding: 10px;
-			border: 1px solid #d1d5db;
-			border-radius: 10px;
-			margin: 10px;
+			background-color: var(--color-surface-variant);
+			color: var(--color-text-main);
+			padding: 20px;
+			border: 1px solid var(--color-border);
+			border-radius: 12px;
+			margin: 0;
+			box-shadow: var(--shadow-md);
 
 			.predicted {
 				margin-top: 20px;
@@ -218,9 +254,10 @@
 
 			.x {
 				text-align: center;
-				font-size: 25px;
-				font-weight: bolder;
+				font-size: 32px;
+				font-weight: 800;
 				padding: 0 20px;
+				margin-bottom: 10px;
 			}
 
 			.y {
@@ -230,16 +267,15 @@
 		}
 	}
 
-	@media (max-width: 500px) {
+	@media (max-width: 850px) {
 		.assessments {
 			flex-direction: column;
-			gap: 0;
-			.left {
-				width: 100%;
-			}
-			.right {
-				width: 100%;
-			}
+			gap: 20px;
+		}
+
+		.right {
+			position: static;
+			margin-top: 10px;
 		}
 	}
 </style>

@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Chart from 'chart.js/auto';
+	import { darkMode } from '$lib/stores/stores.js';
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
 	export let name;
@@ -45,8 +46,18 @@
 		probabilities = count.map((e) => e / total);
 	}
 
-	$: if (chartCanvas) {
+	$: if (chartCanvas && $darkMode !== undefined) {
+		const textColor = $darkMode ? '#f8fafc' : '#0f172a';
+		const gridColor = $darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 		chartCanvas.data.datasets[0].data = probabilities;
+		if (chartCanvas.options.scales.x) {
+			chartCanvas.options.scales.x.ticks.color = textColor;
+			chartCanvas.options.scales.x.grid.color = gridColor;
+		}
+		if (chartCanvas.options.scales.y) {
+			chartCanvas.options.scales.y.ticks.color = textColor;
+			chartCanvas.options.scales.y.grid.color = gridColor;
+		}
 		chartCanvas.update();
 	}
 

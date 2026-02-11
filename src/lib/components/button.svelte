@@ -9,26 +9,46 @@
 <style>
 	.subject {
 		margin: 5px;
-		background-color: #e0f2fe;
-		padding: 7px 10px;
-		border-radius: 10px;
-		border: 2px solid black;
-		box-shadow: 0 1px 1px black;
+		background-color: var(--color-surface);
+		padding: 0.75rem 1.25rem;
+		border-radius: var(--radius-full);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-sm);
 		text-decoration: none;
-		font-size: 1em;
-		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-		color: black;
+		font-size: 1rem;
+		font-weight: 500;
+		font-family: var(--font-body);
+		color: var(--color-text-main);
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		display: inline-block;
 	}
 
 	.subject:hover {
-		transition: all 0.2s ease;
 		cursor: pointer;
-		background-color: #053f54;
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
 		color: white;
-		text-shadow: 0 2px 2px #808080;
+		box-shadow: var(--shadow-md);
+		transform: translateY(-2px);
+	}
+
+	.subject:active {
+		transform: translateY(0);
+	}
+
+	.subject.primary {
+		background-color: var(--color-primary);
+		color: white;
+		border-color: var(--color-primary);
+	}
+
+	.subject.primary:hover {
+		background-color: var(--color-primary-dark);
+		border-color: var(--color-primary-dark);
 	}
 
 	.subject.larger {
 		font-size: 1.25em;
+		padding: 1rem 1.75rem;
 	}
 </style>

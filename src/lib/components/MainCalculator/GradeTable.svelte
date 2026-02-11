@@ -2,6 +2,7 @@
 	export let gradeData;
 
 	import { selectedBoundaryId, selectedTimezone } from '$lib/stores/stores.js';
+	import Refresh from './Refresh.svelte';
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
 	const tokGradeWeights = [0, 1, 3, 5, 7];
@@ -171,11 +172,12 @@
 		Boundary: {$selectedBoundaryId} <br />
 		Timezone: {$selectedTimezone + 1}
 	</div>
+	<Refresh />
 </div>
 
 <style lang="scss">
 	.main {
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
 		position: sticky;
 		top: 80px;
 		text-align: center;
@@ -188,9 +190,13 @@
 	tr,
 	th,
 	td {
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--color-border);
 		border-collapse: collapse;
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
+	}
+
+	td:last-child {
+		color: #000000;
 	}
 
 	table {

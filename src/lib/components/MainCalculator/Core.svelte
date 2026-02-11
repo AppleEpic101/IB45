@@ -77,11 +77,14 @@
 </script>
 
 <div class="main">
-	<div class="tok">		
+	<div class="tok">
 		<h2 class="groupTitle">Theory Of Knowledge</h2>
-		<img
-			src="/toggle-button.svg"
-			alt="toggle"
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="64"
+			height="64"
+			viewBox="0 0 64 64"
+			fill="none"
 			class="toggle-button"
 			class:flipped={!showTok}
 			on:click={toggleShowTok}
@@ -90,7 +93,19 @@
 					toggleShowTok();
 				}
 			}}
-		/>
+		>
+			<circle
+				cx="31.9997"
+				cy="31.9998"
+				r="31.5"
+				fill="var(--color-surface-variant)"
+				stroke="var(--color-border)"
+			/>
+			<path
+				d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
+				fill="var(--color-text-main)"
+			/>
+		</svg>
 		{#if !showTok}
 			<GradeResults
 				isCondensed={true}
@@ -100,7 +115,7 @@
 				name={$selectedBoundaryId}
 				isCore={true}
 				maxScore={30}
-			/>			
+			/>
 		{:else}
 			<div class="grade-io">
 				<div class="grade-results">
@@ -130,15 +145,18 @@
 			><button class="goto">Goto subject page</button></a
 		>
 	</div>
-	
+
 	<br />
 	<br />
 
 	<div class="ee">
 		<h2 class="groupTitle">Extended Essay</h2>
-		<img
-			src="/toggle-button.svg"
-			alt="toggle"
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="64"
+			height="64"
+			viewBox="0 0 64 64"
+			fill="none"
 			class="toggle-button"
 			class:flipped={!showEe}
 			on:click={toggleShowEe}
@@ -147,7 +165,19 @@
 					toggleShowEe();
 				}
 			}}
-		/>
+		>
+			<circle
+				cx="31.9997"
+				cy="31.9998"
+				r="31.5"
+				fill="var(--color-surface-variant)"
+				stroke="var(--color-border)"
+			/>
+			<path
+				d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
+				fill="var(--color-text-main)"
+			/>
+		</svg>
 		{#if !showEe}
 			<GradeResults
 				isCondensed={true}
@@ -197,11 +227,11 @@
 <style>
 	.main {
 		border-radius: 1rem;
-		border: 1px solid #e5e7eb;
+		border: 1px solid var(--color-border);
 		margin-bottom: 10px;
 		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 		padding: 1.5rem;
-		background-color: #ffffff;
+		background-color: var(--color-surface);
 		position: relative;
 	}
 
@@ -211,7 +241,8 @@
 		margin: 0;
 	}
 
-	.tok, .ee {
+	.tok,
+	.ee {
 		position: relative;
 	}
 
@@ -260,8 +291,8 @@
 	}
 
 	.core-points {
-		background-color: #e0f2fe;
-		border: 1px solid #d1d5db;
+		background-color: var(--color-surface-variant);
+		border: 1px solid var(--color-border);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		border-radius: 10px;
 		width: fit-content;
@@ -271,8 +302,9 @@
 
 	.goto {
 		transition: all 0.2s ease;
-		background-color: #e0f2fe;
-		border: 1px solid #d1d5db;
+		background-color: var(--color-surface-variant);
+		color: var(--color-text-main);
+		border: 1px solid var(--color-border);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		padding: 0.5rem;
 		margin-top: 8px;
@@ -280,7 +312,7 @@
 		font-weight: bolder;
 
 		&:hover {
-			background-color: #053f54;
+			background-color: var(--color-primary-dark);
 			color: white;
 			cursor: pointer;
 		}

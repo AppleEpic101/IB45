@@ -23,7 +23,7 @@ export const availableBoundaries = [
 	N22,
 	M23,
 	N23,
-	M24, 
+	M24,
 	N24,
 	M25
 ];
@@ -47,8 +47,8 @@ function initializeVersionedStore(key, defaultValue) {
 		localStorage.removeItem(key);
 		localStorage.setItem('app_version', CURRENT_VERSION);
 
-        localStorage.setItem('selectedTimezone', '0');
-        localStorage.setItem("predictorSelectedOptions", JSON.stringify({0:{},1:{},2:{},3:{},4:{},5:{},6:{}}));
+		localStorage.setItem('selectedTimezone', '0');
+		localStorage.setItem("predictorSelectedOptions", JSON.stringify({ 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} }));
 		localStorage.setItem('showDiscord', true);
 	}
 
@@ -60,6 +60,7 @@ function initializeVersionedStore(key, defaultValue) {
 export const appVersion = initializeVersionedStore('appVersion', CURRENT_VERSION);
 export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'M25'); // Change DEFAULT here
 export const showDiscord = initializeVersionedStore('showDiscord', true);
+export const darkMode = persisted('darkMode', true);
 export const selectedBoundary = derived(selectedBoundaryId, ($selectedBoundaryId) =>
 	availableBoundaries.find((boundary) => boundary.info.short === $selectedBoundaryId)
 );

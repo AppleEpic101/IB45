@@ -9,22 +9,22 @@
 
 <style>
 	button {
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
 		padding: 12px;
 		margin: 10px 5px;
 		cursor: pointer;
-		border: 2px solid black;
-		box-shadow: 0 1px 1px black;
+		border: 2px solid var(--color-text-main);
+		box-shadow: var(--shadow-sm);
 		border-radius: 10px;
 		font-size: 1rem;
-		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-		color: black;
+		font-family: var(--font-body);
+		color: var(--color-text-main);
 	}
 
 	button:hover {
 		transition: all 0.2s ease;
-		background-color: #053f54;
+		background-color: var(--color-primary-dark);
 		color: white;
-		text-shadow: 0 2px 2px #808080;
+		text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 	}
 </style>

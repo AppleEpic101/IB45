@@ -64,7 +64,7 @@
 	{#each Array(totalSegments) as _, i}
 		<path
 			d={getPath(i)}
-			stroke={i < clampedValue ? getCurrentColor(clampedValue) : '#ddd'}
+			stroke={i < clampedValue ? getCurrentColor(clampedValue) : 'var(--color-border)'}
 			stroke-width={strokeWidth}
 			fill="none"
 		/>
@@ -84,7 +84,7 @@
 	.mark {
 		font-size: 40px;
 		font-weight: bold;
-		fill: #333;
+		fill: var(--color-text-main);
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	}
 </style>

@@ -151,15 +151,13 @@
 />
 
 <div class="body" in:fly={{ duration: 1400, x: 200 }}>
-	<BackButton />
-
-	<SubjectHeader {syllabus} {level} {language}/>
+	<SubjectHeader {syllabus} {level} {language} />
 
 	{#if syllabus.name === 'Creativity, Activity, Service'}
 		<Collapsible2 title="Description" content={syllabus.description} />
 	{/if}
 
-	{#if Banners[data.data.name]}
+	{#if Banners[data.data.name] && !data.data.isCore}
 		<img class="banner" src={Banners[data.data.name].banner} alt="" />
 	{/if}
 

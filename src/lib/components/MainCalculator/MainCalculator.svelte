@@ -20,7 +20,6 @@
 <div class="mobile-table">
 	<GradeTable gradeData={subjectGrades} />
 </div>
-<Refresh />
 
 <div class="main">
 	<div class="left-column">
@@ -44,7 +43,6 @@
 <div class="mobile-table">
 	<GradeTable gradeData={subjectGrades} />
 </div>
-<Refresh />
 
 <style lang="scss">
 	.main {

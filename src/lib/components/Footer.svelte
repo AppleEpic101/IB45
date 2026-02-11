@@ -5,14 +5,11 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-section">
-			<h3>Maintainers</h3>
+			<h3>Leadership</h3>
 			<ul>
-				<li>Alexander Du (Founder)</li>
-				<li>Miles Xing (President)</li>
-				<li>William Yoon (Marketing)</li>
-				<li>Stella Luu (Outreach)</li>
-				<li>Winston Thov</li>
-				<li>Daksh Gupta</li>
+				<li>Miles Xing '26 (President)</li>
+				<li>William Yoon '27 (Marketing Lead)</li>
+				<li>Stella Luu '26 (Outreach Lead)</li>
 			</ul>
 		</div>
 		<div class="footer-section">
@@ -57,9 +54,10 @@
 
 <style>
 	footer {
-		background-color: #053f54;
-		color: white;
-		padding: 2rem 1rem;
+		background-color: var(--color-footer-bg);
+		color: var(--color-footer-text);
+		padding: 4rem 1rem 2rem;
+		border-top: 1px solid var(--color-border);
 	}
 
 	.footer-content {
@@ -68,17 +66,21 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+		gap: 2rem;
 	}
 
 	.footer-section {
 		flex: 1 1 300px;
-		margin-bottom: 1.5rem;
 	}
 
 	h3 {
-		font-size: 1.25rem;
-		font-weight: bold;
-		margin-bottom: 1rem;
+		font-size: 1rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: var(--color-footer-text);
+		opacity: 0.9;
 	}
 
 	ul {
@@ -88,53 +90,71 @@
 
 	li,
 	p {
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.75rem;
+		color: var(--color-footer-text);
+		opacity: 0.8;
+		font-size: 0.95rem;
+		line-height: 1.6;
 	}
 
 	a {
-		color: #90cdf4;
+		color: var(--color-primary);
 		text-decoration: none;
-		transition: color 0.3s ease;
+		transition: color 0.2s ease;
 	}
 
 	a:hover {
-		color: #63b3ed;
+		color: var(--color-primary-dark);
+		text-decoration: underline;
 	}
 
 	.contact-info {
 		display: flex;
 		align-items: center;
-		margin-top: 0.5rem;
+		margin-top: 1rem;
 	}
 
 	.footer-bottom {
-		border-top: 1px solid white;
-		margin-top: 2rem;
-		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+		margin-top: 3rem;
+		padding-top: 2rem;
 		text-align: center;
 		font-size: 0.875rem;
+		color: var(--color-footer-text);
+		opacity: 0.6;
 	}
 
 	.icons {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
-		margin-top: 0.5rem;
+		gap: 1.5rem;
+		margin-top: 1rem;
 	}
 
 	.icons a img {
 		width: 24px;
 		height: 24px;
+		opacity: 0.8;
+		transition: opacity 0.2s;
+	}
+
+	.icons a:hover img {
+		opacity: 1;
 	}
 
 	@media screen and (max-width: 768px) {
 		.footer-content {
 			flex-direction: column;
+			gap: 3rem;
 		}
 
 		.footer-section {
 			flex: 0;
 			margin-bottom: 0;
+		}
+
+		footer {
+			padding: 3rem 1rem 2rem;
 		}
 	}
 </style>

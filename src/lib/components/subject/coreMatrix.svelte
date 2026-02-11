@@ -39,10 +39,11 @@
 	tr,
 	th,
 	td {
-		border: 1px solid #d1d5db;
+		border: 1px solid var(--color-border);
 		border-collapse: collapse;
 		text-align: center;
-		background-color: #e0f2fe;
+		background-color: var(--color-surface-variant);
+		color: var(--color-text-main);
 	}
 
 	table {

@@ -15,181 +15,241 @@
 	description={'Will YOU do well on your upcoming International Baccalaureate (IB) exams? Use this IB grade calculator to find out!'}
 />
 
-<div class="banner">
-	<h1>World #1 Predicted Score Calculator</h1>
-	<h1>for the</h1>
-	<h1>IB Diploma Program</h1>
-</div>
-<div class="intro">
-	<div class="welcome" in:fly={{ delay: 400, duration: 1000, x: 200 }}>
-		<h2>Welcome to IB Predict!</h2>
-		<h4>Last updated July 16, 2025</h4>
+<section class="hero">
+	<div class="hero-background" />
+	<div class="container" in:fade={{ duration: 800 }}>
+		<div class="hero-content">
+			<h1 in:fly={{ y: 20, duration: 800, delay: 200 }}>
+				World #1 <span class="highlight">IB Predicted Score</span> Calculator
+			</h1>
+			<p class="subtitle" in:fly={{ y: 20, duration: 800, delay: 400 }}>
+				The most accurate tool for the IB Diploma Program. Updated for {new Date().getFullYear()}.
+			</p>
+			<p class="stat-pill" in:fly={{ y: 20, duration: 800, delay: 500 }}>
+				Trusted by 750,000+ students & teachers
+			</p>
+			<div class="last-updated" in:fly={{ y: 20, duration: 800, delay: 600 }}>
+				<span class="dot" />
+				Updated February 11, 2026
+			</div>
+		</div>
 	</div>
-	<div in:fly={{ delay: 400, duration: 1000, y: 100 }}>
-		<p class="main">
-			Meeting the conditional offers for your universities won't be easy, but IB Predict is here to
-			help you along the way. Thank you to over 650,000 people that have used this calculator since
-			its launch in June 2023. The IB Predict calculator uses grade boundary data from past IB
-			examination cycles to ensure precision. IB Predict is intended for use by teachers,
-			candidates, and school coordinators to ensure that predicted grades are accurate, fair, and
-			serve a reliable basis for university admissions. With IB Predict, you'll know exactly what is
-			needed in order to score a 4, 5, 6, or 7. No more, no less.
-		</p>
+</section>
 
+<main class="container main-content">
+	<div class="tools-section" in:fly={{ y: 50, duration: 800, delay: 200 }}>
+		<div class="card tool-card">
+			<h3>Boundary Selector</h3>
+			<GradeBoundarySelector />
+		</div>
+
+		<div class="card tool-card highlight-tool">
+			<h3>Diploma Score Calculator</h3>
+			<MainCalculator />
+		</div>
+	</div>
+
+	<div class="grid-section" in:fly={{ y: 50, duration: 800, delay: 400 }}>
+		<div class="card calculator-card">
+			<h3>Subject Calculators</h3>
+			<p class="card-desc">Calculate grades for specific subjects.</p>
+			<div class="pill-cloud">
+				{#each subjects as subject}
+					<Button href={subject.href} text={subject.text} />
+				{/each}
+				<Button href={'./subjects'} text={'View All Subjects →'} variant="primary" />
+			</div>
+		</div>
+	</div>
+
+	<div in:fly={{ y: 50, duration: 800, delay: 600 }}>
 		<Message />
+	</div>
 
-		<p class="grade-calculators"><strong>Individual Grade Calculators</strong></p>
-
-		{#each subjects as subject}
-			<Button href={subject.href} text={subject.text} />
-		{/each}
-		<Button href={'./subjects'} text={'More...'} />
-
-		<!-- <p>
-			<strong>Upcoming May 2025 Syllabus Changes</strong>
-		</p>
-		<Button href={'./subjects/physics?syl=2025'} text={'Physics (2025)'} />
-		<Button href={'./subjects/chemistry?syl=2025'} text={'Chemistry (2025)'} />
-		<Button href={'./subjects/biology?syl=2025'} text={'Biology (2025)'} />
-		<Button href={'./subjects/philosophy?syl=2025'} text={'Philosophy (2025)'} />
-
-		<hr /> -->
-		<hr />
-		<hr />
-		<GradeBoundarySelector />
-		<MainCalculator />
+	<div in:fly={{ y: 50, duration: 800, delay: 800 }}>
 		<Footnote />
 	</div>
-</div>
+</main>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-	p {
-		line-height: 2;
-	}
-
-	p.grade-calculators {
-		margin-left: 7px;
-		margin-bottom: -3px;
-	}
-
-	hr:first-of-type {
-		margin-top: 20px;
-	}
-
-	hr:last-of-type {
-		margin-bottom: 15px;
-	}
-
-	.banner {
+	.hero {
+		position: relative;
+		padding: 4rem 1rem 2rem;
 		text-align: center;
-		background-color: #053f54;
-		color: white;
-		padding: 20px 1px;
-		border-bottom: 2px solid black;
-		font-family: 'Montserrat Alternates', 'Consolas', 'Courier New', Courier, monospace;
+		overflow: hidden;
+		background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-gradient-end) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
 
-		h1 {
-			margin: 20px;
-			font-weight: bold;
+	.hero-background {
+		position: absolute;
+		top: -50%;
+		left: -50%;
+		width: 200%;
+		height: 200%;
+		background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1) 0%, transparent 60%);
+		animation: rotate 60s linear infinite;
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
 		}
 	}
 
-	.intro {
-		width: 1150px;
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 1;
+	}
+
+	.hero-content h1 {
+		font-size: 3.5rem;
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+		letter-spacing: -0.02em;
+		font-weight: 800;
+	}
+
+	.highlight {
+		color: var(--color-primary);
+		background: -webkit-linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: var(--color-text-muted);
+		max-width: 600px;
+		margin: 0 auto 2rem;
+	}
+
+	.stat-pill {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background: rgba(14, 165, 233, 0.1);
+		color: var(--color-primary-dark);
+		border-radius: var(--radius-full);
+		font-size: 0.875rem;
+		font-weight: 600;
+		margin-bottom: 1rem;
+	}
+
+	.last-updated {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		background-color: var(--color-success);
+		border-radius: 50%;
+		box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+		animation: pulse 2s infinite;
+	}
+
+	@keyframes pulse {
+		0% {
+			transform: scale(0.95);
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+		}
+		70% {
+			transform: scale(1);
+			box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+		}
+		100% {
+			transform: scale(0.95);
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+		}
+	}
+
+	.main-content {
+		padding: 3rem 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		box-shadow: var(--shadow-sm);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.card:hover {
+		box-shadow: var(--shadow-lg);
+	}
+
+	.grid-section {
+		max-width: 1000px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.calculator-card h3 {
+		margin-top: 0;
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.card-desc {
+		color: var(--color-text-muted);
+		margin-bottom: 1.5rem;
+	}
+
+	.pill-cloud {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.tools-section {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		max-width: 1100px;
+		width: 100%;
 		margin: 0 auto;
 	}
 
-	.layout {
-		display: grid;
-		grid-template-columns: 4fr 275px;
-		margin: 20px auto;
-		max-width: 950px;
+	.tool-card h3 {
+		margin-top: 0;
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid var(--color-border);
+		font-size: 1.25rem;
 	}
 
-	.data {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 70px;
+	.highlight-tool {
+		border-color: var(--color-primary);
+		position: relative;
+		border-top: 4px solid var(--color-primary);
 	}
 
-	.top-table {
-		display: none;
-	}
-
-	.welcome {
-		font-family: 'Montserrat', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
-
-		h2 {
-			margin-bottom: 0;
-		}
-		h4 {
-			margin: 0 0 15px 0;
-		}
-	}
-
-	@media screen and (max-width: 1150px) {
-		.intro {
-			margin: 0 25px;
-			width: auto;
-		}
-		p {
-			line-height: 1.5;
-		}
-	}
-
-	@media screen and (max-width: 710px) {
-		.layout {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-	@media screen and (max-width: 560px) {
-		.right-column {
-			display: none;
+	@media (max-width: 768px) {
+		.hero-content h1 {
+			font-size: 2.5rem;
 		}
 
-		.top-table {
-			display: initial;
-		}
-		.layout {
-			display: block;
-		}
-	}
-
-	@media screen and (max-width: 1000px) {
-		.layout {
-			margin: 20px 10px;
-		}
-	}
-
-	@media screen and (max-width: 700px) {
-		.banner h1 {
-			font-size: 23px;
-			margin: 50px 30px;
-		}
-		.intro {
-			margin: 0 5%;
-		}
-		.main {
-			font-size: small;
-		}
-	}
-
-	@media screen and (max-width: 420px) {
-		.intro h2 {
-			font-size: 1.2em;
-			margin-bottom: 0;
-		}
-		.intro h4 {
-			font-size: 1em;
-			margin: 5px 0 15px 0;
-		}
-		.main {
-			font-size: 0.8em;
-		}
-		p {
-			line-height: 1.3;
+		.card {
+			padding: 1.5rem;
 		}
 	}
 </style>
