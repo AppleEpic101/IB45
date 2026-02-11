@@ -149,20 +149,47 @@
 
 <style>
 	.changes {
-		padding-bottom: 20px;
-		margin: 0 18%;
+		padding-bottom: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1.5rem 2rem;
 	}
 
 	h1 {
-		margin: 20px 18%;
+		max-width: 800px;
+		margin: 2rem auto;
+		padding: 0 1.5rem;
+		font-size: 2.5rem;
+		font-weight: 800;
 	}
 
 	ul {
 		list-style: none;
+		padding-left: 0;
+	}
+
+	li {
+		position: relative;
+		padding-left: 1.5rem;
+		margin-bottom: 0.5rem;
 	}
 
 	li::before {
-		content: '• ';
+		content: '•';
+		position: absolute;
+		left: 0;
+		color: var(--color-primary);
+		font-weight: bold;
+	}
+
+	.change {
+		margin-bottom: 3rem;
+	}
+
+	.change h2 {
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: var(--color-primary-dark);
 	}
 
 	@media screen and (max-width: 480px) {

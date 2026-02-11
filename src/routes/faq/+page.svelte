@@ -145,18 +145,21 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.content {
-		margin: 20px 18%;
+		max-width: 800px;
+		margin: 2rem auto;
+		padding: 0 1.5rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 800;
+		margin-bottom: 1.5rem;
 	}
 
 	p {
-		line-height: 2;
-	}
-
-	@media screen and (max-width: 480px) {
-		.content {
-			margin: 0 10px;
-		}
+		line-height: 1.8;
+		color: var(--color-text-main);
 	}
 </style>

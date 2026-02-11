@@ -1,48 +1,48 @@
 <script>
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import { darkMode } from '$lib/stores/stores.js';
+	import { browser } from '$app/environment';
 
-	let dropdownOpen = false;
-	let dropdownElement;
+	let isMenuOpen = false;
 
-	function toggleDropdown() {
-		dropdownOpen = !dropdownOpen;
-	}
-
-	function handleClickOutside(event) {
-		if (
-			dropdownElement &&
-			!dropdownElement.contains(event.target) &&
-			!event.target.closest('.dropdown')
-		) {
-			dropdownOpen = false;
+	function toggleMenu() {
+		isMenuOpen = !isMenuOpen;
+		if (browser) {
+			document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 		}
 	}
 
-	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
-	});
+	function closeMenu() {
+		isMenuOpen = false;
+		if (browser) {
+			document.body.style.overflow = '';
+		}
+	}
+
+	const links = [
+		{ href: '/', label: 'Home' },
+		{ href: '/subjects', label: 'Subjects' },
+		{ href: '/about', label: 'About' },
+		{ href: '/changelog', label: 'Changelog' },
+		{ href: '/faq', label: 'FAQ' }
+	];
 </script>
 
 <nav>
-	<div class="nav-group">
-		<a href="/">
+	<div class="nav-container">
+		<a href="/" class="logo-link" on:click={closeMenu}>
 			<div class="logo-group">
-				<img id="img" src="/favicon.ico" alt="IB SCORE CALCULATOR" />
+				<img id="logo-img" src="/favicon.ico" alt="IB Predict Logo" />
 				<div class="logo-text">IB Predict</div>
 			</div>
 		</a>
 
-		<div class="top-links">
-			<a href="/">Home</a>
-			<a href="/subjects">Subjects</a>
-			<a href="/about">About</a>
-			<a href="/changelog">Changelog</a>
-			<a href="/faq">FAQ</a>
+		<!-- Desktop Links -->
+		<div class="desktop-links">
+			{#each links as link}
+				<a href={link.href}>{link.label}</a>
+			{/each}
 			<button
 				class="theme-toggle"
 				on:click={() => ($darkMode = !$darkMode)}
@@ -92,234 +92,289 @@
 				{/if}
 			</button>
 		</div>
-		<div class="dropdown">
-			<button class="menu-btn" on:click={toggleDropdown} aria-label="Menu">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="feather feather-menu"
-					><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="6" x2="21" y2="6" /><line
-						x1="3"
-						y1="18"
-						x2="21"
-						y2="18"
-					/></svg
-				>
-			</button>
 
-			{#if dropdownOpen}
-				<div
-					class="dropdown-content"
-					bind:this={dropdownElement}
-					transition:fly={{ y: -5, duration: 200 }}
-				>
-					<a href="/" on:click={toggleDropdown}>Home</a>
-					<a href="/subjects" on:click={toggleDropdown}>Subjects</a>
-					<a href="/about" on:click={toggleDropdown}>About</a>
-					<a href="/changelog" on:click={toggleDropdown}>Changelog</a>
-					<a href="/faq" on:click={toggleDropdown}>FAQ</a>
-					<button
-						class="mobile-theme-toggle"
-						on:click={() => {
-							$darkMode = !$darkMode;
-							toggleDropdown();
-						}}
-					>
-						{#if $darkMode}
-							Light Mode ☀️
-						{:else}
-							Dark Mode 🌙
-						{/if}
-					</button>
-				</div>
-			{/if}
-		</div>
+		<!-- Mobile Menu Button -->
+		<button
+			class="mobile-menu-btn"
+			on:click={toggleMenu}
+			aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+		>
+			<div class="hamburger" class:open={isMenuOpen}>
+				<span />
+				<span />
+				<span />
+			</div>
+		</button>
 	</div>
 </nav>
 
+<!-- Mobile Drawer -->
+{#if isMenuOpen}
+	<div
+		class="mobile-overlay"
+		on:click={closeMenu}
+		transition:fade={{ duration: 200 }}
+		role="button"
+		tabindex="0"
+		on:keydown={(e) => e.key === 'Enter' && closeMenu()}
+		aria-label="Close Menu Overlay"
+	/>
+	<div class="mobile-drawer" transition:fly={{ x: 300, duration: 300 }}>
+		<div class="drawer-header">
+			<div class="logo-text">Menu</div>
+			<button class="close-drawer" on:click={closeMenu}>&times;</button>
+		</div>
+
+		<div class="drawer-links">
+			{#each links as link}
+				<a href={link.href} on:click={closeMenu}>{link.label}</a>
+			{/each}
+			<div class="drawer-footer">
+				<button
+					class="drawer-theme-toggle"
+					on:click={() => {
+						$darkMode = !$darkMode;
+					}}
+				>
+					{#if $darkMode}
+						Switch to Light Mode ☀️
+					{:else}
+						Switch to Dark Mode 🌙
+					{/if}
+				</button>
+			</div>
+		</div>
+	</div>
+{/if}
+
 <style lang="scss">
-	.dropdown {
-		display: none;
-		position: relative;
-
-		&:hover {
-			cursor: pointer;
-		}
-
-		.dropdown-content {
-			position: absolute;
-			background-color: var(--color-surface);
-			min-width: 180px;
-			box-shadow: var(--shadow-lg);
-			border: 1px solid var(--color-border);
-			border-radius: var(--radius-md);
-			z-index: 101;
-			top: 50px;
-			right: 0;
-			overflow: hidden;
-
-			a {
-				color: var(--color-text-main);
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-				font-family: var(--font-body);
-
-				&:hover {
-					background-color: var(--color-bg);
-					color: var(--color-primary);
-				}
-			}
-		}
-
-		.menu-btn {
-			cursor: pointer;
-			background: none;
-			border: none;
-			padding: 0;
-			display: flex;
-			align-items: center;
-			color: var(--color-text-main);
-		}
-
-		.mobile-theme-toggle {
-			cursor: pointer;
-			background: none;
-			border: none;
-			padding: 12px 16px;
-			display: block;
-			text-align: left;
-			width: 100%;
-			color: var(--color-text-main);
-			font-family: var(--font-body);
-			font-size: 1rem;
-			font-weight: 500;
-
-			&:hover {
-				background-color: var(--color-bg);
-				color: var(--color-primary);
-			}
-		}
-	}
-
 	nav {
 		background-color: var(--color-surface-glass);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
-		opacity: 1;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 		border-bottom: 1px solid var(--color-border);
-		padding: 0px;
 		position: sticky;
 		top: 0;
-		z-index: 100;
-		transition: all 0.3s ease;
+		z-index: 1000;
+		height: 70px;
+		display: flex;
+		align-items: center;
 
-		.nav-group {
-			display: flex;
+		.nav-container {
 			max-width: 1200px;
 			width: 100%;
-			margin: auto;
-			padding: 0 1rem;
+			margin: 0 auto;
+			padding: 0 1.5rem;
+			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			height: 70px; /* fixed height for consistency */
 
-			.logo-group {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				gap: 1rem;
+			.logo-link {
+				text-decoration: none;
 
-				#img {
-					width: 40px;
-					height: 40px;
-					transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+				.logo-group {
+					display: flex;
+					align-items: center;
+					gap: 0.75rem;
 
-					&:hover {
+					#logo-img {
+						width: 32px;
+						height: 32px;
+						transition: transform 0.5s ease;
+					}
+
+					&:hover #logo-img {
 						transform: rotate(180deg);
 					}
-				}
 
-				.logo-text {
-					font-family: var(--font-heading);
-					font-size: 1.5rem;
-					white-space: nowrap;
-					font-weight: 700;
-					color: var(--color-text-main);
-					letter-spacing: -0.02em;
+					.logo-text {
+						font-family: var(--font-heading);
+						font-size: 1.25rem;
+						font-weight: 800;
+						color: var(--color-text-main);
+						letter-spacing: -0.02em;
+					}
 				}
 			}
 		}
 
-		.top-links {
+		.desktop-links {
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
+
+			@media (max-width: 900px) {
+				display: none;
+			}
 
 			a {
 				padding: 0.5rem 1rem;
 				color: var(--color-text-muted);
 				text-decoration: none;
-				font-size: 1rem;
-				font-weight: 500;
+				font-size: 0.95rem;
+				font-weight: 600;
 				border-radius: var(--radius-md);
-				font-family: var(--font-body);
 				transition: all 0.2s ease;
 
 				&:hover {
-					background-color: rgba(14, 165, 233, 0.1);
-					color: var(--color-primary-dark);
+					background: var(--color-surface-variant);
+					color: var(--color-primary);
 				}
 			}
 		}
 
 		.theme-toggle {
-			background: none;
-			border: none;
+			background: var(--color-surface-variant);
+			border: 1px solid var(--color-border);
 			cursor: pointer;
 			color: var(--color-text-muted);
-			padding: 0.5rem;
+			width: 40px;
+			height: 40px;
 			border-radius: var(--radius-md);
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			transition: all 0.2s ease;
+			margin-left: 0.5rem;
 
 			&:hover {
-				background-color: rgba(14, 165, 233, 0.1);
-				color: var(--color-primary-dark);
+				border-color: var(--color-primary);
+				color: var(--color-primary);
+			}
+		}
+
+		.mobile-menu-btn {
+			display: none;
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.5rem;
+			z-index: 1001;
+
+			@media (max-width: 900px) {
+				display: block;
+			}
+
+			.hamburger {
+				width: 24px;
+				height: 18px;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				span {
+					display: block;
+					width: 100%;
+					height: 2px;
+					background-color: var(--color-text-main);
+					border-radius: 2px;
+					transition: all 0.3s ease;
+				}
+
+				&.open {
+					span:nth-child(1) {
+						transform: translateY(8px) rotate(45deg);
+					}
+					span:nth-child(2) {
+						opacity: 0;
+					}
+					span:nth-child(3) {
+						transform: translateY(-8px) rotate(-45deg);
+					}
+				}
 			}
 		}
 	}
 
-	@media screen and (max-width: 950px) {
-		.nav-group {
-			width: 100%;
-		}
+	.mobile-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(4px);
+		z-index: 2000;
 	}
 
-	@media screen and (max-width: 600px) {
-		.top-links {
-			display: none;
-		}
+	.mobile-drawer {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 280px;
+		height: 100%;
+		background: var(--color-surface);
+		z-index: 2001;
+		box-shadow: var(--shadow-xl);
+		display: flex;
+		flex-direction: column;
 
-		.dropdown {
+		.drawer-header {
+			padding: 1.5rem;
 			display: flex;
+			justify-content: space-between;
 			align-items: center;
+			border-bottom: 1px solid var(--color-border);
+
+			.logo-text {
+				font-size: 1.25rem;
+				font-weight: 800;
+				color: var(--color-text-main);
+			}
+
+			.close-drawer {
+				background: none;
+				border: none;
+				font-size: 2rem;
+				color: var(--color-text-muted);
+				cursor: pointer;
+				line-height: 1;
+			}
 		}
 
-		.nav-group .logo-group .logo-text {
-			font-size: 1.25rem;
+		.drawer-links {
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			flex: 1;
+
+			a {
+				padding: 1rem;
+				color: var(--color-text-main);
+				text-decoration: none;
+				font-weight: 600;
+				border-radius: var(--radius-md);
+				transition: all 0.2s ease;
+
+				&:hover {
+					background: var(--color-surface-variant);
+					color: var(--color-primary);
+				}
+			}
+		}
+
+		.drawer-footer {
+			margin-top: auto;
+			padding: 1.5rem;
+			border-top: 1px solid var(--color-border);
+
+			.drawer-theme-toggle {
+				width: 100%;
+				padding: 1rem;
+				background: var(--color-surface-variant);
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius-md);
+				color: var(--color-text-main);
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.2s ease;
+
+				&:hover {
+					border-color: var(--color-primary);
+				}
+			}
 		}
 	}
 </style>

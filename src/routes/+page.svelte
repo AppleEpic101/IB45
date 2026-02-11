@@ -110,7 +110,7 @@
 	}
 
 	.hero-content h1 {
-		font-size: 3.5rem;
+		font-size: clamp(2.5rem, 8vw, 3.5rem);
 		line-height: 1.1;
 		margin-bottom: 1.5rem;
 		letter-spacing: -0.02em;
@@ -126,15 +126,16 @@
 	}
 
 	.subtitle {
-		font-size: 1.25rem;
+		font-size: clamp(1rem, 4vw, 1.25rem);
 		color: var(--color-text-muted);
-		max-width: 600px;
+		max-width: 700px;
 		margin: 0 auto 2rem;
+		line-height: 1.6;
 	}
 
 	.stat-pill {
 		display: inline-block;
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 1.25rem;
 		background: rgba(14, 165, 233, 0.1);
 		color: var(--color-primary-dark);
 		border-radius: var(--radius-full);
@@ -158,8 +159,16 @@
 		height: 8px;
 		background-color: var(--color-success);
 		border-radius: 50%;
-		box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-		animation: pulse 2s infinite;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: inherit;
+			border-radius: 50%;
+			animation: pulse 2s infinite;
+		}
 	}
 
 	@keyframes pulse {
@@ -168,20 +177,20 @@
 			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
 		}
 		70% {
-			transform: scale(1);
-			box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+			transform: scale(2);
+			opacity: 0;
 		}
 		100% {
 			transform: scale(0.95);
-			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+			opacity: 0;
 		}
 	}
 
 	.main-content {
-		padding: 3rem 1rem;
+		padding: 3rem 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 3rem;
 	}
 
 	.card {
@@ -191,6 +200,10 @@
 		padding: 2rem;
 		box-shadow: var(--shadow-sm);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+		@media (max-width: 600px) {
+			padding: 1.5rem;
+		}
 	}
 
 	.card:hover {
@@ -212,19 +225,21 @@
 	.card-desc {
 		color: var(--color-text-muted);
 		margin-bottom: 1.5rem;
+		font-size: 0.95rem;
 	}
 
 	.pill-cloud {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem;
+		justify-content: flex-start;
 	}
 
 	.tools-section {
-		display: grid;
-		grid-template-columns: 1fr;
+		display: flex;
+		flex-direction: column;
 		gap: 2rem;
-		max-width: 1100px;
+		max-width: 1000px; /* narrowed for better vertical aesthetic */
 		width: 100%;
 		margin: 0 auto;
 	}
@@ -235,6 +250,7 @@
 		padding-bottom: 1rem;
 		border-bottom: 1px solid var(--color-border);
 		font-size: 1.25rem;
+		font-weight: 700;
 	}
 
 	.highlight-tool {
@@ -244,12 +260,13 @@
 	}
 
 	@media (max-width: 768px) {
-		.hero-content h1 {
-			font-size: 2.5rem;
+		.hero {
+			padding: 3rem 1rem 1.5rem;
 		}
 
-		.card {
-			padding: 1.5rem;
+		.main-content {
+			padding: 2rem 1rem;
+			gap: 2rem;
 		}
 	}
 </style>

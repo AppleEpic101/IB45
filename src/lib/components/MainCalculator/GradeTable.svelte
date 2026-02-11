@@ -179,11 +179,17 @@
 	.main {
 		background-color: var(--color-surface-variant);
 		position: sticky;
-		top: 80px;
+		top: 90px;
 		text-align: center;
 		border-radius: 12px;
 		overflow: hidden;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+		@media (max-width: 700px) {
+			position: relative;
+			top: 0;
+			margin-bottom: 2rem;
+		}
 	}
 
 	table,
@@ -221,10 +227,5 @@
 			color: rgb(204, 43, 43);
 			text-shadow: 0.2px 0.2px 0.2px black;
 		}
-	}
-
-	.red {
-		color: rgb(204, 43, 43);
-		text-shadow: 0.2px 0.2px 0.2px black;
 	}
 </style>
