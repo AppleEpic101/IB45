@@ -150,7 +150,7 @@
 	description={`Calculate your IB ${data.data.name} grade! See historical grade boundary data, course descriptions, and more.`}
 />
 
-<div class="body" in:fly={{ duration: 1400, x: 200 }}>
+<div class="body" class:theme-hl={level === 'HL'} in:fly={{ duration: 1400, x: 200 }}>
 	<SubjectHeader {syllabus} {level} {language} />
 
 	{#if syllabus.name === 'Creativity, Activity, Service'}
@@ -265,7 +265,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.banner {
 		display: flex;
 		justify-content: center;
@@ -282,6 +282,18 @@
 		width: 1100px;
 		margin: 10px auto;
 		padding-bottom: 20px;
+
+		&.theme-hl {
+			--color-primary: #f97316;
+			--color-primary-dark: #ea580c;
+			--color-surface-variant: #fff7ed;
+
+			:global([data-theme='dark']) & {
+				--color-primary: #fb923c;
+				--color-primary-dark: #f97316;
+				--color-surface-variant: #2d1d1a;
+			}
+		}
 	}
 
 	@media screen and (max-width: 1100px) {
