@@ -152,19 +152,27 @@
 					<div class="y">Grade</div>
 
 					<div class="y">
-						{grade}%
+						{grade}{!data.isCore ? '%' : ''}
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="y">Points Away</div>
 					{#if marksToIncrease}
-						<div class="y">{marksToIncrease}%</div>
+						<div class="y">{marksToIncrease}{!data.isCore ? '%' : ''}</div>
 					{:else}
 						<div class="y">N/A</div>
 					{/if}
 				</div>
-				<GradeBoundaryUsed {gradeBoundaryUsed} mark={data.isCore ? gradeMap[mark] : mark} />
+				<GradeBoundaryUsed
+					{gradeBoundaryUsed}
+					mark={data.isCore ? gradeMap[mark] : mark}
+					maxScore={syllabus.name === 'Extended Essay'
+						? 34
+						: syllabus.name === 'Theory Of Knowledge'
+						? 30
+						: 100}
+				/>
 			</div>
 		</div>
 	</div>

@@ -58,6 +58,9 @@
 	}
 
 	/* Green to Red Spectrum */
+	td[data-score] {
+		color: black;
+	}
 	td[data-score='3'] {
 		background-color: #86efac; /* green */
 	}

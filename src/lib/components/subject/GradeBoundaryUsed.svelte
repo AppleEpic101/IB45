@@ -1,6 +1,7 @@
 <script>
 	export let gradeBoundaryUsed;
 	export let mark;
+	export let maxScore = 100;
 
 	const gradeMap = {
 		5: 'A',
@@ -36,7 +37,7 @@
 		<tr class="small">
 			{#each gradeBoundaryUsed.marks as tz, i}
 				<td class:shaded={shouldShade(i)}>
-					{tz}-{gradeBoundaryUsed.marks[i + 1] - 1 ? gradeBoundaryUsed.marks[i + 1] - 1 : 100}
+					{tz}-{gradeBoundaryUsed.marks[i + 1] - 1 ? gradeBoundaryUsed.marks[i + 1] - 1 : maxScore}
 				</td>
 			{/each}
 		</tr>
