@@ -13,6 +13,7 @@ import N23 from '$lib/assets/N23.json';
 import M24 from '$lib/assets/M24.json';
 import N24 from '$lib/assets/N24.json';
 import M25 from '$lib/assets/M25.json';
+import N25 from '$lib/assets/N25.json';
 
 export const availableBoundaries = [
 	M19,
@@ -25,7 +26,8 @@ export const availableBoundaries = [
 	N23,
 	M24,
 	N24,
-	M25
+	M25,
+	N25
 ];
 
 const CURRENT_VERSION = '1.0.1';
