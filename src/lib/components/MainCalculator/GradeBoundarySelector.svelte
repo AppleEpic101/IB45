@@ -6,22 +6,35 @@
 		selectedTimezone
 	} from '$lib/stores/stores.js';
 
-	const singleTimezones = ['N19', 'N20', 'N21', 'N22'];
+	let availableTimezones = 1;
 
-	let availableTimezones = singleTimezones.includes(selectedBoundaryId) ? 1 : 2;
+	$: {
+		if ($selectedBoundary) {
+			let maxTZ = 0;
+			// Iterate over all values in the selected boundary object
+			for (const subject of Object.values($selectedBoundary)) {
+				// Skip the info object which doesn't have TZ
+				if (subject.TZ && Array.isArray(subject.TZ)) {
+					if (subject.TZ.length > maxTZ) {
+						maxTZ = subject.TZ.length;
+					}
+				}
+			}
+			availableTimezones = maxTZ > 0 ? maxTZ : 1;
+		}
+	}
 
 	function processSelectedBoundary(boundary) {
-		if (singleTimezones.includes(boundary.info.short)) {
-			availableTimezones = 1;
-		} else {
-			availableTimezones = 2;
-		}
-
 		$selectedBoundaryId = boundary.info.short;
 	}
 
-	let chosenTimezone = $selectedTimezone.toString();
-	$: $selectedTimezone = parseInt(chosenTimezone);
+	// Reset selectedTimezone if it exceeds the available number of timezones
+	$: if ($selectedTimezone >= availableTimezones) {
+		$selectedTimezone = 0;
+	}
+
+	let chosenTimezone;
+	$: chosenTimezone = $selectedTimezone.toString();
 </script>
 
 <p><strong>Select the grade boundary.</strong></p>
@@ -39,6 +52,13 @@
 				on:click={() => {
 					processSelectedBoundary(boundary);
 				}}
+				on:keydown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						processSelectedBoundary(boundary);
+					}
+				}}
+				role="button"
+				tabindex="0"
 			>
 				{boundary.info.name}
 			</div>
@@ -47,17 +67,31 @@
 </div>
 
 <div>
-	{#if availableTimezones > 1}
-		<p><strong>Select the timezone.</strong></p>
+	<p><strong>Select the timezone.</strong></p>
+	{#each Array(availableTimezones) as _, i}
 		<label>
-			<input type="radio" name="timezones" value="0" bind:group={chosenTimezone} />
-			<div class="option" on:click={() => ($selectedTimezone = 0)}>Timezone 1</div>
+			<input
+				type="radio"
+				name="timezones"
+				value={i.toString()}
+				bind:group={chosenTimezone}
+				on:change={() => ($selectedTimezone = i)}
+			/>
+			<div
+				class="option"
+				on:click={() => ($selectedTimezone = i)}
+				on:keydown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						$selectedTimezone = i;
+					}
+				}}
+				role="button"
+				tabindex="0"
+			>
+				Timezone {i + 1}
+			</div>
 		</label>
-		<label>
-			<input type="radio" name="timezones" value="1" bind:group={chosenTimezone} />
-			<div class="option" on:click={() => ($selectedTimezone = 1)}>Timezone 2</div>
-		</label>
-	{/if}
+	{/each}
 </div>
 
 <style>
