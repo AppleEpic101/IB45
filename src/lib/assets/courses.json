@@ -1328,9 +1328,14 @@
 		],
 		"SL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 55,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 30,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 25,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
@@ -1345,9 +1350,14 @@
 		],
 		"HL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 75,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 40,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 35,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
@@ -1436,9 +1446,14 @@
 		],
 		"SL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 55,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 30,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 25,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
@@ -1453,9 +1468,14 @@
 		],
 		"HL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 75,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 40,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 35,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
@@ -1751,9 +1771,14 @@
 		],
 		"SL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 45,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 30,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 25,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
@@ -1768,9 +1793,14 @@
 		],
 		"HL": [
 			{
-				"name": "Paper 1",
-				"maxMarks": 60,
-				"weight": 0.36
+				"name": "Paper 1a",
+				"maxMarks": 40,
+				"weight": 0.19
+			},
+			{
+				"name": "Paper 1b",
+				"maxMarks": 35,
+				"weight": 0.17
 			},
 			{
 				"name": "Paper 2",
