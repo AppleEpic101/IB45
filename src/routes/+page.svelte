@@ -30,7 +30,7 @@
 			</p>
 			<div class="last-updated" in:fly={{ y: 20, duration: 800, delay: 600 }}>
 				<span class="dot" />
-				Updated February 11, 2026
+				Updated May 13, 2026
 			</div>
 		</div>
 	</div>
