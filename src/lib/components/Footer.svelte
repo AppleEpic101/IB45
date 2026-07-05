@@ -7,9 +7,8 @@
 		<div class="footer-section">
 			<h3>Leadership</h3>
 			<ul>
-				<li>Miles Xing '26 (President)</li>
 				<li>William Yoon '27 (Marketing Lead)</li>
-				<li>Stella Luu '26 (Outreach Lead)</li>
+				<li>Krishna Sridhar '27</li>
 			</ul>
 		</div>
 		<div class="footer-section">

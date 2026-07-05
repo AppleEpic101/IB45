@@ -20,21 +20,15 @@
 
 	let leadership = [
 		{
-			name: 'Miles Xing',
-			title: 'President',
-			gradYear: "'26",
-			photo: '/placeholder.png'
-		},
-		{
 			name: 'William Yoon',
 			title: 'Marketing Lead',
 			gradYear: "'27",
 			photo: '/placeholder.png'
 		},
 		{
-			name: 'Stella Luu',
-			title: 'Outreach Lead',
-			gradYear: "'26",
+			name: 'Krishna Sridhar',
+			title: '',
+			gradYear: "'27",
 			photo: '/placeholder.png'
 		}
 	];
@@ -45,12 +39,6 @@
 			title: 'Maintainer',
 			gradYear: "'25",
 			photo: '/placeholder.png'
-		},
-		{
-			name: 'Krishna Sridhar',
-			title: 'Maintainer',
-			gradYear: "'27",
-			photo: '/placeholder.png'
 		}
 	];
 
@@ -59,6 +47,18 @@
 			name: 'David Yeo',
 			title: 'Past Maintainer',
 			gradYear: "'25",
+			photo: '/placeholder.png'
+		},
+		{
+			name: 'Miles Xing',
+			title: 'Past Maintainer',
+			gradYear: "'26",
+			photo: '/placeholder.png'
+		},
+		{
+			name: 'Stella Luu',
+			title: 'Past Maintainer',
+			gradYear: "'26",
 			photo: '/placeholder.png'
 		}
 	];
@@ -262,8 +262,9 @@
 
 		.mission-image {
 			position: relative;
-			height: 100%;
-			min-height: 300px;
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			align-self: center;
 			border-radius: var(--radius-md);
 			overflow: hidden;
 			box-shadow: var(--shadow-md);
@@ -272,6 +273,7 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				object-position: center;
 				display: block;
 			}
 		}
