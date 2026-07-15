@@ -34,18 +34,5 @@
 		"xlsx": "^0.18.5",
 		"xlsx-js-style": "^1.2.0",
 		"xlsx-style": "^0.8.13"
-	},
-	"description": "<img src=\"https://github.com/AppleEpic69/IB45/assets/91651498/4fecd998-dccf-4318-8c53-ba2f026d0e11\">",
-	"main": "rollup.config.js",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/AppleEpic101/IB45.git"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/AppleEpic101/IB45/issues"
-	},
-	"homepage": "https://github.com/AppleEpic101/IB45#readme"
+	}
 }
