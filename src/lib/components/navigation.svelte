@@ -23,6 +23,7 @@
 	const links = [
 		{ href: '/', label: 'Home' },
 		{ href: '/subjects', label: 'Subjects' },
+		{ href: '/grade-boundaries', label: 'Grade Boundaries' },
 		{ href: '/about', label: 'About' },
 		{ href: '/changelog', label: 'Changelog' },
 		{ href: '/faq', label: 'FAQ' }
