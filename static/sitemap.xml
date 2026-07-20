@@ -18,6 +18,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://ibpredict.org/grade-boundaries</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://ibpredict.org/changelog</loc>
   <lastmod>2023-12-04T02:34:29+00:00</lastmod>
   <priority>0.80</priority>
@@ -258,5 +263,215 @@
   <priority>0.64</priority>
 </url>
 
+<url>
+  <loc>https://ibpredict.org/subjects/astronomy</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/subjects/computer-science</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/subjects/digital-society</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/ab-initio</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/analysis-and-approaches</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/applications-and-interpretation</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/art-history</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/astronomy</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/biology</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/brazilian-social-studies</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/business-management</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/chemistry</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/classical-language</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/computer-science</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/creativity-activity-service</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/dance</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/design-technology</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/digital-society</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/economics</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/environmental-systems-and-societies</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/extended-essay</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/film</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/geography</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/global-politics</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/history</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/language-and-literature</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/language-b</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/literature</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/literature-and-performance</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/marine-science</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/music</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/nature-of-science</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/philosophy</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/physics</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/psychology</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/social-and-cultural-anthropology</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/sports-excercise-and-health-science</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/theatre</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/theory-of-knowledge</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/turkey-in-the-20th-century</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/visual-arts</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ibpredict.org/grade-boundaries/world-religions</loc>
+  <lastmod>2026-07-19T00:00:00-07:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
 </urlset>
