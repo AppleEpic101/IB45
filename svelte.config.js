@@ -1,11 +1,9 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 export default {
 	kit: {
-		adapter: adapter({
-			precompress: true,
-		})
+		adapter: adapter()
 	},
 	preprocess: [vitePreprocess()]
 };

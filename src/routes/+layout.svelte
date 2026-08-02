@@ -2,6 +2,7 @@
 	import Navigation from '$lib/components/navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import DiscordWidget from '$lib/components/DiscordWidget.svelte';
+	import ChatWidget from '$lib/components/ChatWidget.svelte';
 	import { showDiscord, darkMode } from '$lib/stores/stores.js';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
@@ -26,6 +27,10 @@
 
 {#if $showDiscord && mounted}
 	<DiscordWidget />
+{/if}
+
+{#if mounted}
+	<ChatWidget />
 {/if}
 
 <link rel="stylesheet" href="/style/main.css" />
