@@ -3,11 +3,20 @@
 	import { marked } from 'marked';
 	import { tick } from 'svelte';
 	import ChatChart from '$lib/components/ChatChart.svelte';
+	import { get } from 'svelte/store';
+	import courses from '$lib/assets/courses.json';
+	import { getPredictorSelectedOptions } from '$lib/stores/stores.js';
 
 	let open = false;
 	let input = '';
 	let loading = false;
 	let messagesEl;
+
+	let fileInput;
+	let pendingImage = null;
+	let pendingImageError = '';
+
+	const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
 	// Identifies this conversation so the server can reuse tool results across turns.
 	// Kept in sessionStorage so the cache survives a page navigation in the same tab.
@@ -58,11 +67,109 @@
 			.filter((m) => m.content);
 	}
 
+	function onFileChange(e) {
+		const file = e.target.files?.[0];
+		e.target.value = '';
+		if (!file) return;
+		pendingImageError = '';
+		if (!file.type.startsWith('image/')) {
+			pendingImageError = 'Please upload an image file.';
+			return;
+		}
+		if (file.size > MAX_IMAGE_BYTES) {
+			pendingImageError = 'Image is too large (max 5MB).';
+			return;
+		}
+		const reader = new FileReader();
+		reader.onload = () => (pendingImage = reader.result);
+		reader.readAsDataURL(file);
+	}
+
+	function normalizeComponent(s) {
+		return s
+			.toLowerCase()
+			.replace(/\(.*?\)/g, ' ')
+			.replace(/[^a-z0-9]+/g, ' ')
+			.trim();
+	}
+
+	function componentTokens(s) {
+		return normalizeComponent(s).split(' ').filter(Boolean);
+	}
+
+	function matchComponent(assessments, query) {
+		const qTokens = componentTokens(query);
+		let best = null;
+		for (let i = 0; i < assessments.length; i++) {
+			const kTokens = componentTokens(assessments[i].name);
+			let matched = 0;
+			for (const q of qTokens) {
+				if (
+					kTokens.some(
+						(k) =>
+							k === q ||
+							(q.length >= 2 && k.startsWith(q)) ||
+							(k.length >= 2 && q.startsWith(k))
+					)
+				)
+					matched++;
+			}
+			const score = qTokens.length ? matched / qTokens.length : 0;
+			if (score > 0 && (!best || score > best.score)) best = { index: i, score };
+		}
+		return best && best.score >= 0.5 ? best.index : -1;
+	}
+
+	function findGroupForSubject(subject) {
+		for (let g = 0; g <= 6; g++) {
+			if (get(getPredictorSelectedOptions(g)).subject === subject) return g;
+		}
+		for (let g = 0; g <= 5; g++) {
+			const list = courses.meta[`group${g + 1}`] || [];
+			if (list.includes(subject) && !get(getPredictorSelectedOptions(g)).subject) return g;
+		}
+		return null;
+	}
+
+	function applySubjectMarks({ subject, level, language, scores }) {
+		const meta = courses[subject];
+		if (!meta) return { ok: false, label: `Couldn't find subject "${subject}" on the site` };
+
+		const group = findGroupForSubject(subject);
+		if (group === null) return { ok: false, label: `No open slot for ${subject}` };
+
+		const settings = getPredictorSelectedOptions(group);
+		const current = get(settings);
+		current.subject = subject;
+		current.level = level;
+		if (language) current.language = language;
+
+		const assessments = meta[level] || [];
+		const chosen = current.chosenScores || [];
+		let matched = 0;
+		for (const { component, mark } of scores) {
+			const idx = matchComponent(assessments, component);
+			if (idx === -1) continue;
+			chosen[idx] = mark;
+			matched++;
+		}
+		current.chosenScores = chosen;
+		settings.set(current);
+
+		return { ok: matched > 0, label: `Set ${level} ${subject}`, summary: `${matched}/${scores.length} marks applied` };
+	}
+		// if (typeof window !== 'undefined') window.applySubjectMarks = applySubjectMarks;
+	
+
+
 	async function send(text) {
 		const question = (text ?? input).trim();
-		if (!question || loading) return;
+		if ((!question && !pendingImage) || loading) return;
 		input = '';
-		turns = [...turns, { role: 'user', content: question }];
+		const image = pendingImage;
+
+		pendingImage = null;
+		turns = [...turns, { role: 'user', content: question || '(attached image)', image }];
 		loading = true;
 		scrollToBottom();
 
@@ -83,8 +190,9 @@
 			const res = await fetch('/api/chat', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ messages: payload, conversationId: conversationId() })
+				body: JSON.stringify({ messages: payload, conversationId: conversationId(), image })			
 			});
+
 			if (!res.ok || !res.body) {
 				let msg = 'Sorry, something went wrong. Please try again.';
 				if (res.status === 429) msg = 'Slow down a little — try again in a few minutes.';
@@ -129,7 +237,12 @@
 								labels: ev.labels,
 								datasets: ev.datasets
 							});
+						else if (ev.type === 'client_action' && ev.action === 'set_subject_marks') {
+							const r = applySubjectMarks(ev);
+							turn.parts.push({ kind: 'tool', label: r.label, status: r.ok ? 'ok' : 'error', summary: r.summary });
+						}
 						else if (ev.type === 'error') pushText(ev.message);
+						
 					}
 					turns = turns;
 					scrollToBottom();
@@ -173,9 +286,12 @@
 					</div>
 				{/if}
 				{#each turns as t}
-					{#if t.role === 'user'}
-						<div class="msg user">{t.content}</div>
-					{:else}
+				{#if t.role === 'user'}
+						<div class="msg user">
+							{#if t.image}<img class="userImg" src={t.image} alt="Attached" />{/if}
+							{t.content}
+						</div>
+				{:else}
 						{#each t.parts as p}
 							{#if p.kind === 'tool'}
 								<div class="tool {p.status}">
@@ -197,15 +313,32 @@
 					{/if}
 				{/each}
 			</div>
+			{#if pendingImage}
+				<div class="imagePreview">
+					<img src={pendingImage} alt="Attached" />
+					<button type="button" on:click={() => (pendingImage = null)} aria-label="Remove image">✕</button>
+				</div>
+			{/if}
+			{#if pendingImageError}
+				<div class="imageError">{pendingImageError}</div>
+			{/if}
 			<form class="inputRow" on:submit|preventDefault={() => send()}>
+				<input
+					type="file"
+					accept="image/*"
+					bind:this={fileInput}
+					on:change={onFileChange}
+					style="display:none"
+				/>
+				<button type="button" class="attach" on:click={() => fileInput.click()} aria-label="Attach image">📎</button>
 				<textarea
 					rows="1"
-					placeholder="Ask a question…"
+					placeholder="Ask a question, or attach your results…"
 					bind:value={input}
 					on:keydown={onKeydown}
 					maxlength="2000"
 				/>
-				<button type="submit" disabled={loading || !input.trim()}>Send</button>
+				<button type="submit" disabled={loading || (!input.trim() && !pendingImage)}>Send</button>
 			</form>
 		</div>
 	{/if}
@@ -447,6 +580,46 @@
 		opacity: 0.6;
 	}
 
+	.attach {
+		background: none;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		padding: 0 10px;
+		cursor: pointer;
+		font-size: 1rem;
+	}
+
+	.imagePreview {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 6px 10px;
+		img {
+			height: 40px;
+			border-radius: var(--radius-sm);
+			border: 1px solid var(--color-border);
+		}
+		button {
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--color-text-muted);
+		}
+	}
+
+	.imageError {
+		font-size: 0.75rem;
+		color: #d66;
+		padding: 0 10px;
+	}
+
+	.userImg {
+		max-width: 100%;
+		border-radius: var(--radius-sm);
+		margin-bottom: 4px;
+		display: block;
+	}
+	
 	.inputRow {
 		display: flex;
 		gap: 8px;

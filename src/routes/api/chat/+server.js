@@ -334,6 +334,35 @@ const TOOLS = [
 				required: ['subject']
 			}
 		}
+	},
+
+	{
+		type: 'function',
+		function: {
+			name: 'set_subject_marks',
+			description:
+				"Fill in the on-page calculator with a subject's marks — use this after reading an uploaded results image, or when the user tells you their marks directly in chat. Call once per subject (you can call it multiple times in one turn for multiple subjects). Only include marks you can actually read clearly — omit a component entirely rather than guessing at a number.",
+			parameters: {
+				type: 'object',
+				properties: {
+					subject: { type: 'string', description: 'Exact subject name as it appears on the site, e.g. "Chemistry", "Mathematics: Analysis And Approaches"' },
+					level: { type: 'string', enum: ['HL', 'SL'] },
+					language: { type: 'string', description: 'Only for language subjects, e.g. "English"' },
+					scores: {
+						type: 'array',
+						items: {
+							type: 'object',
+							properties: {
+								component: { type: 'string', description: 'Component name, e.g. "Paper 1a", "Individual Investigation" — match as closely as possible to standard IB component names' },
+								mark: { type: 'number' }
+							},
+							required: ['component', 'mark']
+						}
+					}
+				},
+				required: ['subject', 'level', 'scores']
+			}
+		}
 	}
 ];
 
@@ -344,12 +373,19 @@ const SYSTEM_PROMPT = `You are the IB Predict assistant, an analyst embedded on 
 ## Scope
 - Only handle IB Predict, the IB Diploma Programme as it relates to the site (scoring, grade boundaries, diploma requirements), and site navigation. Politely decline anything else.
 - Base non-boundary answers strictly on the knowledge base below. Link pages as relative markdown, e.g. [Math AA](/subjects/analysis-and-approaches).
-- Send bug reports and corrections to admin@ibpredict.org. You cannot see the user's calculator inputs.
+- Send bug reports and corrections to admin@ibpredict.org.
 
 ## Tools
 - Specific boundary numbers for one session -> get_grade_boundaries. Never answer these from memory.
 - Trends over time, "has it changed", "will it go up or down" -> get_boundary_history.
 - If a tool returns similar_subjects, retry with the closest name or ask which they meant.
+
+## Filling in the calculator
+When a user attaches a results/report image, or tells you their subjects and marks directly:
+- Read each subject, level, and component mark you can clearly identify.
+- Call set_subject_marks once per subject — you can make several calls in the same turn.
+- Never guess an unclear or cut-off number; leave that component out and say so.
+- After calling the tool(s), summarize in your reply what you set for each subject, and ask the user to double-check it against their actual report — you're reading images, and misreads happen.
 
 ## Answering — this is what separates a useful answer from a useless one
 NEVER write a section heading you do not immediately fill with real numbers. An empty heading like "May Sessions" with nothing under it is a broken answer.
@@ -475,16 +511,20 @@ export async function POST({ request, getClientAddress }) {
 						const hit = result !== undefined;
 						if (!hit) {
 							try {
-								result =
-									tc.name === 'get_grade_boundaries'
-										? getGradeBoundaries(args)
-										: tc.name === 'get_boundary_history'
-										? getBoundaryHistory(args)
-										: { error: `Unknown tool ${tc.name}` };
+								if (tc.name === 'get_grade_boundaries') {
+									result = getGradeBoundaries(args);
+								} else if (tc.name === 'get_boundary_history') {
+									result = getBoundaryHistory(args);
+								} else if (tc.name === 'set_subject_marks') {
+									result = { ok: true, note: "Applied on the user's device — tell them what you set and ask them to double-check it." };
+									emit({ type: 'client_action', action: 'set_subject_marks', ...args });
+								} else {
+									result = { error: `Unknown tool ${tc.name}` };
+								}
 							} catch (e) {
 								result = { error: String(e) };
 							}
-							cacheSet(cache, tc.name, args, result);
+							if (tc.name !== 'set_subject_marks') cacheSet(cache, tc.name, args, result);
 						}
 						emit({
 							type: 'tool_end',

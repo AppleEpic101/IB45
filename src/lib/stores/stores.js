@@ -82,15 +82,13 @@ const predictorSelectedOptions = initializeVersionedStore('predictorSelectedOpti
 
 // Exported function for predictor-specific options
 export function getPredictorSelectedOptions(group) {
-	const { subscribe, update } = writable(get(predictorSelectedOptions)[group]);
 	return {
-		subscribe,
+		subscribe: (run) => predictorSelectedOptions.subscribe((all) => run(all[group])),
 		set: function (value) {
 			predictorSelectedOptions.update((current) => {
 				current[group] = value;
 				return current;
 			});
-			update((e) => e);
 		}
 	};
 }
