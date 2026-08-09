@@ -85,80 +85,195 @@
 		reader.readAsDataURL(file);
 	}
 
+	const NUMBER_WORDS = { one: '1', two: '2', three: '3', four: '4', five: '5', six: '6' };
+
 	function normalizeComponent(s) {
 		return s
 			.toLowerCase()
-			.replace(/\(.*?\)/g, ' ')
+			.replace(/[()]+/g, ' ')
 			.replace(/[^a-z0-9]+/g, ' ')
-			.trim();
+			.trim()
+			.split(' ')
+			.map((w) => NUMBER_WORDS[w] || w)
+			.join(' ');
 	}
 
 	function componentTokens(s) {
-		return normalizeComponent(s).split(' ').filter(Boolean);
+		const tokens = normalizeComponent(s).split(' ').filter(Boolean);
+		// merge a trailing bare 'a'/'b' onto the digit before it: ['1','b'] -> ['1b']
+		const merged = [];
+		for (const t of tokens) {
+			if (merged.length && /^\d+$/.test(merged[merged.length - 1]) && /^[ab]$/.test(t)) {
+				merged[merged.length - 1] += t;
+			} else {
+				merged.push(t);
+			}
+		}
+		return merged;
 	}
 
 	function matchComponent(assessments, query) {
+		const numCompatible = (a, b) => a === b || a.startsWith(b) || b.startsWith(a);
 		const qTokens = componentTokens(query);
+		const qNums = qTokens.filter((t) => /^\d+[ab]?$/.test(t));
 		let best = null;
+		let tie = false;
 		for (let i = 0; i < assessments.length; i++) {
 			const kTokens = componentTokens(assessments[i].name);
+			const kNums = kTokens.filter((t) => /^\d+[ab]?$/.test(t));
+			if (qNums.length && kNums.length && !qNums.some((qn) => kNums.some((kn) => numCompatible(qn, kn)))) continue;
+
 			let matched = 0;
 			for (const q of qTokens) {
-				if (
-					kTokens.some(
-						(k) =>
-							k === q ||
-							(q.length >= 2 && k.startsWith(q)) ||
-							(k.length >= 2 && q.startsWith(k))
-					)
-				)
-					matched++;
+				if (kTokens.some((k) => k === q || (q.length >= 3 && k.startsWith(q)) || (k.length >= 3 && q.startsWith(k)))) matched++;
 			}
 			const score = qTokens.length ? matched / qTokens.length : 0;
-			if (score > 0 && (!best || score > best.score)) best = { index: i, score };
+			if (score >= 0.5) {
+				if (!best || score > best.score) {
+					best = { index: i, score };
+					tie = false;
+				} else if (score === best.score) {
+					tie = true;
+				}
+			}
 		}
-		return best && best.score >= 0.5 ? best.index : -1;
+		if (best && !tie) return best.index;
+
+		// No digit reference and no confident match — if exactly one assessment has no
+		// paper number at all, it's the subject's IA/Portfolio/Fieldwork/Exploration-style
+		// slot, whatever it's locally called.
+		if (!qNums.length) {
+			const nonPaper = assessments
+				.map((a, i) => ({ i, hasNum: componentTokens(a.name).some((t) => /^\d+[ab]?$/.test(t)) }))
+				.filter((a) => !a.hasNum);
+			if (nonPaper.length === 1) return nonPaper[0].i;
+		}
+		return -1;
 	}
 
-	function findGroupForSubject(subject) {
-		for (let g = 0; g <= 6; g++) {
-			if (get(getPredictorSelectedOptions(g)).subject === subject) return g;
-		}
+	function nativeGroupIndex(subject) {
 		for (let g = 0; g <= 5; g++) {
-			const list = courses.meta[`group${g + 1}`] || [];
-			if (list.includes(subject) && !get(getPredictorSelectedOptions(g)).subject) return g;
+			if ((courses.meta[`group${g + 1}`] || []).includes(subject)) return g;
 		}
 		return null;
 	}
 
-	function applySubjectMarks({ subject, level, language, scores }) {
-		const meta = courses[subject];
-		if (!meta) return { ok: false, label: `Couldn't find subject "${subject}" on the site` };
+	function findGroupForSubject(subject) {
+		for (let g = 0; g <= 6; g++) {
+			if (get(getPredictorSelectedOptions(g)).subject === subject) return { group: g };
+		}
+		const native = nativeGroupIndex(subject);
+		if (native === null) return null;
 
-		const group = findGroupForSubject(subject);
-		if (group === null) return { ok: false, label: `No open slot for ${subject}` };
+		if (!get(getPredictorSelectedOptions(native)).subject) return { group: native };
 
-		const settings = getPredictorSelectedOptions(group);
+		// Native slot taken — try the flexible Group 6 slot (index 5) as an override
+		if (native !== 5 && !get(getPredictorSelectedOptions(5)).subject) {
+			return { group: 5, groupSixGroup: native };
+		}
+		return null;
+	}
+
+	const LANGUAGES = [
+		'english', 'spanish', 'french', 'mandarin', 'chinese', 'german', 'japanese',
+		'korean', 'italian', 'portuguese', 'russian', 'arabic', 'hindi', 'dutch',
+		'swedish', 'polish', 'turkish', 'latin', 'greek'
+	];
+
+	function detectLanguage(text) {
+		const t = text.toLowerCase();
+		return LANGUAGES.find((l) => t.includes(l)) || null;
+	}
+
+	function normalizeWords(s) {
+		return s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+	}
+
+	function findSubjectKey(rawSubject) {
+		if (courses[rawSubject]) return rawSubject;
+		const target = rawSubject.trim().toLowerCase();
+		const exact = Object.keys(courses).find((k) => k !== 'meta' && k.toLowerCase() === target);
+		if (exact) return exact;
+
+		const lang = detectLanguage(rawSubject);
+		const stripped = lang ? rawSubject.toLowerCase().replace(lang, ' ') : rawSubject;
+		const qTokens = normalizeWords(stripped);
+
+		let best = null;
+		for (const key of Object.keys(courses)) {
+			if (key === 'meta') continue;
+			const kTokens = normalizeWords(key);
+			const matched = qTokens.filter((q) => kTokens.includes(q)).length;
+			const score = qTokens.length ? matched / qTokens.length : 0;
+			if (score > 0 && (!best || score > best.score)) best = { key, score };
+		}
+		return best && best.score >= 0.5 ? best.key : null;
+	}
+
+	function applyCoreMarks(key, scores) {
+		const settings = getPredictorSelectedOptions(6);
 		const current = get(settings);
+		current.chosenScores = current.chosenScores || { tok: [0, 0], ee: [0] };
+
+		const isTok = key === 'Theory Of Knowledge';
+		const bucket = isTok ? 'tok' : 'ee';
+		const arr = current.chosenScores[bucket] || (isTok ? [0, 0] : [0]);
+
+		let matched = 0;
+		for (const { component, mark } of scores) {
+			// TOK has exactly two known slots; EE has exactly one — no fuzzy guessing needed
+			const idx = isTok ? (component.toLowerCase().includes('exhibition') ? 1 : 0) : 0;
+			arr[idx] = mark;
+			matched++;
+		}
+		current.chosenScores[bucket] = arr;
+		settings.set(current);
+
+		return { ok: matched > 0, label: `Set ${key}`, summary: `${matched}/${scores.length} marks applied` };
+	}
+
+	function applySubjectMarks({ subject: rawSubject, level, language, scores }) {
+		const key = findSubjectKey(rawSubject);
+		const meta = key ? courses[key] : null;
+		if (!meta) return { ok: false, label: `Couldn't find subject "${rawSubject}" on the site` };
+		if ((meta.groupNumber || []).includes(99)) {
+			return applyCoreMarks(key, scores);
+		}
+		const subject = key;
+		const detectedLanguage = language || detectLanguage(rawSubject);
+
+		const placement = findGroupForSubject(subject);
+		if (placement === null) return { ok: false, label: `No open slot for ${subject}` };
+
+		const settings = getPredictorSelectedOptions(placement.group);
+		const current = get(settings);
+		if (placement.groupSixGroup !== undefined) current.groupSixGroup = placement.groupSixGroup;
+
 		current.subject = subject;
 		current.level = level;
-		if (language) current.language = language;
+		if (detectedLanguage) current.language = detectedLanguage.charAt(0).toUpperCase() + detectedLanguage.slice(1);
 
 		const assessments = meta[level] || [];
 		const chosen = current.chosenScores || [];
 		let matched = 0;
+		const unmatched = [];
 		for (const { component, mark } of scores) {
 			const idx = matchComponent(assessments, component);
-			if (idx === -1) continue;
+			if (idx === -1) {
+				unmatched.push(component);
+				continue;
+			}
 			chosen[idx] = mark;
 			matched++;
 		}
 		current.chosenScores = chosen;
 		settings.set(current);
 
-		return { ok: matched > 0, label: `Set ${level} ${subject}`, summary: `${matched}/${scores.length} marks applied` };
+		const summary =
+			`${matched}/${scores.length} marks applied` +
+			(unmatched.length ? ` — couldn't match: ${unmatched.join(', ')}` : '');
+		return { ok: matched > 0, label: `Set ${level} ${subject}`, summary };
 	}
-		// if (typeof window !== 'undefined') window.applySubjectMarks = applySubjectMarks;
 	
 
 

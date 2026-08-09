@@ -382,10 +382,13 @@ const SYSTEM_PROMPT = `You are the IB Predict assistant, an analyst embedded on 
 
 ## Filling in the calculator
 When a user attaches a results/report image, or tells you their subjects and marks directly:
-- Read each subject, level, and component mark you can clearly identify.
-- Call set_subject_marks once per subject — you can make several calls in the same turn.
-- Never guess an unclear or cut-off number; leave that component out and say so.
-- After calling the tool(s), summarize in your reply what you set for each subject, and ask the user to double-check it against their actual report — you're reading images, and misreads happen.
+- Transcribe ONLY subjects and components that are literally printed in the image or stated by the user. NEVER add a subject that isn't visibly present — if you find yourself filling in what a "typical" IB report usually contains rather than reading this specific one, stop.
+- Before calling any tool, mentally list every subject heading exactly as printed, and don't exceed that count.
+- Reports often show multiple numeric columns (e.g. Raw mark, Moderated mark, Scaled mark) plus a Grade. Use the mark that is out of the component's real maximum — usually the "Moderated mark" column — never the Scaled/weighted score, and never the Grade letter/number.
+- If a component's name doesn't clearly correspond to a standard component for that subject, or you're unsure of the exact number, omit it rather than guessing.
+- Call set_subject_marks once per subject you can confidently read — you can make several calls in the same turn.
+- For the Extended Essay, always call set_subject_marks with subject: "Extended Essay" — never the essay's topic subject (a report may label the row "Physics EE" or similar; that still means Extended Essay, not Physics).
+- For Theory of Knowledge, call set_subject_marks with subject: "Theory Of Knowledge", level: "SL", and components named after what's printed (e.g. "Theory of Knowledge" for the essay, "TOK Exhibition" for the exhibition).- After calling the tool(s), summarize in your reply what you set for each subject, and ask the user to double-check it against their actual report — you're reading images, and misreads happen.
 
 ## Answering — this is what separates a useful answer from a useless one
 NEVER write a section heading you do not immediately fill with real numbers. An empty heading like "May Sessions" with nothing under it is a broken answer.
@@ -438,6 +441,12 @@ export async function POST({ request, getClientAddress }) {
 	const conversationId = /^[A-Za-z0-9_-]{8,64}$/.test(rawId) ? rawId : null;
 	const cache = conversationId ? getConvo(conversationId) : null;
 
+	const rawImage = typeof body?.image === 'string' ? body.image : null;
+	const image =
+		rawImage && /^data:image\/(png|jpe?g|webp);base64,/.test(rawImage) && rawImage.length <= 7_000_000
+			? rawImage
+			: null;
+
 	const openai = new OpenAI({ apiKey: env.OPENAI_API_KEY });
 	const encoder = new TextEncoder();
 
@@ -445,10 +454,22 @@ export async function POST({ request, getClientAddress }) {
 		async start(controller) {
 			const emit = (obj) => controller.enqueue(encoder.encode(JSON.stringify(obj) + '\n'));
 			const priorData = cachedContext(cache);
+			const lastMessages = image
+				? [
+						...messages.slice(0, -1),
+						{
+							role: 'user',
+							content: [
+								{ type: 'text', text: messages[messages.length - 1].content },
+								{ type: 'image_url', image_url: { url: image, detail: 'high' } }
+							]
+						}
+				  ]
+				: messages;
 			const convo = [
 				{ role: 'system', content: SYSTEM_PROMPT },
 				...(priorData ? [{ role: 'system', content: priorData }] : []),
-				...messages
+				...lastMessages
 			];
 
 			try {
