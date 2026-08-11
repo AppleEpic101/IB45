@@ -334,6 +334,35 @@ const TOOLS = [
 				required: ['subject']
 			}
 		}
+	},
+
+	{
+		type: 'function',
+		function: {
+			name: 'set_subject_marks',
+			description:
+				"Fill in the on-page calculator with a subject's marks — use this after reading an uploaded results image, or when the user tells you their marks directly in chat. Call once per subject (you can call it multiple times in one turn for multiple subjects). Only include marks you can actually read clearly — omit a component entirely rather than guessing at a number.",
+			parameters: {
+				type: 'object',
+				properties: {
+					subject: { type: 'string', description: 'Exact subject name as it appears on the site, e.g. "Chemistry", "Mathematics: Analysis And Approaches"' },
+					level: { type: 'string', enum: ['HL', 'SL'] },
+					language: { type: 'string', description: 'Only for language subjects, e.g. "English"' },
+					scores: {
+						type: 'array',
+						items: {
+							type: 'object',
+							properties: {
+								component: { type: 'string', description: 'Component name, e.g. "Paper 1a", "Individual Investigation" — match as closely as possible to standard IB component names' },
+								mark: { type: 'number' }
+							},
+							required: ['component', 'mark']
+						}
+					}
+				},
+				required: ['subject', 'level', 'scores']
+			}
+		}
 	}
 ];
 
@@ -344,12 +373,22 @@ const SYSTEM_PROMPT = `You are the IB Predict assistant, an analyst embedded on 
 ## Scope
 - Only handle IB Predict, the IB Diploma Programme as it relates to the site (scoring, grade boundaries, diploma requirements), and site navigation. Politely decline anything else.
 - Base non-boundary answers strictly on the knowledge base below. Link pages as relative markdown, e.g. [Math AA](/subjects/analysis-and-approaches).
-- Send bug reports and corrections to admin@ibpredict.org. You cannot see the user's calculator inputs.
+- Send bug reports and corrections to admin@ibpredict.org.
 
 ## Tools
 - Specific boundary numbers for one session -> get_grade_boundaries. Never answer these from memory.
 - Trends over time, "has it changed", "will it go up or down" -> get_boundary_history.
 - If a tool returns similar_subjects, retry with the closest name or ask which they meant.
+
+## Filling in the calculator
+When a user attaches a results/report image, or tells you their subjects and marks directly:
+- Transcribe ONLY subjects and components that are literally printed in the image or stated by the user. NEVER add a subject that isn't visibly present — if you find yourself filling in what a "typical" IB report usually contains rather than reading this specific one, stop.
+- Before calling any tool, mentally list every subject heading exactly as printed, and don't exceed that count.
+- Reports often show multiple numeric columns (e.g. Raw mark, Moderated mark, Scaled mark) plus a Grade. Use the mark that is out of the component's real maximum — usually the "Moderated mark" column — never the Scaled/weighted score, and never the Grade letter/number.
+- If a component's name doesn't clearly correspond to a standard component for that subject, or you're unsure of the exact number, omit it rather than guessing.
+- Call set_subject_marks once per subject you can confidently read — you can make several calls in the same turn.
+- For the Extended Essay, always call set_subject_marks with subject: "Extended Essay" — never the essay's topic subject (a report may label the row "Physics EE" or similar; that still means Extended Essay, not Physics).
+- For Theory of Knowledge, call set_subject_marks with subject: "Theory Of Knowledge", level: "SL", and components named after what's printed (e.g. "Theory of Knowledge" for the essay, "TOK Exhibition" for the exhibition).- After calling the tool(s), summarize in your reply what you set for each subject, and ask the user to double-check it against their actual report — you're reading images, and misreads happen.
 
 ## Answering — this is what separates a useful answer from a useless one
 NEVER write a section heading you do not immediately fill with real numbers. An empty heading like "May Sessions" with nothing under it is a broken answer.
@@ -402,6 +441,12 @@ export async function POST({ request, getClientAddress }) {
 	const conversationId = /^[A-Za-z0-9_-]{8,64}$/.test(rawId) ? rawId : null;
 	const cache = conversationId ? getConvo(conversationId) : null;
 
+	const rawImage = typeof body?.image === 'string' ? body.image : null;
+	const image =
+		rawImage && /^data:image\/(png|jpe?g|webp);base64,/.test(rawImage) && rawImage.length <= 7_000_000
+			? rawImage
+			: null;
+
 	const openai = new OpenAI({ apiKey: env.OPENAI_API_KEY });
 	const encoder = new TextEncoder();
 
@@ -409,10 +454,22 @@ export async function POST({ request, getClientAddress }) {
 		async start(controller) {
 			const emit = (obj) => controller.enqueue(encoder.encode(JSON.stringify(obj) + '\n'));
 			const priorData = cachedContext(cache);
+			const lastMessages = image
+				? [
+						...messages.slice(0, -1),
+						{
+							role: 'user',
+							content: [
+								{ type: 'text', text: messages[messages.length - 1].content },
+								{ type: 'image_url', image_url: { url: image, detail: 'high' } }
+							]
+						}
+				  ]
+				: messages;
 			const convo = [
 				{ role: 'system', content: SYSTEM_PROMPT },
 				...(priorData ? [{ role: 'system', content: priorData }] : []),
-				...messages
+				...lastMessages
 			];
 
 			try {
@@ -475,16 +532,20 @@ export async function POST({ request, getClientAddress }) {
 						const hit = result !== undefined;
 						if (!hit) {
 							try {
-								result =
-									tc.name === 'get_grade_boundaries'
-										? getGradeBoundaries(args)
-										: tc.name === 'get_boundary_history'
-										? getBoundaryHistory(args)
-										: { error: `Unknown tool ${tc.name}` };
+								if (tc.name === 'get_grade_boundaries') {
+									result = getGradeBoundaries(args);
+								} else if (tc.name === 'get_boundary_history') {
+									result = getBoundaryHistory(args);
+								} else if (tc.name === 'set_subject_marks') {
+									result = { ok: true, note: "Applied on the user's device — tell them what you set and ask them to double-check it." };
+									emit({ type: 'client_action', action: 'set_subject_marks', ...args });
+								} else {
+									result = { error: `Unknown tool ${tc.name}` };
+								}
 							} catch (e) {
 								result = { error: String(e) };
 							}
-							cacheSet(cache, tc.name, args, result);
+							if (tc.name !== 'set_subject_marks') cacheSet(cache, tc.name, args, result);
 						}
 						emit({
 							type: 'tool_end',
