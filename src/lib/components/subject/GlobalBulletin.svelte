@@ -9,7 +9,7 @@
 	export let showBulletin;
 
 	$: sessions = Bulletin[name]?.grades ?? [];
-	let selectedShort = 'M25';
+	let selectedShort = 'N25';
 	$: if (sessions.length && !sessions.some((session) => session.short === selectedShort)) {
 		selectedShort = sessions[0].short;
 	}
