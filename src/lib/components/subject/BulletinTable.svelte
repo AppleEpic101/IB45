@@ -1,9 +1,10 @@
 <script>
-	import Bulletin from '$lib/assets/Bulletin.json';
+	import Bulletin from '$lib/data/bulletin.js';
 
 	export let name;
 
 	$: data = Bulletin[name]?.grades;
+	const markbands = [1, 2, 3, 4, 5, 6, 7];
 </script>
 
 <div class="table-wrapper">
@@ -20,8 +21,8 @@
 
 		<tr>
 			<th>N</th>
-			{#each { length: 7 } as _, i}
-				<th>{i + 1}</th>
+			{#each markbands as markband}
+				<th>{markband}</th>
 			{/each}
 		</tr>
 
@@ -31,7 +32,7 @@
 					<td>{res.short}</td>
 					<td>{res.total.toLocaleString('en-US')}</td>
 					<td>{res.mean}</td>
-					{#each res?.distribution as dist, i}
+					{#each res?.distribution as dist}
 						<td>{dist}</td>
 					{/each}
 				</tr>

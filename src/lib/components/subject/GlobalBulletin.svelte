@@ -1,6 +1,6 @@
 <script>
-	import Bulletin from '$lib/assets/Bulletin.json';
-	import { onMount } from 'svelte';
+	import Bulletin from '$lib/data/bulletin.js';
+	import { onMount, tick } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import { darkMode } from '$lib/stores/stores.js';
 
@@ -8,7 +8,12 @@
 	export let mark = 5;
 	export let showBulletin;
 
-	$: data = Bulletin[name]?.grades?.[0];
+	$: sessions = Bulletin[name]?.grades ?? [];
+	let selectedShort = 'M25';
+	$: if (sessions.length && !sessions.some((session) => session.short === selectedShort)) {
+		selectedShort = sessions[0].short;
+	}
+	$: data = sessions.find((session) => session.short === selectedShort) ?? sessions[0];
 	let total, mean, distribution;
 
 	$: {
@@ -27,6 +32,13 @@
 
 	let canvas;
 	let chartInstance;
+	let chartUpdateId = 0;
+	const selectSession = (short) => {
+		chartInstance?.destroy();
+		Chart.getChart(canvas)?.destroy();
+		chartInstance = undefined;
+		selectedShort = short;
+	};
 
 	const getNormalDistributionValue = (x, mu, sigma) => {
 		if (!sigma || sigma === 0) return 0;
@@ -36,7 +48,6 @@
 	const createChart = () => {
 		if (!distribution || distribution.length === 0 || !canvas) return;
 
-		const ctx = canvas.getContext('2d');
 		const isDark = $darkMode;
 		const textColor = isDark ? '#f8fafc' : '#0f172a';
 		const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
@@ -70,8 +81,26 @@
 		});
 
 		if (chartInstance) {
-			chartInstance.destroy();
+			chartInstance.data.datasets[0].data = traceData;
+			chartInstance.data.datasets[0].borderColor = isDark
+				? 'rgba(255, 255, 255, 0.5)'
+				: 'rgba(15, 23, 42, 0.3)';
+			chartInstance.data.datasets[1].data = distribution;
+			chartInstance.options.plugins.tooltip.backgroundColor = isDark ? '#1e293b' : '#ffffff';
+			chartInstance.options.plugins.tooltip.titleColor = isDark ? '#f1f5f9' : '#1e293b';
+			chartInstance.options.plugins.tooltip.bodyColor = isDark ? '#cbd5e1' : '#475569';
+			chartInstance.options.plugins.tooltip.borderColor = isDark ? '#334155' : '#e2e8f0';
+			chartInstance.options.plugins.markers = { validMean, mark };
+			chartInstance.options.scales.x.ticks.color = textColor;
+			chartInstance.options.scales.y.grid.color = gridColor;
+			chartInstance.options.scales.y.ticks.color = textColor;
+			chartInstance.options.scales.y.title.color = textColor;
+			chartInstance.update();
+			return;
 		}
+
+		Chart.getChart(canvas)?.destroy();
+		const ctx = canvas.getContext('2d');
 
 		chartInstance = new Chart(ctx, {
 			type: 'bar',
@@ -114,6 +143,7 @@
 				maintainAspectRatio: false,
 				plugins: {
 					legend: { display: false },
+					markers: { validMean, mark },
 					tooltip: {
 						backgroundColor: isDark ? '#1e293b' : '#ffffff',
 						titleColor: isDark ? '#f1f5f9' : '#1e293b',
@@ -160,7 +190,12 @@
 						const {
 							ctx,
 							chartArea: { top, bottom },
-							scales: { x }
+							scales: { x },
+							options: {
+								plugins: {
+									markers: { validMean, mark: currentMark }
+								}
+							}
 						} = chart;
 						ctx.save();
 
@@ -191,8 +226,8 @@
 							}
 						}
 
-						if (mark !== undefined && mark !== 'N/A') {
-							const markIdx = labels.indexOf(mark.toString());
+						if (currentMark !== undefined && currentMark !== 'N/A') {
+							const markIdx = labels.indexOf(currentMark.toString());
 							if (markIdx !== -1) {
 								const markX = x.getPixelForValue(labels[markIdx]);
 								if (markX !== undefined && !isNaN(markX)) {
@@ -217,15 +252,21 @@
 		});
 	};
 
+	const scheduleChartUpdate = async () => {
+		const updateId = ++chartUpdateId;
+		await tick();
+		if (updateId === chartUpdateId) createChart();
+	};
+
 	onMount(() => {
-		createChart();
 		return () => {
+			chartUpdateId += 1;
 			if (chartInstance) chartInstance.destroy();
 		};
 	});
 
 	$: if (canvas && distribution && (name || $darkMode !== undefined || mark)) {
-		createChart();
+		scheduleChartUpdate();
 	}
 </script>
 
@@ -234,11 +275,28 @@
 		<div class="distribution-header">
 			<h4 class="title">Global Grade Distribution</h4>
 			<p class="subtitle">
-				Based on {data?.name} session results ({total?.toLocaleString()} candidates)
+				Based on {data?.short === 'M25' ? 'provisional ' : ''}{data?.name} session results ({total?.toLocaleString()}
+				candidates)
 			</p>
+			{#if sessions.length > 1}
+				<div class="session-switcher" aria-label="Exam session">
+					{#each sessions as session}
+						<button
+							type="button"
+							class:active={session.short === selectedShort}
+							aria-pressed={session.short === selectedShort}
+							on:click={() => selectSession(session.short)}
+						>
+							{session.name}
+						</button>
+					{/each}
+				</div>
+			{/if}
 		</div>
 		<div class="graph-wrapper">
-			<canvas bind:this={canvas} />
+			{#key selectedShort}
+				<canvas bind:this={canvas} />
+			{/key}
 		</div>
 	</div>
 {/if}
@@ -269,6 +327,45 @@
 			font-size: 0.875rem;
 			color: var(--color-text-muted);
 			margin: 4px 0 0 0;
+		}
+	}
+
+	.session-switcher {
+		display: inline-flex;
+		gap: 4px;
+		padding: 4px;
+		margin-top: 16px;
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		background: var(--color-surface-variant);
+
+		button {
+			border: 0;
+			border-radius: 999px;
+			padding: 8px 14px;
+			background: transparent;
+			color: var(--color-text-muted);
+			font: inherit;
+			font-size: 0.875rem;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+			&:hover,
+			&:focus-visible {
+				color: var(--color-text-main);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--color-primary);
+				outline-offset: 2px;
+			}
+
+			&.active {
+				background: var(--color-surface);
+				color: var(--color-primary);
+				box-shadow: var(--shadow-sm);
+			}
 		}
 	}
 
