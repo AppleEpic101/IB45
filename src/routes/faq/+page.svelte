@@ -1,30 +1,28 @@
 <script>
-	import { fade, fly, scale } from 'svelte/transition';
 	import Collapsible from '$lib/components/collapsible.svelte';
-	import { onMount } from 'svelte';
-	let ready = false;
-	onMount(() => (ready = true));
-	import Discord from '$lib/components/Discord.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 </script>
 
 <PageHeader
 	title="Frequently Asked Questions"
-	description="Confused about how to use IB Predict? Check out our FAQ page to learn more about the IB Predict."
+	description="Answers to common questions about IB Predict, grade boundaries, and the diploma calculator."
 />
 
-<div class="content" in:fly={{ duration: 1400, x: 200 }}>
-	<h1>Frequently Asked Questions</h1>
-	<div>
-		<p>
-			I have compiled a list of the most frequently asked questions by users. You may contact me at <a
-				href="mailto:admin@ibpredict.org">admin@ibpredict.org</a
-			> if you would like to see a question added to this page.
+<main class="faq-page">
+	<header class="intro">
+		<p class="eyebrow">Help center</p>
+		<h1>Frequently asked questions</h1>
+		<p class="intro-copy">
+			Clear answers about our data, grade predictions, and using the calculator.
 		</p>
-		<Discord />
-	</div>
-	<br />
-	<div>
+		<p class="contact-copy">
+			Can’t find what you need? <a href="mailto:admin@ibpredict.org">Send us a question</a> or
+			<a href="https://discord.gg/G8UvbTJHp8" target="_blank" rel="noreferrer">ask the community</a
+			>.
+		</p>
+	</header>
+
+	<section class="questions" aria-label="Frequently asked questions">
 		<Collapsible question="Are these grade boundaries real/legit?">
 			<p>Yes. These are official grade boundaries from past examinations.</p>
 		</Collapsible>
@@ -140,26 +138,93 @@
 				</li>
 			</ul>
 		</Collapsible>
+	</section>
+</main>
 
-		<br />
-	</div>
-</div>
+<style>
+	.faq-page {
+		width: min(800px, calc(100% - 40px));
+		margin: 0 auto;
+		padding: 72px 0 96px;
+	}
 
-<style lang="scss">
-	.content {
-		max-width: 800px;
-		margin: 2rem auto;
-		padding: 0 1.5rem;
+	.intro {
+		max-width: 680px;
+		padding-bottom: 48px;
+	}
+
+	.eyebrow {
+		margin: 0 0 14px;
+		color: var(--color-text-muted);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
 
 	h1 {
-		font-size: 2.5rem;
-		font-weight: 800;
-		margin-bottom: 1.5rem;
+		margin: 0;
+		color: var(--color-text-main);
+		font-size: clamp(2.25rem, 6vw, 3.4rem);
+		font-weight: 750;
+		letter-spacing: -0.045em;
+		line-height: 1.05;
 	}
 
-	p {
-		line-height: 1.8;
+	.intro-copy {
+		margin: 18px 0 0;
+		color: var(--color-text-muted);
+		font-size: 1rem;
+		line-height: 1.65;
+	}
+
+	.contact-copy {
+		margin: 20px 0 0;
+		color: var(--color-text-muted);
+		font-size: 0.86rem;
+		line-height: 1.7;
+	}
+
+	.contact-copy a {
 		color: var(--color-text-main);
+		font-weight: 600;
+		text-decoration: underline;
+		text-decoration-color: var(--color-border);
+		text-underline-offset: 3px;
+	}
+
+	.questions {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.questions :global(p),
+	.questions :global(li) {
+		color: var(--color-text-muted);
+		font-size: 0.94rem;
+		line-height: 1.75;
+	}
+
+	.questions :global(p) {
+		margin: 0;
+	}
+
+	.questions :global(ul) {
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+
+	.questions :global(li + li) {
+		margin-top: 0.55rem;
+	}
+
+	@media (max-width: 640px) {
+		.faq-page {
+			width: min(100% - 32px, 800px);
+			padding: 52px 0 72px;
+		}
+
+		.intro {
+			padding-bottom: 36px;
+		}
 	}
 </style>
