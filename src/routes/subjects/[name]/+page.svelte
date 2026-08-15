@@ -252,8 +252,14 @@
 			{/if}
 			<div class="tables">
 				{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
+					<div class="table-intro">
+						<div>
+							<span class="active-level">Core subject</span>
+							<h5>{name} boundary history</h5>
+						</div>
+					</div>
 					<CoreTable {name} res={SLResults} />
-					<CoreMatrix name={syllabus.name} />
+					<CoreMatrix />
 				{:else}
 					<div class="table-intro">
 						<div>

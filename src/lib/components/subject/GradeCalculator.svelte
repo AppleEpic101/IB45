@@ -169,7 +169,7 @@
 	</div>
 </div>
 
-<div class="assessments">
+<div class="assessments" class:single-assessment={s.length === 1}>
 	<div class="left">
 		{#each s as assessment, i}
 			<Slider
@@ -416,6 +416,14 @@
 				flex-direction: column;
 				justify-content: center;
 			}
+		}
+	}
+
+	.assessments.single-assessment {
+		align-items: start;
+
+		.left :global(.slider) {
+			flex: initial;
 		}
 	}
 

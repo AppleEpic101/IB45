@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Refined the Extended Essay calculator and rebuilt its boundary history and core-points matrix for desktop and mobile.',
 				'Added session-level diploma benchmarks and an estimated overall-score percentile to the main calculator.',
 				'Added grade strategy tools with next-grade recommendations, assessment impact, historical confidence, and session-by-session what-if results.',
 				'Brought compact next-grade strategy, confidence, percentile, assessment impact, and historical what-if insights into the main calculator.',
