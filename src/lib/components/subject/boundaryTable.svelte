@@ -78,6 +78,38 @@
 			{/if}
 		</table>
 	</div>
+	<div class="mobile-boundaries" aria-label={`${name} boundary history`}>
+		<h6>{name}</h6>
+		{#if averages.length > 0}
+			<article class="boundary-card average-card">
+				<strong>Average</strong>
+				<div class="grade-grid">
+					{#each averages as avg, index}
+						<div><span>Grade {grades[index]}</span><strong>{avg}</strong></div>
+					{/each}
+				</div>
+			</article>
+			<article class="boundary-card sd-card">
+				<strong>Standard deviation</strong>
+				<div class="grade-grid">
+					{#each stdDevs as sd, index}
+						<div><span>Grade {grades[index]}</span><strong>{sd}</strong></div>
+					{/each}
+				</div>
+			</article>
+		{/if}
+		{#each visibleResults as result}
+			<article class="boundary-card">
+				<strong>{result.fullName}</strong>
+				<div class="grade-grid">
+					{#each result.tz as boundary, index}
+						<div><span>Grade {grades[index]}</span><strong>{boundary}</strong></div>
+					{/each}
+				</div>
+			</article>
+		{/each}
+		{#if res.length === 0}<p>No results found</p>{/if}
+	</div>
 	{#if reversedRes.length > previewCount}
 		<div class="table-footer">
 			<span>
@@ -102,6 +134,10 @@
 		width: 100%;
 		border: 1px solid var(--color-border);
 		border-radius: 12px;
+	}
+
+	.mobile-boundaries {
+		display: none;
 	}
 
 	table {
@@ -182,10 +218,66 @@
 	}
 
 	@media screen and (max-width: 600px) {
-		th,
-		td {
+		.table-scroll {
+			display: none;
+		}
+
+		.mobile-boundaries {
+			display: grid;
+			gap: 9px;
+		}
+
+		.mobile-boundaries h6 {
+			margin: 0 0 2px;
+			color: var(--color-text-main);
+			font-size: 0.9rem;
+		}
+
+		.boundary-card {
+			overflow: hidden;
+			border: 1px solid var(--color-border);
+			border-radius: 10px;
+			background: var(--color-surface-variant);
+		}
+
+		.boundary-card > strong {
+			display: block;
 			padding: 8px 10px;
-			font-size: 0.78rem;
+			border-bottom: 1px solid var(--color-border);
+			color: var(--color-text-main);
+			font-size: 0.8rem;
+		}
+
+		.grade-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.grade-grid > div {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+			padding: 7px 9px;
+			border-right: 1px solid var(--color-border);
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.grade-grid span {
+			color: var(--color-text-muted);
+			font-size: 0.58rem;
+		}
+
+		.grade-grid strong {
+			color: var(--color-text-main);
+			font-size: 0.8rem;
+		}
+
+		.average-card {
+			background: color-mix(in srgb, var(--color-primary) 11%, var(--color-surface));
+		}
+
+		.sd-card {
+			background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
 		}
 
 		.table-footer {

@@ -493,6 +493,23 @@
 		.graph-wrapper {
 			height: 230px;
 		}
+		.distribution-header {
+			padding-top: 34px;
+		}
+		.session-switcher {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			width: 100%;
+			border-radius: 12px;
+
+			button {
+				min-width: 0;
+				padding: 8px 5px;
+				border-radius: 9px;
+				font-size: 0.72rem;
+				white-space: normal;
+			}
+		}
 		.distribution-container.expanded {
 			inset: 10px;
 			padding: 16px;

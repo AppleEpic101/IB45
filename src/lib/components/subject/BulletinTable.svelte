@@ -129,6 +129,60 @@
 		</table>
 	</div>
 
+	<div class="mobile-distribution" aria-label={`${name} grade distribution`}>
+		<h4>{name} Grade Distribution</h4>
+		{#if filteredData.length}
+			{#each filteredData as res}
+				<article class="mobile-session-card">
+					<header>
+						<strong>{res.short}</strong>
+						<div>
+							<span>{res.total.toLocaleString('en-US')} candidates</span>
+							<span>Mean {Number(res.mean).toFixed(1)}</span>
+						</div>
+					</header>
+					<div class="markband-grid">
+						{#each ['N', ...markbands] as markband, index}
+							<div>
+								<span>{markband}</span>
+								<strong
+									>{displayDistribution(res.distribution[index], res.total, displayMode)}</strong
+								>
+							</div>
+						{/each}
+					</div>
+				</article>
+			{/each}
+			{#if summary}
+				<article class="mobile-session-card summary-card">
+					<header>
+						<strong>{summary.label}</strong>
+						<div>
+							<span>{summary.total.toLocaleString('en-US')} candidates</span>
+							<span>Mean {summary.mean.toFixed(1)}</span>
+						</div>
+					</header>
+					<div class="markband-grid">
+						{#each ['N', ...markbands] as markband, index}
+							<div>
+								<span>{markband}</span>
+								<strong
+									>{displayDistribution(
+										summary.distribution[index],
+										summary.total,
+										displayMode
+									)}</strong
+								>
+							</div>
+						{/each}
+					</div>
+				</article>
+			{/if}
+		{:else}
+			<p>No results found</p>
+		{/if}
+	</div>
+
 	{#if displayMode === 'count'}
 		<p class="estimate-note">
 			Candidate counts are estimates calculated from the published percentages and may differ
@@ -221,6 +275,10 @@
 		max-width: 100vw;
 	}
 
+	.mobile-distribution {
+		display: none;
+	}
+
 	table {
 		width: max-content;
 		border-collapse: collapse;
@@ -266,12 +324,97 @@
 		}
 
 		.table-controls {
+			align-items: stretch;
 			justify-content: flex-start;
+			width: 100%;
 		}
 
 		.session-switcher {
-			overflow-x: auto;
-			max-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			width: 100%;
+		}
+
+		.session-switcher button {
+			padding: 7px 4px;
+			white-space: normal;
+		}
+
+		.mode-switcher {
+			width: fit-content;
+		}
+
+		.table-wrapper {
+			display: none;
+		}
+
+		.mobile-distribution {
+			display: grid;
+			gap: 10px;
+		}
+
+		.mobile-distribution h4 {
+			margin: 2px 0 0;
+			color: var(--color-text-main);
+			font-size: 0.9rem;
+		}
+
+		.mobile-session-card {
+			overflow: hidden;
+			border: 1px solid var(--color-border);
+			border-radius: 10px;
+			background: var(--color-surface-variant);
+		}
+
+		.mobile-session-card header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 10px;
+			padding: 9px 10px;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.mobile-session-card header > strong {
+			color: var(--color-text-main);
+			font-size: 0.9rem;
+		}
+
+		.mobile-session-card header > div {
+			display: flex;
+			gap: 8px;
+			color: var(--color-text-muted);
+			font-size: 0.64rem;
+		}
+
+		.markband-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.markband-grid > div {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 5px;
+			padding: 8px 9px;
+			border-right: 1px solid var(--color-border);
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.markband-grid span {
+			color: var(--color-text-muted);
+			font-size: 0.65rem;
+		}
+
+		.markband-grid strong {
+			color: var(--color-text-main);
+			font-size: 0.78rem;
+		}
+
+		.summary-card {
+			border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+			background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-variant));
 		}
 	}
 </style>

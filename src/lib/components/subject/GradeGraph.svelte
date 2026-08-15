@@ -22,6 +22,8 @@
 	let chartCanvas;
 	let scatterChart;
 	let expanded = false;
+	let isMobile = false;
+	let mobileAutoSelected = false;
 	const setExpanded = async (value) => {
 		expanded = value;
 		await tick();
@@ -111,21 +113,22 @@
 		const textColor = getStyle('--color-text-main') || '#0f172a';
 		const gridColor = getStyle('--color-grid') || 'rgba(0, 0, 0, 0.1)';
 		const sessionSummaries = summarizeSessions(results);
-		const labels = sessionSummaries.map((session) => session.short);
+		const chartSessions = isMobile && !expanded ? sessionSummaries.slice(-8) : sessionSummaries;
+		const labels = chartSessions.map((session) => session.short);
 
 		const gradeBoundaries = Array.from({ length: isAE ? 5 : 7 }, (_, i) => ({
 			label: isAE ? ['E', 'D', 'C', 'B', 'A'][i] : `Grade ${i + 1}`,
-			data: sessionSummaries.map((session) => session.boundaries[i].average),
+			data: chartSessions.map((session) => session.boundaries[i].average),
 			boundaryIndex: i,
 			backgroundColor: colors[i],
 			borderColor: borderColors[i],
 			pointBackgroundColor: borderColors[i],
 			pointBorderColor: '#fff',
 			pointBorderWidth: 2,
-			pointRadius: 6,
-			pointHoverRadius: 8,
-			pointHitRadius: 5, // Exact target
-			tension: 0,
+			pointRadius: isMobile ? 5 : 6,
+			pointHoverRadius: isMobile ? 7 : 8,
+			pointHitRadius: isMobile ? 18 : 5,
+			tension: isMobile ? 0.18 : 0,
 			borderWidth: 3,
 			fill: false,
 			hidden: i < 3 && number === 0 // Hide grades 1-3 by default in 'All' view
@@ -139,11 +142,11 @@
 		const finalDatasets = number === 0 ? [...gradeBoundaries] : [gradeBoundaries[number - 1]];
 
 		// Add a dataset for the user's current grade if it's valid AND we are in "All" view
-		if (grade && grade > 0 && grade <= 100 && number === 0) {
+		if (grade && grade > 0 && grade <= 100) {
 			const gradeLineColor = getStyle('--color-primary') || '#3b82f6';
 			finalDatasets.push({
 				label: 'Your Current Score',
-				data: sessionSummaries.map(() => grade),
+				data: chartSessions.map(() => grade),
 				borderColor: gradeLineColor,
 				borderWidth: 3,
 				borderDash: [10, 5],
@@ -168,8 +171,9 @@
 				responsive: true,
 				maintainAspectRatio: false,
 				interaction: {
-					mode: 'point',
-					intersect: true
+					mode: isMobile ? 'nearest' : 'point',
+					axis: isMobile ? 'x' : undefined,
+					intersect: !isMobile
 				},
 				scales: {
 					x: {
@@ -189,7 +193,7 @@
 							color: textColor,
 							maxRotation: 0,
 							autoSkip: true,
-							maxTicksLimit: expanded ? 18 : 12
+							maxTicksLimit: isMobile && !expanded ? 6 : expanded ? 18 : 12
 						}
 					},
 					y: {
@@ -235,7 +239,7 @@
 						displayColors: true,
 						callbacks: {
 							title: function (context) {
-								const session = sessionSummaries[context?.[0]?.dataIndex];
+								const session = chartSessions[context?.[0]?.dataIndex];
 								if (!session) return '';
 								const timezoneLabel =
 									session.results.length > 1 ? ` · ${session.results.length} timezones` : '';
@@ -245,7 +249,7 @@
 								if (context.dataset.label === 'Your Current Score') {
 									return `Your Score: ${context.parsed.y}%`;
 								}
-								const session = sessionSummaries[context.dataIndex];
+								const session = chartSessions[context.dataIndex];
 								const boundary = session?.boundaries[context.dataset.boundaryIndex];
 								if (!boundary) return '';
 								const range =
@@ -262,8 +266,25 @@
 	}
 
 	onMount(() => {
-		createChart();
-		return () => scatterChart?.destroy();
+		const updateMobileView = () => {
+			const nextMobile = window.innerWidth <= 600;
+			if (nextMobile && !isMobile && number === 0) {
+				number = 5;
+				mobileAutoSelected = true;
+			} else if (!nextMobile && mobileAutoSelected && number === 5) {
+				number = 0;
+				mobileAutoSelected = false;
+			}
+			isMobile = nextMobile;
+			createChart();
+		};
+
+		updateMobileView();
+		window.addEventListener('resize', updateMobileView);
+		return () => {
+			window.removeEventListener('resize', updateMobileView);
+			scatterChart?.destroy();
+		};
 	});
 
 	$: {
@@ -304,7 +325,7 @@
 		<div class="header-container">
 			<div class="title" id="historical-chart-title">
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
-				<small>Session averages · hover for timezone range</small>
+				<small>Session averages · {isMobile ? 'tap' : 'hover'} for timezone range</small>
 			</div>
 			<div class="dropdown-container">
 				<Dropdown
@@ -416,10 +437,10 @@
 		}
 
 		.graph {
-			height: 230px;
+			height: 260px;
 		}
 		.graph-wrapper {
-			padding: 1rem;
+			padding: 0.75rem 0.5rem 0.6rem;
 		}
 		.chart-section.expanded {
 			inset: 10px;
