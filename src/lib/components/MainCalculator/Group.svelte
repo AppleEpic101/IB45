@@ -7,6 +7,7 @@
 
 	import courses from '$lib/assets/courses.json';
 	import {
+		availableBoundaries,
 		getPredictorSelectedOptions,
 		selectedBoundary,
 		selectedTimezone,
@@ -18,6 +19,8 @@
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
 	import BoundaryInsight from '$lib/components/MainCalculator/BoundaryInsight.svelte';
+	import CompactSubjectInsights from '$lib/components/MainCalculator/CompactSubjectInsights.svelte';
+	import Bulletin from '$lib/data/bulletin.js';
 
 	import { constructURL } from '$lib/utils/urls.js';
 	import { page } from '$app/stores';
@@ -143,6 +146,28 @@
 
 	$: selectedBoundaryValues =
 		boundaries?.length > 1 ? boundaries[$selectedTimezone] ?? boundaries[0] : boundaries?.[0] ?? [];
+	$: historicalResults = sufficientData
+		? availableBoundaries.flatMap((boundarySession) =>
+				(boundarySession[groupTitle]?.TZ ?? [])
+					.filter((timezoneBoundary) => timezoneBoundary?.length)
+					.map((timezoneBoundary) => ({
+						short: boundarySession.info.short,
+						name: boundarySession.info.name,
+						tz: timezoneBoundary
+					}))
+		  )
+		: [];
+	$: bulletinSession = sufficientData
+		? Bulletin[groupTitle]?.grades?.find(
+				(session) => session.short === $selectedBoundary.info.short
+		  )
+		: undefined;
+	$: percentile =
+		predictedGrade && bulletinSession?.distribution?.length
+			? bulletinSession.distribution
+					.slice(0, predictedGrade)
+					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
+			: undefined;
 	$: marksToNext =
 		inputsComplete && predictedGrade && predictedGrade < selectedBoundaryValues.length
 			? Math.max(0, selectedBoundaryValues[predictedGrade] - predictedScore)
@@ -296,6 +321,18 @@
 					boundaries.length > 1 ? ` · TZ${$selectedTimezone + 1}` : ''
 				}`}
 			/>
+			<CompactSubjectInsights
+				subject={courses[$settings['subject']]?.short}
+				{assessments}
+				scores={$settings['chosenScores']}
+				currentScore={predictedScore}
+				currentGrade={predictedGrade}
+				boundary={selectedBoundaryValues}
+				session={$selectedBoundary.info.short}
+				results={historicalResults}
+				firstAssessment={courses[$settings['subject']]?.firstAssessment}
+				{percentile}
+			/>
 		{:else if inputsComplete}
 			<div class="boundary-unavailable">
 				<strong>Boundary unavailable</strong>
@@ -303,7 +340,7 @@
 			</div>
 		{/if}
 
-		<a href={url} target="_blank"><button class="goto">Goto subject page</button></a>
+		<a href={url} target="_blank"><button class="goto">Full subject analysis →</button></a>
 	{/if}
 </div>
 
