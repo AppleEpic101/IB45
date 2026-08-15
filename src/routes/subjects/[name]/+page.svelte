@@ -198,7 +198,14 @@
 
 		{#if showGradeGraphs}
 			<div class="graph">
-				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
+				<Bargraph
+					name={syllabus.name}
+					{level}
+					{SLResults}
+					{HLResults}
+					{grade}
+					firstAssessment={syllabus.firstAssessment}
+				/>
 			</div>
 		{/if}
 
@@ -393,8 +400,8 @@
 	}
 
 	.graph {
-		margin: 20px auto 40px auto;
-		max-width: 75vh;
+		width: 100%;
+		margin: 24px 0 40px;
 	}
 
 	.grade {

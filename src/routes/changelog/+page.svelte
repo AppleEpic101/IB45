@@ -20,7 +20,8 @@
 				'Expanded the exam-session switcher so students can compare November and May sessions.',
 				'Marked the May 2025 figures as provisional to match the source bulletin.',
 				'Redesigned the assistant as a modern AI workspace with image uploads, tool activity, and automatic subject-mark entry.',
-				'Added inline subject boundaries, grade margins, and a compact diploma summary to the main calculator.'
+				'Added inline subject boundaries, grade margins, and a compact diploma summary to the main calculator.',
+				'Introduced experimental November 2026 boundary forecasts with prediction intervals, rolling backtests, and personalized grade probabilities.'
 			],
 			latest: true
 		},
