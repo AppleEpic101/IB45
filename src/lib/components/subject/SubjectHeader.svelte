@@ -1,5 +1,6 @@
 <script>
 	import BackButton from './BackButton.svelte';
+	import SubjectIcon from './SubjectIcon.svelte';
 	export let syllabus;
 	export let level;
 	export let language;
@@ -23,11 +24,14 @@
 				<span class="badge level-badge {level}">{level} Level</span>
 			{/if}
 		</div>
-		<h1>
-			{language || ''}
-			{syllabus.name}
-			<span class="assessment-year">{syllabus.firstAssessment}–Present</span>
-		</h1>
+		<div class="title-row">
+			<SubjectIcon subject={syllabus.short} size="large" />
+			<h1>
+				{language || ''}
+				{syllabus.name}
+				<span class="assessment-year">{syllabus.firstAssessment}–Present</span>
+			</h1>
+		</div>
 		<div class="stats-row">
 			<span class="subject-type">
 				{#if syllabus.groupNumber.length === 2}
@@ -67,6 +71,13 @@
 	.metadata {
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	.title-row {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		min-width: 0;
 	}
 
 	.badge {
@@ -131,6 +142,11 @@
 	}
 
 	@media (max-width: 600px) {
+		.title-row {
+			align-items: flex-start;
+			gap: 0.75rem;
+		}
+
 		h1 {
 			font-size: 1.85rem;
 			.assessment-year {
