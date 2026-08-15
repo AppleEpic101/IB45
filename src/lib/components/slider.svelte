@@ -44,8 +44,8 @@
 	}
 
 	.slider {
+		box-sizing: border-box;
 		padding: 8px 10px;
-		margin-right: 5px;
 		margin-bottom: 0;
 		border: 1px solid var(--color-border);
 		background-color: var(--color-surface-variant);
@@ -77,11 +77,23 @@
 	.c {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
+		gap: 8px;
 		position: relative;
 	}
 
+	.c > p {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+		min-width: auto;
+		white-space: nowrap;
+	}
+
 	input[type='range'] {
-		width: 100%;
+		flex: 1;
+		min-width: 0;
+		width: auto;
 		-webkit-appearance: none;
 		appearance: none;
 		cursor: pointer;
@@ -113,14 +125,18 @@
 		border-radius: 6px;
 		background-color: var(--color-surface);
 		color: var(--color-text-main);
-		margin-left: 4px;
+		margin: 0 6px 0 0;
 		position: relative;
 		top: -2px;
 	}
 
-	@media screen and (max-width: 380px) {
-		input[type='range'] {
-			width: 27vw;
+	@media screen and (max-width: 600px) {
+		.slider {
+			padding: 10px 12px;
+		}
+
+		input[type='number'] {
+			width: 3.4em;
 		}
 	}
 </style>

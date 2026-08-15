@@ -64,6 +64,7 @@
 	}
 
 	function createChart() {
+		if (!chartCanvas) return;
 		if (!results || results.length === 0) {
 			showGraph = false;
 			return;
@@ -282,8 +283,8 @@
 		</button>
 		<div class="header-container">
 			<div class="title" id="historical-chart-title">
-				Historical Grade Boundaries for<br />
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
+				<small>Boundary trend</small>
 			</div>
 			<div class="dropdown-container">
 				<Dropdown
@@ -307,6 +308,7 @@
 <style lang="scss">
 	.chart-section {
 		position: relative;
+		padding-top: 2px;
 	}
 
 	.chart-section.expanded {
@@ -358,10 +360,11 @@
 
 	.header-container {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-bottom: 2rem;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: 12px;
 		gap: 1rem;
+		padding-right: 104px;
 	}
 
 	.graph-wrapper {
@@ -369,8 +372,8 @@
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		padding: 1.5rem;
-		box-shadow: var(--shadow-md);
-		margin: 1rem 0;
+		box-shadow: none;
+		margin: 0;
 	}
 
 	.graph {
@@ -386,6 +389,12 @@
 	}
 
 	@media screen and (max-width: 600px) {
+		.header-container {
+			align-items: flex-start;
+			flex-direction: column;
+			padding-right: 44px;
+		}
+
 		.graph {
 			height: 230px;
 		}
@@ -406,23 +415,29 @@
 	}
 
 	.title {
-		font-size: 1.25rem;
-		font-weight: 600;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 1rem;
+		font-weight: 800;
 		color: var(--color-text-main);
-		text-align: center;
+		text-align: left;
 		line-height: 1.4;
 
 		span {
-			color: var(--color-primary);
-			font-weight: 800;
-			font-size: 1.5rem;
+			color: var(--color-text-main);
+			font-size: 1.05rem;
+		}
+
+		small {
+			color: var(--color-text-muted);
+			font-size: 0.75rem;
+			font-weight: 500;
 		}
 	}
 
 	.dropdown-container {
 		display: flex;
-		justify-content: center;
-		width: 100%;
-		max-width: 250px;
+		justify-content: flex-end;
 	}
 </style>

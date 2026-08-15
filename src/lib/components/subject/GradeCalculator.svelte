@@ -289,24 +289,32 @@
 	}
 
 	.assessments {
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) minmax(320px, 1fr);
 		gap: 24px;
-		align-items: flex-start;
+		align-items: stretch;
 		margin-top: 0;
 
 		.left {
-			flex: 1.4;
 			display: flex;
 			flex-direction: column;
 			gap: 7px;
+			min-width: 0;
+
+			:global(.slider) {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
 		}
 	}
 
 	.right {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
+		min-width: 0;
+		height: 100%;
 		position: sticky;
 		top: 100px;
 
@@ -318,6 +326,10 @@
 			border-radius: 12px;
 			margin: 0;
 			box-shadow: var(--shadow-md);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 
 			.predicted {
 				margin-top: 8px;
@@ -358,8 +370,15 @@
 			flex-direction: column;
 		}
 		.assessments {
+			display: flex;
 			flex-direction: column;
+			align-items: stretch;
 			gap: 20px;
+
+			.left,
+			.right {
+				width: 100%;
+			}
 		}
 
 		.right {

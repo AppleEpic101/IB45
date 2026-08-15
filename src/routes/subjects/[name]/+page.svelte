@@ -200,34 +200,43 @@
 			</div>
 		{/if}
 
-		<div class="grade">
-			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
+		<section class="grade" aria-labelledby="historical-boundaries-title">
+			<header class="grade-header">
+				<div>
+					<h4 id="historical-boundaries-title">Historical Grade Boundaries</h4>
+					<p>Compare official grade thresholds across examination sessions.</p>
+				</div>
+				<div class="grade-controls">
+					{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
+						{#if !data.data.SLOnly}
+							<div class="grade-control">
+								<span>Level</span>
+								<ToggleSelect
+									identifier="e"
+									arr={['SL', 'HL']}
+									arrVal={['SL', 'HL']}
+									bind:value={level}
+								/>
+							</div>
+						{/if}
+					{/if}
+					{#if data.data.isLang}
+						<div class="grade-control">
+							<span>Language</span>
+							{#if syllabus.name === 'Classical Language'}
+								<Dropdown arr={classical} bind:value={language} />
+							{:else}
+								<Dropdown arr={languages} bind:value={language} />
+							{/if}
+						</div>
+					{/if}
+				</div>
+			</header>
 			{#if data.data.SLOnly}
-				<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+				<h5>
 					{syllabus.name} is offered only at the SL level
 				</h5>
 			{/if}
-			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-				{#if !data.data.SLOnly}
-					<ToggleSelect
-						identifier="e"
-						arr={['SL', 'HL']}
-						arrVal={['SL', 'HL']}
-						bind:value={level}
-					/>
-				{/if}
-			{/if}
-			<div class="dropdown">
-				{#if data.data.isLang && syllabus.name === 'Classical Language'}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-						<Dropdown arr={classical} bind:value={language} />
-					</div>
-				{:else if data.data.isLang}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-						<Dropdown arr={languages} bind:value={language} />
-					</div>
-				{/if}
-			</div>
 
 			{#if showGradeGraphs}
 				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
@@ -256,7 +265,7 @@
 					/>
 				</div>{/if}
 			<Footnote />
-		</div>
+		</section>
 	{/if}
 </div>
 
@@ -302,7 +311,9 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
-		margin-top: 10px;
+		margin-top: 22px;
+		padding-top: 20px;
+		border-top: 1px solid var(--color-border);
 	}
 
 	.bulletin-panel {
@@ -330,9 +341,62 @@
 		max-width: 75vh;
 	}
 
-	.dropdown {
+	.grade {
+		margin: 28px 0 0;
+		padding: 22px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.grade-header {
 		display: flex;
-		justify-content: center;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 18px;
+		padding-bottom: 18px;
+		border-bottom: 1px solid var(--color-border);
+
+		h4,
+		p {
+			margin: 0;
+		}
+
+		h4 {
+			color: var(--color-text-main);
+			font-size: 1.35rem;
+		}
+
+		p {
+			margin-top: 4px;
+			color: var(--color-text-muted);
+			font-size: 0.86rem;
+		}
+	}
+
+	.grade-controls {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.grade-control {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+
+		> span {
+			color: var(--color-text-muted);
+			font-size: 0.68rem;
+			font-weight: 800;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
 	}
 
 	@media screen and (max-width: 500px) {
@@ -345,6 +409,17 @@
 		}
 		.bulletin-panel {
 			padding: 14px;
+		}
+		.grade {
+			padding: 14px;
+		}
+		.grade-header {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		.grade-controls {
+			justify-content: flex-start;
+			width: 100%;
 		}
 	}
 </style>
