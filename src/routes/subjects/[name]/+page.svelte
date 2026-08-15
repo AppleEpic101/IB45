@@ -257,9 +257,14 @@
 							Average shows the typical boundary. Standard deviation shows how much it has varied.
 						</p>
 					</div>
-					<BoundaryTable name={selectedTableLevel + ' ' + name} res={selectedBoundaryResults} />
+					{#key selectedTableLevel}
+						<BoundaryTable name={selectedTableLevel + ' ' + name} res={selectedBoundaryResults} />
+					{/key}
 				{/if}
 			</div>
+		</section>
+
+		<div class="historical-support">
 			{#if !data.data.isCore}
 				<div class="excel">
 					<Excel
@@ -273,7 +278,7 @@
 					/>
 				</div>{/if}
 			<Footnote />
-		</section>
+		</div>
 	{/if}
 </div>
 
@@ -381,6 +386,10 @@
 	.excel {
 		display: flex;
 		justify-content: center;
+	}
+
+	.historical-support {
+		margin-top: 16px;
 	}
 
 	.graph {
