@@ -1,12 +1,10 @@
 <script>
-	import SubjectIcon from '$lib/components/subject/SubjectIcon.svelte';
 	import {
 		buildHistoricalComparisons,
 		buildHistoricalConfidence,
 		buildImprovementStrategy
 	} from '$lib/utils/strategy.js';
 
-	export let subject = '';
 	export let assessments = [];
 	export let scores = [];
 	export let currentScore;
@@ -50,11 +48,6 @@
 {#if improvement || confidence || comparisons.length || percentile !== undefined}
 	<section class="subject-insights" aria-label="Compact subject analysis">
 		<div class="insight-grid">
-			<div class="subject-marker" title="Subject analysis">
-				<SubjectIcon {subject} size="small" />
-				<span>At a glance</span>
-			</div>
-
 			<div class="insight primary">
 				<span>Best next move</span>
 				{#if bestOption}
@@ -151,26 +144,14 @@
 
 	.insight-grid {
 		display: grid;
-		grid-template-columns: auto repeat(4, minmax(112px, 1fr));
+		grid-template-columns: repeat(4, minmax(112px, 1fr));
 		align-items: stretch;
 	}
 
-	.subject-marker,
 	.insight {
 		min-width: 0;
 		padding: 10px;
 		border-right: 1px solid var(--color-border);
-	}
-
-	.subject-marker {
-		display: grid;
-		place-items: center;
-		gap: 4px;
-		color: var(--color-text-muted);
-		font-size: 0.62rem;
-		font-weight: 750;
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
 	}
 
 	.insight {
@@ -271,15 +252,11 @@
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.subject-marker {
-			display: none;
-		}
-
 		.insight {
 			border-bottom: 1px solid var(--color-border);
 		}
 
-		.insight:nth-child(odd) {
+		.insight:nth-child(even) {
 			border-right: 0;
 		}
 

@@ -322,7 +322,6 @@
 				}`}
 			/>
 			<CompactSubjectInsights
-				subject={courses[$settings['subject']]?.short}
 				{assessments}
 				scores={$settings['chosenScores']}
 				currentScore={predictedScore}
