@@ -4,6 +4,7 @@
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import Meter from '$lib/components/subject/Meter.svelte';
 	import GradeBoundaryUsed from '$lib/components/subject/GradeBoundaryUsed.svelte';
+	import Bulletin from '$lib/data/bulletin.js';
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
@@ -39,8 +40,26 @@
 
 	let str;
 	let gradeBoundaryUsed;
+	$: selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
+	$: bulletinName = `${level} ${data.isLang ? `${language} ` : ''}${data.name}`;
+	$: bulletinSession = Bulletin[bulletinName]?.grades?.find(
+		(session) => session.short === selectedBoundary?.short
+	);
+	$: numericMark = Number(mark);
+	$: percentile =
+		Number.isInteger(numericMark) &&
+		numericMark >= 1 &&
+		numericMark <= 7 &&
+		bulletinSession?.distribution?.length
+			? bulletinSession.distribution
+					.slice(0, numericMark)
+					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
+			: undefined;
+	$: percentileLabel = percentile?.toLocaleString('en-US', {
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 1
+	});
 	$: {
-		const selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
 		const hasResults =
 			data.isCore || (level === 'HL' ? HLResults.length > 0 : SLResults.length > 0);
 
@@ -146,6 +165,15 @@
 				{/if}
 
 				<div class="pp">{str}</div>
+				{#if percentile !== undefined}
+					<div class="percentile-summary" aria-live="polite">
+						<strong>{percentileLabel}%</strong>
+						<span>
+							Beats {percentileLabel}% of test takers
+							<small>{bulletinSession.name} · lower final grades</small>
+						</span>
+					</div>
+				{/if}
 			</div>
 			<div class="predicted">
 				<div class="row">
@@ -186,6 +214,36 @@
 		text-align: center;
 	}
 
+	.percentile-summary {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 6px;
+		padding: 6px 8px;
+		border: 1px solid color-mix(in srgb, var(--color-primary) 42%, var(--color-border));
+		border-radius: 9px;
+		background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+
+		strong {
+			color: var(--color-primary);
+			font-size: 1rem;
+		}
+
+		span {
+			display: flex;
+			flex-direction: column;
+			color: var(--color-text-main);
+			font-size: 0.72rem;
+			font-weight: 700;
+		}
+
+		small {
+			color: var(--color-text-muted);
+			font-size: 0.62rem;
+			font-weight: 500;
+		}
+	}
+
 	.no-result {
 		display: grid;
 		place-items: center;
@@ -197,10 +255,11 @@
 
 	.calculator-controls {
 		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		margin-bottom: 2.5rem;
-		padding: 1.5rem;
+		flex-direction: row;
+		align-items: flex-end;
+		gap: 1.25rem;
+		margin-bottom: 1rem;
+		padding: 1rem;
 		background-color: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
@@ -209,7 +268,7 @@
 
 	.control-group {
 		display: flex;
-		gap: 3rem;
+		gap: 1.25rem;
 		flex-wrap: wrap;
 		align-items: flex-start;
 	}
@@ -232,15 +291,15 @@
 	.assessments {
 		display: flex;
 		flex-direction: row;
-		gap: 32px;
+		gap: 24px;
 		align-items: flex-start;
-		margin-top: 20px;
+		margin-top: 0;
 
 		.left {
 			flex: 1.4;
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
+			gap: 7px;
 		}
 	}
 
@@ -254,14 +313,14 @@
 		.container {
 			background-color: var(--color-surface-variant);
 			color: var(--color-text-main);
-			padding: 20px;
+			padding: 12px;
 			border: 1px solid var(--color-border);
 			border-radius: 12px;
 			margin: 0;
 			box-shadow: var(--shadow-md);
 
 			.predicted {
-				margin-top: 20px;
+				margin-top: 8px;
 
 				.row {
 					display: flex;
@@ -271,20 +330,33 @@
 
 			.x {
 				text-align: center;
-				font-size: 32px;
+				font-size: 22px;
 				font-weight: 800;
 				padding: 0 20px;
-				margin-bottom: 10px;
+				margin-bottom: 4px;
 			}
 
 			.y {
-				font-size: 20px;
+				font-size: 15px;
 				font-weight: bold;
 			}
+		}
+
+		:global(svg) {
+			width: 150px;
+			height: 90px;
+		}
+
+		:global(table) {
+			margin-top: 8px;
 		}
 	}
 
 	@media (max-width: 850px) {
+		.calculator-controls {
+			align-items: flex-start;
+			flex-direction: column;
+		}
 		.assessments {
 			flex-direction: column;
 			gap: 20px;

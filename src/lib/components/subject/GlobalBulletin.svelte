@@ -31,18 +31,6 @@
 		distribution = data?.distribution;
 	}
 
-	$: numericMark = Number(mark);
-	$: percentile =
-		Number.isInteger(numericMark) && numericMark >= 1 && numericMark <= 7 && distribution?.length
-			? distribution
-					.slice(0, numericMark)
-					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
-			: undefined;
-	$: percentileLabel = percentile?.toLocaleString('en-US', {
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 1
-	});
-
 	let canvas;
 	let chartInstance;
 	let chartUpdateId = 0;
@@ -343,15 +331,6 @@
 					{/each}
 				</div>
 			{/if}
-			{#if percentile !== undefined}
-				<div class="percentile-insight" aria-live="polite">
-					<span class="percentile-value">{percentileLabel}%</span>
-					<span>
-						<strong>This beats {percentileLabel}% of test takers</strong>
-						<small>Based on candidates who received a lower final grade in {data?.name}.</small>
-					</span>
-				</div>
-			{/if}
 		</div>
 		<div class="graph-wrapper">
 			{#key selectedShort}
@@ -495,41 +474,6 @@
 		}
 	}
 
-	.percentile-insight {
-		display: inline-flex;
-		align-items: center;
-		gap: 12px;
-		margin: 16px auto 0;
-		padding: 10px 14px;
-		border: 1px solid color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
-		border-radius: 12px;
-		background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
-		text-align: left;
-
-		.percentile-value {
-			color: var(--color-primary);
-			font-size: 1.25rem;
-			font-weight: 800;
-			line-height: 1;
-		}
-
-		span:last-child {
-			display: flex;
-			flex-direction: column;
-			gap: 2px;
-		}
-
-		strong {
-			color: var(--color-text-main);
-			font-size: 0.9rem;
-		}
-
-		small {
-			color: var(--color-text-muted);
-			font-size: 0.75rem;
-		}
-	}
-
 	.graph-wrapper {
 		height: 280px;
 		position: relative;
@@ -546,10 +490,6 @@
 			padding: 16px;
 		}
 
-		.percentile-insight {
-			align-items: flex-start;
-			width: 100%;
-		}
 		.graph-wrapper {
 			height: 230px;
 		}

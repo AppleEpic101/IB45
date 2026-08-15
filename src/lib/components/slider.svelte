@@ -26,8 +26,10 @@
 
 {#key max}
 	<div class="slider">
-		<p class="name">{name}</p>
-		<p>Weight: {weight * 100}%</p>
+		<div class="slider-header">
+			<p class="name">{name}</p>
+			<p class="weight">{weight * 100}%</p>
+		</div>
 		<div class="c">
 			<input type="range" bind:value {min} {max} />
 			<p><input type="number" bind:value {min} {max} /> / {max}</p>
@@ -42,20 +44,35 @@
 	}
 
 	.slider {
-		padding: 10px;
+		padding: 8px 10px;
 		margin-right: 5px;
-		margin-bottom: 5px;
+		margin-bottom: 0;
 		border: 1px solid var(--color-border);
 		background-color: var(--color-surface-variant);
 		border-radius: 5px;
 		width: 100%;
 	}
 
+	.slider-header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 4px;
+	}
+
 	.name {
 		font-style: italic;
 		font-weight: bold;
-		font-size: 18px;
-		margin-bottom: 5px;
+		font-size: 15px;
+		margin-bottom: 0;
+	}
+
+	.weight {
+		min-width: auto;
+		color: var(--color-text-muted);
+		font-size: 0.75rem;
+		font-weight: 700;
 	}
 	.c {
 		display: flex;

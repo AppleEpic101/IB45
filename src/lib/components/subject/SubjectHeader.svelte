@@ -48,10 +48,10 @@
 
 <style lang="scss">
 	.subject-header {
-		margin-bottom: 2.5rem;
+		margin-bottom: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.6rem;
 	}
 
 	.nav-row {
@@ -61,7 +61,7 @@
 	.header-main {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 0.45rem;
 	}
 
 	.metadata {
@@ -97,7 +97,7 @@
 
 	h1 {
 		margin: 0;
-		font-size: 2.5rem;
+		font-size: 2.15rem;
 		font-weight: 800;
 		letter-spacing: -0.03em;
 		line-height: 1.1;
@@ -106,7 +106,7 @@
 		.assessment-year {
 			color: var(--color-text-muted);
 			font-weight: 400;
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			margin-left: 0.5rem;
 			letter-spacing: -0.01em;
 		}
