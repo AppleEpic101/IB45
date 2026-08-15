@@ -4,6 +4,7 @@
 	export let coreComplete = true;
 
 	import { selectedBoundaryId, selectedTimezone } from '$lib/stores/stores.js';
+	import diplomaSessions, { estimateDiplomaPercentile } from '$lib/data/diplomaSessions.js';
 	import Refresh from './Refresh.svelte';
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
@@ -16,6 +17,12 @@
 	$: totalPoints =
 		completedSubjects.reduce((total, summary) => total + (summary.grade || 0), 0) +
 		(coreComplete ? gradeData.coreGrade : 0);
+	$: sessionStats = diplomaSessions[$selectedBoundaryId];
+	$: diplomaPercentile = gradesAvailable
+		? estimateDiplomaPercentile(totalPoints, sessionStats)
+		: null;
+	$: pointsFromMean =
+		gradesAvailable && sessionStats ? totalPoints - sessionStats.meanTotalPoints : null;
 
 	$: hlGrades = completedSubjects
 		.filter((summary) => summary.level === 'HL' && summary.grade)
@@ -168,6 +175,39 @@
 		</div>
 	{/if}
 
+	{#if sessionStats}
+		<section class="peer-comparison" aria-label={`${sessionStats.name} diploma comparison`}>
+			<div class="comparison-heading">
+				<span>Session comparison</span>
+				<strong>{sessionStats.name}</strong>
+			</div>
+
+			{#if diplomaPercentile !== null}
+				<div class="standing">
+					<strong>Beats ~{diplomaPercentile}%</strong>
+					<span>of Diploma/Retake students</span>
+				</div>
+				<div class="percentile-track" aria-label={`Estimated percentile ${diplomaPercentile}`}>
+					<span style={`width: ${diplomaPercentile}%`} />
+				</div>
+				<p class:below-mean={pointsFromMean < 0}>
+					{totalPoints} points · {Math.abs(pointsFromMean).toFixed(1)}
+					{pointsFromMean >= 0 ? 'above' : 'below'} the session mean
+				</p>
+			{:else}
+				<div class="benchmark">
+					<div><strong>{sessionStats.meanTotalPoints}</strong><span>Mean points</span></div>
+					<div><strong>{sessionStats.passRate}%</strong><span>Pass rate</span></div>
+				</div>
+				<p>Complete all six subjects to estimate your standing.</p>
+			{/if}
+
+			<small
+				>{sessionStats.diplomaResultsStudents.toLocaleString()} published results · grouped-data estimate</small
+			>
+		</section>
+	{/if}
+
 	<div class="meta">
 		<span>HL: {hlCount} · SL: {slCount}</span>
 		<span>{$selectedBoundaryId} · TZ{$selectedTimezone + 1}</span>
@@ -243,6 +283,95 @@
 		color: var(--color-text-muted);
 		font-size: 0.66rem;
 		line-height: 1.45;
+	}
+
+	.peer-comparison {
+		display: grid;
+		gap: 8px;
+		border-top: 1px solid var(--color-border);
+		padding: 12px;
+		text-align: left;
+	}
+
+	.comparison-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+	}
+
+	.comparison-heading span,
+	.peer-comparison small {
+		color: var(--color-text-muted);
+		font-size: 0.62rem;
+	}
+
+	.comparison-heading span {
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.comparison-heading strong {
+		font-size: 0.7rem;
+	}
+
+	.standing {
+		display: grid;
+		gap: 1px;
+	}
+
+	.standing strong {
+		color: var(--color-primary-dark);
+		font-size: 1.05rem;
+	}
+
+	.standing span,
+	.peer-comparison p,
+	.benchmark span {
+		color: var(--color-text-muted);
+		font-size: 0.66rem;
+	}
+
+	.peer-comparison p {
+		margin: 0;
+	}
+
+	.peer-comparison p.below-mean {
+		color: #d97706;
+	}
+
+	.percentile-track {
+		height: 5px;
+		overflow: hidden;
+		border-radius: 999px;
+		background: var(--color-surface-variant);
+	}
+
+	.percentile-track span {
+		display: block;
+		height: 100%;
+		border-radius: inherit;
+		background: var(--color-primary-dark);
+	}
+
+	.benchmark {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 6px;
+	}
+
+	.benchmark div {
+		display: grid;
+		gap: 1px;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		padding: 7px;
+		background: var(--color-surface-variant);
+	}
+
+	.benchmark strong {
+		font-size: 0.84rem;
 	}
 
 	.meta {

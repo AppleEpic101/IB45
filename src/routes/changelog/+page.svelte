@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Added session-level diploma benchmarks and an estimated overall-score percentile to the main calculator.',
 				'Added grade strategy tools with next-grade recommendations, assessment impact, historical confidence, and session-by-session what-if results.',
 				'Brought compact next-grade strategy, confidence, percentile, assessment impact, and historical what-if insights into the main calculator.',
 				'Added final May 2023 results for 164 subject and level combinations and November 2023 results for 100.',
