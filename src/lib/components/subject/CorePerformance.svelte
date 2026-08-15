@@ -14,6 +14,14 @@
 	$: selectedGroup = EE_SUBJECT_GROUPS.find((group) => group.value === subjectGroup);
 	const performanceSessions = Object.entries(corePerformance).reverse();
 	const gradeName = (label) => (label === 'N' ? 'No grade' : `Grade ${label}`);
+	const gradeColors = {
+		A: '#8b5cf6',
+		B: '#3b82f6',
+		C: '#14b8a6',
+		D: '#22c55e',
+		E: '#f59e0b',
+		N: '#ef476f'
+	};
 </script>
 
 {#if comparison}
@@ -24,11 +32,7 @@
 	>
 		<header>
 			<div>
-				{#if !compact}<span class="eyebrow">Session performance</span>{/if}
-				<h4>
-					{compact ? comparison.sessionName : `Compare your ${type === 'ee' ? 'EE' : 'TOK'} grade`}
-				</h4>
-				{#if !compact}<p>Official {comparison.sessionName} results</p>{/if}
+				<h4>{compact ? comparison.sessionName : 'Global Grade Distribution'}</h4>
 			</div>
 
 			<div class="filters">
@@ -66,6 +70,28 @@
 					<span>Beats {comparison.lowerShare}% of TOK students</span>
 				</div>
 			</div>
+
+			{#if !compact}
+				<div class="tok-chart" aria-label={`${comparison.sessionName} TOK grade distribution`}>
+					{#each [...comparison.entries].reverse() as entry}
+						<div
+							class="chart-column"
+							class:current={entry.label === grade}
+							aria-label={`${gradeName(entry.label)}: ${entry.percentage}%`}
+						>
+							<div
+								class="chart-bar"
+								style={`--bar-height:${Math.min(entry.percentage * 2, 100)}%;--bar-color:${
+									gradeColors[entry.label]
+								}`}
+							>
+								{#if entry.label === grade}<strong>{entry.percentage}%</strong>{/if}
+							</div>
+							<span>{entry.label}</span>
+						</div>
+					{/each}
+				</div>
+			{/if}
 
 			{#if !compact}
 				<details>
@@ -137,8 +163,7 @@
 		justify-content: space-between;
 		gap: 18px;
 	}
-	h4,
-	p {
+	h4 {
 		margin: 0;
 	}
 	h4 {
@@ -146,12 +171,10 @@
 		color: var(--color-text-main);
 		font-size: 1.15rem;
 	}
-	p,
 	footer {
 		color: var(--color-text-muted);
 		font-size: 0.72rem;
 	}
-	.eyebrow,
 	label > span {
 		color: var(--color-primary);
 		font-size: 0.65rem;
@@ -216,6 +239,61 @@
 		align-self: center;
 		color: var(--color-primary);
 		font-size: 1.5rem;
+	}
+	.tok-chart {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		align-items: end;
+		gap: 12px;
+		height: 230px;
+		margin-top: 14px;
+		padding: 24px 20px 12px;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		background: repeating-linear-gradient(
+				to bottom,
+				transparent 0,
+				transparent 24%,
+				var(--color-border) 24.5%,
+				transparent 25%
+			),
+			var(--color-surface-variant);
+	}
+	.chart-column {
+		display: grid;
+		grid-template-rows: 1fr auto;
+		align-items: end;
+		gap: 7px;
+		height: 100%;
+		text-align: center;
+	}
+	.chart-column > span {
+		color: var(--color-text-muted);
+		font-size: 0.72rem;
+		font-weight: 800;
+	}
+	.chart-bar {
+		position: relative;
+		width: min(66px, 76%);
+		height: var(--bar-height);
+		min-height: 3px;
+		margin: 0 auto;
+		border-radius: 7px 7px 2px 2px;
+		background: var(--bar-color);
+		opacity: 0.68;
+	}
+	.chart-column.current .chart-bar {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 3px;
+		opacity: 1;
+	}
+	.chart-bar strong {
+		position: absolute;
+		top: -22px;
+		left: 50%;
+		translate: -50% 0;
+		color: var(--color-primary);
+		font-size: 0.72rem;
 	}
 	details {
 		margin-top: 10px;
@@ -372,6 +450,11 @@
 		}
 		.distribution {
 			grid-template-columns: repeat(3, 1fr);
+		}
+		.tok-chart {
+			gap: 7px;
+			height: 190px;
+			padding-inline: 10px;
 		}
 		.compact .summary {
 			grid-template-columns: repeat(3, 1fr);
