@@ -23,7 +23,14 @@
 	$settings['chosenScores'] = $settings['chosenScores'] || { tok: [], ee: [] };
 	$settings['chosenScores']['tok'] = $settings['chosenScores']['tok'] || [];
 	$settings['chosenScores']['ee'] = $settings['chosenScores']['ee'] || [];
-	$settings['enteredScores'] = $settings['enteredScores'] || { tok: [], ee: [] };
+	$settings['enteredScores'] = $settings['enteredScores'] || {
+		tok: $settings['chosenScores']['tok'].map(
+			(score) => score !== undefined && score !== null && score !== ''
+		),
+		ee: $settings['chosenScores']['ee'].map(
+			(score) => score !== undefined && score !== null && score !== ''
+		)
+	};
 	$settings['enteredScores']['tok'] = $settings['enteredScores']['tok'] || [];
 	$settings['enteredScores']['ee'] = $settings['enteredScores']['ee'] || [];
 

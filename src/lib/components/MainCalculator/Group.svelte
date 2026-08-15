@@ -24,7 +24,9 @@
 
 	let settings = getPredictorSelectedOptions(group);
 	$settings['chosenScores'] = $settings['chosenScores'] || [];
-	$settings['enteredScores'] = $settings['enteredScores'] || [];
+	$settings['enteredScores'] =
+		$settings['enteredScores'] ||
+		$settings['chosenScores'].map((score) => score !== undefined && score !== null && score !== '');
 
 	let selectedGroup;
 	$: selectedGroup = $settings['groupSixGroup'] !== undefined ? $settings['groupSixGroup'] : group;
