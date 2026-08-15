@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import { darkMode } from '$lib/stores/stores.js';
 
@@ -41,6 +41,15 @@
 	const labels = len === 7 ? ['1', '2', '3', '4', '5', '6', '7'] : ['E', 'D', 'C', 'B', 'A'];
 	let chartCanvas;
 	let chartInstance;
+	let expanded = false;
+	const setExpanded = async (value) => {
+		expanded = value;
+		await tick();
+		chartInstance?.resize();
+	};
+	const closeOnEscape = (event) => {
+		if (expanded && event.key === 'Escape') setExpanded(false);
+	};
 
 	const createChart = () => {
 		if (!chartCanvas) return;
@@ -123,9 +132,35 @@
 	}
 </script>
 
-<div class="distribution-container">
+<svelte:window on:keydown={closeOnEscape} />
+
+{#if expanded}
+	<button
+		type="button"
+		class="modal-backdrop"
+		aria-label="Close expanded probability graph"
+		on:click={() => setExpanded(false)}
+	/>
+{/if}
+<div
+	class="distribution-container"
+	class:expanded
+	role={expanded ? 'dialog' : undefined}
+	aria-modal={expanded ? 'true' : undefined}
+	aria-labelledby="probability-title"
+>
+	<button
+		type="button"
+		class="expand-button"
+		aria-label={expanded ? 'Close expanded graph' : 'Expand graph'}
+		title={expanded ? 'Close' : 'Expand graph'}
+		on:click={() => setExpanded(!expanded)}
+	>
+		<span aria-hidden="true">{expanded ? '×' : '↗'}</span>
+		<span>{expanded ? 'Close' : 'Expand'}</span>
+	</button>
 	<div class="distribution-header">
-		<h4 class="title">Predicted Mark Probability</h4>
+		<h4 class="title" id="probability-title">Predicted Mark Probability</h4>
 		<p class="subtitle">Likelihood of each grade based on historical session boundaries</p>
 	</div>
 	<div class="graph-wrapper">
@@ -135,12 +170,56 @@
 
 <style lang="scss">
 	.distribution-container {
+		position: relative;
 		background-color: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		padding: 24px;
 		margin: 20px 0 40px 0;
 		box-shadow: var(--shadow-md);
+
+		&.expanded {
+			position: fixed;
+			inset: 24px;
+			z-index: 1001;
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			background: var(--color-surface);
+		}
+	}
+
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		border: 0;
+		background: rgba(2, 6, 23, 0.74);
+		cursor: zoom-out;
+	}
+
+	.expand-button {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 7px 10px;
+		border: 1px solid var(--color-border);
+		border-radius: 9px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
+		font: inherit;
+		font-size: 0.78rem;
+		font-weight: 700;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			border-color: var(--color-primary);
+			color: var(--color-primary);
+		}
 	}
 
 	.distribution-header {
@@ -164,7 +243,35 @@
 	}
 
 	.graph-wrapper {
-		height: 40vh;
+		height: 260px;
 		position: relative;
+	}
+
+	.expanded .graph-wrapper {
+		flex: 1;
+		height: auto;
+		min-height: 0;
+	}
+
+	@media (max-width: 600px) {
+		.distribution-container {
+			padding: 16px;
+		}
+
+		.distribution-container.expanded {
+			inset: 10px;
+		}
+
+		.graph-wrapper {
+			height: 220px;
+		}
+
+		.expanded .graph-wrapper {
+			height: auto;
+		}
+
+		.expand-button span:last-child {
+			display: none;
+		}
 	}
 </style>

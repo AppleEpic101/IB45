@@ -1,6 +1,5 @@
 <script>
-	import { fade, fly, scale } from 'svelte/transition';
-	import Slider from '$lib/components/slider.svelte';
+	import { fly } from 'svelte/transition';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
@@ -14,7 +13,6 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { onMount } from 'svelte';
 
-	import BackButton from '$lib/components/subject/BackButton.svelte';
 	import SubjectHeader from '$lib/components/subject/SubjectHeader.svelte';
 	import Syllabus from '$lib/components/subject/Syllabus.svelte';
 	import GradeCalculator from '$lib/components/subject/GradeCalculator.svelte';
@@ -22,7 +20,6 @@
 	import BulletinTable from '$lib/components/subject/BulletinTable.svelte';
 
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
 	import { getAllBoundaries } from '$lib/utils/boundaries.js';
 	import { calculateGrade } from '$lib/utils/grades.js';
 
@@ -188,11 +185,13 @@
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
 		{#if !data.data.isCore}
-			<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
+			<section class="bulletin-panel" aria-label="Global grade distribution and data table">
+				<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin embedded />
 
-			<div class="tables">
-				<BulletinTable name={level + ' ' + name} />
-			</div>
+				<div class="bulletin-table">
+					<BulletinTable name={level + ' ' + name} />
+				</div>
+			</section>
 		{/if}
 
 		{#if showGradeGraphs}
@@ -306,6 +305,21 @@
 		margin-top: 10px;
 	}
 
+	.bulletin-panel {
+		margin: 24px 0 36px;
+		padding: 22px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.bulletin-table {
+		margin-top: 22px;
+		padding-top: 20px;
+		border-top: 1px solid var(--color-border);
+	}
+
 	.excel {
 		display: flex;
 		justify-content: center;
@@ -328,6 +342,9 @@
 		.tables {
 			flex-direction: column;
 			align-items: center;
+		}
+		.bulletin-panel {
+			padding: 14px;
 		}
 	}
 </style>

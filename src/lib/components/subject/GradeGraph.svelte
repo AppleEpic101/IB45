@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import Chart from 'chart.js/auto';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import { darkMode } from '$lib/stores/stores.js';
@@ -21,6 +21,15 @@
 
 	let chartCanvas;
 	let scatterChart;
+	let expanded = false;
+	const setExpanded = async (value) => {
+		expanded = value;
+		await tick();
+		scatterChart?.resize();
+	};
+	const closeOnEscape = (event) => {
+		if (expanded && event.key === 'Escape') setExpanded(false);
+	};
 
 	// Vibrant color palette for 7 grades
 	const borderColors = [
@@ -63,7 +72,6 @@
 		}
 
 		const textColor = getStyle('--color-text-main') || '#0f172a';
-		const mutedColor = getStyle('--color-text-muted') || '#475569';
 		const gridColor = getStyle('--color-grid') || 'rgba(0, 0, 0, 0.1)';
 
 		const gradeBoundaries = Array.from({ length: isAE ? 5 : 7 }, (_, i) => ({
@@ -95,10 +103,6 @@
 			fill: false,
 			hidden: i < 3 && number === 0 // Hide grades 1-3 by default in 'All' view
 		}));
-
-		// If number is 0, show all. Otherwise filter to selected.
-		const datasetsToShow =
-			number === 0 ? gradeBoundaries : [gradeBoundaries[isAE ? 5 - number : number - 1]]; // Dropdown logic for AE might need adjustment if it maps 1-5 to A-E
 
 		// Correct AE mapping: A is 5, E is 1?
 		// if number is 5, we want A (index 4)
@@ -238,6 +242,7 @@
 
 	onMount(() => {
 		createChart();
+		return () => scatterChart?.destroy();
 	});
 
 	$: {
@@ -247,31 +252,110 @@
 	}
 </script>
 
-{#if showGraph}
-	<div class="header-container">
-		<div class="title">
-			Historical Grade Boundaries for<br />
-			<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
-		</div>
-		<div class="dropdown-container">
-			<Dropdown
-				arr={isAE
-					? ['All Boundaries', 'A', 'B', 'C', 'D', 'E']
-					: ['All Boundaries', 7, 6, 5, 4, 3, 2, 1]}
-				arrVal={isAE ? [0, 5, 4, 3, 2, 1] : [0, 7, 6, 5, 4, 3, 2, 1]}
-				bind:value={number}
-			/>
-		</div>
-	</div>
+<svelte:window on:keydown={closeOnEscape} />
 
-	<div class="graph-wrapper">
-		<div class="graph">
-			<canvas bind:this={chartCanvas} />
+{#if showGraph}
+	{#if expanded}
+		<button
+			type="button"
+			class="modal-backdrop"
+			aria-label="Close expanded historical boundaries graph"
+			on:click={() => setExpanded(false)}
+		/>
+	{/if}
+	<div
+		class="chart-section"
+		class:expanded
+		role={expanded ? 'dialog' : undefined}
+		aria-modal={expanded ? 'true' : undefined}
+		aria-labelledby="historical-chart-title"
+	>
+		<button
+			type="button"
+			class="expand-button"
+			aria-label={expanded ? 'Close expanded graph' : 'Expand graph'}
+			title={expanded ? 'Close' : 'Expand graph'}
+			on:click={() => setExpanded(!expanded)}
+		>
+			<span aria-hidden="true">{expanded ? '×' : '↗'}</span>
+			<span>{expanded ? 'Close' : 'Expand'}</span>
+		</button>
+		<div class="header-container">
+			<div class="title" id="historical-chart-title">
+				Historical Grade Boundaries for<br />
+				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
+			</div>
+			<div class="dropdown-container">
+				<Dropdown
+					arr={isAE
+						? ['All Boundaries', 'A', 'B', 'C', 'D', 'E']
+						: ['All Boundaries', 7, 6, 5, 4, 3, 2, 1]}
+					arrVal={isAE ? [0, 5, 4, 3, 2, 1] : [0, 7, 6, 5, 4, 3, 2, 1]}
+					bind:value={number}
+				/>
+			</div>
+		</div>
+
+		<div class="graph-wrapper">
+			<div class="graph">
+				<canvas bind:this={chartCanvas} />
+			</div>
 		</div>
 	</div>
 {/if}
 
 <style lang="scss">
+	.chart-section {
+		position: relative;
+	}
+
+	.chart-section.expanded {
+		position: fixed;
+		inset: 24px;
+		z-index: 1001;
+		display: flex;
+		flex-direction: column;
+		padding: 24px;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		border: 0;
+		background: rgba(2, 6, 23, 0.74);
+		cursor: zoom-out;
+	}
+
+	.expand-button {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 1;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 7px 10px;
+		border: 1px solid var(--color-border);
+		border-radius: 9px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
+		font: inherit;
+		font-size: 0.78rem;
+		font-weight: 700;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			border-color: var(--color-primary);
+			color: var(--color-primary);
+		}
+	}
+
 	.header-container {
 		display: flex;
 		flex-direction: column;
@@ -290,16 +374,34 @@
 	}
 
 	.graph {
-		height: 50vh;
+		height: 280px;
 		position: relative;
+	}
+
+	.expanded .graph-wrapper,
+	.expanded .graph {
+		flex: 1;
+		height: auto;
+		min-height: 0;
 	}
 
 	@media screen and (max-width: 600px) {
 		.graph {
-			height: 40vh;
+			height: 230px;
 		}
 		.graph-wrapper {
 			padding: 1rem;
+		}
+		.chart-section.expanded {
+			inset: 10px;
+			padding: 16px;
+		}
+		.expanded .graph-wrapper,
+		.expanded .graph {
+			height: auto;
+		}
+		.expand-button span:last-child {
+			display: none;
 		}
 	}
 

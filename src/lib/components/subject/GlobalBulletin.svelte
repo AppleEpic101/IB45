@@ -7,6 +7,7 @@
 	export let name;
 	export let mark = 5;
 	export let showBulletin;
+	export let embedded = false;
 
 	$: sessions = Bulletin[name]?.grades ?? [];
 	let selectedShort = 'N25';
@@ -45,6 +46,15 @@
 	let canvas;
 	let chartInstance;
 	let chartUpdateId = 0;
+	let expanded = false;
+	const setExpanded = async (value) => {
+		expanded = value;
+		await tick();
+		chartInstance?.resize();
+	};
+	const closeOnEscape = (event) => {
+		if (expanded && event.key === 'Escape') setExpanded(false);
+	};
 	const selectSession = (short) => {
 		if (short === selectedShort) return;
 
@@ -284,10 +294,37 @@
 	}
 </script>
 
+<svelte:window on:keydown={closeOnEscape} />
+
 {#if showBulletin}
-	<div class="distribution-container">
+	{#if expanded}
+		<button
+			type="button"
+			class="modal-backdrop"
+			aria-label="Close expanded grade distribution"
+			on:click={() => setExpanded(false)}
+		/>
+	{/if}
+	<div
+		class="distribution-container"
+		class:embedded
+		class:expanded
+		role={expanded ? 'dialog' : undefined}
+		aria-modal={expanded ? 'true' : undefined}
+		aria-labelledby="global-distribution-title"
+	>
+		<button
+			type="button"
+			class="expand-button"
+			aria-label={expanded ? 'Close expanded graph' : 'Expand graph'}
+			title={expanded ? 'Close' : 'Expand graph'}
+			on:click={() => setExpanded(!expanded)}
+		>
+			<span aria-hidden="true">{expanded ? '×' : '↗'}</span>
+			<span>{expanded ? 'Close' : 'Expand'}</span>
+		</button>
 		<div class="distribution-header">
-			<h4 class="title">Global Grade Distribution</h4>
+			<h4 class="title" id="global-distribution-title">Global Grade Distribution</h4>
 			<p class="subtitle">
 				Based on {data?.short === 'M25' ? 'provisional ' : ''}{data?.name} session results ({total?.toLocaleString()}
 				candidates)
@@ -326,12 +363,78 @@
 
 <style lang="scss">
 	.distribution-container {
+		position: relative;
 		background-color: var(--color-surface);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		padding: 24px;
 		margin: 20px 0 40px 0;
 		box-shadow: var(--shadow-md);
+
+		&.embedded {
+			padding: 0;
+			margin: 0;
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+		}
+
+		&.expanded {
+			position: fixed;
+			inset: 24px;
+			z-index: 1001;
+			display: flex;
+			flex-direction: column;
+			padding: 24px;
+			margin: 0;
+			border: 1px solid var(--color-border);
+			border-radius: var(--radius-lg);
+			background: var(--color-surface);
+			box-shadow: var(--shadow-lg);
+		}
+	}
+
+	.modal-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		border: 0;
+		background: rgba(2, 6, 23, 0.74);
+		cursor: zoom-out;
+	}
+
+	.expand-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 7px 10px;
+		border: 1px solid var(--color-border);
+		border-radius: 9px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
+		font: inherit;
+		font-size: 0.78rem;
+		font-weight: 700;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			border-color: var(--color-primary);
+			color: var(--color-primary);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 2px;
+		}
+	}
+
+	.expanded .expand-button {
+		top: 18px;
+		right: 18px;
 	}
 
 	.distribution-header {
@@ -428,8 +531,14 @@
 	}
 
 	.graph-wrapper {
-		height: 40vh;
+		height: 280px;
 		position: relative;
+	}
+
+	.expanded .graph-wrapper {
+		flex: 1;
+		height: auto;
+		min-height: 0;
 	}
 
 	@media (max-width: 600px) {
@@ -442,7 +551,17 @@
 			width: 100%;
 		}
 		.graph-wrapper {
-			height: 30vh;
+			height: 230px;
+		}
+		.distribution-container.expanded {
+			inset: 10px;
+			padding: 16px;
+		}
+		.expanded .graph-wrapper {
+			height: auto;
+		}
+		.expand-button span:last-child {
+			display: none;
 		}
 	}
 </style>
