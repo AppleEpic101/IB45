@@ -1,0 +1,287 @@
+<script>
+	import corePerformance, {
+		EE_SUBJECT_GROUPS,
+		getCorePerformance
+	} from '$lib/data/corePerformance.js';
+
+	export let type;
+	export let grade;
+	export let sessionId;
+	export let compact = false;
+	export let subjectGroup = 'individuals-societies';
+
+	$: comparison = getCorePerformance(sessionId, type, grade, subjectGroup);
+	$: selectedGroup = EE_SUBJECT_GROUPS.find((group) => group.value === subjectGroup);
+	const performanceSessions = Object.entries(corePerformance).reverse();
+	const gradeName = (label) => (label === 'N' ? 'No grade' : `Grade ${label}`);
+</script>
+
+{#if comparison}
+	<section
+		class="core-performance"
+		class:compact
+		aria-label={`${type === 'ee' ? 'Extended Essay' : 'TOK'} ${comparison.sessionName} performance`}
+	>
+		<header>
+			<div>
+				{#if !compact}<span class="eyebrow">Session performance</span>{/if}
+				<h4>
+					{compact ? comparison.sessionName : `Compare your ${type === 'ee' ? 'EE' : 'TOK'} grade`}
+				</h4>
+				{#if !compact}<p>Official {comparison.sessionName} results</p>{/if}
+			</div>
+
+			<div class="filters">
+				{#if !compact}
+					<label>
+						<span>Exam session</span>
+						<select bind:value={sessionId} aria-label="Performance exam session">
+							{#each performanceSessions as [id, session]}
+								<option value={id}>{session.name}</option>
+							{/each}
+						</select>
+					</label>
+				{/if}
+				{#if type === 'ee'}
+					<label>
+						{#if !compact}<span>EE subject group</span>{/if}
+						<select bind:value={subjectGroup} aria-label="Extended Essay subject group">
+							{#each EE_SUBJECT_GROUPS as group}
+								<option value={group.value}>{group.label}</option>
+							{/each}
+						</select>
+					</label>
+				{/if}
+			</div>
+		</header>
+
+		<div class="summary">
+			<div class="grade-result">
+				<span>Your result</span>
+				<strong>Grade {grade}</strong>
+			</div>
+			<div>
+				<span>Same grade</span>
+				<strong>{comparison.gradeShare}%</strong>
+			</div>
+			<div>
+				<span>Earned higher</span>
+				<strong>{comparison.higherShare}%</strong>
+			</div>
+		</div>
+
+		{#if !compact}
+			<div class="distribution" aria-label="Grade distribution">
+				{#each comparison.entries as entry}
+					<div
+						class:current={entry.label === grade}
+						style={`--share:${Math.max(entry.percentage, 0.6)}%`}
+					>
+						<span>{gradeName(entry.label)}</span>
+						<strong>{entry.percentage}%</strong>
+						<small>{entry.count.toLocaleString()}</small>
+					</div>
+				{/each}
+			</div>
+		{/if}
+
+		<footer>
+			{comparison.total.toLocaleString()} students{type === 'ee' ? ` · ${selectedGroup.label}` : ''}
+		</footer>
+	</section>
+{/if}
+
+<style>
+	.core-performance {
+		margin: 24px 0 36px;
+		padding: 20px;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+	header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 18px;
+	}
+	h4,
+	p {
+		margin: 0;
+	}
+	h4 {
+		margin-top: 3px;
+		color: var(--color-text-main);
+		font-size: 1.15rem;
+	}
+	p,
+	footer {
+		color: var(--color-text-muted);
+		font-size: 0.72rem;
+	}
+	.eyebrow,
+	label > span {
+		color: var(--color-primary);
+		font-size: 0.65rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+	label {
+		display: grid;
+		gap: 5px;
+	}
+	.filters {
+		display: flex;
+		align-items: flex-end;
+		gap: 10px;
+	}
+	select {
+		max-width: 280px;
+		padding: 8px 30px 8px 10px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-main);
+		font: inherit;
+	}
+	.summary {
+		display: grid;
+		grid-template-columns: 1.25fr 1fr 1fr;
+		gap: 8px;
+		margin-top: 16px;
+	}
+	.summary > div {
+		display: grid;
+		gap: 2px;
+		padding: 11px 12px;
+		border: 1px solid var(--color-border);
+		border-radius: 9px;
+		background: var(--color-surface-variant);
+	}
+	.summary span {
+		color: var(--color-text-muted);
+		font-size: 0.68rem;
+	}
+	.summary strong {
+		color: var(--color-text-main);
+		font-size: 1rem;
+	}
+	.grade-result strong {
+		color: var(--color-primary);
+	}
+	.distribution {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 6px;
+		margin-top: 12px;
+	}
+	.distribution > div {
+		position: relative;
+		display: grid;
+		gap: 2px;
+		overflow: hidden;
+		padding: 9px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: var(--color-surface-variant);
+	}
+	.distribution > div::after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: var(--share);
+		height: 3px;
+		background: var(--color-text-muted);
+		content: '';
+	}
+	.distribution > div.current {
+		border-color: var(--color-primary);
+	}
+	.distribution > div.current::after {
+		background: var(--color-primary);
+	}
+	.distribution span,
+	.distribution small {
+		color: var(--color-text-muted);
+		font-size: 0.62rem;
+	}
+	.distribution strong {
+		font-size: 0.9rem;
+	}
+	footer {
+		margin-top: 10px;
+	}
+
+	.core-performance.compact {
+		margin: 10px 0 4px;
+		padding: 10px;
+		border-radius: 10px;
+		box-shadow: none;
+	}
+	.compact header {
+		align-items: center;
+	}
+	.compact h4 {
+		margin: 0;
+		font-size: 0.72rem;
+	}
+	.compact select {
+		max-width: 190px;
+		padding: 5px 24px 5px 7px;
+		font-size: 0.68rem;
+	}
+	.compact .summary {
+		margin-top: 8px;
+	}
+	.compact .summary > div {
+		padding: 7px;
+	}
+	.compact .summary span {
+		font-size: 0.58rem;
+	}
+	.compact .summary strong {
+		font-size: 0.78rem;
+	}
+	.compact footer {
+		margin-top: 7px;
+		font-size: 0.6rem;
+	}
+
+	@media screen and (max-width: 600px) {
+		.core-performance {
+			padding: 14px;
+		}
+		header {
+			align-items: stretch;
+			flex-direction: column;
+		}
+		.filters {
+			align-items: stretch;
+			flex-direction: column;
+		}
+		select {
+			width: 100%;
+			max-width: none;
+		}
+		.summary {
+			grid-template-columns: 1fr 1fr;
+		}
+		.grade-result {
+			grid-column: 1 / -1;
+		}
+		.distribution {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		.compact .summary {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		.compact .grade-result {
+			grid-column: auto;
+		}
+		.compact header {
+			gap: 7px;
+		}
+	}
+</style>

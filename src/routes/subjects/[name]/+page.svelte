@@ -18,6 +18,7 @@
 	import GradeCalculator from '$lib/components/subject/GradeCalculator.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import BulletinTable from '$lib/components/subject/BulletinTable.svelte';
+	import CorePerformance from '$lib/components/subject/CorePerformance.svelte';
 
 	import { page } from '$app/stores';
 	import { getAllBoundaries } from '$lib/utils/boundaries.js';
@@ -115,6 +116,7 @@
 	}
 	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
 	let mark, marksToIncrease;
+	let eeSubjectGroup = 'individuals-societies';
 
 	// update url with new query parameters
 	const newUrl = new URL($page.url);
@@ -172,8 +174,8 @@
 			bind:level
 			{HLResults}
 			{SLResults}
-			{lastSL}
-			{lastHL}
+			bind:lastSL
+			bind:lastHL
 			{SLoptions}
 			{HLoptions}
 			bind:mark
@@ -183,6 +185,15 @@
 			{classical}
 			{languages}
 		/>
+
+		{#if data.data.isCore}
+			<CorePerformance
+				type={syllabus.name === 'Extended Essay' ? 'ee' : 'tok'}
+				grade={mark}
+				sessionId={lastSL?.short}
+				bind:subjectGroup={eeSubjectGroup}
+			/>
+		{/if}
 	{/if}
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}

@@ -16,6 +16,7 @@
 
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
+	import CorePerformance from '$lib/components/subject/CorePerformance.svelte';
 
 	let letterGrades = ['E', 'D', 'C', 'B', 'A'];
 
@@ -26,6 +27,7 @@
 		$settings['chosenScores']['tok']?.[1] ?? 0
 	];
 	$settings['chosenScores']['ee'] = [$settings['chosenScores']['ee']?.[0] ?? 0];
+	$settings['eeSubjectGroup'] = $settings['eeSubjectGroup'] || 'individuals-societies';
 
 	let tokAssessments = courses['Theory Of Knowledge'].SL,
 		tokBoundaries,
@@ -159,6 +161,9 @@
 				</div>
 			</div>
 		{/if}
+		{#if tokComplete}
+			<CorePerformance type="tok" grade={tokGrade} sessionId={$selectedBoundaryId} compact />
+		{/if}
 
 		<a href="/subjects/theory-of-knowledge" target="_blank"
 			><button class="goto">Goto subject page</button></a
@@ -238,6 +243,15 @@
 					{/each}
 				</div>
 			</div>
+		{/if}
+		{#if eeComplete}
+			<CorePerformance
+				type="ee"
+				grade={eeGrade}
+				sessionId={$selectedBoundaryId}
+				compact
+				bind:subjectGroup={$settings['eeSubjectGroup']}
+			/>
 		{/if}
 
 		<a href="/subjects/extended-essay" target="_blank"

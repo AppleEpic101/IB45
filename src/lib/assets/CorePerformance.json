@@ -1,0 +1,80 @@
+{
+	"M23": {
+		"name": "May 2023",
+		"ee": {
+			"studies-language-literature": [2878, 5019, 7048, 3532, 171, 131],
+			"language-acquisition": [903, 1308, 2136, 922, 23, 28],
+			"individuals-societies": [2967, 8718, 16925, 11109, 701, 344],
+			"sciences": [1238, 4690, 6780, 2366, 123, 89],
+			"mathematics": [263, 798, 1304, 553, 9, 20],
+			"arts": [884, 1322, 2212, 1565, 164, 58],
+			"interdisciplinary": [172, 490, 851, 301, 17, 15]
+		},
+		"tok": [7002, 31447, 42494, 10097, 190, 631]
+	},
+	"N23": {
+		"name": "November 2023",
+		"ee": {
+			"studies-language-literature": [577, 1196, 1104, 255, 8, 22],
+			"language-acquisition": [147, 359, 546, 208, 6, 8],
+			"individuals-societies": [509, 1324, 2130, 861, 26, 36],
+			"sciences": [256, 838, 1056, 280, 17, 5],
+			"mathematics": [56, 237, 355, 70, 1, 5],
+			"arts": [192, 270, 325, 112, 4, 10],
+			"interdisciplinary": [14, 73, 113, 59, 1, 4]
+		},
+		"tok": [995, 4475, 6336, 1682, 16, 70]
+	},
+	"M24": {
+		"name": "May 2024",
+		"ee": {
+			"studies-language-literature": [2878, 5345, 7792, 3370, 147, 110],
+			"language-acquisition": [831, 1358, 2261, 1122, 21, 49],
+			"individuals-societies": [4042, 10640, 17385, 9702, 550, 374],
+			"sciences": [1320, 5216, 7259, 2132, 72, 88],
+			"mathematics": [282, 938, 1485, 494, 5, 22],
+			"arts": [858, 1291, 2357, 1557, 154, 81],
+			"interdisciplinary": [197, 466, 814, 374, 38, 17]
+		},
+		"tok": [9496, 34350, 41531, 9908, 232, 793]
+	},
+	"N24": {
+		"name": "November 2024",
+		"ee": {
+			"studies-language-literature": [657, 1248, 1129, 236, 5, 12],
+			"language-acquisition": [145, 319, 614, 223, 2, 10],
+			"individuals-societies": [547, 1540, 2283, 776, 13, 41],
+			"sciences": [375, 919, 1148, 241, 10, 10],
+			"mathematics": [74, 210, 404, 100, 0, 1],
+			"arts": [196, 238, 350, 104, 7, 4],
+			"interdisciplinary": [34, 62, 119, 76, 4, 2]
+		},
+		"tok": [932, 5029, 6972, 1320, 12, 90]
+	},
+	"M25": {
+		"name": "May 2025",
+		"ee": {
+			"studies-language-literature": [2915, 5776, 8355, 3512, 117, 102],
+			"language-acquisition": [810, 1461, 2691, 1209, 17, 35],
+			"individuals-societies": [4304, 12422, 18173, 8960, 377, 276],
+			"sciences": [1510, 5604, 8046, 2271, 63, 60],
+			"mathematics": [391, 1251, 1423, 441, 14, 18],
+			"arts": [899, 1357, 2367, 1502, 104, 55],
+			"interdisciplinary": [209, 518, 824, 386, 25, 13]
+		},
+		"tok": [10340, 37824, 42518, 10204, 182, 668]
+	},
+	"N25": {
+		"name": "November 2025",
+		"ee": {
+			"studies-language-literature": [566, 1388, 1340, 300, 5, 10],
+			"language-acquisition": [115, 366, 713, 333, 4, 10],
+			"individuals-societies": [648, 1791, 2408, 714, 7, 33],
+			"sciences": [412, 989, 1077, 243, 4, 7],
+			"mathematics": [105, 325, 380, 80, 1, 8],
+			"arts": [187, 275, 301, 78, 1, 2],
+			"interdisciplinary": [25, 71, 139, 59, 5, 2]
+		},
+		"tok": [1256, 5928, 6947, 1204, 14, 70]
+	}
+}
