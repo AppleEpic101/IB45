@@ -44,6 +44,42 @@
 
 	// Slightly more vibrant fills
 	const colors = borderColors.map((c) => c + '33'); // 0.2 opacity hex
+	const sessionRank = (short) => {
+		const match = /^([MN])(\d{2})/.exec(short ?? '');
+		if (!match) return Number.MAX_SAFE_INTEGER;
+		return Number(match[2]) * 2 + (match[1] === 'N' ? 1 : 0);
+	};
+	const summarizeSessions = (boundaryResults) => {
+		const grouped = new Map();
+
+		boundaryResults.forEach((result) => {
+			if (!grouped.has(result.short)) {
+				grouped.set(result.short, {
+					short: result.short,
+					name: result.name,
+					results: []
+				});
+			}
+			grouped.get(result.short).results.push(result);
+		});
+
+		return [...grouped.values()]
+			.sort((a, b) => sessionRank(a.short) - sessionRank(b.short))
+			.map((session) => ({
+				...session,
+				boundaries: Array.from({ length: isAE ? 5 : 7 }, (_, index) => {
+					const values = session.results
+						.map((result) => Number(result.tz[index]))
+						.filter(Number.isFinite);
+					if (!values.length) return { average: null, min: null, max: null };
+					return {
+						average: values.reduce((sum, value) => sum + value, 0) / values.length,
+						min: Math.min(...values),
+						max: Math.max(...values)
+					};
+				})
+			}));
+	};
 
 	let showGraph = true;
 
@@ -74,23 +110,13 @@
 
 		const textColor = getStyle('--color-text-main') || '#0f172a';
 		const gridColor = getStyle('--color-grid') || 'rgba(0, 0, 0, 0.1)';
+		const sessionSummaries = summarizeSessions(results);
+		const labels = sessionSummaries.map((session) => session.short);
 
 		const gradeBoundaries = Array.from({ length: isAE ? 5 : 7 }, (_, i) => ({
 			label: isAE ? ['E', 'D', 'C', 'B', 'A'][i] : `Grade ${i + 1}`,
-			data: results
-				.map((result) => {
-					const parts = result.name.split(' ');
-					let year = parseInt(parts[1]);
-					if (parts[0] === 'November') {
-						year += 0.5;
-					}
-					return {
-						x: year,
-						y: result.tz[i],
-						fullName: result.fullName
-					};
-				})
-				.sort((a, b) => a.x - b.x), // Ensure data is sorted by year
+			data: sessionSummaries.map((session) => session.boundaries[i].average),
+			boundaryIndex: i,
 			backgroundColor: colors[i],
 			borderColor: borderColors[i],
 			pointBackgroundColor: borderColors[i],
@@ -99,7 +125,7 @@
 			pointRadius: 6,
 			pointHoverRadius: 8,
 			pointHitRadius: 5, // Exact target
-			tension: 0.4, // Smooth lines
+			tension: 0,
 			borderWidth: 3,
 			fill: false,
 			hidden: i < 3 && number === 0 // Hide grades 1-3 by default in 'All' view
@@ -117,14 +143,7 @@
 			const gradeLineColor = getStyle('--color-primary') || '#3b82f6';
 			finalDatasets.push({
 				label: 'Your Current Score',
-				data: results
-					.map((r) => {
-						const parts = r.name.split(' ');
-						let year = parseInt(parts[1]);
-						if (parts[0] === 'November') year += 0.5;
-						return { x: year, y: grade };
-					})
-					.sort((a, b) => a.x - b.x),
+				data: sessionSummaries.map(() => grade),
 				borderColor: gradeLineColor,
 				borderWidth: 3,
 				borderDash: [10, 5],
@@ -142,6 +161,7 @@
 		scatterChart = new Chart(chartCanvas, {
 			type: 'line',
 			data: {
+				labels,
 				datasets: finalDatasets
 			},
 			options: {
@@ -153,11 +173,9 @@
 				},
 				scales: {
 					x: {
-						type: 'linear',
-						position: 'bottom',
 						title: {
 							display: true,
-							text: 'Examination Year',
+							text: 'Exam Session',
 							color: textColor,
 							font: {
 								weight: 'bold',
@@ -170,12 +188,8 @@
 						ticks: {
 							color: textColor,
 							maxRotation: 0,
-							callback: function (value) {
-								if (Number.isInteger(value)) {
-									return value.toString().replace(/,/g, ''); // Remove commas from years
-								}
-								return '';
-							}
+							autoSkip: true,
+							maxTicksLimit: expanded ? 18 : 12
 						}
 					},
 					y: {
@@ -221,18 +235,24 @@
 						displayColors: true,
 						callbacks: {
 							title: function (context) {
-								if (context && context.length > 0) {
-									// In Chart.js v3+, context is an array of tooltip items
-									return context[0].raw.fullName || '';
-								}
-								return '';
+								const session = sessionSummaries[context?.[0]?.dataIndex];
+								if (!session) return '';
+								const timezoneLabel =
+									session.results.length > 1 ? ` · ${session.results.length} timezones` : '';
+								return `${session.name}${timezoneLabel}`;
 							},
 							label: function (context) {
 								if (context.dataset.label === 'Your Current Score') {
-									return `Your Score: ${context.raw.y}%`;
+									return `Your Score: ${context.parsed.y}%`;
 								}
-								const label = context.dataset.label || '';
-								return `${label}: ${context.raw.y}%`;
+								const session = sessionSummaries[context.dataIndex];
+								const boundary = session?.boundaries[context.dataset.boundaryIndex];
+								if (!boundary) return '';
+								const range =
+									boundary.min === boundary.max
+										? ''
+										: ` · TZ range ${boundary.min}–${boundary.max}%`;
+								return `${context.dataset.label}: ${boundary.average.toFixed(1)}% avg${range}`;
 							}
 						}
 					}
@@ -284,7 +304,7 @@
 		<div class="header-container">
 			<div class="title" id="historical-chart-title">
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
-				<small>Boundary trend</small>
+				<small>Session averages · hover for timezone range</small>
 			</div>
 			<div class="dropdown-container">
 				<Dropdown

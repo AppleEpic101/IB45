@@ -50,6 +50,8 @@
 	// get level from query parameters
 	export let level = data.level;
 	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
+	$: selectedTableLevel = data.data.SLOnly ? 'SL' : level;
+	$: selectedBoundaryResults = selectedTableLevel === 'HL' ? HLResults : SLResults;
 
 	$: name = data.data.isLang ? language + ' ' + data.data.name : data.data.name;
 
@@ -246,10 +248,16 @@
 					<CoreTable {name} res={SLResults} />
 					<CoreMatrix name={syllabus.name} />
 				{:else}
-					<BoundaryTable name={'SL ' + name} res={SLResults} />
-					{#if !data.data.SLOnly}
-						<BoundaryTable name={'HL ' + name} res={HLResults} />
-					{/if}
+					<div class="table-intro">
+						<div>
+							<span class="active-level">{selectedTableLevel} selected</span>
+							<h5>{selectedTableLevel} boundary history</h5>
+						</div>
+						<p>
+							Average shows the typical boundary. Standard deviation shows how much it has varied.
+						</p>
+					</div>
+					<BoundaryTable name={selectedTableLevel + ' ' + name} res={selectedBoundaryResults} />
 				{/if}
 			</div>
 			{#if !data.data.isCore}
@@ -309,11 +317,50 @@
 
 	.tables {
 		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: stretch;
 		margin-top: 22px;
 		padding-top: 20px;
 		border-top: 1px solid var(--color-border);
+	}
+
+	.table-intro {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 12px;
+
+		h5,
+		p {
+			margin: 0;
+		}
+
+		h5 {
+			margin-top: 5px;
+			color: var(--color-text-main);
+			font-size: 1rem;
+		}
+
+		p {
+			max-width: 460px;
+			color: var(--color-text-muted);
+			font-size: 0.78rem;
+			text-align: right;
+		}
+	}
+
+	.active-level {
+		display: inline-flex;
+		padding: 4px 7px;
+		border: 1px solid color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+		color: var(--color-primary);
+		font-size: 0.65rem;
+		font-weight: 800;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
 	}
 
 	.bulletin-panel {
@@ -405,7 +452,15 @@
 		}
 		.tables {
 			flex-direction: column;
-			align-items: center;
+			align-items: stretch;
+		}
+		.table-intro {
+			align-items: flex-start;
+			flex-direction: column;
+
+			p {
+				text-align: left;
+			}
 		}
 		.bulletin-panel {
 			padding: 14px;
