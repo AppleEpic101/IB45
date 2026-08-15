@@ -1,5 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const filters = ['All', 'Data', 'Product', 'Design', 'Community'];
@@ -281,31 +280,16 @@
 />
 
 <main class="changelog-page">
-	<section class="hero" in:fly={{ duration: 700, y: 24 }}>
-		<div class="hero-copy">
-			<div class="eyebrow"><span class="pulse" /> Product updates</div>
-			<h1>What’s new in <span>IB Predict</span></h1>
-			<p>
-				Follow new examination data, calculator improvements, and interface updates from the first
-				release through today.
-			</p>
-		</div>
-		<div class="release-summary" aria-label="Latest release summary">
-			<div class="summary-icon" aria-hidden="true">↗</div>
-			<div>
-				<span>Latest release</span><strong>November bulletins</strong><small
-					>Updated August 14, 2026</small
-				>
-			</div>
-		</div>
-	</section>
+	<header class="intro">
+		<p class="eyebrow">Changelog</p>
+		<h1>Product updates</h1>
+		<p class="intro-copy">
+			New examination data, calculator improvements, and changes to IB Predict.
+		</p>
+		<p class="latest-release"><strong>Latest:</strong> November bulletins · August 14, 2026</p>
+	</header>
 
 	<section class="toolbar" aria-label="Filter changelog">
-		<div class="filter-copy">
-			<strong>Release history</strong><span
-				>{visibleReleases.length} {visibleReleases.length === 1 ? 'update' : 'updates'}</span
-			>
-		</div>
 		<div class="filters">
 			{#each filters as filter}
 				<button
@@ -316,23 +300,20 @@
 				>
 			{/each}
 		</div>
+		<span class="result-count"
+			>{visibleReleases.length} {visibleReleases.length === 1 ? 'update' : 'updates'}</span
+		>
 	</section>
 
 	<section class="timeline" aria-live="polite">
-		{#each visibleReleases as release, index (release.date)}
-			<article
-				class="release-card"
-				class:latest={release.latest}
-				in:fly={{ duration: 450, y: 18, delay: Math.min(index * 45, 270) }}
-			>
+		{#each visibleReleases as release (release.date)}
+			<article class="release-card">
 				<div class="date-column">
-					<div class="date-badge"><strong>{release.month}</strong><span>{release.year}</span></div>
-					<div class="timeline-line" aria-hidden="true" />
+					<time datetime={isoDate(release.date)}>{release.date}</time>
 				</div>
 				<div class="card-content">
 					<div class="card-meta">
 						<span class="category" data-category={release.category}>{release.category}</span>
-						<time datetime={isoDate(release.date)}>{release.date}</time>
 						{#if release.latest}<span class="latest-label">Latest</span>{/if}
 					</div>
 					<h2>{release.title}</h2>
@@ -355,394 +336,224 @@
 
 <style>
 	.changelog-page {
-		width: min(1080px, calc(100% - 32px));
+		width: min(900px, calc(100% - 40px));
 		margin: 0 auto;
-		padding: 56px 0 88px;
+		padding: 72px 0 96px;
 	}
-	.hero {
-		position: relative;
-		display: grid;
-		grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
-		gap: 40px;
-		align-items: end;
-		padding: 48px;
-		overflow: hidden;
-		border: 1px solid var(--color-border);
-		border-radius: 28px;
-		background: radial-gradient(
-				circle at 90% 10%,
-				color-mix(in srgb, var(--color-primary) 24%, transparent),
-				transparent 34%
-			),
-			linear-gradient(145deg, var(--color-surface), var(--color-surface-variant));
-		box-shadow: var(--shadow-lg);
-	}
-	.hero::after {
-		content: '';
-		position: absolute;
-		width: 240px;
-		height: 240px;
-		right: -110px;
-		bottom: -130px;
-		border: 44px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
-		border-radius: 50%;
-		pointer-events: none;
-	}
-	.hero-copy,
-	.release-summary {
-		position: relative;
-		z-index: 1;
+	.intro {
+		max-width: 680px;
+		padding-bottom: 48px;
 	}
 	.eyebrow {
-		display: inline-flex;
-		align-items: center;
-		gap: 9px;
-		margin-bottom: 18px;
-		color: var(--color-primary-dark);
-		font-size: 0.8rem;
-		font-weight: 800;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-	}
-	.pulse {
-		width: 9px;
-		height: 9px;
-		border-radius: 50%;
-		background: var(--color-primary);
-		box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-primary) 18%, transparent);
-	}
-	h1 {
-		max-width: 680px;
-		margin: 0;
-		color: var(--color-text-main);
-		font-size: clamp(2.5rem, 7vw, 4.75rem);
-		font-weight: 900;
-		letter-spacing: -0.055em;
-		line-height: 0.98;
-	}
-	h1 span {
-		color: var(--color-primary-dark);
-	}
-	.hero-copy > p {
-		max-width: 660px;
-		margin: 24px 0 0;
-		color: var(--color-text-muted);
-		font-size: 1.05rem;
-		line-height: 1.75;
-	}
-	.release-summary {
-		display: flex;
-		gap: 16px;
-		align-items: center;
-		padding: 20px;
-		border: 1px solid color-mix(in srgb, var(--color-primary) 26%, var(--color-border));
-		border-radius: 18px;
-		background: color-mix(in srgb, var(--color-surface) 86%, transparent);
-		backdrop-filter: blur(12px);
-		box-shadow: var(--shadow-md);
-	}
-	.summary-icon {
-		display: grid;
-		flex: 0 0 auto;
-		place-items: center;
-		width: 46px;
-		height: 46px;
-		border-radius: 14px;
-		background: var(--color-primary);
-		color: white;
-		font-size: 1.3rem;
-		font-weight: 900;
-	}
-	.release-summary div:last-child {
-		display: grid;
-		gap: 3px;
-	}
-	.release-summary span,
-	.release-summary small {
+		margin: 0 0 14px;
 		color: var(--color-text-muted);
 		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
-	.release-summary strong {
+	h1 {
+		margin: 0;
 		color: var(--color-text-main);
-		font-size: 0.98rem;
+		font-size: clamp(2.25rem, 6vw, 3.4rem);
+		font-weight: 750;
+		letter-spacing: -0.045em;
+		line-height: 1.05;
+	}
+	.intro-copy {
+		margin: 18px 0 0;
+		color: var(--color-text-muted);
+		font-size: 1rem;
+		line-height: 1.65;
+	}
+	.latest-release {
+		margin: 20px 0 0;
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+	}
+	.latest-release strong {
+		color: var(--color-text-main);
+		font-weight: 650;
 	}
 	.toolbar {
 		display: flex;
-		gap: 24px;
+		gap: 20px;
 		align-items: center;
 		justify-content: space-between;
-		margin: 48px 0 30px;
-	}
-	.filter-copy {
-		display: grid;
-		gap: 3px;
-	}
-	.filter-copy strong {
-		color: var(--color-text-main);
-		font-size: 1.25rem;
-	}
-	.filter-copy span {
-		color: var(--color-text-muted);
-		font-size: 0.82rem;
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+		padding: 14px 0;
 	}
 	.filters {
 		display: flex;
-		gap: 6px;
-		padding: 5px;
+		gap: 22px;
 		overflow-x: auto;
-		border: 1px solid var(--color-border);
-		border-radius: 999px;
-		background: var(--color-surface);
-		box-shadow: var(--shadow-sm);
 	}
 	.filters button {
 		border: 0;
-		border-radius: 999px;
-		padding: 9px 15px;
+		border-radius: 0;
+		padding: 3px 0;
 		background: transparent;
 		color: var(--color-text-muted);
 		font: inherit;
-		font-size: 0.82rem;
-		font-weight: 750;
+		font-size: 0.8rem;
+		font-weight: 600;
 		white-space: nowrap;
 		cursor: pointer;
-		transition: 0.2s ease;
+		transition: color 0.15s ease;
 	}
 	.filters button:hover,
 	.filters button:focus-visible {
 		color: var(--color-text-main);
 	}
 	.filters button:focus-visible {
-		outline: 2px solid var(--color-primary);
-		outline-offset: 2px;
+		outline: 1px solid var(--color-primary);
+		outline-offset: 4px;
 	}
 	.filters button.active {
-		background: var(--color-primary);
-		color: white;
-		box-shadow: 0 6px 16px color-mix(in srgb, var(--color-primary) 28%, transparent);
+		color: var(--color-text-main);
+		text-decoration: underline;
+		text-decoration-color: var(--color-primary);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 6px;
+	}
+	.result-count {
+		color: var(--color-text-muted);
+		font-size: 0.75rem;
+		white-space: nowrap;
 	}
 	.timeline {
 		display: grid;
 	}
 	.release-card {
 		display: grid;
-		grid-template-columns: 86px minmax(0, 1fr);
-		gap: 24px;
+		grid-template-columns: 150px minmax(0, 1fr);
+		gap: 32px;
+		border-bottom: 1px solid var(--color-border);
+		padding: 44px 0;
+	}
+	.release-card:last-child {
+		border-bottom: 0;
 	}
 	.date-column {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		padding-top: 2px;
 	}
-	.date-badge {
-		display: grid;
-		flex: 0 0 auto;
-		place-items: center;
-		width: 66px;
-		height: 66px;
-		border: 1px solid var(--color-border);
-		border-radius: 18px;
-		background: var(--color-surface);
-		box-shadow: var(--shadow-sm);
-	}
-	.date-badge strong {
-		color: var(--color-primary-dark);
-		font-size: 0.82rem;
-		letter-spacing: 0.08em;
-	}
-	.date-badge span {
+	.date-column time {
 		color: var(--color-text-muted);
-		font-size: 0.68rem;
-	}
-	.timeline-line {
-		width: 2px;
-		min-height: 50px;
-		flex: 1;
-		margin: 8px 0;
-		background: linear-gradient(var(--color-border), transparent);
-	}
-	.release-card:last-child .timeline-line {
-		display: none;
+		font-size: 0.78rem;
+		line-height: 1.5;
 	}
 	.card-content {
-		margin-bottom: 26px;
-		padding: 28px 30px;
-		border: 1px solid var(--color-border);
-		border-radius: 22px;
-		background: var(--color-surface);
-		box-shadow: var(--shadow-sm);
-		transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-	}
-	.card-content:hover {
-		transform: translateY(-2px);
-		border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
-		box-shadow: var(--shadow-md);
-	}
-	.release-card.latest .card-content {
-		border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
-		box-shadow: 0 16px 42px color-mix(in srgb, var(--color-primary) 10%, transparent);
+		min-width: 0;
 	}
 	.card-meta {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 8px;
+		gap: 10px;
 		align-items: center;
-		margin-bottom: 13px;
+		margin-bottom: 10px;
 	}
 	.category,
 	.latest-label {
-		border-radius: 999px;
-		padding: 5px 9px;
-		font-size: 0.68rem;
-		font-weight: 800;
-		letter-spacing: 0.05em;
+		padding: 0;
+		background: transparent;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
 		text-transform: uppercase;
 	}
 	.category {
-		background: var(--color-surface-variant);
-		color: var(--color-primary-dark);
-	}
-	.category[data-category='Data'] {
-		background: color-mix(in srgb, #8b5cf6 14%, var(--color-surface));
-		color: #7c3aed;
-	}
-	.category[data-category='Product'] {
-		background: color-mix(in srgb, #10b981 14%, var(--color-surface));
-		color: #059669;
-	}
-	.category[data-category='Community'] {
-		background: color-mix(in srgb, #f59e0b 16%, var(--color-surface));
-		color: #d97706;
+		color: var(--color-text-muted);
 	}
 	.latest-label {
-		background: var(--color-primary);
-		color: white;
-	}
-	time {
-		color: var(--color-text-muted);
-		font-size: 0.76rem;
-		font-weight: 650;
+		color: var(--color-primary-dark);
 	}
 	.card-content h2 {
 		margin: 0;
 		color: var(--color-text-main);
-		font-size: clamp(1.35rem, 3vw, 1.75rem);
-		letter-spacing: -0.025em;
+		font-size: clamp(1.25rem, 3vw, 1.55rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
 	}
 	.card-content > p {
 		max-width: 760px;
-		margin: 9px 0 20px;
+		margin: 8px 0 18px;
 		color: var(--color-text-muted);
-		line-height: 1.65;
+		font-size: 0.9rem;
+		line-height: 1.6;
 	}
 	.card-content ul {
 		display: grid;
-		gap: 9px;
+		gap: 7px;
 		margin: 0;
-		padding: 0;
-		list-style: none;
+		padding-left: 18px;
 	}
 	.card-content li {
-		position: relative;
-		padding-left: 21px;
 		color: var(--color-text-main);
-		font-size: 0.92rem;
+		font-size: 0.86rem;
 		line-height: 1.55;
 	}
-	.card-content li::before {
-		content: '';
-		position: absolute;
-		top: 0.58em;
-		left: 2px;
-		width: 7px;
-		height: 7px;
-		border: 2px solid var(--color-primary);
-		border-radius: 50%;
+	.card-content li::marker {
+		color: var(--color-text-muted);
 	}
 	.release-links {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 9px;
-		margin-top: 22px;
+		gap: 16px;
+		margin-top: 18px;
 	}
 	.release-links a {
 		display: inline-flex;
-		gap: 8px;
+		gap: 6px;
 		align-items: center;
-		border: 1px solid var(--color-border);
-		border-radius: 12px;
-		padding: 8px 11px;
-		background: var(--color-surface-variant);
+		padding: 0;
 		color: var(--color-primary-dark);
-		font-size: 0.78rem;
-		font-weight: 750;
-		text-decoration: none;
-		transition: 0.2s ease;
+		font-size: 0.76rem;
+		font-weight: 650;
+		text-decoration: underline;
+		text-underline-offset: 3px;
 	}
 	.release-links a:hover,
 	.release-links a:focus-visible {
-		border-color: var(--color-primary);
-		transform: translateY(-1px);
+		color: var(--color-text-main);
 	}
 	@media (max-width: 780px) {
 		.changelog-page {
-			padding-top: 28px;
+			padding-top: 48px;
 		}
-		.hero {
-			grid-template-columns: 1fr;
-			padding: 34px 28px;
+		.toolbar {
+			gap: 14px;
+		}
+	}
+	@media (max-width: 540px) {
+		.changelog-page {
+			width: min(100% - 32px, 900px);
+			padding-bottom: 52px;
+		}
+		.intro {
+			padding-bottom: 36px;
 		}
 		.toolbar {
 			align-items: flex-start;
 			flex-direction: column;
 		}
 		.filters {
-			width: calc(100% - 10px);
-		}
-	}
-	@media (max-width: 540px) {
-		.changelog-page {
-			width: min(100% - 20px, 1080px);
-			padding-bottom: 52px;
-		}
-		.hero {
-			border-radius: 22px;
-			padding: 30px 22px;
-		}
-		.hero-copy > p {
-			font-size: 0.95rem;
+			width: 100%;
 		}
 		.release-card {
-			grid-template-columns: 48px minmax(0, 1fr);
-			gap: 10px;
+			grid-template-columns: 1fr;
+			gap: 12px;
+			padding: 32px 0;
 		}
-		.date-badge {
-			width: 46px;
-			height: 52px;
-			border-radius: 13px;
+		.date-column {
+			padding: 0;
 		}
-		.date-badge strong {
-			font-size: 0.68rem;
-		}
-		.date-badge span {
-			font-size: 0.58rem;
-		}
-		.card-content {
-			padding: 22px 20px;
-			border-radius: 18px;
-		}
-		.card-meta {
-			align-items: flex-start;
-			flex-direction: column;
-		}
-		.release-summary {
-			padding: 16px;
+		.date-column time {
+			font-size: 0.72rem;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.card-content,
-		.filters button,
-		.release-links a {
+		.filters button {
 			transition: none;
 		}
 	}
