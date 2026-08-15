@@ -15,7 +15,6 @@
 	} from '$lib/stores/stores.js';
 
 	import Select from '$lib/components/MainCalculator/Select.svelte';
-	import NotEnoughDetails from '$lib/components/MainCalculator/NotEnoughDetails.svelte';
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
 	import BoundaryInsight from '$lib/components/MainCalculator/BoundaryInsight.svelte';
@@ -206,43 +205,55 @@
 	}
 </script>
 
-<div class="main">
+<div class="main" class:incomplete={!sufficientData} class:complete={sufficientData}>
 	<div class="group-header">
 		<h2 class="group-title">{groupTitle}</h2>
 		<div class="selection-row">
 			{#if group == 5}
-				<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
+				<div class="select-control group-select">
+					<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
+				</div>
 			{/if}
-			<Select options={subjects} placeholder="Enter subject" bind:selected={$settings['subject']} />
-			{#if !slOnly}
+			<div class="select-control subject-select">
 				<Select
-					options={['HL', 'SL']}
-					placeholder="Enter level"
-					bind:selected={$settings['level']}
+					options={subjects}
+					placeholder="Enter subject"
+					bind:selected={$settings['subject']}
 				/>
+			</div>
+			{#if !slOnly}
+				<div class="select-control level-select">
+					<Select
+						options={['HL', 'SL']}
+						placeholder="Enter level"
+						bind:selected={$settings['level']}
+					/>
+				</div>
 			{/if}
 			{#if isLang}
-				<Select
-					options={languages}
-					placeholder="Enter language"
-					bind:selected={$settings['language']}
-				/>
+				<div class="select-control language-select">
+					<Select
+						options={languages}
+						placeholder="Enter language"
+						bind:selected={$settings['language']}
+					/>
+				</div>
 			{/if}
 			{#if isHistoryHL}
-				<Select
-					options={courses.meta.region}
-					placeholder="Enter History HL region"
-					bind:selected={$settings['region']}
-				/>
+				<div class="select-control region-select">
+					<Select
+						options={courses.meta.region}
+						placeholder="Enter History HL region"
+						bind:selected={$settings['region']}
+					/>
+				</div>
 			{/if}
 		</div>
 	</div>
 	{#if slOnly}
 		<h5 class="slOnlyWarning">{$settings['subject']} is only offered at the SL level</h5>
 	{/if}
-	{#if !sufficientData}
-		<NotEnoughDetails />
-	{:else}
+	{#if sufficientData}
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="64"
@@ -364,9 +375,13 @@
 		position: relative;
 	}
 
+	.main.incomplete {
+		padding-block: 0.75rem;
+	}
+
 	.group-title {
-		flex: none;
-		font-size: 1.35rem;
+		font-size: 1.2rem;
+		line-height: 1.2;
 		margin: 0;
 	}
 
@@ -377,20 +392,44 @@
 	}
 
 	.group-header {
-		gap: 14px;
+		display: grid;
+		grid-template-columns: minmax(240px, 1fr) minmax(330px, 0.9fr);
+		gap: 16px;
 		padding-right: 48px;
 	}
 
 	.selection-row {
-		flex: 1;
-		flex-wrap: wrap;
+		justify-content: flex-end;
 		gap: 6px;
 		min-width: 0;
 	}
 
-	.selection-row :global(select) {
+	.select-control {
+		min-width: 0;
+	}
+
+	.select-control :global(select) {
+		box-sizing: border-box;
+		width: 100%;
 		margin: 0;
-		padding-block: 8px;
+		padding: 8px 10px;
+	}
+
+	.subject-select {
+		flex: 1 1 210px;
+	}
+
+	.level-select {
+		flex: 0 1 116px;
+	}
+
+	.group-select,
+	.language-select {
+		flex: 0 1 155px;
+	}
+
+	.region-select {
+		flex: 1 1 220px;
 	}
 
 	.toggle-button {
@@ -464,10 +503,11 @@
 		}
 	}
 
-	@media (max-width: 52.99rem) {
+	@media (max-width: 68rem) {
 		.group-header {
 			align-items: flex-start;
 			flex-direction: column;
+			display: flex;
 			gap: 8px;
 			padding-right: 48px;
 		}
@@ -475,14 +515,9 @@
 		.selection-row {
 			width: 100%;
 		}
+	}
 
-		.selection-row :global(select) {
-			box-sizing: border-box;
-			width: 100%;
-			min-width: 0;
-			max-width: 100%;
-		}
-
+	@media (max-width: 52.99rem) {
 		.grade-io,
 		.grade-sliders {
 			min-width: 0;
@@ -490,6 +525,34 @@
 
 		.grade-sliders {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 38rem) {
+		.main {
+			padding: 0.8rem;
+		}
+
+		.group-header {
+			padding-right: 42px;
+		}
+
+		.selection-row {
+			display: grid;
+			grid-auto-flow: dense;
+			grid-template-columns: minmax(0, 1fr) 104px;
+			width: 100%;
+		}
+
+		.subject-select,
+		.region-select {
+			grid-column: 1 / -1;
+		}
+
+		.group-select,
+		.language-select,
+		.level-select {
+			width: auto;
 		}
 	}
 
