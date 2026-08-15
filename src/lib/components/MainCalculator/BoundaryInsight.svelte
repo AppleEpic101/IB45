@@ -54,10 +54,10 @@
 
 <style>
 	.boundary-insight {
-		margin: 14px 0 18px;
+		margin: 8px 0 10px;
 		border-top: 1px solid var(--color-border);
 		border-bottom: 1px solid var(--color-border);
-		padding: 16px 0;
+		padding: 10px 0;
 	}
 
 	.boundary-heading,
@@ -100,7 +100,7 @@
 		display: grid;
 		grid-template-columns: repeat(7, minmax(76px, 1fr));
 		gap: 4px;
-		margin-top: 13px;
+		margin-top: 8px;
 		overflow-x: auto;
 		padding-bottom: 4px;
 	}
@@ -110,7 +110,7 @@
 		gap: 3px;
 		border: 1px solid var(--color-border);
 		border-radius: 6px;
-		padding: 8px 7px;
+		padding: 5px 7px;
 		background: var(--color-surface-variant);
 		text-align: center;
 	}
@@ -136,7 +136,7 @@
 	}
 
 	.margin-row {
-		margin-top: 10px;
+		margin-top: 6px;
 		color: var(--color-text-muted);
 		font-size: 0.78rem;
 	}

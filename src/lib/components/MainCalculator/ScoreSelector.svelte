@@ -3,6 +3,7 @@
 	export let maxMarks;
 	export let weight;
 	export let value;
+	export let compact = false;
 
 	if (value === undefined || value === null || value === '') {
 		value = 0;
@@ -16,9 +17,11 @@
 	}
 </script>
 
-<div class="slider">
-	<p class="name">{name}</p>
-	<p>Weight: {weight * 100}%</p>
+<div class:compact class="slider">
+	<div class="slider-meta">
+		<p class="name">{name}</p>
+		<p class="weight">{weight * 100}%</p>
+	</div>
 	<div class="c">
 		<input
 			type="range"
@@ -56,6 +59,19 @@
 		max-width: 300px;
 	}
 
+	.slider-meta {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.weight {
+		color: var(--color-text-muted);
+		font-size: 0.8rem;
+		white-space: nowrap;
+	}
+
 	.name {
 		font-style: italic;
 		margin-bottom: 5px;
@@ -63,7 +79,42 @@
 	.c {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
 		position: relative;
+	}
+
+	.slider.compact {
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		padding: 9px 10px 8px;
+	}
+
+	.slider.compact .name {
+		max-width: calc(100% - 42px);
+		overflow: hidden;
+		font-size: 0.84rem;
+		font-weight: 650;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.slider.compact .c {
+		margin-top: 5px;
+		min-width: 0;
+	}
+
+	.slider.compact input[type='range'] {
+		flex: 1 1 0;
+		width: 0;
+		min-width: 70px;
+	}
+
+	.slider.compact .c p {
+		flex: none;
+		font-size: 0.78rem;
+		white-space: nowrap;
 	}
 
 	input[type='range'] {

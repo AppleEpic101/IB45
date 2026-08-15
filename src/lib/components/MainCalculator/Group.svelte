@@ -207,30 +207,38 @@
 </script>
 
 <div class="main">
-	<h2 class="group-title">{groupTitle}</h2>
+	<div class="group-header">
+		<h2 class="group-title">{groupTitle}</h2>
+		<div class="selection-row">
+			{#if group == 5}
+				<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
+			{/if}
+			<Select options={subjects} placeholder="Enter subject" bind:selected={$settings['subject']} />
+			{#if !slOnly}
+				<Select
+					options={['HL', 'SL']}
+					placeholder="Enter level"
+					bind:selected={$settings['level']}
+				/>
+			{/if}
+			{#if isLang}
+				<Select
+					options={languages}
+					placeholder="Enter language"
+					bind:selected={$settings['language']}
+				/>
+			{/if}
+			{#if isHistoryHL}
+				<Select
+					options={courses.meta.region}
+					placeholder="Enter History HL region"
+					bind:selected={$settings['region']}
+				/>
+			{/if}
+		</div>
+	</div>
 	{#if slOnly}
 		<h5 class="slOnlyWarning">{$settings['subject']} is only offered at the SL level</h5>
-	{/if}
-	{#if group == 5}
-		<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
-	{/if}
-	<Select options={subjects} placeholder="Enter subject" bind:selected={$settings['subject']} />
-	{#if !slOnly}
-		<Select options={['HL', 'SL']} placeholder="Enter level" bind:selected={$settings['level']} />
-	{/if}
-	{#if isLang}
-		<Select
-			options={languages}
-			placeholder="Enter language"
-			bind:selected={$settings['language']}
-		/>
-	{/if}
-	{#if isHistoryHL}
-		<Select
-			options={courses.meta.region}
-			placeholder="Enter History HL region"
-			bind:selected={$settings['region']}
-		/>
 	{/if}
 	{#if !sufficientData}
 		<NotEnoughDetails />
@@ -283,6 +291,7 @@
 					<div class="grade-results">
 						{#if inputsComplete}
 							<GradeResults
+								compact={true}
 								grades={predictedTimezoneGrades}
 								{predictedGrade}
 								score={predictedScore}
@@ -301,6 +310,7 @@
 					<div class="grade-sliders">
 						{#each assessments as assessment, i}
 							<ScoreSelector
+								compact={true}
 								name={assessment.name}
 								maxMarks={assessment.maxMarks}
 								weight={assessment.weight}
@@ -349,23 +359,47 @@
 		border: 1px solid var(--color-border);
 		margin-bottom: 10px;
 		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-		padding: 1.5rem;
+		padding: 1rem;
 		background-color: var(--color-surface);
 		position: relative;
 	}
 
 	.group-title {
-		font-size: 1.75rem;
-		padding-bottom: 10px;
+		flex: none;
+		font-size: 1.35rem;
 		margin: 0;
+	}
+
+	.group-header,
+	.selection-row {
+		display: flex;
+		align-items: center;
+	}
+
+	.group-header {
+		gap: 14px;
+		padding-right: 48px;
+	}
+
+	.selection-row {
+		flex: 1;
+		flex-wrap: wrap;
+		gap: 6px;
+		min-width: 0;
+	}
+
+	.selection-row :global(select) {
+		margin: 0;
+		padding-block: 8px;
 	}
 
 	.toggle-button {
 		cursor: pointer;
 		position: absolute;
-		right: 8px;
-		top: 10px;
-		width: 56px;
+		right: 12px;
+		top: 12px;
+		width: 40px;
+		height: 40px;
 		filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 		transform: rotate(0deg);
 		transition: transform 0.5s;
@@ -376,8 +410,8 @@
 	}
 
 	.grade-panel {
-		padding-top: 10px;
-		padding-bottom: 15px;
+		padding-top: 8px;
+		padding-bottom: 6px;
 	}
 
 	.input-status,
@@ -407,9 +441,10 @@
 	}
 
 	.grade-sliders {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+		min-width: 0;
 	}
 
 	.grade-results {
@@ -418,14 +453,43 @@
 
 	@media (min-width: 53rem) {
 		.grade-io {
-			display: flex;
-			justify-content: left;
-			align-items: start;
+			display: grid;
+			grid-template-columns: 172px minmax(0, 1fr);
+			align-items: stretch;
+			gap: 8px;
 		}
 
 		.grade-results {
 			margin: 0;
-			margin-right: 0.5rem;
+		}
+	}
+
+	@media (max-width: 52.99rem) {
+		.group-header {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 8px;
+			padding-right: 48px;
+		}
+
+		.selection-row {
+			width: 100%;
+		}
+
+		.selection-row :global(select) {
+			box-sizing: border-box;
+			width: 100%;
+			min-width: 0;
+			max-width: 100%;
+		}
+
+		.grade-io,
+		.grade-sliders {
+			min-width: 0;
+		}
+
+		.grade-sliders {
+			grid-template-columns: 1fr;
 		}
 	}
 
