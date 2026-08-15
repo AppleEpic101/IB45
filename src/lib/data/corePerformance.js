@@ -31,6 +31,12 @@ export function getCorePerformance(sessionId, type, grade, eeSubjectGroup) {
 		total,
 		entries,
 		gradeShare: gradeIndex >= 0 ? entries[gradeIndex].percentage : null,
+		lowerShare:
+			gradeIndex >= 0
+				? Math.round(
+						(counts.slice(gradeIndex + 1).reduce((sum, count) => sum + count, 0) / total) * 1000
+				  ) / 10
+				: null,
 		higherShare:
 			gradeIndex >= 0
 				? Math.round(

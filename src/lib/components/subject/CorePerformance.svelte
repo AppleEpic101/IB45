@@ -55,34 +55,65 @@
 			</div>
 		</header>
 
-		<div class="summary">
-			<div class="grade-result">
-				<span>Your result</span>
-				<strong>Grade {grade}</strong>
+		{#if type === 'tok'}
+			<div class="tok-summary">
+				<div class="grade-result">
+					<span>Your result</span>
+					<strong>Grade {grade}</strong>
+				</div>
+				<div class="benchmark">
+					<strong>{comparison.lowerShare}%</strong>
+					<span>Beats {comparison.lowerShare}% of TOK students</span>
+				</div>
 			</div>
-			<div>
-				<span>Same grade</span>
-				<strong>{comparison.gradeShare}%</strong>
-			</div>
-			<div>
-				<span>Earned higher</span>
-				<strong>{comparison.higherShare}%</strong>
-			</div>
-		</div>
 
-		{#if !compact}
-			<div class="distribution" aria-label="Grade distribution">
-				{#each comparison.entries as entry}
-					<div
-						class:current={entry.label === grade}
-						style={`--share:${Math.max(entry.percentage, 0.6)}%`}
-					>
-						<span>{gradeName(entry.label)}</span>
-						<strong>{entry.percentage}%</strong>
-						<small>{entry.count.toLocaleString()}</small>
+			{#if !compact}
+				<details>
+					<summary>View grade breakdown</summary>
+					<div class="distribution" aria-label="Grade distribution">
+						{#each comparison.entries as entry}
+							<div
+								class:current={entry.label === grade}
+								style={`--share:${Math.max(entry.percentage, 0.6)}%`}
+							>
+								<span>{gradeName(entry.label)}</span>
+								<strong>{entry.percentage}%</strong>
+								<small>{entry.count.toLocaleString()}</small>
+							</div>
+						{/each}
 					</div>
-				{/each}
+				</details>
+			{/if}
+		{:else}
+			<div class="summary">
+				<div class="grade-result">
+					<span>Your result</span>
+					<strong>Grade {grade}</strong>
+				</div>
+				<div>
+					<span>Same grade</span>
+					<strong>{comparison.gradeShare}%</strong>
+				</div>
+				<div>
+					<span>Earned higher</span>
+					<strong>{comparison.higherShare}%</strong>
+				</div>
 			</div>
+
+			{#if !compact}
+				<div class="distribution" aria-label="Grade distribution">
+					{#each comparison.entries as entry}
+						<div
+							class:current={entry.label === grade}
+							style={`--share:${Math.max(entry.percentage, 0.6)}%`}
+						>
+							<span>{gradeName(entry.label)}</span>
+							<strong>{entry.percentage}%</strong>
+							<small>{entry.count.toLocaleString()}</small>
+						</div>
+					{/each}
+				</div>
+			{/if}
 		{/if}
 
 		<footer>
@@ -151,6 +182,51 @@
 		grid-template-columns: 1.25fr 1fr 1fr;
 		gap: 8px;
 		margin-top: 16px;
+	}
+	.tok-summary {
+		display: grid;
+		grid-template-columns: 1fr 1.4fr;
+		gap: 8px;
+		margin-top: 16px;
+	}
+	.tok-summary > div {
+		display: grid;
+		align-content: center;
+		gap: 2px;
+		min-height: 72px;
+		padding: 11px 12px;
+		border: 1px solid var(--color-border);
+		border-radius: 9px;
+		background: var(--color-surface-variant);
+	}
+	.tok-summary span {
+		color: var(--color-text-muted);
+		font-size: 0.68rem;
+	}
+	.tok-summary strong {
+		color: var(--color-text-main);
+		font-size: 1rem;
+	}
+	.benchmark {
+		grid-template-columns: auto 1fr;
+		column-gap: 10px !important;
+	}
+	.benchmark strong {
+		grid-row: 1 / 3;
+		align-self: center;
+		color: var(--color-primary);
+		font-size: 1.5rem;
+	}
+	details {
+		margin-top: 10px;
+		border-top: 1px solid var(--color-border);
+	}
+	summary {
+		padding: 10px 0 0;
+		color: var(--color-text-muted);
+		font-size: 0.72rem;
+		font-weight: 700;
+		cursor: pointer;
 	}
 	.summary > div {
 		display: grid;
@@ -235,6 +311,23 @@
 	.compact .summary {
 		margin-top: 8px;
 	}
+	.compact .tok-summary {
+		grid-template-columns: 0.8fr 1.5fr;
+		margin-top: 8px;
+	}
+	.compact .tok-summary > div {
+		min-height: 48px;
+		padding: 7px;
+	}
+	.compact .tok-summary span {
+		font-size: 0.58rem;
+	}
+	.compact .tok-summary strong {
+		font-size: 0.78rem;
+	}
+	.compact .benchmark strong {
+		font-size: 1rem;
+	}
 	.compact .summary > div {
 		padding: 7px;
 	}
@@ -267,6 +360,12 @@
 		}
 		.summary {
 			grid-template-columns: 1fr 1fr;
+		}
+		.tok-summary {
+			grid-template-columns: 1fr;
+		}
+		.compact .tok-summary {
+			grid-template-columns: 0.8fr 1.5fr;
 		}
 		.grade-result {
 			grid-column: 1 / -1;
