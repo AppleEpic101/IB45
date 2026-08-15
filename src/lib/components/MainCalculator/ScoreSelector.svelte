@@ -3,22 +3,16 @@
 	export let maxMarks;
 	export let weight;
 	export let value;
-	export let allowEmpty = false;
-	export let entered = !allowEmpty;
 
-	if (!allowEmpty && (value === undefined || value === null || value === '')) {
-		value = Math.floor(maxMarks / 2);
-		entered = true;
+	if (value === undefined || value === null || value === '') {
+		value = 0;
 	}
 
-	$: displayValue =
-		(allowEmpty && !entered) || value === undefined || value === null || value === '' ? '' : value;
-	$: rangeValue = displayValue === '' ? 0 : displayValue;
+	$: displayValue = value ?? 0;
 
 	function updateValue(event) {
 		const nextValue = event.currentTarget.value;
-		value = nextValue === '' ? undefined : Math.min(maxMarks, Math.max(0, Number(nextValue)));
-		entered = nextValue !== '';
+		value = nextValue === '' ? 0 : Math.min(maxMarks, Math.max(0, Number(nextValue)));
 	}
 </script>
 
@@ -28,7 +22,7 @@
 	<div class="c">
 		<input
 			type="range"
-			value={rangeValue}
+			value={displayValue}
 			min={0}
 			max={maxMarks}
 			aria-label={`${name} score`}
@@ -40,7 +34,6 @@
 				value={displayValue}
 				min={0}
 				max={maxMarks}
-				placeholder="—"
 				aria-label={`${name} mark`}
 				on:input={updateValue}
 			/>
@@ -108,10 +101,6 @@
 		margin-left: 4px;
 		position: relative;
 		top: -2px;
-	}
-
-	input[type='number']::placeholder {
-		color: var(--color-text-muted);
 	}
 
 	@media screen and (max-width: 380px) {

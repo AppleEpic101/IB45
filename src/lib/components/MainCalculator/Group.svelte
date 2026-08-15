@@ -24,9 +24,6 @@
 
 	let settings = getPredictorSelectedOptions(group);
 	$settings['chosenScores'] = $settings['chosenScores'] || [];
-	$settings['enteredScores'] =
-		$settings['enteredScores'] ||
-		$settings['chosenScores'].map((score) => score !== undefined && score !== null && score !== '');
 
 	let selectedGroup;
 	$: selectedGroup = $settings['groupSixGroup'] !== undefined ? $settings['groupSixGroup'] : group;
@@ -109,20 +106,11 @@
 		}
 	}
 
-	const hasEnteredScore = (value) =>
-		value !== undefined && value !== null && value !== '' && Number.isFinite(Number(value));
-
 	// grade prediction algorithm
 	let predictedScore, predictedTimezoneGrades, inputsComplete, completedAssessments;
 	$: {
-		completedAssessments = sufficientData
-			? assessments.filter(
-					(_, index) =>
-						$settings['enteredScores'][index] && hasEnteredScore($settings['chosenScores'][index])
-			  ).length
-			: 0;
-		inputsComplete =
-			sufficientData && assessments.length > 0 && completedAssessments === assessments.length;
+		completedAssessments = sufficientData ? assessments.length : 0;
+		inputsComplete = sufficientData && assessments.length > 0;
 
 		if (inputsComplete) {
 			predictedScore = 0;
@@ -291,9 +279,7 @@
 								name={assessment.name}
 								maxMarks={assessment.maxMarks}
 								weight={assessment.weight}
-								allowEmpty={true}
 								bind:value={$settings['chosenScores'][i]}
-								bind:entered={$settings['enteredScores'][i]}
 							/>
 						{/each}
 					</div>

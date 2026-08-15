@@ -15,8 +15,8 @@
 		coreGrade: 0
 	};
 	let subjectSummaries = Array.from({ length: 6 }, () => ({}));
-	let tokComplete = false;
-	let eeComplete = false;
+	let tokComplete = true;
+	let eeComplete = true;
 </script>
 
 <div class="mobile-table">
@@ -57,9 +57,9 @@
 <style lang="scss">
 	.main {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) 270px;
+		grid-template-columns: minmax(0, 1fr) 225px;
 		margin: 20px auto;
-		gap: 16px;
+		gap: 10px;
 	}
 
 	.mobile-table {
