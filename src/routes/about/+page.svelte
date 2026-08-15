@@ -34,14 +34,20 @@
 
 	let maintainers = [
 		{
-			name: 'Daksh Gupta',
+			name: 'Angelina Guo',
 			title: 'Maintainer',
-			gradYear: "'25",
+			gradYear: '',
 			photo: '/placeholder.png'
 		}
 	];
 
 	let pastMaintainers = [
+		{
+			name: 'Daksh Gupta',
+			title: 'Past Maintainer',
+			gradYear: "'25",
+			photo: '/placeholder.png'
+		},
 		{
 			name: 'David Yeo',
 			title: 'Past Maintainer',
@@ -92,7 +98,7 @@
 					<div class="stats-badge">
 						<span>Global Impact: 150+ Countries</span>
 						<span class="dot" />
-						<span>750k+ Users</span>
+						<span>1M+ Users</span>
 					</div>
 				</div>
 				<div class="mission-image">
@@ -120,7 +126,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -140,7 +146,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -160,7 +166,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -180,7 +186,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
