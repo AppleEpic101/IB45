@@ -34,6 +34,8 @@
 	let chartInstance;
 	let chartUpdateId = 0;
 	const selectSession = (short) => {
+		if (short === selectedShort) return;
+
 		chartInstance?.destroy();
 		Chart.getChart(canvas)?.destroy();
 		chartInstance = undefined;
