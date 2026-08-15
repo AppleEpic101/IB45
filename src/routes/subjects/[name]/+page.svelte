@@ -11,7 +11,6 @@
 	import Footnote from '$lib/components/Footnote.svelte';
 	import GlobalBulletin from '$lib/components/subject/GlobalBulletin.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import { onMount } from 'svelte';
 
 	import SubjectHeader from '$lib/components/subject/SubjectHeader.svelte';
 	import Syllabus from '$lib/components/subject/Syllabus.svelte';
@@ -80,39 +79,46 @@
 		}
 	}
 
-	const init = async () => {
-		if (SLoptions && HLoptions) {
-			lastSL = SLoptions?.find(
+	const initializeBoundaries = (slOptions, hlOptions) => {
+		if (slOptions && hlOptions) {
+			lastSL = slOptions?.find(
 				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
-			lastHL = HLoptions?.find(
+			lastHL = hlOptions?.find(
 				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
 			);
 
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M25');
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N25');
-			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
+			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'M25');
+			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'N25');
+			if (!lastSL) lastSL = slOptions[slOptions.length - 1];
 
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M25');
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N25');
-			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
+			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'M25');
+			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'N25');
+			if (!lastHL) lastHL = hlOptions[hlOptions.length - 1];
 		}
 	};
 
-	$: language && init();
-
-	onMount(() => {
-		init();
-	});
+	$: initializeBoundaries(SLoptions, HLoptions);
 
 	// calculate weighted average (percentage out of 100)
 	let weight = [];
 	let marks = [];
 	let assessments = [];
+	let assessmentKey = '';
 	$: {
 		weight = s?.map((a) => a.weight);
 		marks = s?.map((a) => a.maxMarks);
+	}
+	$: {
+		const nextAssessmentKey =
+			s
+				?.map((assessment) => `${assessment.name}:${assessment.maxMarks}:${assessment.weight}`)
+				.join('|') || '';
+		if (nextAssessmentKey !== assessmentKey) {
+			assessmentKey = nextAssessmentKey;
+			assessments = s?.map((assessment) => Math.trunc(assessment.maxMarks / 2)) || [];
+		}
 	}
 	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
 	let mark, marksToIncrease;
