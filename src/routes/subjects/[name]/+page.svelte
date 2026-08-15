@@ -260,9 +260,6 @@
 							<span class="active-level">{selectedTableLevel} selected</span>
 							<h5>{selectedTableLevel} boundary history</h5>
 						</div>
-						<p>
-							Average shows the typical boundary. Standard deviation shows how much it has varied.
-						</p>
 					</div>
 					{#key selectedTableLevel}
 						<BoundaryTable name={selectedTableLevel + ' ' + name} res={selectedBoundaryResults} />
@@ -343,8 +340,7 @@
 		gap: 20px;
 		margin-bottom: 12px;
 
-		h5,
-		p {
+		h5 {
 			margin: 0;
 		}
 
@@ -352,13 +348,6 @@
 			margin-top: 5px;
 			color: var(--color-text-main);
 			font-size: 1rem;
-		}
-
-		p {
-			max-width: 460px;
-			color: var(--color-text-muted);
-			font-size: 0.78rem;
-			text-align: right;
 		}
 	}
 
@@ -469,14 +458,6 @@
 		.tables {
 			flex-direction: column;
 			align-items: stretch;
-		}
-		.table-intro {
-			align-items: flex-start;
-			flex-direction: column;
-
-			p {
-				text-align: left;
-			}
 		}
 		.bulletin-panel {
 			padding: 14px;

@@ -7,6 +7,7 @@
 	import Bulletin from '$lib/data/bulletin.js';
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
+	import { buildBoundaryForecast, calculateForecastProbabilities } from '$lib/utils/forecast.js';
 
 	export let data;
 	export let syllabus;
@@ -59,6 +60,33 @@
 		minimumFractionDigits: 0,
 		maximumFractionDigits: 1
 	});
+	$: forecastLabels = data.isCore ? ['E', 'D', 'C', 'B', 'A'] : ['1', '2', '3', '4', '5', '6', '7'];
+	$: forecastResults = level === 'HL' ? HLResults : SLResults;
+	$: comparableForecastResults = forecastResults.filter(
+		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+	);
+	$: boundaryForecast = buildBoundaryForecast({
+		results: comparableForecastResults,
+		targetYear: 2026,
+		sessionPrefix: 'N',
+		labels: forecastLabels
+	});
+	$: forecastProbability = calculateForecastProbabilities(boundaryForecast, grade);
+	$: rankedForecastOutcomes = forecastProbability
+		? forecastProbability.exact
+				.map((chance, index) => ({
+					grade: boundaryForecast.forecasts[index].grade,
+					chance
+				}))
+				.sort((a, b) => b.chance - a.chance)
+		: [];
+	$: primaryForecastOutcome = rankedForecastOutcomes[0];
+	$: secondaryForecastOutcome = rankedForecastOutcomes[1];
+	const forecastChanceLabel = (chance) => {
+		if (chance >= 0.995) return '>99%';
+		if (chance > 0 && chance <= 0.005) return '<1%';
+		return `${Math.round(chance * 100)}%`;
+	};
 	$: {
 		const hasResults =
 			data.isCore || (level === 'HL' ? HLResults.length > 0 : SLResults.length > 0);
@@ -165,6 +193,26 @@
 				{/if}
 
 				<div class="pp">{str}</div>
+				{#if primaryForecastOutcome}
+					<div class="forecast-summary" aria-live="polite">
+						<div class="forecast-summary-label">November 2026 forecast · experimental</div>
+						<div class="forecast-primary">
+							<div>
+								<strong>Grade {primaryForecastOutcome.grade}</strong><span>Most likely</span>
+							</div>
+							<div>
+								<strong>{forecastChanceLabel(primaryForecastOutcome.chance)}</strong><span
+									>Estimated likelihood</span
+								>
+							</div>
+						</div>
+						{#if secondaryForecastOutcome}
+							<div class="forecast-secondary">
+								{forecastChanceLabel(secondaryForecastOutcome.chance)} chance of Grade {secondaryForecastOutcome.grade}
+							</div>
+						{/if}
+					</div>
+				{/if}
 				{#if percentile !== undefined}
 					<div class="percentile-summary" aria-live="polite">
 						<strong>{percentileLabel}%</strong>
@@ -242,6 +290,54 @@
 			font-size: 0.62rem;
 			font-weight: 500;
 		}
+	}
+
+	.forecast-summary {
+		margin-top: 7px;
+		padding: 8px 9px;
+		border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+		border-radius: 9px;
+		background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
+	}
+
+	.forecast-summary-label {
+		color: var(--color-text-muted);
+		font-size: 0.58rem;
+		font-weight: 750;
+		letter-spacing: 0.045em;
+		text-transform: uppercase;
+	}
+
+	.forecast-primary {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+		margin-top: 5px;
+
+		div {
+			display: flex;
+			flex-direction: column;
+		}
+
+		strong {
+			color: var(--color-primary);
+			font-size: 1.05rem;
+			line-height: 1.05;
+		}
+
+		span {
+			color: var(--color-text-muted);
+			font-size: 0.62rem;
+		}
+	}
+
+	.forecast-secondary {
+		margin-top: 5px;
+		padding-top: 5px;
+		border-top: 1px solid var(--color-border);
+		color: var(--color-text-main);
+		font-size: 0.65rem;
+		font-weight: 650;
 	}
 
 	.no-result {

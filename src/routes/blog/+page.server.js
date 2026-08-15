@@ -6,25 +6,25 @@ import { marked } from 'marked';
 const blogDirectory = path.join(process.cwd(), 'src/lib/blog');
 
 const getAllBlogPosts = () => {
-    const fileNames = fs.readdirSync(blogDirectory);
-    const allPosts = fileNames.map(fileName => {
-      const fullPath = path.join(blogDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-      const htmlContent = marked(content);
-      return {
-        fileName,
-        meta: data,
-        content: htmlContent,
-        slug: data.slug 
-      };
-    });
-    return allPosts;
-  }
+	const fileNames = fs.readdirSync(blogDirectory).filter((fileName) => fileName.endsWith('.md'));
+	const allPosts = fileNames.map((fileName) => {
+		const fullPath = path.join(blogDirectory, fileName);
+		const fileContents = fs.readFileSync(fullPath, 'utf8');
+		const { data, content } = matter(fileContents);
+		const htmlContent = marked(content);
+		return {
+			fileName,
+			meta: data,
+			content: htmlContent,
+			slug: data.slug
+		};
+	});
+	return allPosts.sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date));
+};
 
 export const load = async () => {
-  const posts = getAllBlogPosts();
-  return {
-    posts
-  };
+	const posts = getAllBlogPosts();
+	return {
+		posts
+	};
 };

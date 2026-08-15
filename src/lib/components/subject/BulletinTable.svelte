@@ -129,12 +129,6 @@
 		</table>
 	</div>
 
-	<p class="average-note">
-		{displayMode === 'percent'
-			? 'Summary percentages and mean grades are weighted by the number of candidates in each session.'
-			: 'Summary candidate counts are combined across sessions; mean grades remain candidate-weighted.'}
-	</p>
-
 	{#if displayMode === 'count'}
 		<p class="estimate-note">
 			Candidate counts are estimates calculated from the published percentages and may differ
@@ -169,7 +163,6 @@
 	}
 
 	.table-toolbar span,
-	.average-note,
 	.estimate-note {
 		color: var(--color-text-muted);
 		font-size: 0.8rem;
@@ -261,7 +254,6 @@
 		font-weight: 500;
 	}
 
-	.average-note,
 	.estimate-note {
 		max-width: 1100px;
 		margin: 10px auto 0;

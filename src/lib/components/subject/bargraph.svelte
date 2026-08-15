@@ -27,13 +27,13 @@
 	});
 	$: probability = calculateForecastProbabilities(forecast, grade);
 	$: featuredForecasts = forecast?.forecasts.slice(isCore ? 0 : 3) ?? [];
-	$: likelyIndex = probability
-		? forecast.forecasts.findIndex(
-				({ grade: forecastGrade }) => forecastGrade === probability.mostLikelyGrade
-		  )
-		: -1;
-	$: nextIndex = likelyIndex >= 0 ? Math.min(likelyIndex + 1, forecast.forecasts.length - 1) : -1;
-	$: nextGrade = nextIndex > likelyIndex ? forecast.forecasts[nextIndex]?.grade : undefined;
+	$: rankedOutcomes = probability
+		? probability.exact
+				.map((chance, index) => ({ grade: forecast.forecasts[index].grade, chance }))
+				.sort((a, b) => b.chance - a.chance)
+		: [];
+	$: primaryOutcome = rankedOutcomes[0];
+	$: secondaryOutcome = rankedOutcomes[1];
 	const probabilityLabel = (chance) => {
 		if (chance >= 0.995) return '>99%';
 		if (chance > 0 && chance <= 0.005) return '<1%';
@@ -44,9 +44,13 @@
 	let chartInstance;
 	let expanded = false;
 	const setExpanded = async (value) => {
+		if (!value) {
+			chartInstance?.destroy();
+			chartInstance = undefined;
+		}
 		expanded = value;
 		await tick();
-		chartInstance?.resize();
+		if (value) createChart();
 	};
 	const closeOnEscape = (event) => {
 		if (expanded && event.key === 'Escape') setExpanded(false);
@@ -153,12 +157,9 @@
 		});
 	};
 
-	onMount(() => {
-		createChart();
-		return () => chartInstance?.destroy();
-	});
+	onMount(() => () => chartInstance?.destroy());
 
-	$: if (chartCanvas && forecast && (grade !== undefined || $darkMode !== undefined || expanded)) {
+	$: if (expanded && chartCanvas && forecast && (grade !== undefined || $darkMode !== undefined)) {
 		createChart();
 	}
 </script>
@@ -184,12 +185,12 @@
 		<button
 			type="button"
 			class="expand-button"
-			aria-label={expanded ? 'Close expanded forecast' : 'Expand forecast'}
-			title={expanded ? 'Close' : 'Expand forecast'}
+			aria-label={expanded ? 'Close forecast details' : 'View forecast details'}
+			title={expanded ? 'Close' : 'View details'}
 			on:click={() => setExpanded(!expanded)}
 		>
 			<span aria-hidden="true">{expanded ? '×' : '↗'}</span><span
-				>{expanded ? 'Close' : 'Expand'}</span
+				>{expanded ? 'Close' : 'Details'}</span
 			>
 		</button>
 
@@ -201,53 +202,59 @@
 			<p>{level} {name} · built from comparable November examination sessions</p>
 		</header>
 
-		<div class="forecast-overview">
-			{#if probability}
+		{#if probability}
+			<div class="forecast-overview">
 				<div class="personal-forecast">
 					<span class="overview-label">Your {Number(grade).toFixed(0)}% mark</span>
-					<strong>Grade {probability.mostLikelyGrade} is most likely</strong>
-					<p>
-						{probabilityLabel(probability.mostLikelyChance)} estimated likelihood{#if nextGrade}
-							· {probabilityLabel(probability.cumulative[nextIndex])} chance of Grade {nextGrade} or
-							higher{/if}
-					</p>
-				</div>
-			{/if}
-			<div class="model-stats">
-				<div>
-					<span>Training data</span><strong>{forecast.sessionCount} November sessions</strong>
-				</div>
-				<div>
-					<span>Backtest error</span><strong
-						>{forecast.mae === undefined
-							? 'Limited history'
-							: `±${forecast.mae.toFixed(1)} marks`}</strong
-					>
-				</div>
-				<div><span>Published through</span><strong>{forecast.trainingThrough}</strong></div>
-			</div>
-		</div>
-
-		<div class="forecast-body">
-			<div class="graph-wrapper"><canvas bind:this={chartCanvas} /></div>
-			<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
-				{#each featuredForecasts as boundary}
-					<div class="boundary-card">
-						<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
-						<p>80% range {boundary.lower}–{boundary.upper}%</p>
-						<span class:high={boundary.confidence === 'High'} class="confidence"
-							>{boundary.confidence} confidence</span
-						>
+					<div class="outcome-grid">
+						<div class="primary-outcome">
+							<strong>Grade {primaryOutcome.grade}</strong>
+							<span>Most likely grade</span>
+						</div>
+						<div class="outcome-chance">
+							<strong>{probabilityLabel(primaryOutcome.chance)}</strong>
+							<span>Estimated likelihood</span>
+						</div>
+						{#if secondaryOutcome}
+							<div class="secondary-outcome">
+								<strong>{probabilityLabel(secondaryOutcome.chance)}</strong>
+								<span>Grade {secondaryOutcome.grade}, next most likely</span>
+							</div>
+						{/if}
 					</div>
-				{/each}
+				</div>
 			</div>
-		</div>
+		{/if}
 
-		<footer class="method-note">
-			<strong>How this works:</strong> recency-weighted November history, COVID-era downweighting,
-			timezone pooling, constrained grade ordering, and rolling backtests. This is an IB Predict
-			estimate—not an official IB boundary. Model v{forecast.modelVersion}.
-		</footer>
+		{#if expanded}
+			<div class="forecast-body">
+				<div class="graph-wrapper"><canvas bind:this={chartCanvas} /></div>
+				<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
+					{#each featuredForecasts as boundary}
+						<div class="boundary-card">
+							<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
+							<p>80% range {boundary.lower}–{boundary.upper}%</p>
+							<span class:high={boundary.confidence === 'High'} class="confidence"
+								>{boundary.confidence} confidence</span
+							>
+						</div>
+					{/each}
+				</div>
+			</div>
+			<div class="model-meta">
+				<span>{forecast.sessionCount} November sessions</span>
+				<span
+					>{forecast.mae === undefined
+						? 'Limited backtest history'
+						: `±${forecast.mae.toFixed(1)} mark backtest error`}</span
+				>
+				<span>Published through {forecast.trainingThrough}</span>
+			</div>
+		{/if}
+
+		<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
+			Read the forecast methodology <span aria-hidden="true">→</span>
+		</a>
 	</section>
 {:else}
 	<section class="forecast-container unavailable" aria-label="Boundary forecast unavailable">
@@ -364,51 +371,50 @@
 	}
 
 	.forecast-overview {
-		display: grid;
-		grid-template-columns: minmax(0, 1.2fr) minmax(340px, 1fr);
-		gap: 12px;
 		margin: 18px 0;
 	}
-	.personal-forecast,
-	.model-stats {
+	.personal-forecast {
 		padding: 13px 14px;
 		border: 1px solid var(--color-border);
 		border-radius: 11px;
 		background: var(--color-surface-variant);
 	}
-	.personal-forecast {
-		display: flex;
-		flex-direction: column;
-		strong {
-			color: var(--color-text-main);
-			font-size: 1.05rem;
-		}
-		p {
-			margin: 2px 0 0;
-			color: var(--color-text-muted);
-			font-size: 0.76rem;
-		}
-	}
-	.overview-label,
-	.model-stats span {
+	.overview-label {
 		color: var(--color-text-muted);
 		font-size: 0.67rem;
 		font-weight: 750;
 		letter-spacing: 0.04em;
 		text-transform: uppercase;
 	}
-	.model-stats {
+	.outcome-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 10px;
-		div {
-			display: flex;
-			flex-direction: column;
-			gap: 3px;
+		grid-template-columns: minmax(150px, 1fr) minmax(150px, 0.8fr) minmax(180px, 1fr);
+		gap: 12px;
+		align-items: center;
+		margin-top: 8px;
+	}
+	.primary-outcome,
+	.outcome-chance,
+	.secondary-outcome {
+		display: flex;
+		flex-direction: column;
+		span {
+			color: var(--color-text-muted);
+			font-size: 0.72rem;
 		}
+	}
+	.primary-outcome strong,
+	.outcome-chance strong {
+		color: var(--color-primary);
+		font-size: 1.75rem;
+		line-height: 1.05;
+	}
+	.secondary-outcome {
+		padding-left: 12px;
+		border-left: 1px solid var(--color-border);
 		strong {
 			color: var(--color-text-main);
-			font-size: 0.78rem;
+			font-size: 1rem;
 		}
 	}
 
@@ -472,15 +478,29 @@
 			color: #16a34a;
 		}
 	}
-	.method-note {
-		margin-top: 14px;
-		padding-top: 12px;
-		border-top: 1px solid var(--color-border);
+	.model-meta {
+		display: flex;
+		gap: 12px;
+		justify-content: flex-end;
+		margin-top: 10px;
 		color: var(--color-text-muted);
+		font-size: 0.68rem;
+		span + span::before {
+			content: '·';
+			margin-right: 12px;
+		}
+	}
+	.method-link {
+		display: inline-flex;
+		gap: 5px;
+		margin-top: 14px;
+		color: var(--color-primary);
 		font-size: 0.7rem;
-		line-height: 1.45;
-		strong {
-			color: var(--color-text-main);
+		font-weight: 700;
+		text-decoration: none;
+		&:hover,
+		&:focus-visible {
+			text-decoration: underline;
 		}
 	}
 	.expanded .forecast-body {
@@ -493,7 +513,6 @@
 	}
 
 	@media (max-width: 800px) {
-		.forecast-overview,
 		.forecast-body {
 			grid-template-columns: 1fr;
 		}
@@ -511,12 +530,26 @@
 		.forecast-header {
 			padding-right: 42px;
 		}
-		.model-stats,
+		.outcome-grid,
 		.forecast-bands {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 		.graph-wrapper {
 			height: 250px;
+		}
+		.secondary-outcome {
+			grid-column: 1 / -1;
+			padding: 8px 0 0;
+			border-top: 1px solid var(--color-border);
+			border-left: 0;
+		}
+		.model-meta {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 3px;
+			span + span::before {
+				content: none;
+			}
 		}
 		.expand-button span:last-child {
 			display: none;
