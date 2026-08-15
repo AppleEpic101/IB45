@@ -2,6 +2,7 @@
 	export let group;
 	export let predictedGrade;
 	export let level;
+	export let summary = {};
 	$: level = $settings['level'];
 
 	import courses from '$lib/assets/courses.json';
@@ -16,12 +17,14 @@
 	import NotEnoughDetails from '$lib/components/MainCalculator/NotEnoughDetails.svelte';
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
+	import BoundaryInsight from '$lib/components/MainCalculator/BoundaryInsight.svelte';
 
 	import { constructURL } from '$lib/utils/urls.js';
 	import { page } from '$app/stores';
 
 	let settings = getPredictorSelectedOptions(group);
 	$settings['chosenScores'] = $settings['chosenScores'] || [];
+	$settings['enteredScores'] = $settings['enteredScores'] || [];
 
 	let selectedGroup;
 	$: selectedGroup = $settings['groupSixGroup'] !== undefined ? $settings['groupSixGroup'] : group;
@@ -104,10 +107,22 @@
 		}
 	}
 
+	const hasEnteredScore = (value) =>
+		value !== undefined && value !== null && value !== '' && Number.isFinite(Number(value));
+
 	// grade prediction algorithm
-	let predictedScore, predictedTimezoneGrades;
+	let predictedScore, predictedTimezoneGrades, inputsComplete, completedAssessments;
 	$: {
-		if (sufficientData) {
+		completedAssessments = sufficientData
+			? assessments.filter(
+					(_, index) =>
+						$settings['enteredScores'][index] && hasEnteredScore($settings['chosenScores'][index])
+			  ).length
+			: 0;
+		inputsComplete =
+			sufficientData && assessments.length > 0 && completedAssessments === assessments.length;
+
+		if (inputsComplete) {
 			predictedScore = 0;
 			for (let i = 0; i < assessments.length; i++) {
 				predictedScore +=
@@ -125,13 +140,43 @@
 				}
 				predictedTimezoneGrades.push(grade);
 			}
-			predictedGrade = predictedTimezoneGrades[1]
-				? predictedTimezoneGrades[$selectedTimezone]
-				: predictedTimezoneGrades[0];
+			predictedGrade =
+				boundaries.length > 1
+					? predictedTimezoneGrades[$selectedTimezone] ?? predictedTimezoneGrades[0]
+					: predictedTimezoneGrades[0];
 		} else {
+			predictedScore = undefined;
+			predictedTimezoneGrades = [];
 			predictedGrade = 0;
 		}
 	}
+
+	$: selectedBoundaryValues =
+		boundaries?.length > 1 ? boundaries[$selectedTimezone] ?? boundaries[0] : boundaries?.[0] ?? [];
+	$: marksToNext =
+		inputsComplete && predictedGrade && predictedGrade < selectedBoundaryValues.length
+			? Math.max(0, selectedBoundaryValues[predictedGrade] - predictedScore)
+			: null;
+	$: safetyMargin =
+		inputsComplete && predictedGrade
+			? Math.max(0, predictedScore - selectedBoundaryValues[predictedGrade - 1])
+			: null;
+	$: summary = {
+		group,
+		name: groupTitle,
+		level: $settings['level'],
+		subjectSelected: Boolean($settings['subject']),
+		selectionComplete: sufficientData,
+		inputsComplete,
+		completedAssessments,
+		totalAssessments: assessments?.length ?? 0,
+		boundariesAvailable: selectedBoundaryValues.length > 0,
+		score: predictedScore,
+		grade: predictedGrade,
+		marksToNext,
+		safetyMargin,
+		nextGrade: predictedGrade && predictedGrade < 7 ? predictedGrade + 1 : null
+	};
 
 	$: url = constructURL(
 		new URL($page.url),
@@ -204,22 +249,39 @@
 		</svg>
 		<div class="grade-panel">
 			{#if !show}
-				<GradeResults
-					isCondensed={true}
-					grades={predictedTimezoneGrades}
-					{predictedGrade}
-					score={predictedScore}
-					name={$selectedBoundaryId}
-				/>
+				{#if inputsComplete}
+					<GradeResults
+						isCondensed={true}
+						grades={predictedTimezoneGrades}
+						{predictedGrade}
+						score={predictedScore}
+						name={$selectedBoundaryId}
+					/>
+				{:else}
+					<div class="input-status">
+						<strong>Scores incomplete</strong>
+						<span>{completedAssessments} of {assessments.length} assessment scores entered</span>
+					</div>
+				{/if}
 			{:else}
 				<div class="grade-io">
 					<div class="grade-results">
-						<GradeResults
-							grades={predictedTimezoneGrades}
-							{predictedGrade}
-							score={predictedScore}
-							name={$selectedBoundaryId}
-						/>
+						{#if inputsComplete}
+							<GradeResults
+								grades={predictedTimezoneGrades}
+								{predictedGrade}
+								score={predictedScore}
+								name={$selectedBoundaryId}
+							/>
+						{:else}
+							<div class="input-status">
+								<strong>Enter every assessment score</strong>
+								<span
+									>{completedAssessments} of {assessments.length} complete · no estimate shown until
+									then</span
+								>
+							</div>
+						{/if}
 					</div>
 					<div class="grade-sliders">
 						{#each assessments as assessment, i}
@@ -227,13 +289,31 @@
 								name={assessment.name}
 								maxMarks={assessment.maxMarks}
 								weight={assessment.weight}
+								allowEmpty={true}
 								bind:value={$settings['chosenScores'][i]}
+								bind:entered={$settings['enteredScores'][i]}
 							/>
 						{/each}
 					</div>
 				</div>
 			{/if}
 		</div>
+
+		{#if inputsComplete && selectedBoundaryValues.length}
+			<BoundaryInsight
+				boundary={selectedBoundaryValues}
+				score={predictedScore}
+				{predictedGrade}
+				session={`${$selectedBoundary.info.name}${
+					boundaries.length > 1 ? ` · TZ${$selectedTimezone + 1}` : ''
+				}`}
+			/>
+		{:else if inputsComplete}
+			<div class="boundary-unavailable">
+				<strong>Boundary unavailable</strong>
+				<span>No grade boundary was published for this subject and session.</span>
+			</div>
+		{/if}
 
 		<a href={url} target="_blank"><button class="goto">Goto subject page</button></a>
 	{/if}
@@ -274,6 +354,32 @@
 	.grade-panel {
 		padding-top: 10px;
 		padding-bottom: 15px;
+	}
+
+	.input-status,
+	.boundary-unavailable {
+		display: grid;
+		gap: 4px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		padding: 14px;
+		background: var(--color-surface-variant);
+	}
+
+	.input-status strong,
+	.boundary-unavailable strong {
+		font-size: 0.9rem;
+	}
+
+	.input-status span,
+	.boundary-unavailable span {
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+
+	.boundary-unavailable {
+		margin: 12px 0 18px;
 	}
 
 	.grade-sliders {

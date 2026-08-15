@@ -2,7 +2,6 @@
 	import Group from '$lib/components/MainCalculator/Group.svelte';
 	import Core from '$lib/components/MainCalculator/Core.svelte';
 	import GradeTable from '$lib/components/MainCalculator/GradeTable.svelte';
-	import Refresh from '$lib/components/MainCalculator/Refresh.svelte';
 
 	let subjectGrades = {
 		0: {},
@@ -15,41 +14,52 @@
 		eeGrade: 'E',
 		coreGrade: 0
 	};
+	let subjectSummaries = Array.from({ length: 6 }, () => ({}));
+	let tokComplete = false;
+	let eeComplete = false;
 </script>
 
 <div class="mobile-table">
-	<GradeTable gradeData={subjectGrades} />
+	<GradeTable
+		gradeData={subjectGrades}
+		summaries={subjectSummaries}
+		coreComplete={tokComplete && eeComplete}
+	/>
 </div>
 
 <div class="main">
 	<div class="left-column">
-		{#each Array(6).fill(0) as _, i}
+		{#each [0, 1, 2, 3, 4, 5] as i}
 			<Group
 				group={i}
 				bind:predictedGrade={subjectGrades[i].grade}
 				bind:level={subjectGrades[i].level}
+				bind:summary={subjectSummaries[i]}
 			/>
 		{/each}
 		<Core
 			bind:tokGrade={subjectGrades.tokGrade}
 			bind:eeGrade={subjectGrades.eeGrade}
 			bind:coreGrade={subjectGrades.coreGrade}
+			bind:tokComplete
+			bind:eeComplete
 		/>
 	</div>
 	<div class="desktop-table">
-		<GradeTable gradeData={subjectGrades} />
+		<GradeTable
+			gradeData={subjectGrades}
+			summaries={subjectSummaries}
+			coreComplete={tokComplete && eeComplete}
+		/>
 	</div>
-</div>
-<div class="mobile-table">
-	<GradeTable gradeData={subjectGrades} />
 </div>
 
 <style lang="scss">
 	.main {
 		display: grid;
-		grid-template-columns: 1fr 225px;
+		grid-template-columns: minmax(0, 1fr) 270px;
 		margin: 20px auto;
-		gap: 10px;
+		gap: 16px;
 	}
 
 	.mobile-table {

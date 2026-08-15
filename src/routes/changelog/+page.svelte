@@ -19,7 +19,8 @@
 				'Added May 2025 candidate totals, mean grades, and grade distributions for 160 subjects.',
 				'Expanded the exam-session switcher so students can compare November and May sessions.',
 				'Marked the May 2025 figures as provisional to match the source bulletin.',
-				'Redesigned the assistant as a modern AI workspace with image uploads, tool activity, and automatic subject-mark entry.'
+				'Redesigned the assistant as a modern AI workspace with image uploads, tool activity, and automatic subject-mark entry.',
+				'Added inline subject boundaries, grade margins, diploma requirements, and opportunity and risk insights to the main calculator.'
 			],
 			latest: true
 		},

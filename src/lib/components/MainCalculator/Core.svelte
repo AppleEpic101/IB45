@@ -2,8 +2,10 @@
 	export let tokGrade;
 	export let eeGrade;
 	export let coreGrade;
-	$: tokGrade = letterGrades[tokPredictedGrade];
-	$: eeGrade = letterGrades[eePredictedGrade];
+	export let tokComplete = false;
+	export let eeComplete = false;
+	$: tokGrade = tokComplete ? letterGrades[tokPredictedGrade] : undefined;
+	$: eeGrade = eeComplete ? letterGrades[eePredictedGrade] : undefined;
 
 	import courses from '$lib/assets/courses.json';
 	import {
@@ -18,39 +20,71 @@
 	let letterGrades = ['E', 'D', 'C', 'B', 'A'];
 
 	let settings = getPredictorSelectedOptions(6);
-	$settings['chosenScores'] = $settings['chosenScores'] || { tok: [0, 0], ee: [0] };
+	$settings['chosenScores'] = $settings['chosenScores'] || { tok: [], ee: [] };
+	$settings['chosenScores']['tok'] = $settings['chosenScores']['tok'] || [];
+	$settings['chosenScores']['ee'] = $settings['chosenScores']['ee'] || [];
+	$settings['enteredScores'] = $settings['enteredScores'] || { tok: [], ee: [] };
+	$settings['enteredScores']['tok'] = $settings['enteredScores']['tok'] || [];
+	$settings['enteredScores']['ee'] = $settings['enteredScores']['ee'] || [];
+
+	const hasEnteredScore = (value) =>
+		value !== undefined && value !== null && value !== '' && Number.isFinite(Number(value));
 
 	let tokAssessments = courses['Theory Of Knowledge'].SL,
-		tokBoundaries = $selectedBoundary['Theory Of Knowledge'].TZ[0],
+		tokBoundaries,
 		tokPredictedScore,
 		tokPredictedGrade;
+	$: tokBoundaries = $selectedBoundary['Theory Of Knowledge'].TZ[0];
 
 	$: {
-		tokPredictedScore =
-			$settings['chosenScores']['tok'][0] * 2 + $settings['chosenScores']['tok'][1];
+		tokComplete = tokAssessments.every(
+			(_, index) =>
+				Boolean($settings['enteredScores']['tok'][index]) &&
+				hasEnteredScore($settings['chosenScores']['tok'][index])
+		);
+		if (tokComplete) {
+			tokPredictedScore =
+				$settings['chosenScores']['tok'][0] * 2 + $settings['chosenScores']['tok'][1];
+			tokPredictedGrade = 0;
 
-		for (let i = 0; i < tokBoundaries.length; i++) {
-			if (tokPredictedScore >= tokBoundaries[i]) {
-				tokPredictedGrade = i;
+			for (let i = 0; i < tokBoundaries.length; i++) {
+				if (tokPredictedScore >= tokBoundaries[i]) {
+					tokPredictedGrade = i;
+				}
 			}
+		} else {
+			tokPredictedScore = undefined;
+			tokPredictedGrade = undefined;
 		}
 	}
 
 	let eeAssesments = courses['Extended Essay'].SL,
-		eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0],
+		eeBoundaries,
 		eePredictedScore,
 		eePredictedGrade;
+	$: eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0];
 	$: {
-		eePredictedScore = $settings['chosenScores']['ee'][0];
-		for (let i = 0; i < eeBoundaries.length; i++) {
-			if (eePredictedScore >= eeBoundaries[i]) {
-				eePredictedGrade = i;
+		eeComplete = eeAssesments.every(
+			(_, index) =>
+				Boolean($settings['enteredScores']['ee'][index]) &&
+				hasEnteredScore($settings['chosenScores']['ee'][index])
+		);
+		if (eeComplete) {
+			eePredictedScore = $settings['chosenScores']['ee'][0];
+			eePredictedGrade = 0;
+			for (let i = 0; i < eeBoundaries.length; i++) {
+				if (eePredictedScore >= eeBoundaries[i]) {
+					eePredictedGrade = i;
+				}
 			}
+		} else {
+			eePredictedScore = undefined;
+			eePredictedGrade = undefined;
 		}
 	}
 
 	$: {
-		if (tokPredictedGrade == 0 || eePredictedGrade == 0) {
+		if (!tokComplete || !eeComplete || tokPredictedGrade == 0 || eePredictedGrade == 0) {
 			coreGrade = 0;
 		} else {
 			let cumScore = tokPredictedGrade + eePredictedGrade;
@@ -107,26 +141,34 @@
 			/>
 		</svg>
 		{#if !showTok}
-			<GradeResults
-				isCondensed={true}
-				grades={[tokPredictedGrade]}
-				predictedGrade={tokGrade}
-				score={tokPredictedScore}
-				name={$selectedBoundaryId}
-				isCore={true}
-				maxScore={30}
-			/>
+			{#if tokComplete}
+				<GradeResults
+					isCondensed={true}
+					grades={[tokPredictedGrade]}
+					predictedGrade={tokGrade}
+					score={tokPredictedScore}
+					name={$selectedBoundaryId}
+					isCore={true}
+					maxScore={30}
+				/>
+			{:else}
+				<div class="input-status">Enter both TOK assessment scores to calculate a grade.</div>
+			{/if}
 		{:else}
 			<div class="grade-io">
 				<div class="grade-results">
-					<GradeResults
-						grades={[tokPredictedGrade]}
-						predictedGrade={tokGrade}
-						score={tokPredictedScore}
-						name={$selectedBoundaryId}
-						isCore={true}
-						maxScore={30}
-					/>
+					{#if tokComplete}
+						<GradeResults
+							grades={[tokPredictedGrade]}
+							predictedGrade={tokGrade}
+							score={tokPredictedScore}
+							name={$selectedBoundaryId}
+							isCore={true}
+							maxScore={30}
+						/>
+					{:else}
+						<div class="input-status">Enter both scores to calculate your TOK grade.</div>
+					{/if}
 				</div>
 				<div class="gradeSelectors">
 					{#each tokAssessments as assessment, i}
@@ -134,7 +176,9 @@
 							name={assessment.name}
 							maxMarks={assessment.maxMarks}
 							weight={assessment.weight}
+							allowEmpty={true}
 							bind:value={$settings['chosenScores']['tok'][i]}
+							bind:entered={$settings['enteredScores']['tok'][i]}
 						/>
 					{/each}
 				</div>
@@ -179,26 +223,34 @@
 			/>
 		</svg>
 		{#if !showEe}
-			<GradeResults
-				isCondensed={true}
-				grades={[eePredictedGrade]}
-				predictedGrade={eeGrade}
-				score={eePredictedScore}
-				name={$selectedBoundaryId}
-				isCore={true}
-				maxScore={34}
-			/>
+			{#if eeComplete}
+				<GradeResults
+					isCondensed={true}
+					grades={[eePredictedGrade]}
+					predictedGrade={eeGrade}
+					score={eePredictedScore}
+					name={$selectedBoundaryId}
+					isCore={true}
+					maxScore={34}
+				/>
+			{:else}
+				<div class="input-status">Enter your Extended Essay score to calculate a grade.</div>
+			{/if}
 		{:else}
 			<div class="grade-io">
 				<div class="grade-results">
-					<GradeResults
-						grades={[eePredictedGrade]}
-						predictedGrade={eeGrade}
-						score={eePredictedScore}
-						name={$selectedBoundaryId}
-						isCore={true}
-						maxScore={34}
-					/>
+					{#if eeComplete}
+						<GradeResults
+							grades={[eePredictedGrade]}
+							predictedGrade={eeGrade}
+							score={eePredictedScore}
+							name={$selectedBoundaryId}
+							isCore={true}
+							maxScore={34}
+						/>
+					{:else}
+						<div class="input-status">Enter a score to calculate your Extended Essay grade.</div>
+					{/if}
 				</div>
 				<div class="gradeSelectors">
 					{#each eeAssesments as assessment, i}
@@ -206,7 +258,9 @@
 							name={assessment.name}
 							maxMarks={assessment.maxMarks}
 							weight={assessment.weight}
+							allowEmpty={true}
 							bind:value={$settings['chosenScores']['ee'][i]}
+							bind:entered={$settings['enteredScores']['ee'][i]}
 						/>
 					{/each}
 				</div>
@@ -220,7 +274,7 @@
 	</div>
 
 	<div class="core-points">
-		<b>Core Points: {coreGrade}</b>
+		<b>Core Points: {tokComplete && eeComplete ? coreGrade : '—'}</b>
 	</div>
 </div>
 
@@ -298,6 +352,17 @@
 		width: fit-content;
 		padding: 0.5rem 0.75rem;
 		margin: 0 0.5rem 0.5rem 0;
+	}
+
+	.input-status {
+		max-width: 260px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		padding: 13px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
+		font-size: 0.8rem;
+		line-height: 1.5;
 	}
 
 	.goto {

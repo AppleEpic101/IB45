@@ -3,17 +3,22 @@
 	export let maxMarks;
 	export let weight;
 	export let value;
+	export let allowEmpty = false;
+	export let entered = !allowEmpty;
 
-	if (value === undefined) {
+	if (!allowEmpty && (value === undefined || value === null || value === '')) {
 		value = Math.floor(maxMarks / 2);
+		entered = true;
 	}
 
-	$: {
-		if (!value) {
-			value = 0;
-		} else if (value > maxMarks) {
-			value = maxMarks;
-		}
+	$: displayValue =
+		(allowEmpty && !entered) || value === undefined || value === null || value === '' ? '' : value;
+	$: rangeValue = displayValue === '' ? 0 : displayValue;
+
+	function updateValue(event) {
+		const nextValue = event.currentTarget.value;
+		value = nextValue === '' ? undefined : Math.min(maxMarks, Math.max(0, Number(nextValue)));
+		entered = nextValue !== '';
 	}
 </script>
 
@@ -21,8 +26,26 @@
 	<p class="name">{name}</p>
 	<p>Weight: {weight * 100}%</p>
 	<div class="c">
-		<input type="range" bind:value min={0} max={maxMarks} />
-		<p><input type="number" bind:value min={0} max={maxMarks} /> / {maxMarks}</p>
+		<input
+			type="range"
+			value={rangeValue}
+			min={0}
+			max={maxMarks}
+			aria-label={`${name} score`}
+			on:input={updateValue}
+		/>
+		<p>
+			<input
+				type="number"
+				value={displayValue}
+				min={0}
+				max={maxMarks}
+				placeholder="—"
+				aria-label={`${name} mark`}
+				on:input={updateValue}
+			/>
+			/ {maxMarks}
+		</p>
 	</div>
 </div>
 
@@ -77,7 +100,7 @@
 	}
 
 	input[type='number'] {
-		width: 3em;
+		width: 3.4em;
 		border: 1px solid var(--color-border);
 		border-radius: 6px;
 		background-color: var(--color-surface);
@@ -85,6 +108,10 @@
 		margin-left: 4px;
 		position: relative;
 		top: -2px;
+	}
+
+	input[type='number']::placeholder {
+		color: var(--color-text-muted);
 	}
 
 	@media screen and (max-width: 380px) {
