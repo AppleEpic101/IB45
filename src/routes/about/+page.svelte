@@ -1,6 +1,5 @@
 <script>
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import Discord from '$lib/components/Discord.svelte';
 	import { fly, fade } from 'svelte/transition';
 
 	let cofounders = [
@@ -81,7 +80,7 @@
 						teachers, coordinators, and candidates in navigating the IB Diploma Program.
 					</p>
 					<p>
-						Since its launch, <strong>750,000+ people</strong> from over
+						Since its launch, <strong>1,000,000+ people</strong> from over
 						<strong>150+ countries</strong>
 						worldwide have visited the platform.
 					</p>
