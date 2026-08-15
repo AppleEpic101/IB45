@@ -40,392 +40,293 @@
 
 {#if confidence || improvement || comparisons.length}
 	<section class="strategy" aria-labelledby="strategy-title">
-		<header class="strategy-header">
-			<div>
-				<span class="eyebrow">Grade strategy</span>
-				<h3 id="strategy-title">What should I improve?</h3>
-			</div>
-			<p>See where each additional raw mark has the most effect.</p>
-		</header>
-
-		<div class="strategy-summary">
+		<div class="strategy-topline">
+			<h3 id="strategy-title">Next grade</h3>
 			{#if improvement}
-				<article class="next-move">
-					<span class="card-label">Fastest path to Grade {improvement.nextGrade}</span>
-					{#if improvement.recommendation}
-						<strong>{improvement.recommendation}</strong>
-						<p>
-							Raises the predicted result from Grade {improvement.currentGrade} to Grade
-							{improvement.nextGrade} using the {selectedBoundary.fullName} boundary.
-						</p>
-					{:else}
-						<strong>No single available improvement reaches the next grade.</strong>
-						<p>The remaining assessment marks are not enough to cross this boundary.</p>
-					{/if}
-				</article>
-			{:else if Number(currentGrade) === 7}
-				<article class="next-move">
-					<span class="card-label">Current position</span>
-					<strong>You are already at Grade 7.</strong>
-					<p>Use the safety margin below to see how secure that result has been historically.</p>
-				</article>
-			{/if}
-
-			{#if confidence}
-				<article class="confidence-card">
-					<div class="confidence-topline">
-						<div>
-							<span class="card-label">Historical confidence</span>
-							<strong
-								>{confidence.label === 'Borderline' ? 'Borderline' : 'Likely'} Grade {currentGrade}</strong
-							>
-						</div>
-						<div class:warning={confidence.label === 'Borderline'} class="confidence-value">
-							{percent(confidence.confidence)}%
-							<small>{confidence.label}</small>
-						</div>
-					</div>
-					<p>
-						Compared with {confidence.sampleSize} historical timezone {confidence.sampleSize === 1
-							? 'result'
-							: 'results'}.
-					</p>
-					{#if confidence.riseToDrop !== undefined && Number(currentGrade) > 1}
-						<div class="risk-line">
-							A boundary {confidence.riseToDrop}
-							{confidence.riseToDrop === 1 ? 'mark' : 'marks'} higher would produce Grade {confidence.lowerGrade}.
-						</div>
-					{/if}
-				</article>
+				<span>Grade {improvement.currentGrade} → {improvement.nextGrade}</span>
+			{:else}
+				<span>Grade {currentGrade}</span>
 			{/if}
 		</div>
 
-		{#if improvement?.options?.length}
-			<div class="impact-section">
-				<div class="section-heading">
-					<div>
-						<h4>Assessment impact</h4>
-						<p>Compare the value of one additional raw mark.</p>
+		<div class="strategy-summary">
+			<div class="next-move">
+				{#if improvement?.recommendation}
+					<span>Best move</span>
+					<strong>{improvement.recommendation}</strong>
+				{:else if Number(currentGrade) === 7}
+					<span>Current result</span>
+					<strong>Grade 7 reached</strong>
+				{:else}
+					<span>Next grade</span>
+					<strong>Not reachable with remaining marks</strong>
+				{/if}
+			</div>
+
+			<div class="signals">
+				{#if confidence}
+					<div class:warning={confidence.label === 'Borderline'} class="signal">
+						<strong>{percent(confidence.confidence)}%</strong>
+						<span>{confidence.label} confidence</span>
 					</div>
-					{#if improvement.pointsNeeded > 0}
-						<span
-							>{improvement.pointsNeeded} percentage {improvement.pointsNeeded === 1
-								? 'point'
-								: 'points'} to Grade {improvement.nextGrade}</span
-						>
+					{#if confidence.riseToDrop !== undefined && Number(currentGrade) > 1}
+						<div class:warning={confidence.riseToDrop <= 2} class="signal">
+							<strong
+								>{confidence.riseToDrop} {confidence.riseToDrop === 1 ? 'mark' : 'marks'}</strong
+							>
+							<span>Safety margin</span>
+						</div>
 					{/if}
-				</div>
-				<div class="impact-list">
+				{/if}
+			</div>
+		</div>
+
+		{#if improvement?.options?.length}
+			<details>
+				<summary>
+					<span>Compare assessments</span>
+					<small>Impact of each raw mark</small>
+				</summary>
+				<div class="compact-table assessment-table" role="table" aria-label="Assessment impact">
+					<div class="compact-row compact-header" role="row">
+						<span role="columnheader">Assessment</span>
+						<span role="columnheader">+1 mark</span>
+						<span role="columnheader">To Grade {improvement.nextGrade}</span>
+					</div>
 					{#each improvement.options as option}
-						<div class:best={bestOption?.index === option.index} class="impact-row">
-							<div class="assessment-name">
-								<strong>{option.name}</strong>
-								{#if bestOption?.index === option.index}<span>Best opportunity</span>{/if}
-							</div>
-							<div class="impact-stat">
-								<strong>+{impactLabel(option.impact)} pts</strong>
-								<span>per raw mark</span>
-							</div>
-							<div class="impact-stat target">
-								{#if option.marksNeeded !== undefined}
-									<strong>+{option.marksNeeded}</strong>
-									<span>to Grade {improvement.nextGrade}</span>
-								{:else}
-									<strong>—</strong>
-									<span>{option.remaining ? 'Not enough alone' : 'At maximum'}</span>
-								{/if}
-							</div>
+						<div class:best={bestOption?.index === option.index} class="compact-row" role="row">
+							<strong role="cell">
+								{option.name}
+								{#if bestOption?.index === option.index}<small>Best</small>{/if}
+							</strong>
+							<span role="cell">+{impactLabel(option.impact)} pts</span>
+							<span role="cell">
+								{option.marksNeeded !== undefined ? `+${option.marksNeeded}` : '—'}
+							</span>
 						</div>
 					{/each}
 				</div>
-			</div>
+			</details>
 		{/if}
 
 		{#if comparisons.length}
-			<div class="history-section">
-				<div class="section-heading">
-					<div>
-						<h4>Historical what-if</h4>
-						<p>Your {currentScore}% mark under every comparable session.</p>
+			<details>
+				<summary>
+					<span>Check past sessions</span>
+					<small>{comparisons.length} sessions at {currentScore}%</small>
+				</summary>
+				<div class="compact-table history-table" role="table" aria-label="Historical what-if">
+					<div class="compact-row compact-header" role="row">
+						<span role="columnheader">Session</span>
+						<span role="columnheader">Result</span>
+						<span role="columnheader">Timezone range</span>
 					</div>
-				</div>
-				<div class="comparison-grid">
 					{#each comparisons as session}
-						<div class:current={session.short === selectedBoundary?.short} class="session-result">
-							<span>{session.short}</span>
-							<strong>Grade {session.grade}</strong>
-							<small>
+						<div
+							class:current={session.short === selectedBoundary?.short}
+							class="compact-row"
+							role="row"
+						>
+							<strong role="cell">{session.short}</strong>
+							<span role="cell">Grade {session.grade}</span>
+							<span role="cell">
 								{session.minGrade === session.maxGrade
 									? session.timezoneCount > 1
-										? `Same across ${session.timezoneCount} timezones`
-										: session.name
-									: `Timezone range ${session.minGrade}–${session.maxGrade}`}
-							</small>
+										? 'Same'
+										: '—'
+									: `${session.minGrade}–${session.maxGrade}`}
+							</span>
 						</div>
 					{/each}
 				</div>
-			</div>
+			</details>
 		{/if}
-
-		<footer>
-			Confidence reflects historical boundary agreement, not the probability of an exam result.
-		</footer>
 	</section>
 {/if}
 
 <style lang="scss">
 	.strategy {
-		margin-top: 24px;
-		padding: 22px;
+		margin-top: 18px;
+		padding: 16px;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-lg);
 		background: var(--color-surface);
 		box-shadow: var(--shadow-sm);
 	}
 
-	.strategy-header,
-	.section-heading,
-	.confidence-topline {
+	.strategy-topline,
+	.strategy-summary,
+	.signals,
+	summary {
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
-		gap: 16px;
+		gap: 12px;
 	}
 
-	.strategy-header h3,
-	.strategy-header p,
-	.section-heading h4,
-	.section-heading p,
-	.next-move p,
-	.confidence-card p {
+	.strategy-topline h3 {
 		margin: 0;
+		color: var(--color-text-main);
+		font-size: 0.95rem;
 	}
 
-	.strategy-header h3 {
-		margin-top: 3px;
-		font-size: 1.35rem;
-	}
-
-	.strategy-header > p,
-	.section-heading p,
-	.confidence-card p,
-	.next-move p {
-		color: var(--color-text-muted);
-		font-size: 0.78rem;
-	}
-
-	.eyebrow,
-	.card-label {
+	.strategy-topline > span {
+		padding: 4px 8px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface-variant));
 		color: var(--color-primary);
-		font-size: 0.68rem;
+		font-size: 0.7rem;
 		font-weight: 800;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
 	}
 
 	.strategy-summary {
-		display: grid;
-		grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-		gap: 12px;
-		margin-top: 18px;
+		align-items: stretch;
+		margin-top: 11px;
 	}
 
-	.next-move,
-	.confidence-card {
-		padding: 16px;
+	.next-move {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 0;
+		padding: 12px 14px;
+		border-radius: 10px;
+		background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-variant));
+	}
+
+	.next-move span,
+	.signal span,
+	summary small {
+		color: var(--color-text-muted);
+		font-size: 0.65rem;
+		font-weight: 650;
+	}
+
+	.next-move strong {
+		margin-top: 2px;
+		color: var(--color-text-main);
+		font-size: 1rem;
+	}
+
+	.signals {
+		align-items: stretch;
+		gap: 7px;
+	}
+
+	.signal {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 92px;
+		padding: 9px 10px;
 		border: 1px solid var(--color-border);
-		border-radius: 12px;
+		border-radius: 10px;
 		background: var(--color-surface-variant);
 	}
 
-	.next-move > strong,
-	.confidence-card strong {
-		display: block;
-		margin: 5px 0;
-		color: var(--color-text-main);
-		font-size: 1.05rem;
-	}
-
-	.confidence-value {
+	.signal strong {
 		color: var(--color-primary);
-		font-size: 1.45rem;
-		font-weight: 850;
-		line-height: 1;
-		text-align: right;
+		font-size: 0.95rem;
 	}
 
-	.confidence-value.warning {
+	.signal.warning strong {
 		color: #f59e0b;
 	}
 
-	.confidence-value small {
-		display: block;
-		margin-top: 3px;
+	details {
+		margin-top: 9px;
+		border-top: 1px solid var(--color-border);
+	}
+
+	summary {
+		padding: 10px 2px 1px;
+		color: var(--color-text-main);
+		font-size: 0.78rem;
+		font-weight: 750;
+		cursor: pointer;
+	}
+
+	summary::marker {
+		color: var(--color-primary);
+	}
+
+	.compact-table {
+		margin-top: 9px;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	.compact-row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 95px 95px;
+		align-items: center;
+		gap: 8px;
+		min-height: 34px;
+		padding: 5px 9px;
+		border-bottom: 1px solid var(--color-border);
+		color: var(--color-text-main);
+		font-size: 0.72rem;
+	}
+
+	.compact-row:last-child {
+		border-bottom: 0;
+	}
+
+	.compact-header {
+		min-height: 28px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
 		font-size: 0.62rem;
 		font-weight: 750;
 		text-transform: uppercase;
 	}
 
-	.risk-line {
-		margin-top: 9px;
-		padding-top: 9px;
-		border-top: 1px solid var(--color-border);
-		color: var(--color-text-main);
-		font-size: 0.75rem;
-		font-weight: 700;
+	.compact-row > :nth-child(n + 2) {
+		text-align: right;
 	}
 
-	.impact-section,
-	.history-section {
-		margin-top: 18px;
-		padding-top: 18px;
-		border-top: 1px solid var(--color-border);
-	}
-
-	.section-heading h4 {
-		font-size: 1rem;
-	}
-
-	.section-heading > span {
-		color: var(--color-text-muted);
-		font-size: 0.72rem;
-		font-weight: 700;
-	}
-
-	.impact-list {
-		margin-top: 10px;
-		border: 1px solid var(--color-border);
-		border-radius: 10px;
-		overflow: hidden;
-	}
-
-	.impact-row {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) 130px 115px;
-		align-items: center;
-		gap: 14px;
-		padding: 10px 12px;
-		border-bottom: 1px solid var(--color-border);
-		background: var(--color-surface);
-	}
-
-	.impact-row:last-child {
-		border-bottom: 0;
-	}
-
-	.impact-row.best {
+	.compact-row.best,
+	.compact-row.current {
 		background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
 	}
 
-	.assessment-name,
-	.impact-stat {
-		display: flex;
-		flex-direction: column;
-		min-width: 0;
-	}
-
-	.assessment-name strong {
+	.compact-row strong {
 		overflow: hidden;
-		color: var(--color-text-main);
-		font-size: 0.8rem;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
 
-	.assessment-name span {
-		width: fit-content;
-		margin-top: 3px;
+	.compact-row strong small {
+		margin-left: 5px;
 		color: var(--color-primary);
-		font-size: 0.6rem;
-		font-weight: 800;
+		font-size: 0.55rem;
 		text-transform: uppercase;
-	}
-
-	.impact-stat strong {
-		color: var(--color-text-main);
-		font-size: 0.85rem;
-	}
-
-	.impact-stat span {
-		color: var(--color-text-muted);
-		font-size: 0.65rem;
-	}
-
-	.target {
-		text-align: right;
-	}
-
-	.comparison-grid {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 8px;
-		margin-top: 10px;
-	}
-
-	.session-result {
-		display: flex;
-		flex-direction: column;
-		padding: 10px;
-		border: 1px solid var(--color-border);
-		border-radius: 9px;
-		background: var(--color-surface-variant);
-	}
-
-	.session-result.current {
-		border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
-		background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
-	}
-
-	.session-result span {
-		color: var(--color-text-muted);
-		font-size: 0.65rem;
-		font-weight: 800;
-	}
-
-	.session-result strong {
-		margin: 2px 0;
-		color: var(--color-text-main);
-		font-size: 0.95rem;
-	}
-
-	.session-result small {
-		color: var(--color-text-muted);
-		font-size: 0.58rem;
-		line-height: 1.25;
-	}
-
-	footer {
-		margin-top: 12px;
-		color: var(--color-text-muted);
-		font-size: 0.62rem;
 	}
 
 	@media (max-width: 700px) {
 		.strategy {
-			padding: 14px;
-		}
-
-		.strategy-header,
-		.section-heading {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 5px;
+			padding: 13px;
 		}
 
 		.strategy-summary {
-			grid-template-columns: 1fr;
+			align-items: stretch;
+			flex-direction: column;
 		}
 
-		.impact-row {
-			grid-template-columns: minmax(0, 1fr) 92px;
-		}
-
-		.impact-stat.target {
-			grid-column: 2;
-		}
-
-		.comparison-grid {
+		.signals {
+			display: grid;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.signal {
+			min-width: 0;
+		}
+
+		.compact-row {
+			grid-template-columns: minmax(0, 1fr) 70px 70px;
+			padding-inline: 7px;
 		}
 	}
 </style>

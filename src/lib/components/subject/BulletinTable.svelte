@@ -8,10 +8,12 @@
 	let displayMode = 'percent';
 	let sessionScope = 'all';
 	const sessionScopes = [
-		{ value: 'november', label: 'November Sessions' },
-		{ value: 'may', label: 'May Sessions' },
-		{ value: 'all', label: 'All Sessions' }
+		{ value: 'november', label: 'November Sessions', shortLabel: 'November' },
+		{ value: 'may', label: 'May Sessions', shortLabel: 'May' },
+		{ value: 'all', label: 'All Sessions', shortLabel: 'All' }
 	];
+	const compactCount = (value) =>
+		new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(value);
 
 	const displayDistribution = (percentage, total, mode) =>
 		mode === 'percent'
@@ -29,6 +31,7 @@
 
 		return {
 			label: sessionScopes.find(({ value }) => value === scope)?.label,
+			shortLabel: sessionScopes.find(({ value }) => value === scope)?.shortLabel,
 			total,
 			mean:
 				sessions.reduce((sum, session) => sum + Number(session.mean) * session.total, 0) / total,
@@ -83,14 +86,38 @@
 
 	<div class="table-wrapper">
 		<table>
+			<colgroup>
+				<col class="session-column" />
+				<col class="candidate-column" />
+				<col class="mean-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+				<col class="band-column" />
+			</colgroup>
 			<tr>
 				<th colspan="11">{name} Grade Distribution</th>
 			</tr>
 			<tr>
-				<th rowspan="2">Exam Session</th>
-				<th rowspan="2">Total Candidates</th>
+				<th rowspan="2"
+					><span class="desktop-text">Exam Session</span><span class="mobile-text">Session</span
+					></th
+				>
+				<th rowspan="2"
+					><span class="desktop-text">Total Candidates</span><span class="mobile-text"
+						>Candidates</span
+					></th
+				>
 				<th rowspan="2">Mean</th>
-				<th colspan="8">Markband ({displayMode === 'percent' ? '%' : 'estimated #'})</th>
+				<th colspan="8"
+					><span class="desktop-text"
+						>Markband ({displayMode === 'percent' ? '%' : 'estimated #'})</span
+					><span class="mobile-text">{displayMode === 'percent' ? '%' : '#'}</span></th
+				>
 			</tr>
 
 			<tr>
@@ -104,83 +131,57 @@
 				{#each filteredData as res}
 					<tr>
 						<td>{res.short}</td>
-						<td>{res.total.toLocaleString('en-US')}</td>
+						<td
+							><span class="desktop-text">{res.total.toLocaleString('en-US')}</span><span
+								class="mobile-text">{compactCount(res.total)}</span
+							></td
+						>
 						<td>{Number(res.mean).toFixed(1)}</td>
 						{#each res?.distribution as dist}
-							<td>{displayDistribution(dist, res.total, displayMode)}</td>
+							<td
+								><span class="desktop-text"
+									>{displayDistribution(dist, res.total, displayMode)}</span
+								><span class="mobile-text"
+									>{displayMode === 'percent'
+										? Number(dist).toFixed(1)
+										: compactCount(Math.round((Number(dist) / 100) * res.total))}</span
+								></td
+							>
 						{/each}
 					</tr>
 				{/each}
 				{#if summary}
 					<tr class="summary-row">
 						<td>
-							{summary.label}
-							<span>{displayMode === 'percent' ? 'Weighted average' : 'Combined total'}</span>
+							<span class="desktop-text">{summary.label}</span><span class="mobile-text"
+								>{summary.shortLabel}</span
+							>
+							<span class="desktop-text summary-description"
+								>{displayMode === 'percent' ? 'Weighted average' : 'Combined total'}</span
+							>
 						</td>
-						<td>{summary.total.toLocaleString('en-US')}</td>
+						<td
+							><span class="desktop-text">{summary.total.toLocaleString('en-US')}</span><span
+								class="mobile-text">{compactCount(summary.total)}</span
+							></td
+						>
 						<td>{summary.mean.toFixed(1)}</td>
 						{#each summary.distribution as dist}
-							<td>{displayDistribution(dist, summary.total, displayMode)}</td>
+							<td
+								><span class="desktop-text"
+									>{displayDistribution(dist, summary.total, displayMode)}</span
+								><span class="mobile-text"
+									>{displayMode === 'percent'
+										? Number(dist).toFixed(1)
+										: compactCount(Math.round((Number(dist) / 100) * summary.total))}</span
+								></td
+							>
 						{/each}
 					</tr>
 				{/if}
 			{:else}
 				<tr><td colspan="11">No results found</td></tr>{/if}
 		</table>
-	</div>
-
-	<div class="mobile-distribution" aria-label={`${name} grade distribution`}>
-		<h4>{name} Grade Distribution</h4>
-		{#if filteredData.length}
-			{#each filteredData as res}
-				<article class="mobile-session-card">
-					<header>
-						<strong>{res.short}</strong>
-						<div>
-							<span>{res.total.toLocaleString('en-US')} candidates</span>
-							<span>Mean {Number(res.mean).toFixed(1)}</span>
-						</div>
-					</header>
-					<div class="markband-grid">
-						{#each ['N', ...markbands] as markband, index}
-							<div>
-								<span>{markband}</span>
-								<strong
-									>{displayDistribution(res.distribution[index], res.total, displayMode)}</strong
-								>
-							</div>
-						{/each}
-					</div>
-				</article>
-			{/each}
-			{#if summary}
-				<article class="mobile-session-card summary-card">
-					<header>
-						<strong>{summary.label}</strong>
-						<div>
-							<span>{summary.total.toLocaleString('en-US')} candidates</span>
-							<span>Mean {summary.mean.toFixed(1)}</span>
-						</div>
-					</header>
-					<div class="markband-grid">
-						{#each ['N', ...markbands] as markband, index}
-							<div>
-								<span>{markband}</span>
-								<strong
-									>{displayDistribution(
-										summary.distribution[index],
-										summary.total,
-										displayMode
-									)}</strong
-								>
-							</div>
-						{/each}
-					</div>
-				</article>
-			{/if}
-		{:else}
-			<p>No results found</p>
-		{/if}
 	</div>
 
 	{#if displayMode === 'count'}
@@ -275,7 +276,7 @@
 		max-width: 100vw;
 	}
 
-	.mobile-distribution {
+	.mobile-text {
 		display: none;
 	}
 
@@ -304,7 +305,7 @@
 		font-weight: 700;
 	}
 
-	.summary-row td:first-child span {
+	.summary-row td:first-child .summary-description {
 		display: block;
 		margin-top: 2px;
 		color: var(--color-text-muted);
@@ -345,76 +346,58 @@
 		}
 
 		.table-wrapper {
+			display: flex;
+			overflow: hidden;
+		}
+
+		table {
+			width: 100%;
+			table-layout: fixed;
+		}
+
+		.session-column {
+			width: 12%;
+		}
+
+		.candidate-column {
+			width: 15%;
+		}
+
+		.mean-column {
+			width: 9%;
+		}
+
+		.band-column {
+			width: 8%;
+		}
+
+		th,
+		td {
+			padding: 5px 1px;
+			font-size: clamp(0.48rem, 2.1vw, 0.64rem);
+			letter-spacing: -0.015em;
+			overflow: hidden;
+			text-overflow: clip;
+		}
+
+		th[colspan='11'] {
+			padding: 6px 4px;
+			font-size: 0.72rem;
+			white-space: normal;
+		}
+
+		.desktop-text {
 			display: none;
 		}
 
-		.mobile-distribution {
-			display: grid;
-			gap: 10px;
+		.mobile-text {
+			display: inline;
 		}
 
-		.mobile-distribution h4 {
-			margin: 2px 0 0;
-			color: var(--color-text-main);
-			font-size: 0.9rem;
-		}
-
-		.mobile-session-card {
-			overflow: hidden;
-			border: 1px solid var(--color-border);
-			border-radius: 10px;
-			background: var(--color-surface-variant);
-		}
-
-		.mobile-session-card header {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 10px;
-			padding: 9px 10px;
-			border-bottom: 1px solid var(--color-border);
-		}
-
-		.mobile-session-card header > strong {
-			color: var(--color-text-main);
-			font-size: 0.9rem;
-		}
-
-		.mobile-session-card header > div {
-			display: flex;
-			gap: 8px;
-			color: var(--color-text-muted);
-			font-size: 0.64rem;
-		}
-
-		.markband-grid {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-		}
-
-		.markband-grid > div {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 5px;
-			padding: 8px 9px;
-			border-right: 1px solid var(--color-border);
-			border-bottom: 1px solid var(--color-border);
-		}
-
-		.markband-grid span {
-			color: var(--color-text-muted);
-			font-size: 0.65rem;
-		}
-
-		.markband-grid strong {
-			color: var(--color-text-main);
-			font-size: 0.78rem;
-		}
-
-		.summary-card {
-			border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
-			background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-variant));
+		.summary-row td:first-child span {
+			margin: 0;
+			font-size: inherit;
+			font-weight: 700;
 		}
 	}
 </style>
