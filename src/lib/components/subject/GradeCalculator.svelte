@@ -5,8 +5,6 @@
 	import Meter from '$lib/components/subject/Meter.svelte';
 	import GradeBoundaryUsed from '$lib/components/subject/GradeBoundaryUsed.svelte';
 
-	import SLonlyWarning from '$lib/components/subject/SLonlyWarning.svelte';
-
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 
 	export let data;
@@ -42,7 +40,17 @@
 	let str;
 	let gradeBoundaryUsed;
 	$: {
-		if (data.isCore) {
+		const selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
+		const hasResults =
+			data.isCore || (level === 'HL' ? HLResults.length > 0 : SLResults.length > 0);
+
+		if (!hasResults || !selectedBoundary?.tz?.length) {
+			str = 'No grade boundary data available for this selection';
+			mark = 'N/A';
+			marksToIncrease = undefined;
+			gradeBoundaryUsed = undefined;
+			showGradeGraphs = false;
+		} else if (data.isCore) {
 			mark = calculateCoreResults(grade, lastSL?.tz);
 			gradeBoundaryUsed = {
 				name: lastSL?.fullName,
@@ -68,16 +76,6 @@
 				marksToIncrease = lastSL?.tz[mark] - grade;
 				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
-		}
-
-		if (
-			(level === 'SL' && SLResults.length === 0 && !data.isCore) ||
-			(level === 'HL' && HLResults.length === 0 && !data.isCore)
-		) {
-			str = 'No grade boundary data available';
-			mark = 'N/A';
-			showGradeGraphs = false;
-		} else {
 			showGradeGraphs = true;
 		}
 	}
@@ -139,7 +137,9 @@
 		<div class="container">
 			<div>
 				<div class="x">Predicted Mark</div>
-				{#if data.isCore}
+				{#if mark === 'N/A'}
+					<div class="no-result">N/A</div>
+				{:else if data.isCore}
 					<Meter value={gradeMap[mark]} totalSegments={5} isCore={data.isCore} />
 				{:else}
 					<Meter value={mark} />
@@ -184,6 +184,15 @@
 		font-weight: 550;
 		margin: 0;
 		text-align: center;
+	}
+
+	.no-result {
+		display: grid;
+		place-items: center;
+		height: 120px;
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--color-text-muted);
 	}
 
 	.calculator-controls {
