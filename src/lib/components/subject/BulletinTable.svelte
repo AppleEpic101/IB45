@@ -2,9 +2,13 @@
 	import Bulletin from '$lib/data/bulletin.js';
 
 	export let name;
+	export let dataOverride;
+	export let labelsOverride;
+	export let bandLabel = 'Markband';
 
-	$: data = Bulletin[name]?.grades;
-	const markbands = [1, 2, 3, 4, 5, 6, 7];
+	$: data = dataOverride ?? Bulletin[name]?.grades;
+	$: labels = labelsOverride ?? ['N', '1', '2', '3', '4', '5', '6', '7'];
+	$: tableColumns = 3 + labels.length;
 	let displayMode = 'percent';
 	let sessionScope = 'all';
 	const sessionScopes = [
@@ -36,7 +40,7 @@
 			mean:
 				sessions.reduce((sum, session) => sum + Number(session.mean) * session.total, 0) / total,
 			distribution: Array.from(
-				{ length: 8 },
+				{ length: labels.length },
 				(_, index) =>
 					sessions.reduce(
 						(sum, session) => sum + Number(session.distribution[index] ?? 0) * session.total,
@@ -90,17 +94,10 @@
 				<col class="session-column" />
 				<col class="candidate-column" />
 				<col class="mean-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
-				<col class="band-column" />
+				{#each labels as label}<col class="band-column" data-label={label} />{/each}
 			</colgroup>
 			<tr>
-				<th colspan="11">{name} Grade Distribution</th>
+				<th colspan={tableColumns}>{name} Grade Distribution</th>
 			</tr>
 			<tr>
 				<th rowspan="2"
@@ -113,17 +110,16 @@
 					></th
 				>
 				<th rowspan="2">Mean</th>
-				<th colspan="8"
+				<th colspan={labels.length}
 					><span class="desktop-text"
-						>Markband ({displayMode === 'percent' ? '%' : 'estimated #'})</span
+						>{bandLabel} ({displayMode === 'percent' ? '%' : 'estimated #'})</span
 					><span class="mobile-text">{displayMode === 'percent' ? '%' : '#'}</span></th
 				>
 			</tr>
 
 			<tr>
-				<th>N</th>
-				{#each markbands as markband}
-					<th>{markband}</th>
+				{#each labels as label}
+					<th>{label}</th>
 				{/each}
 			</tr>
 
@@ -180,7 +176,7 @@
 					</tr>
 				{/if}
 			{:else}
-				<tr><td colspan="11">No results found</td></tr>{/if}
+				<tr><td colspan={tableColumns}>No results found</td></tr>{/if}
 		</table>
 	</div>
 

@@ -8,9 +8,14 @@
 	export let mark = 5;
 	export let showBulletin;
 	export let embedded = false;
+	export let dataOverride;
+	export let labelsOverride;
+	export let colorsOverride;
+	export let showSubtitle = true;
+	export let selectedShort = 'N25';
 
-	$: sessions = Bulletin[name]?.grades ?? [];
-	let selectedShort = 'N25';
+	$: sessions = dataOverride ?? Bulletin[name]?.grades ?? [];
+	$: labels = labelsOverride ?? ['N', '1', '2', '3', '4', '5', '6', '7'];
 	$: if (sessions.length && !sessions.some((session) => session.short === selectedShort)) {
 		selectedShort = sessions[0].short;
 	}
@@ -63,8 +68,6 @@
 		const isDark = $darkMode;
 		const textColor = isDark ? '#f8fafc' : '#0f172a';
 		const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-
-		const labels = ['N', '1', '2', '3', '4', '5', '6', '7'];
 
 		// Calculate SD for normal curve if mean exists
 		let validMean = parseFloat(mean) || 4;
@@ -134,7 +137,7 @@
 						type: 'bar',
 						label: 'Percentage (%)',
 						data: distribution,
-						backgroundColor: [
+						backgroundColor: colorsOverride ?? [
 							'rgba(244, 63, 94, 0.7)',
 							'rgba(244, 63, 94, 0.7)',
 							'rgba(249, 115, 22, 0.7)',
@@ -313,10 +316,12 @@
 		</button>
 		<div class="distribution-header">
 			<h4 class="title" id="global-distribution-title">Global Grade Distribution</h4>
-			<p class="subtitle">
-				Based on {data?.short === 'M25' ? 'provisional ' : ''}{data?.name} session results ({total?.toLocaleString()}
-				candidates)
-			</p>
+			{#if showSubtitle}
+				<p class="subtitle">
+					Based on {data?.short === 'M25' ? 'provisional ' : ''}{data?.name} session results ({total?.toLocaleString()}
+					candidates)
+				</p>
+			{/if}
 			{#if sessions.length > 1}
 				<div class="session-switcher" aria-label="Exam session">
 					{#each sessions as session}

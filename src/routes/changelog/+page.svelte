@@ -17,7 +17,7 @@
 			items: [
 				'Eliminated the Extended Essay refresh flash by aligning server-rendered and hydrated calculator state.',
 				'Added hover and keyboard tooltips for truncated assessment names in the main calculator.',
-				'Simplified TOK performance comparisons with a focused percentile benchmark, grade-distribution chart, and optional detail.',
+				'Aligned EE and TOK grade distributions with the graph and always-visible table used by standard subject pages.',
 				'Added official Extended Essay subject-group and TOK grade comparisons for six examination sessions.',
 				'Refined the Extended Essay calculator and rebuilt its boundary history and core-points matrix for desktop and mobile.',
 				'Added session-level diploma benchmarks and an estimated overall-score percentile to the main calculator.',
