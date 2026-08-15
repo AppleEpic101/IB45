@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Added final May 2023 results for 164 subject and level combinations and November 2023 results for 100.',
 				'Added final November 2024 and November 2025 results for 102 subject and level combinations each.',
 				'Added May 2025 candidate totals, mean grades, and grade distributions for 160 subjects.',
 				'Expanded the exam-session switcher so students can compare November and May sessions.',
