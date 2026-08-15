@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Added hover and keyboard tooltips for truncated assessment names in the main calculator.',
 				'Simplified TOK performance comparisons with a focused percentile benchmark, grade-distribution chart, and optional detail.',
 				'Added official Extended Essay subject-group and TOK grade comparisons for six examination sessions.',
 				'Refined the Extended Essay calculator and rebuilt its boundary history and core-points matrix for desktop and mobile.',
