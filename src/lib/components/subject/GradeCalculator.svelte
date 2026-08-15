@@ -4,6 +4,7 @@
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import Meter from '$lib/components/subject/Meter.svelte';
 	import GradeBoundaryUsed from '$lib/components/subject/GradeBoundaryUsed.svelte';
+	import GradeStrategy from '$lib/components/subject/GradeStrategy.svelte';
 	import Bulletin from '$lib/data/bulletin.js';
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
@@ -253,6 +254,18 @@
 		</div>
 	</div>
 </div>
+
+{#if !data.isCore && mark !== 'N/A'}
+	<GradeStrategy
+		assessments={s}
+		scores={assessments}
+		currentScore={grade}
+		currentGrade={mark}
+		{selectedBoundary}
+		results={forecastResults}
+		firstAssessment={syllabus.firstAssessment}
+	/>
+{/if}
 
 <style lang="scss">
 	.pp {
