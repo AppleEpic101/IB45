@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Relabeled predicted-mark results as weighted score and marks to the named next grade, removing ambiguous “Grade” and “Points Away” labels.',
 				'Added a plain-language FAQ for experimental forecasts, separating boundary uncertainty from exam-performance predictions.',
 				'Moved the full TOK and Extended Essay core-points matrix behind an optional explanation and kept dedicated boundary pages focused on boundaries.',
 				'Condensed the diploma sidebar to total points and diploma status, with subject and core grades available in an optional breakdown.',

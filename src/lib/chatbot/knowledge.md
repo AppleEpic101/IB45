@@ -113,5 +113,9 @@ that score would fare if the future boundary changed. It does not predict the st
 performance. Do not repeat the forecast headline in a separate explanation. Technical model checks
 are optional and should be discussed only when the user asks.
 
+In the predicted-mark card, **Weighted score** is the combined percentage for a standard subject.
+**To Grade X** is the remaining weighted-mark gap to the next published boundary. TOK and EE show
+their score out of 30 or 34. Do not call the weighted score itself the student's grade.
+
 **Is my data saved?** Yes, inputs are saved in your browser's local storage automatically. Nothing
 is sent to a server.

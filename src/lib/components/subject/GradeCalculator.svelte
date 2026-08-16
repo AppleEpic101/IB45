@@ -41,10 +41,18 @@
 		B: 4,
 		A: 5
 	};
+	const coreGrades = ['E', 'D', 'C', 'B', 'A'];
 
 	let str;
 	let gradeBoundaryUsed;
 	$: selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
+	$: maximumScore =
+		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
+	$: nextGrade = data.isCore
+		? coreGrades[gradeMap[mark]]
+		: Number(mark) < 7
+		? Number(mark) + 1
+		: undefined;
 	$: bulletinName = `${level} ${data.isLang ? `${language} ` : ''}${data.name}`;
 	$: bulletinSession = Bulletin[bulletinName]?.grades?.find(
 		(session) => session.short === selectedBoundary?.short
@@ -236,29 +244,27 @@
 			</div>
 			<div class="predicted">
 				<div class="row">
-					<div class="y">Grade</div>
+					<div class="y">{data.isCore ? 'Score' : 'Weighted score'}</div>
 
 					<div class="y">
-						{grade}{!data.isCore ? '%' : ''}
+						{grade}{data.isCore ? ` / ${maximumScore}` : '%'}
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="y">Points Away</div>
-					{#if marksToIncrease}
-						<div class="y">{marksToIncrease}{!data.isCore ? '%' : ''}</div>
+					<div class="y">{nextGrade ? `To Grade ${nextGrade}` : 'Next grade'}</div>
+					{#if nextGrade && marksToIncrease > 0}
+						<div class="y">{marksToIncrease} {marksToIncrease === 1 ? 'mark' : 'marks'}</div>
+					{:else if !nextGrade}
+						<div class="y">Top grade</div>
 					{:else}
-						<div class="y">N/A</div>
+						<div class="y">Not available</div>
 					{/if}
 				</div>
 				<GradeBoundaryUsed
 					{gradeBoundaryUsed}
 					mark={data.isCore ? gradeMap[mark] : mark}
-					maxScore={syllabus.name === 'Extended Essay'
-						? 34
-						: syllabus.name === 'Theory Of Knowledge'
-						? 30
-						: 100}
+					maxScore={maximumScore}
 				/>
 			</div>
 		</div>

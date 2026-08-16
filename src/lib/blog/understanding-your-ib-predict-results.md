@@ -13,9 +13,11 @@ Your **weighted score** combines your assessment marks using the official weight
 
 Your **predicted grade** is the grade your weighted score reaches under the selected examination session and timezone. It is an estimate based on the marks you enter, not an official result.
 
+The predicted-mark card labels these separately: **Weighted score** is your combined percentage, while **To Grade 6** (or another grade) is the remaining weighted-mark gap. TOK and Extended Essay show their score out of 30 or 34 instead of a percentage.
+
 ## Marks to the next grade
 
-This is the difference between your weighted score and the next published grade boundary. For example, “2 marks to Grade 6” means your overall weighted score must rise by two percentage points.
+This is the difference between your weighted score and the next published grade boundary. For example, “2 marks” beside “To Grade 6” means your overall weighted score must rise by two percentage points.
 
 The **best next move** checks each assessment and finds the smallest raw-mark increase that would reach that next boundary. It is a planning tool, not a promise about what will happen in an examination.
 
