@@ -130,6 +130,11 @@ published boundary instead. Never describe the forecast as a prediction of the s
 marks. Likelihood ranges and technical model checks are optional details and should be discussed
 only when the user asks.
 
+When N26 Forecast is selected, the predicted-grade card shows **Forecast probability** for the
+displayed grade and **Published percentile** using the latest published November final-grade data.
+Explain that these use different sources: probability describes plausible future boundaries while
+percentile compares the displayed grade with historical students.
+
 In the predicted-grade card, **Weighted score** is the combined percentage for a standard subject.
 **To Grade X** is the remaining weighted-mark gap under the currently selected forecast or
 published boundary. TOK and EE show their score out of 30 or 34. Do not call the weighted score

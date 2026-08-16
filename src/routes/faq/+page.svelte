@@ -145,8 +145,9 @@
 			</p>
 			<p>
 				Choose an M25 or N25 option in the session bar to use an official published boundary
-				instead. Open the forecast details only if you want possible ranges and model checks, or
-				read
+				instead. The probability on the result card describes possible future boundaries; the
+				percentile beside it uses the latest published November student results. Open the forecast
+				details only if you want possible ranges and model checks, or read
 				<a href="/blog/ib-predict-boundary-forecast-methodology">the forecast methodology</a>.
 			</p>
 		</Collapsible>

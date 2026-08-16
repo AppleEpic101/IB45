@@ -107,7 +107,9 @@ When enough comparable history is available, an individual subject page opens wi
 
 The forecast is experimental. It estimates future grade boundaries; it does not predict the marks you will earn on exam day. Choose a named M25 or N25 boundary in the session bar whenever you want the calculator to use that published boundary instead. The entire predicted-grade card switches to the selected source, so it never presents two competing grades at once.
 
-Use **View forecast details** only when you want to inspect the possible boundary ranges and likelihoods. Read “Grade 5 · 74%” there as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.**
+The predicted-grade card shows two compact comparisons. **Forecast probability** estimates how often your fixed score reaches the displayed grade across plausible November 2026 boundaries. **Published percentile** compares that displayed grade with final grades from the latest published November session. The labels are separate because one is a forecast and the other is historical student data.
+
+Read “Grade 5 · 74%” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** Use **View forecast details** only when you want to inspect the possible boundary ranges and model checks.
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
 

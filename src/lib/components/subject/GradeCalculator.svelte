@@ -8,6 +8,7 @@
 	import Bulletin from '$lib/data/bulletin.js';
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
+	import { calculateForecastProbabilities } from '$lib/utils/forecast.js';
 	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let data;
@@ -48,6 +49,7 @@
 	$: isForecastSelection = selectedBoundary?.isForecast === true;
 	$: maximumScore =
 		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
+	$: forecastScoreLabel = data.isCore ? `${grade} / ${maximumScore}` : `${grade}%`;
 	$: hasPredictedGrade = mark !== undefined && mark !== null && mark !== 'N/A';
 	$: nextGrade = hasPredictedGrade
 		? data.isCore
@@ -57,9 +59,10 @@
 			: undefined
 		: undefined;
 	$: bulletinName = `${level} ${data.isLang ? `${language} ` : ''}${data.name}`;
-	$: bulletinSession = Bulletin[bulletinName]?.grades?.find(
-		(session) => session.short === selectedBoundary?.short
-	);
+	$: bulletinSessions = Bulletin[bulletinName]?.grades ?? [];
+	$: bulletinSession = isForecastSelection
+		? bulletinSessions.find((session) => session.short === 'N25') ?? bulletinSessions[0]
+		: bulletinSessions.find((session) => session.short === selectedBoundary?.short);
 	$: numericMark = Number(mark);
 	$: percentile =
 		Number.isInteger(numericMark) &&
@@ -71,6 +74,24 @@
 					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
 			: undefined;
 	$: percentileLabel = formatApproximateShare(percentile);
+	$: forecastProbability = isForecastSelection
+		? calculateForecastProbabilities(selectedBoundary?.forecast, grade)
+		: undefined;
+	$: forecastGradeIndex = selectedBoundary?.forecast?.forecasts?.findIndex(
+		({ grade: forecastGrade }) => String(forecastGrade) === String(mark)
+	);
+	$: forecastGradeChance =
+		forecastProbability && forecastGradeIndex >= 0
+			? forecastProbability.exact[forecastGradeIndex]
+			: undefined;
+	$: forecastChanceLabel =
+		forecastGradeChance === undefined
+			? undefined
+			: forecastGradeChance >= 0.995
+			? '>99%'
+			: forecastGradeChance > 0 && forecastGradeChance <= 0.005
+			? '<1%'
+			: `${Math.round(forecastGradeChance * 100)}%`;
 	$: forecastResults = level === 'HL' ? HLResults : SLResults;
 	$: {
 		const hasResults =
@@ -184,10 +205,22 @@
 				{/if}
 
 				<div class="pp">{str}</div>
-				{#if percentile !== undefined}
-					<div class="percentile-summary" aria-live="polite">
-						<strong>Ahead of {percentileLabel}</strong>
-						<span>of students in {bulletinSession.name}</span>
+				{#if forecastChanceLabel || percentile !== undefined}
+					<div class="result-comparisons" aria-live="polite">
+						{#if forecastChanceLabel}
+							<div>
+								<span>Forecast probability</span>
+								<strong>{forecastChanceLabel}</strong>
+								<small>Grade {mark} if your score stays at {forecastScoreLabel}</small>
+							</div>
+						{/if}
+						{#if percentile !== undefined}
+							<div>
+								<span>Published percentile</span>
+								<strong>Ahead of {percentileLabel}</strong>
+								<small>{bulletinSession.name} final grades</small>
+							</div>
+						{/if}
 					</div>
 				{/if}
 			</div>
@@ -248,26 +281,37 @@
 		text-align: center;
 	}
 
-	.percentile-summary {
+	.result-comparisons {
 		display: grid;
-		align-items: center;
-		grid-template-columns: auto 1fr;
-		gap: 3px 8px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 6px;
 		margin-top: 6px;
-		padding: 6px 8px;
-		border: 1px solid color-mix(in srgb, var(--color-primary) 42%, var(--color-border));
-		border-radius: 9px;
-		background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+
+		> div {
+			display: grid;
+			gap: 1px;
+			min-width: 0;
+			padding: 7px 8px;
+			border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+			border-radius: 9px;
+			background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
+		}
+
+		span,
+		small {
+			color: var(--color-text-muted);
+			font-size: 0.55rem;
+			font-weight: 600;
+		}
 
 		strong {
 			color: var(--color-primary);
-			font-size: 0.78rem;
+			font-size: 0.88rem;
+			line-height: 1.15;
 		}
 
-		span {
-			color: var(--color-text-muted);
-			font-size: 0.62rem;
-			font-weight: 500;
+		@media (max-width: 420px) {
+			grid-template-columns: 1fr;
 		}
 	}
 

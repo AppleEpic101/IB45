@@ -94,7 +94,8 @@
 					selectorName: 'November 2026 Forecast',
 					timezone: 0,
 					tz: forecast.forecasts.map(({ point }) => point),
-					isForecast: true
+					isForecast: true,
+					forecast
 			  }
 			: undefined;
 	};
