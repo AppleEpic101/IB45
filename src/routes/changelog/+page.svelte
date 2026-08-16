@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Moved the full TOK and Extended Essay core-points matrix behind an optional explanation and kept dedicated boundary pages focused on boundaries.',
 				'Condensed the diploma sidebar to total points and diploma status, with subject and core grades available in an optional breakdown.',
 				'Removed the duplicate forecast card from subject pages and placed the chart and model checks behind the forecast summary’s optional details.',
 				'Removed false decimal precision from student comparisons and labeled every ranking as approximate.',

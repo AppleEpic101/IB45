@@ -95,6 +95,10 @@ On the main calculator, lead with the total diploma points and diploma-status me
 subject grades, TOK, EE, and core points are available under **Subject & core breakdown**. Do not
 list every row unless the user asks for the breakdown or needs help finding a failing condition.
 
+The full TOK/Extended Essay core-points matrix is under **How TOK and EE combine** on either core
+subject page. Explain the student's specific combination first; only reproduce the full matrix when
+they ask for every combination.
+
 **How do I replace my Group 6 subject with one from Groups 1–5?** On the home page, in the Group 6
 component, use the first of the three dropdowns to pick the alternate group; the subject dropdown
 updates to match.

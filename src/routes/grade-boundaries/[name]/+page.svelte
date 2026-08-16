@@ -5,7 +5,6 @@
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
-	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import GradeGraph from '$lib/components/subject/GradeGraph.svelte';
 
 	import { page } from '$app/stores';
@@ -103,7 +102,6 @@
 		<div class="tables">
 			{#if isCore}
 				<CoreTable {name} res={SLResults} />
-				<CoreMatrix name={data.data.name} />
 			{:else}
 				<BoundaryTable name={`${level} ${name}`} res={level === 'HL' ? HLResults : SLResults} />
 			{/if}

@@ -1,14 +1,14 @@
-<section class="matrix-card" aria-labelledby="core-matrix-title">
-	<header>
+<details class="matrix-card">
+	<summary>
 		<div>
-			<h5 id="core-matrix-title">Core points matrix</h5>
-			<p>Combine your Extended Essay and TOK grades.</p>
+			<h5>How TOK and EE combine</h5>
+			<p>Open the core-points table</p>
 		</div>
 		<span>Up to 3 points</span>
-	</header>
+	</summary>
 
 	<div class="matrix-scroll">
-		<table>
+		<table aria-label="TOK and Extended Essay core points matrix">
 			<thead>
 				<tr
 					><th class="axis" scope="col">EE ↓ · TOK →</th><th>A</th><th>B</th><th>C</th><th>D</th><th
@@ -45,7 +45,7 @@
 			</tbody>
 		</table>
 	</div>
-</section>
+</details>
 
 <style>
 	.matrix-card {
@@ -55,12 +55,13 @@
 		border-radius: 12px;
 		background: color-mix(in srgb, var(--color-surface-variant) 50%, var(--color-surface));
 	}
-	header {
+	summary {
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
 		gap: 16px;
-		margin-bottom: 12px;
+		cursor: pointer;
+		list-style-position: inside;
 	}
 	h5,
 	p {
@@ -75,7 +76,7 @@
 		color: var(--color-text-muted);
 		font-size: 0.75rem;
 	}
-	header > span {
+	summary > span {
 		padding: 4px 7px;
 		border: 1px solid color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
 		border-radius: 999px;
@@ -83,6 +84,11 @@
 		font-size: 0.66rem;
 		font-weight: 800;
 		white-space: nowrap;
+	}
+	.matrix-card[open] summary {
+		margin-bottom: 12px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid var(--color-border);
 	}
 	.matrix-scroll {
 		width: 100%;
@@ -131,7 +137,7 @@
 		.matrix-card {
 			padding: 12px;
 		}
-		header {
+		summary {
 			align-items: flex-start;
 			flex-direction: column;
 			gap: 8px;

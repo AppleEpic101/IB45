@@ -35,6 +35,8 @@ Open **Subject & core breakdown** only when you want to review the six subject g
 
 The session comparison beneath it shows your approximate standing against students in the selected examination session. Open **About this comparison** for the published sample size and a link back to this explanation.
 
+On the TOK and Extended Essay pages, open **How TOK and EE combine** when you want the complete core-points table. It stays closed by default because your predicted grade and points-to-next-grade result are usually more useful while planning.
+
 ## Grade outlook
 
 Grade boundaries change between examination sessions. The grade outlook turns that history into one plain-language message:
