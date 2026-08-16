@@ -17,6 +17,8 @@
 <style lang="scss">
 	.wrap {
 		display: inline-flex;
+		flex-wrap: wrap;
+		max-width: 100%;
 		background-color: var(--color-surface-variant);
 		border: 1px solid var(--color-border);
 		padding: 4px;

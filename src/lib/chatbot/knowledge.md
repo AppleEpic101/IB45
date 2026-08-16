@@ -123,16 +123,17 @@ updates to match.
 two Group 1 subjects (excluding Literature and Performance). Select the second Group 1 subject
 under Group 2, and optionally a third by replacing Group 6.
 
-**Forecast details:** Subject pages show experimental future-boundary estimates based on comparable
-past sessions. The headline assumes the student's current score stays the same; it estimates how
-that score would fare if the future boundary changed. It does not predict the student's exam-day
-performance. State the fixed-score assumption before explaining the likelihood. Do not repeat the
-forecast headline in a separate explanation. Technical model checks are optional and should be
-discussed only when the user asks.
+**Forecast details:** When enough comparable history exists, individual subject pages default to
+**N26 Forecast**. The predicted grade, next-grade gap, and boundary table all use that single
+experimental boundary estimate. A student can select a named M25 or N25 option to use an official
+published boundary instead. Never describe the forecast as a prediction of the student's exam-day
+marks. Likelihood ranges and technical model checks are optional details and should be discussed
+only when the user asks.
 
-In the predicted-mark card, **Weighted score** is the combined percentage for a standard subject.
-**To Grade X** is the remaining weighted-mark gap to the next published boundary. TOK and EE show
-their score out of 30 or 34. Do not call the weighted score itself the student's grade.
+In the predicted-grade card, **Weighted score** is the combined percentage for a standard subject.
+**To Grade X** is the remaining weighted-mark gap under the currently selected forecast or
+published boundary. TOK and EE show their score out of 30 or 34. Do not call the weighted score
+itself the student's grade.
 
 The grade-distribution table follows the season selected in the chart (May or November) so the
 default rows match the visual. **All Sessions** combines both seasons and should be suggested only

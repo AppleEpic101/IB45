@@ -13,13 +13,13 @@ Your **weighted score** combines your assessment marks using the official weight
 
 Your **predicted grade** is the grade your weighted score reaches under the selected examination session and timezone. It is an estimate based on the marks you enter, not an official result.
 
-The predicted-mark card labels these separately: **Weighted score** is your combined percentage, while **To Grade 6** (or another grade) is the remaining weighted-mark gap. TOK and Extended Essay show their score out of 30 or 34 instead of a percentage.
+The predicted-grade card labels these separately: **Weighted score** is your combined percentage, while **To Grade 6** (or another grade) is the remaining weighted-mark gap. TOK and Extended Essay show their score out of 30 or 34 instead of a percentage.
 
 On the main calculator, collapse a completed subject when you only need its result. The compact card keeps the subject name, weighted score, and predicted grade; assessment controls, grade boundaries, supporting insights, and the full-analysis link stay hidden until you expand it again.
 
 ## Marks to the next grade
 
-This is the difference between your weighted score and the next published grade boundary. For example, “2 marks” beside “To Grade 6” means your overall weighted score must rise by two percentage points.
+This is the difference between your weighted score and the next grade under the boundary currently selected in the session bar. For example, “2 marks” beside “To Grade 6” means your overall weighted score must rise by two percentage points under that selected forecast or published boundary.
 
 The **best next move** checks each assessment and finds the smallest raw-mark increase that would reach that next boundary. It is a planning tool, not a promise about what will happen in an examination.
 
@@ -103,9 +103,11 @@ For most students, the selected session boundary and the “marks to next grade�
 
 ## Forecast likelihoods
 
-Future boundary forecasts are experimental. The card states your fixed weighted score before showing the grade and percentage. Read “Grade 5 · 74%” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** It does not predict how likely you are to earn that score on exam day.
+When enough comparable history is available, an individual subject page opens with **N26 Forecast** selected. The predicted grade, marks to the next grade, and boundary table then all use the same November 2026 estimate. This avoids mixing an official M25 result with a separate forecast result.
 
-The predicted-mark card shows only the most likely grade, its estimated likelihood, and one other possible grade. Open **What does this mean?** when you want the short explanation. The chart, boundary ranges, confidence labels, and checks against past sessions remain behind **View forecast chart and model details** for readers who want to inspect the model more closely.
+The forecast is experimental. It estimates future grade boundaries; it does not predict the marks you will earn on exam day. Choose a named M25 or N25 boundary in the session bar whenever you want the calculator to use that published boundary instead. The entire predicted-grade card switches to the selected source, so it never presents two competing grades at once.
+
+Use **View forecast details** only when you want to inspect the possible boundary ranges and likelihoods. Read “Grade 5 · 74%” there as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.**
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
 

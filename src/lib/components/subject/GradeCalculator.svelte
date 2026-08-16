@@ -8,7 +8,6 @@
 	import Bulletin from '$lib/data/bulletin.js';
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
-	import { buildBoundaryForecast, calculateForecastProbabilities } from '$lib/utils/forecast.js';
 	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let data;
@@ -46,11 +45,9 @@
 	let str;
 	let gradeBoundaryUsed;
 	$: selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
+	$: isForecastSelection = selectedBoundary?.isForecast === true;
 	$: maximumScore =
 		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
-	$: forecastScoreContext = data.isCore
-		? `If your score stays at ${grade} / ${maximumScore}`
-		: `If your weighted score stays at ${grade}%`;
 	$: hasPredictedGrade = mark !== undefined && mark !== null && mark !== 'N/A';
 	$: nextGrade = hasPredictedGrade
 		? data.isCore
@@ -74,33 +71,7 @@
 					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
 			: undefined;
 	$: percentileLabel = formatApproximateShare(percentile);
-	$: forecastLabels = data.isCore ? ['E', 'D', 'C', 'B', 'A'] : ['1', '2', '3', '4', '5', '6', '7'];
 	$: forecastResults = level === 'HL' ? HLResults : SLResults;
-	$: comparableForecastResults = forecastResults.filter(
-		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
-	);
-	$: boundaryForecast = buildBoundaryForecast({
-		results: comparableForecastResults,
-		targetYear: 2026,
-		sessionPrefix: 'N',
-		labels: forecastLabels
-	});
-	$: forecastProbability = calculateForecastProbabilities(boundaryForecast, grade);
-	$: rankedForecastOutcomes = forecastProbability
-		? forecastProbability.exact
-				.map((chance, index) => ({
-					grade: boundaryForecast.forecasts[index].grade,
-					chance
-				}))
-				.sort((a, b) => b.chance - a.chance)
-		: [];
-	$: primaryForecastOutcome = rankedForecastOutcomes[0];
-	$: secondaryForecastOutcome = rankedForecastOutcomes[1];
-	const forecastChanceLabel = (chance) => {
-		if (chance >= 0.995) return '>99%';
-		if (chance > 0 && chance <= 0.005) return '<1%';
-		return `${Math.round(chance * 100)}%`;
-	};
 	$: {
 		const hasResults =
 			data.isCore || (level === 'HL' ? HLResults.length > 0 : SLResults.length > 0);
@@ -118,7 +89,9 @@
 				marks: lastSL?.tz
 			};
 			marksToIncrease = lastSL?.tz[gradeMap[mark]] - grade;
-			str = 'Using the ' + lastSL?.fullName + ' grade boundary';
+			str = isForecastSelection
+				? 'Using the experimental November 2026 forecast'
+				: 'Using the ' + lastSL?.fullName + ' grade boundary';
 		} else {
 			if (level === 'HL') {
 				mark = calculateNormalResults(grade, lastHL?.tz);
@@ -127,7 +100,9 @@
 					marks: lastHL?.tz
 				};
 				marksToIncrease = lastHL?.tz[mark] - grade;
-				str = 'Using the ' + lastHL?.fullName + ' grade boundary';
+				str = isForecastSelection
+					? 'Using the experimental November 2026 forecast'
+					: 'Using the ' + lastHL?.fullName + ' grade boundary';
 			} else {
 				mark = calculateNormalResults(grade, lastSL?.tz);
 				gradeBoundaryUsed = {
@@ -135,7 +110,9 @@
 					marks: lastSL?.tz
 				};
 				marksToIncrease = lastSL?.tz[mark] - grade;
-				str = 'Using the ' + lastSL?.fullName + ' grade boundary';
+				str = isForecastSelection
+					? 'Using the experimental November 2026 forecast'
+					: 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
 			showGradeGraphs = true;
 		}
@@ -167,14 +144,14 @@
 		{#if level === 'HL'}
 			<ToggleSelect
 				identifier="f"
-				arr={HLoptions.map((tz) => tz.fullName)}
+				arr={HLoptions.map((tz) => tz.selectorName || tz.fullName)}
 				arrVal={HLoptions}
 				bind:value={lastHL}
 			/>
 		{:else}
 			<ToggleSelect
 				identifier="g"
-				arr={SLoptions.map((tz) => tz.fullName)}
+				arr={SLoptions.map((tz) => tz.selectorName || tz.fullName)}
 				arrVal={SLoptions}
 				bind:value={lastSL}
 			/>
@@ -197,7 +174,7 @@
 	<div class="right">
 		<div class="container">
 			<div>
-				<div class="x">Predicted Mark</div>
+				<div class="x">Predicted Grade</div>
 				{#if mark === 'N/A'}
 					<div class="no-result">N/A</div>
 				{:else if data.isCore}
@@ -207,47 +184,6 @@
 				{/if}
 
 				<div class="pp">{str}</div>
-				{#if primaryForecastOutcome}
-					<div class="forecast-summary" aria-live="polite">
-						<div class="forecast-heading">
-							<span>November 2026 boundary forecast</span><small>Experimental</small>
-						</div>
-						<p class="forecast-assumption">{forecastScoreContext}</p>
-						<div class="forecast-result">
-							<div class="forecast-outcome">
-								<span>Most likely grade</span>
-								<strong>Grade {primaryForecastOutcome.grade}</strong>
-							</div>
-							<div class="forecast-outcome likelihood-outcome">
-								<span>Estimated likelihood</span>
-								<strong>{forecastChanceLabel(primaryForecastOutcome.chance)}</strong>
-							</div>
-						</div>
-						{#if secondaryForecastOutcome}
-							<p class="forecast-secondary">
-								Other possible grade: Grade {secondaryForecastOutcome.grade} · {forecastChanceLabel(
-									secondaryForecastOutcome.chance
-								)}
-							</p>
-						{/if}
-						<details class="forecast-explanation">
-							<summary>What does this mean?</summary>
-							<p>
-								Only the future grade boundary changes in this estimate. Your exam score is not
-								being predicted.
-								<a href="/blog/understanding-your-ib-predict-results"
-									>Read the plain-language guide</a
-								>.
-							</p>
-							<button
-								type="button"
-								class="forecast-details-button"
-								on:click={() => (showForecastDetails = true)}
-								>View forecast chart and model details <span aria-hidden="true">→</span></button
-							>
-						</details>
-					</div>
-				{/if}
 				{#if percentile !== undefined}
 					<div class="percentile-summary" aria-live="polite">
 						<strong>Ahead of {percentileLabel}</strong>
@@ -279,6 +215,14 @@
 					mark={data.isCore ? gradeMap[mark] : mark}
 					maxScore={maximumScore}
 				/>
+				{#if isForecastSelection}
+					<div class="forecast-actions">
+						<button type="button" on:click={() => (showForecastDetails = true)}>
+							View forecast details <span aria-hidden="true">→</span>
+						</button>
+						<a href="/blog/ib-predict-boundary-forecast-methodology">How it works</a>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -327,130 +271,32 @@
 		}
 	}
 
-	.forecast-summary {
-		margin-top: 7px;
-		padding: 8px 9px;
-		border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-		border-radius: 9px;
-		background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
-	}
-
-	.forecast-heading {
+	.forecast-actions {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 8px;
-		color: var(--color-text-muted);
-		font-size: 0.58rem;
-		font-weight: 750;
-	}
+		gap: 10px;
+		margin-top: 7px;
+		padding-top: 7px;
+		border-top: 1px solid var(--color-border);
 
-	.forecast-heading small {
-		padding: 2px 5px;
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--color-primary) 12%, transparent);
-		color: var(--color-primary);
-		font-size: 0.5rem;
-		text-transform: uppercase;
-	}
-
-	.forecast-assumption {
-		margin: 4px 0 0;
-		color: var(--color-text-main);
-		font-size: 0.68rem;
-		font-weight: 700;
-	}
-
-	.forecast-result {
-		display: grid;
-		align-items: end;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 8px;
-		margin-top: 6px;
-	}
-
-	.forecast-outcome {
-		display: grid;
-		gap: 1px;
-
-		strong {
+		button,
+		a {
+			padding: 0;
+			border: 0;
+			background: transparent;
 			color: var(--color-primary);
-			font-size: 1rem;
-			line-height: 1.05;
-		}
-
-		span {
-			color: var(--color-text-muted);
-			font-size: 0.55rem;
-			font-weight: 650;
-		}
-	}
-
-	.likelihood-outcome {
-		text-align: right;
-	}
-
-	@media (max-width: 600px) {
-		.forecast-result {
-			grid-template-columns: minmax(0, 1fr) auto;
-			gap: 8px;
-		}
-
-		.forecast-result strong,
-		.forecast-result span {
-			min-width: 0;
-		}
-	}
-
-	.forecast-secondary {
-		margin: 5px 0 0;
-		padding-top: 5px;
-		border-top: 1px solid var(--color-border);
-		color: var(--color-text-main);
-		font-size: 0.65rem;
-		font-weight: 650;
-	}
-
-	.forecast-explanation {
-		margin-top: 6px;
-		padding-top: 5px;
-		border-top: 1px solid var(--color-border);
-
-		summary {
-			width: fit-content;
-			color: var(--color-text-muted);
-			font-size: 0.58rem;
-			font-weight: 700;
+			font: inherit;
+			font-size: 0.6rem;
+			font-weight: 750;
+			text-decoration: none;
 			cursor: pointer;
 		}
 
-		p {
-			margin: 5px 0 0;
-			color: var(--color-text-muted);
-			font-size: 0.58rem;
-			line-height: 1.45;
-		}
-
-		a {
-			color: var(--color-primary);
-			font-weight: 700;
-		}
-	}
-
-	.forecast-details-button {
-		margin-top: 7px;
-		padding: 0;
-		border: 0;
-		background: transparent;
-		color: var(--color-primary);
-		font: inherit;
-		font-size: 0.6rem;
-		font-weight: 750;
-		cursor: pointer;
-
-		&:hover,
-		&:focus-visible {
+		button:hover,
+		button:focus-visible,
+		a:hover,
+		a:focus-visible {
 			text-decoration: underline;
 		}
 	}

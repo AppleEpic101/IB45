@@ -139,13 +139,14 @@
 
 		<Collapsible question="What does the experimental boundary forecast mean?">
 			<p>
-				It keeps your current score fixed and checks which grade it would reach under a range of
-				possible future boundaries. The percentage describes those boundary scenarios; it does not
-				predict your exam-day performance or guarantee a future grade.
+				When enough history is available, the subject calculator opens on N26 Forecast. The grade,
+				marks to the next grade, and boundary table all use that one estimate. It predicts future
+				boundaries, not your exam-day marks.
 			</p>
 			<p>
-				Start with the most likely grade shown in the predicted-mark card. Open the forecast chart
-				only if you want the model detail, or read
+				Choose an M25 or N25 option in the session bar to use an official published boundary
+				instead. Open the forecast details only if you want possible ranges and model checks, or
+				read
 				<a href="/blog/ib-predict-boundary-forecast-methodology">the forecast methodology</a>.
 			</p>
 		</Collapsible>

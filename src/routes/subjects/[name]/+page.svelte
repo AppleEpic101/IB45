@@ -22,6 +22,7 @@
 	import { page } from '$app/stores';
 	import { getAllBoundaries } from '$lib/utils/boundaries.js';
 	import { calculateGrade } from '$lib/utils/grades.js';
+	import { buildBoundaryForecast } from '$lib/utils/forecast.js';
 
 	import Banners from '$lib/assets/banners.json';
 
@@ -68,28 +69,47 @@
 		? getAllBoundaries(data.data.name, language).HL
 		: getAllBoundaries(data.data.name).HL;
 
-	// gets the latest grade boundary (for awarded mark calculation)
-	$: SLoptions = SLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N25');
-	$: HLoptions = HLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N25');
+	const forecastLabels = data.data.isCore
+		? ['E', 'D', 'C', 'B', 'A']
+		: ['1', '2', '3', '4', '5', '6', '7'];
+	const officialBoundaryOptions = (results) => {
+		const recent = results.filter((result) => result.short === 'M25' || result.short === 'N25');
+		return recent.length ? recent : results;
+	};
+	const forecastBoundaryOption = (results) => {
+		const comparableResults = results.filter(
+			(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+		);
+		const forecast = buildBoundaryForecast({
+			results: comparableResults,
+			targetYear: 2026,
+			sessionPrefix: 'N',
+			labels: forecastLabels
+		});
 
-	$: {
-		if (SLoptions.length === 0) {
-			SLoptions = SLResults;
-		}
-		if (HLoptions.length === 0) {
-			HLoptions = HLResults;
-		}
-	}
+		return forecast
+			? {
+					short: 'N26F',
+					fullName: 'November 2026 forecast',
+					selectorName: 'November 2026 Forecast',
+					timezone: 0,
+					tz: forecast.forecasts.map(({ point }) => point),
+					isForecast: true
+			  }
+			: undefined;
+	};
+
+	// The experimental November 2026 estimate is the default boundary. Published boundaries remain
+	// available as explicit alternatives in the same selector.
+	$: SLforecastOption = forecastBoundaryOption(SLResults);
+	$: HLforecastOption = forecastBoundaryOption(HLResults);
+	$: SLoptions = [SLforecastOption, ...officialBoundaryOptions(SLResults)].filter(Boolean);
+	$: HLoptions = [HLforecastOption, ...officialBoundaryOptions(HLResults)].filter(Boolean);
 
 	const initializeBoundaries = (slOptions, hlOptions) => {
 		if (slOptions && hlOptions) {
-			lastSL = slOptions?.find(
-				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
-			);
-
-			lastHL = hlOptions?.find(
-				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
-			);
+			lastSL = slOptions?.find((obj) => obj.isForecast);
+			lastHL = hlOptions?.find((obj) => obj.isForecast);
 
 			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'M25');
 			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'N25');
