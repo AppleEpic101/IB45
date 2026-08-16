@@ -131,9 +131,9 @@ marks. Likelihood ranges and technical model checks are optional details and sho
 only when the user asks.
 
 When N26 Forecast is selected, the predicted-grade card shows **Probability** for the forecasted
-grade plus one grade below and above, and **Percentile** as “Beats X% of N25 test takers.” Explain
-that these use different sources: probability describes plausible future boundaries while
-percentile compares the displayed grade with historical students.
+grade plus one grade below and above, and **Percentile** as “Beats X% of N25 test takers.” The
+probabilities are the frequency with which the score earned each grade across comparable published
+session/timezone boundaries. The forecasted cutoff remains a separate November 2026 estimate.
 
 TOK and Extended Essay forecasts retain the latest stable published cutoffs instead of applying
 the standard-subject uncertainty model. A score at or above a core-subject cutoff therefore shows

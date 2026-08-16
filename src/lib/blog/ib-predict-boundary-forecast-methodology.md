@@ -65,9 +65,11 @@ Confidence labels use the number of sessions, backtest error, and interval width
 
 ## Turning boundaries into grade likelihoods
 
-For a student's calculated percentage, IB Predict compares that mark with each forecast boundary and its uncertainty. It models each boundary as a normal distribution, calculates the chance that the mark clears every threshold, and converts those cumulative chances into a likelihood for each exact grade.
+For a student's calculated percentage, the compact probability display answers a more concrete question: **what grade would this score have earned across the comparable published session and timezone boundaries?** IB Predict counts those outcomes and displays the frequency of the forecasted grade, one grade below, and one grade above. For example, if 81% earned a Grade 7 under every comparable published boundary, the card shows Grade 7 at 100%.
 
-The interface highlights the two most likely grades. This is often more useful than a single definitive answer when a mark sits near a predicted threshold.
+This historical frequency is intentionally separate from the November 2026 cutoff estimate. It shows how consistently the score performed against the evidence we have; it is not a guarantee that the unpublished boundary will be identical.
+
+The compact card shows the forecasted grade and its adjacent grades. The expanded details highlight the two outcomes seen most often in the published history.
 
 ## Limitations
 

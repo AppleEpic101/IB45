@@ -149,6 +149,12 @@ export const buildBoundaryForecast = ({
 }) => {
 	const sessions = aggregateForecastSessions(results, sessionPrefix);
 	if (sessions.length < 3) return undefined;
+	const publishedBoundarySets = results
+		.map((result) => result.tz?.map(Number))
+		.filter(
+			(boundaries) =>
+				boundaries?.length === labels.length && boundaries.every((value) => Number.isFinite(value))
+		);
 
 	if (stable) {
 		const latestSession = sessions.at(-1);
@@ -173,6 +179,7 @@ export const buildBoundaryForecast = ({
 			timezoneCount: Math.max(...sessions.map((session) => session.rows.length)),
 			mae: 0,
 			forecasts,
+			publishedBoundarySets,
 			stable: true,
 			modelVersion: '1.0'
 		};
@@ -238,6 +245,7 @@ export const buildBoundaryForecast = ({
 		timezoneCount: Math.max(...sessions.map((session) => session.rows.length)),
 		mae: allErrors.length ? mean(allErrors) : undefined,
 		forecasts,
+		publishedBoundarySets,
 		modelVersion: '1.0'
 	};
 };
@@ -260,6 +268,33 @@ export const calculateForecastProbabilities = (forecast, mark) => {
 			mostLikelyGrade: forecast.forecasts[gradeIndex].grade,
 			mostLikelyChance: 1,
 			nextGradeChance: gradeIndex < exact.length - 1 ? 0 : 1
+		};
+	}
+
+	if (forecast.publishedBoundarySets?.length) {
+		const exactCounts = forecast.forecasts.map(() => 0);
+		forecast.publishedBoundarySets.forEach((boundaries) => {
+			let gradeIndex = 0;
+			boundaries.forEach((boundary, index) => {
+				if (score >= boundary) gradeIndex = index;
+			});
+			exactCounts[gradeIndex] += 1;
+		});
+		const exact = exactCounts.map((count) => count / forecast.publishedBoundarySets.length);
+		const cumulative = exact.map((_, index) =>
+			exact.slice(index).reduce((sum, chance) => sum + chance, 0)
+		);
+		const mostLikelyIndex = exact.indexOf(Math.max(...exact));
+
+		return {
+			exact,
+			cumulative,
+			mostLikelyGrade: forecast.forecasts[mostLikelyIndex].grade,
+			mostLikelyChance: exact[mostLikelyIndex],
+			nextGradeChance:
+				mostLikelyIndex < cumulative.length - 1
+					? cumulative[mostLikelyIndex + 1]
+					: cumulative.at(-1)
 		};
 	}
 

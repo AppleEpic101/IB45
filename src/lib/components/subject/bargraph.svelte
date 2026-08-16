@@ -225,12 +225,12 @@
 							<span
 								>{forecast.stable
 									? 'Result under fixed cutoffs'
-									: 'Most likely under forecast boundaries'}</span
+									: 'Across comparable past boundaries'}</span
 							>
 						</div>
 						<div class="outcome-chance">
 							<strong>{probabilityLabel(primaryOutcome.chance)}</strong>
-							<span>Estimated likelihood</span>
+							<span>{forecast.stable ? 'Fixed result' : 'Historical frequency'}</span>
 						</div>
 						{#if secondaryOutcome?.chance > 0}
 							<div class="secondary-outcome">

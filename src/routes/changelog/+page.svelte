@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Changed grade probabilities to reflect actual outcomes across comparable published session and timezone boundaries, eliminating misleading 50/50 results at forecast cutoffs.',
 				'Treated TOK and Extended Essay boundaries as stable cutoffs, removing artificial 50/50 probabilities when a score lands exactly on a threshold.',
 				'Shortened the forecast table heading in the predicted-grade card to “November 2026 forecast.”',
 				'Reworked the individual subject result card to show the forecasted grade probability alongside one grade below and above, plus a shorter N25 percentile comparison.',
