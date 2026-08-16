@@ -133,6 +133,10 @@ The grade-distribution table follows the season selected in the chart (May or No
 default rows match the visual. **All Sessions** combines both seasons and should be suggested only
 when the user wants a broader comparison.
 
+Above a grade-distribution chart, **Typical result** is the published session average rounded to the
+nearest attainable grade. Give the whole-grade result first. The exact decimal average is optional
+detail under **How to read this chart** and in the table; quote it only when the user asks.
+
 In the grade-distribution chart, each bar is the published share of students receiving that grade.
 The student's predicted-grade bar is outlined in blue, while the session average is written above
 the chart. Do not describe nonexistent average or student marker lines.

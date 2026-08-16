@@ -75,7 +75,7 @@ Choose **All grades** only when you want to compare the complete boundary struct
 
 The distribution chart shows how final grades were spread across one examination session. Each bar is the percentage of students who received that grade. There is no fitted curve or prediction line: the bars are the published bulletin data.
 
-Your predicted grade bar is outlined in blue. The session average is written above the chart instead of adding another statistical line. Neither value claims to know your exact rank within a grade.
+Your predicted grade bar is outlined in blue. **Typical result** rounds the published session average to the nearest attainable grade, so an average such as 5.3 is shown simply as Grade 5. Open **How to read this chart** when you want the exact decimal average. Neither value claims to know your exact rank within a grade.
 
 The table below the chart can show either:
 

@@ -66,6 +66,17 @@
 		const closestLabel = labels[Math.max(0, Math.min(labels.length - 1, Math.round(numericMean)))];
 		return closestLabel ? `Grade ${closestLabel}` : 'Not available';
 	};
+	const formatTypicalResult = (value) => {
+		const numericMean = Number(value);
+		if (!Number.isFinite(numericMean)) return 'Not available';
+
+		if (labels.includes('1')) {
+			return `Grade ${Math.max(1, Math.min(7, Math.round(numericMean)))}`;
+		}
+
+		return formatMean(value);
+	};
+	$: exactAverageLabel = labels.includes('1') ? `Grade ${formatMean(mean)}` : formatMean(mean);
 
 	const createChart = () => {
 		if (!distribution || distribution.length === 0 || !canvas) return;
@@ -246,8 +257,8 @@
 				</div>
 			{/if}
 			<div>
-				<span>Session average</span>
-				<strong>{labels.includes('1') ? `Grade ${formatMean(mean)}` : formatMean(mean)}</strong>
+				<span>Typical result</span>
+				<strong>{formatTypicalResult(mean)}</strong>
 			</div>
 		</div>
 		<div class="graph-wrapper">
@@ -259,7 +270,15 @@
 			<summary>How to read this chart</summary>
 			<div>
 				<p>Each bar is the percentage of students who finished with that grade.</p>
-				<p>Your predicted grade is outlined in blue. The session average is shown above.</p>
+				<p>Your predicted grade is outlined in blue.</p>
+				{#if labels.includes('1')}
+					<p>
+						The typical result rounds the published session average of {exactAverageLabel} to the nearest
+						whole grade.
+					</p>
+				{:else}
+					<p>The typical result comes from the published grade distribution for this session.</p>
+				{/if}
 				<a href="/blog/understanding-your-ib-predict-results"
 					>Read the plain-language results guide →</a
 				>
