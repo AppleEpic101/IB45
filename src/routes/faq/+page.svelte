@@ -137,6 +137,19 @@
 			</p>
 		</Collapsible>
 
+		<Collapsible question="What does the experimental boundary forecast mean?">
+			<p>
+				It keeps your current score fixed and checks which grade it would reach under a range of
+				possible future boundaries. The percentage describes those boundary scenarios; it does not
+				predict your exam-day performance or guarantee a future grade.
+			</p>
+			<p>
+				Start with the most likely grade shown in the predicted-mark card. Open the forecast chart
+				only if you want the model detail, or read
+				<a href="/blog/ib-predict-boundary-forecast-methodology">the forecast methodology</a>.
+			</p>
+		</Collapsible>
+
 		<Collapsible question="Where are the [BLANK] grade boundaries?">
 			<ul>
 				<li>
