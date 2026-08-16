@@ -37,7 +37,8 @@
 
 	$: {
 		tokPredictedScore =
-			$settings['chosenScores']['tok'][0] * 2 + $settings['chosenScores']['tok'][1];
+			Math.min(10, Math.max(0, Number($settings['chosenScores']['tok'][0]) || 0)) * 2 +
+			Math.min(10, Math.max(0, Number($settings['chosenScores']['tok'][1]) || 0));
 		tokPredictedGrade = 0;
 
 		for (let i = 0; i < tokBoundaries.length; i++) {
@@ -53,7 +54,7 @@
 		eePredictedGrade;
 	$: eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0];
 	$: {
-		eePredictedScore = $settings['chosenScores']['ee'][0];
+		eePredictedScore = Math.min(34, Math.max(0, Number($settings['chosenScores']['ee'][0]) || 0));
 		eePredictedGrade = 0;
 		for (let i = 0; i < eeBoundaries.length; i++) {
 			if (eePredictedScore >= eeBoundaries[i]) {

@@ -117,8 +117,11 @@
 		if (inputsComplete) {
 			predictedScore = 0;
 			for (let i = 0; i < assessments.length; i++) {
-				predictedScore +=
-					($settings['chosenScores'][i] / assessments[i].maxMarks) * assessments[i].weight;
+				const safeScore = Math.min(
+					assessments[i].maxMarks,
+					Math.max(0, Number($settings['chosenScores'][i]) || 0)
+				);
+				predictedScore += (safeScore / assessments[i].maxMarks) * assessments[i].weight;
 			}
 			predictedScore *= 100;
 			predictedScore = Math.round(predictedScore + 1e-10);

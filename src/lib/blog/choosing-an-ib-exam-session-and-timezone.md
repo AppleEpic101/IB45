@@ -53,4 +53,4 @@ When choosing or comparing boundaries:
 4. Match the TZ boundary variant supplied with your paper, mark scheme, or results.
 5. Use recent matching sessions for context, not as a guarantee of a future boundary.
 
-For help reading your predicted grade, percentile, and grade stability, see [How to read your IB Predict results](/blog/understanding-your-ib-predict-results).
+For help reading your predicted grade, where-you-stand comparison, and grade outlook, see [How to read your IB Predict results](/blog/understanding-your-ib-predict-results).

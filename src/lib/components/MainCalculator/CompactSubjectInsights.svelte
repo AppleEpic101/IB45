@@ -39,15 +39,24 @@
 	$: historicalMax = historicalGrades.length ? Math.max(...historicalGrades) : undefined;
 	$: standingLabel =
 		percentile !== undefined ? `Ahead of ${number(percentile)}%` : 'Comparison unavailable';
-	$: stabilityLabel = Number(currentGrade) === 1 ? 'Minimum grade' : confidence?.label;
-	$: stabilityExplanation =
+	$: outlookLabel =
 		Number(currentGrade) === 1
-			? 'Grade 1 is the lowest possible subject grade.'
+			? 'Minimum subject grade'
+			: confidence?.label === 'Borderline'
+			? 'Close to changing'
+			: confidence?.label === 'Competitive'
+			? 'Has varied before'
+			: confidence
+			? 'Historically consistent'
+			: 'Not enough history';
+	$: outlookExplanation =
+		Number(currentGrade) === 1
+			? 'There is no lower subject grade.'
 			: confidence
 			? confidence.riseToDrop === 1
-				? 'A 1-mark boundary increase could lower this grade.'
-				: `The boundary could rise ${confidence.riseToDrop} marks before this grade changes.`
-			: 'There is not enough comparable history yet.';
+				? `A boundary 1 mark higher would make this Grade ${confidence.lowerGrade}.`
+				: `A boundary ${confidence.riseToDrop} marks higher would make this Grade ${confidence.lowerGrade}.`
+			: 'More comparable sessions are needed.';
 
 	const number = (value, digits = 1) =>
 		Number(value).toLocaleString('en-US', {
@@ -88,9 +97,10 @@
 				<div class="details-grid">
 					{#if confidence}
 						<div class="plain-summary">
-							<span>How stable is this grade?</span>
-							<strong class:warning-text={stabilityLabel === 'Borderline'}>{stabilityLabel}</strong>
-							<p>{stabilityExplanation}</p>
+							<span>Grade outlook</span>
+							<strong class:warning-text={confidence?.label === 'Borderline'}>{outlookLabel}</strong
+							>
+							<p>{outlookExplanation}</p>
 						</div>
 					{/if}
 
@@ -118,7 +128,7 @@
 
 					{#if comparisons.length}
 						<div class="compact-list">
-							<h4>Your {currentScore}% historically</h4>
+							<h4>Past-session results for this score</h4>
 							{#each comparisons as comparison}
 								<div class="compact-row">
 									<span>{comparison.short}</span>

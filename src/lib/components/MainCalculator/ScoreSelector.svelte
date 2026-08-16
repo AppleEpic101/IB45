@@ -10,7 +10,7 @@
 		value = 0;
 	}
 
-	$: displayValue = value ?? 0;
+	$: displayValue = Math.min(maxMarks, Math.max(0, Number(value) || 0));
 
 	function updateValue(event) {
 		const nextValue = event.currentTarget.value;

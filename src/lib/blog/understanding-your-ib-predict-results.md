@@ -1,6 +1,6 @@
 ---
 title: 'How to read your IB Predict results'
-description: 'A plain-language guide to your predicted grade, next step, percentile, grade stability, and historical comparisons.'
+description: 'A plain-language guide to your predicted grade, next step, where you stand, grade outlook, and past-session comparisons.'
 slug: 'understanding-your-ib-predict-results'
 date: '2026-08-15'
 ---
@@ -66,7 +66,7 @@ The table below the chart can show either:
 
 IB publishes rounded percentages, so student counts calculated from those percentages can differ slightly from the published session total. Open **About student counts** beneath the table when you need that detail.
 
-## Averages and variation
+## Optional averages and variation
 
 Boundary tables show official session results first. Use **Show averages** only when you want a longer-term view.
 

@@ -125,11 +125,12 @@
 			<p><a href="/blog/understanding-your-ib-predict-results">Read the results guide</a>.</p>
 		</Collapsible>
 
-		<Collapsible question="What do ‘Ahead of’ and ‘Grade stability’ mean?">
+		<Collapsible question="What do ‘Ahead of’ and ‘Grade outlook’ mean?">
 			<p>
 				“Ahead of” compares your predicted grade with published results from that exam session.
-				“Grade stability” shows whether the same score usually kept its grade across past sessions.
-				Both are context for planning, not official rankings or guaranteed results.
+				“Grade outlook” explains whether that score kept the same grade under comparable past
+				boundaries and how much a higher boundary could change the result. Both are context for
+				planning, not official rankings or guaranteed results.
 			</p>
 			<p>
 				<a href="/blog/understanding-your-ib-predict-results">See examples in the results guide</a>.
