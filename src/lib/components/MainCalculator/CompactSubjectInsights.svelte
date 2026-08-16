@@ -4,6 +4,7 @@
 		buildHistoricalConfidence,
 		buildImprovementStrategy
 	} from '$lib/utils/strategy.js';
+	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let assessments = [];
 	export let scores = [];
@@ -38,7 +39,9 @@
 	$: historicalMin = historicalGrades.length ? Math.min(...historicalGrades) : undefined;
 	$: historicalMax = historicalGrades.length ? Math.max(...historicalGrades) : undefined;
 	$: standingLabel =
-		percentile !== undefined ? `Ahead of ${number(percentile)}%` : 'Comparison unavailable';
+		percentile !== undefined
+			? `Ahead of ${formatApproximateShare(percentile)}`
+			: 'Comparison unavailable';
 	$: outlookLabel =
 		Number(currentGrade) === 1
 			? 'Minimum subject grade'

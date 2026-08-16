@@ -44,8 +44,9 @@ standard IB matrix for up to 3 bonus points, for a maximum total of 45.
 ## How to explain results
 
 Lead with the predicted grade, score out of 100, marks to the next grade, and one useful next
-action. Explain “Ahead of” as an approximate comparison with students in the selected session.
-Use the phrase “grade outlook” and a plain sentence about what a higher boundary would do.
+action. Explain “Ahead of” as a rounded, approximate comparison with students in the selected
+session, never as an exact rank. Use the phrase “grade outlook” and a plain sentence about what a
+higher boundary would do.
 
 Do not introduce standard deviation, backtest error, confidence categories, training data, or
 other model diagnostics unless the user asks for technical detail. Link users to

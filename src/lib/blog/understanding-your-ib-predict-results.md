@@ -21,9 +21,9 @@ The **best next move** checks each assessment and finds the smallest raw-mark in
 
 ## Where you stand
 
-“Ahead of 75%” means your predicted grade is higher than the final grade earned by about 75% of students in that subject and examination session.
+“Ahead of about 75%” means your predicted grade is higher than the final grade earned by roughly three out of four students in that subject and examination session.
 
-IB publishes grade totals, not every student's exact mark. This means the comparison is an estimate within a grade band. It is useful for broad context, but it should not be read as an exact personal rank.
+IB publishes grade totals, not every student's exact mark. This means the comparison is an estimate within a grade band. IB Predict rounds the result to a whole percentage so it is not mistaken for an exact personal rank. “Less than 1%” and “more than 99%” are used at the ends of the range for the same reason.
 
 The diploma comparison works in the same way. It uses the published distribution of total diploma points to estimate where your total sits within that session.
 

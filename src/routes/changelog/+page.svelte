@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Removed false decimal precision from student comparisons and labeled every ranking as approximate.',
 				'Aligned the calculator, FAQ, assistant, and results guide around plain-language grade outlooks while keeping technical statistics optional.',
 				'Prevented saved assessment marks from exceeding a newly selected component’s maximum and producing impossible scores.',
 				'Focused historical charts on the student’s current predicted-grade boundary by default, with all-grade comparison optional and simpler minimum-score wording.',

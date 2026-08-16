@@ -127,10 +127,10 @@
 
 		<Collapsible question="What do ‘Ahead of’ and ‘Grade outlook’ mean?">
 			<p>
-				“Ahead of” compares your predicted grade with published results from that exam session.
-				“Grade outlook” explains whether that score kept the same grade under comparable past
-				boundaries and how much a higher boundary could change the result. Both are context for
-				planning, not official rankings or guaranteed results.
+				“Ahead of” is a rounded comparison with published grades from that exam session, not an
+				exact personal rank. “Grade outlook” explains whether that score kept the same grade under
+				comparable past boundaries and how much a higher boundary could change the result. Both are
+				context for planning, not official rankings or guaranteed results.
 			</p>
 			<p>
 				<a href="/blog/understanding-your-ib-predict-results">See examples in the results guide</a>.

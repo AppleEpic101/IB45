@@ -9,6 +9,7 @@
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 	import { buildBoundaryForecast, calculateForecastProbabilities } from '$lib/utils/forecast.js';
+	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let data;
 	export let syllabus;
@@ -57,10 +58,7 @@
 					.slice(0, numericMark)
 					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
 			: undefined;
-	$: percentileLabel = percentile?.toLocaleString('en-US', {
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 1
-	});
+	$: percentileLabel = formatApproximateShare(percentile);
 	$: forecastLabels = data.isCore ? ['E', 'D', 'C', 'B', 'A'] : ['1', '2', '3', '4', '5', '6', '7'];
 	$: forecastResults = level === 'HL' ? HLResults : SLResults;
 	$: comparableForecastResults = forecastResults.filter(
@@ -224,7 +222,7 @@
 				{/if}
 				{#if percentile !== undefined}
 					<div class="percentile-summary" aria-live="polite">
-						<strong>Ahead of {percentileLabel}%</strong>
+						<strong>Ahead of {percentileLabel}</strong>
 						<span>of students in {bulletinSession.name}</span>
 					</div>
 				{/if}

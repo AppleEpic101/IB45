@@ -5,6 +5,7 @@
 
 	import { selectedBoundaryId, selectedTimezone } from '$lib/stores/stores.js';
 	import diplomaSessions, { estimateDiplomaPercentile } from '$lib/data/diplomaSessions.js';
+	import { formatApproximateShare } from '$lib/utils/standing.js';
 	import Refresh from './Refresh.svelte';
 
 	const letterGrades = ['E', 'D', 'C', 'B', 'A'];
@@ -21,6 +22,8 @@
 	$: diplomaPercentile = gradesAvailable
 		? estimateDiplomaPercentile(totalPoints, sessionStats)
 		: null;
+	$: diplomaStanding =
+		diplomaPercentile !== null ? formatApproximateShare(diplomaPercentile) : undefined;
 	$: pointsFromMean =
 		gradesAvailable && sessionStats ? totalPoints - sessionStats.meanTotalPoints : null;
 
@@ -184,10 +187,13 @@
 
 			{#if diplomaPercentile !== null}
 				<div class="standing">
-					<strong>Ahead of about {diplomaPercentile}%</strong>
+					<strong>Ahead of {diplomaStanding}</strong>
 					<span>of students in this session</span>
 				</div>
-				<div class="percentile-track" aria-label={`Estimated percentile ${diplomaPercentile}`}>
+				<div
+					class="percentile-track"
+					aria-label={`Approximate standing: ahead of ${diplomaStanding}`}
+				>
 					<span style={`width: ${diplomaPercentile}%`} />
 				</div>
 				<p class:below-mean={pointsFromMean < 0}>

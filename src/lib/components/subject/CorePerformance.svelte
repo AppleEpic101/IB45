@@ -5,6 +5,7 @@
 	} from '$lib/data/corePerformance.js';
 	import GlobalBulletin from '$lib/components/subject/GlobalBulletin.svelte';
 	import BulletinTable from '$lib/components/subject/BulletinTable.svelte';
+	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let type;
 	export let grade;
@@ -109,7 +110,7 @@
 			</div>
 			<div>
 				<span>Ahead of</span>
-				<strong>{comparison.lowerShare}%</strong>
+				<strong>{formatApproximateShare(comparison.lowerShare)}</strong>
 			</div>
 		</div>
 
