@@ -47,7 +47,9 @@ A range such as “Grade 5–6” means different timezones in that session used
 
 ## Global grade distribution
 
-The distribution chart shows how final grades were spread across one examination session. Your marker shows the grade produced by the marks you entered; it does not claim to know your exact rank within that grade.
+The distribution chart shows how final grades were spread across one examination session. Each bar is the percentage of students who received that grade. There is no fitted curve or prediction line: the bars are the published bulletin data.
+
+The green line marks your predicted grade. The dashed red line marks the average grade for the selected session. These markers help you compare quickly, but they do not claim to know your exact rank within a grade.
 
 The table below the chart can show either:
 

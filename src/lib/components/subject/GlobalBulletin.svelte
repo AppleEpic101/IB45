@@ -56,10 +56,15 @@
 		chartInstance = undefined;
 		selectedShort = short;
 	};
+	const formatMean = (value) => {
+		const numericMean = Number(value);
+		if (!Number.isFinite(numericMean)) return 'Not available';
 
-	const getNormalDistributionValue = (x, mu, sigma) => {
-		if (!sigma || sigma === 0) return 0;
-		return (1 / (sigma * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
+		const usesNumberGrades = labels.includes('1');
+		if (usesNumberGrades) return numericMean.toFixed(1);
+
+		const closestLabel = labels[Math.max(0, Math.min(labels.length - 1, Math.round(numericMean)))];
+		return closestLabel ? `Grade ${closestLabel}` : 'Not available';
 	};
 
 	const createChart = () => {
@@ -69,38 +74,10 @@
 		const textColor = isDark ? '#f8fafc' : '#0f172a';
 		const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
-		// Calculate SD for normal curve if mean exists
 		let validMean = parseFloat(mean) || 4;
-		let sd = 1.2;
-
-		if (distribution) {
-			let variance = 0;
-			let totalWeight = 0;
-			distribution.forEach((p, i) => {
-				const prob = parseFloat(p) / 100;
-				variance += prob * Math.pow(i - validMean, 2);
-				totalWeight += prob;
-			});
-			if (totalWeight > 0) {
-				sd = Math.sqrt(variance / totalWeight) || 1.2;
-			}
-		}
-
-		// Generate points for the normal distribution trace
-		const maxBar = Math.max(...distribution, 1);
-		const maxCurve = getNormalDistributionValue(validMean, validMean, sd) || 1;
-
-		const traceData = labels.map((_, i) => {
-			const val = getNormalDistributionValue(i, validMean, sd);
-			return (val / maxCurve) * maxBar;
-		});
 
 		if (chartInstance) {
-			chartInstance.data.datasets[0].data = traceData;
-			chartInstance.data.datasets[0].borderColor = isDark
-				? 'rgba(255, 255, 255, 0.5)'
-				: 'rgba(15, 23, 42, 0.3)';
-			chartInstance.data.datasets[1].data = distribution;
+			chartInstance.data.datasets[0].data = distribution;
 			chartInstance.options.plugins.tooltip.backgroundColor = isDark ? '#1e293b' : '#ffffff';
 			chartInstance.options.plugins.tooltip.titleColor = isDark ? '#f1f5f9' : '#1e293b';
 			chartInstance.options.plugins.tooltip.bodyColor = isDark ? '#cbd5e1' : '#475569';
@@ -123,19 +100,8 @@
 				labels,
 				datasets: [
 					{
-						type: 'line',
-						label: 'Normal Trace',
-						data: traceData,
-						borderColor: isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(15, 23, 42, 0.3)',
-						borderWidth: 3,
-						pointRadius: 0,
-						fill: false,
-						tension: 0.45,
-						order: 1
-					},
-					{
 						type: 'bar',
-						label: 'Percentage (%)',
+						label: 'Students',
 						data: distribution,
 						backgroundColor: colorsOverride ?? [
 							'rgba(244, 63, 94, 0.7)',
@@ -149,7 +115,7 @@
 						],
 						borderRadius: 8,
 						borderWidth: 0,
-						order: 2
+						order: 1
 					}
 				]
 			},
@@ -168,10 +134,7 @@
 						padding: 12,
 						displayColors: true,
 						callbacks: {
-							label: (item) => {
-								if (item.dataset.label === 'Normal Trace') return null;
-								return ` ${item.parsed.y}% of test takers`;
-							}
+							label: (item) => ` ${item.parsed.y}% of students`
 						}
 					}
 				},
@@ -191,7 +154,7 @@
 						},
 						title: {
 							display: true,
-							text: 'Population Percentage',
+							text: 'Students (%)',
 							color: textColor,
 							font: { size: 12, weight: '500' }
 						}
@@ -215,8 +178,8 @@
 						ctx.save();
 
 						if (validMean !== undefined && !isNaN(validMean)) {
-							const baseIdx = Math.max(0, Math.min(6, Math.floor(validMean)));
-							const nextIdx = Math.min(7, baseIdx + 1);
+							const baseIdx = Math.max(0, Math.min(labels.length - 2, Math.floor(validMean)));
+							const nextIdx = Math.min(labels.length - 1, baseIdx + 1);
 							const remainder = validMean - baseIdx;
 
 							const p1 = x.getPixelForValue(labels[baseIdx]);
@@ -234,9 +197,6 @@
 									ctx.lineTo(xPos, bottom);
 									ctx.stroke();
 
-									ctx.fillStyle = '#ef4444';
-									ctx.font = 'bold 11px Inter';
-									ctx.fillText('AVG: ' + validMean.toFixed(1), xPos + 5, top + 15);
 								}
 							}
 						}
@@ -254,9 +214,6 @@
 									ctx.lineTo(markX, bottom);
 									ctx.stroke();
 
-									ctx.fillStyle = '#22c55e';
-									ctx.font = 'bold 11px Inter';
-									ctx.fillText('YOU', markX + 5, top + 35);
 								}
 							}
 						}
@@ -336,11 +293,31 @@
 				</div>
 			{/if}
 		</div>
+		<div class="chart-summary" aria-label="Grade distribution summary">
+			{#if mark !== undefined && mark !== 'N/A'}
+				<div>
+					<span>Your result</span>
+					<strong>{labels.includes(String(mark)) ? `Grade ${mark}` : mark}</strong>
+				</div>
+			{/if}
+			<div>
+				<span>Session average</span>
+				<strong>{labels.includes('1') ? `Grade ${formatMean(mean)}` : formatMean(mean)}</strong>
+			</div>
+		</div>
 		<div class="graph-wrapper">
 			{#key selectedShort}
 				<canvas bind:this={canvas} />
 			{/key}
 		</div>
+		<details class="chart-help">
+			<summary>How to read this chart</summary>
+			<div>
+				<p>Each bar is the percentage of students who finished with that grade.</p>
+				<p>The green line marks your predicted grade. The dashed red line marks the session average.</p>
+				<a href="/blog/understanding-your-ib-predict-results">Read the plain-language results guide →</a>
+			</div>
+		</details>
 	</div>
 {/if}
 
@@ -439,6 +416,33 @@
 		}
 	}
 
+	.chart-summary {
+		display: flex;
+		justify-content: center;
+		gap: 8px;
+		margin: -8px 0 12px;
+
+		div {
+			display: flex;
+			align-items: baseline;
+			gap: 6px;
+			padding: 6px 10px;
+			border: 1px solid var(--color-border);
+			border-radius: 999px;
+			background: var(--color-surface-variant);
+		}
+
+		span {
+			color: var(--color-text-muted);
+			font-size: 0.72rem;
+		}
+
+		strong {
+			color: var(--color-text-main);
+			font-size: 0.78rem;
+		}
+	}
+
 	.session-switcher {
 		display: inline-flex;
 		gap: 4px;
@@ -483,6 +487,38 @@
 		position: relative;
 	}
 
+	.chart-help {
+		margin-top: 12px;
+		border-top: 1px solid var(--color-border);
+		color: var(--color-text-muted);
+
+		summary {
+			padding-top: 10px;
+			font-size: 0.78rem;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		div {
+			max-width: 680px;
+			padding-top: 8px;
+			font-size: 0.78rem;
+			line-height: 1.5;
+		}
+
+		p {
+			margin: 0 0 4px;
+		}
+
+		a {
+			display: inline-block;
+			margin-top: 4px;
+			color: var(--color-primary);
+			font-weight: 700;
+			text-decoration: none;
+		}
+	}
+
 	.expanded .graph-wrapper {
 		flex: 1;
 		height: auto;
@@ -499,6 +535,18 @@
 		}
 		.distribution-header {
 			padding-top: 34px;
+		}
+		.chart-summary {
+			align-items: stretch;
+			margin-top: -4px;
+
+			div {
+				flex: 1;
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 2px;
+				border-radius: 9px;
+			}
 		}
 		.session-switcher {
 			display: grid;
