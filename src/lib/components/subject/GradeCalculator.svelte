@@ -25,6 +25,7 @@
 	export let HLResults;
 
 	export let showGradeGraphs;
+	export let showForecastDetails = false;
 
 	export let mark;
 	export let marksToIncrease;
@@ -209,7 +210,7 @@
 							</p>
 						{/if}
 						<details class="forecast-explanation">
-							<summary>What this forecast means</summary>
+							<summary>About this forecast</summary>
 							<p>
 								This assumes your current score stays the same and only the future boundary changes.
 								It does not predict your exam performance.
@@ -217,6 +218,12 @@
 									>Read the plain-language guide</a
 								>.
 							</p>
+							<button
+								type="button"
+								class="forecast-details-button"
+								on:click={() => (showForecastDetails = true)}
+								>Open chart and technical details <span aria-hidden="true">→</span></button
+							>
 						</details>
 					</div>
 				{/if}
@@ -393,6 +400,23 @@
 		a {
 			color: var(--color-primary);
 			font-weight: 700;
+		}
+	}
+
+	.forecast-details-button {
+		margin-top: 7px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: var(--color-primary);
+		font: inherit;
+		font-size: 0.6rem;
+		font-weight: 750;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			text-decoration: underline;
 		}
 	}
 

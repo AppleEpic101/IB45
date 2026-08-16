@@ -10,6 +10,7 @@
 	export let SLResults;
 	export let HLResults;
 	export let firstAssessment;
+	export let expanded = false;
 
 	const isCore = name === 'Theory Of Knowledge' || name === 'Extended Essay';
 	const labels = isCore ? ['E', 'D', 'C', 'B', 'A'] : ['1', '2', '3', '4', '5', '6', '7'];
@@ -42,7 +43,6 @@
 
 	let chartCanvas;
 	let chartInstance;
-	let expanded = false;
 	const setExpanded = async (value) => {
 		if (!value) {
 			chartInstance?.destroy();
@@ -166,19 +166,15 @@
 
 <svelte:window on:keydown={closeOnEscape} />
 
-{#if forecast}
-	{#if expanded}
-		<button
-			type="button"
-			class="modal-backdrop"
-			aria-label="Close expanded boundary forecast"
-			on:click={() => setExpanded(false)}
-		/>
-	{/if}
+{#if forecast && expanded}
+	<button
+		type="button"
+		class="modal-backdrop"
+		aria-label="Close expanded boundary forecast"
+		on:click={() => setExpanded(false)}
+	/>
 	<section
-		class="forecast-container"
-		class:compact={!expanded}
-		class:expanded
+		class="forecast-container expanded"
 		role={expanded ? 'dialog' : undefined}
 		aria-modal={expanded ? 'true' : undefined}
 		aria-labelledby="forecast-title"
@@ -190,22 +186,18 @@
 			title={expanded ? 'Close' : 'View details'}
 			on:click={() => setExpanded(!expanded)}
 		>
-			<span aria-hidden="true">{expanded ? '×' : '↗'}</span><span
-				>{expanded ? 'Close' : 'Details'}</span
-			>
+			<span aria-hidden="true">×</span><span>Close</span>
 		</button>
 
 		<header class="forecast-header">
 			<div class="eyebrow">
 				<span>IB Predict forecast</span><span class="experimental">Experimental</span>
 			</div>
-			<h4 id="forecast-title">
-				{expanded ? `${forecast.targetName} boundary forecast` : 'November 2026 forecast details'}
-			</h4>
-			{#if expanded}<p>{level} {name} · based on past November boundaries</p>{/if}
+			<h4 id="forecast-title">{forecast.targetName} boundary forecast</h4>
+			<p>{level} {name} · based on past November boundaries</p>
 		</header>
 
-		{#if probability && expanded}
+		{#if probability}
 			<div class="forecast-overview">
 				<div class="personal-forecast">
 					<span class="overview-label"
@@ -231,45 +223,41 @@
 			</div>
 		{/if}
 
-		{#if expanded}
-			<div class="forecast-body">
-				<div class="graph-wrapper"><canvas bind:this={chartCanvas} /></div>
+		<div class="forecast-body">
+			<div class="graph-wrapper"><canvas bind:this={chartCanvas} /></div>
+		</div>
+
+		<details class="technical-details">
+			<summary>Boundary ranges and model checks</summary>
+			<p class="technical-intro">
+				Optional detail for readers who want to inspect the forecast rather than just use its
+				headline result.
+			</p>
+			<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
+				{#each featuredForecasts as boundary}
+					<div class="boundary-card">
+						<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
+						<p>Likely range {boundary.lower}–{boundary.upper}%</p>
+						<span class:high={boundary.confidence === 'High'} class="confidence"
+							>{boundary.confidence} confidence</span
+						>
+					</div>
+				{/each}
 			</div>
+			<div class="model-meta">
+				<span>{forecast.sessionCount} past November sessions</span>
+				<span
+					>{forecast.mae === undefined
+						? 'Not enough history for an error check'
+						: `Past forecasts differed by about ${forecast.mae.toFixed(1)} marks`}</span
+				>
+				<span>Data through {forecast.trainingThrough}</span>
+			</div>
+		</details>
 
-			<details class="technical-details">
-				<summary>Boundary ranges and model checks</summary>
-				<p class="technical-intro">
-					Optional detail for readers who want to inspect the forecast rather than just use its
-					headline result.
-				</p>
-				<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
-					{#each featuredForecasts as boundary}
-						<div class="boundary-card">
-							<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
-							<p>Likely range {boundary.lower}–{boundary.upper}%</p>
-							<span class:high={boundary.confidence === 'High'} class="confidence"
-								>{boundary.confidence} confidence</span
-							>
-						</div>
-					{/each}
-				</div>
-				<div class="model-meta">
-					<span>{forecast.sessionCount} past November sessions</span>
-					<span
-						>{forecast.mae === undefined
-							? 'Not enough history for an error check'
-							: `Past forecasts differed by about ${forecast.mae.toFixed(1)} marks`}</span
-					>
-					<span>Data through {forecast.trainingThrough}</span>
-				</div>
-			</details>
-		{/if}
-
-		{#if expanded}
-			<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
-				How this forecast works <span aria-hidden="true">→</span>
-			</a>
-		{/if}
+		<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
+			How this forecast works <span aria-hidden="true">→</span>
+		</a>
 	</section>
 {/if}
 
@@ -291,12 +279,6 @@
 			flex-direction: column;
 			overflow-y: auto;
 			margin: 0;
-		}
-
-		&.compact {
-			padding: 13px 16px;
-			margin: 14px 0 24px;
-			box-shadow: var(--shadow-sm);
 		}
 	}
 
@@ -347,9 +329,6 @@
 			color: var(--color-text-muted);
 			font-size: 0.82rem;
 		}
-	}
-	.compact .forecast-header h4 {
-		font-size: 0.95rem;
 	}
 	.eyebrow {
 		display: flex;

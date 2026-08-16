@@ -33,6 +33,7 @@
 
 	let showBulletin = true;
 	let showGradeGraphs = true;
+	let showForecastDetails = false;
 
 	const languages = data.info.lang;
 	const classical = data.info.classical;
@@ -188,6 +189,7 @@
 			{marksToIncrease}
 			bind:assessments
 			bind:showGradeGraphs
+			bind:showForecastDetails
 			{classical}
 			{languages}
 		/>
@@ -222,6 +224,7 @@
 					{HLResults}
 					{grade}
 					firstAssessment={syllabus.firstAssessment}
+					bind:expanded={showForecastDetails}
 				/>
 			</div>
 		{/if}
