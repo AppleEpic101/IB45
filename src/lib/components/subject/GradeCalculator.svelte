@@ -9,7 +9,6 @@
 
 	import { calculateNormalResults, calculateCoreResults } from '$lib/utils/boundaries.js';
 	import { calculateForecastProbabilities } from '$lib/utils/forecast.js';
-	import { formatApproximateShare } from '$lib/utils/standing.js';
 
 	export let data;
 	export let syllabus;
@@ -42,6 +41,12 @@
 		A: 5
 	};
 	const coreGrades = ['E', 'D', 'C', 'B', 'A'];
+	const formatProbability = (chance) => {
+		if (chance >= 0.995) return '>99%';
+		if (chance > 0 && chance <= 0.005) return '<1%';
+		return `${Math.round(chance * 100)}%`;
+	};
+	const formatPercentile = (value) => `${Number(Number(value).toFixed(1))}%`;
 
 	let str;
 	let gradeBoundaryUsed;
@@ -49,7 +54,6 @@
 	$: isForecastSelection = selectedBoundary?.isForecast === true;
 	$: maximumScore =
 		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
-	$: forecastScoreLabel = data.isCore ? `${grade} / ${maximumScore}` : `${grade}%`;
 	$: hasPredictedGrade = mark !== undefined && mark !== null && mark !== 'N/A';
 	$: nextGrade = hasPredictedGrade
 		? data.isCore
@@ -73,25 +77,32 @@
 					.slice(0, numericMark)
 					.reduce((sum, percentage) => sum + (Number(percentage) || 0), 0)
 			: undefined;
-	$: percentileLabel = formatApproximateShare(percentile);
+	$: percentileLabel = percentile === undefined ? undefined : formatPercentile(percentile);
 	$: forecastProbability = isForecastSelection
 		? calculateForecastProbabilities(selectedBoundary?.forecast, grade)
 		: undefined;
-	$: forecastGradeIndex = selectedBoundary?.forecast?.forecasts?.findIndex(
-		({ grade: forecastGrade }) => String(forecastGrade) === String(mark)
-	);
-	$: forecastGradeChance =
-		forecastProbability && forecastGradeIndex >= 0
-			? forecastProbability.exact[forecastGradeIndex]
-			: undefined;
-	$: forecastChanceLabel =
-		forecastGradeChance === undefined
-			? undefined
-			: forecastGradeChance >= 0.995
-			? '>99%'
-			: forecastGradeChance > 0 && forecastGradeChance <= 0.005
-			? '<1%'
-			: `${Math.round(forecastGradeChance * 100)}%`;
+	$: probabilityGrades = data.isCore
+		? (() => {
+				const currentIndex = Math.max(0, coreGrades.indexOf(String(mark)));
+				const startIndex = Math.min(coreGrades.length - 3, Math.max(0, currentIndex - 1));
+				return coreGrades.slice(startIndex, startIndex + 3);
+		  })()
+		: (() => {
+				const currentGrade = Number(mark);
+				const startGrade = Math.min(5, Math.max(1, currentGrade - 1));
+				return [startGrade, startGrade + 1, startGrade + 2].map(String);
+		  })();
+	$: forecastGradeProbabilities = forecastProbability
+		? probabilityGrades.map((forecastGrade) => {
+				const index = selectedBoundary.forecast.forecasts.findIndex(
+					({ grade: label }) => String(label) === forecastGrade
+				);
+				return {
+					grade: forecastGrade,
+					chance: index >= 0 ? formatProbability(forecastProbability.exact[index]) : '—'
+				};
+		  })
+		: [];
 	$: forecastResults = level === 'HL' ? HLResults : SLResults;
 	$: {
 		const hasResults =
@@ -111,7 +122,7 @@
 			};
 			marksToIncrease = lastSL?.tz[gradeMap[mark]] - grade;
 			str = isForecastSelection
-				? 'Using the experimental November 2026 forecast'
+				? 'Using November 2026 forecast'
 				: 'Using the ' + lastSL?.fullName + ' grade boundary';
 		} else {
 			if (level === 'HL') {
@@ -122,7 +133,7 @@
 				};
 				marksToIncrease = lastHL?.tz[mark] - grade;
 				str = isForecastSelection
-					? 'Using the experimental November 2026 forecast'
+					? 'Using November 2026 forecast'
 					: 'Using the ' + lastHL?.fullName + ' grade boundary';
 			} else {
 				mark = calculateNormalResults(grade, lastSL?.tz);
@@ -132,7 +143,7 @@
 				};
 				marksToIncrease = lastSL?.tz[mark] - grade;
 				str = isForecastSelection
-					? 'Using the experimental November 2026 forecast'
+					? 'Using November 2026 forecast'
 					: 'Using the ' + lastSL?.fullName + ' grade boundary';
 			}
 			showGradeGraphs = true;
@@ -205,20 +216,26 @@
 				{/if}
 
 				<div class="pp">{str}</div>
-				{#if forecastChanceLabel || percentile !== undefined}
+				{#if forecastGradeProbabilities.length || percentile !== undefined}
 					<div class="result-comparisons" aria-live="polite">
-						{#if forecastChanceLabel}
+						{#if forecastGradeProbabilities.length}
 							<div>
-								<span>Forecast probability</span>
-								<strong>{forecastChanceLabel}</strong>
-								<small>Grade {mark} if your score stays at {forecastScoreLabel}</small>
+								<span class="comparison-title">Probability</span>
+								<div class="probability-grid">
+									{#each forecastGradeProbabilities as probability}
+										<div class:current-grade={String(mark) === probability.grade}>
+											<span>Grade {probability.grade}</span>
+											<strong>{probability.chance}</strong>
+										</div>
+									{/each}
+								</div>
 							</div>
 						{/if}
 						{#if percentile !== undefined}
 							<div>
-								<span>Published percentile</span>
-								<strong>Ahead of {percentileLabel}</strong>
-								<small>{bulletinSession.name} final grades</small>
+								<span class="comparison-title">Percentile</span>
+								<strong>Beats {percentileLabel}</strong>
+								<small>of {bulletinSession.short} test takers</small>
 							</div>
 						{/if}
 					</div>
@@ -308,6 +325,30 @@
 			color: var(--color-primary);
 			font-size: 0.88rem;
 			line-height: 1.15;
+		}
+
+		.comparison-title {
+			font-size: 0.58rem;
+			font-weight: 750;
+		}
+
+		.probability-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 3px;
+			margin-top: 3px;
+
+			> div {
+				display: grid;
+				gap: 1px;
+				padding: 3px 2px;
+				border-radius: 5px;
+				text-align: center;
+			}
+
+			.current-grade {
+				background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+			}
 		}
 
 		@media (max-width: 420px) {

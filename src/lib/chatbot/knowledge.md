@@ -130,9 +130,9 @@ published boundary instead. Never describe the forecast as a prediction of the s
 marks. Likelihood ranges and technical model checks are optional details and should be discussed
 only when the user asks.
 
-When N26 Forecast is selected, the predicted-grade card shows **Forecast probability** for the
-displayed grade and **Published percentile** using the latest published November final-grade data.
-Explain that these use different sources: probability describes plausible future boundaries while
+When N26 Forecast is selected, the predicted-grade card shows **Probability** for the forecasted
+grade plus one grade below and above, and **Percentile** as “Beats X% of N25 test takers.” Explain
+that these use different sources: probability describes plausible future boundaries while
 percentile compares the displayed grade with historical students.
 
 In the predicted-grade card, **Weighted score** is the combined percentage for a standard subject.
