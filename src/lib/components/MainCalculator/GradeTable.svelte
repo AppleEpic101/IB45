@@ -67,7 +67,7 @@
 	$: diplomaAwarded = gradesAvailable && coreComplete && !failureMessage;
 	$: rowValues = [0, 1, 2, 3, 4, 5].map((index) => {
 		const summary = summaries[index] || {};
-		if (!summary.inputsComplete) return 0;
+		if (!summary.inputsComplete) return '—';
 		if (!summary.boundariesAvailable) return 'N/A';
 		return summary.grade || 0;
 	});
@@ -136,11 +136,11 @@
 		</tbody>
 	</table>
 
-	<details class="score-breakdown">
-		<summary>
+	<section class="score-breakdown" aria-label="Subject and core breakdown">
+		<header>
 			<span>Subject &amp; core breakdown</span>
 			<small>6 subjects, TOK and EE</small>
-		</summary>
+		</header>
 		<table aria-label="Subject and core score breakdown">
 			<tbody>
 				{#each rowValues as rowValue, index}
@@ -148,7 +148,7 @@
 						<td>Group {index + 1}</td>
 						<td
 							class="value"
-							class:unavailable={rowValue === 'N/A'}
+							class:unavailable={rowValue === 'N/A' || rowValue === '—'}
 							style={`background-color: ${getRowColor(rowValue)}`}
 						>
 							{rowValue}
@@ -188,7 +188,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</details>
+	</section>
 
 	{#if failureMessage}
 		<div class:unavailable-message={unavailableSubjects.length > 0} class="notice">
@@ -301,7 +301,7 @@
 		text-align: left;
 	}
 
-	.score-breakdown summary {
+	.score-breakdown header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -310,16 +310,15 @@
 		color: var(--color-text-main);
 		font-size: 0.7rem;
 		font-weight: 750;
-		cursor: pointer;
 	}
 
-	.score-breakdown summary small {
+	.score-breakdown header small {
 		color: var(--color-text-muted);
 		font-size: 0.6rem;
 		font-weight: 650;
 	}
 
-	.score-breakdown[open] summary {
+	.score-breakdown header {
 		border-bottom: 1px solid var(--color-border);
 	}
 

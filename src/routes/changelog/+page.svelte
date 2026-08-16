@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Kept all six diploma groups visible in the sidebar summary, using a dash for subjects that have not been selected yet.',
 				'Weighted grade probability toward recent post-COVID November boundaries, followed by recent May boundaries, while reducing the influence of transitional and older sessions.',
 				'Changed grade probabilities to reflect actual outcomes across comparable published session and timezone boundaries, eliminating misleading 50/50 results at forecast cutoffs.',
 				'Treated TOK and Extended Essay boundaries as stable cutoffs, removing artificial 50/50 probabilities when a score lands exactly on a threshold.',
