@@ -149,6 +149,20 @@
 				</li>
 			</ul>
 		</Collapsible>
+
+		<Collapsible question="Which exam session and timezone should I choose?">
+			<p>
+				Choose the session and boundary variant supplied with your examination paper, mark scheme,
+				or results. A TZ number describes a paper variant, not your device or local clock, and it
+				should not be treated as a permanent regional map. Ask your programme coordinator when the
+				label is unclear.
+			</p>
+			<p>
+				<a href="/blog/choosing-an-ib-exam-session-and-timezone"
+					>Read the session and timezone guide</a
+				>.
+			</p>
+		</Collapsible>
 	</section>
 </main>
 

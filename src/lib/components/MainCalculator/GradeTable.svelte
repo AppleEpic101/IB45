@@ -202,12 +202,17 @@
 				<p>Complete all six subjects to compare your score with this session.</p>
 			{/if}
 
-			<small
-				>Based on {sessionStats.diplomaResultsStudents.toLocaleString()} published results</small
-			>
-			<a class="comparison-help" href="/blog/understanding-your-ib-predict-results"
-				>How this comparison works <span aria-hidden="true">→</span></a
-			>
+			<details class="comparison-details">
+				<summary>About this comparison</summary>
+				<div>
+					<small
+						>Based on {sessionStats.diplomaResultsStudents.toLocaleString()} published results</small
+					>
+					<a class="comparison-help" href="/blog/understanding-your-ib-predict-results"
+						>Read the explanation <span aria-hidden="true">→</span></a
+					>
+				</div>
+			</details>
 		</section>
 	{/if}
 
@@ -349,6 +354,23 @@
 		font-size: 0.64rem;
 		font-weight: 750;
 		text-decoration: none;
+	}
+
+	.comparison-details {
+		font-size: 0.64rem;
+	}
+
+	.comparison-details summary {
+		width: fit-content;
+		color: var(--color-text-muted);
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.comparison-details > div {
+		display: grid;
+		gap: 4px;
+		margin-top: 5px;
 	}
 
 	.comparison-help:hover,

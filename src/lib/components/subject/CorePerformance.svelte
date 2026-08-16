@@ -111,10 +111,6 @@
 				<span>Ahead of</span>
 				<strong>{comparison.lowerShare}%</strong>
 			</div>
-			<div>
-				<span>Session size</span>
-				<strong>{comparison.total.toLocaleString()}</strong>
-			</div>
 		</div>
 
 		{#if type === 'ee'}<footer>{selectedGroup.label}</footer>{/if}
@@ -185,7 +181,7 @@
 	}
 	.summary {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		gap: 8px;
 		margin-top: 8px;
 	}

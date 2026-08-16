@@ -81,4 +81,6 @@ Use the page in this order:
 4. Use the best-next-move suggestion to decide where an extra mark has the most impact.
 5. Open the additional context only if you want to compare sessions or understand uncertainty.
 
+If you are unsure which session or timezone applies, read [Choosing the right IB exam session and timezone](/blog/choosing-an-ib-exam-session-and-timezone).
+
 IB Predict is a study-planning tool. Always treat official results and published IB boundaries as authoritative.
