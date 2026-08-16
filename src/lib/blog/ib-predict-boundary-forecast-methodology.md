@@ -25,6 +25,10 @@ The model also ignores results from before the current subject syllabus began. I
 
 At least three comparable sessions are required before a forecast is shown.
 
+### TOK and Extended Essay
+
+TOK and Extended Essay are handled differently from standard subjects. Their current published cutoffs are normally stable across examination sessions, so IB Predict carries the latest published thresholds forward without adding artificial year-to-year uncertainty. The displayed grade probability is therefore deterministic: a score at or above a cutoff receives that grade with 100% probability. Users can still select an official M25 or N25 boundary when they want to inspect a named session directly.
+
 ## Weighting history and trend
 
 Recent sessions receive more weight than older sessions. The weight declines by 28% for every year of age, which lets the estimate respond to current conditions without discarding longer-term history.

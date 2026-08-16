@@ -109,6 +109,8 @@ The forecast is experimental. It estimates future grade boundaries; it does not 
 
 The predicted-grade card shows two compact comparisons. **Probability** shows the estimated chances of your forecasted grade, one grade below, and one grade above under plausible November 2026 boundaries. **Percentile** says what share of N25 test takers finished below your displayed grade. The labels are separate because one is a forecast and the other is historical student data.
 
+TOK and Extended Essay use their latest stable published cutoffs without added year-to-year uncertainty. If your score reaches one of those fixed cutoffs, the card shows that grade at 100% rather than splitting the result across two grades.
+
 Read “Grade 5 · 74%” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** Use **View forecast details** only when you want to inspect the possible boundary ranges and model checks.
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).

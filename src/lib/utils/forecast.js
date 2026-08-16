@@ -144,10 +144,39 @@ export const buildBoundaryForecast = ({
 	results,
 	targetYear = 2026,
 	sessionPrefix = 'N',
-	labels = ['1', '2', '3', '4', '5', '6', '7']
+	labels = ['1', '2', '3', '4', '5', '6', '7'],
+	stable = false
 }) => {
 	const sessions = aggregateForecastSessions(results, sessionPrefix);
 	if (sessions.length < 3) return undefined;
+
+	if (stable) {
+		const latestSession = sessions.at(-1);
+		const forecasts = labels.map((label, index) => {
+			const point = Math.round(latestSession.boundaries[index]?.value ?? 0);
+			return {
+				grade: label,
+				point,
+				lower: point,
+				upper: point,
+				mae: 0,
+				confidence: 'High',
+				sigma: 0
+			};
+		});
+
+		return {
+			target: `${sessionPrefix}${String(targetYear).slice(-2)}`,
+			targetName: `${sessionPrefix === 'N' ? 'November' : 'May'} ${targetYear}`,
+			trainingThrough: latestSession.short,
+			sessionCount: sessions.length,
+			timezoneCount: Math.max(...sessions.map((session) => session.rows.length)),
+			mae: 0,
+			forecasts,
+			stable: true,
+			modelVersion: '1.0'
+		};
+	}
 
 	const raw = labels.map((label, gradeIndex) => {
 		const points = sessions.map((session) => ({
@@ -216,6 +245,24 @@ export const buildBoundaryForecast = ({
 export const calculateForecastProbabilities = (forecast, mark) => {
 	if (!forecast || !Number.isFinite(Number(mark))) return undefined;
 	const score = Number(mark);
+
+	if (forecast.stable) {
+		let gradeIndex = 0;
+		forecast.forecasts.forEach((boundary, index) => {
+			if (score >= boundary.point) gradeIndex = index;
+		});
+		const exact = forecast.forecasts.map((_, index) => (index === gradeIndex ? 1 : 0));
+		const cumulative = forecast.forecasts.map((boundary) => (score >= boundary.point ? 1 : 0));
+
+		return {
+			exact,
+			cumulative,
+			mostLikelyGrade: forecast.forecasts[gradeIndex].grade,
+			mostLikelyChance: 1,
+			nextGradeChance: gradeIndex < exact.length - 1 ? 0 : 1
+		};
+	}
+
 	const cumulative = forecast.forecasts.map((boundary) =>
 		normalCdf((score - boundary.point) / boundary.sigma)
 	);

@@ -135,6 +135,10 @@ grade plus one grade below and above, and **Percentile** as “Beats X% of N25 t
 that these use different sources: probability describes plausible future boundaries while
 percentile compares the displayed grade with historical students.
 
+TOK and Extended Essay forecasts retain the latest stable published cutoffs instead of applying
+the standard-subject uncertainty model. A score at or above a core-subject cutoff therefore shows
+that grade at 100%; do not describe it as a 50/50 result at the threshold.
+
 In the predicted-grade card, **Weighted score** is the combined percentage for a standard subject.
 **To Grade X** is the remaining weighted-mark gap under the currently selected forecast or
 published boundary. TOK and EE show their score out of 30 or 34. Do not call the weighted score

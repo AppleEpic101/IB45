@@ -84,7 +84,8 @@
 			results: comparableResults,
 			targetYear: 2026,
 			sessionPrefix: 'N',
-			labels: forecastLabels
+			labels: forecastLabels,
+			stable: data.data.isCore
 		});
 
 		return forecast

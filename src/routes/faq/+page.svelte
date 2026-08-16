@@ -150,6 +150,10 @@
 				forecast details only if you want possible ranges and model checks, or read
 				<a href="/blog/ib-predict-boundary-forecast-methodology">the forecast methodology</a>.
 			</p>
+			<p>
+				TOK and Extended Essay use their latest stable published cutoffs without added uncertainty,
+				so reaching a cutoff shows that grade at 100%.
+			</p>
 		</Collapsible>
 
 		<Collapsible question="Where are the [BLANK] grade boundaries?">

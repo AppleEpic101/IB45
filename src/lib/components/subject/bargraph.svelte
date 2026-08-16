@@ -13,6 +13,7 @@
 	export let expanded = false;
 
 	const isCore = name === 'Theory Of Knowledge' || name === 'Extended Essay';
+	const maximumScore = name === 'Extended Essay' ? 34 : 30;
 	const labels = isCore ? ['E', 'D', 'C', 'B', 'A'] : ['1', '2', '3', '4', '5', '6', '7'];
 	const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#14b8a6', '#3b82f6', '#8b5cf6'];
 
@@ -24,7 +25,8 @@
 		results: comparableResults,
 		targetYear: 2026,
 		sessionPrefix: 'N',
-		labels
+		labels,
+		stable: isCore
 	});
 	$: probability = calculateForecastProbabilities(forecast, grade);
 	$: featuredForecasts = forecast?.forecasts.slice(isCore ? 0 : 3) ?? [];
@@ -36,6 +38,7 @@
 	$: primaryOutcome = rankedOutcomes[0];
 	$: secondaryOutcome = rankedOutcomes[1];
 	const probabilityLabel = (chance) => {
+		if (chance === 1) return '100%';
 		if (chance >= 0.995) return '>99%';
 		if (chance > 0 && chance <= 0.005) return '<1%';
 		return `${Math.round(chance * 100)}%`;
@@ -68,15 +71,19 @@
 			data: {
 				labels,
 				datasets: [
-					{
-						label: '80% likely range',
-						data: forecast.forecasts.map(({ lower, upper }) => [lower, upper]),
-						backgroundColor: colors.slice(0, labels.length).map((color) => `${color}33`),
-						borderColor: colors.slice(0, labels.length),
-						borderWidth: 1,
-						borderRadius: 6,
-						barPercentage: 0.62
-					},
+					...(forecast.stable
+						? []
+						: [
+								{
+									label: '80% likely range',
+									data: forecast.forecasts.map(({ lower, upper }) => [lower, upper]),
+									backgroundColor: colors.slice(0, labels.length).map((color) => `${color}33`),
+									borderColor: colors.slice(0, labels.length),
+									borderWidth: 1,
+									borderRadius: 6,
+									barPercentage: 0.62
+								}
+						  ]),
 					{
 						type: 'line',
 						label: 'Forecast',
@@ -123,7 +130,7 @@
 							label: (item) =>
 								item.dataset.label === '80% likely range'
 									? ` 80% likely range: ${item.raw[0]}–${item.raw[1]}%`
-									: ` ${item.dataset.label}: ${item.parsed.y}%`
+									: ` ${item.dataset.label}: ${item.parsed.y}${forecast.stable ? '' : '%'}`
 						}
 					}
 				},
@@ -141,16 +148,19 @@
 					},
 					y: {
 						min: 0,
-						max: 100,
+						max: forecast.stable ? 40 : 100,
 						grid: { color: gridColor },
 						border: { display: false },
 						title: {
 							display: true,
-							text: 'Minimum mark (%)',
+							text: forecast.stable ? 'Minimum mark' : 'Minimum mark (%)',
 							color: textColor,
 							font: { weight: 'bold' }
 						},
-						ticks: { color: textColor, callback: (value) => `${value}%` }
+						ticks: {
+							color: textColor,
+							callback: (value) => `${value}${forecast.stable ? '' : '%'}`
+						}
 					}
 				}
 			}
@@ -194,25 +204,35 @@
 				<span>IB Predict forecast</span><span class="experimental">Experimental</span>
 			</div>
 			<h4 id="forecast-title">{forecast.targetName} boundary forecast</h4>
-			<p>{level} {name} · based on past November boundaries</p>
+			<p>
+				{level}
+				{name} · {forecast.stable
+					? 'uses the latest stable published boundaries'
+					: 'based on past November boundaries'}
+			</p>
 		</header>
 
 		{#if probability}
 			<div class="forecast-overview">
 				<div class="personal-forecast">
-					<span class="overview-label"
-						>If your {Number(grade).toFixed(0)}% score stayed the same</span
-					>
+					<span class="overview-label">
+						If your {Number(grade).toFixed(0)}{forecast.stable ? ` / ${maximumScore}` : '%'} score stayed
+						the same
+					</span>
 					<div class="outcome-grid">
 						<div class="primary-outcome">
 							<strong>Grade {primaryOutcome.grade}</strong>
-							<span>Most likely under forecast boundaries</span>
+							<span
+								>{forecast.stable
+									? 'Result under fixed cutoffs'
+									: 'Most likely under forecast boundaries'}</span
+							>
 						</div>
 						<div class="outcome-chance">
 							<strong>{probabilityLabel(primaryOutcome.chance)}</strong>
 							<span>Estimated likelihood</span>
 						</div>
-						{#if secondaryOutcome}
+						{#if secondaryOutcome?.chance > 0}
 							<div class="secondary-outcome">
 								<strong>{probabilityLabel(secondaryOutcome.chance)}</strong>
 								<span>Grade {secondaryOutcome.grade}, next most likely</span>
@@ -228,16 +248,28 @@
 		</div>
 
 		<details class="technical-details">
-			<summary>Boundary ranges and model checks</summary>
+			<summary
+				>{forecast.stable
+					? 'Why these boundaries are fixed'
+					: 'Boundary ranges and model checks'}</summary
+			>
 			<p class="technical-intro">
-				Optional detail for readers who want to inspect the forecast rather than just use its
-				headline result.
+				{forecast.stable
+					? 'TOK and Extended Essay normally use stable published cutoffs, so the forecast keeps the latest thresholds instead of inventing year-to-year uncertainty.'
+					: 'Optional detail for readers who want to inspect the forecast rather than just use its headline result.'}
 			</p>
 			<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
 				{#each featuredForecasts as boundary}
 					<div class="boundary-card">
-						<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
-						<p>Likely range {boundary.lower}–{boundary.upper}%</p>
+						<div>
+							<span>Grade {boundary.grade}</span>
+							<strong>{boundary.point}{forecast.stable ? '' : '%'}</strong>
+						</div>
+						<p>
+							{forecast.stable
+								? 'Fixed cutoff'
+								: `Likely range ${boundary.lower}–${boundary.upper}%`}
+						</p>
 						<span class:high={boundary.confidence === 'High'} class="confidence"
 							>{boundary.confidence} confidence</span
 						>
@@ -245,12 +277,17 @@
 				{/each}
 			</div>
 			<div class="model-meta">
-				<span>{forecast.sessionCount} past November sessions</span>
-				<span
-					>{forecast.mae === undefined
-						? 'Not enough history for an error check'
-						: `Past forecasts differed by about ${forecast.mae.toFixed(1)} marks`}</span
-				>
+				{#if forecast.stable}
+					<span>Latest published cutoffs retained</span>
+					<span>No artificial uncertainty added</span>
+				{:else}
+					<span>{forecast.sessionCount} past November sessions</span>
+					<span
+						>{forecast.mae === undefined
+							? 'Not enough history for an error check'
+							: `Past forecasts differed by about ${forecast.mae.toFixed(1)} marks`}</span
+					>
+				{/if}
 				<span>Data through {forecast.trainingThrough}</span>
 			</div>
 		</details>

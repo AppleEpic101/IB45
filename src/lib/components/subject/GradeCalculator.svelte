@@ -42,6 +42,7 @@
 	};
 	const coreGrades = ['E', 'D', 'C', 'B', 'A'];
 	const formatProbability = (chance) => {
+		if (chance === 1) return '100%';
 		if (chance >= 0.995) return '>99%';
 		if (chance > 0 && chance <= 0.005) return '<1%';
 		return `${Math.round(chance * 100)}%`;
