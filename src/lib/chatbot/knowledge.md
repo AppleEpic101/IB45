@@ -117,5 +117,9 @@ In the predicted-mark card, **Weighted score** is the combined percentage for a 
 **To Grade X** is the remaining weighted-mark gap to the next published boundary. TOK and EE show
 their score out of 30 or 34. Do not call the weighted score itself the student's grade.
 
+The grade-distribution table follows the season selected in the chart (May or November) so the
+default rows match the visual. **All Sessions** combines both seasons and should be suggested only
+when the user wants a broader comparison.
+
 **Is my data saved?** Yes, inputs are saved in your browser's local storage automatically. Nothing
 is sent to a server.

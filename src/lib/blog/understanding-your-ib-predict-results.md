@@ -78,6 +78,8 @@ The table below the chart can show either:
 
 The columns labeled **Grade (%)** show the share receiving each final grade. “N” means no grade was awarded.
 
+The table initially follows the chart’s season: choosing a November chart shows November sessions, and choosing a May chart shows May sessions. Use **All Sessions** only when you want the combined May-and-November comparison.
+
 IB publishes rounded percentages, so student counts calculated from those percentages can differ slightly from the published session total. Open **About student counts** beneath the table when you need that detail.
 
 ## Optional averages and variation

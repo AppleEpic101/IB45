@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Synchronized grade-distribution tables with the chart’s May or November selection, while retaining All Sessions for broader comparisons.',
 				'Fixed missing-boundary selections so the next-grade field says unavailable instead of incorrectly implying the top grade.',
 				'Replaced “markband” and “candidate” jargon in result tables with clearer grade-boundary and student labels.',
 				'Relabeled predicted-mark results as weighted score and marks to the named next grade, removing ambiguous “Grade” and “Points Away” labels.',

@@ -84,6 +84,7 @@
 				dataOverride={distributionSessions}
 				labelsOverride={labels}
 				bandLabel="Grade"
+				selectedShort={sessionId}
 			/>
 		</div>
 	</section>

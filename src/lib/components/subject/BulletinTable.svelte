@@ -5,12 +5,15 @@
 	export let dataOverride;
 	export let labelsOverride;
 	export let bandLabel = 'Grade';
+	export let selectedShort = 'N25';
 
 	$: data = dataOverride ?? Bulletin[name]?.grades;
 	$: labels = labelsOverride ?? ['N', '1', '2', '3', '4', '5', '6', '7'];
 	$: tableColumns = 3 + labels.length;
 	let displayMode = 'percent';
-	let sessionScope = 'all';
+	const sessionScopeFor = (short) => (String(short).startsWith('M') ? 'may' : 'november');
+	let sessionScope = sessionScopeFor(selectedShort);
+	let selectedSessionScope = sessionScope;
 	const sessionScopes = [
 		{ value: 'november', label: 'November Sessions', shortLabel: 'November' },
 		{ value: 'may', label: 'May Sessions', shortLabel: 'May' },
@@ -52,6 +55,13 @@
 
 	$: filteredData = (data ?? []).filter((session) => inSessionScope(session, sessionScope));
 	$: summary = buildSummary(filteredData, sessionScope);
+	$: {
+		const nextSelectedScope = sessionScopeFor(selectedShort);
+		if (nextSelectedScope !== selectedSessionScope) {
+			selectedSessionScope = nextSelectedScope;
+			sessionScope = nextSelectedScope;
+		}
+	}
 </script>
 
 <div class="table-section">

@@ -34,6 +34,7 @@
 	let showBulletin = true;
 	let showGradeGraphs = true;
 	let showForecastDetails = false;
+	let bulletinSessionShort = 'N25';
 
 	const languages = data.info.lang;
 	const classical = data.info.classical;
@@ -207,10 +208,16 @@
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
 		{#if !data.data.isCore}
 			<section class="bulletin-panel" aria-label="Global grade distribution and data table">
-				<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin embedded />
+				<GlobalBulletin
+					{mark}
+					name={level + ' ' + name}
+					bind:showBulletin
+					bind:selectedShort={bulletinSessionShort}
+					embedded
+				/>
 
 				<div class="bulletin-table">
-					<BulletinTable name={level + ' ' + name} />
+					<BulletinTable name={level + ' ' + name} selectedShort={bulletinSessionShort} />
 				</div>
 			</section>
 		{/if}
