@@ -97,6 +97,15 @@ On the main calculator, lead with the total diploma points and diploma-status me
 subject grades, TOK, EE, and core points are available under **Subject & core breakdown**. Do not
 list every row unless the user asks for the breakdown or needs help finding a failing condition.
 
+Completed subject cards can be collapsed from the top-right button. The collapsed card keeps the
+subject name, weighted score, and predicted grade while hiding assessment controls, boundaries,
+supporting insights, and the full subject analysis link.
+
+Do not quote the session's typical diploma score, pass rate, or published sample size before all six
+subjects are complete unless the user asks. Those reference figures are under **About this
+comparison**. Once a personal comparison is available, describe the points difference as rounded
+and approximate rather than using decimal precision.
+
 The full TOK/Extended Essay core-points matrix is under **How TOK and EE combine** on either core
 subject page. Explain the student's specific combination first; only reproduce the full matrix when
 they ask for every combination.

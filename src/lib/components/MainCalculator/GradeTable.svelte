@@ -26,6 +26,14 @@
 		diplomaPercentile !== null ? formatApproximateShare(diplomaPercentile) : undefined;
 	$: pointsFromMean =
 		gradesAvailable && sessionStats ? totalPoints - sessionStats.meanTotalPoints : null;
+	$: pointsComparison =
+		pointsFromMean === null
+			? ''
+			: Math.abs(pointsFromMean) < 0.5
+			? 'close to the typical score'
+			: `about ${Math.round(Math.abs(pointsFromMean))} ${
+					Math.round(Math.abs(pointsFromMean)) === 1 ? 'point' : 'points'
+			  } ${pointsFromMean >= 0 ? 'above' : 'below'} the typical score`;
 
 	$: hlGrades = completedSubjects
 		.filter((summary) => summary.level === 'HL' && summary.grade)
@@ -208,23 +216,25 @@
 					<span style={`width: ${diplomaPercentile}%`} />
 				</div>
 				<p class:below-mean={pointsFromMean < 0}>
-					Your {totalPoints} points are {Math.abs(pointsFromMean).toFixed(1)}
-					{pointsFromMean >= 0 ? 'above' : 'below'} the typical score.
+					Your total is {pointsComparison}.
 				</p>
 			{:else}
-				<div class="benchmark">
-					<div><strong>{sessionStats.meanTotalPoints}</strong><span>Typical score</span></div>
-					<div><strong>{sessionStats.passRate}%</strong><span>Earned the diploma</span></div>
+				<div class="waiting-comparison">
+					<strong>Complete all six subjects</strong>
+					<span>Then we’ll compare your total with this session.</span>
 				</div>
-				<p>Complete all six subjects to compare your score with this session.</p>
 			{/if}
 
 			<details class="comparison-details">
 				<summary>About this comparison</summary>
 				<div>
-					<small
-						>Based on {sessionStats.diplomaResultsStudents.toLocaleString()} published results</small
-					>
+					<ul>
+						<li><strong>{sessionStats.meanTotalPoints}</strong> typical diploma score</li>
+						<li><strong>{sessionStats.passRate}%</strong> earned the diploma</li>
+						<li>
+							<strong>{sessionStats.diplomaResultsStudents.toLocaleString()}</strong> published results
+						</li>
+					</ul>
 					<a class="comparison-help" href="/blog/understanding-your-ib-predict-results"
 						>Read the explanation <span aria-hidden="true">→</span></a
 					>
@@ -356,8 +366,7 @@
 		gap: 8px;
 	}
 
-	.comparison-heading span,
-	.peer-comparison small {
+	.comparison-heading span {
 		color: var(--color-text-muted);
 		font-size: 0.62rem;
 	}
@@ -384,7 +393,7 @@
 
 	.standing span,
 	.peer-comparison p,
-	.benchmark span {
+	.waiting-comparison span {
 		color: var(--color-text-muted);
 		font-size: 0.66rem;
 	}
@@ -421,6 +430,19 @@
 		margin-top: 5px;
 	}
 
+	.comparison-details ul {
+		display: grid;
+		gap: 3px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		color: var(--color-text-muted);
+	}
+
+	.comparison-details li strong {
+		color: var(--color-text-main);
+	}
+
 	.comparison-help:hover,
 	.comparison-help:focus-visible {
 		text-decoration: underline;
@@ -440,23 +462,17 @@
 		background: var(--color-primary-dark);
 	}
 
-	.benchmark {
+	.waiting-comparison {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 6px;
-	}
-
-	.benchmark div {
-		display: grid;
-		gap: 1px;
+		gap: 2px;
 		border: 1px solid var(--color-border);
 		border-radius: 6px;
-		padding: 7px;
+		padding: 9px;
 		background: var(--color-surface-variant);
 	}
 
-	.benchmark strong {
-		font-size: 0.84rem;
+	.waiting-comparison strong {
+		font-size: 0.72rem;
 	}
 
 	.meta {

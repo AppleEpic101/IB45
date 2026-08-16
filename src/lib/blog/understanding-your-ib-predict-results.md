@@ -15,6 +15,8 @@ Your **predicted grade** is the grade your weighted score reaches under the sele
 
 The predicted-mark card labels these separately: **Weighted score** is your combined percentage, while **To Grade 6** (or another grade) is the remaining weighted-mark gap. TOK and Extended Essay show their score out of 30 or 34 instead of a percentage.
 
+On the main calculator, collapse a completed subject when you only need its result. The compact card keeps the subject name, weighted score, and predicted grade; assessment controls, grade boundaries, supporting insights, and the full-analysis link stay hidden until you expand it again.
+
 ## Marks to the next grade
 
 This is the difference between your weighted score and the next published grade boundary. For example, “2 marks” beside “To Grade 6” means your overall weighted score must rise by two percentage points.
@@ -37,7 +39,9 @@ The main calculator sidebar starts with your **total points** and whether the cu
 
 Open **Subject & core breakdown** only when you want to review the six subject grades, TOK grade, Extended Essay grade, and core points separately. Keeping this breakdown closed does not change the calculation.
 
-The session comparison beneath it shows your approximate standing against students in the selected examination session. Open **About this comparison** for the published sample size and a link back to this explanation.
+The session comparison beneath it appears after all six subject results are available. Before then, it gives one completion prompt instead of showing population statistics that cannot yet be personalized. Once complete, it shows your approximate standing and a rounded comparison with the typical diploma score.
+
+Open **About this comparison** for the typical score, diploma pass rate, published sample size, and a link back to this explanation. These reference figures support the comparison but are not required to understand your result.
 
 On the TOK and Extended Essay pages, open **How TOK and EE combine** when you want the complete core-points table. It stays closed by default because your predicted grade and points-to-next-grade result are usually more useful while planning.
 
