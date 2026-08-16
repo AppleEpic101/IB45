@@ -177,6 +177,7 @@
 	{/if}
 	<section
 		class="forecast-container"
+		class:compact={!expanded}
 		class:expanded
 		role={expanded ? 'dialog' : undefined}
 		aria-modal={expanded ? 'true' : undefined}
@@ -198,11 +199,13 @@
 			<div class="eyebrow">
 				<span>IB Predict forecast</span><span class="experimental">Experimental</span>
 			</div>
-			<h4 id="forecast-title">{forecast.targetName} boundary forecast</h4>
-			<p>{level} {name} · based on past November boundaries</p>
+			<h4 id="forecast-title">
+				{expanded ? `${forecast.targetName} boundary forecast` : 'November 2026 forecast details'}
+			</h4>
+			{#if expanded}<p>{level} {name} · based on past November boundaries</p>{/if}
 		</header>
 
-		{#if probability}
+		{#if probability && expanded}
 			<div class="forecast-overview">
 				<div class="personal-forecast">
 					<span class="overview-label">Your {Number(grade).toFixed(0)}% mark</span>
@@ -252,19 +255,11 @@
 			</div>
 		{/if}
 
-		<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
-			How this forecast works <span aria-hidden="true">→</span>
-		</a>
-	</section>
-{:else}
-	<section class="forecast-container unavailable" aria-label="Boundary forecast unavailable">
-		<div class="eyebrow">
-			<span>IB Predict forecast</span><span class="experimental">Experimental</span>
-		</div>
-		<h4>November 2026 forecast unavailable</h4>
-		<p>
-			There are not enough past November boundaries to make a useful estimate for this syllabus.
-		</p>
+		{#if expanded}
+			<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
+				How this forecast works <span aria-hidden="true">→</span>
+			</a>
+		{/if}
 	</section>
 {/if}
 
@@ -287,21 +282,11 @@
 			overflow-y: auto;
 			margin: 0;
 		}
-	}
 
-	.unavailable {
-		h4,
-		p {
-			margin: 0;
-		}
-		h4 {
-			margin-top: 6px;
-			color: var(--color-text-main);
-		}
-		p {
-			margin-top: 4px;
-			color: var(--color-text-muted);
-			font-size: 0.8rem;
+		&.compact {
+			padding: 13px 16px;
+			margin: 14px 0 24px;
+			box-shadow: var(--shadow-sm);
 		}
 	}
 
@@ -352,6 +337,9 @@
 			color: var(--color-text-muted);
 			font-size: 0.82rem;
 		}
+	}
+	.compact .forecast-header h4 {
+		font-size: 0.95rem;
 	}
 	.eyebrow {
 		display: flex;

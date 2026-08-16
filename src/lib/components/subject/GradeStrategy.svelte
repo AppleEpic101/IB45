@@ -83,7 +83,6 @@
 			<details>
 				<summary>
 					<span>Compare assessments</span>
-					<small>Impact of each raw mark</small>
 				</summary>
 				<div class="compact-table assessment-table" role="table" aria-label="Assessment impact">
 					<div class="compact-row compact-header" role="row">
@@ -97,7 +96,7 @@
 								{option.name}
 								{#if bestOption?.index === option.index}<small>Best</small>{/if}
 							</strong>
-							<span role="cell">+{impactLabel(option.impact)} pts</span>
+							<span role="cell">+{impactLabel(option.impact)}% overall</span>
 							<span role="cell">
 								{option.marksNeeded !== undefined ? `+${option.marksNeeded}` : '—'}
 							</span>
@@ -111,7 +110,6 @@
 			<details>
 				<summary>
 					<span>Check past sessions</span>
-					<small>{comparisons.length} sessions at {currentScore}%</small>
 				</summary>
 				<div class="compact-table history-table" role="table" aria-label="Historical what-if">
 					<div class="compact-row compact-header" role="row">
@@ -198,8 +196,7 @@
 	}
 
 	.next-move span,
-	.signal span,
-	summary small {
+	.signal span {
 		color: var(--color-text-muted);
 		font-size: 0.65rem;
 		font-weight: 650;

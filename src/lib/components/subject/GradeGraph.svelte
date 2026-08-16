@@ -325,7 +325,6 @@
 		<div class="header-container">
 			<div class="title" id="historical-chart-title">
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
-				<small>Session averages · {isMobile ? 'tap' : 'hover'} for timezone range</small>
 			</div>
 			<div class="dropdown-container">
 				<Dropdown
@@ -468,12 +467,6 @@
 		span {
 			color: var(--color-text-main);
 			font-size: 1.05rem;
-		}
-
-		small {
-			color: var(--color-text-muted);
-			font-size: 0.75rem;
-			font-weight: 500;
 		}
 	}
 

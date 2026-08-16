@@ -108,11 +108,11 @@
 				<strong>Grade {grade}</strong>
 			</div>
 			<div>
-				<span>Beats</span>
+				<span>Ahead of</span>
 				<strong>{comparison.lowerShare}%</strong>
 			</div>
 			<div>
-				<span>Students</span>
+				<span>Session size</span>
 				<strong>{comparison.total.toLocaleString()}</strong>
 			</div>
 		</div>

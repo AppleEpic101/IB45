@@ -56,10 +56,6 @@
 
 <div class="table-section">
 	<div class="table-toolbar">
-		<div>
-			<strong>Distribution values</strong>
-			<span>View each grade band as a percentage or candidate count.</span>
-		</div>
 		<div class="table-controls">
 			<div class="session-switcher" aria-label="Exam session group">
 				{#each sessionScopes as scope}
@@ -76,13 +72,13 @@
 					type="button"
 					class:active={displayMode === 'percent'}
 					aria-pressed={displayMode === 'percent'}
-					on:click={() => (displayMode = 'percent')}>Percentage (%)</button
+					on:click={() => (displayMode = 'percent')}>Percent (%)</button
 				>
 				<button
 					type="button"
 					class:active={displayMode === 'count'}
 					aria-pressed={displayMode === 'count'}
-					on:click={() => (displayMode = 'count')}>Candidates (#)</button
+					on:click={() => (displayMode = 'count')}>Students (#)</button
 				>
 			</div>
 		</div>
@@ -109,10 +105,12 @@
 						>Candidates</span
 					></th
 				>
-				<th rowspan="2">Mean</th>
+				<th rowspan="2"
+					><span class="desktop-text">Average grade</span><span class="mobile-text">Avg</span></th
+				>
 				<th colspan={labels.length}
 					><span class="desktop-text"
-						>{bandLabel} ({displayMode === 'percent' ? '%' : 'estimated #'})</span
+						>{displayMode === 'percent' ? `${bandLabel} (%)` : 'Estimated students'}</span
 					><span class="mobile-text">{displayMode === 'percent' ? '%' : '#'}</span></th
 				>
 			</tr>
@@ -152,9 +150,6 @@
 							<span class="desktop-text">{summary.label}</span><span class="mobile-text"
 								>{summary.shortLabel}</span
 							>
-							<span class="desktop-text summary-description"
-								>{displayMode === 'percent' ? 'Weighted average' : 'Combined total'}</span
-							>
 						</td>
 						<td
 							><span class="desktop-text">{summary.total.toLocaleString('en-US')}</span><span
@@ -181,10 +176,13 @@
 	</div>
 
 	{#if displayMode === 'count'}
-		<p class="estimate-note">
-			Candidate counts are estimates calculated from the published percentages and may differ
-			slightly because of rounding.
-		</p>
+		<details class="estimate-note">
+			<summary>About student counts</summary>
+			<p>
+				Counts are estimated from published percentages, so totals may differ slightly because of
+				rounding.
+			</p>
+		</details>
 	{/if}
 </div>
 
@@ -196,24 +194,12 @@
 	.table-toolbar {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-end;
 		gap: 16px;
 		max-width: 1100px;
 		margin: 0 auto 12px;
 	}
 
-	.table-toolbar > div:first-child {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-	}
-
-	.table-toolbar strong {
-		color: var(--color-text-main);
-		font-size: 0.9rem;
-	}
-
-	.table-toolbar span,
 	.estimate-note {
 		color: var(--color-text-muted);
 		font-size: 0.8rem;
@@ -301,23 +287,25 @@
 		font-weight: 700;
 	}
 
-	.summary-row td:first-child .summary-description {
-		display: block;
-		margin-top: 2px;
-		color: var(--color-text-muted);
-		font-size: 0.7rem;
-		font-weight: 500;
-	}
-
 	.estimate-note {
 		max-width: 1100px;
 		margin: 10px auto 0;
 	}
 
+	.estimate-note summary {
+		width: fit-content;
+		color: var(--color-text-muted);
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	.estimate-note p {
+		margin: 6px 0 0;
+	}
+
 	@media (max-width: 700px) {
 		.table-toolbar {
-			align-items: flex-start;
-			flex-direction: column;
+			align-items: stretch;
 		}
 
 		.table-controls {

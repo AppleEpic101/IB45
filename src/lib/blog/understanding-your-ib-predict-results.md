@@ -45,6 +45,17 @@ The historical comparison answers a simple question: **what grade would this sam
 
 A range such as “Grade 5–6” means different timezones in that session used different boundaries. It does not mean you received two grades.
 
+## Global grade distribution
+
+The distribution chart shows how final grades were spread across one examination session. Your marker shows the grade produced by the marks you entered; it does not claim to know your exact rank within that grade.
+
+The table below the chart can show either:
+
+- **Percent:** the share of students who received each grade.
+- **Students:** an approximate number of students in each grade.
+
+IB publishes rounded percentages, so student counts calculated from those percentages can differ slightly from the published session total. Open **About student counts** beneath the table when you need that detail.
+
 ## Averages and variation
 
 Boundary tables show official session results first. Use **Show averages** only when you want a longer-term view.

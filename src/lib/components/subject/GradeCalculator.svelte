@@ -196,31 +196,26 @@
 				<div class="pp">{str}</div>
 				{#if primaryForecastOutcome}
 					<div class="forecast-summary" aria-live="polite">
-						<div class="forecast-summary-label">November 2026 forecast · experimental</div>
-						<div class="forecast-primary">
-							<div>
-								<strong>Grade {primaryForecastOutcome.grade}</strong><span>Most likely</span>
-							</div>
-							<div>
-								<strong>{forecastChanceLabel(primaryForecastOutcome.chance)}</strong><span
-									>Estimated likelihood</span
-								>
-							</div>
+						<div class="forecast-heading">
+							<span>November 2026 outlook</span><small>Experimental</small>
+						</div>
+						<div class="forecast-result">
+							<strong>Grade {primaryForecastOutcome.grade}</strong>
+							<span>{forecastChanceLabel(primaryForecastOutcome.chance)} likely</span>
 						</div>
 						{#if secondaryForecastOutcome}
-							<div class="forecast-secondary">
-								{forecastChanceLabel(secondaryForecastOutcome.chance)} chance of Grade {secondaryForecastOutcome.grade}
-							</div>
+							<p class="forecast-secondary">
+								Next most likely: Grade {secondaryForecastOutcome.grade} · {forecastChanceLabel(
+									secondaryForecastOutcome.chance
+								)}
+							</p>
 						{/if}
 					</div>
 				{/if}
 				{#if percentile !== undefined}
 					<div class="percentile-summary" aria-live="polite">
-						<strong>{percentileLabel}%</strong>
-						<span>
-							Beats {percentileLabel}% of test takers
-							<small>{bulletinSession.name} · lower final grades</small>
-						</span>
+						<strong>Ahead of {percentileLabel}%</strong>
+						<span>of students in {bulletinSession.name}</span>
 					</div>
 				{/if}
 			</div>
@@ -276,9 +271,10 @@
 	}
 
 	.percentile-summary {
-		display: flex;
+		display: grid;
 		align-items: center;
-		gap: 10px;
+		grid-template-columns: auto 1fr;
+		gap: 3px 8px;
 		margin-top: 6px;
 		padding: 6px 8px;
 		border: 1px solid color-mix(in srgb, var(--color-primary) 42%, var(--color-border));
@@ -287,18 +283,10 @@
 
 		strong {
 			color: var(--color-primary);
-			font-size: 1rem;
+			font-size: 0.78rem;
 		}
 
 		span {
-			display: flex;
-			flex-direction: column;
-			color: var(--color-text-main);
-			font-size: 0.72rem;
-			font-weight: 700;
-		}
-
-		small {
 			color: var(--color-text-muted);
 			font-size: 0.62rem;
 			font-weight: 500;
@@ -313,39 +301,47 @@
 		background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
 	}
 
-	.forecast-summary-label {
+	.forecast-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
 		color: var(--color-text-muted);
 		font-size: 0.58rem;
 		font-weight: 750;
-		letter-spacing: 0.045em;
+	}
+
+	.forecast-heading small {
+		padding: 2px 5px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+		color: var(--color-primary);
+		font-size: 0.5rem;
 		text-transform: uppercase;
 	}
 
-	.forecast-primary {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+	.forecast-result {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
 		gap: 8px;
-		margin-top: 5px;
-
-		div {
-			display: flex;
-			flex-direction: column;
-		}
+		margin-top: 4px;
 
 		strong {
 			color: var(--color-primary);
-			font-size: 1.05rem;
+			font-size: 0.95rem;
 			line-height: 1.05;
 		}
 
 		span {
-			color: var(--color-text-muted);
-			font-size: 0.62rem;
+			color: var(--color-text-main);
+			font-size: 0.72rem;
+			font-weight: 750;
 		}
 	}
 
 	.forecast-secondary {
-		margin-top: 5px;
+		margin: 5px 0 0;
 		padding-top: 5px;
 		border-top: 1px solid var(--color-border);
 		color: var(--color-text-main);

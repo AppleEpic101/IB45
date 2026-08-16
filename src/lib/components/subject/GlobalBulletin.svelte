@@ -318,8 +318,7 @@
 			<h4 class="title" id="global-distribution-title">Global Grade Distribution</h4>
 			{#if showSubtitle}
 				<p class="subtitle">
-					Based on {data?.short === 'M25' ? 'provisional ' : ''}{data?.name} session results ({total?.toLocaleString()}
-					candidates)
+					{data?.name} · {total?.toLocaleString()} students
 				</p>
 			{/if}
 			{#if sessions.length > 1}

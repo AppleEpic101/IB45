@@ -29,10 +29,9 @@
 
 		<Collapsible question="Is this calculator accurate?">
 			<p>
-				Assume yes with good judgement. Boundaries always vary year to year, so if you are near a
-				borderline threshold, it could go either way. If you are taking a new course (e.g. new 2025
-				sciences courses), then slightly less so because there's no existing data, so the best we
-				can do is give an approximation based on the old curriculum.
+				The calculator applies your marks to the selected published boundary. That calculation is
+				exact, but future boundaries can change. Treat a result near the next boundary as less
+				certain, especially for a recently updated course with little history.
 			</p>
 		</Collapsible>
 
@@ -119,9 +118,21 @@
 
 		<Collapsible question="How does the calculator work?">
 			<p>
-				Your grade out of 100 is calculated using a weighted average of the inputted assessment
-				scores, then rounded to the nearest integer. A score is then assigned using that grade with
-				a grade boundary.
+				Each assessment counts according to its official course weight. IB Predict combines those
+				marks into a score out of 100, rounds it to the nearest whole number, and checks where it
+				falls in the selected grade boundary.
+			</p>
+			<p><a href="/blog/understanding-your-ib-predict-results">Read the results guide</a>.</p>
+		</Collapsible>
+
+		<Collapsible question="What do ‘Ahead of’ and ‘Grade stability’ mean?">
+			<p>
+				“Ahead of” compares your predicted grade with published results from that exam session.
+				“Grade stability” shows whether the same score usually kept its grade across past sessions.
+				Both are context for planning, not official rankings or guaranteed results.
+			</p>
+			<p>
+				<a href="/blog/understanding-your-ib-predict-results">See examples in the results guide</a>.
 			</p>
 		</Collapsible>
 

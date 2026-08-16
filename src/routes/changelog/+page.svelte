@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Simplified forecast and distribution language, removed repeated chart descriptions, and moved student-count caveats behind an optional explanation.',
 				'Simplified statistical summaries, hid advanced boundary statistics by default, and added a plain-language results guide.',
 				'Condensed collapsed subject cards to the subject name, weighted score, and awarded grade.',
 				'Eliminated the Extended Essay refresh flash by aligning server-rendered and hydrated calculator state.',
