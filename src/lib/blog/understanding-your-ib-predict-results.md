@@ -76,6 +76,8 @@ The table below the chart can show either:
 - **Percent:** the share of students who received each grade.
 - **Students:** an approximate number of students in each grade.
 
+The columns labeled **Grade (%)** show the share receiving each final grade. “N” means no grade was awarded.
+
 IB publishes rounded percentages, so student counts calculated from those percentages can differ slightly from the published session total. Open **About student counts** beneath the table when you need that detail.
 
 ## Optional averages and variation

@@ -20,7 +20,7 @@
 <table style="table-layout: fixed; width: 100%;">
 	<tr>
 		<th colspan={gradeBoundaryUsed?.marks?.length} style="text-align: center;"
-			>{gradeBoundaryUsed?.name ? gradeBoundaryUsed.name : ''} Markband</th
+			>{gradeBoundaryUsed?.name ? gradeBoundaryUsed.name : ''} grade boundaries</th
 		>
 	</tr>
 	<tr class="small">

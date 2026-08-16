@@ -4,7 +4,7 @@
 	export let name;
 	export let dataOverride;
 	export let labelsOverride;
-	export let bandLabel = 'Markband';
+	export let bandLabel = 'Grade';
 
 	$: data = dataOverride ?? Bulletin[name]?.grades;
 	$: labels = labelsOverride ?? ['N', '1', '2', '3', '4', '5', '6', '7'];
@@ -101,8 +101,7 @@
 					></th
 				>
 				<th rowspan="2"
-					><span class="desktop-text">Total Candidates</span><span class="mobile-text"
-						>Candidates</span
+					><span class="desktop-text">Total students</span><span class="mobile-text">Students</span
 					></th
 				>
 				<th rowspan="2"
