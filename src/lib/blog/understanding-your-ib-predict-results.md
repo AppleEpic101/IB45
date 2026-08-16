@@ -25,9 +25,13 @@ The **best next move** checks each assessment and finds the smallest raw-mark in
 
 The Next grade panel shows only this recommended move at first. Open **Grade outlook & more options** when you want to compare every assessment or see how the same score behaved in past sessions.
 
+The main calculator uses the same priority: **Best next move** is the only subject insight shown at first. Open **Where you stand & more** for the session comparison, grade outlook, per-assessment calculations, and past-session results.
+
 ## Where you stand
 
 “Ahead of about 75%” means your predicted grade is higher than the final grade earned by roughly three out of four students in that subject and examination session.
+
+This comparison is supporting context, so it stays under **Where you stand & more** on the main calculator instead of competing with the recommended action.
 
 IB publishes grade totals, not every student's exact mark. This means the comparison is an estimate within a grade band. IB Predict rounds the result to a whole percentage so it is not mistaken for an exact personal rank. “Less than 1%” and “more than 99%” are used at the ends of the range for the same reason.
 

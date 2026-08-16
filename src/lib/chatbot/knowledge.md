@@ -101,6 +101,11 @@ Completed subject cards can be collapsed from the top-right button. The collapse
 subject name, weighted score, and predicted grade while hiding assessment controls, boundaries,
 supporting insights, and the full subject analysis link.
 
+In an expanded main-calculator subject card, lead with **Best next move**. Percentile standing,
+grade outlook, per-assessment impact, and past-session results are optional under **Where you stand
+& more**. Do not list that supporting context unless the user asks or it directly answers their
+question.
+
 Do not quote the session's typical diploma score, pass rate, or published sample size before all six
 subjects are complete unless the user asks. Those reference figures are under **About this
 comparison**. Once a personal comparison is available, describe the points difference as rounded

@@ -84,20 +84,20 @@
 					<small>Combine assessments</small>
 				{/if}
 			</div>
-
-			<div class="insight">
-				<span>Where you stand</span>
-				<strong>{standingLabel}</strong>
-				<small
-					>{percentile !== undefined ? 'of students in this session' : 'for this session'}</small
-				>
-			</div>
 		</div>
 
-		{#if confidence || improvement?.options?.length || comparisons.length}
+		{#if confidence || improvement?.options?.length || comparisons.length || percentile !== undefined}
 			<details>
-				<summary>More context</summary>
+				<summary>Where you stand & more</summary>
 				<div class="details-grid">
+					{#if percentile !== undefined}
+						<div class="plain-summary">
+							<span>Compared with this session</span>
+							<strong>{standingLabel}</strong>
+							<p>Based on students' final grades.</p>
+						</div>
+					{/if}
+
 					{#if confidence}
 						<div class="plain-summary">
 							<span>Grade outlook</span>
@@ -163,15 +163,12 @@
 	}
 
 	.insight-grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(150px, 1fr));
-		align-items: stretch;
+		display: block;
 	}
 
 	.insight {
 		min-width: 0;
 		padding: 10px;
-		border-right: 1px solid var(--color-border);
 	}
 
 	.insight {
@@ -179,10 +176,6 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: 2px;
-	}
-
-	.insight:last-child {
-		border-right: 0;
 	}
 
 	.insight > span,
@@ -299,22 +292,6 @@
 	}
 
 	@media (max-width: 760px) {
-		.insight-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.insight {
-			border-bottom: 1px solid var(--color-border);
-		}
-
-		.insight:nth-child(even) {
-			border-right: 0;
-		}
-
-		.insight:nth-last-child(-n + 2) {
-			border-bottom: 0;
-		}
-
 		.details-grid {
 			grid-template-columns: 1fr;
 		}

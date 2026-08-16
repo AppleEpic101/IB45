@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Focused each main-calculator subject card on one best next move, moving percentile standing, grade outlook, assessment calculations, and session history into optional context.',
 				'Replaced decimal average grades in chart summaries with a plain typical whole-grade result, keeping the exact published average inside the optional chart explanation and data table.',
 				'Clarified forecast percentages by stating the fixed weighted score first, separating the most likely grade from its likelihood, and keeping model details optional.',
 				'Kept unpersonalized diploma benchmarks out of the incomplete sidebar, placing session averages, pass rates, and sample sizes inside optional comparison details.',
