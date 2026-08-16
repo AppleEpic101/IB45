@@ -93,11 +93,9 @@
 			{/if}
 		</div>
 
-		{#if !isCore}
-			<div class="graph">
-				<GradeGraph name={data.data.name} {level} {language} {SLResults} {HLResults} />
-			</div>
-		{/if}
+		<div class="graph">
+			<GradeGraph name={data.data.name} {level} {language} {SLResults} {HLResults} />
+		</div>
 
 		<div class="tables">
 			{#if isCore}
