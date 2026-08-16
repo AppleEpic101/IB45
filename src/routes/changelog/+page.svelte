@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Made collapsed subject cards keep only the weighted score and predicted grade while hiding boundaries, insights, assessment controls, and analysis links.',
 				'Reframed forecast likelihoods around a fixed student score, hid model diagnostics behind an optional section, and made assistant trend answers less speculative.',
 				'Moved session, timezone, syllabus, and pandemic-era reference notes behind one optional disclosure and added a dedicated selection guide.',
 				'Simplified forecast and distribution language, removed repeated chart descriptions, and moved student-count caveats behind an optional explanation.',

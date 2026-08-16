@@ -286,13 +286,16 @@
 		<div class="grade-panel">
 			{#if !show}
 				{#if inputsComplete}
-					<GradeResults
-						isCondensed={true}
-						grades={predictedTimezoneGrades}
-						{predictedGrade}
-						score={predictedScore}
-						name={$selectedBoundaryId}
-					/>
+					<div class="collapsed-summary" aria-label={`${groupTitle} result summary`}>
+						<div class="collapsed-result">
+							<span>Weighted score</span>
+							<strong>{predictedScore}<small>/ 100</small></strong>
+						</div>
+						<div class="collapsed-result grade-result">
+							<span>Predicted grade</span>
+							<strong>{predictedGrade || '—'}</strong>
+						</div>
+					</div>
 				{:else}
 					<div class="input-status">
 						<strong>Scores incomplete</strong>
@@ -487,10 +490,51 @@
 		padding-bottom: 0;
 	}
 
-	.main.collapsed .grade-panel :global(.main) {
+	.collapsed-summary {
 		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		width: 100%;
-		margin: 0;
+		max-width: 420px;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface-variant);
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+	}
+
+	.collapsed-result {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 10px 14px;
+	}
+
+	.collapsed-result + .collapsed-result {
+		border-left: 1px solid var(--color-border);
+	}
+
+	.collapsed-result span {
+		color: var(--color-text-muted);
+		font-size: 0.76rem;
+		font-weight: 600;
+	}
+
+	.collapsed-result strong {
+		color: var(--color-text-main);
+		font-size: 1.15rem;
+		line-height: 1;
+	}
+
+	.collapsed-result small {
+		color: var(--color-text-muted);
+		font-size: 0.7rem;
+		font-weight: 600;
+	}
+
+	.grade-result strong {
+		color: var(--color-primary);
 	}
 
 	.input-status,
@@ -593,6 +637,16 @@
 		.language-select,
 		.level-select {
 			width: auto;
+		}
+
+		.collapsed-summary {
+			max-width: none;
+		}
+
+		.collapsed-result {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 4px;
 		}
 	}
 
