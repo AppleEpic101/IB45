@@ -48,6 +48,9 @@
 	$: selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
 	$: maximumScore =
 		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
+	$: forecastScoreContext = data.isCore
+		? `If your score stays at ${grade} / ${maximumScore}`
+		: `If your weighted score stays at ${grade}%`;
 	$: hasPredictedGrade = mark !== undefined && mark !== null && mark !== 'N/A';
 	$: nextGrade = hasPredictedGrade
 		? data.isCore
@@ -207,24 +210,31 @@
 				{#if primaryForecastOutcome}
 					<div class="forecast-summary" aria-live="polite">
 						<div class="forecast-heading">
-							<span>November 2026 forecast</span><small>Experimental</small>
+							<span>November 2026 boundary forecast</span><small>Experimental</small>
 						</div>
+						<p class="forecast-assumption">{forecastScoreContext}</p>
 						<div class="forecast-result">
-							<strong>Grade {primaryForecastOutcome.grade} most likely</strong>
-							<span>{forecastChanceLabel(primaryForecastOutcome.chance)} estimated likelihood</span>
+							<div class="forecast-outcome">
+								<span>Most likely grade</span>
+								<strong>Grade {primaryForecastOutcome.grade}</strong>
+							</div>
+							<div class="forecast-outcome likelihood-outcome">
+								<span>Estimated likelihood</span>
+								<strong>{forecastChanceLabel(primaryForecastOutcome.chance)}</strong>
+							</div>
 						</div>
 						{#if secondaryForecastOutcome}
 							<p class="forecast-secondary">
-								Next most likely: Grade {secondaryForecastOutcome.grade} · {forecastChanceLabel(
+								Other possible grade: Grade {secondaryForecastOutcome.grade} · {forecastChanceLabel(
 									secondaryForecastOutcome.chance
 								)}
 							</p>
 						{/if}
 						<details class="forecast-explanation">
-							<summary>About this forecast</summary>
+							<summary>What does this mean?</summary>
 							<p>
-								This assumes your current score stays the same and only the future boundary changes.
-								It does not predict your exam performance.
+								Only the future grade boundary changes in this estimate. Your exam score is not
+								being predicted.
 								<a href="/blog/understanding-your-ib-predict-results"
 									>Read the plain-language guide</a
 								>.
@@ -233,7 +243,7 @@
 								type="button"
 								class="forecast-details-button"
 								on:click={() => (showForecastDetails = true)}
-								>Open chart and technical details <span aria-hidden="true">→</span></button
+								>View forecast chart and model details <span aria-hidden="true">→</span></button
 							>
 						</details>
 					</div>
@@ -345,30 +355,46 @@
 		text-transform: uppercase;
 	}
 
+	.forecast-assumption {
+		margin: 4px 0 0;
+		color: var(--color-text-main);
+		font-size: 0.68rem;
+		font-weight: 700;
+	}
+
 	.forecast-result {
 		display: grid;
-		align-items: baseline;
+		align-items: end;
 		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 8px;
-		margin-top: 4px;
+		margin-top: 6px;
+	}
+
+	.forecast-outcome {
+		display: grid;
+		gap: 1px;
 
 		strong {
 			color: var(--color-primary);
-			font-size: 0.95rem;
+			font-size: 1rem;
 			line-height: 1.05;
 		}
 
 		span {
-			color: var(--color-text-main);
-			font-size: 0.72rem;
-			font-weight: 750;
+			color: var(--color-text-muted);
+			font-size: 0.55rem;
+			font-weight: 650;
 		}
+	}
+
+	.likelihood-outcome {
+		text-align: right;
 	}
 
 	@media (max-width: 600px) {
 		.forecast-result {
-			grid-template-columns: 1fr;
-			gap: 2px;
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 8px;
 		}
 
 		.forecast-result strong,

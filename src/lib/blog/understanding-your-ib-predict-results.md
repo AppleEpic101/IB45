@@ -99,9 +99,9 @@ For most students, the selected session boundary and the “marks to next grade�
 
 ## Forecast likelihoods
 
-Future boundary forecasts are experimental. Read “74% Grade 5” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** It does not predict how likely you are to earn that score on exam day.
+Future boundary forecasts are experimental. The card states your fixed weighted score before showing the grade and percentage. Read “Grade 5 · 74%” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** It does not predict how likely you are to earn that score on exam day.
 
-The predicted-mark card is the only forecast summary shown by default. Open **About this forecast** when you want the short explanation. The chart, boundary ranges, confidence labels, and checks against past sessions remain behind **Open chart and technical details** for readers who want to inspect the model more closely.
+The predicted-mark card shows only the most likely grade, its estimated likelihood, and one other possible grade. Open **What does this mean?** when you want the short explanation. The chart, boundary ranges, confidence labels, and checks against past sessions remain behind **View forecast chart and model details** for readers who want to inspect the model more closely.
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
 

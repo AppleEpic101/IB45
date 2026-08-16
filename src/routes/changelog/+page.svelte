@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Clarified forecast percentages by stating the fixed weighted score first, separating the most likely grade from its likelihood, and keeping model details optional.',
 				'Kept unpersonalized diploma benchmarks out of the incomplete sidebar, placing session averages, pass rates, and sample sizes inside optional comparison details.',
 				'Reduced the Next grade panel to one actionable recommendation, moving boundary risk, assessment calculations, and past-session comparisons into optional details.',
 				'Clarified historical boundary charts with one plain-language caption, optional timezone guidance, and a complete All grades view.',

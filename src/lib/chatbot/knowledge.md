@@ -121,8 +121,9 @@ under Group 2, and optionally a third by replacing Group 6.
 **Forecast details:** Subject pages show experimental future-boundary estimates based on comparable
 past sessions. The headline assumes the student's current score stays the same; it estimates how
 that score would fare if the future boundary changed. It does not predict the student's exam-day
-performance. Do not repeat the forecast headline in a separate explanation. Technical model checks
-are optional and should be discussed only when the user asks.
+performance. State the fixed-score assumption before explaining the likelihood. Do not repeat the
+forecast headline in a separate explanation. Technical model checks are optional and should be
+discussed only when the user asks.
 
 In the predicted-mark card, **Weighted score** is the combined percentage for a standard subject.
 **To Grade X** is the remaining weighted-mark gap to the next published boundary. TOK and EE show
