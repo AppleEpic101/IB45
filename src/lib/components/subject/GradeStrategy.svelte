@@ -32,8 +32,6 @@
 		?.filter(({ marksNeeded }) => marksNeeded !== undefined)
 		.sort((a, b) => a.marksNeeded - b.marksNeeded || b.impact - a.impact)[0];
 
-	const percent = (value) =>
-		Number(value).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 1 });
 	const impactLabel = (value) =>
 		Number(value).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
 </script>
@@ -66,15 +64,15 @@
 			<div class="signals">
 				{#if confidence}
 					<div class:warning={confidence.label === 'Borderline'} class="signal">
-						<strong>{percent(confidence.confidence)}%</strong>
-						<span>{confidence.label} confidence</span>
+						<strong>{confidence.label}</strong>
+						<span>Grade stability</span>
 					</div>
 					{#if confidence.riseToDrop !== undefined && Number(currentGrade) > 1}
 						<div class:warning={confidence.riseToDrop <= 2} class="signal">
 							<strong
 								>{confidence.riseToDrop} {confidence.riseToDrop === 1 ? 'mark' : 'marks'}</strong
 							>
-							<span>Safety margin</span>
+							<span>Boundary can rise</span>
 						</div>
 					{/if}
 				{/if}
@@ -141,6 +139,10 @@
 				</div>
 			</details>
 		{/if}
+
+		<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
+			>How these recommendations work <span aria-hidden="true">→</span></a
+		>
 	</section>
 {/if}
 
@@ -303,6 +305,21 @@
 		color: var(--color-primary);
 		font-size: 0.55rem;
 		text-transform: uppercase;
+	}
+
+	.strategy-help {
+		display: inline-flex;
+		gap: 5px;
+		margin-top: 12px;
+		color: var(--color-primary);
+		font-size: 0.68rem;
+		font-weight: 750;
+		text-decoration: none;
+	}
+
+	.strategy-help:hover,
+	.strategy-help:focus-visible {
+		text-decoration: underline;
 	}
 
 	@media (max-width: 700px) {

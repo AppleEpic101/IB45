@@ -199,7 +199,7 @@
 				<span>IB Predict forecast</span><span class="experimental">Experimental</span>
 			</div>
 			<h4 id="forecast-title">{forecast.targetName} boundary forecast</h4>
-			<p>{level} {name} · built from comparable November examination sessions</p>
+			<p>{level} {name} · based on past November boundaries</p>
 		</header>
 
 		{#if probability}
@@ -253,7 +253,7 @@
 		{/if}
 
 		<a class="method-link" href="/blog/ib-predict-boundary-forecast-methodology">
-			Read the forecast methodology <span aria-hidden="true">→</span>
+			How this forecast works <span aria-hidden="true">→</span>
 		</a>
 	</section>
 {:else}
@@ -263,8 +263,7 @@
 		</div>
 		<h4>November 2026 forecast unavailable</h4>
 		<p>
-			At least three comparable November sessions are required before IB Predict publishes an
-			estimate for this syllabus.
+			There are not enough past November boundaries to make a useful estimate for this syllabus.
 		</p>
 	</section>
 {/if}

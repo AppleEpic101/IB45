@@ -5,6 +5,7 @@
 	export let res;
 
 	let expanded = false;
+	let showStats = false;
 	$: reversedRes = [...res].reverse();
 	$: visibleResults = expanded ? reversedRes : reversedRes.slice(0, previewCount);
 
@@ -37,7 +38,7 @@
 		<table>
 			<colgroup>
 				<col class="session-column" />
-				{#each letters as _}<col class="grade-column" />{/each}
+				{#each letters as letter}<col class="grade-column" data-label={letter} />{/each}
 			</colgroup>
 			<thead>
 				<tr class="title-row"><th colspan="6">{name} boundary history</th></tr>
@@ -57,7 +58,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#if averages.length > 0}
+				{#if showStats && averages.length > 0}
 					<tr class="average-row">
 						<td
 							><strong
@@ -88,16 +89,28 @@
 		</table>
 	</div>
 
-	{#if reversedRes.length > previewCount}
+	{#if reversedRes.length}
 		<div class="table-footer">
 			<span
 				>{expanded
 					? `Showing all ${reversedRes.length} sessions`
-					: `Showing the latest ${previewCount} of ${reversedRes.length} sessions`}</span
+					: `Showing the latest ${Math.min(previewCount, reversedRes.length)} of ${
+							reversedRes.length
+					  } sessions`}</span
 			>
-			<button type="button" aria-expanded={expanded} on:click={() => (expanded = !expanded)}>
-				{expanded ? 'Show recent only' : 'Show all sessions'}
-			</button>
+			<div class="footer-actions">
+				{#if showStats}
+					<a href="/blog/understanding-your-ib-predict-results">What do averages mean?</a>
+				{/if}
+				<button type="button" aria-expanded={showStats} on:click={() => (showStats = !showStats)}>
+					{showStats ? 'Hide averages' : 'Show averages'}
+				</button>
+				{#if reversedRes.length > previewCount}
+					<button type="button" aria-expanded={expanded} on:click={() => (expanded = !expanded)}>
+						{expanded ? 'Show recent only' : 'Show all sessions'}
+					</button>
+				{/if}
+			</div>
 		</div>
 	{/if}
 </div>
@@ -170,6 +183,21 @@
 	.table-footer button:focus-visible {
 		border-color: var(--color-primary);
 		color: var(--color-primary);
+	}
+	.footer-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	.footer-actions a {
+		align-self: center;
+		color: var(--color-primary);
+		font-weight: 750;
+		text-decoration: none;
+	}
+	.footer-actions a:hover,
+	.footer-actions a:focus-visible {
+		text-decoration: underline;
 	}
 	.mobile-text {
 		display: none;

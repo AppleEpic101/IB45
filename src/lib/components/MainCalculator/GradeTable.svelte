@@ -184,26 +184,29 @@
 
 			{#if diplomaPercentile !== null}
 				<div class="standing">
-					<strong>Beats ~{diplomaPercentile}%</strong>
-					<span>of Diploma/Retake students</span>
+					<strong>Ahead of about {diplomaPercentile}%</strong>
+					<span>of students in this session</span>
 				</div>
 				<div class="percentile-track" aria-label={`Estimated percentile ${diplomaPercentile}`}>
 					<span style={`width: ${diplomaPercentile}%`} />
 				</div>
 				<p class:below-mean={pointsFromMean < 0}>
-					{totalPoints} points · {Math.abs(pointsFromMean).toFixed(1)}
-					{pointsFromMean >= 0 ? 'above' : 'below'} the session mean
+					Your {totalPoints} points are {Math.abs(pointsFromMean).toFixed(1)}
+					{pointsFromMean >= 0 ? 'above' : 'below'} the typical score.
 				</p>
 			{:else}
 				<div class="benchmark">
-					<div><strong>{sessionStats.meanTotalPoints}</strong><span>Mean points</span></div>
-					<div><strong>{sessionStats.passRate}%</strong><span>Pass rate</span></div>
+					<div><strong>{sessionStats.meanTotalPoints}</strong><span>Typical score</span></div>
+					<div><strong>{sessionStats.passRate}%</strong><span>Earned the diploma</span></div>
 				</div>
-				<p>Complete all six subjects to estimate your standing.</p>
+				<p>Complete all six subjects to compare your score with this session.</p>
 			{/if}
 
 			<small
-				>{sessionStats.diplomaResultsStudents.toLocaleString()} published results · grouped-data estimate</small
+				>Based on {sessionStats.diplomaResultsStudents.toLocaleString()} published results</small
+			>
+			<a class="comparison-help" href="/blog/understanding-your-ib-predict-results"
+				>How this comparison works <span aria-hidden="true">→</span></a
 			>
 		</section>
 	{/if}
@@ -339,6 +342,18 @@
 
 	.peer-comparison p.below-mean {
 		color: #d97706;
+	}
+
+	.comparison-help {
+		color: var(--color-primary);
+		font-size: 0.64rem;
+		font-weight: 750;
+		text-decoration: none;
+	}
+
+	.comparison-help:hover,
+	.comparison-help:focus-visible {
+		text-decoration: underline;
 	}
 
 	.percentile-track {

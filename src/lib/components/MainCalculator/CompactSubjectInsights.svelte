@@ -37,6 +37,17 @@
 	$: historicalGrades = comparisons.flatMap(({ minGrade, maxGrade }) => [minGrade, maxGrade]);
 	$: historicalMin = historicalGrades.length ? Math.min(...historicalGrades) : undefined;
 	$: historicalMax = historicalGrades.length ? Math.max(...historicalGrades) : undefined;
+	$: standingLabel =
+		percentile !== undefined ? `Ahead of ${number(percentile)}%` : 'Comparison unavailable';
+	$: stabilityLabel = Number(currentGrade) === 1 ? 'Minimum grade' : confidence?.label;
+	$: stabilityExplanation =
+		Number(currentGrade) === 1
+			? 'Grade 1 is the lowest possible subject grade.'
+			: confidence
+			? confidence.riseToDrop === 1
+				? 'A 1-mark boundary increase could lower this grade.'
+				: `The boundary could rise ${confidence.riseToDrop} marks before this grade changes.`
+			: 'There is not enough comparable history yet.';
 
 	const number = (value, digits = 1) =>
 		Number(value).toLocaleString('en-US', {
@@ -62,51 +73,44 @@
 				{/if}
 			</div>
 
-			<div class:warning={confidence?.label === 'Borderline'} class="insight">
-				<span>Confidence</span>
-				{#if confidence}
-					<strong>{number(confidence.confidence)}% {confidence.label}</strong>
-					<small>{confidence.riseToDrop}-mark safety margin</small>
-				{:else}
-					<strong>Not enough history</strong>
-				{/if}
-			</div>
-
 			<div class="insight">
-				<span>Percentile</span>
-				{#if percentile !== undefined}
-					<strong>Beats {number(percentile)}%</strong>
-					<small>of session candidates</small>
-				{:else}
-					<strong>Not published</strong>
-					<small>for this session</small>
-				{/if}
-			</div>
-
-			<div class="insight">
-				<span>Past sessions</span>
-				{#if comparisons.length}
-					<strong>
-						Grade {historicalMin}{historicalMin !== historicalMax ? `–${historicalMax}` : ''}
-					</strong>
-					<small>{comparisons.length} comparable sessions</small>
-				{:else}
-					<strong>No comparable data</strong>
-				{/if}
+				<span>Where you stand</span>
+				<strong>{standingLabel}</strong>
+				<small
+					>{percentile !== undefined ? 'of students in this session' : 'for this session'}</small
+				>
 			</div>
 		</div>
 
-		{#if improvement?.options?.length || comparisons.length}
+		{#if confidence || improvement?.options?.length || comparisons.length}
 			<details>
-				<summary>Impact &amp; history</summary>
+				<summary>More context</summary>
 				<div class="details-grid">
+					{#if confidence}
+						<div class="plain-summary">
+							<span>How stable is this grade?</span>
+							<strong class:warning-text={stabilityLabel === 'Borderline'}>{stabilityLabel}</strong>
+							<p>{stabilityExplanation}</p>
+						</div>
+					{/if}
+
+					{#if comparisons.length}
+						<div class="plain-summary">
+							<span>Your score in past sessions</span>
+							<strong>
+								Grade {historicalMin}{historicalMin !== historicalMax ? `–${historicalMax}` : ''}
+							</strong>
+							<p>Across {comparisons.length} comparable exam sessions.</p>
+						</div>
+					{/if}
+
 					{#if improvement?.options?.length}
 						<div class="compact-list">
-							<h4>Assessment impact</h4>
+							<h4>What each extra mark changes</h4>
 							{#each improvement.options as option}
 								<div class:best={option.index === bestOption?.index} class="compact-row">
 									<span>{option.name}</span>
-									<strong>+{number(option.impact, 2)} pts / mark</strong>
+									<strong>+{number(option.impact, 2)}% overall</strong>
 								</div>
 							{/each}
 						</div>
@@ -128,6 +132,9 @@
 						</div>
 					{/if}
 				</div>
+				<a class="explain-link" href="/blog/understanding-your-ib-predict-results"
+					>What do these results mean? <span aria-hidden="true">→</span></a
+				>
 			</details>
 		{/if}
 	</section>
@@ -144,7 +151,7 @@
 
 	.insight-grid {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(112px, 1fr));
+		grid-template-columns: repeat(2, minmax(150px, 1fr));
 		align-items: stretch;
 	}
 
@@ -185,10 +192,6 @@
 		color: var(--color-primary);
 	}
 
-	.insight.warning strong {
-		color: #f59e0b;
-	}
-
 	details {
 		border-top: 1px solid var(--color-border);
 	}
@@ -217,6 +220,31 @@
 		min-width: 0;
 	}
 
+	.plain-summary {
+		display: grid;
+		align-content: start;
+		gap: 2px;
+		padding: 8px 10px;
+		border-radius: 8px;
+		background: var(--color-surface-variant);
+	}
+
+	.plain-summary span,
+	.plain-summary p {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: 0.66rem;
+		line-height: 1.35;
+	}
+
+	.plain-summary strong {
+		font-size: 0.82rem;
+	}
+
+	.warning-text {
+		color: #f59e0b;
+	}
+
 	.compact-list h4 {
 		margin: 5px 0 4px;
 		font-size: 0.7rem;
@@ -237,6 +265,16 @@
 		color: var(--color-text-muted);
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	.explain-link {
+		display: inline-flex;
+		gap: 5px;
+		margin: 0 12px 12px;
+		color: var(--color-primary);
+		font-size: 0.68rem;
+		font-weight: 750;
+		text-decoration: none;
 	}
 
 	.compact-row strong {
