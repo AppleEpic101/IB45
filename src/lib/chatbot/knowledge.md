@@ -121,5 +121,9 @@ The grade-distribution table follows the season selected in the chart (May or No
 default rows match the visual. **All Sessions** combines both seasons and should be suggested only
 when the user wants a broader comparison.
 
+In the grade-distribution chart, each bar is the published share of students receiving that grade.
+The student's predicted-grade bar is outlined in blue, while the session average is written above
+the chart. Do not describe nonexistent average or student marker lines.
+
 **Is my data saved?** Yes, inputs are saved in your browser's local storage automatically. Nothing
 is sent to a server.

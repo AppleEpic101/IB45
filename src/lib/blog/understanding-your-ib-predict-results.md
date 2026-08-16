@@ -69,7 +69,7 @@ Choose **All grades** only when you want to compare the complete boundary struct
 
 The distribution chart shows how final grades were spread across one examination session. Each bar is the percentage of students who received that grade. There is no fitted curve or prediction line: the bars are the published bulletin data.
 
-The green line marks your predicted grade. The dashed red line marks the average grade for the selected session. These markers help you compare quickly, but they do not claim to know your exact rank within a grade.
+Your predicted grade bar is outlined in blue. The session average is written above the chart instead of adding another statistical line. Neither value claims to know your exact rank within a grade.
 
 The table below the chart can show either:
 

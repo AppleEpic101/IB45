@@ -73,16 +73,20 @@
 		const isDark = $darkMode;
 		const textColor = isDark ? '#f8fafc' : '#0f172a';
 		const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-
-		let validMean = parseFloat(mean) || 4;
+		const currentMarkIndex = labels.indexOf(String(mark));
+		const barBorders = labels.map((_, index) =>
+			index === currentMarkIndex ? '#38bdf8' : 'transparent'
+		);
+		const barBorderWidths = labels.map((_, index) => (index === currentMarkIndex ? 3 : 0));
 
 		if (chartInstance) {
 			chartInstance.data.datasets[0].data = distribution;
+			chartInstance.data.datasets[0].borderColor = barBorders;
+			chartInstance.data.datasets[0].borderWidth = barBorderWidths;
 			chartInstance.options.plugins.tooltip.backgroundColor = isDark ? '#1e293b' : '#ffffff';
 			chartInstance.options.plugins.tooltip.titleColor = isDark ? '#f1f5f9' : '#1e293b';
 			chartInstance.options.plugins.tooltip.bodyColor = isDark ? '#cbd5e1' : '#475569';
 			chartInstance.options.plugins.tooltip.borderColor = isDark ? '#334155' : '#e2e8f0';
-			chartInstance.options.plugins.markers = { validMean, mark };
 			chartInstance.options.scales.x.ticks.color = textColor;
 			chartInstance.options.scales.y.grid.color = gridColor;
 			chartInstance.options.scales.y.ticks.color = textColor;
@@ -113,8 +117,10 @@
 							'rgba(59, 130, 246, 0.7)',
 							'rgba(139, 92, 246, 0.7)'
 						],
+						borderColor: barBorders,
+						borderWidth: barBorderWidths,
 						borderRadius: 8,
-						borderWidth: 0,
+						borderSkipped: false,
 						order: 1
 					}
 				]
@@ -124,7 +130,6 @@
 				maintainAspectRatio: false,
 				plugins: {
 					legend: { display: false },
-					markers: { validMean, mark },
 					tooltip: {
 						backgroundColor: isDark ? '#1e293b' : '#ffffff',
 						titleColor: isDark ? '#f1f5f9' : '#1e293b',
@@ -160,67 +165,7 @@
 						}
 					}
 				}
-			},
-			plugins: [
-				{
-					id: 'markers',
-					afterDraw: (chart) => {
-						const {
-							ctx,
-							chartArea: { top, bottom },
-							scales: { x },
-							options: {
-								plugins: {
-									markers: { validMean, mark: currentMark }
-								}
-							}
-						} = chart;
-						ctx.save();
-
-						if (validMean !== undefined && !isNaN(validMean)) {
-							const baseIdx = Math.max(0, Math.min(labels.length - 2, Math.floor(validMean)));
-							const nextIdx = Math.min(labels.length - 1, baseIdx + 1);
-							const remainder = validMean - baseIdx;
-
-							const p1 = x.getPixelForValue(labels[baseIdx]);
-							const p2 = x.getPixelForValue(labels[nextIdx]);
-
-							if (p1 !== undefined && p2 !== undefined) {
-								const xPos = p1 + (p2 - p1) * remainder;
-
-								if (!isNaN(xPos)) {
-									ctx.setLineDash([5, 5]);
-									ctx.strokeStyle = '#ef4444';
-									ctx.lineWidth = 2;
-									ctx.beginPath();
-									ctx.moveTo(xPos, top);
-									ctx.lineTo(xPos, bottom);
-									ctx.stroke();
-
-								}
-							}
-						}
-
-						if (currentMark !== undefined && currentMark !== 'N/A') {
-							const markIdx = labels.indexOf(currentMark.toString());
-							if (markIdx !== -1) {
-								const markX = x.getPixelForValue(labels[markIdx]);
-								if (markX !== undefined && !isNaN(markX)) {
-									ctx.setLineDash([]);
-									ctx.strokeStyle = '#22c55e';
-									ctx.lineWidth = 3;
-									ctx.beginPath();
-									ctx.moveTo(markX, top);
-									ctx.lineTo(markX, bottom);
-									ctx.stroke();
-
-								}
-							}
-						}
-						ctx.restore();
-					}
-				}
-			]
+			}
 		});
 	};
 
@@ -314,8 +259,10 @@
 			<summary>How to read this chart</summary>
 			<div>
 				<p>Each bar is the percentage of students who finished with that grade.</p>
-				<p>The green line marks your predicted grade. The dashed red line marks the session average.</p>
-				<a href="/blog/understanding-your-ib-predict-results">Read the plain-language results guide →</a>
+				<p>Your predicted grade is outlined in blue. The session average is shown above.</p>
+				<a href="/blog/understanding-your-ib-predict-results"
+					>Read the plain-language results guide →</a
+				>
 			</div>
 		</details>
 	</div>
