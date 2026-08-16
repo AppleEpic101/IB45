@@ -205,82 +205,84 @@
 	}
 </script>
 
-<div class="main" class:incomplete={!sufficientData} class:complete={sufficientData}>
+<div
+	class="main"
+	class:incomplete={!sufficientData}
+	class:complete={sufficientData}
+	class:collapsed={sufficientData && !show}
+>
 	<div class="group-header">
 		<h2 class="group-title">{groupTitle}</h2>
-		<div class="selection-row">
-			{#if group == 5}
-				<div class="select-control group-select">
-					<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
+		{#if show || !sufficientData}
+			<div class="selection-row">
+				{#if group == 5}
+					<div class="select-control group-select">
+						<Select options={groupSixOptions} bind:selected={$settings['groupSixGroup']} />
+					</div>
+				{/if}
+				<div class="select-control subject-select">
+					<Select
+						options={subjects}
+						placeholder="Enter subject"
+						bind:selected={$settings['subject']}
+					/>
 				</div>
-			{/if}
-			<div class="select-control subject-select">
-				<Select
-					options={subjects}
-					placeholder="Enter subject"
-					bind:selected={$settings['subject']}
-				/>
+				{#if !slOnly}
+					<div class="select-control level-select">
+						<Select
+							options={['HL', 'SL']}
+							placeholder="Enter level"
+							bind:selected={$settings['level']}
+						/>
+					</div>
+				{/if}
+				{#if isLang}
+					<div class="select-control language-select">
+						<Select
+							options={languages}
+							placeholder="Enter language"
+							bind:selected={$settings['language']}
+						/>
+					</div>
+				{/if}
+				{#if isHistoryHL}
+					<div class="select-control region-select">
+						<Select
+							options={courses.meta.region}
+							placeholder="Enter History HL region"
+							bind:selected={$settings['region']}
+						/>
+					</div>
+				{/if}
 			</div>
-			{#if !slOnly}
-				<div class="select-control level-select">
-					<Select
-						options={['HL', 'SL']}
-						placeholder="Enter level"
-						bind:selected={$settings['level']}
-					/>
-				</div>
-			{/if}
-			{#if isLang}
-				<div class="select-control language-select">
-					<Select
-						options={languages}
-						placeholder="Enter language"
-						bind:selected={$settings['language']}
-					/>
-				</div>
-			{/if}
-			{#if isHistoryHL}
-				<div class="select-control region-select">
-					<Select
-						options={courses.meta.region}
-						placeholder="Enter History HL region"
-						bind:selected={$settings['region']}
-					/>
-				</div>
-			{/if}
-		</div>
+		{/if}
 	</div>
 	{#if slOnly}
 		<h5 class="slOnlyWarning">{$settings['subject']} is only offered at the SL level</h5>
 	{/if}
 	{#if sufficientData}
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="64"
-			height="64"
-			viewBox="0 0 64 64"
-			fill="none"
+		<button
+			type="button"
 			class="toggle-button"
-			class:flipped={!show}
+			class:flipped={show}
+			aria-expanded={show}
+			aria-label={show ? `Collapse ${groupTitle}` : `Expand ${groupTitle}`}
 			on:click={toggleShow}
-			on:keydown={(e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					toggleShow();
-				}
-			}}
 		>
-			<circle
-				cx="31.9997"
-				cy="31.9998"
-				r="31.5"
-				fill="var(--color-surface-variant)"
-				stroke="var(--color-border)"
-			/>
-			<path
-				d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
-				fill="var(--color-text-main)"
-			/>
-		</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+				<circle
+					cx="31.9997"
+					cy="31.9998"
+					r="31.5"
+					fill="var(--color-surface-variant)"
+					stroke="var(--color-border)"
+				/>
+				<path
+					d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
+					fill="var(--color-text-main)"
+				/>
+			</svg>
+		</button>
 		<div class="grade-panel">
 			{#if !show}
 				{#if inputsComplete}
@@ -333,34 +335,36 @@
 			{/if}
 		</div>
 
-		{#if inputsComplete && selectedBoundaryValues.length}
-			<BoundaryInsight
-				boundary={selectedBoundaryValues}
-				score={predictedScore}
-				{predictedGrade}
-				session={`${$selectedBoundary.info.name}${
-					boundaries.length > 1 ? ` · TZ${$selectedTimezone + 1}` : ''
-				}`}
-			/>
-			<CompactSubjectInsights
-				{assessments}
-				scores={$settings['chosenScores']}
-				currentScore={predictedScore}
-				currentGrade={predictedGrade}
-				boundary={selectedBoundaryValues}
-				session={$selectedBoundary.info.short}
-				results={historicalResults}
-				firstAssessment={courses[$settings['subject']]?.firstAssessment}
-				{percentile}
-			/>
-		{:else if inputsComplete}
-			<div class="boundary-unavailable">
-				<strong>Boundary unavailable</strong>
-				<span>No grade boundary was published for this subject and session.</span>
-			</div>
-		{/if}
+		{#if show}
+			{#if inputsComplete && selectedBoundaryValues.length}
+				<BoundaryInsight
+					boundary={selectedBoundaryValues}
+					score={predictedScore}
+					{predictedGrade}
+					session={`${$selectedBoundary.info.name}${
+						boundaries.length > 1 ? ` · TZ${$selectedTimezone + 1}` : ''
+					}`}
+				/>
+				<CompactSubjectInsights
+					{assessments}
+					scores={$settings['chosenScores']}
+					currentScore={predictedScore}
+					currentGrade={predictedGrade}
+					boundary={selectedBoundaryValues}
+					session={$selectedBoundary.info.short}
+					results={historicalResults}
+					firstAssessment={courses[$settings['subject']]?.firstAssessment}
+					{percentile}
+				/>
+			{:else if inputsComplete}
+				<div class="boundary-unavailable">
+					<strong>Boundary unavailable</strong>
+					<span>No grade boundary was published for this subject and session.</span>
+				</div>
+			{/if}
 
-		<a href={url} target="_blank"><button class="goto">Full subject analysis →</button></a>
+			<a href={url} target="_blank"><button class="goto">Full subject analysis →</button></a>
+		{/if}
 	{/if}
 </div>
 
@@ -377,6 +381,15 @@
 
 	.main.incomplete {
 		padding-block: 0.75rem;
+	}
+
+	.main.collapsed {
+		padding-bottom: 0.75rem;
+	}
+
+	.main.collapsed .group-header {
+		grid-template-columns: minmax(0, 1fr);
+		min-height: 40px;
 	}
 
 	.group-title {
@@ -439,9 +452,25 @@
 		top: 12px;
 		width: 40px;
 		height: 40px;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: transparent;
 		filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 		transform: rotate(0deg);
 		transition: transform 0.5s;
+	}
+
+	.toggle-button svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.toggle-button:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 3px;
+		border-radius: 50%;
 	}
 
 	.flipped {
@@ -451,6 +480,17 @@
 	.grade-panel {
 		padding-top: 8px;
 		padding-bottom: 6px;
+	}
+
+	.main.collapsed .grade-panel {
+		padding-top: 6px;
+		padding-bottom: 0;
+	}
+
+	.main.collapsed .grade-panel :global(.main) {
+		box-sizing: border-box;
+		width: 100%;
+		margin: 0;
 	}
 
 	.input-status,
