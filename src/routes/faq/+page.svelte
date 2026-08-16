@@ -145,10 +145,10 @@
 			</p>
 			<p>
 				Choose an M25 or N25 option in the session bar to use an official published boundary
-				instead. The forecasted-grade and adjacent-grade probabilities show how often your score
-				earned each result across comparable published boundaries; “Beats X% of N25 test takers”
-				uses published November 2025 results. Open the forecast details only if you want possible
-				ranges and model checks, or read
+				instead. The forecasted-grade and adjacent-grade probabilities use comparable
+				current-syllabus boundaries, weighting recent post-COVID November sessions most, then recent
+				May sessions; “Beats X% of N25 test takers” uses published November 2025 results. Open the
+				forecast details only if you want possible ranges and model checks, or read
 				<a href="/blog/ib-predict-boundary-forecast-methodology">the forecast methodology</a>.
 			</p>
 			<p>

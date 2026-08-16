@@ -65,9 +65,9 @@ Confidence labels use the number of sessions, backtest error, and interval width
 
 ## Turning boundaries into grade likelihoods
 
-For a student's calculated percentage, the compact probability display answers a more concrete question: **what grade would this score have earned across the comparable published session and timezone boundaries?** IB Predict counts those outcomes and displays the frequency of the forecasted grade, one grade below, and one grade above. For example, if 81% earned a Grade 7 under every comparable published boundary, the card shows Grade 7 at 100%.
+For a student's calculated percentage, the compact probability display answers a more concrete question: **what grade would this score have earned across comparable published session and timezone boundaries from the current syllabus?** Each post-COVID November boundary receives a weight of 6, each post-COVID May boundary receives a weight of 3, and transitional evidence receives a weight of 1. It displays the weighted result for the forecasted grade, one grade below, and one grade above. For example, if 81% earned a Grade 7 under every comparable published boundary, the card shows Grade 7 at 100%.
 
-This historical frequency is intentionally separate from the November 2026 cutoff estimate. It shows how consistently the score performed against the evidence we have; it is not a guarantee that the unpublished boundary will be identical.
+This weighted historical result is intentionally separate from the November 2026 cutoff estimate. It shows how consistently the score performed against the most relevant evidence we have; it is not a guarantee that the unpublished boundary will be identical.
 
 The compact card shows the forecasted grade and its adjacent grades. The expanded details highlight the two outcomes seen most often in the published history.
 

@@ -107,11 +107,11 @@ When enough comparable history is available, an individual subject page opens wi
 
 The forecast is experimental. It estimates future grade boundaries; it does not predict the marks you will earn on exam day. Choose a named M25 or N25 boundary in the session bar whenever you want the calculator to use that published boundary instead. The entire predicted-grade card switches to the selected source, so it never presents two competing grades at once.
 
-The predicted-grade card shows two compact comparisons. **Probability** shows how often your score earned the forecasted grade, one grade below, and one grade above across comparable published session and timezone boundaries. **Percentile** says what share of N25 test takers finished below your displayed grade. The forecast chooses the future cutoff; the probability display shows how consistently your score performed against the available history.
+The predicted-grade card shows two compact comparisons. **Probability** shows the weighted historical result for the forecasted grade, one grade below, and one grade above across comparable current-syllabus boundaries. Recent post-COVID November sessions count most, recent May sessions count next, and transitional or older evidence counts much less. **Percentile** says what share of N25 test takers finished below your displayed grade. The forecast chooses the future cutoff; the probability display shows how consistently your score performed against the most relevant available history.
 
 TOK and Extended Essay use their latest stable published cutoffs without added year-to-year uncertainty. If your score reaches one of those fixed cutoffs, the card shows that grade at 100% rather than splitting the result across two grades.
 
-Read “Grade 5 · 75%” as: **this score earned Grade 5 under 75% of the comparable published boundaries.** Use **View forecast details** only when you want to inspect the future cutoff estimate, possible ranges, and model checks.
+Read “Grade 5 · 75%” as: **after giving the most relevant recent sessions more influence, this score earned Grade 5 in 75% of the weighted historical comparison.** Use **View forecast details** only when you want to inspect the future cutoff estimate, possible ranges, and model checks.
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
 

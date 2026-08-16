@@ -132,8 +132,9 @@ only when the user asks.
 
 When N26 Forecast is selected, the predicted-grade card shows **Probability** for the forecasted
 grade plus one grade below and above, and **Percentile** as “Beats X% of N25 test takers.” The
-probabilities are the frequency with which the score earned each grade across comparable published
-session/timezone boundaries. The forecasted cutoff remains a separate November 2026 estimate.
+probabilities are weighted historical outcomes across comparable current-syllabus boundaries. Recent
+post-COVID November sessions count most, recent May sessions count next, and transitional or older
+evidence counts much less. The forecasted cutoff remains a separate November 2026 estimate.
 
 TOK and Extended Essay forecasts retain the latest stable published cutoffs instead of applying
 the standard-subject uncertainty model. A score at or above a core-subject cutoff therefore shows

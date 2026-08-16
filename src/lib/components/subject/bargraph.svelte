@@ -230,7 +230,7 @@
 						</div>
 						<div class="outcome-chance">
 							<strong>{probabilityLabel(primaryOutcome.chance)}</strong>
-							<span>{forecast.stable ? 'Fixed result' : 'Historical frequency'}</span>
+							<span>{forecast.stable ? 'Fixed result' : 'Weighted historical frequency'}</span>
 						</div>
 						{#if secondaryOutcome?.chance > 0}
 							<div class="secondary-outcome">

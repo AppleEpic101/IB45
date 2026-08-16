@@ -83,6 +83,13 @@ const normalCdf = (value) => {
 
 const sessionYear = (short) => 2000 + Number(short?.slice(1, 3));
 
+const historicalOutcomeWeight = (short) => {
+	const year = sessionYear(short);
+	if (year >= 2023 && short?.startsWith('N')) return 6;
+	if (year >= 2023 && short?.startsWith('M')) return 3;
+	return 1;
+};
+
 export const aggregateForecastSessions = (results, sessionPrefix = 'N') => {
 	const grouped = new Map();
 
@@ -150,9 +157,12 @@ export const buildBoundaryForecast = ({
 	const sessions = aggregateForecastSessions(results, sessionPrefix);
 	if (sessions.length < 3) return undefined;
 	const publishedBoundarySets = results
-		.map((result) => result.tz?.map(Number))
+		.map((result) => ({
+			boundaries: result.tz?.map(Number),
+			weight: historicalOutcomeWeight(result.short)
+		}))
 		.filter(
-			(boundaries) =>
+			({ boundaries }) =>
 				boundaries?.length === labels.length && boundaries.every((value) => Number.isFinite(value))
 		);
 
@@ -273,14 +283,16 @@ export const calculateForecastProbabilities = (forecast, mark) => {
 
 	if (forecast.publishedBoundarySets?.length) {
 		const exactCounts = forecast.forecasts.map(() => 0);
-		forecast.publishedBoundarySets.forEach((boundaries) => {
+		let totalWeight = 0;
+		forecast.publishedBoundarySets.forEach(({ boundaries, weight }) => {
 			let gradeIndex = 0;
 			boundaries.forEach((boundary, index) => {
 				if (score >= boundary) gradeIndex = index;
 			});
-			exactCounts[gradeIndex] += 1;
+			exactCounts[gradeIndex] += weight;
+			totalWeight += weight;
 		});
-		const exact = exactCounts.map((count) => count / forecast.publishedBoundarySets.length);
+		const exact = exactCounts.map((count) => count / totalWeight);
 		const cumulative = exact.map((_, index) =>
 			exact.slice(index).reduce((sum, chance) => sum + chance, 0)
 		);

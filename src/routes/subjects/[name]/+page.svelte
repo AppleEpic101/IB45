@@ -54,7 +54,6 @@
 	export let level = data.level;
 	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
 	$: selectedTableLevel = data.data.SLOnly ? 'SL' : level;
-	$: selectedBoundaryResults = selectedTableLevel === 'HL' ? HLResults : SLResults;
 
 	$: name = data.data.isLang ? language + ' ' + data.data.name : data.data.name;
 
@@ -68,6 +67,13 @@
 	$: HLResults = data.data.isLang
 		? getAllBoundaries(data.data.name, language).HL
 		: getAllBoundaries(data.data.name).HL;
+	$: currentSLResults = SLResults.filter(
+		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+	);
+	$: currentHLResults = HLResults.filter(
+		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+	);
+	$: selectedBoundaryResults = selectedTableLevel === 'HL' ? currentHLResults : currentSLResults;
 
 	const forecastLabels = data.data.isCore
 		? ['E', 'D', 'C', 'B', 'A']
@@ -301,8 +307,8 @@
 					name={syllabus.name}
 					{level}
 					{language}
-					{SLResults}
-					{HLResults}
+					SLResults={currentSLResults}
+					HLResults={currentHLResults}
 					{grade}
 					currentGrade={mark}
 				/>
