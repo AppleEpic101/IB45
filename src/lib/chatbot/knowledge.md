@@ -84,9 +84,10 @@ updates to match.
 two Group 1 subjects (excluding Literature and Performance). Select the second Group 1 subject
 under Group 2, and optionally a third by replacing Group 6.
 
-**Probability graphs:** Subject pages show predicted mark probability distributions across all
-past grade boundaries, to contextualize your grade. Note a disproportionate share of boundaries
-come from COVID-era sessions — interpret accordingly.
+**Forecast details:** Subject pages show experimental future-boundary estimates based on comparable
+past sessions. The headline assumes the student's current score stays the same; it estimates how
+that score would fare if the future boundary changed. It does not predict the student's exam-day
+performance. Technical model checks are optional.
 
 **Is my data saved?** Yes, inputs are saved in your browser's local storage automatically. Nothing
 is sent to a server.

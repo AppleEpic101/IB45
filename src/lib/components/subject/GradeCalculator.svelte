@@ -197,11 +197,11 @@
 				{#if primaryForecastOutcome}
 					<div class="forecast-summary" aria-live="polite">
 						<div class="forecast-heading">
-							<span>November 2026 outlook</span><small>Experimental</small>
+							<span>November 2026 forecast</span><small>Experimental</small>
 						</div>
 						<div class="forecast-result">
-							<strong>Grade {primaryForecastOutcome.grade}</strong>
-							<span>{forecastChanceLabel(primaryForecastOutcome.chance)} likely</span>
+							<strong>Grade {primaryForecastOutcome.grade} most likely</strong>
+							<span>{forecastChanceLabel(primaryForecastOutcome.chance)} estimated likelihood</span>
 						</div>
 						{#if secondaryForecastOutcome}
 							<p class="forecast-secondary">
@@ -210,6 +210,16 @@
 								)}
 							</p>
 						{/if}
+						<details class="forecast-explanation">
+							<summary>What this forecast means</summary>
+							<p>
+								This assumes your current score stays the same and only the future boundary changes.
+								It does not predict your exam performance.
+								<a href="/blog/understanding-your-ib-predict-results"
+									>Read the plain-language guide</a
+								>.
+							</p>
+						</details>
 					</div>
 				{/if}
 				{#if percentile !== undefined}
@@ -305,6 +315,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		gap: 8px;
 		color: var(--color-text-muted);
 		font-size: 0.58rem;
@@ -321,9 +332,9 @@
 	}
 
 	.forecast-result {
-		display: flex;
+		display: grid;
 		align-items: baseline;
-		justify-content: space-between;
+		grid-template-columns: minmax(0, 1fr) auto;
 		gap: 8px;
 		margin-top: 4px;
 
@@ -340,6 +351,18 @@
 		}
 	}
 
+	@media (max-width: 600px) {
+		.forecast-result {
+			grid-template-columns: 1fr;
+			gap: 2px;
+		}
+
+		.forecast-result strong,
+		.forecast-result span {
+			min-width: 0;
+		}
+	}
+
 	.forecast-secondary {
 		margin: 5px 0 0;
 		padding-top: 5px;
@@ -347,6 +370,32 @@
 		color: var(--color-text-main);
 		font-size: 0.65rem;
 		font-weight: 650;
+	}
+
+	.forecast-explanation {
+		margin-top: 6px;
+		padding-top: 5px;
+		border-top: 1px solid var(--color-border);
+
+		summary {
+			width: fit-content;
+			color: var(--color-text-muted);
+			font-size: 0.58rem;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		p {
+			margin: 5px 0 0;
+			color: var(--color-text-muted);
+			font-size: 0.58rem;
+			line-height: 1.45;
+		}
+
+		a {
+			color: var(--color-primary);
+			font-weight: 700;
+		}
 	}
 
 	.no-result {

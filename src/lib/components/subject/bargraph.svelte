@@ -208,11 +208,13 @@
 		{#if probability && expanded}
 			<div class="forecast-overview">
 				<div class="personal-forecast">
-					<span class="overview-label">Your {Number(grade).toFixed(0)}% mark</span>
+					<span class="overview-label"
+						>If your {Number(grade).toFixed(0)}% score stayed the same</span
+					>
 					<div class="outcome-grid">
 						<div class="primary-outcome">
 							<strong>Grade {primaryOutcome.grade}</strong>
-							<span>Most likely grade</span>
+							<span>Most likely under forecast boundaries</span>
 						</div>
 						<div class="outcome-chance">
 							<strong>{probabilityLabel(primaryOutcome.chance)}</strong>
@@ -232,27 +234,35 @@
 		{#if expanded}
 			<div class="forecast-body">
 				<div class="graph-wrapper"><canvas bind:this={chartCanvas} /></div>
+			</div>
+
+			<details class="technical-details">
+				<summary>Boundary ranges and model checks</summary>
+				<p class="technical-intro">
+					Optional detail for readers who want to inspect the forecast rather than just use its
+					headline result.
+				</p>
 				<div class="forecast-bands" aria-label={`${forecast.targetName} predicted boundaries`}>
 					{#each featuredForecasts as boundary}
 						<div class="boundary-card">
 							<div><span>Grade {boundary.grade}</span><strong>{boundary.point}%</strong></div>
-							<p>80% range {boundary.lower}–{boundary.upper}%</p>
+							<p>Likely range {boundary.lower}–{boundary.upper}%</p>
 							<span class:high={boundary.confidence === 'High'} class="confidence"
 								>{boundary.confidence} confidence</span
 							>
 						</div>
 					{/each}
 				</div>
-			</div>
-			<div class="model-meta">
-				<span>{forecast.sessionCount} November sessions</span>
-				<span
-					>{forecast.mae === undefined
-						? 'Limited backtest history'
-						: `±${forecast.mae.toFixed(1)} mark backtest error`}</span
-				>
-				<span>Published through {forecast.trainingThrough}</span>
-			</div>
+				<div class="model-meta">
+					<span>{forecast.sessionCount} past November sessions</span>
+					<span
+						>{forecast.mae === undefined
+							? 'Not enough history for an error check'
+							: `Past forecasts differed by about ${forecast.mae.toFixed(1)} marks`}</span
+					>
+					<span>Data through {forecast.trainingThrough}</span>
+				</div>
+			</details>
 		{/if}
 
 		{#if expanded}
@@ -406,10 +416,7 @@
 	}
 
 	.forecast-body {
-		display: grid;
-		grid-template-columns: minmax(0, 1.65fr) minmax(220px, 0.8fr);
-		gap: 16px;
-		align-items: stretch;
+		display: block;
 	}
 	.graph-wrapper {
 		position: relative;
@@ -422,8 +429,27 @@
 	}
 	.forecast-bands {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 		gap: 8px;
+	}
+	.technical-details {
+		margin-top: 12px;
+		border-top: 1px solid var(--color-border);
+
+		summary {
+			width: fit-content;
+			padding: 11px 0 4px;
+			color: var(--color-text-muted);
+			font-size: 0.72rem;
+			font-weight: 750;
+			cursor: pointer;
+		}
+	}
+	.technical-intro {
+		margin: 5px 0 10px;
+		color: var(--color-text-muted);
+		font-size: 0.7rem;
+		line-height: 1.5;
 	}
 	.boundary-card {
 		display: flex;
@@ -490,21 +516,14 @@
 			text-decoration: underline;
 		}
 	}
-	.expanded .forecast-body {
-		flex: 1;
-		min-height: 420px;
-	}
 	.expanded .graph-wrapper {
-		height: auto;
-		min-height: 420px;
+		height: min(44vh, 420px);
+		min-height: 280px;
 	}
 
 	@media (max-width: 800px) {
-		.forecast-body {
-			grid-template-columns: 1fr;
-		}
 		.forecast-bands {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 	@media (max-width: 600px) {

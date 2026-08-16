@@ -67,7 +67,9 @@ For most students, the selected session boundary and the “marks to next grade�
 
 ## Forecast likelihoods
 
-Future boundary forecasts are experimental. A likelihood such as “74% Grade 5” describes how often your mark would reach Grade 5 under the range of boundaries the model considers plausible. It does not predict how likely you are to earn that mark on exam day.
+Future boundary forecasts are experimental. Read “74% Grade 5” as: **if my current score stayed the same, it would reach Grade 5 under about 74% of the future boundaries the model considers plausible.** It does not predict how likely you are to earn that score on exam day.
+
+The forecast view leads with that likely grade. Boundary ranges, confidence labels, and checks against past sessions are optional technical details; open them only if you want to inspect the model more closely.
 
 For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
 

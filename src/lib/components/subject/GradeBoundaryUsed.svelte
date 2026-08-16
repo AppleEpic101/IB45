@@ -24,11 +24,11 @@
 		>
 	</tr>
 	<tr class="small">
-		{#each { length: gradeBoundaryUsed?.marks?.length } as _, i}
+		{#each gradeBoundaryUsed?.marks ?? [] as boundary, i}
 			{#if gradeBoundaryUsed?.marks?.length == 5}
-				<th class:shaded={shouldShade(i)}>{gradeMap[i + 1]}</th>
+				<th class:shaded={shouldShade(i)} title={`Starts at ${boundary}`}>{gradeMap[i + 1]}</th>
 			{:else}
-				<th class:shaded={shouldShade(i)}>{i + 1}</th>
+				<th class:shaded={shouldShade(i)} title={`Starts at ${boundary}`}>{i + 1}</th>
 			{/if}
 		{/each}
 	</tr>
@@ -50,15 +50,14 @@
 
 <style>
 	table {
+		width: 100%;
 		margin-top: 20px;
+		border-collapse: collapse;
 	}
-	table,
-	tr,
+
 	th,
 	td {
-		width: 100%;
 		border: 1px solid var(--color-border);
-		border-collapse: collapse;
 		text-align: center;
 	}
 
