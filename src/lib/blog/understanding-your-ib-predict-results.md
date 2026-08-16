@@ -27,17 +27,19 @@ IB publishes grade totals, not every student's exact mark. This means the compar
 
 The diploma comparison works in the same way. It uses the published distribution of total diploma points to estimate where your total sits within that session.
 
-## Grade stability
+## Grade outlook
 
-Grade boundaries change between examination sessions. IB Predict compares your score with the available history and labels the result:
+Grade boundaries change between examination sessions. The grade outlook turns that history into one plain-language message:
 
-- **Secure:** the same score usually keeps the same grade across past sessions.
-- **Competitive:** the grade is reasonably consistent, but some sessions differ.
-- **Borderline:** a small boundary change could lower the grade.
+- **This grade has been consistent:** the same score usually kept the same grade across comparable sessions.
+- **This grade has varied before:** the same score did not always keep the same grade.
+- **This grade is close to changing:** a small increase in the boundary could lower the grade.
 
-The boundary-rise message is the clearest risk check. If it says “The boundary could rise 2 marks before this grade changes,” a rise of three marks would lower the prediction.
+The sentence below the outlook gives the clearest risk check. “A boundary 2 marks higher would make this Grade 5” means the current prediction has a two-mark cushion against a higher boundary.
 
 This describes uncertainty in the boundary, not the quality of your future exam performance.
+
+Open **More planning details** only when you want to compare the effect of one extra mark across assessments or check the same score against past sessions.
 
 ## Past-session comparison
 

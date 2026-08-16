@@ -31,6 +31,22 @@
 	$: bestOption = improvement?.options
 		?.filter(({ marksNeeded }) => marksNeeded !== undefined)
 		.sort((a, b) => a.marksNeeded - b.marksNeeded || b.impact - a.impact)[0];
+	$: outlookTitle = Number(currentGrade) === 1
+		? 'This is the minimum subject grade'
+		: confidence
+		? confidence.label === 'Borderline'
+			? 'This grade is close to changing'
+			: confidence.label === 'Competitive'
+			? 'This grade has varied before'
+			: 'This grade has been consistent'
+		: 'Not enough history yet';
+	$: outlookExplanation = Number(currentGrade) === 1
+		? 'There is no lower subject grade; focus on the next-grade plan.'
+		: confidence
+		? confidence.riseToDrop === 1
+			? `A boundary 1 mark higher would make this Grade ${confidence.lowerGrade}.`
+			: `A boundary ${confidence.riseToDrop} marks higher would make this Grade ${confidence.lowerGrade}.`
+		: 'More comparable sessions are needed before showing a grade outlook.';
 
 	const impactLabel = (value) =>
 		Number(value).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
@@ -49,42 +65,41 @@
 
 		<div class="strategy-summary">
 			<div class="next-move">
-				{#if improvement?.recommendation}
+				{#if bestOption}
 					<span>Best move</span>
-					<strong>{improvement.recommendation}</strong>
+					<strong
+						>+{bestOption.marksNeeded} {bestOption.marksNeeded === 1 ? 'mark' : 'marks'} on
+						{bestOption.name}</strong
+					>
+					<small>to reach Grade {improvement.nextGrade}</small>
 				{:else if Number(currentGrade) === 7}
 					<span>Current result</span>
 					<strong>Grade 7 reached</strong>
+				{:else if improvement?.reachesNextGrade}
+					<span>Best move</span>
+					<strong>Combine marks across assessments</strong>
+					<small>Open the details for a possible route to Grade {improvement.nextGrade}</small>
 				{:else}
 					<span>Next grade</span>
 					<strong>Not reachable with remaining marks</strong>
 				{/if}
 			</div>
 
-			<div class="signals">
-				{#if confidence}
-					<div class:warning={confidence.label === 'Borderline'} class="signal">
-						<strong>{confidence.label}</strong>
-						<span>Grade stability</span>
-					</div>
-					{#if confidence.riseToDrop !== undefined && Number(currentGrade) > 1}
-						<div class:warning={confidence.riseToDrop <= 2} class="signal">
-							<strong
-								>{confidence.riseToDrop} {confidence.riseToDrop === 1 ? 'mark' : 'marks'}</strong
-							>
-							<span>Boundary can rise</span>
-						</div>
-					{/if}
-				{/if}
+			<div class:warning={confidence?.label === 'Borderline'} class="outlook">
+				<span>Grade outlook</span>
+				<strong>{outlookTitle}</strong>
+				<small>{outlookExplanation}</small>
 			</div>
 		</div>
 
-		{#if improvement?.options?.length}
-			<details>
-				<summary>
-					<span>Compare assessments</span>
-				</summary>
-				<div class="compact-table assessment-table" role="table" aria-label="Assessment impact">
+		{#if improvement?.options?.length || comparisons.length}
+			<details class="planning-details">
+				<summary>More planning details</summary>
+				<div class="details-content">
+				{#if improvement?.options?.length}
+					<section aria-labelledby="assessment-impact-title">
+						<h4 id="assessment-impact-title">Compare assessments</h4>
+						<div class="compact-table assessment-table" role="table" aria-label="Assessment impact">
 					<div class="compact-row compact-header" role="row">
 						<span role="columnheader">Assessment</span>
 						<span role="columnheader">+1 mark</span>
@@ -102,16 +117,14 @@
 							</span>
 						</div>
 					{/each}
-				</div>
-			</details>
-		{/if}
+						</div>
+					</section>
+				{/if}
 
-		{#if comparisons.length}
-			<details>
-				<summary>
-					<span>Check past sessions</span>
-				</summary>
-				<div class="compact-table history-table" role="table" aria-label="Historical what-if">
+				{#if comparisons.length}
+					<section aria-labelledby="past-session-title">
+						<h4 id="past-session-title">Your score in past sessions</h4>
+						<div class="compact-table history-table" role="table" aria-label="Historical what-if">
 					<div class="compact-row compact-header" role="row">
 						<span role="columnheader">Session</span>
 						<span role="columnheader">Result</span>
@@ -134,13 +147,15 @@
 							</span>
 						</div>
 					{/each}
+						</div>
+					</section>
+				{/if}
+				<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
+					>How these recommendations work <span aria-hidden="true">→</span></a
+				>
 				</div>
 			</details>
 		{/if}
-
-		<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
-			>How these recommendations work <span aria-hidden="true">→</span></a
-		>
 	</section>
 {/if}
 
@@ -156,7 +171,6 @@
 
 	.strategy-topline,
 	.strategy-summary,
-	.signals,
 	summary {
 		display: flex;
 		align-items: center;
@@ -196,7 +210,8 @@
 	}
 
 	.next-move span,
-	.signal span {
+	.next-move small,
+	.outlook span {
 		color: var(--color-text-muted);
 		font-size: 0.65rem;
 		font-weight: 650;
@@ -208,32 +223,41 @@
 		font-size: 1rem;
 	}
 
-	.signals {
-		align-items: stretch;
-		gap: 7px;
+	.next-move small {
+		margin-top: 3px;
+		line-height: 1.35;
 	}
 
-	.signal {
+	.outlook {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		min-width: 92px;
-		padding: 9px 10px;
+		flex: 1;
+		min-width: 0;
+		padding: 10px 12px;
 		border: 1px solid var(--color-border);
 		border-radius: 10px;
 		background: var(--color-surface-variant);
 	}
 
-	.signal strong {
-		color: var(--color-primary);
-		font-size: 0.95rem;
+	.outlook strong {
+		margin-top: 2px;
+		color: var(--color-text-main);
+		font-size: 0.85rem;
 	}
 
-	.signal.warning strong {
+	.outlook small {
+		margin-top: 3px;
+		color: var(--color-text-muted);
+		font-size: 0.68rem;
+		line-height: 1.35;
+	}
+
+	.outlook.warning strong {
 		color: #f59e0b;
 	}
 
-	details {
+	.planning-details {
 		margin-top: 9px;
 		border-top: 1px solid var(--color-border);
 	}
@@ -248,6 +272,23 @@
 
 	summary::marker {
 		color: var(--color-primary);
+	}
+
+	.details-content {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+		padding-top: 8px;
+	}
+
+	.details-content section {
+		min-width: 0;
+	}
+
+	.details-content h4 {
+		margin: 0;
+		color: var(--color-text-main);
+		font-size: 0.72rem;
 	}
 
 	.compact-table {
@@ -307,7 +348,8 @@
 	.strategy-help {
 		display: inline-flex;
 		gap: 5px;
-		margin-top: 12px;
+		grid-column: 1 / -1;
+		margin: 0 2px 4px;
 		color: var(--color-primary);
 		font-size: 0.68rem;
 		font-weight: 750;
@@ -329,13 +371,8 @@
 			flex-direction: column;
 		}
 
-		.signals {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.signal {
-			min-width: 0;
+		.details-content {
+			grid-template-columns: 1fr;
 		}
 
 		.compact-row {
