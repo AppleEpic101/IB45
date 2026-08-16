@@ -48,10 +48,13 @@
 	$: selectedBoundary = data.isCore ? lastSL : level === 'HL' ? lastHL : lastSL;
 	$: maximumScore =
 		syllabus.name === 'Extended Essay' ? 34 : syllabus.name === 'Theory Of Knowledge' ? 30 : 100;
-	$: nextGrade = data.isCore
-		? coreGrades[gradeMap[mark]]
-		: Number(mark) < 7
-		? Number(mark) + 1
+	$: hasPredictedGrade = mark !== undefined && mark !== null && mark !== 'N/A';
+	$: nextGrade = hasPredictedGrade
+		? data.isCore
+			? coreGrades[gradeMap[mark]]
+			: Number(mark) < 7
+			? Number(mark) + 1
+			: undefined
 		: undefined;
 	$: bulletinName = `${level} ${data.isLang ? `${language} ` : ''}${data.name}`;
 	$: bulletinSession = Bulletin[bulletinName]?.grades?.find(
@@ -255,7 +258,7 @@
 					<div class="y">{nextGrade ? `To Grade ${nextGrade}` : 'Next grade'}</div>
 					{#if nextGrade && marksToIncrease > 0}
 						<div class="y">{marksToIncrease} {marksToIncrease === 1 ? 'mark' : 'marks'}</div>
-					{:else if !nextGrade}
+					{:else if hasPredictedGrade && !nextGrade}
 						<div class="y">Top grade</div>
 					{:else}
 						<div class="y">Not available</div>
