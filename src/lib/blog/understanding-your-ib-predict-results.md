@@ -47,6 +47,12 @@ The historical comparison answers a simple question: **what grade would this sam
 
 A range such as “Grade 5–6” means different timezones in that session used different boundaries. It does not mean you received two grades.
 
+## Historical boundary chart
+
+The historical chart opens on the minimum score for your current predicted grade. This keeps the graph focused on the line most relevant to your result. The dashed line is your weighted score.
+
+Choose **All grades** only when you want to compare the complete boundary structure. When a session used multiple timezones, the plotted point shows the typical minimum and the tooltip shows the timezone range.
+
 ## Global grade distribution
 
 The distribution chart shows how final grades were spread across one examination session. Each bar is the percentage of students who received that grade. There is no fitted curve or prediction line: the bars are the published bulletin data.

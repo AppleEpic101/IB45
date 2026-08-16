@@ -265,7 +265,15 @@
 			{/if}
 
 			{#if showGradeGraphs}
-				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
+				<GradeGraph
+					name={syllabus.name}
+					{level}
+					{language}
+					{SLResults}
+					{HLResults}
+					{grade}
+					currentGrade={mark}
+				/>
 			{/if}
 			<div class="tables">
 				{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}

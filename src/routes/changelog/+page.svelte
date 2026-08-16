@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Focused historical charts on the student’s current predicted-grade boundary by default, with all-grade comparison optional and simpler minimum-score wording.',
 				'Reduced grade strategy to one recommended action and one plain-language outlook, with assessment calculations and historical comparisons in a single optional section.',
 				'Removed the inferred bell curve from grade distributions, surfaced the student result and session average, and placed chart guidance behind one optional explanation.',
 				'Made collapsed subject cards keep only the weighted score and predicted grade while hiding boundaries, insights, assessment controls, and analysis links.',

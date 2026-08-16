@@ -8,14 +8,38 @@
 	export let level;
 	export let language;
 	export let grade;
+	export let currentGrade;
 
 	export let SLResults = [];
 	export let HLResults = [];
 
 	let isAE = name === 'Extended Essay' || name === 'Theory Of Knowledge';
 
-	// Default to 'All' which will be 0
 	let number = 0;
+	let userSelectedBoundary = false;
+	const coreGradeNumber = { E: 1, D: 2, C: 3, B: 4, A: 5 };
+	$: currentBoundaryNumber = isAE ? coreGradeNumber[currentGrade] : Number(currentGrade);
+	$: if (
+		!userSelectedBoundary &&
+		Number.isInteger(currentBoundaryNumber) &&
+		currentBoundaryNumber > 0 &&
+		number !== currentBoundaryNumber
+	) {
+		number = currentBoundaryNumber;
+	}
+	$: dropdownLabels = isAE
+		? [
+				'All grades',
+				...['A', 'B', 'C', 'D', 'E'].map((item) =>
+					item === currentGrade ? `Grade ${item} · your grade` : `Grade ${item}`
+				)
+		  ]
+		: [
+				'All grades',
+				...[7, 6, 5, 4, 3, 2, 1].map((item) =>
+					item === Number(currentGrade) ? `Grade ${item} · your grade` : `Grade ${item}`
+				)
+		  ];
 
 	$: results = level === 'HL' ? HLResults : SLResults;
 
@@ -23,7 +47,6 @@
 	let scatterChart;
 	let expanded = false;
 	let isMobile = false;
-	let mobileAutoSelected = false;
 	const setExpanded = async (value) => {
 		expanded = value;
 		await tick();
@@ -117,7 +140,7 @@
 		const labels = chartSessions.map((session) => session.short);
 
 		const gradeBoundaries = Array.from({ length: isAE ? 5 : 7 }, (_, i) => ({
-			label: isAE ? ['E', 'D', 'C', 'B', 'A'][i] : `Grade ${i + 1}`,
+			label: isAE ? `Grade ${['E', 'D', 'C', 'B', 'A'][i]} minimum` : `Grade ${i + 1} minimum`,
 			data: chartSessions.map((session) => session.boundaries[i].average),
 			boundaryIndex: i,
 			backgroundColor: colors[i],
@@ -134,18 +157,13 @@
 			hidden: i < 3 && number === 0 // Hide grades 1-3 by default in 'All' view
 		}));
 
-		// Correct AE mapping: A is 5, E is 1?
-		// if number is 5, we want A (index 4)
-		// if number is 1, we want E (index 0)
-		// So index = number - 1
-
 		const finalDatasets = number === 0 ? [...gradeBoundaries] : [gradeBoundaries[number - 1]];
 
 		// Add a dataset for the user's current grade if it's valid AND we are in "All" view
 		if (grade && grade > 0 && grade <= 100) {
 			const gradeLineColor = getStyle('--color-primary') || '#3b82f6';
 			finalDatasets.push({
-				label: 'Your Current Score',
+				label: 'Your score',
 				data: chartSessions.map(() => grade),
 				borderColor: gradeLineColor,
 				borderWidth: 3,
@@ -199,7 +217,7 @@
 					y: {
 						title: {
 							display: true,
-							text: 'Grade Boundary (%)',
+							text: 'Minimum score (%)',
 							color: textColor,
 							font: {
 								weight: 'bold',
@@ -246,8 +264,8 @@
 								return `${session.name}${timezoneLabel}`;
 							},
 							label: function (context) {
-								if (context.dataset.label === 'Your Current Score') {
-									return `Your Score: ${context.parsed.y}%`;
+								if (context.dataset.label === 'Your score') {
+									return `Your score: ${context.parsed.y}%`;
 								}
 								const session = chartSessions[context.dataIndex];
 								const boundary = session?.boundaries[context.dataset.boundaryIndex];
@@ -255,8 +273,8 @@
 								const range =
 									boundary.min === boundary.max
 										? ''
-										: ` · TZ range ${boundary.min}–${boundary.max}%`;
-								return `${context.dataset.label}: ${boundary.average.toFixed(1)}% avg${range}`;
+										: ` · timezones ${boundary.min}–${boundary.max}%`;
+								return `${context.dataset.label}: ${boundary.average.toFixed(1)}%${range}`;
 							}
 						}
 					}
@@ -268,13 +286,6 @@
 	onMount(() => {
 		const updateMobileView = () => {
 			const nextMobile = window.innerWidth <= 600;
-			if (nextMobile && !isMobile && number === 0) {
-				number = 5;
-				mobileAutoSelected = true;
-			} else if (!nextMobile && mobileAutoSelected && number === 5) {
-				number = 0;
-				mobileAutoSelected = false;
-			}
 			isMobile = nextMobile;
 			createChart();
 		};
@@ -326,11 +337,9 @@
 			<div class="title" id="historical-chart-title">
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
 			</div>
-			<div class="dropdown-container">
+			<div class="dropdown-container" on:change={() => (userSelectedBoundary = true)}>
 				<Dropdown
-					arr={isAE
-						? ['All Boundaries', 'A', 'B', 'C', 'D', 'E']
-						: ['All Boundaries', 7, 6, 5, 4, 3, 2, 1]}
+					arr={dropdownLabels}
 					arrVal={isAE ? [0, 5, 4, 3, 2, 1] : [0, 7, 6, 5, 4, 3, 2, 1]}
 					bind:value={number}
 				/>
