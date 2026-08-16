@@ -107,7 +107,7 @@
 <aside class="summary" aria-label="Diploma score summary">
 	<table>
 		<thead>
-			<tr><th>Subject</th><th>Awarded mark</th></tr>
+			<tr><th>Diploma summary</th><th>Result</th></tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -125,51 +125,62 @@
 					{gradesAvailable ? (diplomaAwarded ? 'YES' : 'NO') : allSubjectsComplete ? 'N/A' : '—'}
 				</td>
 			</tr>
-			{#each rowValues as rowValue, index}
-				<tr>
-					<td>Group {index + 1}</td>
-					<td
-						class="value"
-						class:unavailable={rowValue === 'N/A'}
-						style={`background-color: ${getRowColor(rowValue)}`}
-					>
-						{rowValue}
-					</td>
-				</tr>
-			{/each}
-			<tr>
-				<td>TOK</td>
-				<td
-					class="value"
-					style={`background-color: ${getRowColor(
-						tokGradeWeights[letterGrades.indexOf(gradeData.tokGrade)]
-					)}`}
-				>
-					{gradeData.tokGrade}
-				</td>
-			</tr>
-			<tr>
-				<td>EE</td>
-				<td
-					class="value"
-					style={`background-color: ${getRowColor(
-						tokGradeWeights[letterGrades.indexOf(gradeData.eeGrade)]
-					)}`}
-				>
-					{gradeData.eeGrade}
-				</td>
-			</tr>
-			<tr>
-				<td>Core points</td>
-				<td
-					class="value"
-					style={`background-color: ${getRowColor((Number(gradeData.coreGrade) * 7) / 3)}`}
-				>
-					{gradeData.coreGrade}
-				</td>
-			</tr>
 		</tbody>
 	</table>
+
+	<details class="score-breakdown">
+		<summary>
+			<span>Subject &amp; core breakdown</span>
+			<small>6 subjects, TOK and EE</small>
+		</summary>
+		<table aria-label="Subject and core score breakdown">
+			<tbody>
+				{#each rowValues as rowValue, index}
+					<tr>
+						<td>Group {index + 1}</td>
+						<td
+							class="value"
+							class:unavailable={rowValue === 'N/A'}
+							style={`background-color: ${getRowColor(rowValue)}`}
+						>
+							{rowValue}
+						</td>
+					</tr>
+				{/each}
+				<tr>
+					<td>TOK</td>
+					<td
+						class="value"
+						style={`background-color: ${getRowColor(
+							tokGradeWeights[letterGrades.indexOf(gradeData.tokGrade)]
+						)}`}
+					>
+						{gradeData.tokGrade}
+					</td>
+				</tr>
+				<tr>
+					<td>EE</td>
+					<td
+						class="value"
+						style={`background-color: ${getRowColor(
+							tokGradeWeights[letterGrades.indexOf(gradeData.eeGrade)]
+						)}`}
+					>
+						{gradeData.eeGrade}
+					</td>
+				</tr>
+				<tr>
+					<td>Core points</td>
+					<td
+						class="value"
+						style={`background-color: ${getRowColor((Number(gradeData.coreGrade) * 7) / 3)}`}
+					>
+						{gradeData.coreGrade}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</details>
 
 	{#if failureMessage}
 		<div class:unavailable-message={unavailableSubjects.length > 0} class="notice">
@@ -273,6 +284,37 @@
 	.value.unavailable,
 	.status-cell {
 		color: var(--color-text-main);
+	}
+
+	.score-breakdown {
+		border-bottom: 1px solid var(--color-border);
+		text-align: left;
+	}
+
+	.score-breakdown summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		padding: 10px 12px;
+		color: var(--color-text-main);
+		font-size: 0.7rem;
+		font-weight: 750;
+		cursor: pointer;
+	}
+
+	.score-breakdown summary small {
+		color: var(--color-text-muted);
+		font-size: 0.6rem;
+		font-weight: 650;
+	}
+
+	.score-breakdown[open] summary {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.score-breakdown table td:first-child {
+		text-align: left;
 	}
 
 	.notice {

@@ -27,6 +27,14 @@ IB publishes grade totals, not every student's exact mark. This means the compar
 
 The diploma comparison works in the same way. It uses the published distribution of total diploma points to estimate where your total sits within that session.
 
+## Diploma summary
+
+The main calculator sidebar starts with your **total points** and whether the current combination meets the diploma requirements. These are the two results to check first.
+
+Open **Subject & core breakdown** only when you want to review the six subject grades, TOK grade, Extended Essay grade, and core points separately. Keeping this breakdown closed does not change the calculation.
+
+The session comparison beneath it shows your approximate standing against students in the selected examination session. Open **About this comparison** for the published sample size and a link back to this explanation.
+
 ## Grade outlook
 
 Grade boundaries change between examination sessions. The grade outlook turns that history into one plain-language message:

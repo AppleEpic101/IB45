@@ -91,6 +91,10 @@ the actual final exams — it complements, not replaces, your official predicted
 - HL subject scores sum to less than 12
 - With 3 SL subjects: SL scores sum to less than 9; with 2 SL subjects (4 HL): SL sum less than 5
 
+On the main calculator, lead with the total diploma points and diploma-status message. The six
+subject grades, TOK, EE, and core points are available under **Subject & core breakdown**. Do not
+list every row unless the user asks for the breakdown or needs help finding a failing condition.
+
 **How do I replace my Group 6 subject with one from Groups 1–5?** On the home page, in the Group 6
 component, use the first of the three dropdowns to pick the alternate group; the subject dropdown
 updates to match.
