@@ -63,7 +63,7 @@ A range such as “Grade 5–6” means different timezones in that session used
 
 The historical chart opens on the minimum score for your current predicted grade. This keeps the graph focused on the line most relevant to your result. The dashed line is your weighted score.
 
-Choose **All grades** only when you want to compare the complete boundary structure. When a session used multiple timezones, the plotted point shows the typical minimum and the tooltip shows the timezone range.
+Choose **All grades** only when you want to compare the complete boundary structure; this intentionally displays every grade line. When a session used multiple timezones, the plotted point shows the typical minimum and the tooltip shows the timezone range. Open **How to read this chart** below the graph for the short in-page explanation.
 
 ## Global grade distribution
 

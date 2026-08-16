@@ -40,6 +40,12 @@
 					item === Number(currentGrade) ? `Grade ${item} · your grade` : `Grade ${item}`
 				)
 		  ];
+	$: selectedGradeLabel =
+		number === 0
+			? 'each grade'
+			: isAE
+			? `Grade ${['E', 'D', 'C', 'B', 'A'][number - 1]}`
+			: `Grade ${number}`;
 
 	$: results = level === 'HL' ? HLResults : SLResults;
 
@@ -140,7 +146,7 @@
 		const labels = chartSessions.map((session) => session.short);
 
 		const gradeBoundaries = Array.from({ length: isAE ? 5 : 7 }, (_, i) => ({
-			label: isAE ? `Grade ${['E', 'D', 'C', 'B', 'A'][i]} minimum` : `Grade ${i + 1} minimum`,
+			label: isAE ? `Grade ${['E', 'D', 'C', 'B', 'A'][i]}` : `Grade ${i + 1}`,
 			data: chartSessions.map((session) => session.boundaries[i].average),
 			boundaryIndex: i,
 			backgroundColor: colors[i],
@@ -153,8 +159,7 @@
 			pointHitRadius: isMobile ? 18 : 5,
 			tension: isMobile ? 0.18 : 0,
 			borderWidth: 3,
-			fill: false,
-			hidden: i < 3 && number === 0 // Hide grades 1-3 by default in 'All' view
+			fill: false
 		}));
 
 		const finalDatasets = number === 0 ? [...gradeBoundaries] : [gradeBoundaries[number - 1]];
@@ -163,7 +168,7 @@
 		if (grade && grade > 0 && grade <= 100) {
 			const gradeLineColor = getStyle('--color-primary') || '#3b82f6';
 			finalDatasets.push({
-				label: 'Your score',
+				label: isAE ? 'Your score' : 'Your weighted score',
 				data: chartSessions.map(() => grade),
 				borderColor: gradeLineColor,
 				borderWidth: 3,
@@ -264,7 +269,10 @@
 								return `${session.name}${timezoneLabel}`;
 							},
 							label: function (context) {
-								if (context.dataset.label === 'Your score') {
+								if (
+									context.dataset.label === 'Your score' ||
+									context.dataset.label === 'Your weighted score'
+								) {
 									return `Your score: ${context.parsed.y}%`;
 								}
 								const session = chartSessions[context.dataIndex];
@@ -336,6 +344,7 @@
 		<div class="header-container">
 			<div class="title" id="historical-chart-title">
 				<span>{isAE ? `${name}` : `${level} ${language || ''} ${name}`}</span>
+				<p>Minimum score needed for {selectedGradeLabel} across past sessions.</p>
 			</div>
 			<div class="dropdown-container" on:change={() => (userSelectedBoundary = true)}>
 				<Dropdown
@@ -351,6 +360,18 @@
 				<canvas bind:this={chartCanvas} />
 			</div>
 		</div>
+		<details class="chart-help">
+			<summary>How to read this chart</summary>
+			<div>
+				<p>
+					Each point is the typical published boundary for that exam session. Hover or tap a point
+					to see the timezone range.
+				</p>
+				<a href="/blog/understanding-your-ib-predict-results"
+					>Read the plain-language results guide →</a
+				>
+			</div>
+		</details>
 	</div>
 {/if}
 
@@ -425,6 +446,38 @@
 		margin: 0;
 	}
 
+	.chart-help {
+		margin-top: 10px;
+		border-top: 1px solid var(--color-border);
+		color: var(--color-text-muted);
+
+		summary {
+			padding-top: 9px;
+			font-size: 0.76rem;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		div {
+			max-width: 680px;
+			padding-top: 7px;
+			font-size: 0.76rem;
+			line-height: 1.45;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			display: inline-block;
+			margin-top: 5px;
+			color: var(--color-primary);
+			font-weight: 700;
+			text-decoration: none;
+		}
+	}
+
 	.graph {
 		height: 280px;
 		position: relative;
@@ -476,6 +529,13 @@
 		span {
 			color: var(--color-text-main);
 			font-size: 1.05rem;
+		}
+
+		p {
+			margin: 2px 0 0;
+			color: var(--color-text-muted);
+			font-size: 0.75rem;
+			font-weight: 500;
 		}
 	}
 

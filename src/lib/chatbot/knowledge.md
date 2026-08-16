@@ -125,5 +125,10 @@ In the grade-distribution chart, each bar is the published share of students rec
 The student's predicted-grade bar is outlined in blue, while the session average is written above
 the chart. Do not describe nonexistent average or student marker lines.
 
+Historical boundary charts on subject pages initially show only the minimum score for the student's
+current predicted grade. **All grades** is an intentional advanced comparison and displays every
+grade line. A plotted point is the typical boundary when a session has multiple timezones; the
+tooltip contains the timezone range.
+
 **Is my data saved?** Yes, inputs are saved in your browser's local storage automatically. Nothing
 is sent to a server.
