@@ -11,6 +11,12 @@
 		1: 'E'
 	};
 
+	$: boundaryTitle = gradeBoundaryUsed?.name
+		? /forecast/i.test(gradeBoundaryUsed.name)
+			? gradeBoundaryUsed.name
+			: `${gradeBoundaryUsed.name} grade boundaries`
+		: '';
+
 	// Reactive function to determine if a markband should be shaded
 	$: shouldShade = (markbandIndex) => {
 		return mark === markbandIndex + 1;
@@ -19,9 +25,7 @@
 
 <table style="table-layout: fixed; width: 100%;">
 	<tr>
-		<th colspan={gradeBoundaryUsed?.marks?.length} style="text-align: center;"
-			>{gradeBoundaryUsed?.name ? gradeBoundaryUsed.name : ''} grade boundaries</th
-		>
+		<th colspan={gradeBoundaryUsed?.marks?.length} style="text-align: center;">{boundaryTitle}</th>
 	</tr>
 	<tr class="small">
 		{#each gradeBoundaryUsed?.marks ?? [] as boundary, i}

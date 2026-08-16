@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Shortened the forecast table heading in the predicted-grade card to “November 2026 forecast.”',
 				'Reworked the individual subject result card to show the forecasted grade probability alongside one grade below and above, plus a shorter N25 percentile comparison.',
 				'Made the November 2026 forecast the default boundary choice on individual subject pages, with official M25 and N25 boundaries available as clear alternatives and no competing result card.',
 				'Focused each main-calculator subject card on one best next move, moving percentile standing, grade outlook, assessment calculations, and session history into optional context.',
