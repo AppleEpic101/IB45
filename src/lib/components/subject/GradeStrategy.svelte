@@ -31,22 +31,24 @@
 	$: bestOption = improvement?.options
 		?.filter(({ marksNeeded }) => marksNeeded !== undefined)
 		.sort((a, b) => a.marksNeeded - b.marksNeeded || b.impact - a.impact)[0];
-	$: outlookTitle = Number(currentGrade) === 1
-		? 'This is the minimum subject grade'
-		: confidence
-		? confidence.label === 'Borderline'
-			? 'This grade is close to changing'
-			: confidence.label === 'Competitive'
-			? 'This grade has varied before'
-			: 'This grade has been consistent'
-		: 'Not enough history yet';
-	$: outlookExplanation = Number(currentGrade) === 1
-		? 'There is no lower subject grade; focus on the next-grade plan.'
-		: confidence
-		? confidence.riseToDrop === 1
-			? `A boundary 1 mark higher would make this Grade ${confidence.lowerGrade}.`
-			: `A boundary ${confidence.riseToDrop} marks higher would make this Grade ${confidence.lowerGrade}.`
-		: 'More comparable sessions are needed before showing a grade outlook.';
+	$: outlookTitle =
+		Number(currentGrade) === 1
+			? 'This is the minimum subject grade'
+			: confidence
+			? confidence.label === 'Borderline'
+				? 'This grade is close to changing'
+				: confidence.label === 'Competitive'
+				? 'This grade has varied before'
+				: 'This grade has been consistent'
+			: 'Not enough history yet';
+	$: outlookExplanation =
+		Number(currentGrade) === 1
+			? 'There is no lower subject grade; focus on the next-grade plan.'
+			: confidence
+			? confidence.riseToDrop === 1
+				? `A boundary 1 mark higher would make this Grade ${confidence.lowerGrade}.`
+				: `A boundary ${confidence.riseToDrop} marks higher would make this Grade ${confidence.lowerGrade}.`
+			: 'More comparable sessions are needed before showing a grade outlook.';
 
 	const impactLabel = (value) =>
 		Number(value).toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 2 });
@@ -68,7 +70,8 @@
 				{#if bestOption}
 					<span>Best move</span>
 					<strong
-						>+{bestOption.marksNeeded} {bestOption.marksNeeded === 1 ? 'mark' : 'marks'} on
+						>+{bestOption.marksNeeded}
+						{bestOption.marksNeeded === 1 ? 'mark' : 'marks'} on
 						{bestOption.name}</strong
 					>
 					<small>to reach Grade {improvement.nextGrade}</small>
@@ -84,75 +87,85 @@
 					<strong>Not reachable with remaining marks</strong>
 				{/if}
 			</div>
-
-			<div class:warning={confidence?.label === 'Borderline'} class="outlook">
-				<span>Grade outlook</span>
-				<strong>{outlookTitle}</strong>
-				<small>{outlookExplanation}</small>
-			</div>
 		</div>
 
-		{#if improvement?.options?.length || comparisons.length}
+		{#if confidence || improvement?.options?.length || comparisons.length}
 			<details class="planning-details">
-				<summary>More planning details</summary>
+				<summary>Grade outlook &amp; more options</summary>
 				<div class="details-content">
-				{#if improvement?.options?.length}
-					<section aria-labelledby="assessment-impact-title">
-						<h4 id="assessment-impact-title">Compare assessments</h4>
-						<div class="compact-table assessment-table" role="table" aria-label="Assessment impact">
-					<div class="compact-row compact-header" role="row">
-						<span role="columnheader">Assessment</span>
-						<span role="columnheader">+1 mark</span>
-						<span role="columnheader">To Grade {improvement.nextGrade}</span>
-					</div>
-					{#each improvement.options as option}
-						<div class:best={bestOption?.index === option.index} class="compact-row" role="row">
-							<strong role="cell">
-								{option.name}
-								{#if bestOption?.index === option.index}<small>Best</small>{/if}
-							</strong>
-							<span role="cell">+{impactLabel(option.impact)}% overall</span>
-							<span role="cell">
-								{option.marksNeeded !== undefined ? `+${option.marksNeeded}` : '—'}
-							</span>
+					{#if confidence}
+						<div class:warning={confidence?.label === 'Borderline'} class="outlook">
+							<span>Grade outlook</span>
+							<strong>{outlookTitle}</strong>
+							<small>{outlookExplanation}</small>
 						</div>
-					{/each}
-						</div>
-					</section>
-				{/if}
+					{/if}
 
-				{#if comparisons.length}
-					<section aria-labelledby="past-session-title">
-						<h4 id="past-session-title">Your score in past sessions</h4>
-						<div class="compact-table history-table" role="table" aria-label="Historical what-if">
-					<div class="compact-row compact-header" role="row">
-						<span role="columnheader">Session</span>
-						<span role="columnheader">Result</span>
-						<span role="columnheader">Timezone range</span>
-					</div>
-					{#each comparisons as session}
-						<div
-							class:current={session.short === selectedBoundary?.short}
-							class="compact-row"
-							role="row"
-						>
-							<strong role="cell">{session.short}</strong>
-							<span role="cell">Grade {session.grade}</span>
-							<span role="cell">
-								{session.minGrade === session.maxGrade
-									? session.timezoneCount > 1
-										? 'Same'
-										: '—'
-									: `${session.minGrade}–${session.maxGrade}`}
-							</span>
-						</div>
-					{/each}
-						</div>
-					</section>
-				{/if}
-				<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
-					>How these recommendations work <span aria-hidden="true">→</span></a
-				>
+					{#if improvement?.options?.length}
+						<section aria-labelledby="assessment-impact-title">
+							<h4 id="assessment-impact-title">Compare assessments</h4>
+							<div
+								class="compact-table assessment-table"
+								role="table"
+								aria-label="Assessment impact"
+							>
+								<div class="compact-row compact-header" role="row">
+									<span role="columnheader">Assessment</span>
+									<span role="columnheader">+1 mark</span>
+									<span role="columnheader">To Grade {improvement.nextGrade}</span>
+								</div>
+								{#each improvement.options as option}
+									<div
+										class:best={bestOption?.index === option.index}
+										class="compact-row"
+										role="row"
+									>
+										<strong role="cell">
+											{option.name}
+											{#if bestOption?.index === option.index}<small>Best</small>{/if}
+										</strong>
+										<span role="cell">+{impactLabel(option.impact)}% overall</span>
+										<span role="cell">
+											{option.marksNeeded !== undefined ? `+${option.marksNeeded}` : '—'}
+										</span>
+									</div>
+								{/each}
+							</div>
+						</section>
+					{/if}
+
+					{#if comparisons.length}
+						<section aria-labelledby="past-session-title">
+							<h4 id="past-session-title">Your score in past sessions</h4>
+							<div class="compact-table history-table" role="table" aria-label="Historical what-if">
+								<div class="compact-row compact-header" role="row">
+									<span role="columnheader">Session</span>
+									<span role="columnheader">Result</span>
+									<span role="columnheader">Timezone range</span>
+								</div>
+								{#each comparisons as session}
+									<div
+										class:current={session.short === selectedBoundary?.short}
+										class="compact-row"
+										role="row"
+									>
+										<strong role="cell">{session.short}</strong>
+										<span role="cell">Grade {session.grade}</span>
+										<span role="cell">
+											{session.minGrade === session.maxGrade
+												? session.timezoneCount > 1
+													? 'Same'
+													: '—'
+												: `${session.minGrade}–${session.maxGrade}`}
+										</span>
+									</div>
+								{/each}
+							</div>
+						</section>
+					{/if}
+					<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
+						>How these recommendations work <span aria-hidden="true">→</span></a
+					>
 				</div>
 			</details>
 		{/if}
@@ -234,6 +247,7 @@
 		justify-content: center;
 		flex: 1;
 		min-width: 0;
+		grid-column: 1 / -1;
 		padding: 10px 12px;
 		border: 1px solid var(--color-border);
 		border-radius: 10px;

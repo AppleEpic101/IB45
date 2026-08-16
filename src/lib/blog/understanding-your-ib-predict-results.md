@@ -21,6 +21,8 @@ This is the difference between your weighted score and the next published grade 
 
 The **best next move** checks each assessment and finds the smallest raw-mark increase that would reach that next boundary. It is a planning tool, not a promise about what will happen in an examination.
 
+The Next grade panel shows only this recommended move at first. Open **Grade outlook & more options** when you want to compare every assessment or see how the same score behaved in past sessions.
+
 ## Where you stand
 
 “Ahead of about 75%” means your predicted grade is higher than the final grade earned by roughly three out of four students in that subject and examination session.
@@ -51,7 +53,7 @@ The sentence below the outlook gives the clearest risk check. “A boundary 2 ma
 
 This describes uncertainty in the boundary, not the quality of your future exam performance.
 
-Open **More planning details** only when you want to compare the effect of one extra mark across assessments or check the same score against past sessions.
+The grade outlook stays inside **Grade outlook & more options** because it is supporting context, not the primary recommendation.
 
 ## Past-session comparison
 

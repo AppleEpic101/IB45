@@ -15,6 +15,7 @@
 			summary:
 				'Two November sessions of worldwide results are now available throughout IB Predict.',
 			items: [
+				'Reduced the Next grade panel to one actionable recommendation, moving boundary risk, assessment calculations, and past-session comparisons into optional details.',
 				'Clarified historical boundary charts with one plain-language caption, optional timezone guidance, and a complete All grades view.',
 				'Removed competing average and student marker lines from grade distributions, using one outlined result bar and a written session average instead.',
 				'Added focused historical trend graphs to the dedicated TOK and Extended Essay boundary pages without adding prediction content.',
