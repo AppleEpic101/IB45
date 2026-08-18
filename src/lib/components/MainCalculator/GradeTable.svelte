@@ -115,7 +115,7 @@
 <aside class="summary" aria-label="Diploma score summary">
 	<table>
 		<thead>
-			<tr><th>Diploma summary</th><th>Result</th></tr>
+			<tr><th>Subjects</th><th>Result</th></tr>
 		</thead>
 		<tbody>
 			<tr>
@@ -137,10 +137,6 @@
 	</table>
 
 	<section class="score-breakdown" aria-label="Subject and core breakdown">
-		<header>
-			<span>Subject &amp; core breakdown</span>
-			<small>6 subjects, TOK and EE</small>
-		</header>
 		<table aria-label="Subject and core score breakdown">
 			<tbody>
 				{#each rowValues as rowValue, index}
@@ -264,6 +260,7 @@
 	table {
 		width: 100%;
 		border-collapse: collapse;
+		table-layout: fixed;
 	}
 
 	th,
@@ -272,6 +269,11 @@
 		padding: 8px 7px;
 		background: var(--color-surface-variant);
 		font-size: 0.82rem;
+	}
+
+	th:first-child,
+	td:first-child {
+		width: 62%;
 	}
 
 	th + th,
@@ -289,10 +291,11 @@
 	.value {
 		color: #07111f;
 		font-weight: 700;
+		text-align: center;
+
 	}
 
-	.value.unavailable,
-	.status-cell {
+	.value.unavailable {
 		color: var(--color-text-main);
 	}
 
@@ -367,7 +370,7 @@
 
 	.comparison-heading span {
 		color: var(--color-text-muted);
-		font-size: 0.62rem;
+		font-size: 0.72rem;
 	}
 
 	.comparison-heading span {
@@ -377,7 +380,7 @@
 	}
 
 	.comparison-heading strong {
-		font-size: 0.7rem;
+		font-size: 0.82rem;
 	}
 
 	.standing {
@@ -387,14 +390,14 @@
 
 	.standing strong {
 		color: var(--color-primary-dark);
-		font-size: 1.05rem;
+		font-size: 1.2rem;
 	}
 
 	.standing span,
 	.peer-comparison p,
 	.waiting-comparison span {
 		color: var(--color-text-muted);
-		font-size: 0.66rem;
+		font-size: 0.78rem;
 	}
 
 	.peer-comparison p {
@@ -407,13 +410,13 @@
 
 	.comparison-help {
 		color: var(--color-primary);
-		font-size: 0.64rem;
+		font-size: 0.76rem;
 		font-weight: 750;
 		text-decoration: none;
 	}
 
 	.comparison-details {
-		font-size: 0.64rem;
+		font-size: 0.76rem;
 	}
 
 	.comparison-details summary {
@@ -471,7 +474,7 @@
 	}
 
 	.waiting-comparison strong {
-		font-size: 0.72rem;
+		font-size: 0.85rem;
 	}
 
 	.meta {
@@ -485,7 +488,7 @@
 	.summary :global(button) {
 		border-width: 1px;
 		padding: 8px 10px;
-		font-size: 0.7rem;
+		font-size: 0.85rem;
 	}
 
 	@media (max-width: 700px) {

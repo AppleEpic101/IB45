@@ -129,21 +129,6 @@
 						</div>
 					{/if}
 
-					{#if comparisons.length}
-						<div class="compact-list">
-							<h4>Past-session results for this score</h4>
-							{#each comparisons as comparison}
-								<div class="compact-row">
-									<span>{comparison.short}</span>
-									<strong>
-										Grade {comparison.minGrade}{comparison.minGrade !== comparison.maxGrade
-											? `–${comparison.maxGrade}`
-											: ''}
-									</strong>
-								</div>
-							{/each}
-						</div>
-					{/if}
 				</div>
 				<a class="explain-link" href="/blog/understanding-your-ib-predict-results"
 					>What do these results mean? <span aria-hidden="true">→</span></a
@@ -181,14 +166,14 @@
 	.insight > span,
 	.insight small {
 		color: var(--color-text-muted);
-		font-size: 0.64rem;
+		font-size: 0.74rem;
 		line-height: 1.25;
 	}
 
 	.insight strong {
 		overflow: hidden;
 		color: var(--color-text-main);
-		font-size: 0.78rem;
+		font-size: 0.9rem;
 		line-height: 1.25;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -205,7 +190,7 @@
 	summary {
 		padding: 8px 12px;
 		color: var(--color-text-muted);
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 		font-weight: 750;
 		cursor: pointer;
 		list-style-position: inside;
@@ -239,12 +224,12 @@
 	.plain-summary p {
 		margin: 0;
 		color: var(--color-text-muted);
-		font-size: 0.66rem;
+		font-size: 0.76rem;
 		line-height: 1.35;
 	}
 
 	.plain-summary strong {
-		font-size: 0.82rem;
+		font-size: 0.94rem;
 	}
 
 	.warning-text {
@@ -253,7 +238,7 @@
 
 	.compact-list h4 {
 		margin: 5px 0 4px;
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 	}
 
 	.compact-row {
@@ -263,7 +248,7 @@
 		gap: 10px;
 		padding: 5px 3px;
 		border-top: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
-		font-size: 0.68rem;
+		font-size: 0.78rem;
 	}
 
 	.compact-row span {
@@ -278,7 +263,7 @@
 		gap: 5px;
 		margin: 0 12px 12px;
 		color: var(--color-primary);
-		font-size: 0.68rem;
+		font-size: 0.78rem;
 		font-weight: 750;
 		text-decoration: none;
 	}

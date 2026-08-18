@@ -134,35 +134,6 @@
 						</section>
 					{/if}
 
-					{#if comparisons.length}
-						<section aria-labelledby="past-session-title">
-							<h4 id="past-session-title">Your score in past sessions</h4>
-							<div class="compact-table history-table" role="table" aria-label="Historical what-if">
-								<div class="compact-row compact-header" role="row">
-									<span role="columnheader">Session</span>
-									<span role="columnheader">Result</span>
-									<span role="columnheader">Timezone range</span>
-								</div>
-								{#each comparisons as session}
-									<div
-										class:current={session.short === selectedBoundary?.short}
-										class="compact-row"
-										role="row"
-									>
-										<strong role="cell">{session.short}</strong>
-										<span role="cell">Grade {session.grade}</span>
-										<span role="cell">
-											{session.minGrade === session.maxGrade
-												? session.timezoneCount > 1
-													? 'Same'
-													: '—'
-												: `${session.minGrade}–${session.maxGrade}`}
-										</span>
-									</div>
-								{/each}
-							</div>
-						</section>
-					{/if}
 					<a class="strategy-help" href="/blog/understanding-your-ib-predict-results"
 						>How these recommendations work <span aria-hidden="true">→</span></a
 					>

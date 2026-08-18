@@ -206,7 +206,7 @@
 							color: textColor,
 							font: {
 								weight: 'bold',
-								size: 14
+								size: 18
 							}
 						},
 						grid: {
@@ -216,7 +216,8 @@
 							color: textColor,
 							maxRotation: 0,
 							autoSkip: true,
-							maxTicksLimit: isMobile && !expanded ? 6 : expanded ? 18 : 12
+							maxTicksLimit: isMobile && !expanded ? 6 : expanded ? 18 : 12,
+							font: { size: 14 }
 						}
 					},
 					y: {
@@ -236,7 +237,8 @@
 							color: textColor,
 							callback: function (value) {
 								return value + '%';
-							}
+							},
+							font: { size: 14}
 						}
 					}
 				},
@@ -249,7 +251,7 @@
 							usePointStyle: true,
 							padding: 20,
 							font: {
-								size: 12
+								size: 15
 							}
 						}
 					},
@@ -379,6 +381,8 @@
 	.chart-section {
 		position: relative;
 		padding-top: 2px;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 
 	.chart-section.expanded {
@@ -479,7 +483,7 @@
 	}
 
 	.graph {
-		height: 280px;
+		height: 420px;
 		position: relative;
 	}
 
@@ -520,7 +524,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		font-size: 1rem;
+		font-size: 1.15rem;
 		font-weight: 800;
 		color: var(--color-text-main);
 		text-align: left;
@@ -528,13 +532,13 @@
 
 		span {
 			color: var(--color-text-main);
-			font-size: 1.05rem;
+			font-size: 1.3rem;
 		}
 
 		p {
 			margin: 2px 0 0;
 			color: var(--color-text-muted);
-			font-size: 0.75rem;
+			font-size: 0.9rem;
 			font-weight: 500;
 		}
 	}

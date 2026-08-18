@@ -536,7 +536,7 @@
 	}
 	.card-content li {
 		color: var(--color-text-main);
-		font-size: 0.86rem;
+		font-size: 0.95rem;
 		line-height: 1.55;
 	}
 	.card-content li::marker {

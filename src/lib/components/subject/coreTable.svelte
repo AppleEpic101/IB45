@@ -118,6 +118,8 @@
 <style>
 	.boundary-table {
 		width: 100%;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 	.table-scroll {
 		width: 100%;
@@ -222,13 +224,13 @@
 		td {
 			min-width: 0;
 			padding: 5px 2px;
-			font-size: clamp(0.58rem, 2.5vw, 0.7rem);
+			font-size: clamp(0.55rem, 2.3vw, 0.68rem);
 			white-space: nowrap;
 			overflow: hidden;
 		}
 		.title-row th {
 			padding: 7px 5px;
-			font-size: 0.74rem;
+			font-size: 0.72rem;
 			white-space: normal;
 		}
 		td:first-child {

@@ -41,7 +41,6 @@
 	</div>
 
 	<div class="margin-row">
-		<span>Your weighted score: <strong>{score}%</strong></span>
 		{#if safetyMargin !== null}
 			<span
 				>{safetyMargin}

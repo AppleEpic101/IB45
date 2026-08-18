@@ -174,12 +174,12 @@
 	}
 	h4 {
 		margin: 0;
-		font-size: 0.72rem;
+		font-size: 0.85rem;
 	}
 	.compact select {
 		max-width: 190px;
 		padding: 5px 24px 5px 7px;
-		font-size: 0.68rem;
+		font-size: 0.8rem;
 	}
 	.summary {
 		display: grid;
@@ -198,10 +198,10 @@
 	.summary span,
 	footer {
 		color: var(--color-text-muted);
-		font-size: 0.58rem;
+		font-size: 0.7rem;
 	}
 	.summary strong {
-		font-size: 0.78rem;
+		font-size: 0.9rem;
 	}
 	.grade-result strong {
 		color: var(--color-primary);
