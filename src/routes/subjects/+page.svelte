@@ -13,6 +13,7 @@
 	const groups = data.meta.groups;
 	import Discord from '$lib/components/Discord.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import SubjectIcon from '$lib/components/subject/SubjectIcon.svelte';
 	import Button from '../../lib/components/button.svelte';
 </script>
 
@@ -34,14 +35,17 @@
 					{#each courses as course}
 						{#if course.name !== 'meta' && !course.isCore && course?.groupNumber?.includes(i + 1)}
 							<div class="subject-card">
-								<span class="subject-title">
-									{course.name}
-									{#if course.groupNumber.length === 2}
-										<span class="modifier-tag"
-											>{course.groupNumber[1] === 's' ? ' (SBS)' : ' (*)'}</span
-										>
-									{/if}
-								</span>
+								<div class="subject-identity">
+									<SubjectIcon subject={course.short} />
+									<span class="subject-title">
+										{course.name}
+										{#if course.groupNumber.length === 2}
+											<span class="modifier-tag"
+												>{course.groupNumber[1] === 's' ? ' (SBS)' : ' (*)'}</span
+											>
+										{/if}
+									</span>
+								</div>
 								<div class="level-selector">
 									<a href="./subjects/{course.short}?lvl=SL" class="lvl-btn sl">SL</a>
 									{#if !course.SLOnly}
@@ -61,7 +65,10 @@
 				{#each courses as course}
 					{#if course?.isCore}
 						<div class="subject-card">
-							<span class="subject-title">{course.name}</span>
+							<div class="subject-identity">
+								<SubjectIcon subject={course.short} />
+								<span class="subject-title">{course.name}</span>
+							</div>
 							<div class="level-selector">
 								<a href="./subjects/{course.short}?lvl=SL" class="lvl-btn sl">Start Calculation</a>
 							</div>
@@ -78,7 +85,10 @@
 					{@const course = courses.find((c) => c.short === slug)}
 					{#if course}
 						<div class="subject-card">
-							<span class="subject-title">{course.name} (2025)</span>
+							<div class="subject-identity">
+								<SubjectIcon subject={course.short} />
+								<span class="subject-title">{course.name} (2025)</span>
+							</div>
 							<div class="level-selector">
 								<a href="./subjects/{slug}?lvl=SL&syl=2025" class="lvl-btn sl">SL</a>
 								<a href="./subjects/{slug}?lvl=HL&syl=2025" class="lvl-btn hl">HL</a>
@@ -171,6 +181,13 @@
 			font-size: 0.75rem;
 			font-weight: 400;
 		}
+	}
+
+	.subject-identity {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		min-width: 0;
 	}
 
 	.level-selector {

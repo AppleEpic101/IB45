@@ -2,6 +2,8 @@
 	export let tokGrade;
 	export let eeGrade;
 	export let coreGrade;
+	export let tokComplete = true;
+	export let eeComplete = true;
 	$: tokGrade = letterGrades[tokPredictedGrade];
 	$: eeGrade = letterGrades[eePredictedGrade];
 
@@ -14,20 +16,30 @@
 
 	import ScoreSelector from '$lib/components/MainCalculator/ScoreSelector.svelte';
 	import GradeResults from '$lib/components/MainCalculator/GradeResults.svelte';
+	import CorePerformance from '$lib/components/subject/CorePerformance.svelte';
 
 	let letterGrades = ['E', 'D', 'C', 'B', 'A'];
 
 	let settings = getPredictorSelectedOptions(6);
 	$settings['chosenScores'] = $settings['chosenScores'] || { tok: [0, 0], ee: [0] };
+	$settings['chosenScores']['tok'] = [
+		$settings['chosenScores']['tok']?.[0] ?? 0,
+		$settings['chosenScores']['tok']?.[1] ?? 0
+	];
+	$settings['chosenScores']['ee'] = [$settings['chosenScores']['ee']?.[0] ?? 0];
+	$settings['eeSubjectGroup'] = $settings['eeSubjectGroup'] || 'individuals-societies';
 
 	let tokAssessments = courses['Theory Of Knowledge'].SL,
-		tokBoundaries = $selectedBoundary['Theory Of Knowledge'].TZ[0],
+		tokBoundaries,
 		tokPredictedScore,
 		tokPredictedGrade;
+	$: tokBoundaries = $selectedBoundary['Theory Of Knowledge'].TZ[0];
 
 	$: {
 		tokPredictedScore =
-			$settings['chosenScores']['tok'][0] * 2 + $settings['chosenScores']['tok'][1];
+			Math.min(10, Math.max(0, Number($settings['chosenScores']['tok'][0]) || 0)) * 2 +
+			Math.min(10, Math.max(0, Number($settings['chosenScores']['tok'][1]) || 0));
+		tokPredictedGrade = 0;
 
 		for (let i = 0; i < tokBoundaries.length; i++) {
 			if (tokPredictedScore >= tokBoundaries[i]) {
@@ -37,11 +49,13 @@
 	}
 
 	let eeAssesments = courses['Extended Essay'].SL,
-		eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0],
+		eeBoundaries,
 		eePredictedScore,
 		eePredictedGrade;
+	$: eeBoundaries = $selectedBoundary['Extended Essay'].TZ[0];
 	$: {
-		eePredictedScore = $settings['chosenScores']['ee'][0];
+		eePredictedScore = Math.min(34, Math.max(0, Number($settings['chosenScores']['ee'][0]) || 0));
+		eePredictedGrade = 0;
 		for (let i = 0; i < eeBoundaries.length; i++) {
 			if (eePredictedScore >= eeBoundaries[i]) {
 				eePredictedGrade = i;
@@ -78,55 +92,66 @@
 
 <div class="main">
 	<div class="tok">
-		<h2 class="groupTitle">Theory Of Knowledge</h2>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="64"
-			height="64"
-			viewBox="0 0 64 64"
-			fill="none"
-			class="toggle-button"
-			class:flipped={!showTok}
-			on:click={toggleShowTok}
-			on:keydown={(e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					toggleShowTok();
-				}
-			}}
-		>
-			<circle
-				cx="31.9997"
-				cy="31.9998"
-				r="31.5"
-				fill="var(--color-surface-variant)"
-				stroke="var(--color-border)"
-			/>
-			<path
-				d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
-				fill="var(--color-text-main)"
-			/>
-		</svg>
+		<div class="core-header">
+			<h2 class="groupTitle">Theory Of Knowledge</h2>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="40"
+				height="40"
+				viewBox="0 0 64 64"
+				fill="none"
+				class="toggle-button"
+				class:flipped={showTok}
+				on:click={toggleShowTok}
+				on:keydown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						toggleShowTok();
+					}
+				}}
+			>
+				<circle
+					cx="31.9997"
+					cy="31.9998"
+					r="31.5"
+					fill="var(--color-surface-variant)"
+					stroke="var(--color-border)"
+				/>
+				<path
+					d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
+					fill="var(--color-text-main)"
+				/>
+			</svg>
+		</div>
 		{#if !showTok}
-			<GradeResults
-				isCondensed={true}
-				grades={[tokPredictedGrade]}
-				predictedGrade={tokGrade}
-				score={tokPredictedScore}
-				name={$selectedBoundaryId}
-				isCore={true}
-				maxScore={30}
-			/>
+			{#if tokComplete}
+				<div class="collapsed-summary">
+					<div class="collapsed-result">
+						<span>{$selectedBoundaryId} Grade</span>
+						<strong>{tokPredictedScore}<small>/ 30</small></strong>
+					</div>
+					<div class="collapsed-result grade-result">
+						<span>Awarded Mark</span>
+						<strong>{tokGrade || '—'}</strong>
+					</div>
+				</div>
+			{:else}
+				<div class="input-status">Enter both TOK assessment scores to calculate a grade.</div>
+			{/if}
 		{:else}
 			<div class="grade-io">
 				<div class="grade-results">
-					<GradeResults
-						grades={[tokPredictedGrade]}
-						predictedGrade={tokGrade}
-						score={tokPredictedScore}
-						name={$selectedBoundaryId}
-						isCore={true}
-						maxScore={30}
-					/>
+					{#if tokComplete}
+						<GradeResults
+							grades={[tokPredictedGrade]}
+							predictedGrade={tokGrade}
+							score={tokPredictedScore}
+							name={$selectedBoundaryId}
+							isCore={true}
+							maxScore={30}
+						/>
+					{:else}
+						<div class="input-status">Enter both scores to calculate your TOK grade.</div>
+					{/if}
 				</div>
 				<div class="gradeSelectors">
 					{#each tokAssessments as assessment, i}
@@ -140,65 +165,81 @@
 				</div>
 			</div>
 		{/if}
+		{#if showTok && tokComplete}
+			<CorePerformance type="tok" grade={tokGrade} sessionId={$selectedBoundaryId} compact />
+		{/if}
 
-		<a href="/subjects/theory-of-knowledge" target="_blank"
-			><button class="goto">Goto subject page</button></a
-		>
+		{#if showTok}
+			<a href="/subjects/theory-of-knowledge" target="_blank"
+				><button class="goto">Goto subject page</button></a
+			>
+		{/if}
 	</div>
 
 	<br />
 	<br />
 
 	<div class="ee">
-		<h2 class="groupTitle">Extended Essay</h2>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="64"
-			height="64"
-			viewBox="0 0 64 64"
-			fill="none"
-			class="toggle-button"
-			class:flipped={!showEe}
-			on:click={toggleShowEe}
-			on:keydown={(e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					toggleShowEe();
-				}
-			}}
-		>
-			<circle
-				cx="31.9997"
-				cy="31.9998"
-				r="31.5"
-				fill="var(--color-surface-variant)"
-				stroke="var(--color-border)"
-			/>
-			<path
-				d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
-				fill="var(--color-text-main)"
-			/>
-		</svg>
+		<div class="core-header">
+			<h2 class="groupTitle">Extended Essay</h2>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="40"
+				height="40"
+				viewBox="0 0 64 64"
+				fill="none"
+				class="toggle-button"
+				class:flipped={showEe}
+				on:click={toggleShowEe}
+				on:keydown={(e) => {
+					if (e.key === 'Enter' || e.key === ' ') {
+						toggleShowEe();
+					}
+				}}
+			>
+				<circle
+					cx="31.9997"
+					cy="31.9998"
+					r="31.5"
+					fill="var(--color-surface-variant)"
+					stroke="var(--color-border)"
+				/>
+				<path
+					d="M30.2319 43.7676C31.2082 44.7439 32.7911 44.7439 33.7674 43.7676L49.6773 27.8577C50.6536 26.8814 50.6536 25.2985 49.6773 24.3222C48.701 23.3459 47.1181 23.3459 46.1418 24.3222L31.9996 38.4643L17.8575 24.3222C16.8812 23.3459 15.2983 23.3459 14.322 24.3222C13.3456 25.2985 13.3456 26.8814 14.322 27.8577L30.2319 43.7676ZM31.9996 41.9998H29.4996V41.9999H31.9996H34.4996V41.9998H31.9996Z"
+					fill="var(--color-text-main)"
+				/>
+			</svg>
+		</div>
 		{#if !showEe}
-			<GradeResults
-				isCondensed={true}
-				grades={[eePredictedGrade]}
-				predictedGrade={eeGrade}
-				score={eePredictedScore}
-				name={$selectedBoundaryId}
-				isCore={true}
-				maxScore={34}
-			/>
+			{#if eeComplete}
+				<div class="collapsed-summary">
+					<div class="collapsed-result">
+						<span>{$selectedBoundaryId} Grade</span>
+						<strong>{eePredictedScore}<small>/ 34</small></strong>
+					</div>
+					<div class="collapsed-result grade-result">
+						<span>Awarded Mark</span>
+						<strong>{eeGrade || '—'}</strong>
+					</div>
+				</div>
+			{:else}
+				<div class="input-status">Enter your Extended Essay score to calculate a grade.</div>
+			{/if}
 		{:else}
 			<div class="grade-io">
 				<div class="grade-results">
-					<GradeResults
-						grades={[eePredictedGrade]}
-						predictedGrade={eeGrade}
-						score={eePredictedScore}
-						name={$selectedBoundaryId}
-						isCore={true}
-						maxScore={34}
-					/>
+					{#if eeComplete}
+						<GradeResults
+							grades={[eePredictedGrade]}
+							predictedGrade={eeGrade}
+							score={eePredictedScore}
+							name={$selectedBoundaryId}
+							isCore={true}
+							maxScore={34}
+						/>
+					{:else}
+						<div class="input-status">Enter a score to calculate your Extended Essay grade.</div>
+					{/if}
 				</div>
 				<div class="gradeSelectors">
 					{#each eeAssesments as assessment, i}
@@ -212,10 +253,21 @@
 				</div>
 			</div>
 		{/if}
+		{#if showEe && eeComplete}
+			<CorePerformance
+				type="ee"
+				grade={eeGrade}
+				sessionId={$selectedBoundaryId}
+				compact
+				bind:subjectGroup={$settings['eeSubjectGroup']}
+			/>
+		{/if}
 
-		<a href="/subjects/extended-essay" target="_blank"
-			><button class="goto">Goto subject page</button></a
-		>
+		{#if showEe}
+			<a href="/subjects/extended-essay" target="_blank"
+				><button class="goto">Goto subject page</button></a
+			>
+		{/if}
 		<br /><br />
 	</div>
 
@@ -230,28 +282,30 @@
 		border: 1px solid var(--color-border);
 		margin-bottom: 10px;
 		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-		padding: 1.5rem;
+		padding: 1rem;
 		background-color: var(--color-surface);
 		position: relative;
 	}
 
 	.groupTitle {
-		font-size: 1.75rem;
+		font-size: 1.2rem;
 		padding-bottom: 10px;
 		margin: 0;
 	}
 
-	.tok,
-	.ee {
-		position: relative;
+	.core-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
 	}
 
 	.toggle-button {
 		cursor: pointer;
-		position: absolute;
-		right: calc(-1.5rem + 8px);
-		top: calc(-1.5rem + 10px);
-		width: 56px;
+		flex: none;
+		width: 40px;
+		height: 40px;
+		margin-right: -4px;
 		filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 		transform: rotate(0deg);
 		transition: transform 0.5s;
@@ -259,6 +313,53 @@
 
 	.flipped {
 		transform: rotate(180deg);
+	}
+
+	.collapsed-summary {
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		width: 100%;
+		margin-top: 16px;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface-variant);
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+	}
+
+	.collapsed-result {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 10px 14px;
+	}
+
+	.collapsed-result + .collapsed-result {
+		border-left: 1px solid var(--color-border);
+	}
+
+	.collapsed-result span {
+		color: var(--color-text-muted);
+		font-size: 0.76rem;
+		font-weight: 600;
+	}
+
+	.collapsed-result strong {
+		color: var(--color-text-main);
+		font-size: 1.15rem;
+		line-height: 1;
+	}
+
+	.collapsed-result small {
+		color: var(--color-text-muted);
+		font-size: 0.7rem;
+		font-weight: 600;
+	}
+
+	.grade-result strong {
+		color: var(--color-primary);
 	}
 
 	.gradeSelectors {
@@ -298,6 +399,16 @@
 		width: fit-content;
 		padding: 0.5rem 0.75rem;
 		margin: 0 0.5rem 0.5rem 0;
+	}
+
+	.input-status {
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		padding: 14px;
+		background: var(--color-surface-variant);
+		color: var(--color-text-muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
 	}
 
 	.goto {

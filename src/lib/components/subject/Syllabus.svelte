@@ -34,8 +34,8 @@
 		display: flex;
 		align-items: center;
 		gap: 1.25rem;
-		margin-bottom: 2rem;
-		padding: 0.75rem 0;
+		margin-bottom: 1rem;
+		padding: 0.4rem 0 0.65rem;
 		border-bottom: 1px solid var(--color-border);
 	}
 

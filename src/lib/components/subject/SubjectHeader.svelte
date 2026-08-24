@@ -1,5 +1,6 @@
 <script>
 	import BackButton from './BackButton.svelte';
+	import SubjectIcon from './SubjectIcon.svelte';
 	export let syllabus;
 	export let level;
 	export let language;
@@ -23,11 +24,14 @@
 				<span class="badge level-badge {level}">{level} Level</span>
 			{/if}
 		</div>
-		<h1>
-			{language || ''}
-			{syllabus.name}
-			<span class="assessment-year">{syllabus.firstAssessment}–Present</span>
-		</h1>
+		<div class="title-row">
+			<SubjectIcon subject={syllabus.short} size="large" />
+			<h1>
+				{language || ''}
+				{syllabus.name}
+				<span class="assessment-year">{syllabus.firstAssessment}–Present</span>
+			</h1>
+		</div>
 		<div class="stats-row">
 			<span class="subject-type">
 				{#if syllabus.groupNumber.length === 2}
@@ -48,10 +52,10 @@
 
 <style lang="scss">
 	.subject-header {
-		margin-bottom: 2.5rem;
+		margin-bottom: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: 0.6rem;
 	}
 
 	.nav-row {
@@ -61,12 +65,19 @@
 	.header-main {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 0.45rem;
 	}
 
 	.metadata {
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	.title-row {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		min-width: 0;
 	}
 
 	.badge {
@@ -97,7 +108,7 @@
 
 	h1 {
 		margin: 0;
-		font-size: 2.5rem;
+		font-size: 2.15rem;
 		font-weight: 800;
 		letter-spacing: -0.03em;
 		line-height: 1.1;
@@ -106,7 +117,7 @@
 		.assessment-year {
 			color: var(--color-text-muted);
 			font-weight: 400;
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			margin-left: 0.5rem;
 			letter-spacing: -0.01em;
 		}
@@ -131,6 +142,11 @@
 	}
 
 	@media (max-width: 600px) {
+		.title-row {
+			align-items: flex-start;
+			gap: 0.75rem;
+		}
+
 		h1 {
 			font-size: 1.85rem;
 			.assessment-year {

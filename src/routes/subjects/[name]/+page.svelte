@@ -1,6 +1,5 @@
 <script>
-	import { fade, fly, scale } from 'svelte/transition';
-	import Slider from '$lib/components/slider.svelte';
+	import { fly } from 'svelte/transition';
 	import Dropdown from '$lib/components/dropdown.svelte';
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
@@ -12,19 +11,18 @@
 	import Footnote from '$lib/components/Footnote.svelte';
 	import GlobalBulletin from '$lib/components/subject/GlobalBulletin.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import { onMount } from 'svelte';
 
-	import BackButton from '$lib/components/subject/BackButton.svelte';
 	import SubjectHeader from '$lib/components/subject/SubjectHeader.svelte';
 	import Syllabus from '$lib/components/subject/Syllabus.svelte';
 	import GradeCalculator from '$lib/components/subject/GradeCalculator.svelte';
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import BulletinTable from '$lib/components/subject/BulletinTable.svelte';
+	import CorePerformance from '$lib/components/subject/CorePerformance.svelte';
 
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
 	import { getAllBoundaries } from '$lib/utils/boundaries.js';
 	import { calculateGrade } from '$lib/utils/grades.js';
+	import { buildBoundaryForecast } from '$lib/utils/forecast.js';
 
 	import Banners from '$lib/assets/banners.json';
 
@@ -36,6 +34,8 @@
 
 	let showBulletin = true;
 	let showGradeGraphs = true;
+	let showForecastDetails = false;
+	let bulletinSessionShort = 'N25';
 
 	const languages = data.info.lang;
 	const classical = data.info.classical;
@@ -53,6 +53,7 @@
 	// get level from query parameters
 	export let level = data.level;
 	$: s = level === 'HL' ? syllabus.HL : syllabus.SL;
+	$: selectedTableLevel = data.data.SLOnly ? 'SL' : level;
 
 	$: name = data.data.isLang ? language + ' ' + data.data.name : data.data.name;
 
@@ -66,56 +67,92 @@
 	$: HLResults = data.data.isLang
 		? getAllBoundaries(data.data.name, language).HL
 		: getAllBoundaries(data.data.name).HL;
+	$: currentSLResults = SLResults.filter(
+		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+	);
+	$: currentHLResults = HLResults.filter(
+		(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+	);
+	$: selectedBoundaryResults = selectedTableLevel === 'HL' ? currentHLResults : currentSLResults;
 
-	// gets the latest grade boundary (for awarded mark calculation)
-	$: SLoptions = SLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N25');
-	$: HLoptions = HLResults.filter((obj) => obj.short === 'M25' || obj.short === 'N25');
+	const forecastLabels = data.data.isCore
+		? ['E', 'D', 'C', 'B', 'A']
+		: ['1', '2', '3', '4', '5', '6', '7'];
+	const officialBoundaryOptions = (results) => {
+		const recent = results.filter((result) => result.short === 'M25' || result.short === 'N25');
+		return recent.length ? recent : results;
+	};
+	const forecastBoundaryOption = (results) => {
+		const comparableResults = results.filter(
+			(result) => 2000 + Number(result.short?.slice(1, 3)) >= Number(syllabus.firstAssessment || 0)
+		);
+		const forecast = buildBoundaryForecast({
+			results: comparableResults,
+			targetYear: 2026,
+			sessionPrefix: 'N',
+			labels: forecastLabels,
+			stable: data.data.isCore
+		});
 
-	$: {
-		if (SLoptions.length === 0) {
-			SLoptions = SLResults;
-		}
-		if (HLoptions.length === 0) {
-			HLoptions = HLResults;
-		}
-	}
+		return forecast
+			? {
+					short: 'N26F',
+					fullName: 'November 2026 forecast',
+					selectorName: 'November 2026 Forecast',
+					timezone: 0,
+					tz: forecast.forecasts.map(({ point }) => point),
+					isForecast: true,
+					forecast
+			  }
+			: undefined;
+	};
 
-	const init = async () => {
-		if (SLoptions && HLoptions) {
-			lastSL = SLoptions?.find(
-				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
-			);
+	// The experimental November 2026 estimate is the default boundary. Published boundaries remain
+	// available as explicit alternatives in the same selector.
+	$: SLforecastOption = forecastBoundaryOption(SLResults);
+	$: HLforecastOption = forecastBoundaryOption(HLResults);
+	$: SLoptions = [SLforecastOption, ...officialBoundaryOptions(SLResults)].filter(Boolean);
+	$: HLoptions = [HLforecastOption, ...officialBoundaryOptions(HLResults)].filter(Boolean);
 
-			lastHL = HLoptions?.find(
-				(obj) => obj.short === 'M24' && (obj.timezone === 0 || obj.timezone === 1)
-			);
+	const initializeBoundaries = (slOptions, hlOptions) => {
+		if (slOptions && hlOptions) {
+			lastSL = slOptions?.find((obj) => obj.isForecast);
+			lastHL = hlOptions?.find((obj) => obj.isForecast);
 
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'M25');
-			if (!lastSL) lastSL = SLoptions?.find((obj) => obj.short === 'N25');
-			if (!lastSL) lastSL = SLoptions[SLoptions.length - 1];
+			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'M25');
+			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'N25');
+			if (!lastSL) lastSL = slOptions[slOptions.length - 1];
 
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'M25');
-			if (!lastHL) lastHL = HLoptions?.find((obj) => obj.short === 'N25');
-			if (!lastHL) lastHL = HLoptions[HLoptions.length - 1];
+			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'M25');
+			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'N25');
+			if (!lastHL) lastHL = hlOptions[hlOptions.length - 1];
 		}
 	};
 
-	$: language && init();
-
-	onMount(() => {
-		init();
-	});
+	$: initializeBoundaries(SLoptions, HLoptions);
 
 	// calculate weighted average (percentage out of 100)
 	let weight = [];
 	let marks = [];
 	let assessments = [];
+	let assessmentKey = '';
 	$: {
 		weight = s?.map((a) => a.weight);
 		marks = s?.map((a) => a.maxMarks);
 	}
+	$: {
+		const nextAssessmentKey =
+			s
+				?.map((assessment) => `${assessment.name}:${assessment.maxMarks}:${assessment.weight}`)
+				.join('|') || '';
+		if (nextAssessmentKey !== assessmentKey) {
+			assessmentKey = nextAssessmentKey;
+			assessments = s?.map((assessment) => Math.trunc(assessment.maxMarks / 2)) || [];
+		}
+	}
 	$: grade = calculateGrade(assessments, marks, weight, data.data.name);
 	let mark, marksToIncrease;
+	let eeSubjectGroup = 'individuals-societies';
 
 	// update url with new query parameters
 	const newUrl = new URL($page.url);
@@ -173,77 +210,134 @@
 			bind:level
 			{HLResults}
 			{SLResults}
-			{lastSL}
-			{lastHL}
+			bind:lastSL
+			bind:lastHL
 			{SLoptions}
 			{HLoptions}
 			bind:mark
 			{marksToIncrease}
 			bind:assessments
 			bind:showGradeGraphs
+			bind:showForecastDetails
 			{classical}
 			{languages}
 		/>
+
+		{#if data.data.isCore}
+			<CorePerformance
+				type={syllabus.name === 'Extended Essay' ? 'ee' : 'tok'}
+				grade={mark}
+				sessionId={lastSL?.short}
+				bind:subjectGroup={eeSubjectGroup}
+			/>
+		{/if}
 	{/if}
 
 	{#if syllabus.name !== 'Creativity, Activity, Service'}
 		{#if !data.data.isCore}
-			<GlobalBulletin {mark} name={level + ' ' + name} bind:showBulletin />
+			<section class="bulletin-panel" aria-label="Global grade distribution and data table">
+				<GlobalBulletin
+					{mark}
+					name={level + ' ' + name}
+					bind:showBulletin
+					bind:selectedShort={bulletinSessionShort}
+					embedded
+				/>
 
-			<div class="tables">
-				<BulletinTable name={level + ' ' + name} />
-			</div>
+				<div class="bulletin-table">
+					<BulletinTable name={level + ' ' + name} selectedShort={bulletinSessionShort} />
+				</div>
+			</section>
 		{/if}
 
 		{#if showGradeGraphs}
 			<div class="graph">
-				<Bargraph name={syllabus.name} {level} {SLResults} {HLResults} {grade} />
+				<Bargraph
+					name={syllabus.name}
+					{level}
+					{SLResults}
+					{HLResults}
+					{grade}
+					firstAssessment={syllabus.firstAssessment}
+					bind:expanded={showForecastDetails}
+				/>
 			</div>
 		{/if}
 
-		<div class="grade">
-			<h4 in:fly={{ delay: 400, duration: 1000, x: 200 }}>Historical Grade Boundaries</h4>
+		<section class="grade" aria-labelledby="historical-boundaries-title">
+			<header class="grade-header">
+				<div>
+					<h4 id="historical-boundaries-title">Historical Grade Boundaries</h4>
+					<p>Compare official grade thresholds across examination sessions.</p>
+				</div>
+				<div class="grade-controls">
+					{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
+						{#if !data.data.SLOnly}
+							<div class="grade-control">
+								<span>Level</span>
+								<ToggleSelect
+									identifier="e"
+									arr={['SL', 'HL']}
+									arrVal={['SL', 'HL']}
+									bind:value={level}
+								/>
+							</div>
+						{/if}
+					{/if}
+					{#if data.data.isLang}
+						<div class="grade-control">
+							<span>Language</span>
+							{#if syllabus.name === 'Classical Language'}
+								<Dropdown arr={classical} bind:value={language} />
+							{:else}
+								<Dropdown arr={languages} bind:value={language} />
+							{/if}
+						</div>
+					{/if}
+				</div>
+			</header>
 			{#if data.data.SLOnly}
-				<h5 in:fly={{ delay: 400, duration: 1000, x: 200 }}>
+				<h5>
 					{syllabus.name} is offered only at the SL level
 				</h5>
 			{/if}
-			{#if syllabus.name !== 'Extended Essay' && syllabus.name !== 'Theory Of Knowledge'}
-				{#if !data.data.SLOnly}
-					<ToggleSelect
-						identifier="e"
-						arr={['SL', 'HL']}
-						arrVal={['SL', 'HL']}
-						bind:value={level}
-					/>
-				{/if}
-			{/if}
-			<div class="dropdown">
-				{#if data.data.isLang && syllabus.name === 'Classical Language'}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-						<Dropdown arr={classical} bind:value={language} />
-					</div>
-				{:else if data.data.isLang}
-					<div in:fly={{ delay: 100, duration: 1300, y: 25 }}>
-						<Dropdown arr={languages} bind:value={language} />
-					</div>
-				{/if}
-			</div>
 
 			{#if showGradeGraphs}
-				<GradeGraph name={syllabus.name} {level} {language} {SLResults} {HLResults} {grade} />
+				<GradeGraph
+					name={syllabus.name}
+					{level}
+					{language}
+					SLResults={currentSLResults}
+					HLResults={currentHLResults}
+					{grade}
+					currentGrade={mark}
+				/>
 			{/if}
 			<div class="tables">
 				{#if syllabus.name === 'Theory Of Knowledge' || syllabus.name === 'Extended Essay'}
+					<div class="table-intro">
+						<div>
+							<span class="active-level">Core subject</span>
+							<h5>{name} boundary history</h5>
+						</div>
+					</div>
 					<CoreTable {name} res={SLResults} />
-					<CoreMatrix name={syllabus.name} />
+					<CoreMatrix />
 				{:else}
-					<BoundaryTable name={'SL ' + name} res={SLResults} />
-					{#if !data.data.SLOnly}
-						<BoundaryTable name={'HL ' + name} res={HLResults} />
-					{/if}
+					<div class="table-intro">
+						<div>
+							<span class="active-level">{selectedTableLevel} selected</span>
+							<h5>{selectedTableLevel} boundary history</h5>
+						</div>
+					</div>
+					{#key selectedTableLevel}
+						<BoundaryTable name={selectedTableLevel + ' ' + name} res={selectedBoundaryResults} />
+					{/key}
 				{/if}
 			</div>
+		</section>
+
+		<div class="historical-support">
 			{#if !data.data.isCore}
 				<div class="excel">
 					<Excel
@@ -301,9 +395,57 @@
 
 	.tables {
 		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-		margin-top: 10px;
+		flex-direction: column;
+		align-items: stretch;
+		margin-top: 22px;
+		padding-top: 20px;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.table-intro {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 12px;
+
+		h5 {
+			margin: 0;
+		}
+
+		h5 {
+			margin-top: 5px;
+			color: var(--color-text-main);
+			font-size: 1rem;
+		}
+	}
+
+	.active-level {
+		display: inline-flex;
+		padding: 4px 7px;
+		border: 1px solid color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+		color: var(--color-primary);
+		font-size: 0.65rem;
+		font-weight: 800;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.bulletin-panel {
+		margin: 24px 0 36px;
+		padding: 22px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.bulletin-table {
+		margin-top: 22px;
+		padding-top: 20px;
+		border-top: 1px solid var(--color-border);
 	}
 
 	.excel {
@@ -311,14 +453,71 @@
 		justify-content: center;
 	}
 
-	.graph {
-		margin: 20px auto 40px auto;
-		max-width: 75vh;
+	.historical-support {
+		margin-top: 16px;
 	}
 
-	.dropdown {
+	.graph {
+		width: 100%;
+		margin: 24px 0 40px;
+	}
+
+	.grade {
+		margin: 28px 0 0;
+		padding: 22px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.grade-header {
 		display: flex;
-		justify-content: center;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 20px;
+		margin-bottom: 18px;
+		padding-bottom: 18px;
+		border-bottom: 1px solid var(--color-border);
+
+		h4,
+		p {
+			margin: 0;
+		}
+
+		h4 {
+			color: var(--color-text-main);
+			font-size: 1.35rem;
+		}
+
+		p {
+			margin-top: 4px;
+			color: var(--color-text-muted);
+			font-size: 0.86rem;
+		}
+	}
+
+	.grade-controls {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.grade-control {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+
+		> span {
+			color: var(--color-text-muted);
+			font-size: 0.68rem;
+			font-weight: 800;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
 	}
 
 	@media screen and (max-width: 500px) {
@@ -327,7 +526,21 @@
 		}
 		.tables {
 			flex-direction: column;
-			align-items: center;
+			align-items: stretch;
+		}
+		.bulletin-panel {
+			padding: 14px;
+		}
+		.grade {
+			padding: 14px;
+		}
+		.grade-header {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+		.grade-controls {
+			justify-content: flex-start;
+			width: 100%;
 		}
 	}
 </style>

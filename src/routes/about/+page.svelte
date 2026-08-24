@@ -1,6 +1,5 @@
 <script>
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import Discord from '$lib/components/Discord.svelte';
 	import { fly, fade } from 'svelte/transition';
 
 	let cofounders = [
@@ -35,14 +34,20 @@
 
 	let maintainers = [
 		{
-			name: 'Daksh Gupta',
+			name: 'Angelina Guo',
 			title: 'Maintainer',
-			gradYear: "'25",
+			gradYear: '',
 			photo: '/placeholder.png'
 		}
 	];
 
 	let pastMaintainers = [
+		{
+			name: 'Daksh Gupta',
+			title: 'Past Maintainer',
+			gradYear: "'25",
+			photo: '/placeholder.png'
+		},
 		{
 			name: 'David Yeo',
 			title: 'Past Maintainer',
@@ -81,7 +86,7 @@
 						teachers, coordinators, and candidates in navigating the IB Diploma Program.
 					</p>
 					<p>
-						Since its launch, <strong>750,000+ people</strong> from over
+						Since its launch, <strong>1,000,000+ people</strong> from over
 						<strong>150+ countries</strong>
 						worldwide have visited the platform.
 					</p>
@@ -93,7 +98,7 @@
 					<div class="stats-badge">
 						<span>Global Impact: 150+ Countries</span>
 						<span class="dot" />
-						<span>750k+ Users</span>
+						<span>1M+ Users</span>
 					</div>
 				</div>
 				<div class="mission-image">
@@ -121,7 +126,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -141,7 +146,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -161,7 +166,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>
@@ -181,7 +186,7 @@
 								<div class="member-name">{member.name}</div>
 								<div class="member-title">
 									{member.title}
-									<span class="grad-year">{member.gradYear}</span>
+									{#if member.gradYear}<span class="grad-year">{member.gradYear}</span>{/if}
 								</div>
 							</div>
 						</div>

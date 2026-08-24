@@ -1,0 +1,1806 @@
+{
+	"HL Arabic Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 200,
+				"mean": 5.2,
+				"distribution": [0.0, 0.0, 0.0, 1.5, 15.5, 46.5, 35.0, 1.5]
+			}
+		]
+	},
+	"SL Arabic Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 591,
+				"mean": 5.12,
+				"distribution": [0.0, 0.0, 0.2, 2.2, 21.9, 40.9, 30.9, 3.9]
+			}
+		]
+	},
+	"SL Arabic Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 431,
+				"mean": 5.03,
+				"distribution": [0.0, 0.2, 0.7, 4.9, 23.8, 32.7, 35.3, 2.3]
+			}
+		]
+	},
+	"HL Catalan Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 196,
+				"mean": 5.55,
+				"distribution": [0.0, 0.0, 0.0, 1.0, 6.2, 41.2, 40.2, 11.3]
+			}
+		]
+	},
+	"SL Catalan Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 126,
+				"mean": 5.46,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 18.4, 32.8, 32.8, 16.0]
+			}
+		]
+	},
+	"HL Chinese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 739,
+				"mean": 5.19,
+				"distribution": [0.0, 0.0, 0.1, 1.2, 18.3, 42.7, 35.3, 2.3]
+			}
+		]
+	},
+	"SL Chinese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2659,
+				"mean": 5.29,
+				"distribution": [0.0, 0.0, 0.1, 2.0, 13.8, 43.5, 34.3, 6.3]
+			}
+		]
+	},
+	"HL Chinese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 341,
+				"mean": 5.46,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 6.8, 43.5, 47.1, 2.6]
+			}
+		]
+	},
+	"SL Chinese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1152,
+				"mean": 5.28,
+				"distribution": [0.0, 0.0, 0.1, 0.9, 11.0, 49.7, 35.1, 3.1]
+			}
+		]
+	},
+	"HL Czech Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 107,
+				"mean": 5.88,
+				"distribution": [0.0, 0.0, 0.0, 1.9, 4.7, 22.4, 45.8, 25.2]
+			}
+		]
+	},
+	"SL Czech Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 144,
+				"mean": 5.54,
+				"distribution": [0.0, 0.0, 0.7, 2.9, 14.4, 25.2, 37.4, 19.4]
+			}
+		]
+	},
+	"HL Danish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 137,
+				"mean": 5.44,
+				"distribution": [0.0, 0.0, 0.0, 1.5, 15.3, 33.6, 37.2, 12.4]
+			}
+		]
+	},
+	"SL Danish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 141,
+				"mean": 5.19,
+				"distribution": [0.0, 0.0, 0.7, 4.3, 20.9, 32.4, 33.1, 8.6]
+			}
+		]
+	},
+	"HL Dutch Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 89,
+				"mean": 4.97,
+				"distribution": [0.0, 0.0, 0.0, 5.7, 23.9, 42.0, 25.0, 3.4]
+			}
+		]
+	},
+	"SL Dutch Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 209,
+				"mean": 4.53,
+				"distribution": [0.0, 0.0, 0.0, 7.2, 46.4, 33.5, 12.0, 1.0]
+			}
+		]
+	},
+	"SL Dutch Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 112,
+				"mean": 4.5,
+				"distribution": [0.0, 0.0, 0.0, 15.2, 36.6, 34.8, 9.8, 3.6]
+			}
+		]
+	},
+	"HL English Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 37266,
+				"mean": 4.8,
+				"distribution": [0.0, 0.0, 0.9, 9.1, 29.6, 33.9, 22.5, 3.9]
+			}
+		]
+	},
+	"SL English Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 24847,
+				"mean": 4.89,
+				"distribution": [0.0, 0.0, 0.7, 6.9, 28.9, 34.0, 24.6, 4.9]
+			}
+		]
+	},
+	"HL English Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 30680,
+				"mean": 4.57,
+				"distribution": [0.0, 0.0, 1.4, 8.5, 38.7, 35.4, 14.9, 1.1]
+			}
+		]
+	},
+	"SL English Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 5701,
+				"mean": 4.92,
+				"distribution": [0.0, 0.0, 0.5, 6.6, 24.9, 40.1, 23.6, 4.3]
+			}
+		]
+	},
+	"HL Finnish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 111,
+				"mean": 5.24,
+				"distribution": [0.0, 0.0, 0.0, 2.7, 16.2, 39.6, 36.9, 4.5]
+			}
+		]
+	},
+	"SL Finnish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 201,
+				"mean": 5.17,
+				"distribution": [0.0, 0.0, 0.0, 3.0, 16.0, 48.0, 27.5, 5.5]
+			}
+		]
+	},
+	"HL French Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 633,
+				"mean": 4.83,
+				"distribution": [0.0, 0.0, 0.6, 8.1, 30.0, 35.0, 21.6, 4.6]
+			}
+		]
+	},
+	"SL French Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 832,
+				"mean": 4.91,
+				"distribution": [0.0, 0.0, 0.5, 6.8, 27.5, 37.2, 22.0, 6.0]
+			}
+		]
+	},
+	"HL French Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 414,
+				"mean": 5.07,
+				"distribution": [0.0, 0.0, 0.2, 4.6, 23.2, 37.7, 28.1, 6.1]
+			}
+		]
+	},
+	"SL French Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 393,
+				"mean": 4.94,
+				"distribution": [0.0, 0.0, 0.3, 5.8, 26.8, 37.4, 26.1, 3.7]
+			}
+		]
+	},
+	"HL German Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 459,
+				"mean": 5.24,
+				"distribution": [0.0, 0.0, 0.0, 2.4, 22.9, 31.8, 33.8, 9.2]
+			}
+		]
+	},
+	"SL German Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 641,
+				"mean": 5.12,
+				"distribution": [0.0, 0.0, 0.5, 3.8, 21.5, 38.9, 28.1, 7.4]
+			}
+		]
+	},
+	"HL German Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 547,
+				"mean": 5.09,
+				"distribution": [0.0, 0.0, 0.2, 3.3, 23.3, 39.7, 27.5, 5.9]
+			}
+		]
+	},
+	"SL German Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 322,
+				"mean": 5.07,
+				"distribution": [0.0, 0.0, 0.6, 3.5, 28.6, 31.4, 27.0, 8.8]
+			}
+		]
+	},
+	"SL Hindi Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 109,
+				"mean": 5.51,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 14.8, 30.6, 43.5, 11.1]
+			}
+		]
+	},
+	"HL Indonesian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 222,
+				"mean": 5.07,
+				"distribution": [0.0, 0.0, 0.0, 1.4, 20.7, 49.5, 26.6, 1.8]
+			}
+		]
+	},
+	"SL Indonesian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 527,
+				"mean": 5.02,
+				"distribution": [0.0, 0.0, 0.2, 4.0, 22.5, 41.3, 30.5, 1.5]
+			}
+		]
+	},
+	"SL Indonesian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 76,
+				"mean": 5.17,
+				"distribution": [0.0, 0.0, 0.0, 3.9, 15.8, 43.4, 32.9, 3.9]
+			}
+		]
+	},
+	"HL Italian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 154,
+				"mean": 4.9,
+				"distribution": [0.0, 0.0, 0.0, 4.5, 22.1, 53.2, 19.5, 0.6]
+			}
+		]
+	},
+	"SL Italian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 162,
+				"mean": 4.84,
+				"distribution": [0.0, 0.0, 0.0, 7.5, 30.4, 34.2, 26.1, 1.9]
+			}
+		]
+	},
+	"HL Italian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 132,
+				"mean": 5.08,
+				"distribution": [0.0, 0.0, 0.0, 1.5, 24.6, 43.8, 24.6, 5.4]
+			}
+		]
+	},
+	"SL Italian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 196,
+				"mean": 4.77,
+				"distribution": [0.0, 0.0, 0.0, 8.2, 30.3, 39.0, 21.5, 1.0]
+			}
+		]
+	},
+	"HL Japanese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 130,
+				"mean": 5.05,
+				"distribution": [0.0, 0.0, 0.0, 2.3, 24.6, 41.5, 28.5, 3.1]
+			}
+		]
+	},
+	"SL Japanese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 133,
+				"mean": 4.74,
+				"distribution": [0.0, 0.0, 0.8, 6.8, 39.8, 27.8, 20.3, 4.5]
+			}
+		]
+	},
+	"HL Japanese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 64,
+				"mean": 5.28,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 21.9, 35.9, 34.4, 7.8]
+			}
+		]
+	},
+	"SL Japanese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 123,
+				"mean": 5.23,
+				"distribution": [0.0, 0.0, 0.0, 2.4, 17.9, 41.5, 30.9, 7.3]
+			}
+		]
+	},
+	"HL Korean Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 108,
+				"mean": 5.46,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 12.0, 33.3, 50.9, 3.7]
+			}
+		]
+	},
+	"SL Korean Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 359,
+				"mean": 5.48,
+				"distribution": [0.0, 0.0, 0.0, 0.8, 10.6, 36.5, 44.0, 8.1]
+			}
+		]
+	},
+	"HL Korean Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 55,
+				"mean": 5.91,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 1.9, 20.4, 63.0, 14.8]
+			}
+		]
+	},
+	"SL Korean Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 339,
+				"mean": 5.87,
+				"distribution": [0.0, 0.0, 0.3, 0.3, 2.7, 23.7, 55.2, 17.8]
+			}
+		]
+	},
+	"SL Lithuanian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 142,
+				"mean": 5.07,
+				"distribution": [0.0, 0.0, 0.7, 4.9, 27.5, 32.4, 22.5, 12.0]
+			}
+		]
+	},
+	"SL Malay Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 379,
+				"mean": 6.11,
+				"distribution": [0.0, 0.0, 0.0, 0.3, 1.3, 6.9, 69.9, 21.6]
+			}
+		]
+	},
+	"SL Modern Greek Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 123,
+				"mean": 4.71,
+				"distribution": [0.0, 0.0, 0.0, 10.6, 32.5, 35.0, 19.5, 2.4]
+			}
+		]
+	},
+	"SL Modern Greek Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 306,
+				"mean": 4.81,
+				"distribution": [0.0, 0.0, 0.0, 10.5, 28.3, 36.8, 18.8, 5.6]
+			}
+		]
+	},
+	"SL Norwegian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 157,
+				"mean": 5.16,
+				"distribution": [0.0, 0.0, 0.0, 7.9, 21.7, 25.0, 36.8, 8.6]
+			}
+		]
+	},
+	"HL Polish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 214,
+				"mean": 5.45,
+				"distribution": [0.0, 0.0, 0.0, 1.0, 12.4, 37.6, 38.6, 10.5]
+			}
+		]
+	},
+	"SL Polish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1245,
+				"mean": 5.11,
+				"distribution": [0.0, 0.0, 0.1, 2.9, 24.6, 36.6, 29.7, 6.1]
+			}
+		]
+	},
+	"HL Portuguese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 549,
+				"mean": 4.45,
+				"distribution": [0.0, 0.0, 1.1, 12.4, 41.0, 32.3, 11.6, 1.5]
+			}
+		]
+	},
+	"SL Portuguese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 286,
+				"mean": 4.99,
+				"distribution": [0.0, 0.0, 0.4, 4.3, 28.0, 35.5, 27.0, 5.0]
+			}
+		]
+	},
+	"HL Portuguese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 81,
+				"mean": 5.28,
+				"distribution": [0.0, 0.0, 0.0, 1.3, 19.0, 38.0, 34.2, 7.6]
+			}
+		]
+	},
+	"SL Portuguese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 131,
+				"mean": 5.26,
+				"distribution": [0.0, 0.0, 1.5, 4.6, 14.5, 36.6, 31.3, 11.5]
+			}
+		]
+	},
+	"HL Russian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 119,
+				"mean": 4.95,
+				"distribution": [0.0, 0.0, 0.0, 3.4, 24.4, 47.9, 22.7, 1.7]
+			}
+		]
+	},
+	"SL Russian Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 178,
+				"mean": 5.28,
+				"distribution": [0.0, 0.0, 0.0, 1.7, 18.1, 37.3, 36.2, 6.8]
+			}
+		]
+	},
+	"HL Russian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 88,
+				"mean": 4.9,
+				"distribution": [0.0, 0.0, 0.0, 5.7, 25.0, 46.6, 19.3, 3.4]
+			}
+		]
+	},
+	"SL Russian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 364,
+				"mean": 4.9,
+				"distribution": [0.0, 0.0, 0.6, 9.4, 26.2, 33.1, 25.3, 5.5]
+			}
+		]
+	},
+	"HL Spanish Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3988,
+				"mean": 4.82,
+				"distribution": [0.0, 0.0, 0.6, 7.4, 29.7, 37.4, 22.0, 2.9]
+			}
+		]
+	},
+	"SL Spanish Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2285,
+				"mean": 4.92,
+				"distribution": [0.0, 0.0, 1.2, 6.9, 24.4, 37.7, 25.6, 4.2]
+			}
+		]
+	},
+	"HL Spanish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3997,
+				"mean": 4.72,
+				"distribution": [0.0, 0.0, 1.2, 9.0, 31.2, 36.8, 18.8, 3.0]
+			}
+		]
+	},
+	"SL Spanish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1685,
+				"mean": 4.55,
+				"distribution": [0.0, 0.2, 0.7, 18.3, 32.3, 26.7, 17.1, 4.6]
+			}
+		]
+	},
+	"SL Swedish Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 126,
+				"mean": 4.91,
+				"distribution": [0.0, 0.0, 0.0, 3.2, 35.5, 33.1, 23.4, 4.8]
+			}
+		]
+	},
+	"SL Swedish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 197,
+				"mean": 4.82,
+				"distribution": [0.0, 0.0, 0.5, 5.7, 29.9, 42.3, 18.6, 3.1]
+			}
+		]
+	},
+	"SL Thai Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 14,
+				"mean": 5.43,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 21.4, 21.4, 50.0, 7.1]
+			}
+		]
+	},
+	"HL Turkish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 394,
+				"mean": 4.86,
+				"distribution": [0.0, 0.0, 0.8, 11.5, 26.3, 29.6, 25.8, 6.1]
+			}
+		]
+	},
+	"SL Turkish Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 798,
+				"mean": 4.82,
+				"distribution": [0.0, 0.0, 1.3, 11.2, 28.8, 27.9, 25.0, 6.0]
+			}
+		]
+	},
+	"SL Ukrainian Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 13,
+				"mean": 5.54,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 15.4, 30.8, 38.5, 15.4]
+			}
+		]
+	},
+	"SL Vietnamese Language A: Literature": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 81,
+				"mean": 5.57,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 9.9, 33.3, 46.9, 9.9]
+			}
+		]
+	},
+	"SL Arabic Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 280,
+				"mean": 4.58,
+				"distribution": [0.0, 1.4, 10.4, 18.0, 17.3, 19.4, 18.7, 14.7]
+			}
+		]
+	},
+	"HL Arabic Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1096,
+				"mean": 5.56,
+				"distribution": [0.0, 0.1, 0.8, 4.9, 10.5, 21.9, 44.2, 17.6]
+			}
+		]
+	},
+	"SL Arabic Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 847,
+				"mean": 5.4,
+				"distribution": [0.0, 0.5, 1.0, 2.6, 15.2, 29.7, 36.9, 14.1]
+			}
+		]
+	},
+	"HL Chinese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 793,
+				"mean": 6.02,
+				"distribution": [0.0, 0.0, 0.4, 2.4, 5.7, 11.7, 46.1, 33.7]
+			}
+		]
+	},
+	"SL Chinese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2682,
+				"mean": 5.73,
+				"distribution": [0.0, 0.0, 2.3, 5.2, 11.9, 16.7, 24.9, 39.0]
+			}
+		]
+	},
+	"HL Danish Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 247,
+				"mean": 5.71,
+				"distribution": [0.0, 0.0, 0.0, 4.1, 10.0, 22.0, 38.2, 25.7]
+			}
+		]
+	},
+	"SL Dutch Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 58,
+				"mean": 4.97,
+				"distribution": [0.0, 0.0, 0.0, 10.3, 25.9, 34.5, 15.5, 13.8]
+			}
+		]
+	},
+	"HL Dutch Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 113,
+				"mean": 5.76,
+				"distribution": [0.0, 0.0, 0.0, 0.0, 4.5, 32.1, 46.4, 17.0]
+			}
+		]
+	},
+	"SL Dutch Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 265,
+				"mean": 5.04,
+				"distribution": [0.0, 0.0, 0.4, 7.2, 20.4, 37.7, 28.7, 5.7]
+			}
+		]
+	},
+	"SL English Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 195,
+				"mean": 5.15,
+				"distribution": [0.0, 0.0, 2.8, 10.5, 17.7, 21.0, 33.7, 14.4]
+			}
+		]
+	},
+	"HL English Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 20131,
+				"mean": 5.7,
+				"distribution": [0.0, 0.0, 0.1, 1.1, 6.7, 25.9, 53.0, 13.2]
+			}
+		]
+	},
+	"SL English Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4374,
+				"mean": 5.64,
+				"distribution": [0.0, 0.0, 0.6, 3.2, 8.2, 24.3, 47.2, 16.5]
+			}
+		]
+	},
+	"SL French Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4753,
+				"mean": 4.79,
+				"distribution": [0.0, 0.3, 3.9, 15.6, 19.3, 28.5, 22.2, 10.1]
+			}
+		]
+	},
+	"HL French Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3464,
+				"mean": 5.16,
+				"distribution": [0.0, 0.1, 3.3, 11.3, 15.5, 22.5, 30.4, 16.9]
+			}
+		]
+	},
+	"SL French Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 11942,
+				"mean": 5.02,
+				"distribution": [0.0, 0.0, 2.3, 9.6, 21.5, 29.2, 24.6, 12.7]
+			}
+		]
+	},
+	"SL German Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1334,
+				"mean": 5.0,
+				"distribution": [0.0, 0.0, 2.4, 11.1, 19.7, 28.2, 28.1, 10.4]
+			}
+		]
+	},
+	"HL German Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1667,
+				"mean": 5.68,
+				"distribution": [0.0, 0.0, 0.3, 2.7, 10.1, 25.1, 39.7, 22.1]
+			}
+		]
+	},
+	"SL German Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2035,
+				"mean": 5.11,
+				"distribution": [0.0, 0.0, 0.7, 8.8, 24.7, 24.3, 27.6, 13.9]
+			}
+		]
+	},
+	"HL Hindi Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 357,
+				"mean": 5.45,
+				"distribution": [0.0, 0.0, 0.0, 3.4, 12.9, 31.9, 39.2, 12.6]
+			}
+		]
+	},
+	"SL Hindi Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1203,
+				"mean": 5.62,
+				"distribution": [0.0, 0.0, 0.4, 0.3, 6.5, 33.2, 49.0, 10.6]
+			}
+		]
+	},
+	"HL Indonesian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 164,
+				"mean": 5.96,
+				"distribution": [0.0, 0.0, 0.0, 1.2, 4.9, 13.5, 57.7, 22.7]
+			}
+		]
+	},
+	"SL Indonesian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 263,
+				"mean": 5.94,
+				"distribution": [0.0, 0.0, 0.0, 0.4, 4.2, 19.1, 54.2, 22.1]
+			}
+		]
+	},
+	"SL Italian Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 501,
+				"mean": 4.96,
+				"distribution": [0.0, 0.0, 1.0, 8.4, 30.1, 27.3, 21.0, 12.2]
+			}
+		]
+	},
+	"HL Italian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 287,
+				"mean": 5.83,
+				"distribution": [0.0, 0.0, 0.7, 4.6, 11.7, 17.0, 25.5, 40.4]
+			}
+		]
+	},
+	"SL Italian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 377,
+				"mean": 5.17,
+				"distribution": [0.0, 0.0, 1.1, 12.1, 21.6, 19.4, 25.6, 20.2]
+			}
+		]
+	},
+	"SL Japanese Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 438,
+				"mean": 4.73,
+				"distribution": [0.0, 0.9, 8.3, 14.4, 19.4, 22.9, 18.5, 15.5]
+			}
+		]
+	},
+	"HL Japanese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 116,
+				"mean": 6.3,
+				"distribution": [0.0, 0.0, 5.2, 1.7, 2.6, 5.2, 18.3, 67.0]
+			}
+		]
+	},
+	"SL Japanese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 310,
+				"mean": 5.27,
+				"distribution": [0.0, 0.0, 2.0, 7.8, 19.2, 23.5, 27.7, 19.9]
+			}
+		]
+	},
+	"HL Latin Classical Language": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 204,
+				"mean": 4.43,
+				"distribution": [0.0, 1.0, 7.9, 21.7, 26.6, 16.3, 12.3, 14.3]
+			}
+		]
+	},
+	"SL Latin Classical Language": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 965,
+				"mean": 4.11,
+				"distribution": [0.0, 1.1, 10.3, 28.0, 25.9, 15.5, 10.6, 8.7]
+			}
+		]
+	},
+	"SL Chinese Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1250,
+				"mean": 5.14,
+				"distribution": [0.0, 0.1, 2.6, 14.7, 20.1, 16.0, 21.4, 25.2]
+			}
+		]
+	},
+	"HL Norwegian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 200,
+				"mean": 5.51,
+				"distribution": [0.0, 0.0, 0.5, 5.6, 17.2, 19.7, 33.8, 23.2]
+			}
+		]
+	},
+	"HL Portuguese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 80,
+				"mean": 5.54,
+				"distribution": [0.0, 0.0, 2.5, 5.0, 12.5, 22.5, 31.3, 26.3]
+			}
+		]
+	},
+	"SL Portuguese Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 125,
+				"mean": 5.55,
+				"distribution": [0.0, 0.0, 0.0, 7.3, 12.1, 23.4, 33.1, 24.2]
+			}
+		]
+	},
+	"SL Russian Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 117,
+				"mean": 5.96,
+				"distribution": [0.0, 0.0, 0.0, 1.8, 7.9, 23.7, 25.4, 41.2]
+			}
+		]
+	},
+	"SL Spanish Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 8615,
+				"mean": 4.93,
+				"distribution": [0.0, 0.1, 2.3, 10.8, 22.9, 30.0, 23.3, 10.6]
+			}
+		]
+	},
+	"HL Spanish Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 7754,
+				"mean": 5.31,
+				"distribution": [0.0, 0.1, 1.4, 6.2, 18.6, 24.4, 32.2, 17.2]
+			}
+		]
+	},
+	"SL Spanish Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 20611,
+				"mean": 4.93,
+				"distribution": [0.0, 0.1, 1.9, 8.0, 26.4, 32.4, 20.9, 10.3]
+			}
+		]
+	},
+	"SL Swedish Language AB Initio": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 143,
+				"mean": 4.84,
+				"distribution": [0.0, 0.0, 5.7, 10.0, 23.6, 25.7, 25.0, 10.0]
+			}
+		]
+	},
+	"HL Swedish Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 134,
+				"mean": 5.53,
+				"distribution": [0.0, 0.0, 0.0, 6.8, 12.9, 21.2, 38.6, 20.5]
+			}
+		]
+	},
+	"SL Swedish Language B": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 172,
+				"mean": 5.33,
+				"distribution": [0.0, 0.0, 1.2, 5.4, 14.3, 34.5, 28.0, 16.7]
+			}
+		]
+	},
+	"SL Art History": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 156,
+				"mean": 4.31,
+				"distribution": [0.0, 4.2, 11.3, 18.3, 22.5, 15.5, 15.5, 12.7]
+			}
+		]
+	},
+	"SL Brazilian Social Studies": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 333,
+				"mean": 4.91,
+				"distribution": [0.0, 0.3, 4.3, 7.6, 24.8, 30.0, 20.5, 12.5]
+			}
+		]
+	},
+	"HL Business Management": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 19220,
+				"mean": 4.95,
+				"distribution": [0.0, 0.2, 3.4, 8.7, 21.2, 30.3, 27.5, 8.7]
+			}
+		]
+	},
+	"SL Business Management": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 10874,
+				"mean": 4.95,
+				"distribution": [0.0, 0.3, 3.9, 10.7, 20.0, 28.1, 24.4, 12.5]
+			}
+		]
+	},
+	"HL Economics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 17604,
+				"mean": 5.12,
+				"distribution": [0.0, 0.2, 2.8, 7.9, 18.1, 30.4, 26.0, 14.6]
+			}
+		]
+	},
+	"SL Economics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 9707,
+				"mean": 4.76,
+				"distribution": [0.0, 0.6, 4.5, 15.6, 21.6, 24.9, 20.9, 12.0]
+			}
+		]
+	},
+	"HL Geography": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4714,
+				"mean": 5.27,
+				"distribution": [0.0, 0.0, 0.6, 6.1, 17.3, 31.3, 30.8, 13.8]
+			}
+		]
+	},
+	"SL Geography": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4281,
+				"mean": 4.82,
+				"distribution": [0.0, 0.3, 3.5, 15.3, 19.5, 28.1, 23.3, 10.1]
+			}
+		]
+	},
+	"HL Global Politics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4707,
+				"mean": 5.11,
+				"distribution": [0.0, 0.0, 1.1, 4.8, 19.3, 38.0, 30.0, 6.8]
+			}
+		]
+	},
+	"SL Global Politics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3152,
+				"mean": 4.82,
+				"distribution": [0.0, 0.0, 2.9, 11.8, 21.9, 34.6, 21.5, 7.4]
+			}
+		]
+	},
+	"HL History": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 37070,
+				"mean": 4.34,
+				"distribution": [0.0, 0.7, 6.6, 14.5, 33.3, 29.2, 13.0, 2.7]
+			}
+		]
+	},
+	"SL History": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 8645,
+				"mean": 4.66,
+				"distribution": [0.0, 0.5, 3.8, 9.0, 28.5, 35.8, 18.7, 3.7]
+			}
+		]
+	},
+	"HL Philosophy": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1868,
+				"mean": 5.0,
+				"distribution": [0.0, 0.0, 0.9, 8.8, 23.5, 31.7, 26.4, 8.7]
+			}
+		]
+	},
+	"SL Philosophy": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2532,
+				"mean": 4.88,
+				"distribution": [0.0, 0.2, 2.5, 10.0, 23.8, 31.5, 24.2, 7.7]
+			}
+		]
+	},
+	"HL Psychology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 14013,
+				"mean": 4.79,
+				"distribution": [0.0, 0.2, 2.8, 11.5, 25.1, 29.1, 25.8, 5.5]
+			}
+		]
+	},
+	"SL Psychology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 12738,
+				"mean": 4.46,
+				"distribution": [0.0, 1.1, 7.9, 14.1, 26.7, 26.0, 19.2, 4.8]
+			}
+		]
+	},
+	"HL Social And Cultural Anthropology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 950,
+				"mean": 4.94,
+				"distribution": [0.0, 0.4, 2.2, 11.5, 23.0, 26.7, 23.3, 12.8]
+			}
+		]
+	},
+	"SL Social And Cultural Anthropology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1735,
+				"mean": 4.78,
+				"distribution": [0.0, 0.0, 2.4, 11.2, 25.1, 33.3, 23.5, 4.5]
+			}
+		]
+	},
+	"SL Turkey In The 20th Century": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 738,
+				"mean": 5.27,
+				"distribution": [0.0, 0.0, 0.0, 4.1, 22.4, 29.2, 31.4, 13.0]
+			}
+		]
+	},
+	"SL World Religions": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1677,
+				"mean": 4.69,
+				"distribution": [0.0, 0.1, 1.7, 12.6, 29.2, 33.2, 17.5, 5.7]
+			}
+		]
+	},
+	"SL Astronomy": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 37,
+				"mean": 4.39,
+				"distribution": [0.0, 0.0, 12.1, 9.1, 33.3, 30.3, 3.0, 12.1]
+			}
+		]
+	},
+	"HL Biology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 31912,
+				"mean": 4.41,
+				"distribution": [0.0, 1.1, 7.1, 17.8, 27.2, 24.0, 16.5, 6.3]
+			}
+		]
+	},
+	"SL Biology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 20865,
+				"mean": 4.15,
+				"distribution": [0.0, 1.8, 10.2, 22.8, 25.1, 21.4, 13.3, 5.3]
+			}
+		]
+	},
+	"HL Chemistry": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 17100,
+				"mean": 4.57,
+				"distribution": [0.0, 1.3, 8.2, 16.1, 21.4, 23.3, 18.9, 10.7]
+			}
+		]
+	},
+	"SL Chemistry": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 15801,
+				"mean": 4.1,
+				"distribution": [0.0, 2.7, 14.8, 21.4, 21.0, 18.7, 14.3, 7.2]
+			}
+		]
+	},
+	"HL Computer Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3766,
+				"mean": 4.43,
+				"distribution": [0.0, 1.5, 9.1, 17.3, 23.2, 22.9, 18.3, 7.9]
+			}
+		]
+	},
+	"SL Computer Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 3397,
+				"mean": 3.94,
+				"distribution": [0.0, 3.0, 16.3, 23.4, 21.0, 18.5, 12.9, 5.0]
+			}
+		]
+	},
+	"HL Design Technology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1639,
+				"mean": 4.69,
+				"distribution": [0.0, 0.1, 3.1, 12.0, 26.7, 33.3, 20.3, 4.4]
+			}
+		]
+	},
+	"SL Design Technology": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1544,
+				"mean": 3.98,
+				"distribution": [0.0, 0.7, 7.6, 29.0, 28.9, 24.4, 8.0, 1.3]
+			}
+		]
+	},
+	"SL Marine Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 357,
+				"mean": 4.09,
+				"distribution": [0.0, 0.3, 11.8, 25.5, 24.6, 21.8, 10.6, 5.3]
+			}
+		]
+	},
+	"SL Nature Of Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 157,
+				"mean": 4.4,
+				"distribution": [0.0, 0.0, 11.5, 12.8, 24.4, 31.4, 15.4, 4.5]
+			}
+		]
+	},
+	"HL Physics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 15030,
+				"mean": 4.81,
+				"distribution": [0.0, 0.3, 4.8, 17.2, 21.0, 21.5, 18.6, 16.6]
+			}
+		]
+	},
+	"SL Physics": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 12888,
+				"mean": 4.21,
+				"distribution": [0.0, 0.7, 10.5, 26.0, 23.0, 18.1, 12.6, 9.1]
+			}
+		]
+	},
+	"HL Sports, Exercise And Health Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1404,
+				"mean": 4.8,
+				"distribution": [0.0, 0.7, 5.6, 13.0, 20.9, 25.3, 23.0, 11.5]
+			}
+		]
+	},
+	"SL Sports, Exercise And Health Science": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 4490,
+				"mean": 3.92,
+				"distribution": [0.0, 0.9, 13.2, 27.0, 26.4, 20.1, 9.2, 3.3]
+			}
+		]
+	},
+	"HL Mathematics: Analysis And Approaches": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 20719,
+				"mean": 4.88,
+				"distribution": [0.0, 0.9, 5.5, 11.1, 21.4, 24.7, 21.6, 14.9]
+			}
+		]
+	},
+	"SL Mathematics: Analysis And Approaches": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 38954,
+				"mean": 4.61,
+				"distribution": [0.0, 1.1, 6.4, 15.7, 22.9, 24.6, 19.2, 10.1]
+			}
+		]
+	},
+	"HL Mathematics: Applications And Interpretation": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 6985,
+				"mean": 4.38,
+				"distribution": [0.0, 2.0, 10.5, 15.5, 24.2, 23.3, 15.9, 8.5]
+			}
+		]
+	},
+	"SL Mathematics: Applications And Interpretation": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 40288,
+				"mean": 3.87,
+				"distribution": [0.0, 5.9, 15.9, 19.4, 23.5, 19.4, 11.5, 4.4]
+			}
+		]
+	},
+	"HL Dance": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 361,
+				"mean": 4.84,
+				"distribution": [0.0, 0.0, 2.3, 12.7, 23.5, 31.7, 19.5, 10.2]
+			}
+		]
+	},
+	"SL Dance": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 436,
+				"mean": 4.34,
+				"distribution": [0.0, 0.0, 4.0, 32.3, 20.6, 19.9, 15.9, 7.4]
+			}
+		]
+	},
+	"HL Film": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2645,
+				"mean": 4.52,
+				"distribution": [0.0, 0.7, 6.0, 12.7, 29.8, 27.8, 18.1, 4.9]
+			}
+		]
+	},
+	"SL Film": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1749,
+				"mean": 4.16,
+				"distribution": [0.0, 1.2, 7.8, 20.6, 34.2, 20.2, 12.7, 3.3]
+			}
+		]
+	},
+	"HL Music": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1401,
+				"mean": 4.8,
+				"distribution": [0.0, 0.2, 2.1, 13.9, 23.3, 30.7, 21.5, 8.3]
+			}
+		]
+	},
+	"SL Music": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1665,
+				"mean": 4.16,
+				"distribution": [0.0, 0.6, 4.5, 26.5, 33.0, 21.1, 10.5, 3.9]
+			}
+		]
+	},
+	"HL Theatre": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 2305,
+				"mean": 5.0,
+				"distribution": [0.0, 0.4, 2.1, 7.7, 24.7, 28.0, 26.2, 11.0]
+			}
+		]
+	},
+	"SL Theatre": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 1215,
+				"mean": 4.57,
+				"distribution": [0.0, 0.4, 4.8, 14.6, 30.1, 25.7, 16.9, 7.6]
+			}
+		]
+	},
+	"HL Visual Arts": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 9890,
+				"mean": 4.4,
+				"distribution": [0.0, 0.3, 3.3, 21.4, 30.4, 24.5, 16.0, 4.0]
+			}
+		]
+	},
+	"SL Visual Arts": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 5842,
+				"mean": 4.02,
+				"distribution": [0.0, 0.3, 5.5, 24.5, 41.8, 19.1, 7.8, 1.1]
+			}
+		]
+	},
+	"SL Environmental Systems And Societies": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 19991,
+				"mean": 4.23,
+				"distribution": [0.0, 1.5, 8.3, 22.4, 25.8, 23.6, 13.0, 5.6]
+			}
+		]
+	},
+	"SL Literature And Performance": {
+		"grades": [
+			{
+				"name": "May 2023",
+				"short": "M23",
+				"total": 324,
+				"mean": 4.74,
+				"distribution": [0.0, 0.0, 1.9, 16.1, 22.3, 30.6, 24.2, 4.8]
+			}
+		]
+	}
+}

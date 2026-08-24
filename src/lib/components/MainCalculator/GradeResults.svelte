@@ -6,10 +6,11 @@
 	export let predictedGrade;
 	export let isCore = false;
 	export let isCondensed = false;
+	export let compact = false;
 	export let maxScore = 100;
 </script>
 
-<div class="main">
+<div class:compact class="main">
 	<div class="header">
 		<div class="label">{name} Grade:</div>
 		<div class="score-value">{score} / {maxScore}</div>
@@ -98,5 +99,32 @@
 	.circle-parent {
 		margin-top: 0.5rem;
 		filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+	}
+
+	.main.compact {
+		box-sizing: border-box;
+		min-width: 164px;
+		height: 100%;
+		min-height: 168px;
+		padding: 0.75rem;
+		gap: 0.25rem;
+	}
+
+	.main.compact .score-value {
+		font-size: 1.25rem;
+	}
+
+	.main.compact .divider {
+		margin: 0.2rem 0;
+	}
+
+	.main.compact .circle-parent {
+		height: 88px;
+		margin-top: -2px;
+	}
+
+	.main.compact .circle-parent :global(svg) {
+		width: 88px;
+		height: 88px;
 	}
 </style>

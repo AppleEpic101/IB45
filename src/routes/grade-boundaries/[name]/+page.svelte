@@ -5,9 +5,7 @@
 	import ToggleSelect from '$lib/components/subject/ToggleSelect.svelte';
 	import BoundaryTable from '$lib/components/subject/boundaryTable.svelte';
 	import CoreTable from '$lib/components/subject/coreTable.svelte';
-	import CoreMatrix from '$lib/components/subject/coreMatrix.svelte';
 	import GradeGraph from '$lib/components/subject/GradeGraph.svelte';
-	import Footnote from '$lib/components/Footnote.svelte';
 
 	import { page } from '$app/stores';
 	import { getAllBoundaries } from '$lib/utils/boundaries.js';
@@ -16,8 +14,7 @@
 
 	const languages = data.info.lang;
 	const classical = data.info.classical;
-	const isCore =
-		data.data.name === 'Extended Essay' || data.data.name === 'Theory Of Knowledge';
+	const isCore = data.data.name === 'Extended Essay' || data.data.name === 'Theory Of Knowledge';
 
 	// language (only relevant for language subjects)
 	let language;
@@ -72,49 +69,42 @@
 	description={`Historical IB grade boundaries for ${data.data.name}, going back to M19.`}
 />
 
-<div class="body" in:fly={{ duration: 1000, x: 200 }}>
+<div class="body" class:hl={level === 'HL'} in:fly={{ duration: 1000, x: 200 }}>
 	<a href="/grade-boundaries" class="back">← Back to all subjects</a>
 
-	<h4 class="page-title">Historical Grade Boundaries</h4>
 	<h1 class="subject-title" class:hl={level === 'HL'}>
-		{#if !isCore}{level} {/if}{name}
+		{#if !isCore}{level} {/if}{name} Grade Boundaries
 	</h1>
 
 	{#if data.data.SLOnly}
 		<h5>{data.data.name} is offered only at the SL level</h5>
 	{/if}
 
-	<div class="controls">
-		{#if !isCore && !data.data.SLOnly}
-			<ToggleSelect identifier="e" arr={['SL', 'HL']} arrVal={['SL', 'HL']} bind:value={level} />
-		{/if}
+	<section class="history-section" aria-label="Historical grade boundaries">
+		<div class="controls">
+			{#if !isCore && !data.data.SLOnly}
+				<ToggleSelect identifier="e" arr={['SL', 'HL']} arrVal={['SL', 'HL']} bind:value={level} />
+			{/if}
 
-		{#if data.data.isLang && data.data.name === 'Classical Language'}
-			<Dropdown arr={classical} bind:value={language} />
-		{:else if data.data.isLang}
-			<Dropdown arr={languages} bind:value={language} />
-		{/if}
-	</div>
+			{#if data.data.isLang && data.data.name === 'Classical Language'}
+				<Dropdown arr={classical} bind:value={language} />
+			{:else if data.data.isLang}
+				<Dropdown arr={languages} bind:value={language} />
+			{/if}
+		</div>
 
-	{#if !isCore}
 		<div class="graph">
 			<GradeGraph name={data.data.name} {level} {language} {SLResults} {HLResults} />
 		</div>
-	{/if}
 
-	<div class="tables">
-		{#if isCore}
-			<CoreTable {name} res={SLResults} />
-			<CoreMatrix name={data.data.name} />
-		{:else}
-			<BoundaryTable name={'SL ' + name} res={SLResults} />
-			{#if !data.data.SLOnly}
-				<BoundaryTable name={'HL ' + name} res={HLResults} />
+		<div class="tables">
+			{#if isCore}
+				<CoreTable {name} res={SLResults} />
+			{:else}
+				<BoundaryTable name={`${level} ${name}`} res={level === 'HL' ? HLResults : SLResults} />
 			{/if}
-		{/if}
-	</div>
-
-	<Footnote />
+		</div>
+	</section>
 </div>
 
 <style lang="scss">
@@ -148,12 +138,6 @@
 		}
 	}
 
-	.page-title {
-		color: var(--color-text-muted);
-		font-weight: 600;
-		margin-bottom: 0.25rem;
-	}
-
 	.subject-title {
 		color: var(--color-primary);
 		font-size: 2rem;
@@ -169,6 +153,10 @@
 		gap: 1rem;
 		margin-bottom: 1.5rem;
 		flex-wrap: wrap;
+	}
+
+	.history-section {
+		margin-top: 1.5rem;
 	}
 
 	.graph {

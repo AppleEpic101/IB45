@@ -1,5 +1,5 @@
 <script>
-	import { fly, scale, fade } from 'svelte/transition';
+	import { fly, fade } from 'svelte/transition';
 	import Button from '$lib/components/button.svelte';
 	import Message from '$lib/components/Message.svelte';
 
@@ -8,6 +8,14 @@
 	import Footnote from '$lib/components/Footnote.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { subjects } from '$lib/data/subjects.js';
+
+	export let data;
+	$: updatedDate = new Intl.DateTimeFormat('en-US', {
+		month: 'long',
+		day: 'numeric',
+		year: 'numeric',
+		timeZone: 'America/Los_Angeles'
+	}).format(new Date(data.lastUpdated));
 </script>
 
 <PageHeader
@@ -23,14 +31,14 @@
 				World #1 <span class="highlight">IB Predicted Score</span> Calculator
 			</h1>
 			<p class="subtitle" in:fly={{ y: 20, duration: 800, delay: 400 }}>
-				The most accurate tool for the IB Diploma Program. Updated for {new Date().getFullYear()}.
+				The most accurate tool for the IB Diploma Program.
 			</p>
 			<p class="stat-pill" in:fly={{ y: 20, duration: 800, delay: 500 }}>
-				Trusted by 750,000+ students & teachers
+				Trusted by 1,000,000+ students & teachers
 			</p>
 			<div class="last-updated" in:fly={{ y: 20, duration: 800, delay: 600 }}>
 				<span class="dot" />
-				Updated July 4, 2026
+				Updated {updatedDate}
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,130 @@
+---
+title: 'How to read your IB Predict results'
+description: 'A plain-language guide to your predicted grade, next step, where you stand, grade outlook, and past-session comparisons.'
+slug: 'understanding-your-ib-predict-results'
+date: '2026-08-15'
+---
+
+IB Predict shows several kinds of information, but you do not need to understand statistics to use them. Start with your predicted grade and the next action shown beside it. Open the extra context only when you want to understand why the result may change.
+
+## Predicted grade and weighted score
+
+Your **weighted score** combines your assessment marks using the official weight of each component. A paper worth 40% affects the result more than an assessment worth 20%.
+
+Your **predicted grade** is the grade your weighted score reaches under the selected examination session and timezone. It is an estimate based on the marks you enter, not an official result.
+
+The predicted-grade card labels these separately: **Weighted score** is your combined percentage, while **To Grade 6** (or another grade) is the remaining weighted-mark gap. TOK and Extended Essay show their score out of 30 or 34 instead of a percentage.
+
+On the main calculator, collapse a completed subject when you only need its result. The compact card keeps the subject name, weighted score, and predicted grade; assessment controls, grade boundaries, supporting insights, and the full-analysis link stay hidden until you expand it again.
+
+## Marks to the next grade
+
+This is the difference between your weighted score and the next grade under the boundary currently selected in the session bar. For example, “2 marks” beside “To Grade 6” means your overall weighted score must rise by two percentage points under that selected forecast or published boundary.
+
+The **best next move** checks each assessment and finds the smallest raw-mark increase that would reach that next boundary. It is a planning tool, not a promise about what will happen in an examination.
+
+The Next grade panel shows only this recommended move at first. Open **Grade outlook & more options** when you want to compare every assessment or see how the same score behaved in past sessions.
+
+The main calculator uses the same priority: **Best next move** is the only subject insight shown at first. Open **Where you stand & more** for the session comparison, grade outlook, per-assessment calculations, and past-session results.
+
+## Where you stand
+
+“Ahead of about 75%” means your predicted grade is higher than the final grade earned by roughly three out of four students in that subject and examination session.
+
+This comparison is supporting context, so it stays under **Where you stand & more** on the main calculator instead of competing with the recommended action.
+
+IB publishes grade totals, not every student's exact mark. This means the comparison is an estimate within a grade band. IB Predict rounds the result to a whole percentage so it is not mistaken for an exact personal rank. “Less than 1%” and “more than 99%” are used at the ends of the range for the same reason.
+
+The diploma comparison works in the same way. It uses the published distribution of total diploma points to estimate where your total sits within that session.
+
+## Diploma summary
+
+The main calculator sidebar starts with your **total points** and whether the current combination meets the diploma requirements. These are the two results to check first.
+
+Open **Subject & core breakdown** only when you want to review the six subject grades, TOK grade, Extended Essay grade, and core points separately. Keeping this breakdown closed does not change the calculation.
+
+The session comparison beneath it appears after all six subject results are available. Before then, it gives one completion prompt instead of showing population statistics that cannot yet be personalized. Once complete, it shows your approximate standing and a rounded comparison with the typical diploma score.
+
+Open **About this comparison** for the typical score, diploma pass rate, published sample size, and a link back to this explanation. These reference figures support the comparison but are not required to understand your result.
+
+On the TOK and Extended Essay pages, open **How TOK and EE combine** when you want the complete core-points table. It stays closed by default because your predicted grade and points-to-next-grade result are usually more useful while planning.
+
+## Grade outlook
+
+Grade boundaries change between examination sessions. The grade outlook turns that history into one plain-language message:
+
+- **This grade has been consistent:** the same score usually kept the same grade across comparable sessions.
+- **This grade has varied before:** the same score did not always keep the same grade.
+- **This grade is close to changing:** a small increase in the boundary could lower the grade.
+
+The sentence below the outlook gives the clearest risk check. “A boundary 2 marks higher would make this Grade 5” means the current prediction has a two-mark cushion against a higher boundary.
+
+This describes uncertainty in the boundary, not the quality of your future exam performance.
+
+The grade outlook stays inside **Grade outlook & more options** because it is supporting context, not the primary recommendation.
+
+## Past-session comparison
+
+The historical comparison answers a simple question: **what grade would this same weighted score have earned in earlier sessions?**
+
+A range such as “Grade 5–6” means different timezones in that session used different boundaries. It does not mean you received two grades.
+
+## Historical boundary chart
+
+The historical chart opens on the minimum score for your current predicted grade. This keeps the graph focused on the line most relevant to your result. The dashed line is your weighted score.
+
+Choose **All grades** only when you want to compare the complete boundary structure; this intentionally displays every grade line. When a session used multiple timezones, the plotted point shows the typical minimum and the tooltip shows the timezone range. Open **How to read this chart** below the graph for the short in-page explanation.
+
+## Global grade distribution
+
+The distribution chart shows how final grades were spread across one examination session. Each bar is the percentage of students who received that grade. There is no fitted curve or prediction line: the bars are the published bulletin data.
+
+Your predicted grade bar is outlined in blue. **Typical result** rounds the published session average to the nearest attainable grade, so an average such as 5.3 is shown simply as Grade 5. Open **How to read this chart** when you want the exact decimal average. Neither value claims to know your exact rank within a grade.
+
+The table below the chart can show either:
+
+- **Percent:** the share of students who received each grade.
+- **Students:** an approximate number of students in each grade.
+
+The columns labeled **Grade (%)** show the share receiving each final grade. “N” means no grade was awarded.
+
+The table initially follows the chart’s season: choosing a November chart shows November sessions, and choosing a May chart shows May sessions. Use **All Sessions** only when you want the combined May-and-November comparison.
+
+IB publishes rounded percentages, so student counts calculated from those percentages can differ slightly from the published session total. Open **About student counts** beneath the table when you need that detail.
+
+## Optional averages and variation
+
+Boundary tables show official session results first. Use **Show averages** only when you want a longer-term view.
+
+- **Average** is the typical minimum mark for that grade across the available sessions.
+- **Standard deviation** describes how much that boundary has moved. A small number means it has been stable; a larger number means it has varied more.
+
+For most students, the selected session boundary and the “marks to next grade” message are more useful than these statistics.
+
+## Forecast likelihoods
+
+When enough comparable history is available, an individual subject page opens with **N26 Forecast** selected. The predicted grade, marks to the next grade, and boundary table then all use the same November 2026 estimate. This avoids mixing an official M25 result with a separate forecast result.
+
+The forecast is experimental. It estimates future grade boundaries; it does not predict the marks you will earn on exam day. Choose a named M25 or N25 boundary in the session bar whenever you want the calculator to use that published boundary instead. The entire predicted-grade card switches to the selected source, so it never presents two competing grades at once.
+
+The predicted-grade card shows two compact comparisons. **Probability** shows the weighted historical result for the forecasted grade, one grade below, and one grade above across comparable current-syllabus boundaries. Recent post-COVID November sessions count most, recent May sessions count next, and transitional or older evidence counts much less. **Percentile** says what share of N25 test takers finished below your displayed grade. The forecast chooses the future cutoff; the probability display shows how consistently your score performed against the most relevant available history.
+
+TOK and Extended Essay use their latest stable published cutoffs without added year-to-year uncertainty. If your score reaches one of those fixed cutoffs, the card shows that grade at 100% rather than splitting the result across two grades.
+
+Read “Grade 5 · 75%” as: **after giving the most relevant recent sessions more influence, this score earned Grade 5 in 75% of the weighted historical comparison.** Use **View forecast details** only when you want to inspect the future cutoff estimate, possible ranges, and model checks.
+
+For the model details, assumptions, and limitations, read [How IB Predict forecasts grade boundaries](/blog/ib-predict-boundary-forecast-methodology).
+
+## What to focus on
+
+Use the page in this order:
+
+1. Check that the correct session, timezone, subject, and level are selected.
+2. Read your predicted grade and weighted score.
+3. Look at the marks needed for the next grade.
+4. Use the best-next-move suggestion to decide where an extra mark has the most impact.
+5. Open the additional context only if you want to compare sessions or understand uncertainty.
+
+If you are unsure which session or timezone applies, read [Choosing the right IB exam session and timezone](/blog/choosing-an-ib-exam-session-and-timezone).
+
+IB Predict is a study-planning tool. Always treat official results and published IB boundaries as authoritative.

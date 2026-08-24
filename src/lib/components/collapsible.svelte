@@ -1,12 +1,22 @@
 <script>
 	let open = false;
 	export let question;
+	const panelId = `faq-${question
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/(^-|-$)/g, '')}`;
 </script>
 
 <div class="collapsible">
-	<div class="header" on:click={() => (open = !open)}>
-		{question}
-		<span class="icon" class:open
+	<button
+		class="header"
+		type="button"
+		aria-expanded={open}
+		aria-controls={panelId}
+		on:click={() => (open = !open)}
+	>
+		<span>{question}</span>
+		<span class="icon" aria-hidden="true"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="chevron"
@@ -20,10 +30,10 @@
 				<polyline points="6 9 12 15 18 9" />
 			</svg></span
 		>
-	</div>
+	</button>
 
 	{#if open}
-		<div class="content">
+		<div class="content" id={panelId}>
 			<slot />
 		</div>
 	{/if}
@@ -31,47 +41,70 @@
 
 <style>
 	.collapsible {
-		border-bottom: 1px solid #ccc;
-		padding: 1rem 0;
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	.header {
-		cursor: pointer;
-		font-weight: bold;
-		font-size: 1.1rem;
 		display: flex;
-		justify-content: space-between;
+		width: 100%;
 		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		border: 0;
+		padding: 22px 0;
+		background: transparent;
+		color: var(--color-text-main);
+		font: inherit;
+		font-size: 1rem;
+		font-weight: 650;
+		line-height: 1.45;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	.header:hover {
+		color: var(--color-primary-dark);
+	}
+
+	.header:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 6px;
 	}
 
 	.content {
-		margin-top: 0.75rem;
-		line-height: 1.6;
-	}
-
-	ul {
-		margin-top: 0.5rem;
-		padding-left: 1.25rem;
+		max-width: 700px;
+		padding: 0 44px 24px 0;
 	}
 
 	.icon {
-		font-size: 1.2rem;
-		transform: rotate(0deg);
-		transition: transform 0.2s ease;
-	}
-
-	.icon.open {
-		transform: rotate(180deg);
+		display: grid;
+		flex: 0 0 auto;
+		place-items: center;
+		width: 24px;
+		height: 24px;
+		color: var(--color-text-muted);
 	}
 
 	.chevron {
-		width: 1rem;
-		height: 1rem;
+		width: 15px;
+		height: 15px;
 		transform-origin: center;
 		transition: transform 0.2s ease;
 	}
 
-	.chevron.open {
+	.header[aria-expanded='true'] .chevron {
 		transform: rotate(180deg);
+	}
+
+	@media (max-width: 640px) {
+		.header {
+			gap: 16px;
+			padding: 19px 0;
+		}
+
+		.content {
+			padding-right: 0;
+			padding-bottom: 22px;
+		}
 	}
 </style>

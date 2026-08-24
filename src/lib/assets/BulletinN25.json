@@ -1,0 +1,1124 @@
+{
+	"HL Chinese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 36,
+				"mean": 5.2,
+				"distribution": [0, 0, 0, 0, 11.1, 58.3, 30.6, 0]
+			}
+		]
+	},
+	"SL Chinese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 169,
+				"mean": 5.5,
+				"distribution": [0.6, 0, 0, 1.2, 3.6, 50.3, 37.3, 7.1]
+			}
+		]
+	},
+	"HL Chinese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 10,
+				"mean": 5.3,
+				"distribution": [0, 0, 0, 0, 20, 40, 30, 10]
+			}
+		]
+	},
+	"SL Chinese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 49,
+				"mean": 5.7,
+				"distribution": [0, 0, 0, 0, 4.1, 36.7, 46.9, 12.2]
+			}
+		]
+	},
+	"HL English Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 3366,
+				"mean": 5,
+				"distribution": [1.4, 0, 0.2, 4.8, 24.5, 36.4, 27.3, 5.4]
+			}
+		]
+	},
+	"SL English Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2730,
+				"mean": 5.2,
+				"distribution": [1.8, 0, 0.1, 4.1, 14.2, 40.3, 32.5, 7]
+			}
+		]
+	},
+	"HL English Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 874,
+				"mean": 5.3,
+				"distribution": [1.5, 0, 0, 1.5, 16, 37, 35.7, 8.4]
+			}
+		]
+	},
+	"SL English Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 513,
+				"mean": 5.2,
+				"distribution": [1.8, 0, 0, 3.5, 15, 43.7, 27.9, 8.2]
+			}
+		]
+	},
+	"HL French Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 43,
+				"mean": 4.2,
+				"distribution": [11.6, 0, 0, 30.2, 25.6, 25.6, 2.3, 4.7]
+			}
+		]
+	},
+	"SL French Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 74,
+				"mean": 4.5,
+				"distribution": [2.7, 0, 0, 13.5, 37.8, 29.7, 13.5, 2.7]
+			}
+		]
+	},
+	"SL French Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 19,
+				"mean": 5,
+				"distribution": [5.3, 0, 0, 5.3, 15.8, 52.6, 15.8, 5.3]
+			}
+		]
+	},
+	"HL German Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 26,
+				"mean": 4.9,
+				"distribution": [7.7, 0, 0, 7.7, 26.9, 26.9, 26.9, 3.8]
+			}
+		]
+	},
+	"SL German Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 14,
+				"mean": 4.3,
+				"distribution": [14.3, 0, 0, 14.3, 35.7, 28.6, 7.1, 0]
+			}
+		]
+	},
+	"SL German Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 17,
+				"mean": 4.9,
+				"distribution": [0, 0, 0, 5.9, 35.3, 35.3, 11.8, 11.8]
+			}
+		]
+	},
+	"SL Indonesian Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 10,
+				"mean": 5.2,
+				"distribution": [0, 0, 0, 0, 20, 50, 20, 10]
+			}
+		]
+	},
+	"HL Japanese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 169,
+				"mean": 5.3,
+				"distribution": [3, 0, 0, 2.4, 14.2, 41.4, 34.3, 4.7]
+			}
+		]
+	},
+	"SL Japanese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 148,
+				"mean": 5.3,
+				"distribution": [0, 0, 0, 1.4, 17.6, 38.5, 32.4, 10.1]
+			}
+		]
+	},
+	"HL Japanese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 165,
+				"mean": 5,
+				"distribution": [0, 0, 0, 1.8, 27.9, 47.3, 15.8, 7.3]
+			}
+		]
+	},
+	"SL Japanese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 117,
+				"mean": 5.1,
+				"distribution": [0.9, 0, 0.9, 4.3, 20.5, 42.7, 24.8, 6]
+			}
+		]
+	},
+	"HL Korean Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 115,
+				"mean": 5,
+				"distribution": [0, 0, 0, 3.5, 23.5, 42.6, 28.7, 1.7]
+			}
+		]
+	},
+	"SL Korean Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 35,
+				"mean": 4.9,
+				"distribution": [0, 0, 2.9, 5.7, 20, 45.7, 17.1, 8.6]
+			}
+		]
+	},
+	"HL Korean Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 24,
+				"mean": 5.9,
+				"distribution": [4.2, 0, 0, 0, 0, 25, 54.2, 16.7]
+			}
+		]
+	},
+	"SL Korean Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 52,
+				"mean": 5.8,
+				"distribution": [0, 0, 0, 0, 1.9, 26.9, 57.7, 13.5]
+			}
+		]
+	},
+	"HL Portuguese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 116,
+				"mean": 4.9,
+				"distribution": [2.6, 0, 0, 6, 24.1, 39.7, 24.1, 3.4]
+			}
+		]
+	},
+	"SL Portuguese Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 79,
+				"mean": 5,
+				"distribution": [1.3, 0, 0, 2.5, 26.6, 40.5, 25.3, 3.8]
+			}
+		]
+	},
+	"HL Portuguese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 38,
+				"mean": 5.1,
+				"distribution": [2.6, 0, 0, 2.6, 23.7, 34.2, 34.2, 2.6]
+			}
+		]
+	},
+	"SL Portuguese Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 10,
+				"mean": 4.9,
+				"distribution": [0, 0, 0, 10, 30, 20, 40, 0]
+			}
+		]
+	},
+	"HL Spanish Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 5535,
+				"mean": 4.7,
+				"distribution": [0.4, 0, 0.4, 7.1, 34.1, 41.7, 15.4, 0.9]
+			}
+		]
+	},
+	"SL Spanish Language A: Language And Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 261,
+				"mean": 4.9,
+				"distribution": [0.8, 0, 0, 8, 21.1, 49.4, 16.5, 4.2]
+			}
+		]
+	},
+	"HL Spanish Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2686,
+				"mean": 4.6,
+				"distribution": [1, 0, 0.2, 6.7, 36.4, 42.4, 12.1, 1.2]
+			}
+		]
+	},
+	"SL Spanish Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 368,
+				"mean": 4.7,
+				"distribution": [2.2, 0, 2.4, 9.2, 26.6, 38.9, 17.7, 3]
+			}
+		]
+	},
+	"HL Turkish Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 241,
+				"mean": 5.1,
+				"distribution": [3.3, 0, 0.4, 7.1, 29, 23.7, 22.8, 13.7]
+			}
+		]
+	},
+	"SL Turkish Language A: Literature": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 398,
+				"mean": 5.3,
+				"distribution": [3, 0, 0.8, 3.8, 20.4, 31.9, 25.4, 14.8]
+			}
+		]
+	},
+	"SL English Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 122,
+				"mean": 4.9,
+				"distribution": [1.6, 0, 3.3, 17.2, 18.9, 24.6, 18.9, 15.6]
+			}
+		]
+	},
+	"SL French Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 759,
+				"mean": 4.9,
+				"distribution": [2, 0, 1.4, 13.8, 20.6, 30, 20.3, 11.9]
+			}
+		]
+	},
+	"SL Indonesian Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 151,
+				"mean": 5.2,
+				"distribution": [0, 0, 2, 7.3, 21.9, 26.5, 25.8, 16.6]
+			}
+		]
+	},
+	"SL Japanese Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 75,
+				"mean": 5.3,
+				"distribution": [0, 0, 0, 9.3, 22.7, 18.7, 25.3, 24]
+			}
+		]
+	},
+	"SL Chinese Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 171,
+				"mean": 5.9,
+				"distribution": [0.6, 0, 0, 4.1, 12.3, 17, 25.7, 40.4]
+			}
+		]
+	},
+	"SL Spanish Language AB Initio": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1177,
+				"mean": 5.3,
+				"distribution": [1.3, 0, 0.3, 3.7, 20.6, 26.8, 32.6, 14.8]
+			}
+		]
+	},
+	"HL Chinese Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 161,
+				"mean": 6.5,
+				"distribution": [0.6, 0, 0, 0, 2.5, 10.6, 21.7, 64.6]
+			}
+		]
+	},
+	"SL Chinese Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1457,
+				"mean": 6.5,
+				"distribution": [0.8, 0, 0, 0.5, 2.3, 6.1, 29, 61.3]
+			}
+		]
+	},
+	"HL English Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 8820,
+				"mean": 4.9,
+				"distribution": [0.9, 0, 0.7, 9.2, 23.9, 30.5, 30.5, 4.3]
+			}
+		]
+	},
+	"SL English Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1183,
+				"mean": 5,
+				"distribution": [0.6, 0, 0.6, 10.9, 19.2, 34, 27.7, 7]
+			}
+		]
+	},
+	"HL French Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 223,
+				"mean": 5.3,
+				"distribution": [1.3, 0, 1.8, 9.4, 14.3, 23.8, 34.1, 15.2]
+			}
+		]
+	},
+	"SL French Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 829,
+				"mean": 5.4,
+				"distribution": [0.8, 0, 0.1, 1.7, 14.7, 34, 35, 13.6]
+			}
+		]
+	},
+	"HL German Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 604,
+				"mean": 5,
+				"distribution": [2, 0, 0.3, 5, 26.5, 35.6, 21, 9.6]
+			}
+		]
+	},
+	"SL German Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 194,
+				"mean": 5.1,
+				"distribution": [1, 0, 0, 6.7, 26.3, 30.4, 24.7, 10.8]
+			}
+		]
+	},
+	"SL Indonesian Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 23,
+				"mean": 5.5,
+				"distribution": [4.3, 0, 0, 0, 8.7, 47.8, 26.1, 13]
+			}
+		]
+	},
+	"HL Japanese Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 55,
+				"mean": 6.1,
+				"distribution": [0, 0, 1.8, 1.8, 7.3, 18.2, 18.2, 52.7]
+			}
+		]
+	},
+	"SL Japanese Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 198,
+				"mean": 5.4,
+				"distribution": [0.5, 0, 0, 4.5, 17.7, 31.8, 24.7, 20.7]
+			}
+		]
+	},
+	"SL Malay Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 96,
+				"mean": 5.7,
+				"distribution": [0, 0, 0, 9.4, 9.4, 15.6, 37.5, 28.1]
+			}
+		]
+	},
+	"HL Spanish Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 78,
+				"mean": 5.8,
+				"distribution": [2.6, 0, 0, 1.3, 6.4, 25.6, 39.7, 24.4]
+			}
+		]
+	},
+	"SL Spanish Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 193,
+				"mean": 5.6,
+				"distribution": [2.1, 0, 0.5, 2.6, 13, 26.4, 33.7, 21.8]
+			}
+		]
+	},
+	"SL Tamil Language B": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 146,
+				"mean": 6.2,
+				"distribution": [0.7, 0, 0.7, 0, 6.8, 13.7, 30.1, 47.9]
+			}
+		]
+	},
+	"SL Brazilian Social Studies": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 82,
+				"mean": 5.1,
+				"distribution": [3.7, 0, 0, 7.3, 19.5, 32.9, 31.7, 4.9]
+			}
+		]
+	},
+	"HL Business Management": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 3609,
+				"mean": 4.8,
+				"distribution": [1.6, 0.1, 2, 12.6, 26.8, 27.8, 18.9, 10.1]
+			}
+		]
+	},
+	"SL Business Management": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2661,
+				"mean": 4.5,
+				"distribution": [1.1, 0.1, 4.4, 19.7, 26, 29.3, 12.7, 6.9]
+			}
+		]
+	},
+	"HL Digital Society": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 891,
+				"mean": 4.4,
+				"distribution": [0.8, 0.4, 2.4, 15.8, 33.3, 34.2, 11.3, 1.7]
+			}
+		]
+	},
+	"SL Digital Society": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 952,
+				"mean": 4.4,
+				"distribution": [0.7, 0, 0.4, 13.8, 38.3, 39.2, 7.1, 0.4]
+			}
+		]
+	},
+	"HL Economics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2266,
+				"mean": 5.3,
+				"distribution": [2.3, 0.1, 2.6, 8.1, 16.9, 22.2, 29.5, 18.3]
+			}
+		]
+	},
+	"SL Economics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1151,
+				"mean": 5.1,
+				"distribution": [2.2, 0.6, 4.1, 10.8, 15.2, 22.3, 27.6, 17.2]
+			}
+		]
+	},
+	"HL Geography": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 657,
+				"mean": 5.3,
+				"distribution": [1.7, 0, 0.5, 7.8, 16.1, 27.4, 30.4, 16.1]
+			}
+		]
+	},
+	"SL Geography": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 382,
+				"mean": 5.1,
+				"distribution": [1.6, 0, 2.6, 13.4, 12.8, 26.2, 26.2, 17.3]
+			}
+		]
+	},
+	"HL Global Politics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 655,
+				"mean": 4.8,
+				"distribution": [1.2, 0, 0, 7.6, 29.9, 35, 22.7, 3.5]
+			}
+		]
+	},
+	"SL Global Politics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 609,
+				"mean": 4.1,
+				"distribution": [1.8, 0, 6.2, 22.7, 33.5, 25.9, 8.4, 1.5]
+			}
+		]
+	},
+	"HL History": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 4997,
+				"mean": 4.2,
+				"distribution": [0.9, 0.1, 3.9, 17.7, 42.3, 23.8, 8.8, 2.6]
+			}
+		]
+	},
+	"SL History": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1826,
+				"mean": 4.4,
+				"distribution": [1.5, 0.4, 6.6, 12.9, 33, 29.5, 12.2, 3.9]
+			}
+		]
+	},
+	"HL Philosophy": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 180,
+				"mean": 4.8,
+				"distribution": [1.1, 0, 0.6, 15, 24.4, 30.6, 25, 3.3]
+			}
+		]
+	},
+	"SL Philosophy": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 139,
+				"mean": 5.1,
+				"distribution": [3.6, 0, 0.7, 5, 20.1, 35.3, 27.3, 7.9]
+			}
+		]
+	},
+	"HL Psychology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1304,
+				"mean": 5.3,
+				"distribution": [1.8, 0.1, 1.3, 6.4, 14.6, 29.4, 33.5, 13]
+			}
+		]
+	},
+	"SL Psychology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 495,
+				"mean": 5,
+				"distribution": [1.8, 0.2, 2, 9.7, 18.6, 26.9, 31.9, 8.9]
+			}
+		]
+	},
+	"HL Social And Cultural Anthropology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 62,
+				"mean": 5.5,
+				"distribution": [1.6, 0, 3.2, 4.8, 11.3, 19.4, 37.1, 22.6]
+			}
+		]
+	},
+	"SL Social And Cultural Anthropology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 51,
+				"mean": 4.5,
+				"distribution": [2, 0, 2, 31.4, 17.6, 17.6, 21.6, 7.8]
+			}
+		]
+	},
+	"HL Biology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 3355,
+				"mean": 4.7,
+				"distribution": [2.5, 1, 6.1, 17.9, 20.5, 20.1, 18.4, 13.7]
+			}
+		]
+	},
+	"SL Biology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 5123,
+				"mean": 3.8,
+				"distribution": [1.2, 1, 10.9, 35.1, 25.1, 14.1, 8.5, 4.2]
+			}
+		]
+	},
+	"HL Chemistry": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2907,
+				"mean": 5.4,
+				"distribution": [2.1, 0.4, 3.7, 10.9, 14.3, 13.9, 22.7, 31.9]
+			}
+		]
+	},
+	"SL Chemistry": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 3099,
+				"mean": 4.1,
+				"distribution": [1.4, 2.5, 16.3, 23.5, 15.6, 15.7, 13.1, 11.9]
+			}
+		]
+	},
+	"HL Computer Science": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 369,
+				"mean": 4.5,
+				"distribution": [6.5, 1.1, 8.1, 20.6, 19.5, 15.7, 14.6, 13.8]
+			}
+		]
+	},
+	"SL Computer Science": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 350,
+				"mean": 3.8,
+				"distribution": [2.3, 0.3, 20.9, 28, 19.4, 14.3, 10.3, 4.6]
+			}
+		]
+	},
+	"HL Design Technology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 183,
+				"mean": 4.6,
+				"distribution": [2.2, 0, 3.8, 11.5, 27.9, 34.4, 18, 2.2]
+			}
+		]
+	},
+	"SL Design Technology": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 221,
+				"mean": 4,
+				"distribution": [2.7, 0, 3.2, 30.3, 36.7, 19.5, 7.7, 0]
+			}
+		]
+	},
+	"HL Physics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2354,
+				"mean": 5,
+				"distribution": [3.2, 0.3, 5.1, 16.7, 17.7, 14.8, 17.4, 24.8]
+			}
+		]
+	},
+	"SL Physics": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2327,
+				"mean": 4,
+				"distribution": [1.2, 0.8, 15.3, 28.4, 22.2, 14.2, 8.6, 9.4]
+			}
+		]
+	},
+	"HL Sports, Exercise And Health Science": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 500,
+				"mean": 5.6,
+				"distribution": [0.6, 0, 0.8, 4.4, 10.8, 23.4, 40, 20]
+			}
+		]
+	},
+	"SL Sports, Exercise And Health Science": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 713,
+				"mean": 4.2,
+				"distribution": [1.1, 0.1, 4.5, 27.1, 32.7, 15.7, 14.2, 4.6]
+			}
+		]
+	},
+	"HL Mathematics: Analysis And Approaches": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 3389,
+				"mean": 5.1,
+				"distribution": [2.8, 0.8, 7.1, 9.6, 17.2, 17.6, 20.7, 24.3]
+			}
+		]
+	},
+	"SL Mathematics: Analysis And Approaches": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 7900,
+				"mean": 3.9,
+				"distribution": [1.3, 2.3, 19.5, 22.5, 18.5, 16.1, 12.3, 7.6]
+			}
+		]
+	},
+	"HL Mathematics: Applications And Interpretation": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 642,
+				"mean": 4.1,
+				"distribution": [3.1, 0.8, 15.1, 23.2, 20.6, 16.8, 12.3, 8.1]
+			}
+		]
+	},
+	"SL Mathematics: Applications And Interpretation": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 5400,
+				"mean": 3.6,
+				"distribution": [1.9, 3.3, 21.5, 27.6, 19.2, 13.3, 10.1, 3]
+			}
+		]
+	},
+	"HL Dance": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 81,
+				"mean": 5.6,
+				"distribution": [1.2, 0, 0, 21, 4.9, 7.4, 24.7, 40.7]
+			}
+		]
+	},
+	"SL Dance": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 105,
+				"mean": 2.6,
+				"distribution": [11.4, 1, 56.2, 17.1, 5.7, 5.7, 1.9, 1]
+			}
+		]
+	},
+	"HL Film": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 227,
+				"mean": 5.3,
+				"distribution": [0.9, 0, 0.9, 4.8, 16.3, 36.1, 24.7, 16.3]
+			}
+		]
+	},
+	"SL Film": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 91,
+				"mean": 4.8,
+				"distribution": [3.3, 0, 2.2, 9.9, 25.3, 33, 22, 4.4]
+			}
+		]
+	},
+	"SL Literary Arts": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 15,
+				"mean": 6.1,
+				"distribution": [6.7, 0, 0, 0, 0, 6.7, 66.7, 20]
+			}
+		]
+	},
+	"HL Music": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 261,
+				"mean": 5.3,
+				"distribution": [1.1, 0, 0, 4.6, 19.9, 26.8, 31.8, 15.7]
+			}
+		]
+	},
+	"SL Music": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 149,
+				"mean": 4.4,
+				"distribution": [2, 0, 4, 18.8, 35.6, 15.4, 20.8, 3.4]
+			}
+		]
+	},
+	"HL Theatre": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 260,
+				"mean": 5.9,
+				"distribution": [1.2, 0, 0, 0.4, 11.5, 21.9, 33.1, 31.9]
+			}
+		]
+	},
+	"SL Theatre": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 273,
+				"mean": 4.7,
+				"distribution": [0.7, 0, 0, 9.9, 37.7, 31.5, 14.7, 5.5]
+			}
+		]
+	},
+	"HL Visual Arts": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 885,
+				"mean": 4.4,
+				"distribution": [1, 0, 0.7, 20.9, 35, 27.1, 12.9, 2.4]
+			}
+		]
+	},
+	"SL Visual Arts": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 1366,
+				"mean": 4.2,
+				"distribution": [1.2, 0, 0.9, 15.7, 49.1, 27.1, 5.1, 0.8]
+			}
+		]
+	},
+	"SL Environmental Systems And Societies": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 2514,
+				"mean": 4,
+				"distribution": [1.8, 0.5, 10, 25.6, 31.2, 18.5, 9, 3.4]
+			}
+		]
+	},
+	"SL Literature And Performance": {
+		"grades": [
+			{
+				"name": "November 2025",
+				"short": "N25",
+				"total": 28,
+				"mean": 5.5,
+				"distribution": [0, 0, 0, 0, 0, 46.4, 53.6, 0]
+			}
+		]
+	}
+}
