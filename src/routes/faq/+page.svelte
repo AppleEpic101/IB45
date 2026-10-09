@@ -144,7 +144,7 @@
 				boundaries, not your exam-day marks.
 			</p>
 			<p>
-				Choose an M25 or N25 option in the session bar to use an official published boundary
+				Choose an M26, N25, or M25 option in the session bar to use an official published boundary
 				instead. The forecasted-grade and adjacent-grade probabilities use comparable
 				current-syllabus boundaries, weighting recent post-COVID November sessions most, then recent
 				May sessions; “Beats X% of N25 test takers” uses published November 2025 results. Open the

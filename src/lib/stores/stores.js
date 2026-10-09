@@ -14,6 +14,7 @@ import M24 from '$lib/assets/M24.json';
 import N24 from '$lib/assets/N24.json';
 import M25 from '$lib/assets/M25.json';
 import N25 from '$lib/assets/N25.json';
+import M26 from '$lib/assets/M26.json';
 
 export const availableBoundaries = [
 	M19,
@@ -27,7 +28,8 @@ export const availableBoundaries = [
 	M24,
 	N24,
 	M25,
-	N25
+	N25,
+	M26
 ];
 
 const CURRENT_VERSION = '1.0.1';
@@ -60,7 +62,7 @@ function initializeVersionedStore(key, defaultValue) {
 
 // Stores
 export const appVersion = initializeVersionedStore('appVersion', CURRENT_VERSION);
-export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'M25'); // Change DEFAULT here
+export const selectedBoundaryId = initializeVersionedStore('selectedBoundaryId', 'M26'); // Change DEFAULT here
 export const showDiscord = initializeVersionedStore('showDiscord', true);
 export const darkMode = persisted('darkMode', true);
 export const selectedBoundary = derived(selectedBoundaryId, ($selectedBoundaryId) =>

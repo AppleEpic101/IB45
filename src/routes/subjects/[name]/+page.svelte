@@ -79,7 +79,7 @@
 		? ['E', 'D', 'C', 'B', 'A']
 		: ['1', '2', '3', '4', '5', '6', '7'];
 	const officialBoundaryOptions = (results) => {
-		const recent = results.filter((result) => result.short === 'M25' || result.short === 'N25');
+		const recent = results.filter((result) => result.short === 'M26' || result.short === 'N25');
 		return recent.length ? recent : results;
 	};
 	const forecastBoundaryOption = (results) => {
