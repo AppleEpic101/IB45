@@ -1659,14 +1659,14 @@
 	},
 	"Environmental Systems And Societies": {
 		"name": "Environmental Systems And Societies",
-		"firstAssessment": 2017,
-		"lastAssessment": 2025,
+		"firstAssessment": 2026,
+		"lastAssessment": "Present",
 		"short": "environmental-systems-and-societies",
 		"isLang": false,
-		"SLOnly": true,
+		"SLOnly": false,
 		"schoolOnly": false,
 		"isCore": false,
-		"description": "Environmental systems and societies (ESS) is an interdisciplinary course offered only at standard level (SL). This course can fulfill either the individuals and societies or the sciences requirement. Alternatively, this course enables students to satisfy the requirements of both subject groups simultaneously while studying one course. ESS is firmly grounded in both a scientific exploration of environmental systems in their structure and function, and in the exploration of cultural, economic, ethical, political, and social interactions of societies with the environment. As a result of studying this course, students will become equipped with the ability to recognize and evaluate the impact of our complex system of societies on the natural world. The interdisciplinary nature of the DP course requires a broad skill set from students, including the ability to perform research and investigations, participation in philosophical discussion and problem-solving. The course requires a systems approach to environmental understanding and promotes holistic thinking about environmental issues. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, knowledge transfer, and the use of primary sources. They encourage students to develop solutions at the personal, community, and global levels.",
+		"description": "Environmental systems and societies (ESS) is an interdisciplinary course offered at both standard level (SL) and higher level (HL). This course can fulfill either the individuals and societies or the sciences requirement. Alternatively, this course enables students to satisfy the requirements of both subject groups simultaneously while studying one course. ESS is firmly grounded in both a scientific exploration of environmental systems in their structure and function, and in the exploration of cultural, economic, ethical, political, and social interactions of societies with the environment. As a result of studying this course, students will become equipped with the ability to recognize and evaluate the impact of our complex system of societies on the natural world. The interdisciplinary nature of the DP course requires a broad skill set from students, including the ability to perform research and investigations, participation in philosophical discussion and problem-solving. The course requires a systems approach to environmental understanding and promotes holistic thinking about environmental issues. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, knowledge transfer, and the use of primary sources. They encourage students to develop solutions at the personal, community, and global levels.",
 		"groupNumber": [
 			3,
 			4
@@ -1679,7 +1679,7 @@
 			},
 			{
 				"name": "Paper 2",
-				"maxMarks": 65,
+				"maxMarks": 60,
 				"weight": 0.5
 			},
 			{
@@ -1688,7 +1688,57 @@
 				"weight": 0.25
 			}
 		],
-		"old": []
+		"HL": [
+			{
+				"name": "Paper 1: Case Study",
+				"maxMarks": 70,
+				"weight": 0.3
+			},
+			{
+				"name": "Paper 2",
+				"maxMarks": 80,
+				"weight": 0.5
+			},
+			{
+				"name": "Individual Investigation",
+				"maxMarks": 30,
+				"weight": 0.2
+			}
+		],
+		"old": [
+			{
+				"name": "Environmental Systems And Societies",
+				"firstAssessment": 2017,
+				"lastAssessment": 2025,
+				"short": "environmental-systems-and-societies",
+				"isLang": false,
+				"SLOnly": true,
+				"schoolOnly": false,
+				"isCore": false,
+				"description": "Environmental systems and societies (ESS) is an interdisciplinary course offered only at standard level (SL). This course can fulfill either the individuals and societies or the sciences requirement. Alternatively, this course enables students to satisfy the requirements of both subject groups simultaneously while studying one course. ESS is firmly grounded in both a scientific exploration of environmental systems in their structure and function, and in the exploration of cultural, economic, ethical, political, and social interactions of societies with the environment. As a result of studying this course, students will become equipped with the ability to recognize and evaluate the impact of our complex system of societies on the natural world. The interdisciplinary nature of the DP course requires a broad skill set from students, including the ability to perform research and investigations, participation in philosophical discussion and problem-solving. The course requires a systems approach to environmental understanding and promotes holistic thinking about environmental issues. Teachers explicitly teach thinking and research skills such as comprehension, text analysis, knowledge transfer, and the use of primary sources. They encourage students to develop solutions at the personal, community, and global levels.",
+				"groupNumber": [
+					3,
+					4
+				],
+				"SL": [
+					{
+						"name": "Paper 1: Case Study",
+						"maxMarks": 35,
+						"weight": 0.25
+					},
+					{
+						"name": "Paper 2",
+						"maxMarks": 65,
+						"weight": 0.5
+					},
+					{
+						"name": "Individual Investigation",
+						"maxMarks": 30,
+						"weight": 0.25
+					}
+				]
+			}
+		]
 	},
 	"Marine Science": {
 		"name": "Marine Science",

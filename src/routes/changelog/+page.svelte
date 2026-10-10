@@ -7,6 +7,21 @@
 
 	const releases = [
 		{
+			date: 'October 9, 2026',
+			month: 'OCT',
+			year: '2026',
+			category: 'Data',
+			title: 'May 2026 grade boundaries',
+			summary: 'The newest examination boundaries became available in subject calculators.',
+			items: [
+				'Added May 2026 boundaries across supported subjects and timezones.',
+				'Added M26 as an official boundary option in the main calculator and on individual subject pages.',
+				'Extended historical boundary charts and tables through May 2026.',
+				'Updated forecast grade probabilities to include May 2026 outcomes.'
+			]
+		},
+		{
+			
 			date: 'August 14, 2026',
 			month: 'AUG',
 			year: '2026',

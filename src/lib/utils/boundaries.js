@@ -11,8 +11,9 @@ import M24 from '$lib/assets/M24.json';
 import N24 from '$lib/assets/N24.json';
 import M25 from '$lib/assets/M25.json';
 import N25 from '$lib/assets/N25.json';
+import M26 from '$lib/assets/M26.json';
 
-const b = [M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25, N25];
+const b = [M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25, N25, M26];
 
 /**
  * Calculates normal results based on grade and boundary.

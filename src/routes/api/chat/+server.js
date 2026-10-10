@@ -15,9 +15,10 @@ import M24 from '$lib/assets/M24.json';
 import N24 from '$lib/assets/N24.json';
 import M25 from '$lib/assets/M25.json';
 import N25 from '$lib/assets/N25.json';
+import M26 from '$lib/assets/M26.json';
 
-const SESSIONS = { M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25, N25 };
-const LATEST = 'M25';
+const SESSIONS = { M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25, N25, M26};
+const LATEST = 'M26';
 
 const MODEL = env.OPENAI_MODEL || 'gpt-4o';
 const MAX_MESSAGES = 30;
@@ -312,7 +313,7 @@ const TOOLS = [
 					level: { type: 'string', enum: ['HL', 'SL'], description: 'Level. Omit for TOK/EE.' },
 					session: {
 						type: 'string',
-						description: 'Exam session code: M=May, N=November + 2-digit year, e.g. "M25", "N23". Available M19-N25 (no M20, no N21). Defaults to the latest (M25).'
+						description: 'Exam session code: M=May, N=November + 2-digit year, e.g. "M25", "N23". Available M19-M26 (no M20, no N21). Defaults to the latest (M26).'
 					}
 				},
 				required: ['subject']

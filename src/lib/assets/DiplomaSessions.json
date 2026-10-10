@@ -127,5 +127,27 @@
 			{ "min": 35, "max": 39, "percentage": 14.3 },
 			{ "min": 40, "max": 45, "percentage": 10.9 }
 		]
+	},
+	"M26": {
+		"short": "M26",
+		"name": "May 2026",
+		"status": "provisional",
+		"sessionStudents": 209607,
+		"diplomaQualificationStudents": 131467,
+		"diplomaResultsStudents": 104369,
+		"diplomasAwarded": 86217,
+		"diplomasNotAwarded": 18152,
+		"passRate": 82.6,
+		"meanGrade": 4.9,
+		"meanTotalPoints": 30.9,
+		"meanCorePoints": 1.6,
+		"corePointsDistribution": [14.8, 24.7, 48.4, 12.1],
+		"totalPointsDistribution": [
+			{ "min": 0, "max": 23, "percentage": 13.5 },
+			{ "min": 24, "max": 29, "percentage": 27.3 },
+			{ "min": 30, "max": 34, "percentage": 27.9 },
+			{ "min": 35, "max": 39, "percentage": 21.2 },
+			{ "min": 40, "max": 45, "percentage": 10.1 }
+		]
 	}
 }

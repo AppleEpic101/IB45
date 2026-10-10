@@ -36,7 +36,7 @@
 		{
 			name: 'Angelina Guo',
 			title: 'Maintainer',
-			gradYear: '',
+			gradYear: "'29",
 			photo: '/placeholder.png'
 		}
 	];
