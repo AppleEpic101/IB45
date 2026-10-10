@@ -119,11 +119,11 @@
 			lastSL = slOptions?.find((obj) => obj.isForecast);
 			lastHL = hlOptions?.find((obj) => obj.isForecast);
 
-			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'M25');
+			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'M26');
 			if (!lastSL) lastSL = slOptions?.find((obj) => obj.short === 'N25');
 			if (!lastSL) lastSL = slOptions[slOptions.length - 1];
 
-			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'M25');
+			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'M26');
 			if (!lastHL) lastHL = hlOptions?.find((obj) => obj.short === 'N25');
 			if (!lastHL) lastHL = hlOptions[hlOptions.length - 1];
 		}

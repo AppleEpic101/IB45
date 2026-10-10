@@ -125,7 +125,7 @@ under Group 2, and optionally a third by replacing Group 6.
 
 **Forecast details:** When enough comparable history exists, individual subject pages default to
 **N26 Forecast**. The predicted grade, next-grade gap, and boundary table all use that single
-experimental boundary estimate. A student can select a named M26, N25 or M25 option to use an official
+experimental boundary estimate. A student can select a named M26 or N25 option to use an official
 published boundary instead. Never describe the forecast as a prediction of the student's exam-day
 marks. Likelihood ranges and technical model checks are optional details and should be discussed
 only when the user asks.

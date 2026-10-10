@@ -18,7 +18,7 @@ import N25 from '$lib/assets/N25.json';
 import M26 from '$lib/assets/M26.json';
 
 const SESSIONS = { M19, N19, N20, M21, M22, N22, M23, N23, M24, N24, M25, N25, M26};
-const LATEST = 'M25';
+const LATEST = 'M26';
 
 const MODEL = env.OPENAI_MODEL || 'gpt-4o';
 const MAX_MESSAGES = 30;
