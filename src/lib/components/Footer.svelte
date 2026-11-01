@@ -7,8 +7,8 @@
 		<div class="footer-section">
 			<h3>Leadership</h3>
 			<ul>
-				<li>William Yoon '27 (Marketing Lead)</li>
-				<li>Krishna Sridhar '27</li>
+				<li>William Yoon '27 (President)</li>
+				<li>Krishna Sridhar '27 (Marketing Lead)</li>
 			</ul>
 		</div>
 		<div class="footer-section">

@@ -20,13 +20,13 @@
 	let leadership = [
 		{
 			name: 'William Yoon',
-			title: 'Marketing Lead',
+			title: 'President',
 			gradYear: "'27",
 			photo: '/placeholder.png'
 		},
 		{
 			name: 'Krishna Sridhar',
-			title: '',
+			title: 'Marketing Lead',
 			gradYear: "'27",
 			photo: '/placeholder.png'
 		}
